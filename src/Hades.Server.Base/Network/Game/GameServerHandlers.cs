@@ -722,19 +722,6 @@ namespace Darkages.Network.Game
         {
             lock (ServerContext.SyncLock)
             {
-                void ValidateClient()
-                {
-                    if (!ServerContext.Redirects.Contains(client.Aisling.Username.ToLower()))
-                    {
-                        //disconnect, unverified login.
-                        ClientDisconnected(client);
-                    }
-                    else
-                    {
-                        ServerContext.Redirects.Remove(client.Aisling.Username.ToLower());
-                    }
-                }
-
                 #region Sanity Checks
 
                 if (client == null)
@@ -742,9 +729,20 @@ namespace Darkages.Network.Game
 
                 #endregion
 
-                EnterGame(client, format);
+                // Check and consume the entry ticket before anything loads the character. EnterGame used to
+                // run first and the check came afterwards, so an unverified connection reached the world and
+                // was only disconnected after the fact, and a second connection could reuse the same ticket.
+                // Remove reports whether this call was the one that took it, and the lock makes that atomic.
+                var ticket = format?.Name?.ToLower();
 
-                ValidateClient();
+                if (string.IsNullOrEmpty(ticket) || !ServerContext.Redirects.Remove(ticket))
+                {
+                    //disconnect, unverified login.
+                    ClientDisconnected(client);
+                    return;
+                }
+
+                EnterGame(client, format);
             }
         }
 
