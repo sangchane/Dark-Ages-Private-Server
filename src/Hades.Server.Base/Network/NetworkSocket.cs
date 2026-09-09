@@ -12,6 +12,7 @@ namespace Darkages.Network
     {
         internal Socket Socket;
         private const int HeaderLength = 3;
+        private const byte FrameMagic = 0xAA;
 
         private readonly byte[] _header = new byte[HeaderLength];
         private readonly byte[] _packet = new byte[65534];
@@ -66,7 +67,24 @@ namespace Darkages.Network
             if (!HeaderComplete)
                 return bytes;
 
-            _packetLength = (_header[1] << 8) | _header[2];
+            // Reject frames that cannot be a packet under any reading. Reporting a socket error here is what
+            // closes this one connection: both receive callbacks already disconnect the client on it.
+            if (_header[0] != FrameMagic)
+            {
+                error = SocketError.ProtocolNotSupported;
+                return 0;
+            }
+
+            var declaredLength = (_header[1] << 8) | _header[2];
+
+            // A frame carries at least its command byte, and can never outgrow the receive buffer.
+            if (declaredLength < 1 || declaredLength > _packet.Length)
+            {
+                error = SocketError.MessageSize;
+                return 0;
+            }
+
+            _packetLength = declaredLength;
             _packetOffset = 0;
 
             return bytes;
