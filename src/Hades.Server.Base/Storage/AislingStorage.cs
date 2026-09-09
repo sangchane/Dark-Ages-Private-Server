@@ -21,11 +21,33 @@ namespace Darkages.Storage
 
         public string[] Files => Directory.GetFiles(StoragePath, "*.json", SearchOption.TopDirectoryOnly);
 
+        /// <summary>
+        /// Resolves the file a character name maps to. Names arrive from the network and were used verbatim in
+        /// the path, so a name containing a separator or a parent segment could place a file anywhere the
+        /// server can write. Anything that does not resolve to a file directly inside the character directory
+        /// is refused.
+        /// </summary>
+        private static string ResolveCharacterFile(string name)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+                throw new ArgumentException("A character name cannot be empty.", nameof(name));
+
+            var resolved = Path.GetFullPath(Path.Combine(StoragePath, $"{name.ToLower()}.json"));
+
+            if (!string.Equals(Path.GetDirectoryName(resolved), Path.GetFullPath(StoragePath),
+                    StringComparison.OrdinalIgnoreCase))
+                throw new ArgumentException(
+                    "A character name must resolve to a file directly inside the character directory.",
+                    nameof(name));
+
+            return resolved;
+        }
+
         public Aisling Load(string name)
         {
             try
             {
-                var path = Path.Combine(StoragePath, $"{name.ToLower()}.json");
+                var path = ResolveCharacterFile(name);
 
                 if (!File.Exists(path))
                     return null;
@@ -64,7 +86,7 @@ namespace Darkages.Storage
 
             try
             {
-                var path = Path.Combine(StoragePath, $"{obj.Username.ToLower()}.json");
+                var path = ResolveCharacterFile(obj.Username);
                 var objString = StorageManager.Serialize(obj);
 
                 File.WriteAllText(path, objString);
