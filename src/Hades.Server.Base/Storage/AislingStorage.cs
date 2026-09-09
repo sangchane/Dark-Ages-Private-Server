@@ -21,6 +21,52 @@ namespace Darkages.Storage
 
         public string[] Files => Directory.GetFiles(StoragePath, "*.json", SearchOption.TopDirectoryOnly);
 
+        private const int DefaultMinNameLength = 2;
+        private const int DefaultMaxNameLength = 12;
+
+        // Precomposed Hangul syllables. Korean names must work: the protocol carries CP949 text, and the
+        // mobile client sends them even though the English 7.18 client cannot type them.
+        private const char FirstHangulSyllable = (char)0xAC00;
+        private const char LastHangulSyllable = (char)0xD7A3;
+
+        // The name becomes a file name, and these are devices on Windows rather than files.
+        private static readonly string[] ReservedNames =
+        {
+            "con", "prn", "aux", "nul",
+            "com1", "com2", "com3", "com4", "com5", "com6", "com7", "com8", "com9",
+            "lpt1", "lpt2", "lpt3", "lpt4", "lpt5", "lpt6", "lpt7", "lpt8", "lpt9"
+        };
+
+        /// <summary>
+        /// Letters, digits and Hangul only, within the configured length. The server accepted any name at
+        /// all before this, and every name becomes a file.
+        /// </summary>
+        public static bool IsValidCharacterName(string name)
+        {
+            if (string.IsNullOrEmpty(name))
+                return false;
+
+            var minimum = ServerContext.Config?.CharacterNameMinLength ?? DefaultMinNameLength;
+            var maximum = ServerContext.Config?.CharacterNameMaxLength ?? DefaultMaxNameLength;
+
+            if (name.Length < minimum || name.Length > maximum)
+                return false;
+
+            foreach (var character in name)
+                if (!IsAllowedInName(character))
+                    return false;
+
+            return Array.IndexOf(ReservedNames, name.ToLowerInvariant()) < 0;
+        }
+
+        private static bool IsAllowedInName(char character)
+        {
+            return (character >= 'a' && character <= 'z')
+                   || (character >= 'A' && character <= 'Z')
+                   || (character >= '0' && character <= '9')
+                   || (character >= FirstHangulSyllable && character <= LastHangulSyllable);
+        }
+
         /// <summary>
         /// Resolves the file a character name maps to. Names arrive from the network and were used verbatim in
         /// the path, so a name containing a separator or a parent segment could place a file anywhere the
@@ -29,8 +75,8 @@ namespace Darkages.Storage
         /// </summary>
         private static string ResolveCharacterFile(string name)
         {
-            if (string.IsNullOrWhiteSpace(name))
-                throw new ArgumentException("A character name cannot be empty.", nameof(name));
+            if (!IsValidCharacterName(name))
+                throw new ArgumentException($"'{name}' is not an allowed character name.", nameof(name));
 
             var resolved = Path.GetFullPath(Path.Combine(StoragePath, $"{name.ToLower()}.json"));
 

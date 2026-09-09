@@ -1,4 +1,4 @@
-{
+﻿{
 	// Locales
 	"Content": {
 		"Location": "C:\\Users\\Dean\\Documents\\GitHub\\DarkAges-Lorule-Server\\database\\server",
@@ -86,6 +86,10 @@
 		"MonsterSpellSuccessRate": 30,
 
 		// Players
+		// Character names: letters, digits and Hangul are allowed; these bound the length
+		"CharacterNameMinLength": 2,
+		"CharacterNameMaxLength": 12,
+
 		"PlayerLevelCap": 99,
 		"GroupExpBonus": 5.0,
 		"MaxCarryGold": 100000000,

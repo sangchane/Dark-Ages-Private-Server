@@ -18,6 +18,8 @@ namespace Darkages
         bool CancelCastingWhenWalking { get; set; }
         bool CancelWalkingIfRefreshing { get; set; }
         bool CanMoveDuringReap { get; set; }
+        int CharacterNameMinLength { get; set; }
+        int CharacterNameMaxLength { get; set; }
         string CantAttack { get; set; }
         string CantCarryMoreMsg { get; set; }
         string CantDoThat { get; set; }
@@ -156,6 +158,10 @@ namespace Darkages
         public double BehindDamageMod { get; set; }
 
         public bool CancelCastingWhenWalking { get; set; }
+
+        public int CharacterNameMinLength { get; set; } = 2;
+
+        public int CharacterNameMaxLength { get; set; } = 12;
 
         public bool CancelWalkingIfRefreshing { get; set; }
 
