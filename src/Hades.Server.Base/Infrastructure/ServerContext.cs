@@ -419,7 +419,29 @@ namespace Darkages
         }
 
         public static object SyncLock = new object();
-        public static Action<Exception> Error { get; set; }
+        public static Action<Exception> Error { get; set; } = LogError;
+
+        /// <summary>
+        /// Default error sink. Every network callback funnels its catch block here, so this must never throw:
+        /// it runs on socket completion threads where an exception kills the whole server.
+        /// </summary>
+        private static void LogError(Exception error)
+        {
+            if (error == null)
+                return;
+
+            try
+            {
+                Logger(error.Message, LogLevel.Error);
+
+                if (error.StackTrace != null)
+                    Logger(error.StackTrace, LogLevel.Error);
+            }
+            catch
+            {
+                // Losing an error message must not cost the server.
+            }
+        }
 
         public void InitFromConfig(string storagePath, string ipAddress)
         {
