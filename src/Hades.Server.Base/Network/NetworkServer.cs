@@ -18,6 +18,9 @@ namespace Darkages.Network
         where TClient : NetworkClient, new()
     {
         public Dictionary<int, TClient> ConnectedClients;
+
+        // The dictionary is mutated from socket completion callbacks on several threads at once.
+        private readonly object _clientsLock = new object();
         private readonly MethodInfo[] _handlers;
         private Socket _listener;
         private bool _listening;
@@ -37,7 +40,18 @@ namespace Darkages.Network
 
         public IPAddress Address { get; }
 
-        public List<TClient> Clients => ConnectedClients.Values.ToList();
+        /// <summary>
+        /// A snapshot of the connected clients. Callers used to lock this property's result, which is a new
+        /// list on every access and therefore guarded nothing; the snapshot is taken under the real lock now.
+        /// </summary>
+        public List<TClient> Clients
+        {
+            get
+            {
+                lock (_clientsLock)
+                    return ConnectedClients.Values.ToList();
+            }
+        }
 
         public virtual void Abort()
         {
@@ -49,17 +63,19 @@ namespace Darkages.Network
                 _listener = null;
             }
 
-            lock (Clients)
-            {
-                foreach (var client in Clients.Where(client => client != null))
-                    ClientDisconnected(client);
-            }
+            // Clients is already a snapshot taken under the lock, so it is walked without holding it:
+            // ClientDisconnected takes the same lock on its way to RemoveClient.
+            foreach (var client in Clients.Where(client => client != null))
+                ClientDisconnected(client);
         }
 
         public virtual bool AddClient(TClient client)
         {
-            if (!ConnectedClients.ContainsKey(client.Serial))
-                ConnectedClients.Add(client.Serial, client);
+            lock (_clientsLock)
+            {
+                if (!ConnectedClients.ContainsKey(client.Serial))
+                    ConnectedClients.Add(client.Serial, client);
+            }
 
             return true;
         }
@@ -117,8 +133,11 @@ namespace Darkages.Network
 
         public void RemoveClient(TClient client)
         {
-            if (client != null && ConnectedClients != null && ConnectedClients.ContainsKey(client.Serial))
-                ConnectedClients.Remove(client.Serial);
+            lock (_clientsLock)
+            {
+                if (client != null && ConnectedClients != null && ConnectedClients.ContainsKey(client.Serial))
+                    ConnectedClients.Remove(client.Serial);
+            }
         }
 
         public virtual void Start(int port)
