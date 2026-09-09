@@ -29,6 +29,15 @@ namespace Darkages.Network
 
         public bool HeaderComplete => _headerOffset == HeaderLength;
 
+        /// <summary>When the last bytes arrived, used to spot a frame that stopped half way.</summary>
+        public DateTime LastReceivedUtc { get; private set; } = DateTime.UtcNow;
+
+        /// <summary>
+        /// True while a frame has started but not finished. A connection resting between frames is not
+        /// partial, so waiting quietly is never mistaken for stalling.
+        /// </summary>
+        public bool HasPartialFrame => _headerOffset > 0 && (!HeaderComplete || !PacketComplete);
+
         public bool PacketComplete => _packetOffset == _packetLength;
 
         public virtual IAsyncResult BeginReceiveHeader(AsyncCallback callback, out SocketError error, object state)
@@ -62,6 +71,7 @@ namespace Darkages.Network
             if (bytes == 0)
                 return 0;
 
+            LastReceivedUtc = DateTime.UtcNow;
             _headerOffset += bytes;
 
             if (!HeaderComplete)
@@ -97,6 +107,7 @@ namespace Darkages.Network
             if (bytes == 0)
                 return 0;
 
+            LastReceivedUtc = DateTime.UtcNow;
             _packetOffset += bytes;
 
             if (PacketComplete) _headerOffset = 0;

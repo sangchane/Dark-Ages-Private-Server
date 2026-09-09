@@ -87,6 +87,9 @@
 
 		// Players
 		// Character names: letters, digits and Hangul are allowed; these bound the length
+		// Seconds a half sent packet may sit before its connection is dropped
+		"IncompleteFrameTimeoutSeconds": 15,
+
 		"CharacterNameMinLength": 2,
 		"CharacterNameMaxLength": 12,
 

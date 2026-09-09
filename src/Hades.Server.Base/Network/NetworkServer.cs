@@ -24,6 +24,10 @@ namespace Darkages.Network
         private readonly MethodInfo[] _handlers;
         private Socket _listener;
         private bool _listening;
+        private System.Threading.Timer _stalledFrameSweep;
+
+        private static readonly TimeSpan SweepInterval = TimeSpan.FromSeconds(1);
+        private const double DefaultIncompleteFrameTimeoutSeconds = 15;
 
         protected NetworkServer(int capacity = 2048)
         {
@@ -57,6 +61,12 @@ namespace Darkages.Network
         {
             _listening = false;
 
+            if (_stalledFrameSweep != null)
+            {
+                _stalledFrameSweep.Dispose();
+                _stalledFrameSweep = null;
+            }
+
             if (_listener != null)
             {
                 _listener.Close();
@@ -67,6 +77,32 @@ namespace Darkages.Network
             // ClientDisconnected takes the same lock on its way to RemoveClient.
             foreach (var client in Clients.Where(client => client != null))
                 ClientDisconnected(client);
+        }
+
+        /// <summary>
+        /// Drops connections that began a frame and stopped. A half sent frame cannot be told from a slow
+        /// sender by its shape, so a time limit is the only thing that clears it.
+        /// </summary>
+        private void DisconnectStalledClients()
+        {
+            try
+            {
+                var limit = TimeSpan.FromSeconds(
+                    ServerContext.Config?.IncompleteFrameTimeoutSeconds ?? DefaultIncompleteFrameTimeoutSeconds);
+
+                foreach (var client in Clients)
+                {
+                    if (client?.State == null)
+                        continue;
+
+                    if (client.State.HasPartialFrame && DateTime.UtcNow - client.State.LastReceivedUtc > limit)
+                        ClientDisconnected(client);
+                }
+            }
+            catch (Exception e)
+            {
+                ServerContext.Error(e);
+            }
         }
 
         public virtual bool AddClient(TClient client)
@@ -146,6 +182,8 @@ namespace Darkages.Network
                 return;
 
             _listening = true;
+            _stalledFrameSweep = new System.Threading.Timer(
+                _ => DisconnectStalledClients(), null, SweepInterval, SweepInterval);
             _listener = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             _listener.Bind(new IPEndPoint(IPAddress.Any, port));
             _listener.Listen(ServerContext.Config?.ConnectionCapacity ?? 1000);

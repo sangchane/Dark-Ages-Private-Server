@@ -18,6 +18,7 @@ namespace Darkages
         bool CancelCastingWhenWalking { get; set; }
         bool CancelWalkingIfRefreshing { get; set; }
         bool CanMoveDuringReap { get; set; }
+        double IncompleteFrameTimeoutSeconds { get; set; }
         int CharacterNameMinLength { get; set; }
         int CharacterNameMaxLength { get; set; }
         string CantAttack { get; set; }
@@ -158,6 +159,8 @@ namespace Darkages
         public double BehindDamageMod { get; set; }
 
         public bool CancelCastingWhenWalking { get; set; }
+
+        public double IncompleteFrameTimeoutSeconds { get; set; } = 15;
 
         public int CharacterNameMinLength { get; set; } = 2;
 
