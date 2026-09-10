@@ -50,6 +50,23 @@ namespace Darkages.Network.Game
                 .AddImports("Darkages.Types.Quest");
         }
 
+        /// <summary>
+        /// Whether enough time has passed since the last assail to allow another.
+        /// </summary>
+        /// <remarks>
+        /// This read the other way round: the last assail is in the past, so subtracting the present from it
+        /// gives a negative number, and a negative number is never larger than a positive delay. The limit
+        /// never applied, and a client could assail as fast as it could send.
+        /// </remarks>
+        public static bool AssailIsReady(DateTime lastAssail, DateTime now, double delayMilliseconds)
+        {
+            // A time in the future means a clock that moved; wait rather than let everything through.
+            if (lastAssail > now)
+                return false;
+
+            return (now - lastAssail).TotalMilliseconds >= delayMilliseconds;
+        }
+
         public static void Assail(GameClient lpClient)
         {
             if (lpClient == null) throw new ArgumentNullException(nameof(lpClient));
@@ -89,8 +106,8 @@ namespace Darkages.Network.Game
                                     .GlobalBaseSkillDelay);
                         });
 
-            if ((lpClient.LastAssail - DateTime.UtcNow).TotalMilliseconds >
-                ServerContext.Config.GlobalBaseSkillDelay) return;
+            if (!AssailIsReady(lpClient.LastAssail, DateTime.UtcNow, ServerContext.Config.GlobalBaseSkillDelay))
+                return;
 
             var lastTemplate = string.Empty;
             foreach (var skill in lpClient.Aisling.GetAssails())

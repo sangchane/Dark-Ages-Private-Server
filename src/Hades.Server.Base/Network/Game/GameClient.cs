@@ -1278,23 +1278,54 @@ namespace Darkages.Network.Game
             DoUpdate(elapsedTime);
         }
 
+        /// <summary>
+        /// Runs whatever casts the client has asked for.
+        /// </summary>
+        /// <remarks>
+        /// A cast naming a slot with no spell in it used to skip back to the top of this loop without taking
+        /// anything off the stack, so the loop never ended: one bad cast held the thread that updates the
+        /// world. A slot can empty between asking and casting, so it has to be dropped and moved past.
+        ///
+        /// The stack is also touched from the handler thread, so every use of it is now under the same lock
+        /// that pushes to it.
+        /// </remarks>
         private void DispatchCasts()
         {
-            if (!CastStack.Any())
-                return;
-
-            while (CastStack.Any())
+            while (true)
             {
-                var stack = CastStack.Peek();
+                CastInfo stack;
+
+                lock (CastStack)
+                {
+                    if (!CastStack.Any())
+                        return;
+
+                    stack = CastStack.Peek();
+                }
+
                 var spell = Aisling.SpellBook.Get(i => i.Slot == stack.Slot).FirstOrDefault();
 
-                if (spell == null) continue;
+                if (spell == null)
+                {
+                    Drop(stack);
+                    continue;
+                }
 
                 if (stack.Target == 0) stack.Target = (uint) Aisling.Serial;
 
-
                 Aisling.CastSpell(spell);
-                CastStack.Pop();
+
+                Drop(stack);
+            }
+        }
+
+        /// <summary>Takes one cast off the stack, unless something else already did.</summary>
+        private void Drop(CastInfo stack)
+        {
+            lock (CastStack)
+            {
+                if (CastStack.Any() && ReferenceEquals(CastStack.Peek(), stack))
+                    CastStack.Pop();
             }
         }
 
