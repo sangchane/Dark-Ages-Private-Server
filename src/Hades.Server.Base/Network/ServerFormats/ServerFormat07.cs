@@ -32,27 +32,22 @@ namespace Darkages.Network.ServerFormats
                 {
                     if (sprite is Money || sprite is Item)
                     {
-                        if (sprite is Money)
-                        {
-                            writer.Write((ushort) sprite.XPos);
-                            writer.Write((ushort) sprite.YPos);
-                            writer.Write((uint) sprite.Serial);
-                            writer.Write((sprite as Money).Image);
-                            writer.Write(byte.MinValue);
-                            writer.Write(byte.MinValue);
-                            writer.Write(byte.MinValue);
-                        }
-
-                        if (sprite is Item)
-                        {
-                            writer.Write((ushort) sprite.XPos);
-                            writer.Write((ushort) sprite.YPos);
-                            writer.Write((uint) sprite.Serial);
-                            writer.Write((sprite as Item).DisplayImage);
-                            writer.Write((sprite as Item).Color);
-                            writer.Write(byte.MinValue);
-                            writer.Write(byte.MinValue);
-                        }
+                        // Written in the same shape as everything else in this packet: place, serial,
+                        // drawing, four bytes spare, a direction, one spare, and what kind of thing it is.
+                        //
+                        // It used to be written four bytes shorter, with no direction and no kind, and
+                        // nothing in the record said so - a reader could not tell a dropped item from the
+                        // first thirteen bytes of a monster, and everything after it in the same packet was
+                        // read at the wrong offset. Walk-through is what the original calls a thing you
+                        // step over rather than fight.
+                        writer.Write((ushort) sprite.XPos);
+                        writer.Write((ushort) sprite.YPos);
+                        writer.Write((uint) sprite.Serial);
+                        writer.Write(sprite is Money money ? money.Image : ((Item) sprite).DisplayImage);
+                        writer.Write((uint) 0x0);
+                        writer.Write(sprite.Direction);
+                        writer.Write(sprite is Item dropped ? dropped.Color : byte.MinValue);
+                        writer.Write((byte) 0x01);
                     }
 
                     if (sprite is Monster)
