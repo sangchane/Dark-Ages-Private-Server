@@ -17,9 +17,11 @@ namespace Darkages.Network
 {
     public abstract partial class NetworkClient : ObjectManager
     {
-        private readonly object _sendLock = new object();
+        private const int DefaultSendQueueDepth = 512;
 
-        private bool _sending;
+        private readonly object _outboundLock = new object();
+
+        private SendQueue _outbound;
 
         protected NetworkClient()
         {
@@ -43,6 +45,8 @@ namespace Darkages.Network
             if (!Socket.Connected)
                 return;
 
+            byte[] buffer;
+
             lock (Writer)
             {
                 Writer.Position = 0x0;
@@ -60,32 +64,75 @@ namespace Darkages.Network
                 if (format.Secured)
                     Encryption.Transform(packet);
 
-                var buffer = packet.ToArray();
+                buffer = packet.ToArray();
+            }
 
-                if (buffer.Length <= 0x0) return;
+            Post(buffer);
+        }
 
-                if (_sending)
-                    return;
+        /// <summary>
+        /// Hands a packet to this connection's writer. Every path out goes through here, so two of them can
+        /// no longer interleave their bytes in the middle of one packet.
+        /// </summary>
+        private void Post(byte[] buffer)
+        {
+            if (buffer == null || buffer.Length == 0)
+                return;
 
-                _sending = true;
+            var outbound = Outbound;
 
-                try
+            if (outbound == null || !outbound.Enqueue(buffer))
+                GiveUp();
+        }
+
+        /// <summary>Made on the first send, because a client exists before its socket does.</summary>
+        private SendQueue Outbound
+        {
+            get
+            {
+                lock (_outboundLock)
                 {
-                    var ar = Socket.BeginSend(
-                        buffer,
-                        0x0,
-                        buffer.Length,
-                        SocketFlags.None,
-                        SendCompleted,
-                        Socket
-                    );
+                    if (_outbound != null)
+                        return _outbound;
 
-                    ar.AsyncWaitHandle.WaitOne();
+                    var socket = State?.Socket;
+
+                    if (socket == null)
+                        return null;
+
+                    _outbound = new SendQueue(
+                        socket,
+                        ServerContext.Config?.SendQueueDepth ?? DefaultSendQueueDepth,
+                        GiveUp);
+
+                    return _outbound;
                 }
-                catch (SocketException)
-                {
-                    //ignore
-                }
+            }
+        }
+
+        /// <summary>
+        /// Closes the socket, which is how a connection ends from here: the read side notices and the
+        /// server's own disconnect path runs.
+        /// </summary>
+        private void GiveUp()
+        {
+            try
+            {
+                State?.Socket?.Close();
+            }
+            catch (Exception)
+            {
+                // Already gone.
+            }
+        }
+
+        /// <summary>Stops writing to this connection.</summary>
+        public void CloseOutbound()
+        {
+            lock (_outboundLock)
+            {
+                _outbound?.Dispose();
+                _outbound = null;
             }
         }
 
@@ -131,16 +178,17 @@ namespace Darkages.Network
             if (!Socket.Connected)
                 return;
 
+            byte[] array;
+
             lock (ServerContext.SyncLock)
             {
                 var packet = data.ToPacket();
                 Encryption.Transform(packet);
 
-                var array = packet.ToArray();
-
-                if (Socket.Connected)
-                    Socket.Send(array, SocketFlags.None);
+                array = packet.ToArray();
             }
+
+            Post(array);
         }
 
         public static byte[] ConvertHexStringToByteArray(string hexString)
@@ -172,6 +220,8 @@ namespace Darkages.Network
             if (!Socket.Connected)
                 return;
 
+            byte[] array;
+
             lock (ServerContext.SyncLock)
             {
                 Writer.Position = 0x0;
@@ -183,18 +233,10 @@ namespace Darkages.Network
 
                 Encryption.Transform(packet);
 
-                var array = packet.ToArray();
-
-                try
-                {
-                    if (Socket.Connected)
-                        Socket.Send(array, SocketFlags.None);
-                }
-                catch (SocketException)
-                {
-                    // Ignore
-                }
+                array = packet.ToArray();
             }
+
+            Post(array);
         }
 
         public void SendMessageBox(byte code, string text)
@@ -223,19 +265,5 @@ namespace Darkages.Network
             }
         }
 
-        private void SendCompleted(IAsyncResult ar)
-        {
-            var signal = ar.AsyncState as ManualResetEvent;
-
-            if (ar.IsCompleted && ar.CompletedSynchronously)
-            {
-                signal?.Set();
-            }
-
-            lock (_sendLock)
-            {
-                _sending = false;
-            }
-        }
     }
 }

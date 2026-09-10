@@ -19,6 +19,7 @@ namespace Darkages
         bool CancelWalkingIfRefreshing { get; set; }
         bool CanMoveDuringReap { get; set; }
         double IncompleteFrameTimeoutSeconds { get; set; }
+        int SendQueueDepth { get; set; }
         int CharacterNameMinLength { get; set; }
         int CharacterNameMaxLength { get; set; }
         string CantAttack { get; set; }
@@ -161,6 +162,12 @@ namespace Darkages
         public bool CancelCastingWhenWalking { get; set; }
 
         public double IncompleteFrameTimeoutSeconds { get; set; } = 15;
+
+        /// <summary>
+        /// How many packets may wait to go out on one connection. Past this the client is not keeping up
+        /// and the connection is given up, rather than letting one slow reader hold memory without bound.
+        /// </summary>
+        public int SendQueueDepth { get; set; } = 512;
 
         public int CharacterNameMinLength { get; set; } = 2;
 
