@@ -31,6 +31,25 @@ namespace Darkages.Scripting
                 if (dll.Contains("in"))
                     continue;
 
+                // Everything under the working directory is offered to the compiler, and a deployment that
+                // keeps the original game's files nearby has native DLLs among them - mss32.dll and the
+                // like. One of those fails the whole compilation, and a failed compilation loses every
+                // script silently: no monsters spawn, no mundanes appear, nothing a script drives happens,
+                // and the only sign is a line logged at information level.
+                //
+                // CreateFromFile does not read the file, so it cannot be caught here - the failure arrives
+                // later as a compiler diagnostic. Asking for the assembly name does read it, and throws on
+                // anything that is not a managed assembly.
+                try
+                {
+                    AssemblyName.GetAssemblyName(dll);
+                }
+                catch (Exception notManaged)
+                {
+                    ServerContext.Logger("Not a script reference, skipping {0}: {1}", dll, notManaged.Message);
+                    continue;
+                }
+
                 metadataReferences.Add(MetadataReference.CreateFromFile(dll));
             }
 
