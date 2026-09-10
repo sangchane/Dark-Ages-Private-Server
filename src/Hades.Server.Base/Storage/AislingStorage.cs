@@ -95,10 +95,13 @@ namespace Darkages.Storage
             {
                 var path = ResolveCharacterFile(name);
 
-                if (!File.Exists(path))
+                // Falls back to what the previous save left behind when the current file cannot be read.
+                var text = SafeFile.Read(path, LooksLikeACharacter);
+
+                if (text == null)
                     return null;
 
-                var content = File.ReadAllBytes(path);
+                var content = Encoding.ASCII.GetBytes(text);
 
                 // ReSharper disable UseIndexFromEndExpression
                 if (content[content.Length - 1] == 0x7D && content[content.Length - 3] == 0x7D)
@@ -123,6 +126,25 @@ namespace Darkages.Storage
             return null;
         }
 
+        /// <summary>
+        /// Whether a saved file is worth reading. A save that was cut short leaves something that starts
+        /// like a character and stops in the middle, and that has to fall through to the backup.
+        /// </summary>
+        private static bool LooksLikeACharacter(string content)
+        {
+            if (string.IsNullOrWhiteSpace(content))
+                return false;
+
+            try
+            {
+                return StorageManager.Deserialize<Aisling>(content) != null;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
         public void Save(Aisling obj)
         {
             if (obj == null)
@@ -135,7 +157,9 @@ namespace Darkages.Storage
                 var path = ResolveCharacterFile(obj.Username);
                 var objString = StorageManager.Serialize(obj);
 
-                File.WriteAllText(path, objString);
+                // Written beside the file and then swapped in, so a save that is interrupted leaves either
+                // the previous character or the new one, never half of either.
+                SafeFile.Write(path, objString);
             }
             catch (Exception ex)
             {
