@@ -71,7 +71,8 @@ namespace Darkages.Network.Game
             base.Start(port);
 
             //Start our Object Server Websocket.
-            ObjectServer.Start("http://localhost:2620/");
+            // Was written in here, which is why two servers could not share a machine.
+            ObjectServer.Start($"http://localhost:{ServerContext.Config.ObjectServerPort}/");
 
             try
             {

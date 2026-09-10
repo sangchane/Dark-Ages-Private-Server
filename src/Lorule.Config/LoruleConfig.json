@@ -59,6 +59,7 @@
 
 		// Skills
 		"GiveAssailOnCreate": true,
+		"ObjectServerPort": 2620,
 		"GlobalBaseSkillDelay": 500.0,
 		"AssailsCancelSpells": true,
 

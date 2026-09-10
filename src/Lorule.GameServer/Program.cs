@@ -45,7 +45,11 @@ namespace Lorule.GameServer {
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
             var builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("LoruleConfig.json");
+                .AddJsonFile("LoruleConfig.json")
+                // Anything in the file can be overridden from the environment, which is how a run is
+                // isolated without editing a file the build produced:
+                //   ServerConfig__ObjectServerPort=2621
+                .AddEnvironmentVariables();
 
             var config = builder.Build();
             var constants = config.GetSection("ServerConfig").Get<ServerConstants>();

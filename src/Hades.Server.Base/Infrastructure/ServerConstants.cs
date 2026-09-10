@@ -20,6 +20,7 @@ namespace Darkages
         bool CanMoveDuringReap { get; set; }
         double IncompleteFrameTimeoutSeconds { get; set; }
         int SendQueueDepth { get; set; }
+        int ObjectServerPort { get; set; }
         int CharacterNameMinLength { get; set; }
         int CharacterNameMaxLength { get; set; }
         string CantAttack { get; set; }
@@ -168,6 +169,12 @@ namespace Darkages
         /// and the connection is given up, rather than letting one slow reader hold memory without bound.
         /// </summary>
         public int SendQueueDepth { get; set; } = 512;
+
+        /// <summary>
+        /// Where the object server listens. It was written into the code, so only one server could run on a
+        /// machine at a time and a second one came up quietly without its login listener.
+        /// </summary>
+        public int ObjectServerPort { get; set; } = 2620;
 
         public int CharacterNameMinLength { get; set; } = 2;
 
