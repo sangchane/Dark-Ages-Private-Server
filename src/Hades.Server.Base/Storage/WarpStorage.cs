@@ -15,7 +15,7 @@ namespace Darkages.Storage
 
         static WarpStorage()
         {
-            StoragePath = $@"{ServerContext.StoragePath}\templates\warps";
+            StoragePath = $@"{ServerContext.StoragePath}/templates/warps";
 
             if (!Directory.Exists(StoragePath))
                 Directory.CreateDirectory(StoragePath);

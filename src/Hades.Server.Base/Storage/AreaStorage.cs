@@ -17,7 +17,7 @@ namespace Darkages.Storage
 
         static AreaStorage()
         {
-            StoragePath = $@"{ServerContext.StoragePath}\areas";
+            StoragePath = $@"{ServerContext.StoragePath}/areas";
 
             if (!Directory.Exists(StoragePath))
                 Directory.CreateDirectory(StoragePath);
@@ -52,7 +52,7 @@ namespace Darkages.Storage
                 if (mapObj == null)
                     continue;
 
-                var mapFile = Directory.GetFiles($@"{ServerContext.StoragePath}\maps", $"lod{mapObj.Id}.map",
+                var mapFile = Directory.GetFiles($@"{ServerContext.StoragePath}/maps", $"lod{mapObj.Id}.map",
                     SearchOption.TopDirectoryOnly).FirstOrDefault();
 
                 if (mapFile != null && File.Exists(mapFile))
@@ -101,7 +101,7 @@ namespace Darkages.Storage
         {
             var path = Path.Combine(StoragePath, $"{obj.Name.ToLower()}.json");
 
-            obj.FilePath = PathNetCore.GetRelativePath(".", ServerContext.StoragePath + "\\maps\\lod" + obj.Id + ".map");
+            obj.FilePath = PathNetCore.GetRelativePath(".", ServerContext.StoragePath + "/maps/lod" + obj.Id + ".map");
 
             var objString = StorageManager.Serialize(obj);
             File.WriteAllText(path, objString);

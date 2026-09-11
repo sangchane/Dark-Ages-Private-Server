@@ -55,7 +55,7 @@ namespace Darkages.Types
 
         private static void LoadQuestDescriptions()
         {
-            var dir = ServerContext.StoragePath + "\\static\\meta\\quests";
+            var dir = ServerContext.StoragePath + "/static/meta/quests";
 
             if (!Directory.Exists(dir)) return;
 

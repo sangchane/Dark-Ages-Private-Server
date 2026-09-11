@@ -12,14 +12,8 @@ namespace Darkages.Common
     {
         private static readonly Encoding Encoding = Encoding.GetEncoding(949);
 
-        public static IEnumerable<TSource> DistinctBy<TSource, TKey>
-            (this IEnumerable<TSource> source, Func<TSource, TKey> keySelector)
-        {
-            var seenKeys = new HashSet<TKey>();
-            foreach (var element in source)
-                if (seenKeys.Add(keySelector(element)))
-                    yield return element;
-        }
+        // .NET 6 부터 Enumerable.DistinctBy 가 표준에 들어왔고 동작이 같다(키별 첫 항목 유지).
+        // 같은 이름을 여기 두면 호출이 모호해져 컴파일되지 않으므로 표준 것을 쓴다.
 
         public static int Clamp(this int value, int min, int max)
         {

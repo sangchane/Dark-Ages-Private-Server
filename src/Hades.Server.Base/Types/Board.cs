@@ -16,7 +16,7 @@ namespace Darkages.Types
 {
     public class Board : NetworkFormat
     {
-        public static string StoragePath = $@"{ServerContext.StoragePath}\Community\Boards";
+        public static string StoragePath = $@"{ServerContext.StoragePath}/Community/Boards";
 
         public List<PostFormat> Posts = new List<PostFormat>();
 
@@ -91,7 +91,7 @@ namespace Darkages.Types
 
         public void Save(string key)
         {
-            var path = Path.Combine(StoragePath, $"{key}\\{Subject}.json");
+            var path = Path.Combine(StoragePath, $"{key}/{Subject}.json");
             var objString = StorageManager.Serialize(this);
             File.WriteAllText(path, objString);
         }

@@ -47,7 +47,7 @@ namespace Darkages.Network.Object
             Interpreter.MovedToNextStepHandler callbackHandler)
         {
             var parser = new YamlMenuParser();
-            var yamlPath = ServerContext.StoragePath + $@"\Scripts\Menus\{name}.yaml";
+            var yamlPath = ServerContext.StoragePath + $@"/Scripts/Menus/{name}.yaml";
 
             if (!File.Exists(yamlPath))
                 return;

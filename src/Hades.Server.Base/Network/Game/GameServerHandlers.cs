@@ -166,7 +166,7 @@ namespace Darkages.Network.Game
         {
             var parser = new YamlMenuParser();
             var yamlPath = ServerContext.StoragePath +
-                           string.Format(CultureInfo.CurrentCulture, @"\interactive\Menus\{0}.yaml", lpName);
+                           string.Format(CultureInfo.CurrentCulture, @"/interactive/Menus/{0}.yaml", lpName);
 
             if (!File.Exists(yamlPath))
                 return;

@@ -11,7 +11,7 @@ namespace Darkages.Storage
 {
     public class AislingStorage : IStorage<Aisling>
     {
-        public static string StoragePath = $@"{ServerContext.StoragePath}\aislings";
+        public static string StoragePath = $@"{ServerContext.StoragePath}/aislings";
 
         static AislingStorage()
         {

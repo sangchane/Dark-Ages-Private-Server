@@ -16,7 +16,7 @@ namespace Darkages
 {
     public class Area : Map
     {
-        [JsonIgnore] private static readonly byte[] Sotp = File.ReadAllBytes(ServerContext.StoragePath + "\\static\\sotp.dat");
+        [JsonIgnore] private static readonly byte[] Sotp = File.ReadAllBytes(ServerContext.StoragePath + "/static/sotp.dat");
         [JsonIgnore] public byte[] Data;
         [JsonIgnore] public ushort Hash;
         [JsonIgnore] public bool Ready;

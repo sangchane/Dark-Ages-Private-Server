@@ -18,7 +18,7 @@ namespace Darkages.Storage
 
         static TemplateStorage()
         {
-            StoragePath = $@"{ServerContext.StoragePath}\templates";
+            StoragePath = $@"{ServerContext.StoragePath}/templates";
 
             var tmp = new T();
 
