@@ -218,9 +218,20 @@ namespace Darkages.Network.Game
 
         private void ObjectCheckPoint()
         {
+            // This runs on the update loop for every client. A client whose character is not in hand yet —
+            // signing in, or already gone — used to throw here once per aisling in the world, which under
+            // ten connections meant tens of thousands of exceptions a minute and hid everything else.
+            var self = Aisling;
+
+            if (self == null)
+            {
+                return;
+            }
+
             var clones = GetObjects<Aisling>(null,
-                p => string.Equals(p.Username, Aisling.Username, StringComparison.CurrentCultureIgnoreCase) &&
-                     p.Serial != Aisling.Serial).ToArray();
+                p => p != null &&
+                     string.Equals(p.Username, self.Username, StringComparison.CurrentCultureIgnoreCase) &&
+                     p.Serial != self.Serial).ToArray();
 
             if (clones.Length <= 0) return;
             foreach (var aisling in clones)
@@ -284,18 +295,31 @@ namespace Darkages.Network.Game
 
         public GameClient Insert()
         {
+            var self = Aisling;
+
+            if (self == null)
+            {
+                return this;
+            }
+
+            // The predicate walks every aisling in the world. One of them being half built or already gone
+            // threw, and the throw came out of the middle of entering the world — the character was never
+            // placed and the player was left with a blank screen. Ten connections signing in and out hit
+            // this about a third of the time.
             var obj = GetObject<Aisling>(null,
-                aisling => aisling.Serial == Aisling.Serial ||
-                           aisling.Username.ToLower() == Aisling.Username.ToLower());
+                aisling => aisling != null &&
+                           (aisling.Serial == self.Serial ||
+                            string.Equals(aisling.Username, self.Username,
+                                StringComparison.CurrentCultureIgnoreCase)));
 
             if (obj == null)
             {
-                AddObject(Aisling);
+                AddObject(self);
             }
             else
             {
                 obj.Remove();
-                AddObject(Aisling);
+                AddObject(self);
             }
 
             return this;
