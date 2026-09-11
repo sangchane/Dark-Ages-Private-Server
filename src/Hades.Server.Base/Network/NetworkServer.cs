@@ -161,8 +161,30 @@ namespace Darkages.Network
             if (client == null)
                 return;
 
-            if (client.Socket.Connected)
-                client.Socket.Disconnect(false);
+            // Disconnect only tears the connection down; it never releases the handle. Worse, it was
+            // skipped whenever the peer had already gone, because Connected is false by the time a zero
+            // byte read brings us here — so nothing closed the socket at all and every connection that
+            // left before authenticating stayed in CLOSE_WAIT. Close, always, and let Shutdown be the
+            // best effort it can be: the peer may be gone, and this may be the second call for one client.
+            try
+            {
+                if (client.Socket.Connected)
+                    client.Socket.Shutdown(SocketShutdown.Both);
+            }
+            catch (SocketException)
+            {
+            }
+            catch (ObjectDisposedException)
+            {
+            }
+
+            try
+            {
+                client.Socket.Close();
+            }
+            catch (ObjectDisposedException)
+            {
+            }
 
             RemoveClient(client);
         }
