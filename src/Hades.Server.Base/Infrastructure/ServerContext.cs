@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 using System.Net.Sockets;
 
 #endregion
@@ -432,10 +433,23 @@ namespace Darkages
 
             try
             {
-                Logger(error.Message, LogLevel.Error);
+                // Packet handlers are called through reflection, so anything they throw arrives wrapped in
+                // a TargetInvocationException whose message is only "Exception has been thrown by the
+                // target of an invocation." Logging that says nothing at all about what actually happened.
+                // Report the innermost cause, and name the wrapper so the path is still visible.
+                var cause = error;
+                var wrappers = 0;
 
-                if (error.StackTrace != null)
-                    Logger(error.StackTrace, LogLevel.Error);
+                while (cause.InnerException != null && cause is TargetInvocationException)
+                {
+                    cause = cause.InnerException;
+                    wrappers++;
+                }
+
+                Logger(wrappers > 0 ? $"{cause.Message} (in a handler)" : cause.Message, LogLevel.Error);
+
+                if (cause.StackTrace != null)
+                    Logger(cause.StackTrace, LogLevel.Error);
             }
             catch
             {

@@ -156,12 +156,17 @@ namespace Darkages.Network.Object
 
         public void Delete(T obj)
         {
-            for (var i = Values.Count - 1; i >= 0; i--)
+            // Add already takes this lock. Removing without it let a reader walk the list while items moved
+            // under it, which is what threw IndexOutOfRange out of the update loop under ten connections.
+            lock (Values)
             {
-                var subject = obj as Sprite;
-                var predicate = Values[i] as Sprite;
+                for (var i = Values.Count - 1; i >= 0; i--)
+                {
+                    var subject = obj as Sprite;
+                    var predicate = Values[i] as Sprite;
 
-                if (subject == predicate) Values.RemoveAt(i);
+                    if (subject == predicate) Values.RemoveAt(i);
+                }
             }
         }
 
@@ -170,29 +175,55 @@ namespace Darkages.Network.Object
             return Values.GetEnumerator();
         }
 
+        /// <summary>
+        /// Reads run against a copy. Checking <c>Values.Count &gt; i</c> and then reading <c>Values[i]</c>
+        /// is two steps, and another connection can remove an item between them — which is exactly what
+        /// threw here. Copying under the lock costs one array per call and cannot race at all.
+        /// </summary>
         public T Query(Predicate<T> predicate)
         {
-            for (var i = Values.Count - 1; i >= 0; i--)
-                if (i >= 0 && Values.Count > i)
-                {
-                    var subject = predicate(Values[i]);
+            T[] snapshot;
 
-                    if (subject)
-                        return Values[i].Abyss ? default : Values[i];
+            lock (Values)
+            {
+                snapshot = Values.ToArray();
+            }
+
+            for (var i = snapshot.Length - 1; i >= 0; i--)
+            {
+                var item = snapshot[i];
+
+                if (item != null && predicate(item))
+                {
+                    return item.Abyss ? default : item;
                 }
+            }
 
             return default;
         }
 
+        /// <summary>
+        /// As <see cref="Query" />, and for one more reason: this hands results back one at a time, so the
+        /// caller is still walking the list long after the call. A copy is the only thing that holds still.
+        /// </summary>
         public IEnumerable<T> QueryAll(Predicate<T> predicate)
         {
-            for (var i = Values.Count - 1; i >= 0; i--)
-                if (i < Values.Count)
-                    if (i >= 0 && Values.Count > i)
-                    {
-                        var subject = predicate(Values[i]);
-                        if (subject) yield return Values[i].Abyss ? default : Values[i];
-                    }
+            T[] snapshot;
+
+            lock (Values)
+            {
+                snapshot = Values.ToArray();
+            }
+
+            for (var i = snapshot.Length - 1; i >= 0; i--)
+            {
+                var item = snapshot[i];
+
+                if (item != null && predicate(item))
+                {
+                    yield return item.Abyss ? default : item;
+                }
+            }
         }
 
         IEnumerator IEnumerable.GetEnumerator()
