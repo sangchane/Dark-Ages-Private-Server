@@ -1,6 +1,7 @@
 ﻿#region
 
 using System;
+using System.Linq;
 using Darkages.Common;
 using Darkages.Network.ServerFormats;
 
@@ -19,6 +20,22 @@ namespace Darkages.Types
         {
             if (parent == null)
                 return;
+
+            // The original stacks coins: money dropped where money already lies becomes one larger pile.
+            // The sprite grade comes from the amount (CalcAmount), so adding to the old pile in place would
+            // leave the wrong picture on the ground. Take what is there, add it in, and lay one pile down.
+            var lying = parent.GetObjects<Money>(parent.Map, m =>
+                m.CurrentMapId == parent.CurrentMapId &&
+                m.XPos == location.X &&
+                m.YPos == location.Y).ToArray();
+
+            foreach (var pile in lying)
+            {
+                // A pile large enough to overflow is not something this server can carry anyway, and
+                // silently wrapping to a negative amount would be worse than stopping at the ceiling.
+                amount = (int) Math.Min((long) amount + pile.Amount, int.MaxValue);
+                pile.Remove();
+            }
 
             var money = new Money();
             money.CalcAmount(amount);
