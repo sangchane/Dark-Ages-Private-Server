@@ -12,6 +12,7 @@ using System.Collections;
 using System.IO;
 using System.Net;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using ServiceStack;
@@ -75,7 +76,51 @@ namespace Lorule.GameServer {
                 .BuildServiceProvider();
 
             serviceProvider.GetService<IServer>();
-            Thread.CurrentThread.Join();
+
+            // Ctrl+C and a plain kill used to make the process simply vanish, sending everyone online back
+            // to their last autosave — up to SaveRate seconds. Both now run the same shutdown the context
+            // already had, which stops the listeners and writes every connected character out first.
+            var context = serviceProvider.GetService<IServerContext>();
+            using var stopped = new ManualResetEventSlim(false);
+            var stopping = 0;
+
+            void Stop()
+            {
+                // A second signal must not start a second shutdown on top of the first.
+                if (Interlocked.Exchange(ref stopping, 1) == 1)
+                {
+                    return;
+                }
+
+                try
+                {
+                    context?.Shutdown();
+                }
+                catch (Exception ex)
+                {
+                    Log.Error(ex, "Shutdown failed.");
+                }
+                finally
+                {
+                    stopped.Set();
+                }
+            }
+
+            Console.CancelKeyPress += (_, e) =>
+            {
+                // Without this the runtime kills the process at once and the save never happens.
+                e.Cancel = true;
+                Stop();
+            };
+
+            using var terminated = PosixSignalRegistration.Create(PosixSignal.SIGTERM, signal =>
+            {
+                signal.Cancel = true;
+                Stop();
+            });
+
+            stopped.Wait();
+            Log.CloseAndFlush();
         }
     }
 

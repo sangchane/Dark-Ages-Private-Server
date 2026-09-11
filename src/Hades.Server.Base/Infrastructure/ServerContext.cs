@@ -452,8 +452,49 @@ namespace Darkages
                 Directory.CreateDirectory(StoragePath);
         }
 
+        /// <summary>
+        /// Writes out everyone still in the world. Characters are otherwise only saved every
+        /// <c>SaveRate</c> seconds, so a server that is simply stopped sends whoever was online back by up
+        /// to that much. Each character is saved on its own — one that fails must not keep the rest from
+        /// being written, which is the whole reason this exists.
+        /// </summary>
+        private static int SaveConnectedAislings()
+        {
+            var game = Game;
+
+            if (game?.Clients == null)
+            {
+                return 0;
+            }
+
+            var saved = 0;
+
+            foreach (var client in game.Clients.Where(client => client?.Aisling != null))
+            {
+                try
+                {
+                    client.Save();
+                    saved++;
+                }
+                catch (Exception ex)
+                {
+                    Logger($"Could not save {client.Aisling?.Username} while shutting down: {ex.Message}",
+                        Microsoft.Extensions.Logging.LogLevel.Error);
+                }
+            }
+
+            return saved;
+        }
+
         public virtual void Shutdown()
         {
+            // Save before aborting, not after. Abort closes the listeners and then disconnects everyone,
+            // and disconnecting removes them from the client list — so a save that runs afterwards finds
+            // nobody and writes nothing. Disconnect does save on its way out, but only if more than two
+            // seconds have passed since the last one; this one is unconditional and says how many it wrote.
+            var saved = SaveConnectedAislings();
+            Logger($"Shutting down — saved {saved} character(s).");
+
             DisposeGame();
         }
 
