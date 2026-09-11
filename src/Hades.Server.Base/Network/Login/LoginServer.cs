@@ -2,6 +2,7 @@
 
 using Darkages.Network.ClientFormats;
 using Darkages.Network.ServerFormats;
+using Darkages.Security;
 using Darkages.Storage;
 using Darkages.Types;
 using ServiceStack.Text;
@@ -114,10 +115,18 @@ namespace Darkages.Network.Login
 
                 if (aisling != null)
                 {
-                    if (aisling.Password != format.Password)
+                    if (!Passwords.Verify(aisling.Password, format.Password, out bool needsRehash))
                     {
                         client.SendMessageBox(0x02, "Sorry, Incorrect Password.");
                         return;
+                    }
+
+                    // The account was made before passwords were hashed. It has just proved the password,
+                    // so this is the one moment the plain value is in hand — store the hash and never again.
+                    if (needsRehash)
+                    {
+                        aisling.Password = Passwords.Hash(format.Password);
+                        StorageManager.AislingBucket.Save(aisling);
                     }
                 }
                 else
@@ -165,7 +174,7 @@ namespace Darkages.Network.Login
             var template = Aisling.Create();
             template.Display = (BodySprite) (format.Gender * 16);
             template.Username = client.CreateInfo.AislingUsername;
-            template.Password = client.CreateInfo.AislingPassword;
+            template.Password = Passwords.Hash(client.CreateInfo.AislingPassword);
             template.Gender = (Gender) format.Gender;
             template.HairColor = format.HairColor;
             template.HairStyle = format.HairStyle;
@@ -199,7 +208,7 @@ namespace Darkages.Network.Login
                 return;
             }
 
-            if (aisling.Password != format.Password)
+            if (!Passwords.Verify(aisling.Password, format.Password, out _))
             {
                 client.SendMessageBox(0x02, "Incorrect Information provided.");
                 return;
@@ -211,7 +220,7 @@ namespace Darkages.Network.Login
                 return;
             }
 
-            aisling.Password = format.NewPassword;
+            aisling.Password = Passwords.Hash(format.NewPassword);
             StorageManager.AislingBucket.Save(aisling);
 
             client.SendMessageBox(0x00, "\0");
