@@ -180,7 +180,11 @@ namespace Darkages.Network
 
             byte[] array;
 
-            lock (ServerContext.SyncLock)
+            // Everything guarded here belongs to this connection — the cipher is this client's. Taking the
+            // process-wide lock made every send on the server queue behind every other, so one connection
+            // asking for thousands of refreshes starved the rest. Writer is the per-connection mutex the
+            // Send(NetworkFormat) path above already uses.
+            lock (Writer)
             {
                 var packet = data.ToPacket();
                 Encryption.Transform(packet);
@@ -222,7 +226,10 @@ namespace Darkages.Network
 
             byte[] array;
 
-            lock (ServerContext.SyncLock)
+            // This path writes into Writer, so it has to hold the same lock the other Writer users hold.
+            // Guarding it with the process-wide lock instead left it racing the Send(NetworkFormat) path,
+            // which locks Writer — two sends on one connection could interleave in the same buffer.
+            lock (Writer)
             {
                 Writer.Position = 0x0;
                 Writer.Write(data);

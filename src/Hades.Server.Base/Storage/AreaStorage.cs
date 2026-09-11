@@ -101,7 +101,11 @@ namespace Darkages.Storage
         {
             var path = Path.Combine(StoragePath, $"{obj.Name.ToLower()}.json");
 
-            obj.FilePath = PathNetCore.GetRelativePath(".", ServerContext.StoragePath + "/maps/lod" + obj.Id + ".map");
+            // The saved value must not depend on which platform wrote it. GetRelativePath answers with the
+            // host separator, so the same map file was recorded one way on Windows and another here, and
+            // every run rewrote the area files it had just read. Record one spelling everywhere.
+            obj.FilePath = PathNetCore.GetRelativePath(".", ServerContext.StoragePath + "/maps/lod" + obj.Id + ".map")
+                .Replace('\\', '/');
 
             var objString = StorageManager.Serialize(obj);
             File.WriteAllText(path, objString);
