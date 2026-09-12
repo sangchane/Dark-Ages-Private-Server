@@ -1,8 +1,8 @@
 {
-  "Name": "카르마@밀레스음식점#6,4",
-  "AreaID": 20295,
-  "X": 6,
-  "Y": 4,
+  "Name": "무기만들자@화론-민가3#14,14",
+  "AreaID": 20530,
+  "X": 14,
+  "Y": 14,
   "Direction": 0,
   "Image": 1,
   "Level": 1,
@@ -11,14 +11,9 @@
   "Speech": [],
   "ScriptKey": "shop1",
   "DefaultMerchantStock": [
-    "사과",
-    "뱀고기",
-    "치즈",
-    "닭고기",
-    "바베큐",
-    "와인",
-    "마이소시아정식",
-    "엑스쿠라눔"
+    "보로보로껍질",
+    "앤도르날개",
+    "주작의서클릿"
   ],
   "EnableWalking": false,
   "EnableTurning": false,
