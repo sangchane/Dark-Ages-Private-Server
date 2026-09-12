@@ -1,0 +1,53 @@
+[
+  {
+    "Atoms": [],
+    "Name": "05_start"
+  },
+  {
+    "Atoms": [
+      "Pattern Walker Legend"
+    ],
+    "Name": "05_title"
+  },
+  {
+    "Atoms": [
+      "LSeries4"
+    ],
+    "Name": "05_id"
+  },
+  {
+    "Atoms": [
+      "4",
+      "5"
+    ],
+    "Name": "05_qual"
+  },
+  {
+    "Atoms": [
+      "Speak with Bodil the Abel Combat Skill Master.     Insight 80+                                 Location: Abel Port, x:44 y:50                     (Repeatable every 14 days)"
+    ],
+    "Name": "05_sum"
+  },
+  {
+    "Atoms": [
+      "None"
+    ],
+    "Name": "05_result"
+  },
+  {
+    "Atoms": [
+      "None"
+    ],
+    "Name": "05_sub"
+  },
+  {
+    "Atoms": [
+      "Aosdic Pattern Walker and 3000000 exp."
+    ],
+    "Name": "05_reward"
+  },
+  {
+    "Atoms": [],
+    "Name": "05_end"
+  }
+]

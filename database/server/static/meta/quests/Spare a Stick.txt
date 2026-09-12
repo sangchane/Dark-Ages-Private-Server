@@ -1,0 +1,53 @@
+[
+  {
+    "Atoms": [],
+    "Name": "04_start"
+  },
+  {
+    "Atoms": [
+      "Spare a Stick"
+    ],
+    "Name": "04_title"
+  },
+  {
+    "Atoms": [
+      "None"
+    ],
+    "Name": "04_id"
+  },
+  {
+    "Atoms": [
+      "1",
+      "12345"
+    ],
+    "Name": "04_qual"
+  },
+  {
+    "Atoms": [
+      "Talk to Callough, he is at the Mileth Weapon Shop.       Insight: 1-11                                      Location: Mileth Village, x:13 y:69                        (Repeatable every 8 hours)"
+    ],
+    "Name": "04_sum"
+  },
+  {
+    "Atoms": [
+      "None"
+    ],
+    "Name": "04_result"
+  },
+  {
+    "Atoms": [
+      ""
+    ],
+    "Name": "04_sub"
+  },
+  {
+    "Atoms": [
+      "Stick, Wooden Shield, and 3500 expeience"
+    ],
+    "Name": "04_reward"
+  },
+  {
+    "Atoms": [],
+    "Name": "04_end"
+  }
+]

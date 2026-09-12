@@ -1,0 +1,53 @@
+[
+  {
+    "Atoms": [],
+    "Name": "01_start"
+  },
+  {
+    "Atoms": [
+      "Carnun Legend"
+    ],
+    "Name": "01_title"
+  },
+  {
+    "Atoms": [
+      "LSeries4"
+    ],
+    "Name": "01_id"
+  },
+  {
+    "Atoms": [
+      "4",
+      "1"
+    ],
+    "Name": "01_qual"
+  },
+  {
+    "Atoms": [
+      "Speak with Baki at the Goblin Hut.                Insight 80+                               Location: East Woodland 16-1, x:12 y:13                     (Repeatable every 14 days)"
+    ],
+    "Name": "01_sum"
+  },
+  {
+    "Atoms": [
+      "None"
+    ],
+    "Name": "01_result"
+  },
+  {
+    "Atoms": [
+      "None"
+    ],
+    "Name": "01_sub"
+  },
+  {
+    "Atoms": [
+      "Carnun Armor and 3000000 experience"
+    ],
+    "Name": "01_reward"
+  },
+  {
+    "Atoms": [],
+    "Name": "01_end"
+  }
+]

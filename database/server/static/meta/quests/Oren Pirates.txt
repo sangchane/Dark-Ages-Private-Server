@@ -1,0 +1,53 @@
+[
+  {
+    "Atoms": [],
+    "Name": "06_start"
+  },
+  {
+    "Atoms": [
+      "Oren Pirates"
+    ],
+    "Name": "06_title"
+  },
+  {
+    "Atoms": [
+      "PSeriseEvent41"
+    ],
+    "Name": "06_id"
+  },
+  {
+    "Atoms": [
+      "4",
+      "12345"
+    ],
+    "Name": "06_qual"
+  },
+  {
+    "Atoms": [
+      "Talk to Baldo at the Oren Sewers Entrance.          Insight 90+"
+    ],
+    "Name": "06_sum"
+  },
+  {
+    "Atoms": [
+      "None"
+    ],
+    "Name": "06_result"
+  },
+  {
+    "Atoms": [
+      ""
+    ],
+    "Name": "06_sub"
+  },
+  {
+    "Atoms": [
+      "Pirate Armor and 200000 experience"
+    ],
+    "Name": "06_reward"
+  },
+  {
+    "Atoms": [],
+    "Name": "06_end"
+  }
+]

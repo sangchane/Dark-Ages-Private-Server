@@ -1,0 +1,54 @@
+[
+  {
+    "Atoms": [],
+    "Name": "13_start"
+  },
+  {
+    "Atoms": [
+      "Node Needed"
+    ],
+    "Name": "13_title"
+  },
+  {
+    "Atoms": [
+      "None"
+    ],
+    "Name": "13_id"
+  },
+  {
+    "Atoms": [
+      "1",
+      "12345"
+    ],
+    "Name": "13_qual"
+  },
+  {
+    "Atoms": [
+      "Talk to Appie, he's in the Piet Magic Shop.                Insight: 14+",
+      "                                           Location: Piet Village, x:44 y:50                         (Repeatable every 12 hours)"
+    ],
+    "Name": "13_sum"
+  },
+  {
+    "Atoms": [
+      "None"
+    ],
+    "Name": "13_result"
+  },
+  {
+    "Atoms": [
+      ""
+    ],
+    "Name": "13_sub"
+  },
+  {
+    "Atoms": [
+      "75000 experience"
+    ],
+    "Name": "13_reward"
+  },
+  {
+    "Atoms": [],
+    "Name": "13_end"
+  }
+]

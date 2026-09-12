@@ -1,0 +1,53 @@
+[
+  {
+    "Atoms": [],
+    "Name": "03_start"
+  },
+  {
+    "Atoms": [
+      "Cthonic Disciple Legend"
+    ],
+    "Name": "03_title"
+  },
+  {
+    "Atoms": [
+      "LSeries4"
+    ],
+    "Name": "03_id"
+  },
+  {
+    "Atoms": [
+      "4",
+      "34"
+    ],
+    "Name": "03_qual"
+  },
+  {
+    "Atoms": [
+      "Speak with Gregory at the Path Reception.          Insight 80+, Male Only                     Location: Mileth Village, x:94 y:12                     (Repeatable every 14 days)"
+    ],
+    "Name": "03_sum"
+  },
+  {
+    "Atoms": [
+      "None"
+    ],
+    "Name": "03_result"
+  },
+  {
+    "Atoms": [
+      "None"
+    ],
+    "Name": "03_sub"
+  },
+  {
+    "Atoms": [
+      "Cthonic Armor and 3000000 experience"
+    ],
+    "Name": "03_reward"
+  },
+  {
+    "Atoms": [],
+    "Name": "03_end"
+  }
+]

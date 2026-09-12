@@ -1,10 +1,10 @@
 {
-  "Name": "Throw Smoke Bomb",
+  "Name": "쿠라누스",
   "ScriptName": null,
   "Prerequisites": {
-    "Class_Required": 2,
-    "ExpLevel_Required": 30,
-    "Skill_Required": "표창던지기"
+    "Class_Required": 4,
+    "ExpLevel_Required": 20,
+    "Spell_Required": "쿠러스"
   },
   "MaxLevel": 100,
   "ID": 0,

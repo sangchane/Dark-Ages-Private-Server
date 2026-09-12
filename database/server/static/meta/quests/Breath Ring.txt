@@ -1,0 +1,53 @@
+[
+  {
+    "Atoms": [],
+    "Name": "01_start"
+  },
+  {
+    "Atoms": [
+      "Breath Ring"
+    ],
+    "Name": "01_title"
+  },
+  {
+    "Atoms": [
+      "LSeries3"
+    ],
+    "Name": "01_id"
+  },
+  {
+    "Atoms": [
+      "3",
+      "12345"
+    ],
+    "Name": "01_qual"
+  },
+  {
+    "Atoms": [
+      "Speak with Alane at the Oren Jewelry Shop.                     Insight: 21+                            Location:Oren Island City, x:88 y:118                         (Repeatable every 14 days)"
+    ],
+    "Name": "01_sum"
+  },
+  {
+    "Atoms": [
+      "None"
+    ],
+    "Name": "01_result"
+  },
+  {
+    "Atoms": [
+      ""
+    ],
+    "Name": "01_sub"
+  },
+  {
+    "Atoms": [
+      "100000 experience"
+    ],
+    "Name": "01_reward"
+  },
+  {
+    "Atoms": [],
+    "Name": "01_end"
+  }
+]

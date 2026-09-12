@@ -1,0 +1,53 @@
+[
+  {
+    "Atoms": [],
+    "Name": "01_start"
+  },
+  {
+    "Atoms": [
+      "West Woodlands"
+    ],
+    "Name": "01_title"
+  },
+  {
+    "Atoms": [
+      "LSeries2"
+    ],
+    "Name": "01_id"
+  },
+  {
+    "Atoms": [
+      "2",
+      "12345"
+    ],
+    "Name": "01_qual"
+  },
+  {
+    "Atoms": [
+      "Talk to Throttler in the West Woodlands.                   Insight: 15+                                     Location: West Woodland 12-1, x:21 y:20"
+    ],
+    "Name": "01_sum"
+  },
+  {
+    "Atoms": [
+      "None"
+    ],
+    "Name": "01_result"
+  },
+  {
+    "Atoms": [
+      ""
+    ],
+    "Name": "01_sub"
+  },
+  {
+    "Atoms": [
+      "50000-100000 experience"
+    ],
+    "Name": "01_reward"
+  },
+  {
+    "Atoms": [],
+    "Name": "01_end"
+  }
+]

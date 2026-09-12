@@ -1,0 +1,53 @@
+[
+  {
+    "Atoms": [],
+    "Name": "06_start"
+  },
+  {
+    "Atoms": [
+      "Oren Jungle Armory"
+    ],
+    "Name": "06_title"
+  },
+  {
+    "Atoms": [
+      "LQuest25"
+    ],
+    "Name": "06_id"
+  },
+  {
+    "Atoms": [
+      "2",
+      "12345"
+    ],
+    "Name": "06_qual"
+  },
+  {
+    "Atoms": [
+      "Visit the Oren Jungle Armory.                           Insight: 11+                                     Location: Oren Island Jungle 10, x:26 y:11                 (Repeatable every 24 hours)"
+    ],
+    "Name": "06_sum"
+  },
+  {
+    "Atoms": [
+      "None"
+    ],
+    "Name": "06_result"
+  },
+  {
+    "Atoms": [
+      ""
+    ],
+    "Name": "06_sub"
+  },
+  {
+    "Atoms": [
+      "100000 experience"
+    ],
+    "Name": "06_reward"
+  },
+  {
+    "Atoms": [],
+    "Name": "06_end"
+  }
+]

@@ -1,10 +1,10 @@
 {
-  "Name": "Throw Smoke Bomb",
+  "Name": "마네나로",
   "ScriptName": null,
   "Prerequisites": {
-    "Class_Required": 2,
-    "ExpLevel_Required": 30,
-    "Skill_Required": "표창던지기"
+    "Class_Required": 3,
+    "ExpLevel_Required": 90,
+    "Spell_Required": "athar meall"
   },
   "MaxLevel": 100,
   "ID": 0,

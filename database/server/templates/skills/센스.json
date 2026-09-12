@@ -1,10 +1,10 @@
 {
-  "Name": "Throw Smoke Bomb",
+  "Name": "센스",
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 2,
     "ExpLevel_Required": 30,
-    "Skill_Required": "표창던지기"
+    "Skill_Required": "Study Creature"
   },
   "MaxLevel": 100,
   "ID": 0,

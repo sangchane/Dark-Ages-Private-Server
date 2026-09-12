@@ -1,0 +1,53 @@
+[
+  {
+    "Atoms": [],
+    "Name": "02_start"
+  },
+  {
+    "Atoms": [
+      "Unknown Depths"
+    ],
+    "Name": "02_title"
+  },
+  {
+    "Atoms": [
+      "PSeriseEvent51"
+    ],
+    "Name": "02_id"
+  },
+  {
+    "Atoms": [
+      "5",
+      "12345"
+    ],
+    "Name": "02_qual"
+  },
+  {
+    "Atoms": [
+      "Literally speak with Creeg at the Loures Harbor Tavern.                                          Insight 99                                    Location: Loures Harbor, x:6 y:31"
+    ],
+    "Name": "02_sum"
+  },
+  {
+    "Atoms": [
+      "None"
+    ],
+    "Name": "02_result"
+  },
+  {
+    "Atoms": [
+      ""
+    ],
+    "Name": "02_sub"
+  },
+  {
+    "Atoms": [
+      "Gem Weapon"
+    ],
+    "Name": "02_reward"
+  },
+  {
+    "Atoms": [],
+    "Name": "02_end"
+  }
+]

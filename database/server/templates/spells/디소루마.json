@@ -1,10 +1,10 @@
 {
-  "Name": "beothaichdeum",
-  "ScriptName": null,
+  "Name": "디소루마",
+  "ScriptName": "ao suain",
   "Prerequisites": {
     "Class_Required": 4,
-    "ExpLevel_Required": 10,
-    "Spell_Required": "쿠로"
+    "ExpLevel_Required": 75,
+    "Spell_Required": "ao dall"
   },
   "MaxLevel": 100,
   "ID": 0,

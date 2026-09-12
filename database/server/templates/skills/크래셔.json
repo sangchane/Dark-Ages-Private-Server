@@ -1,10 +1,10 @@
 {
-  "Name": "beothaichdeum",
-  "ScriptName": null,
+  "Name": "크래셔",
+  "ScriptName": "Crasher",
   "Prerequisites": {
-    "Class_Required": 4,
+    "Class_Required": 1,
     "ExpLevel_Required": 10,
-    "Spell_Required": "쿠로"
+    "Skill_Required": "Wallop"
   },
   "MaxLevel": 100,
   "ID": 0,

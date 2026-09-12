@@ -1,0 +1,53 @@
+[
+  {
+    "Atoms": [],
+    "Name": "01_start"
+  },
+  {
+    "Atoms": [
+      "Choosing a Class"
+    ],
+    "Name": "01_title"
+  },
+  {
+    "Atoms": [
+      "LNoviss2"
+    ],
+    "Name": "01_id"
+  },
+  {
+    "Atoms": [
+      "0",
+      "12345"
+    ],
+    "Name": "01_qual"
+  },
+  {
+    "Atoms": [
+      "Go to the path temple. You may choose your class alone, or be guided by a fellow Aisling within the class that you choose.                                            Location: Mileth Village, x:94, y:12"
+    ],
+    "Name": "01_sum"
+  },
+  {
+    "Atoms": [
+      "Be polite and sincere in your request."
+    ],
+    "Name": "01_result"
+  },
+  {
+    "Atoms": [
+      ""
+    ],
+    "Name": "01_sub"
+  },
+  {
+    "Atoms": [
+      ""
+    ],
+    "Name": "01_reward"
+  },
+  {
+    "Atoms": [],
+    "Name": "01_end"
+  }
+]

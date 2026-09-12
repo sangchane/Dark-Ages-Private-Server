@@ -1,0 +1,53 @@
+[
+  {
+    "Atoms": [],
+    "Name": "04_start"
+  },
+  {
+    "Atoms": [
+      "Lady Phoenix Creant"
+    ],
+    "Name": "04_title"
+  },
+  {
+    "Atoms": [
+      "LHorrorSideA"
+    ],
+    "Name": "04_id"
+  },
+  {
+    "Atoms": [
+      "5",
+      "12345"
+    ],
+    "Name": "04_qual"
+  },
+  {
+    "Atoms": [
+      "Talk to Qaeli at the Shinewood Herbal Shop.           Masters"
+    ],
+    "Name": "04_sum"
+  },
+  {
+    "Atoms": [
+      "None"
+    ],
+    "Name": "04_result"
+  },
+  {
+    "Atoms": [
+      ""
+    ],
+    "Name": "04_sub"
+  },
+  {
+    "Atoms": [
+      "Grand Armor"
+    ],
+    "Name": "04_reward"
+  },
+  {
+    "Atoms": [],
+    "Name": "04_end"
+  }
+]

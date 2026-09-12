@@ -1,0 +1,53 @@
+[
+  {
+    "Atoms": [],
+    "Name": "02_start"
+  },
+  {
+    "Atoms": [
+      "Great Power |"
+    ],
+    "Name": "02_title"
+  },
+  {
+    "Atoms": [
+      "PSeriseEvent31"
+    ],
+    "Name": "02_id"
+  },
+  {
+    "Atoms": [
+      "3",
+      "12345"
+    ],
+    "Name": "02_qual"
+  },
+  {
+    "Atoms": [
+      "Take the raft to the pirate ship.                               Insight: 50+                            Location:South Lynith Beach, x:44 y:18                        (Repeatable every 6 months)"
+    ],
+    "Name": "02_sum"
+  },
+  {
+    "Atoms": [
+      "None"
+    ],
+    "Name": "02_result"
+  },
+  {
+    "Atoms": [
+      ""
+    ],
+    "Name": "02_sub"
+  },
+  {
+    "Atoms": [
+      "850 hp/mp and 3000000 experience"
+    ],
+    "Name": "02_reward"
+  },
+  {
+    "Atoms": [],
+    "Name": "02_end"
+  }
+]

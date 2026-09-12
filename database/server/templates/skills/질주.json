@@ -1,10 +1,9 @@
 {
-  "Name": "Sever",
-  "ScriptName": null,
+  "Name": "질주",
+  "ScriptName": "Charge",
   "Prerequisites": {
     "Class_Required": 1,
-    "ExpLevel_Required": 100,
-    "Skill_Required": "질주"
+    "ExpLevel_Required": 0
   },
   "MaxLevel": 100,
   "ID": 0,

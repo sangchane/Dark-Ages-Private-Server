@@ -1,10 +1,10 @@
 {
-  "Name": "Sever",
-  "ScriptName": null,
+  "Name": "윈드블레이드",
+  "ScriptName": "Wind Blade",
   "Prerequisites": {
     "Class_Required": 1,
-    "ExpLevel_Required": 100,
-    "Skill_Required": "질주"
+    "ExpLevel_Required": 20,
+    "Skill_Required": "Assail"
   },
   "MaxLevel": 100,
   "ID": 0,

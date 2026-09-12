@@ -1,10 +1,10 @@
 {
-  "Name": "Throw Smoke Bomb",
+  "Name": "M포효",
   "ScriptName": null,
   "Prerequisites": {
-    "Class_Required": 2,
-    "ExpLevel_Required": 30,
-    "Skill_Required": "표창던지기"
+    "Class_Required": 1,
+    "ExpLevel_Required": 100,
+    "Skill_Required": "beag suain"
   },
   "MaxLevel": 100,
   "ID": 0,

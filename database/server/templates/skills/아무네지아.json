@@ -1,9 +1,9 @@
 {
-  "Name": "Throw Smoke Bomb",
+  "Name": "아무네지아",
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 2,
-    "ExpLevel_Required": 30,
+    "ExpLevel_Required": 10,
     "Skill_Required": "표창던지기"
   },
   "MaxLevel": 100,

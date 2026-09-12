@@ -4,7 +4,7 @@
   "Prerequisites": {
     "Class_Required": 3,
     "ExpLevel_Required": 75,
-    "Spell_Required": "mor sal"
+    "Spell_Required": "마레누스"
   },
   "MaxLevel": 100,
   "ID": 0,

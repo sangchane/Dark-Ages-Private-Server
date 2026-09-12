@@ -1,0 +1,53 @@
+[
+  {
+    "Atoms": [],
+    "Name": "05_start"
+  },
+  {
+    "Atoms": [
+      "The Pentagram |"
+    ],
+    "Name": "05_title"
+  },
+  {
+    "Atoms": [
+      "Lnot |"
+    ],
+    "Name": "05_id"
+  },
+  {
+    "Atoms": [
+      "3",
+      "12345"
+    ],
+    "Name": "05_qual"
+  },
+  {
+    "Atoms": [
+      "Speak with Baltasar, the Rucesion Skill Master                   Insight: 60+                              Location: Rucesion Village, x:10 y:34                         (Experience reward varies with level)"
+    ],
+    "Name": "05_sum"
+  },
+  {
+    "Atoms": [
+      "None"
+    ],
+    "Name": "05_result"
+  },
+  {
+    "Atoms": [
+      ""
+    ],
+    "Name": "05_sub"
+  },
+  {
+    "Atoms": [
+      "Pentagram armor and 1000000-2500000 experience |"
+    ],
+    "Name": "05_reward"
+  },
+  {
+    "Atoms": [],
+    "Name": "05_end"
+  }
+]

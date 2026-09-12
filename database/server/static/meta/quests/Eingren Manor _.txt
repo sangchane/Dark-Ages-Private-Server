@@ -1,0 +1,53 @@
+[
+  {
+    "Atoms": [],
+    "Name": "01_start"
+  },
+  {
+    "Atoms": [
+      "Eingren Manor |"
+    ],
+    "Name": "01_title"
+  },
+  {
+    "Atoms": [
+      "LSeries5"
+    ],
+    "Name": "01_id"
+  },
+  {
+    "Atoms": [
+      "5",
+      "12345"
+    ],
+    "Name": "01_qual"
+  },
+  {
+    "Atoms": [
+      "Explore the upper rivers of Tagor near the restaurant and tavern.                         Insight 90+                                     Location: Tagor Village"
+    ],
+    "Name": "01_sum"
+  },
+  {
+    "Atoms": [
+      "None"
+    ],
+    "Name": "01_result"
+  },
+  {
+    "Atoms": [
+      ""
+    ],
+    "Name": "01_sub"
+  },
+  {
+    "Atoms": [
+      "Demon Lord's Notes"
+    ],
+    "Name": "01_reward"
+  },
+  {
+    "Atoms": [],
+    "Name": "01_end"
+  }
+]

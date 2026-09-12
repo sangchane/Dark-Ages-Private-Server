@@ -1,0 +1,53 @@
+[
+  {
+    "Atoms": [],
+    "Name": "04_start"
+  },
+  {
+    "Atoms": [
+      "Karlopos Island"
+    ],
+    "Name": "04_title"
+  },
+  {
+    "Atoms": [
+      "LTouch1 |"
+    ],
+    "Name": "04_id"
+  },
+  {
+    "Atoms": [
+      "3",
+      "12345"
+    ],
+    "Name": "04_qual"
+  },
+  {
+    "Atoms": [
+      "Talk to Reto at the Oren Island Magic Shop.                       Insight: 41-70                            Location: Oren Island City, x:34 y:126  |"
+    ],
+    "Name": "04_sum"
+  },
+  {
+    "Atoms": [
+      "None"
+    ],
+    "Name": "04_result"
+  },
+  {
+    "Atoms": [
+      ""
+    ],
+    "Name": "04_sub"
+  },
+  {
+    "Atoms": [
+      "Sea Coral Necklace and 5000000 experience"
+    ],
+    "Name": "04_reward"
+  },
+  {
+    "Atoms": [],
+    "Name": "04_end"
+  }
+]

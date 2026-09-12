@@ -1,10 +1,10 @@
 {
-  "Name": "beothaichdeum",
-  "ScriptName": null,
+  "Name": "데프레코",
+  "ScriptName": "mor cradh",
   "Prerequisites": {
     "Class_Required": 4,
-    "ExpLevel_Required": 10,
-    "Spell_Required": "쿠로"
+    "ExpLevel_Required": 75,
+    "Spell_Required": "바르도"
   },
   "MaxLevel": 100,
   "ID": 0,

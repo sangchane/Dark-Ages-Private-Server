@@ -1,0 +1,53 @@
+[
+  {
+    "Atoms": [],
+    "Name": "04_start"
+  },
+  {
+    "Atoms": [
+      "Morrigu Legend"
+    ],
+    "Name": "04_title"
+  },
+  {
+    "Atoms": [
+      "LSeries4"
+    ],
+    "Name": "04_id"
+  },
+  {
+    "Atoms": [
+      "4",
+      "34"
+    ],
+    "Name": "04_qual"
+  },
+  {
+    "Atoms": [
+      "Speak with Narve the Piet White Magic Master.     Insight 80+, Female Only                      Location: Piet Village, x:30 y:55                     (Repeatable every 14 days)"
+    ],
+    "Name": "04_sum"
+  },
+  {
+    "Atoms": [
+      "None"
+    ],
+    "Name": "04_result"
+  },
+  {
+    "Atoms": [
+      "None"
+    ],
+    "Name": "04_sub"
+  },
+  {
+    "Atoms": [
+      "Morrigu Armor and 3000000 experience"
+    ],
+    "Name": "04_reward"
+  },
+  {
+    "Atoms": [],
+    "Name": "04_end"
+  }
+]

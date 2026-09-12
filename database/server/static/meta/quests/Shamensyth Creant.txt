@@ -1,0 +1,53 @@
+[
+  {
+    "Atoms": [],
+    "Name": "05_start"
+  },
+  {
+    "Atoms": [
+      "Shamensyth Creant"
+    ],
+    "Name": "05_title"
+  },
+  {
+    "Atoms": [
+      "LHorrorSideA"
+    ],
+    "Name": "05_id"
+  },
+  {
+    "Atoms": [
+      "5",
+      "12345"
+    ],
+    "Name": "05_qual"
+  },
+  {
+    "Atoms": [
+      "Talk to Filippo at the Oren Tower Maze.                Masters"
+    ],
+    "Name": "05_sum"
+  },
+  {
+    "Atoms": [
+      "None"
+    ],
+    "Name": "05_result"
+  },
+  {
+    "Atoms": [
+      ""
+    ],
+    "Name": "05_sub"
+  },
+  {
+    "Atoms": [
+      "Grand Armor"
+    ],
+    "Name": "05_reward"
+  },
+  {
+    "Atoms": [],
+    "Name": "05_end"
+  }
+]

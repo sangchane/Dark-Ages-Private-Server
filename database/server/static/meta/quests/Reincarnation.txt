@@ -1,0 +1,53 @@
+[
+  {
+    "Atoms": [],
+    "Name": "06_start"
+  },
+  {
+    "Atoms": [
+      "Reincarnation"
+    ],
+    "Name": "06_title"
+  },
+  {
+    "Atoms": [
+      "LHorrorSideA"
+    ],
+    "Name": "06_id"
+  },
+  {
+    "Atoms": [
+      "5",
+      "12345"
+    ],
+    "Name": "06_qual"
+  },
+  {
+    "Atoms": [
+      "Speak with Ereno at the Rucesion Church                 Insigh 90+"
+    ],
+    "Name": "06_sum"
+  },
+  {
+    "Atoms": [
+      "None"
+    ],
+    "Name": "06_result"
+  },
+  {
+    "Atoms": [
+      ""
+    ],
+    "Name": "06_sub"
+  },
+  {
+    "Atoms": [
+      "Light or Dark Shield and Rest Cloak"
+    ],
+    "Name": "06_reward"
+  },
+  {
+    "Atoms": [],
+    "Name": "06_end"
+  }
+]

@@ -1,10 +1,10 @@
 {
-  "Name": "ard srad nadur",
-  "ScriptName": null,
+  "Name": "마레누스",
+  "ScriptName": "mor sal",
   "Prerequisites": {
     "Class_Required": 3,
-    "ExpLevel_Required": 50,
-    "Spell_Required": "마레누스"
+    "ExpLevel_Required": 60,
+    "Spell_Required": "sal"
   },
   "MaxLevel": 100,
   "ID": 0,
