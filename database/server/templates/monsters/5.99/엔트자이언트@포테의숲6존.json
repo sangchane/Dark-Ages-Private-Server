@@ -1,0 +1,32 @@
+{
+  "Name": "엔트자이언트",
+  "BaseName": "엔트자이언트",
+  "AreaID": 100268,
+  "SpawnMax": 7,
+  "SpawnType": 2,
+  "SpawnRate": 30,
+  "SpawnSize": 0,
+  "SpawnOnlyOnActiveMaps": false,
+  "Image": 16660,
+  "ImageVarience": 0,
+  "MaximumHP": 2340,
+  "MaximumMP": 0,
+  "Level": 1,
+  "MovementSpeed": 1200,
+  "EngagedWalkingSpeed": 1200,
+  "AttackSpeed": 1000,
+  "CastSpeed": 8000,
+  "MoodType": 4,
+  "PathQualifer": 1,
+  "LootType": 36,
+  "Drops": {
+    "$values": [
+      "엔트자이언트의날개"
+    ]
+  },
+  "ScriptName": "Common Monster",
+  "UpdateMapWide": true,
+  "UpdateRate": 1000.0,
+  "Grow": false,
+  "IgnoreCollision": false
+}

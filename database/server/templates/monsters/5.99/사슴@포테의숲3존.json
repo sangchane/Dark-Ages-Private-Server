@@ -1,0 +1,32 @@
+{
+  "Name": "사슴",
+  "BaseName": "사슴",
+  "AreaID": 100265,
+  "SpawnMax": 1,
+  "SpawnType": 2,
+  "SpawnRate": 180,
+  "SpawnSize": 0,
+  "SpawnOnlyOnActiveMaps": false,
+  "Image": 16463,
+  "ImageVarience": 0,
+  "MaximumHP": 5200,
+  "MaximumMP": 0,
+  "Level": 1,
+  "MovementSpeed": 300,
+  "EngagedWalkingSpeed": 300,
+  "AttackSpeed": 1000,
+  "CastSpeed": 8000,
+  "MoodType": 4,
+  "PathQualifer": 1,
+  "LootType": 4,
+  "Drops": {
+    "$values": [
+      "사슴의정수"
+    ]
+  },
+  "ScriptName": "Common Monster",
+  "UpdateMapWide": true,
+  "UpdateRate": 1000.0,
+  "Grow": false,
+  "IgnoreCollision": false
+}

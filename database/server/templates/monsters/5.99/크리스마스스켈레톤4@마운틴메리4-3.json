@@ -1,0 +1,32 @@
+{
+  "Name": "크리스마스스켈레톤4",
+  "BaseName": "크리스마스스켈레톤4",
+  "AreaID": 100708,
+  "SpawnMax": 2,
+  "SpawnType": 2,
+  "SpawnRate": 40,
+  "SpawnSize": 0,
+  "SpawnOnlyOnActiveMaps": false,
+  "Image": 16934,
+  "ImageVarience": 0,
+  "MaximumHP": 203333,
+  "MaximumMP": 0,
+  "Level": 1,
+  "MovementSpeed": 1200,
+  "EngagedWalkingSpeed": 1200,
+  "AttackSpeed": 1000,
+  "CastSpeed": 8000,
+  "MoodType": 4,
+  "PathQualifer": 1,
+  "LootType": 36,
+  "Drops": {
+    "$values": [
+      "크리스마스얼음"
+    ]
+  },
+  "ScriptName": "Common Monster",
+  "UpdateMapWide": true,
+  "UpdateRate": 1000.0,
+  "Grow": false,
+  "IgnoreCollision": false
+}

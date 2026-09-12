@@ -1,0 +1,32 @@
+{
+  "Name": "킹아크퍼스1",
+  "BaseName": "킹아크퍼스1",
+  "AreaID": 100594,
+  "SpawnMax": 1,
+  "SpawnType": 2,
+  "SpawnRate": 300,
+  "SpawnSize": 0,
+  "SpawnOnlyOnActiveMaps": false,
+  "Image": 16638,
+  "ImageVarience": 0,
+  "MaximumHP": 60000,
+  "MaximumMP": 0,
+  "Level": 1,
+  "MovementSpeed": 3500,
+  "EngagedWalkingSpeed": 3500,
+  "AttackSpeed": 1000,
+  "CastSpeed": 8000,
+  "MoodType": 4,
+  "PathQualifer": 1,
+  "LootType": 4,
+  "Drops": {
+    "$values": [
+      "킹아크퍼스의팬던트"
+    ]
+  },
+  "ScriptName": "Common Monster",
+  "UpdateMapWide": true,
+  "UpdateRate": 1000.0,
+  "Grow": false,
+  "IgnoreCollision": false
+}

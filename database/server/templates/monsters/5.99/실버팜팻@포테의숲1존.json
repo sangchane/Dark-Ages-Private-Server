@@ -1,0 +1,32 @@
+{
+  "Name": "실버팜팻",
+  "BaseName": "실버팜팻",
+  "AreaID": 100263,
+  "SpawnMax": 4,
+  "SpawnType": 2,
+  "SpawnRate": 30,
+  "SpawnSize": 0,
+  "SpawnOnlyOnActiveMaps": false,
+  "Image": 16646,
+  "ImageVarience": 0,
+  "MaximumHP": 1950,
+  "MaximumMP": 0,
+  "Level": 1,
+  "MovementSpeed": 800,
+  "EngagedWalkingSpeed": 800,
+  "AttackSpeed": 1000,
+  "CastSpeed": 8000,
+  "MoodType": 4,
+  "PathQualifer": 1,
+  "LootType": 36,
+  "Drops": {
+    "$values": [
+      "실버팜팻의인장"
+    ]
+  },
+  "ScriptName": "Common Monster",
+  "UpdateMapWide": true,
+  "UpdateRate": 1000.0,
+  "Grow": false,
+  "IgnoreCollision": false
+}

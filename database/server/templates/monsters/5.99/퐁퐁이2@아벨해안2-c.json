@@ -1,0 +1,32 @@
+{
+  "Name": "퐁퐁이2",
+  "BaseName": "퐁퐁이2",
+  "AreaID": 100588,
+  "SpawnMax": 9,
+  "SpawnType": 2,
+  "SpawnRate": 30,
+  "SpawnSize": 0,
+  "SpawnOnlyOnActiveMaps": false,
+  "Image": 16438,
+  "ImageVarience": 0,
+  "MaximumHP": 9130,
+  "MaximumMP": 0,
+  "Level": 1,
+  "MovementSpeed": 1500,
+  "EngagedWalkingSpeed": 1500,
+  "AttackSpeed": 1000,
+  "CastSpeed": 8000,
+  "MoodType": 4,
+  "PathQualifer": 1,
+  "LootType": 36,
+  "Drops": {
+    "$values": [
+      "퐁퐁이의점액질"
+    ]
+  },
+  "ScriptName": "Common Monster",
+  "UpdateMapWide": true,
+  "UpdateRate": 1000.0,
+  "Grow": false,
+  "IgnoreCollision": false
+}

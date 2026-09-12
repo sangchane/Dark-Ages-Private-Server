@@ -1,0 +1,32 @@
+{
+  "Name": "팜팻2",
+  "BaseName": "팜팻2",
+  "AreaID": 100394,
+  "SpawnMax": 4,
+  "SpawnType": 2,
+  "SpawnRate": 30,
+  "SpawnSize": 0,
+  "SpawnOnlyOnActiveMaps": false,
+  "Image": 16641,
+  "ImageVarience": 0,
+  "MaximumHP": 160,
+  "MaximumMP": 0,
+  "Level": 1,
+  "MovementSpeed": 1000,
+  "EngagedWalkingSpeed": 1000,
+  "AttackSpeed": 1000,
+  "CastSpeed": 8000,
+  "MoodType": 4,
+  "PathQualifer": 1,
+  "LootType": 36,
+  "Drops": {
+    "$values": [
+      "애니비아의알"
+    ]
+  },
+  "ScriptName": "Common Monster",
+  "UpdateMapWide": true,
+  "UpdateRate": 1000.0,
+  "Grow": false,
+  "IgnoreCollision": false
+}

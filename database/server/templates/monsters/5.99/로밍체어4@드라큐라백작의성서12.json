@@ -1,0 +1,30 @@
+{
+  "Name": "로밍체어4",
+  "BaseName": "로밍체어4",
+  "AreaID": 100419,
+  "SpawnMax": 4,
+  "SpawnType": 2,
+  "SpawnRate": 60,
+  "SpawnSize": 0,
+  "SpawnOnlyOnActiveMaps": false,
+  "Image": 16745,
+  "ImageVarience": 0,
+  "MaximumHP": 200250,
+  "MaximumMP": 0,
+  "Level": 1,
+  "MovementSpeed": 1500,
+  "EngagedWalkingSpeed": 1500,
+  "AttackSpeed": 1000,
+  "CastSpeed": 8000,
+  "MoodType": 4,
+  "PathQualifer": 1,
+  "LootType": 32,
+  "Drops": {
+    "$values": []
+  },
+  "ScriptName": "Common Monster",
+  "UpdateMapWide": true,
+  "UpdateRate": 1000.0,
+  "Grow": false,
+  "IgnoreCollision": false
+}

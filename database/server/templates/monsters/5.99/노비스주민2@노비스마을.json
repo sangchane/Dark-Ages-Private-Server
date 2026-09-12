@@ -1,0 +1,30 @@
+{
+  "Name": "노비스주민2",
+  "BaseName": "노비스주민2",
+  "AreaID": 100373,
+  "SpawnMax": 1,
+  "SpawnType": 2,
+  "SpawnRate": 30,
+  "SpawnSize": 0,
+  "SpawnOnlyOnActiveMaps": false,
+  "Image": 16417,
+  "ImageVarience": 0,
+  "MaximumHP": 2147483647,
+  "MaximumMP": 0,
+  "Level": 1,
+  "MovementSpeed": 500,
+  "EngagedWalkingSpeed": 500,
+  "AttackSpeed": 1000,
+  "CastSpeed": 8000,
+  "MoodType": 4,
+  "PathQualifer": 1,
+  "LootType": 32,
+  "Drops": {
+    "$values": []
+  },
+  "ScriptName": "Common Monster",
+  "UpdateMapWide": true,
+  "UpdateRate": 1000.0,
+  "Grow": false,
+  "IgnoreCollision": false
+}

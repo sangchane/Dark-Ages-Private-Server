@@ -1,0 +1,32 @@
+{
+  "Name": "트랜트",
+  "BaseName": "트랜트",
+  "AreaID": 100265,
+  "SpawnMax": 15,
+  "SpawnType": 2,
+  "SpawnRate": 30,
+  "SpawnSize": 0,
+  "SpawnOnlyOnActiveMaps": false,
+  "Image": 16648,
+  "ImageVarience": 0,
+  "MaximumHP": 2340,
+  "MaximumMP": 0,
+  "Level": 1,
+  "MovementSpeed": 1200,
+  "EngagedWalkingSpeed": 1200,
+  "AttackSpeed": 1000,
+  "CastSpeed": 8000,
+  "MoodType": 4,
+  "PathQualifer": 1,
+  "LootType": 36,
+  "Drops": {
+    "$values": [
+      "트랜트의뿌리"
+    ]
+  },
+  "ScriptName": "Common Monster",
+  "UpdateMapWide": true,
+  "UpdateRate": 1000.0,
+  "Grow": false,
+  "IgnoreCollision": false
+}

@@ -1,0 +1,32 @@
+{
+  "Name": "그린팜팻",
+  "BaseName": "그린팜팻",
+  "AreaID": 100264,
+  "SpawnMax": 12,
+  "SpawnType": 2,
+  "SpawnRate": 30,
+  "SpawnSize": 0,
+  "SpawnOnlyOnActiveMaps": false,
+  "Image": 16644,
+  "ImageVarience": 0,
+  "MaximumHP": 1950,
+  "MaximumMP": 0,
+  "Level": 1,
+  "MovementSpeed": 1000,
+  "EngagedWalkingSpeed": 1000,
+  "AttackSpeed": 1000,
+  "CastSpeed": 8000,
+  "MoodType": 4,
+  "PathQualifer": 1,
+  "LootType": 36,
+  "Drops": {
+    "$values": [
+      "그린팜팻의알"
+    ]
+  },
+  "ScriptName": "Common Monster",
+  "UpdateMapWide": true,
+  "UpdateRate": 1000.0,
+  "Grow": false,
+  "IgnoreCollision": false
+}

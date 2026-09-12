@@ -1,0 +1,30 @@
+{
+  "Name": "니에1",
+  "BaseName": "니에1",
+  "AreaID": 100015,
+  "SpawnMax": 10,
+  "SpawnType": 2,
+  "SpawnRate": 50,
+  "SpawnSize": 0,
+  "SpawnOnlyOnActiveMaps": false,
+  "Image": 16895,
+  "ImageVarience": 0,
+  "MaximumHP": 115,
+  "MaximumMP": 0,
+  "Level": 1,
+  "MovementSpeed": 1300,
+  "EngagedWalkingSpeed": 1300,
+  "AttackSpeed": 1000,
+  "CastSpeed": 8000,
+  "MoodType": 4,
+  "PathQualifer": 1,
+  "LootType": 32,
+  "Drops": {
+    "$values": []
+  },
+  "ScriptName": "Common Monster",
+  "UpdateMapWide": true,
+  "UpdateRate": 1000.0,
+  "Grow": false,
+  "IgnoreCollision": false
+}
