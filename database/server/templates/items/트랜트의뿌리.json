@@ -2,5 +2,7 @@
   "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
   "Name": "트랜트의뿌리",
   "Value": 100,
-  "Image": 1536
+  "Image": 1536,
+  "CanStack": true,
+  "Flags": 384
 }

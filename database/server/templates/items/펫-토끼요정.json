@@ -2,5 +2,8 @@
   "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
   "Name": "펫-토끼요정",
   "Image": 13572,
-  "DisplayImage": 250
+  "DisplayImage": 250,
+  "EquipSlot": 14,
+  "EquipmentSlot": 14,
+  "Flags": 1
 }

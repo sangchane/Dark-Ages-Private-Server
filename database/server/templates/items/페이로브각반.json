@@ -55,5 +55,8 @@
     "Value": 1
   },
   "Image": 12145,
-  "Class": 4
+  "Class": 4,
+  "EquipSlot": 12,
+  "EquipmentSlot": 12,
+  "Flags": 67
 }

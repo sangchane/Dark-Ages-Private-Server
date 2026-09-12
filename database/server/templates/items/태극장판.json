@@ -2,5 +2,8 @@
   "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
   "Name": "태극장판",
   "Image": 135,
-  "DisplayImage": 246
+  "DisplayImage": 246,
+  "EquipSlot": 14,
+  "EquipmentSlot": 14,
+  "Flags": 1
 }

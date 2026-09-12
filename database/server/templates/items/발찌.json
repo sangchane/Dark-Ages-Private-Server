@@ -54,5 +54,8 @@
   "DisplayImage": 8,
   "Gender": 255,
   "Class": 5,
-  "StageRequired": 1
+  "StageRequired": 1,
+  "EquipSlot": 13,
+  "EquipmentSlot": 13,
+  "Flags": 65
 }

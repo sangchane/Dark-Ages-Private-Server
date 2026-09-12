@@ -4,5 +4,8 @@
   "Value": 3500000,
   "Image": 13315,
   "DisplayImage": 434,
-  "Gender": 255
+  "Gender": 255,
+  "EquipSlot": 2,
+  "EquipmentSlot": 2,
+  "Flags": 1
 }

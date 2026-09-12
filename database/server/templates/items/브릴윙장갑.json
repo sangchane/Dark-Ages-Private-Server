@@ -27,5 +27,8 @@
   },
   "Image": 12148,
   "Class": 5,
-  "StageRequired": 1
+  "StageRequired": 1,
+  "EquipSlot": 9,
+  "EquipmentSlot": 9,
+  "Flags": 67
 }

@@ -45,5 +45,8 @@
     "Option": 0,
     "Value": 1
   },
-  "Image": 13593
+  "Image": 13593,
+  "EquipSlot": 7,
+  "EquipmentSlot": 7,
+  "Flags": 65
 }

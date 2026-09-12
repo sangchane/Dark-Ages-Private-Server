@@ -2,5 +2,8 @@
   "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
   "Name": "초록두건",
   "Image": 540,
-  "DisplayImage": 144
+  "DisplayImage": 144,
+  "EquipSlot": 4,
+  "EquipmentSlot": 4,
+  "Flags": 1
 }

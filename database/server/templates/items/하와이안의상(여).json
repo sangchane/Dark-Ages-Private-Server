@@ -6,5 +6,8 @@
   "CarryWeight": 0,
   "Image": 3215,
   "DisplayImage": 332,
-  "Gender": 1
+  "Gender": 1,
+  "EquipSlot": 2,
+  "EquipmentSlot": 2,
+  "Flags": 65
 }

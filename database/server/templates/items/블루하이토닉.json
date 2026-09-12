@@ -2,5 +2,7 @@
   "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
   "Name": "블루하이토닉",
   "Value": 500000,
-  "Image": 2286
+  "Image": 2286,
+  "CanStack": true,
+  "Flags": 384
 }

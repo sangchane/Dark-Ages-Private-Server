@@ -3,5 +3,8 @@
   "Name": "에코프리드레스",
   "Image": 966,
   "DisplayImage": 172,
-  "Gender": 2
+  "Gender": 2,
+  "EquipSlot": 2,
+  "EquipmentSlot": 2,
+  "Flags": 1
 }

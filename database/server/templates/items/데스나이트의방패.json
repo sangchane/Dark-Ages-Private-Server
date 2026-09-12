@@ -20,5 +20,8 @@
   },
   "Image": 1367,
   "DisplayImage": 16,
-  "StageRequired": 1
+  "StageRequired": 1,
+  "EquipSlot": 3,
+  "EquipmentSlot": 3,
+  "Flags": 1
 }

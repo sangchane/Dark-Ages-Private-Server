@@ -3,5 +3,8 @@
   "Name": "악마외눈",
   "Value": 250000000,
   "Image": 12223,
-  "DisplayImage": 192
+  "DisplayImage": 192,
+  "EquipSlot": 14,
+  "EquipmentSlot": 14,
+  "Flags": 1
 }

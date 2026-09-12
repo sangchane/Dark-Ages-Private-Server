@@ -19,5 +19,8 @@
   },
   "Image": 12028,
   "DisplayImage": 409,
-  "Gender": 1
+  "Gender": 1,
+  "EquipSlot": 2,
+  "EquipmentSlot": 2,
+  "Flags": 1
 }

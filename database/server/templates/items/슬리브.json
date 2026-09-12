@@ -3,5 +3,8 @@
   "Name": "슬리브",
   "Image": 751,
   "DisplayImage": 109,
-  "Gender": 2
+  "Gender": 2,
+  "EquipSlot": 2,
+  "EquipmentSlot": 2,
+  "Flags": 3
 }

@@ -28,5 +28,8 @@
   "Image": 13435,
   "Gender": 255,
   "Class": 0,
-  "StageRequired": 1
+  "StageRequired": 1,
+  "EquipSlot": 9,
+  "EquipmentSlot": 9,
+  "Flags": 65
 }

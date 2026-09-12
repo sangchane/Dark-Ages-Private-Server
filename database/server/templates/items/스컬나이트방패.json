@@ -47,5 +47,8 @@
   "Image": 13554,
   "DisplayImage": 23,
   "Class": 0,
-  "StageRequired": 2
+  "StageRequired": 2,
+  "EquipSlot": 3,
+  "EquipmentSlot": 3,
+  "Flags": 65
 }

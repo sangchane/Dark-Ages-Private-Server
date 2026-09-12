@@ -2,5 +2,7 @@
   "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
   "Name": "생명의시약",
   "Value": 100,
-  "Image": 640
+  "Image": 640,
+  "CanStack": true,
+  "Flags": 384
 }

@@ -3,5 +3,8 @@
   "Name": "벨벳",
   "Image": 749,
   "DisplayImage": 108,
-  "Gender": 2
+  "Gender": 2,
+  "EquipSlot": 2,
+  "EquipmentSlot": 2,
+  "Flags": 3
 }

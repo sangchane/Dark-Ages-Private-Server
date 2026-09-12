@@ -17,5 +17,8 @@
     "Value": 3000
   },
   "Image": 13547,
-  "DisplayImage": 241
+  "DisplayImage": 241,
+  "EquipSlot": 14,
+  "EquipmentSlot": 14,
+  "Flags": 1
 }

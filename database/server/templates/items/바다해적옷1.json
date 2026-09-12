@@ -3,5 +3,8 @@
   "Name": "바다해적옷1",
   "Image": 1745,
   "DisplayImage": 260,
-  "Gender": 1
+  "Gender": 1,
+  "EquipSlot": 2,
+  "EquipmentSlot": 2,
+  "Flags": 1
 }

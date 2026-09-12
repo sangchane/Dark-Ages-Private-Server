@@ -2,5 +2,8 @@
   "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
   "Name": "로즈힐가면",
   "Image": 545,
-  "DisplayImage": 152
+  "DisplayImage": 152,
+  "EquipSlot": 4,
+  "EquipmentSlot": 4,
+  "Flags": 1
 }

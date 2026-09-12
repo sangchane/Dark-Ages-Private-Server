@@ -3,5 +3,8 @@
   "Name": "실루엣",
   "Image": 750,
   "DisplayImage": 107,
-  "Gender": 2
+  "Gender": 2,
+  "EquipSlot": 2,
+  "EquipmentSlot": 2,
+  "Flags": 3
 }

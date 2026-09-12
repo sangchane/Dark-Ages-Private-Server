@@ -2,5 +2,8 @@
   "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
   "Name": "홀리데이숄더모자1",
   "Image": 1739,
-  "DisplayImage": 172
+  "DisplayImage": 172,
+  "EquipSlot": 4,
+  "EquipmentSlot": 4,
+  "Flags": 1
 }

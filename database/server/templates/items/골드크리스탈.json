@@ -2,5 +2,7 @@
   "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
   "Name": "골드크리스탈",
   "Value": 30000,
-  "Image": 2183
+  "Image": 2183,
+  "CanStack": true,
+  "Flags": 384
 }

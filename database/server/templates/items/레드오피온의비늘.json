@@ -2,5 +2,7 @@
   "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
   "Name": "레드오피온의비늘",
   "Value": 100,
-  "Image": 1381
+  "Image": 1381,
+  "CanStack": true,
+  "Flags": 384
 }

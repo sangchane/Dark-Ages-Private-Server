@@ -3,5 +3,8 @@
   "Name": "턱시도",
   "Image": 8,
   "DisplayImage": 31,
-  "Gender": 1
+  "Gender": 1,
+  "EquipSlot": 2,
+  "EquipmentSlot": 2,
+  "Flags": 1
 }

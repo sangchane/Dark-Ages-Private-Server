@@ -3,5 +3,8 @@
   "Name": "로톤로더모자",
   "Value": 500000000,
   "Image": 1050,
-  "DisplayImage": 181
+  "DisplayImage": 181,
+  "EquipSlot": 4,
+  "EquipmentSlot": 4,
+  "Flags": 1
 }

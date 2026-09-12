@@ -3,5 +3,8 @@
   "Name": "산소통",
   "Value": 10000000,
   "Image": 918,
-  "DisplayImage": 159
+  "DisplayImage": 159,
+  "EquipSlot": 4,
+  "EquipmentSlot": 4,
+  "Flags": 1
 }

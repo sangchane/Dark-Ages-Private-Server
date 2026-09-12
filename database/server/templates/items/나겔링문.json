@@ -2,5 +2,7 @@
   "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
   "Name": "나겔링문",
   "Value": 100,
-  "Image": 13495
+  "Image": 13495,
+  "CanStack": true,
+  "Flags": 384
 }

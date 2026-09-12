@@ -1,5 +1,7 @@
 {
   "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
   "Name": "승급의리콜",
-  "Image": 1
+  "Image": 1,
+  "CanStack": true,
+  "Flags": 384
 }

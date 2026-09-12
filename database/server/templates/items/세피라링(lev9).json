@@ -62,5 +62,8 @@
   },
   "Image": 1839,
   "Gender": 255,
-  "Class": 0
+  "Class": 0,
+  "EquipSlot": 7,
+  "EquipmentSlot": 7,
+  "Flags": 1
 }

@@ -3,5 +3,8 @@
   "Name": "바즈컨트",
   "Image": 745,
   "DisplayImage": 106,
-  "Gender": 1
+  "Gender": 1,
+  "EquipSlot": 2,
+  "EquipmentSlot": 2,
+  "Flags": 3
 }

@@ -3,5 +3,8 @@
   "Name": "로톤로더",
   "Value": 500000000,
   "Image": 1048,
-  "DisplayImage": 224
+  "DisplayImage": 224,
+  "EquipSlot": 2,
+  "EquipmentSlot": 2,
+  "Flags": 1
 }

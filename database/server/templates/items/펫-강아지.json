@@ -3,5 +3,8 @@
   "Name": "펫-강아지",
   "Value": 80000000,
   "Image": 13569,
-  "DisplayImage": 247
+  "DisplayImage": 247,
+  "EquipSlot": 14,
+  "EquipmentSlot": 14,
+  "Flags": 1
 }

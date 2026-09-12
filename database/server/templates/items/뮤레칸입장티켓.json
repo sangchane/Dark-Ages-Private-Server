@@ -2,5 +2,7 @@
   "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
   "Name": "뮤레칸입장티켓",
   "Value": 500000,
-  "Image": 13635
+  "Image": 13635,
+  "CanStack": true,
+  "Flags": 384
 }

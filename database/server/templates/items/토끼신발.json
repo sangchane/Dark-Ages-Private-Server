@@ -9,5 +9,8 @@
     "Value": 3
   },
   "Image": 8087,
-  "DisplayImage": 225
+  "DisplayImage": 225,
+  "EquipSlot": 13,
+  "EquipmentSlot": 13,
+  "Flags": 1
 }

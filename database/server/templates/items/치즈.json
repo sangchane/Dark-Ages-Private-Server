@@ -7,5 +7,7 @@
     "Option": 0,
     "Value": 30
   },
-  "Image": 1658
+  "Image": 1658,
+  "CanStack": true,
+  "Flags": 384
 }

@@ -2,5 +2,7 @@
   "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
   "Name": "뮤레칸몽크강화석",
   "Value": 500000,
-  "Image": 250
+  "Image": 250,
+  "CanStack": true,
+  "Flags": 384
 }

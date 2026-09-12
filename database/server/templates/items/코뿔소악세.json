@@ -3,5 +3,8 @@
   "Name": "코뿔소악세",
   "Value": 70000000,
   "Image": 13549,
-  "DisplayImage": 243
+  "DisplayImage": 243,
+  "EquipSlot": 14,
+  "EquipmentSlot": 14,
+  "Flags": 1
 }

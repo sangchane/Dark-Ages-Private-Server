@@ -2,5 +2,7 @@
   "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
   "Name": "월화이어각반(봉인)",
   "Value": 100,
-  "Image": 12147
+  "Image": 12147,
+  "CanStack": true,
+  "Flags": 384
 }

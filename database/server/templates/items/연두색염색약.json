@@ -2,5 +2,7 @@
   "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
   "Name": "연두색염색약",
   "Value": 1000000,
-  "Image": 1912
+  "Image": 1912,
+  "CanStack": true,
+  "Flags": 384
 }

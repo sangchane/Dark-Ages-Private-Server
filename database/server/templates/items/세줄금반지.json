@@ -36,5 +36,8 @@
     "Value": 2
   },
   "Image": 1575,
-  "StageRequired": 0
+  "StageRequired": 0,
+  "EquipSlot": 7,
+  "EquipmentSlot": 7,
+  "Flags": 65
 }

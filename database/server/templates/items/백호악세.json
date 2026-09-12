@@ -3,5 +3,8 @@
   "Name": "백호악세",
   "Value": 70000000,
   "Image": 13548,
-  "DisplayImage": 242
+  "DisplayImage": 242,
+  "EquipSlot": 14,
+  "EquipmentSlot": 14,
+  "Flags": 1
 }

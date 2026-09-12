@@ -2,5 +2,7 @@
   "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
   "Name": "보로보로냥껍질",
   "Value": 500000,
-  "Image": 2935
+  "Image": 2935,
+  "CanStack": true,
+  "Flags": 384
 }

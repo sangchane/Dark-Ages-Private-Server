@@ -2,5 +2,7 @@
   "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
   "Name": "레드굴18층",
   "Value": 10000,
-  "Image": 1
+  "Image": 1,
+  "CanStack": true,
+  "Flags": 384
 }

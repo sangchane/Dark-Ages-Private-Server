@@ -2,5 +2,7 @@
   "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
   "Name": "레인헌트아머(봉인)",
   "Value": 100,
-  "Image": 12177
+  "Image": 12177,
+  "CanStack": true,
+  "Flags": 384
 }

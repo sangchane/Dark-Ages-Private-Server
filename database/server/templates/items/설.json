@@ -2,5 +2,7 @@
   "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
   "Name": "설",
   "Value": 0,
-  "Image": 13628
+  "Image": 13628,
+  "CanStack": true,
+  "Flags": 384
 }

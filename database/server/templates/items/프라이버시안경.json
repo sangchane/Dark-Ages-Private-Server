@@ -3,5 +3,8 @@
   "Name": "프라이버시안경",
   "Value": 200000000,
   "Image": 8221,
-  "DisplayImage": 114
+  "DisplayImage": 114,
+  "EquipSlot": 14,
+  "EquipmentSlot": 14,
+  "Flags": 1
 }

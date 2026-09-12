@@ -5,5 +5,8 @@
   "Value": 0,
   "CarryWeight": 0,
   "Image": 2215,
-  "DisplayImage": 318
+  "DisplayImage": 318,
+  "EquipSlot": 2,
+  "EquipmentSlot": 2,
+  "Flags": 1
 }

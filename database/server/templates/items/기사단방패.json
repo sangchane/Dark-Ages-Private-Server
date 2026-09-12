@@ -10,5 +10,8 @@
   },
   "Image": 191,
   "DisplayImage": 8,
-  "Class": 1
+  "Class": 1,
+  "EquipSlot": 3,
+  "EquipmentSlot": 3,
+  "Flags": 1
 }

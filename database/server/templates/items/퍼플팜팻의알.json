@@ -2,5 +2,7 @@
   "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
   "Name": "퍼플팜팻의알",
   "Value": 0,
-  "Image": 1521
+  "Image": 1521,
+  "CanStack": true,
+  "Flags": 384
 }

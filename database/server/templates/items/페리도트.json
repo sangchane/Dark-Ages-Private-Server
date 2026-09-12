@@ -2,5 +2,7 @@
   "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
   "Name": "페리도트",
   "Value": 2000,
-  "Image": 1463
+  "Image": 1463,
+  "CanStack": true,
+  "Flags": 384
 }

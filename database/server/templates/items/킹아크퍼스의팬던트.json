@@ -2,5 +2,7 @@
   "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
   "Name": "킹아크퍼스의팬던트",
   "Value": 100,
-  "Image": 668
+  "Image": 668,
+  "CanStack": true,
+  "Flags": 384
 }

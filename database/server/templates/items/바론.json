@@ -3,5 +3,8 @@
   "Name": "바론",
   "Image": 746,
   "DisplayImage": 109,
-  "Gender": 1
+  "Gender": 1,
+  "EquipSlot": 2,
+  "EquipmentSlot": 2,
+  "Flags": 3
 }
