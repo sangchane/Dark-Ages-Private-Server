@@ -161,6 +161,12 @@ namespace Darkages.Network
             if (client == null)
                 return;
 
+            // The writer is a thread of its own and it waits on the queue, so it does not end because the
+            // socket did — it ends when the queue is told nothing more is coming. Leaving it out leaks one
+            // thread per connection, which a server that is reconnected to does not survive: 4,070 threads
+            // after ~3,200 connections, then nothing left to answer with and every login timing out.
+            client.CloseOutbound();
+
             // Disconnect only tears the connection down; it never releases the handle. Worse, it was
             // skipped whenever the peer had already gone, because Connected is false by the time a zero
             // byte read brings us here — so nothing closed the socket at all and every connection that
