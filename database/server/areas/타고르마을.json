@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100363.map",
+  "FilePath": "../../database/server/maps/lod20363.map",
   "Cols": 100,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100363,
+  "Id": 20363,
   "Music": 161,
   "Name": "타고르마을",
   "Rows": 100,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100363
+  "ID": 20363
 }

@@ -1,7 +1,7 @@
 {
   "Name": "광관드워프",
   "BaseName": "광관드워프",
-  "AreaID": 100684,
+  "AreaID": 20684,
   "SpawnMax": 30,
   "SpawnType": 2,
   "SpawnRate": 30,

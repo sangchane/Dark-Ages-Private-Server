@@ -1,7 +1,7 @@
 {
   "Name": "카디",
   "BaseName": "카디",
-  "AreaID": 100380,
+  "AreaID": 20380,
   "SpawnMax": 12,
   "SpawnType": 2,
   "SpawnRate": 30,

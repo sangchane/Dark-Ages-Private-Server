@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100329.map",
+  "FilePath": "../../database/server/maps/lod20329.map",
   "Cols": 100,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100329,
+  "Id": 20329,
   "Music": 158,
   "Name": "루어스마을",
   "Rows": 100,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100329
+  "ID": 20329
 }

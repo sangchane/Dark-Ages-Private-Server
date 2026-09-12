@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100443.map",
+  "FilePath": "../../database/server/maps/lod20443.map",
   "Cols": 10,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100443,
+  "Id": 20443,
   "Music": 0,
   "Name": "루어스성2층무기고",
   "Rows": 10,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100443
+  "ID": 20443
 }

@@ -1,7 +1,7 @@
 {
   "Name": "그림록병사2",
   "BaseName": "그림록병사2",
-  "AreaID": 100692,
+  "AreaID": 20692,
   "SpawnMax": 30,
   "SpawnType": 2,
   "SpawnRate": 50,

@@ -1,0 +1,26 @@
+{
+  "Name": "베이가@노비스잡화상점#3,14",
+  "AreaID": 20378,
+  "X": 3,
+  "Y": 14,
+  "Direction": 2,
+  "Image": 35,
+  "Level": 1,
+  "MaximumHp": 1000,
+  "MaximumMp": 1000,
+  "Speech": [
+    "베이가: 성능좋은 물약을 판매 하고있습니다!"
+  ],
+  "ScriptKey": "pack_speaker",
+  "DefaultMerchantStock": [],
+  "EnableWalking": false,
+  "EnableTurning": false,
+  "EnableAttacking": false,
+  "EnableCasting": false,
+  "WalkRate": 0,
+  "TurnRate": 0,
+  "CastRate": 0,
+  "ChatRate": 0,
+  "PathQualifer": 1,
+  "ViewingQualifer": 1
+}

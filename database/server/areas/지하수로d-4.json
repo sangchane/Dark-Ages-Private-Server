@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100688.map",
+  "FilePath": "../../database/server/maps/lod20688.map",
   "Cols": 20,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100688,
+  "Id": 20688,
   "Music": 156,
   "Name": "지하수로D-4",
   "Rows": 20,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100688
+  "ID": 20688
 }

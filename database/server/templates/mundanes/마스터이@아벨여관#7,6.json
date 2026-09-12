@@ -1,0 +1,26 @@
+{
+  "Name": "마스터이@아벨여관#7,6",
+  "AreaID": 20038,
+  "X": 7,
+  "Y": 6,
+  "Direction": 2,
+  "Image": 398,
+  "Level": 1,
+  "MaximumHp": 1000,
+  "MaximumMp": 1000,
+  "Speech": [
+    "마스터이: 나의검은 당신의 것이오!"
+  ],
+  "ScriptKey": "pack_speaker",
+  "DefaultMerchantStock": [],
+  "EnableWalking": false,
+  "EnableTurning": false,
+  "EnableAttacking": false,
+  "EnableCasting": false,
+  "WalkRate": 0,
+  "TurnRate": 0,
+  "CastRate": 0,
+  "ChatRate": 0,
+  "PathQualifer": 1,
+  "ViewingQualifer": 1
+}

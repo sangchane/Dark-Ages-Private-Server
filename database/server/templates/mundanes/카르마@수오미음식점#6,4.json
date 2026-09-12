@@ -1,0 +1,26 @@
+{
+  "Name": "카르마@수오미음식점#6,4",
+  "AreaID": 20359,
+  "X": 6,
+  "Y": 4,
+  "Direction": 2,
+  "Image": 31,
+  "Level": 1,
+  "MaximumHp": 1000,
+  "MaximumMp": 1000,
+  "Speech": [
+    "카르마: 맛있는 음식들을 판매하고 있어요!"
+  ],
+  "ScriptKey": "pack_speaker",
+  "DefaultMerchantStock": [],
+  "EnableWalking": false,
+  "EnableTurning": false,
+  "EnableAttacking": false,
+  "EnableCasting": false,
+  "WalkRate": 0,
+  "TurnRate": 0,
+  "CastRate": 0,
+  "ChatRate": 0,
+  "PathQualifer": 1,
+  "ViewingQualifer": 1
+}

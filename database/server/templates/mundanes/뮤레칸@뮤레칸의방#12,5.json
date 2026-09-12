@@ -1,0 +1,26 @@
+{
+  "Name": "뮤레칸@뮤레칸의방#12,5",
+  "AreaID": 20138,
+  "X": 12,
+  "Y": 5,
+  "Direction": 2,
+  "Image": 45,
+  "Level": 1,
+  "MaximumHp": 1000,
+  "MaximumMp": 1000,
+  "Speech": [
+    "뮤레칸: 부활하고 싶다면 나의 머리를 눌러라."
+  ],
+  "ScriptKey": "pack_speaker",
+  "DefaultMerchantStock": [],
+  "EnableWalking": false,
+  "EnableTurning": false,
+  "EnableAttacking": false,
+  "EnableCasting": false,
+  "WalkRate": 0,
+  "TurnRate": 0,
+  "CastRate": 0,
+  "ChatRate": 0,
+  "PathQualifer": 1,
+  "ViewingQualifer": 1
+}

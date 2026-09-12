@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100264.map",
+  "FilePath": "../../database/server/maps/lod20264.map",
   "Cols": 50,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100264,
+  "Id": 20264,
   "Music": 145,
   "Name": "포테의숲2존",
   "Rows": 50,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100264
+  "ID": 20264
 }

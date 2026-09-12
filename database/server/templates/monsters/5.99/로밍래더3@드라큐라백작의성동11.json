@@ -1,7 +1,7 @@
 {
   "Name": "로밍래더3",
   "BaseName": "로밍래더3",
-  "AreaID": 100402,
+  "AreaID": 20402,
   "SpawnMax": 3,
   "SpawnType": 2,
   "SpawnRate": 60,

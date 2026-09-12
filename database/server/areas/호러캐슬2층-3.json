@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100717.map",
+  "FilePath": "../../database/server/maps/lod20717.map",
   "Cols": 12,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100717,
+  "Id": 20717,
   "Music": 154,
   "Name": "호러캐슬2층-3",
   "Rows": 30,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100717
+  "ID": 20717
 }

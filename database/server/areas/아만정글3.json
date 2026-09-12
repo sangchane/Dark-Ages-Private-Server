@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100508.map",
+  "FilePath": "../../database/server/maps/lod20508.map",
   "Cols": 50,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100508,
+  "Id": 20508,
   "Music": 154,
   "Name": "아만정글3",
   "Rows": 50,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100508
+  "ID": 20508
 }

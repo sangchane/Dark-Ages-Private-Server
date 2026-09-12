@@ -1,7 +1,7 @@
 {
   "Name": "거지좀비",
   "BaseName": "거지좀비",
-  "AreaID": 100680,
+  "AreaID": 20680,
   "SpawnMax": 30,
   "SpawnType": 2,
   "SpawnRate": 30,

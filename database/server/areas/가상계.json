@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100046.map",
+  "FilePath": "../../database/server/maps/lod20046.map",
   "Cols": 9,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100046,
+  "Id": 20046,
   "Music": 0,
   "Name": "가상계",
   "Rows": 9,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100046
+  "ID": 20046
 }

@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100308.map",
+  "FilePath": "../../database/server/maps/lod20308.map",
   "Cols": 15,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100308,
+  "Id": 20308,
   "Music": 134,
   "Name": "마인제조상점",
   "Rows": 15,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100308
+  "ID": 20308
 }

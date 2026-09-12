@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100796.map",
+  "FilePath": "../../database/server/maps/lod20796.map",
   "Cols": 60,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100796,
+  "Id": 20796,
   "Music": 903,
   "Name": "히야트던전A-4",
   "Rows": 60,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100796
+  "ID": 20796
 }

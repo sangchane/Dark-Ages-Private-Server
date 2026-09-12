@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100087.map",
+  "FilePath": "../../database/server/maps/lod20087.map",
   "Cols": 100,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100087,
+  "Id": 20087,
   "Music": 0,
   "Name": "노엠마을",
   "Rows": 100,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100087
+  "ID": 20087
 }

@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100435.map",
+  "FilePath": "../../database/server/maps/lod20435.map",
   "Cols": 24,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100435,
+  "Id": 20435,
   "Music": 142,
   "Name": "별장서쪽지하복도",
   "Rows": 7,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100435
+  "ID": 20435
 }

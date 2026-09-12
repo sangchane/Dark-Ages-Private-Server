@@ -1,0 +1,26 @@
+{
+  "Name": "베인@노비스주점#13,11",
+  "AreaID": 20379,
+  "X": 13,
+  "Y": 11,
+  "Direction": 2,
+  "Image": 61,
+  "Level": 1,
+  "MaximumHp": 1000,
+  "MaximumMp": 1000,
+  "Speech": [
+    "베인: 남편의 정력이 좋아져야 할텐데.."
+  ],
+  "ScriptKey": "pack_speaker",
+  "DefaultMerchantStock": [],
+  "EnableWalking": false,
+  "EnableTurning": false,
+  "EnableAttacking": false,
+  "EnableCasting": false,
+  "WalkRate": 0,
+  "TurnRate": 0,
+  "CastRate": 0,
+  "ChatRate": 0,
+  "PathQualifer": 1,
+  "ViewingQualifer": 1
+}

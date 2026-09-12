@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100406.map",
+  "FilePath": "../../database/server/maps/lod20406.map",
   "Cols": 30,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100406,
+  "Id": 20406,
   "Music": 142,
   "Name": "드라큐라백작의성동15",
   "Rows": 31,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100406
+  "ID": 20406
 }

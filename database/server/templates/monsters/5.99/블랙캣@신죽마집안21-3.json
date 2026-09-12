@@ -1,7 +1,7 @@
 {
   "Name": "블랙캣",
   "BaseName": "블랙캣",
-  "AreaID": 100663,
+  "AreaID": 20663,
   "SpawnMax": 10,
   "SpawnType": 2,
   "SpawnRate": 250,

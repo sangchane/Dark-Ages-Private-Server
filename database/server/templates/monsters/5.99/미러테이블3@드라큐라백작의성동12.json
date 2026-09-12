@@ -1,7 +1,7 @@
 {
   "Name": "미러테이블3",
   "BaseName": "미러테이블3",
-  "AreaID": 100403,
+  "AreaID": 20403,
   "SpawnMax": 3,
   "SpawnType": 2,
   "SpawnRate": 60,

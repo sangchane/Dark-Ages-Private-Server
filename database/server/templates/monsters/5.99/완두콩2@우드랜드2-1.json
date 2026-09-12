@@ -1,7 +1,7 @@
 {
   "Name": "완두콩2",
   "BaseName": "완두콩2",
-  "AreaID": 100022,
+  "AreaID": 20022,
   "SpawnMax": 15,
   "SpawnType": 2,
   "SpawnRate": 50,

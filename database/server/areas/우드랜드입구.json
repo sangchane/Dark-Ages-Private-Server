@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100028.map",
+  "FilePath": "../../database/server/maps/lod20028.map",
   "Cols": 40,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100028,
+  "Id": 20028,
   "Music": 173,
   "Name": "우드랜드입구",
   "Rows": 24,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100028
+  "ID": 20028
 }

@@ -1,0 +1,26 @@
+{
+  "Name": "스웨인@뤼케시온무기점#8,7",
+  "AreaID": 20339,
+  "X": 8,
+  "Y": 7,
+  "Direction": 2,
+  "Image": 30,
+  "Level": 1,
+  "MaximumHp": 1000,
+  "MaximumMp": 1000,
+  "Speech": [
+    "스웨인: 나는 내 쌍둥이와 함께 이 상점을 운영하고 있지! 훗."
+  ],
+  "ScriptKey": "pack_speaker",
+  "DefaultMerchantStock": [],
+  "EnableWalking": false,
+  "EnableTurning": false,
+  "EnableAttacking": false,
+  "EnableCasting": false,
+  "WalkRate": 0,
+  "TurnRate": 0,
+  "CastRate": 0,
+  "ChatRate": 0,
+  "PathQualifer": 1,
+  "ViewingQualifer": 1
+}

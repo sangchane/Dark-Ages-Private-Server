@@ -1,0 +1,26 @@
+{
+  "Name": "카사딘@노비스주점#11,4",
+  "AreaID": 20379,
+  "X": 11,
+  "Y": 4,
+  "Direction": 2,
+  "Image": 29,
+  "Level": 1,
+  "MaximumHp": 1000,
+  "MaximumMp": 1000,
+  "Speech": [
+    "카사딘: 공허하구만... 시방... 이귀찮은 잡업무들..."
+  ],
+  "ScriptKey": "pack_speaker",
+  "DefaultMerchantStock": [],
+  "EnableWalking": false,
+  "EnableTurning": false,
+  "EnableAttacking": false,
+  "EnableCasting": false,
+  "WalkRate": 0,
+  "TurnRate": 0,
+  "CastRate": 0,
+  "ChatRate": 0,
+  "PathQualifer": 1,
+  "ViewingQualifer": 1
+}

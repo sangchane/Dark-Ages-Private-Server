@@ -1,7 +1,7 @@
 {
   "Name": "로밍스테츄1",
   "BaseName": "로밍스테츄1",
-  "AreaID": 100408,
+  "AreaID": 20408,
   "SpawnMax": 3,
   "SpawnType": 2,
   "SpawnRate": 60,

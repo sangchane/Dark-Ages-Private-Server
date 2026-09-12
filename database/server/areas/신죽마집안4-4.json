@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100668.map",
+  "FilePath": "../../database/server/maps/lod20668.map",
   "Cols": 20,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100668,
+  "Id": 20668,
   "Music": 155,
   "Name": "신죽마집안4-4",
   "Rows": 20,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100668
+  "ID": 20668
 }

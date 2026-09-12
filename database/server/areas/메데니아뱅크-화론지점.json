@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100494.map",
+  "FilePath": "../../database/server/maps/lod20494.map",
   "Cols": 17,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100494,
+  "Id": 20494,
   "Music": 902,
   "Name": "메데니아뱅크-화론지점",
   "Rows": 17,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100494
+  "ID": 20494
 }

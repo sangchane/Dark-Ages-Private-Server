@@ -1,0 +1,26 @@
+{
+  "Name": "이블린@밀레스마을#51,44",
+  "AreaID": 20287,
+  "X": 51,
+  "Y": 44,
+  "Direction": 1,
+  "Image": 60,
+  "Level": 1,
+  "MaximumHp": 1000,
+  "MaximumMp": 1000,
+  "Speech": [
+    "이블린: 도적 사범담당 이블린입니다."
+  ],
+  "ScriptKey": "pack_speaker",
+  "DefaultMerchantStock": [],
+  "EnableWalking": false,
+  "EnableTurning": false,
+  "EnableAttacking": false,
+  "EnableCasting": false,
+  "WalkRate": 0,
+  "TurnRate": 0,
+  "CastRate": 0,
+  "ChatRate": 0,
+  "PathQualifer": 1,
+  "ViewingQualifer": 1
+}

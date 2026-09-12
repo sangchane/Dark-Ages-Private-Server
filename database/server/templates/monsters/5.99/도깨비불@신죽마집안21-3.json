@@ -1,7 +1,7 @@
 {
   "Name": "도깨비불",
   "BaseName": "도깨비불",
-  "AreaID": 100663,
+  "AreaID": 20663,
   "SpawnMax": 10,
   "SpawnType": 2,
   "SpawnRate": 250,

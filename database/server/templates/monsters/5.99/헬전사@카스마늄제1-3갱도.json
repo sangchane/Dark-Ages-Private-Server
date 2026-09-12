@@ -1,7 +1,7 @@
 {
   "Name": "헬전사",
   "BaseName": "헬전사",
-  "AreaID": 100693,
+  "AreaID": 20693,
   "SpawnMax": 10,
   "SpawnType": 2,
   "SpawnRate": 50,

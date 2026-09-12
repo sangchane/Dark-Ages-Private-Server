@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100622.map",
+  "FilePath": "../../database/server/maps/lod20622.map",
   "Cols": 75,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100622,
+  "Id": 20622,
   "Music": 175,
   "Name": "오렌미궁2-2",
   "Rows": 75,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100622
+  "ID": 20622
 }

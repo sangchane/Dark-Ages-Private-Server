@@ -1,8 +1,8 @@
 {
-  "ActivationMapId": 100039,
+  "ActivationMapId": 20039,
   "Activations": [
     {
-      "AreaID": 100039,
+      "AreaID": 20039,
       "Location": {
         "X": 12,
         "Y": 19
@@ -12,7 +12,7 @@
   ],
   "LevelRequired": 1,
   "To": {
-    "AreaID": 100030,
+    "AreaID": 20030,
     "Location": {
       "X": 14,
       "Y": 9

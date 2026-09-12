@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100501.map",
+  "FilePath": "../../database/server/maps/lod20501.map",
   "Cols": 20,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100501,
+  "Id": 20501,
   "Music": 154,
   "Name": "아만민가A",
   "Rows": 20,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100501
+  "ID": 20501
 }

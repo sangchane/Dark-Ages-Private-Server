@@ -1,7 +1,7 @@
 {
   "Name": "실버팜팻",
   "BaseName": "실버팜팻",
-  "AreaID": 100263,
+  "AreaID": 20263,
   "SpawnMax": 4,
   "SpawnType": 2,
   "SpawnRate": 30,

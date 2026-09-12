@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100200.map",
+  "FilePath": "../../database/server/maps/lod20200.map",
   "Cols": 60,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100200,
+  "Id": 20200,
   "Music": 0,
   "Name": "승급던전 4층",
   "Rows": 60,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100200
+  "ID": 20200
 }

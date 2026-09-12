@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100033.map",
+  "FilePath": "../../database/server/maps/lod20033.map",
   "Cols": 50,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100033,
+  "Id": 20033,
   "Music": 144,
   "Name": "아벨성",
   "Rows": 50,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100033
+  "ID": 20033
 }

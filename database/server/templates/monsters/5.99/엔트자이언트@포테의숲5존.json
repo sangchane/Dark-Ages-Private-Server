@@ -1,7 +1,7 @@
 {
   "Name": "엔트자이언트",
   "BaseName": "엔트자이언트",
-  "AreaID": 100267,
+  "AreaID": 20267,
   "SpawnMax": 6,
   "SpawnType": 2,
   "SpawnRate": 30,

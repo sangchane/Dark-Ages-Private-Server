@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100039.map",
+  "FilePath": "../../database/server/maps/lod20039.map",
   "Cols": 20,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100039,
+  "Id": 20039,
   "Music": 141,
   "Name": "아벨은행",
   "Rows": 20,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100039
+  "ID": 20039
 }

@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100602.map",
+  "FilePath": "../../database/server/maps/lod20602.map",
   "Cols": 150,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100602,
+  "Id": 20602,
   "Music": 0,
   "Name": "아슬론초원",
   "Rows": 80,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100602
+  "ID": 20602
 }

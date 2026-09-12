@@ -1,7 +1,7 @@
 {
   "Name": "멜로더",
   "BaseName": "멜로더",
-  "AreaID": 100388,
+  "AreaID": 20388,
   "SpawnMax": 12,
   "SpawnType": 2,
   "SpawnRate": 30,

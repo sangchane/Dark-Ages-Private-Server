@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100285.map",
+  "FilePath": "../../database/server/maps/lod20285.map",
   "Cols": 18,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100285,
+  "Id": 20285,
   "Music": 151,
   "Name": "밀레스교회",
   "Rows": 25,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100285
+  "ID": 20285
 }

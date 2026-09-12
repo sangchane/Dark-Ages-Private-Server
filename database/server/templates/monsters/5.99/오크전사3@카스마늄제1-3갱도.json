@@ -1,7 +1,7 @@
 {
   "Name": "오크전사3",
   "BaseName": "오크전사3",
-  "AreaID": 100693,
+  "AreaID": 20693,
   "SpawnMax": 20,
   "SpawnType": 2,
   "SpawnRate": 50,

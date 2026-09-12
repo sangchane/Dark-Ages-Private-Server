@@ -1,0 +1,26 @@
+{
+  "Name": "여관주인@마인여관#3,3",
+  "AreaID": 20306,
+  "X": 3,
+  "Y": 3,
+  "Direction": 3,
+  "Image": 518,
+  "Level": 1,
+  "MaximumHp": 1000,
+  "MaximumMp": 1000,
+  "Speech": [
+    "여관주인: 저희 여관에 오신것을 환영합니다!"
+  ],
+  "ScriptKey": "pack_speaker",
+  "DefaultMerchantStock": [],
+  "EnableWalking": false,
+  "EnableTurning": false,
+  "EnableAttacking": false,
+  "EnableCasting": false,
+  "WalkRate": 0,
+  "TurnRate": 0,
+  "CastRate": 0,
+  "ChatRate": 0,
+  "PathQualifer": 1,
+  "ViewingQualifer": 1
+}

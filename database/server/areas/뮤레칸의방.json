@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100138.map",
+  "FilePath": "../../database/server/maps/lod20138.map",
   "Cols": 30,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100138,
+  "Id": 20138,
   "Music": 132,
   "Name": "뮤레칸의방",
   "Rows": 30,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100138
+  "ID": 20138
 }

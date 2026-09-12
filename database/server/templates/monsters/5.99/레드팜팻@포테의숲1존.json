@@ -1,7 +1,7 @@
 {
   "Name": "레드팜팻",
   "BaseName": "레드팜팻",
-  "AreaID": 100263,
+  "AreaID": 20263,
   "SpawnMax": 10,
   "SpawnType": 2,
   "SpawnRate": 30,

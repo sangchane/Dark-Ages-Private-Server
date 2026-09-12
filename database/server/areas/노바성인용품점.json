@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100080.map",
+  "FilePath": "../../database/server/maps/lod20080.map",
   "Cols": 15,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100080,
+  "Id": 20080,
   "Music": 0,
   "Name": "노바성인용품점",
   "Rows": 15,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100080
+  "ID": 20080
 }

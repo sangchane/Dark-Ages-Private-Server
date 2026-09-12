@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100348.map",
+  "FilePath": "../../database/server/maps/lod20348.map",
   "Cols": 15,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100348,
+  "Id": 20348,
   "Music": 144,
   "Name": "뤼케시온무기점field",
   "Rows": 15,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100348
+  "ID": 20348
 }

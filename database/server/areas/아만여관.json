@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100503.map",
+  "FilePath": "../../database/server/maps/lod20503.map",
   "Cols": 25,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100503,
+  "Id": 20503,
   "Music": 154,
   "Name": "아만여관",
   "Rows": 25,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100503
+  "ID": 20503
 }

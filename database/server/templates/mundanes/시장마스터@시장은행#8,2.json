@@ -1,0 +1,26 @@
+{
+  "Name": "시장마스터@시장은행#8,2",
+  "AreaID": 20583,
+  "X": 8,
+  "Y": 2,
+  "Direction": 2,
+  "Image": 31,
+  "Level": 1,
+  "MaximumHp": 1000,
+  "MaximumMp": 1000,
+  "Speech": [
+    "시장마스터: 다양한 아이템을 판매하고 있습니다."
+  ],
+  "ScriptKey": "pack_speaker",
+  "DefaultMerchantStock": [],
+  "EnableWalking": false,
+  "EnableTurning": false,
+  "EnableAttacking": false,
+  "EnableCasting": false,
+  "WalkRate": 0,
+  "TurnRate": 0,
+  "CastRate": 0,
+  "ChatRate": 0,
+  "PathQualifer": 1,
+  "ViewingQualifer": 1
+}

@@ -1,7 +1,7 @@
 {
   "Name": "로밍체어2",
   "BaseName": "로밍체어2",
-  "AreaID": 100413,
+  "AreaID": 20413,
   "SpawnMax": 3,
   "SpawnType": 2,
   "SpawnRate": 60,

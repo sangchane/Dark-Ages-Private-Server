@@ -1,7 +1,7 @@
 {
   "Name": "오크가드2",
   "BaseName": "오크가드2",
-  "AreaID": 100692,
+  "AreaID": 20692,
   "SpawnMax": 30,
   "SpawnType": 2,
   "SpawnRate": 50,

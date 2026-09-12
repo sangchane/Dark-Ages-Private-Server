@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100055.map",
+  "FilePath": "../../database/server/maps/lod20055.map",
   "Cols": 15,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100055,
+  "Id": 20055,
   "Music": 0,
   "Name": "격수사범의집",
   "Rows": 15,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100055
+  "ID": 20055
 }

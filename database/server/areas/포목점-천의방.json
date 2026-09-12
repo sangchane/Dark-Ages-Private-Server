@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100527.map",
+  "FilePath": "../../database/server/maps/lod20527.map",
   "Cols": 17,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100527,
+  "Id": 20527,
   "Music": 902,
   "Name": "포목점-천의방",
   "Rows": 17,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100527
+  "ID": 20527
 }

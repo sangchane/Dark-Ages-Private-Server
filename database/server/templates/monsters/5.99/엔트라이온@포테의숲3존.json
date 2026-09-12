@@ -1,7 +1,7 @@
 {
   "Name": "엔트라이온",
   "BaseName": "엔트라이온",
-  "AreaID": 100265,
+  "AreaID": 20265,
   "SpawnMax": 7,
   "SpawnType": 2,
   "SpawnRate": 30,

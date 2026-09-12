@@ -1,7 +1,7 @@
 {
   "Name": "레아로3",
   "BaseName": "레아로3",
-  "AreaID": 100407,
+  "AreaID": 20407,
   "SpawnMax": 3,
   "SpawnType": 2,
   "SpawnRate": 60,

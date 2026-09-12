@@ -1,7 +1,7 @@
 {
   "Name": "홉고블린1",
   "BaseName": "홉고블린1",
-  "AreaID": 100020,
+  "AreaID": 20020,
   "SpawnMax": 31,
   "SpawnType": 2,
   "SpawnRate": 5,

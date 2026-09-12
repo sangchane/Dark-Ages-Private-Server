@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100259.map",
+  "FilePath": "../../database/server/maps/lod20259.map",
   "Cols": 35,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100259,
+  "Id": 20259,
   "Music": 0,
   "Name": "축구장야배",
   "Rows": 60,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100259
+  "ID": 20259
 }

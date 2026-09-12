@@ -1,0 +1,26 @@
+{
+  "Name": "트위스티드 페이트@시장은행#3,7",
+  "AreaID": 20583,
+  "X": 3,
+  "Y": 7,
+  "Direction": 2,
+  "Image": 23,
+  "Level": 1,
+  "MaximumHp": 1000,
+  "MaximumMp": 1000,
+  "Speech": [
+    "트위스티드 페이트: 난 당신의 EG를 훔쳐가는 EG샵을 운영하지!"
+  ],
+  "ScriptKey": "pack_speaker",
+  "DefaultMerchantStock": [],
+  "EnableWalking": false,
+  "EnableTurning": false,
+  "EnableAttacking": false,
+  "EnableCasting": false,
+  "WalkRate": 0,
+  "TurnRate": 0,
+  "CastRate": 0,
+  "ChatRate": 0,
+  "PathQualifer": 1,
+  "ViewingQualifer": 1
+}

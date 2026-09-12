@@ -1,0 +1,26 @@
+{
+  "Name": "소라카@밀레스마을#49,43",
+  "AreaID": 20287,
+  "X": 49,
+  "Y": 43,
+  "Direction": 1,
+  "Image": 40,
+  "Level": 1,
+  "MaximumHp": 1000,
+  "MaximumMp": 1000,
+  "Speech": [
+    "소라카: 성직자 사범담당 소라카입니다. 별의 부름을!"
+  ],
+  "ScriptKey": "pack_speaker",
+  "DefaultMerchantStock": [],
+  "EnableWalking": false,
+  "EnableTurning": false,
+  "EnableAttacking": false,
+  "EnableCasting": false,
+  "WalkRate": 0,
+  "TurnRate": 0,
+  "CastRate": 0,
+  "ChatRate": 0,
+  "PathQualifer": 1,
+  "ViewingQualifer": 1
+}

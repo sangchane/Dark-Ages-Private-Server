@@ -1,0 +1,26 @@
+{
+  "Name": "가렌@밀레스마을#52,44",
+  "AreaID": 20287,
+  "X": 52,
+  "Y": 44,
+  "Direction": 1,
+  "Image": 39,
+  "Level": 1,
+  "MaximumHp": 1000,
+  "MaximumMp": 1000,
+  "Speech": [
+    "가렌: 전사 사범담당 가렌입니다. 데마시아!"
+  ],
+  "ScriptKey": "pack_speaker",
+  "DefaultMerchantStock": [],
+  "EnableWalking": false,
+  "EnableTurning": false,
+  "EnableAttacking": false,
+  "EnableCasting": false,
+  "WalkRate": 0,
+  "TurnRate": 0,
+  "CastRate": 0,
+  "ChatRate": 0,
+  "PathQualifer": 1,
+  "ViewingQualifer": 1
+}

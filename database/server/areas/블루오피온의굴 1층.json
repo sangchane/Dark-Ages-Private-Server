@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100178.map",
+  "FilePath": "../../database/server/maps/lod20178.map",
   "Cols": 70,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100178,
+  "Id": 20178,
   "Music": 0,
   "Name": "블루오피온의굴 1층",
   "Rows": 70,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100178
+  "ID": 20178
 }

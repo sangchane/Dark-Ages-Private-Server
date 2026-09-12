@@ -1,7 +1,7 @@
 {
   "Name": "노비스엔트자이언트",
   "BaseName": "노비스엔트자이언트",
-  "AreaID": 100384,
+  "AreaID": 20384,
   "SpawnMax": 7,
   "SpawnType": 2,
   "SpawnRate": 30,

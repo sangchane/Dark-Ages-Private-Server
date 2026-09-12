@@ -1,7 +1,7 @@
 {
   "Name": "부3",
   "BaseName": "부3",
-  "AreaID": 100406,
+  "AreaID": 20406,
   "SpawnMax": 3,
   "SpawnType": 2,
   "SpawnRate": 60,

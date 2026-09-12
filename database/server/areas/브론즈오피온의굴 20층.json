@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100155.map",
+  "FilePath": "../../database/server/maps/lod20155.map",
   "Cols": 50,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100155,
+  "Id": 20155,
   "Music": 0,
   "Name": "브론즈오피온의굴 20층",
   "Rows": 50,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100155
+  "ID": 20155
 }

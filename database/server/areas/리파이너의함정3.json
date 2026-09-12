@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100134.map",
+  "FilePath": "../../database/server/maps/lod20134.map",
   "Cols": 100,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100134,
+  "Id": 20134,
   "Music": 0,
   "Name": "리파이너의함정3",
   "Rows": 100,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100134
+  "ID": 20134
 }

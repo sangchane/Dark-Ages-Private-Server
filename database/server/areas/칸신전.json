@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100302.map",
+  "FilePath": "../../database/server/maps/lod20302.map",
   "Cols": 13,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100302,
+  "Id": 20302,
   "Music": 151,
   "Name": "칸신전",
   "Rows": 13,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100302
+  "ID": 20302
 }

@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100194.map",
+  "FilePath": "../../database/server/maps/lod20194.map",
   "Cols": 20,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100194,
+  "Id": 20194,
   "Music": 145,
   "Name": "숲오솔길",
   "Rows": 40,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100194
+  "ID": 20194
 }

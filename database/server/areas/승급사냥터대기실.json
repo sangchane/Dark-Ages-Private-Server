@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100207.map",
+  "FilePath": "../../database/server/maps/lod20207.map",
   "Cols": 16,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100207,
+  "Id": 20207,
   "Music": 0,
   "Name": "승급사냥터대기실",
   "Rows": 16,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100207
+  "ID": 20207
 }

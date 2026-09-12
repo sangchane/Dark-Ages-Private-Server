@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100102.map",
+  "FilePath": "../../database/server/maps/lod20102.map",
   "Cols": 80,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100102,
+  "Id": 20102,
   "Music": 0,
   "Name": "레드오피온의굴 19층",
   "Rows": 80,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100102
+  "ID": 20102
 }

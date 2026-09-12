@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100654.map",
+  "FilePath": "../../database/server/maps/lod20654.map",
   "Cols": 30,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100654,
+  "Id": 20654,
   "Music": 142,
   "Name": "유물관",
   "Rows": 27,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100654
+  "ID": 20654
 }

@@ -1,7 +1,7 @@
 {
   "Name": "가스",
   "BaseName": "가스",
-  "AreaID": 100689,
+  "AreaID": 20689,
   "SpawnMax": 3,
   "SpawnType": 2,
   "SpawnRate": 20,

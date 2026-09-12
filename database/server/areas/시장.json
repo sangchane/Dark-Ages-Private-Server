@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100582.map",
+  "FilePath": "../../database/server/maps/lod20582.map",
   "Cols": 30,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100582,
+  "Id": 20582,
   "Music": 125,
   "Name": "시장",
   "Rows": 30,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100582
+  "ID": 20582
 }

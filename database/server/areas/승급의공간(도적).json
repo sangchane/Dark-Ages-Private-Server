@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100210.map",
+  "FilePath": "../../database/server/maps/lod20210.map",
   "Cols": 12,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100210,
+  "Id": 20210,
   "Music": 151,
   "Name": "승급의공간(도적)",
   "Rows": 12,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100210
+  "ID": 20210
 }

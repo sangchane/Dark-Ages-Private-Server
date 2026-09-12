@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100384.map",
+  "FilePath": "../../database/server/maps/lod20384.map",
   "Cols": 40,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100384,
+  "Id": 20384,
   "Music": 155,
   "Name": "노비스지하던전B2",
   "Rows": 40,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100384
+  "ID": 20384
 }

@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100085.map",
+  "FilePath": "../../database/server/maps/lod20085.map",
   "Cols": 50,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100085,
+  "Id": 20085,
   "Music": 0,
   "Name": "노비스사냥터1",
   "Rows": 50,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100085
+  "ID": 20085
 }

@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100137.map",
+  "FilePath": "../../database/server/maps/lod20137.map",
   "Cols": 16,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100137,
+  "Id": 20137,
   "Music": 0,
   "Name": "메인홀",
   "Rows": 16,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100137
+  "ID": 20137
 }

@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100676.map",
+  "FilePath": "../../database/server/maps/lod20676.map",
   "Cols": 50,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100676,
+  "Id": 20676,
   "Music": 155,
   "Name": "신죽음의마을1-4",
   "Rows": 20,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100676
+  "ID": 20676
 }

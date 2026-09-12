@@ -1,7 +1,7 @@
 {
   "Name": "고블린병사1",
   "BaseName": "고블린병사1",
-  "AreaID": 100020,
+  "AreaID": 20020,
   "SpawnMax": 31,
   "SpawnType": 2,
   "SpawnRate": 50,

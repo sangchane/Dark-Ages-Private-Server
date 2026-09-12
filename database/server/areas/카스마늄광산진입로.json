@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100690.map",
+  "FilePath": "../../database/server/maps/lod20690.map",
   "Cols": 20,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100690,
+  "Id": 20690,
   "Music": 188,
   "Name": "카스마늄광산진입로",
   "Rows": 20,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100690
+  "ID": 20690
 }

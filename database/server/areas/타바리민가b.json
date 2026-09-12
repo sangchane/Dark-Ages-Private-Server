@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100522.map",
+  "FilePath": "../../database/server/maps/lod20522.map",
   "Cols": 15,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100522,
+  "Id": 20522,
   "Music": 900,
   "Name": "타바리민가B",
   "Rows": 15,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100522
+  "ID": 20522
 }

@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100603.map",
+  "FilePath": "../../database/server/maps/lod20603.map",
   "Cols": 10,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100603,
+  "Id": 20603,
   "Music": 0,
   "Name": "아슬론촌장의집",
   "Rows": 23,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100603
+  "ID": 20603
 }

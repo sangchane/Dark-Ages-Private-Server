@@ -1,7 +1,7 @@
 {
   "Name": "그렘린",
   "BaseName": "그렘린",
-  "AreaID": 100685,
+  "AreaID": 20685,
   "SpawnMax": 5,
   "SpawnType": 2,
   "SpawnRate": 20,

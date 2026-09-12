@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100371.map",
+  "FilePath": "../../database/server/maps/lod20371.map",
   "Cols": 16,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100371,
+  "Id": 20371,
   "Music": 0,
   "Name": "홀리루딘알현실",
   "Rows": 16,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100371
+  "ID": 20371
 }

@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100485.map",
+  "FilePath": "../../database/server/maps/lod20485.map",
   "Cols": 200,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100485,
+  "Id": 20485,
   "Music": 177,
   "Name": "베크나탑미로5",
   "Rows": 130,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100485
+  "ID": 20485
 }

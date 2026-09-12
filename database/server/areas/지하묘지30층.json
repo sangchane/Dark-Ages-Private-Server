@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100244.map",
+  "FilePath": "../../database/server/maps/lod20244.map",
   "Cols": 50,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100244,
+  "Id": 20244,
   "Music": 0,
   "Name": "지하묘지30층",
   "Rows": 50,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100244
+  "ID": 20244
 }

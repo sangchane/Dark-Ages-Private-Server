@@ -1,0 +1,26 @@
+{
+  "Name": "베이가@수오미주점#6,5",
+  "AreaID": 20360,
+  "X": 6,
+  "Y": 5,
+  "Direction": 2,
+  "Image": 35,
+  "Level": 1,
+  "MaximumHp": 1000,
+  "MaximumMp": 1000,
+  "Speech": [
+    "베이가: 성능좋은 물약을 판매 하고있습니다!"
+  ],
+  "ScriptKey": "pack_speaker",
+  "DefaultMerchantStock": [],
+  "EnableWalking": false,
+  "EnableTurning": false,
+  "EnableAttacking": false,
+  "EnableCasting": false,
+  "WalkRate": 0,
+  "TurnRate": 0,
+  "CastRate": 0,
+  "ChatRate": 0,
+  "PathQualifer": 1,
+  "ViewingQualifer": 1
+}

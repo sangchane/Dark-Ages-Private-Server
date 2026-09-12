@@ -1,7 +1,7 @@
 {
   "Name": "웨어랫",
   "BaseName": "웨어랫",
-  "AreaID": 100672,
+  "AreaID": 20672,
   "SpawnMax": 17,
   "SpawnType": 2,
   "SpawnRate": 250,

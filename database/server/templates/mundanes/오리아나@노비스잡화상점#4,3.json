@@ -1,0 +1,26 @@
+{
+  "Name": "오리아나@노비스잡화상점#4,3",
+  "AreaID": 20378,
+  "X": 4,
+  "Y": 3,
+  "Direction": 2,
+  "Image": 57,
+  "Level": 1,
+  "MaximumHp": 1000,
+  "MaximumMp": 1000,
+  "Speech": [
+    "오리아나: 당신의 모든것을 맏아드립니다!"
+  ],
+  "ScriptKey": "pack_speaker",
+  "DefaultMerchantStock": [],
+  "EnableWalking": false,
+  "EnableTurning": false,
+  "EnableAttacking": false,
+  "EnableCasting": false,
+  "WalkRate": 0,
+  "TurnRate": 0,
+  "CastRate": 0,
+  "ChatRate": 0,
+  "PathQualifer": 1,
+  "ViewingQualifer": 1
+}

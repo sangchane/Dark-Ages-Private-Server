@@ -1,0 +1,26 @@
+{
+  "Name": "뽕스라@수오미여관#11,3",
+  "AreaID": 20358,
+  "X": 11,
+  "Y": 3,
+  "Direction": 2,
+  "Image": 20,
+  "Level": 1,
+  "MaximumHp": 1000,
+  "MaximumMp": 1000,
+  "Speech": [
+    "뽕스라: 마이소시아 최고의 재단사 뽕스라랍니다! 호호"
+  ],
+  "ScriptKey": "pack_speaker",
+  "DefaultMerchantStock": [],
+  "EnableWalking": false,
+  "EnableTurning": false,
+  "EnableAttacking": false,
+  "EnableCasting": false,
+  "WalkRate": 0,
+  "TurnRate": 0,
+  "CastRate": 0,
+  "ChatRate": 0,
+  "PathQualifer": 1,
+  "ViewingQualifer": 1
+}

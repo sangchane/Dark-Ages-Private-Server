@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100539.map",
+  "FilePath": "../../database/server/maps/lod20539.map",
   "Cols": 17,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100539,
+  "Id": 20539,
   "Music": 902,
   "Name": "흉가3층",
   "Rows": 25,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100539
+  "ID": 20539
 }

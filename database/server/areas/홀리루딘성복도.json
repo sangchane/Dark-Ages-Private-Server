@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100368.map",
+  "FilePath": "../../database/server/maps/lod20368.map",
   "Cols": 5,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100368,
+  "Id": 20368,
   "Music": 0,
   "Name": "홀리루딘성복도",
   "Rows": 33,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100368
+  "ID": 20368
 }

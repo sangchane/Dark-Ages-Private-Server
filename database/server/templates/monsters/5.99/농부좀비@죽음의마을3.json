@@ -1,7 +1,7 @@
 {
   "Name": "농부좀비",
   "BaseName": "농부좀비",
-  "AreaID": 100681,
+  "AreaID": 20681,
   "SpawnMax": 30,
   "SpawnType": 2,
   "SpawnRate": 30,

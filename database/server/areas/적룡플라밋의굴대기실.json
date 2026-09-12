@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100656.map",
+  "FilePath": "../../database/server/maps/lod20656.map",
   "Cols": 30,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100656,
+  "Id": 20656,
   "Music": 188,
   "Name": "적룡플라밋의굴대기실",
   "Rows": 30,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100656
+  "ID": 20656
 }

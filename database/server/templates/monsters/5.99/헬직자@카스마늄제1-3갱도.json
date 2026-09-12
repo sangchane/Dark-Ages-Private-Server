@@ -1,7 +1,7 @@
 {
   "Name": "헬직자",
   "BaseName": "헬직자",
-  "AreaID": 100693,
+  "AreaID": 20693,
   "SpawnMax": 10,
   "SpawnType": 2,
   "SpawnRate": 50,

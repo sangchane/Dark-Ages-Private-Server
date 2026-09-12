@@ -1,0 +1,26 @@
+{
+  "Name": "미스포츈@노비스주점#5,4",
+  "AreaID": 20379,
+  "X": 5,
+  "Y": 4,
+  "Direction": 2,
+  "Image": 20,
+  "Level": 1,
+  "MaximumHp": 1000,
+  "MaximumMp": 1000,
+  "Speech": [
+    "미스포츈: 후후 어서들 오세요. 여기는 노비스 주점이랍니다~!"
+  ],
+  "ScriptKey": "pack_speaker",
+  "DefaultMerchantStock": [],
+  "EnableWalking": false,
+  "EnableTurning": false,
+  "EnableAttacking": false,
+  "EnableCasting": false,
+  "WalkRate": 0,
+  "TurnRate": 0,
+  "CastRate": 0,
+  "ChatRate": 0,
+  "PathQualifer": 1,
+  "ViewingQualifer": 1
+}

@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100013.map",
+  "FilePath": "../../database/server/maps/lod20013.map",
   "Cols": 35,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100013,
+  "Id": 20013,
   "Music": 141,
   "Name": "비승급PK",
   "Rows": 60,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100013
+  "ID": 20013
 }

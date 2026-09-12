@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100473.map",
+  "FilePath": "../../database/server/maps/lod20473.map",
   "Cols": 50,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100473,
+  "Id": 20473,
   "Music": 125,
   "Name": "메카닉C구역-2",
   "Rows": 50,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100473
+  "ID": 20473
 }

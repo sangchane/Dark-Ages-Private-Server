@@ -1,7 +1,7 @@
 {
   "Name": "마법좀비",
   "BaseName": "마법좀비",
-  "AreaID": 100680,
+  "AreaID": 20680,
   "SpawnMax": 30,
   "SpawnType": 2,
   "SpawnRate": 30,

@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100379.map",
+  "FilePath": "../../database/server/maps/lod20379.map",
   "Cols": 20,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100379,
+  "Id": 20379,
   "Music": 150,
   "Name": "노비스주점",
   "Rows": 20,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100379
+  "ID": 20379
 }

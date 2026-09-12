@@ -1,7 +1,7 @@
 {
   "Name": "좀비",
   "BaseName": "좀비",
-  "AreaID": 100682,
+  "AreaID": 20682,
   "SpawnMax": 20,
   "SpawnType": 2,
   "SpawnRate": 30,

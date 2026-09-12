@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100202.map",
+  "FilePath": "../../database/server/maps/lod20202.map",
   "Cols": 30,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100202,
+  "Id": 20202,
   "Music": 0,
   "Name": "승급던전 5층",
   "Rows": 30,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100202
+  "ID": 20202
 }

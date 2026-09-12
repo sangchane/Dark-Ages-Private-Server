@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100193.map",
+  "FilePath": "../../database/server/maps/lod20193.map",
   "Cols": 12,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100193,
+  "Id": 20193,
   "Music": 0,
   "Name": "세토아의신전",
   "Rows": 12,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100193
+  "ID": 20193
 }

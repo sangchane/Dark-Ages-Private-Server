@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100520.map",
+  "FilePath": "../../database/server/maps/lod20520.map",
   "Cols": 15,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100520,
+  "Id": 20520,
   "Music": 900,
   "Name": "타바리무기-잡화상점",
   "Rows": 35,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100520
+  "ID": 20520
 }

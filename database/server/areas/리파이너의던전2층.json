@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100124.map",
+  "FilePath": "../../database/server/maps/lod20124.map",
   "Cols": 100,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100124,
+  "Id": 20124,
   "Music": 0,
   "Name": "리파이너의던전2층",
   "Rows": 100,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100124
+  "ID": 20124
 }

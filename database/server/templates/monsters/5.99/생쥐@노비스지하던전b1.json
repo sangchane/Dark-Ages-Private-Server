@@ -1,7 +1,7 @@
 {
   "Name": "생쥐",
   "BaseName": "생쥐",
-  "AreaID": 100383,
+  "AreaID": 20383,
   "SpawnMax": 17,
   "SpawnType": 2,
   "SpawnRate": 30,

@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100429.map",
+  "FilePath": "../../database/server/maps/lod20429.map",
   "Cols": 30,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100429,
+  "Id": 20429,
   "Music": 142,
   "Name": "드라큐라백작의성서7",
   "Rows": 31,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100429
+  "ID": 20429
 }

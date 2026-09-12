@@ -1,7 +1,7 @@
 {
   "Name": "오튜",
   "BaseName": "오튜",
-  "AreaID": 100685,
+  "AreaID": 20685,
   "SpawnMax": 5,
   "SpawnType": 2,
   "SpawnRate": 20,

@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100457.map",
+  "FilePath": "../../database/server/maps/lod20457.map",
   "Cols": 50,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100457,
+  "Id": 20457,
   "Music": 0,
   "Name": "뤼케시온해안2-A",
   "Rows": 50,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100457
+  "ID": 20457
 }

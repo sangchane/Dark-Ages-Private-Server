@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100693.map",
+  "FilePath": "../../database/server/maps/lod20693.map",
   "Cols": 150,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100693,
+  "Id": 20693,
   "Music": 188,
   "Name": "카스마늄제1-3갱도",
   "Rows": 102,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100693
+  "ID": 20693
 }

@@ -1,7 +1,7 @@
 {
   "Name": "사슴",
   "BaseName": "사슴",
-  "AreaID": 100266,
+  "AreaID": 20266,
   "SpawnMax": 1,
   "SpawnType": 2,
   "SpawnRate": 180,

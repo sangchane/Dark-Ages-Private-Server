@@ -1,7 +1,7 @@
 {
   "Name": "옐로우팜팻",
   "BaseName": "옐로우팜팻",
-  "AreaID": 100264,
+  "AreaID": 20264,
   "SpawnMax": 10,
   "SpawnType": 2,
   "SpawnRate": 30,

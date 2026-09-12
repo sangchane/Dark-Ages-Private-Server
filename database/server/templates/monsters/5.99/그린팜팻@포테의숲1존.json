@@ -1,7 +1,7 @@
 {
   "Name": "그린팜팻",
   "BaseName": "그린팜팻",
-  "AreaID": 100263,
+  "AreaID": 20263,
   "SpawnMax": 10,
   "SpawnType": 2,
   "SpawnRate": 30,

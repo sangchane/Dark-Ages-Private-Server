@@ -1,7 +1,7 @@
 {
   "Name": "고사목",
   "BaseName": "고사목",
-  "AreaID": 100681,
+  "AreaID": 20681,
   "SpawnMax": 20,
   "SpawnType": 2,
   "SpawnRate": 30,

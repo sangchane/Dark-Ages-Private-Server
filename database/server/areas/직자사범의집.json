@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100250.map",
+  "FilePath": "../../database/server/maps/lod20250.map",
   "Cols": 15,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100250,
+  "Id": 20250,
   "Music": 0,
   "Name": "직자사범의집",
   "Rows": 15,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100250
+  "ID": 20250
 }

@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100343.map",
+  "FilePath": "../../database/server/maps/lod20343.map",
   "Cols": 20,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100343,
+  "Id": 20343,
   "Music": 144,
   "Name": "뤼케시온은행",
   "Rows": 20,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100343
+  "ID": 20343
 }

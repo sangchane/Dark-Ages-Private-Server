@@ -1,7 +1,7 @@
 {
   "Name": "목수좀비",
   "BaseName": "목수좀비",
-  "AreaID": 100679,
+  "AreaID": 20679,
   "SpawnMax": 30,
   "SpawnType": 2,
   "SpawnRate": 30,

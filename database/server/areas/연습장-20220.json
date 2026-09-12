@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100220.map",
+  "FilePath": "../../database/server/maps/lod20220.map",
   "Cols": 12,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100220,
+  "Id": 20220,
   "Music": 0,
-  "Name": "연습장-100220",
+  "Name": "연습장-20220",
   "Rows": 12,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100220
+  "ID": 20220
 }

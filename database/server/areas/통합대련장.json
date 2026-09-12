@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100610.map",
+  "FilePath": "../../database/server/maps/lod20610.map",
   "Cols": 50,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100610,
+  "Id": 20610,
   "Music": 0,
   "Name": "통합대련장",
   "Rows": 50,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100610
+  "ID": 20610
 }

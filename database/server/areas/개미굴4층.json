@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100053.map",
+  "FilePath": "../../database/server/maps/lod20053.map",
   "Cols": 70,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100053,
+  "Id": 20053,
   "Music": 0,
   "Name": "개미굴4층",
   "Rows": 70,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100053
+  "ID": 20053
 }

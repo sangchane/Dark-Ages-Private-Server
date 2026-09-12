@@ -1,7 +1,7 @@
 {
   "Name": "맨티스4",
   "BaseName": "맨티스4",
-  "AreaID": 100025,
+  "AreaID": 20025,
   "SpawnMax": 63,
   "SpawnType": 2,
   "SpawnRate": 50,

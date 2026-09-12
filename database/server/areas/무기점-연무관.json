@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100496.map",
+  "FilePath": "../../database/server/maps/lod20496.map",
   "Cols": 17,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100496,
+  "Id": 20496,
   "Music": 902,
   "Name": "무기점-연무관",
   "Rows": 17,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100496
+  "ID": 20496
 }

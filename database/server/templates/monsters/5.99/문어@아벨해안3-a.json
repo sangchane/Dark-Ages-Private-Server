@@ -1,7 +1,7 @@
 {
   "Name": "문어",
   "BaseName": "문어",
-  "AreaID": 100589,
+  "AreaID": 20589,
   "SpawnMax": 16,
   "SpawnType": 2,
   "SpawnRate": 30,

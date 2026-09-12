@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100652.map",
+  "FilePath": "../../database/server/maps/lod20652.map",
   "Cols": 30,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100652,
+  "Id": 20652,
   "Music": 142,
   "Name": "역사관",
   "Rows": 27,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100652
+  "ID": 20652
 }

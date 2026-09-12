@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100274.map",
+  "FilePath": "../../database/server/maps/lod20274.map",
   "Cols": 50,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100274,
+  "Id": 20274,
   "Music": 0,
   "Name": "해안가 2",
   "Rows": 50,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100274
+  "ID": 20274
 }

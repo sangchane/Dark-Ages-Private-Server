@@ -1,0 +1,26 @@
+{
+  "Name": "리신@밀레스마을#48,44",
+  "AreaID": 20287,
+  "X": 48,
+  "Y": 44,
+  "Direction": 1,
+  "Image": 19,
+  "Level": 1,
+  "MaximumHp": 1000,
+  "MaximumMp": 1000,
+  "Speech": [
+    "리신: 무도가 사범담당 리신입니다. 심안의 힘으로!"
+  ],
+  "ScriptKey": "pack_speaker",
+  "DefaultMerchantStock": [],
+  "EnableWalking": false,
+  "EnableTurning": false,
+  "EnableAttacking": false,
+  "EnableCasting": false,
+  "WalkRate": 0,
+  "TurnRate": 0,
+  "CastRate": 0,
+  "ChatRate": 0,
+  "PathQualifer": 1,
+  "ViewingQualifer": 1
+}

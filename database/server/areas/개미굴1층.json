@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100050.map",
+  "FilePath": "../../database/server/maps/lod20050.map",
   "Cols": 70,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100050,
+  "Id": 20050,
   "Music": 0,
   "Name": "개미굴1층",
   "Rows": 70,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100050
+  "ID": 20050
 }

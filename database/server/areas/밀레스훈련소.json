@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100298.map",
+  "FilePath": "../../database/server/maps/lod20298.map",
   "Cols": 12,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100298,
+  "Id": 20298,
   "Music": 151,
   "Name": "밀레스훈련소",
   "Rows": 12,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100298
+  "ID": 20298
 }

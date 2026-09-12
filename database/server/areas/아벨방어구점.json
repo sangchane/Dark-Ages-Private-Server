@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100032.map",
+  "FilePath": "../../database/server/maps/lod20032.map",
   "Cols": 12,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100032,
+  "Id": 20032,
   "Music": 141,
   "Name": "아벨방어구점",
   "Rows": 12,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100032
+  "ID": 20032
 }

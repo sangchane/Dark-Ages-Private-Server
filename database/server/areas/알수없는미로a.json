@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100611.map",
+  "FilePath": "../../database/server/maps/lod20611.map",
   "Cols": 30,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100611,
+  "Id": 20611,
   "Music": 175,
   "Name": "알수없는미로A",
   "Rows": 34,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100611
+  "ID": 20611
 }

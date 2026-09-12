@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100090.map",
+  "FilePath": "../../database/server/maps/lod20090.map",
   "Cols": 50,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100090,
+  "Id": 20090,
   "Music": 0,
   "Name": "던전보스방",
   "Rows": 50,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100090
+  "ID": 20090
 }

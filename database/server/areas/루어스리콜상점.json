@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100328.map",
+  "FilePath": "../../database/server/maps/lod20328.map",
   "Cols": 15,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100328,
+  "Id": 20328,
   "Music": 158,
   "Name": "루어스리콜상점",
   "Rows": 15,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100328
+  "ID": 20328
 }

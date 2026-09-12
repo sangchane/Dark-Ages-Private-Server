@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100615.map",
+  "FilePath": "../../database/server/maps/lod20615.map",
   "Cols": 21,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100615,
+  "Id": 20615,
   "Music": 191,
   "Name": "오렌군주의저택",
   "Rows": 32,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100615
+  "ID": 20615
 }

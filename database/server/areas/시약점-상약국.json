@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100497.map",
+  "FilePath": "../../database/server/maps/lod20497.map",
   "Cols": 17,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100497,
+  "Id": 20497,
   "Music": 902,
   "Name": "시약점-상약국",
   "Rows": 17,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100497
+  "ID": 20497
 }

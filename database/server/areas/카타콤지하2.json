@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100516.map",
+  "FilePath": "../../database/server/maps/lod20516.map",
   "Cols": 30,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100516,
+  "Id": 20516,
   "Music": 901,
   "Name": "카타콤지하2",
   "Rows": 30,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100516
+  "ID": 20516
 }

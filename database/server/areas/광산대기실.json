@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100070.map",
+  "FilePath": "../../database/server/maps/lod20070.map",
   "Cols": 50,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100070,
+  "Id": 20070,
   "Music": 0,
   "Name": "광산대기실",
   "Rows": 50,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100070
+  "ID": 20070
 }

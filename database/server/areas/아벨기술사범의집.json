@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100029.map",
+  "FilePath": "../../database/server/maps/lod20029.map",
   "Cols": 15,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100029,
+  "Id": 20029,
   "Music": 141,
   "Name": "아벨기술사범의집",
   "Rows": 15,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100029
+  "ID": 20029
 }

@@ -1,7 +1,7 @@
 {
   "Name": "크리스마스니에2",
   "BaseName": "크리스마스니에2",
-  "AreaID": 100700,
+  "AreaID": 20700,
   "SpawnMax": 8,
   "SpawnType": 2,
   "SpawnRate": 40,

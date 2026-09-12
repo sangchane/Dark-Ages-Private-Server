@@ -1,7 +1,7 @@
 {
   "Name": "트랜트",
   "BaseName": "트랜트",
-  "AreaID": 100265,
+  "AreaID": 20265,
   "SpawnMax": 15,
   "SpawnType": 2,
   "SpawnRate": 30,

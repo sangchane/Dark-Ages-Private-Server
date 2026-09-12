@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100467.map",
+  "FilePath": "../../database/server/maps/lod20467.map",
   "Cols": 20,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100467,
+  "Id": 20467,
   "Music": 125,
   "Name": "루프의캠프",
   "Rows": 20,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100467
+  "ID": 20467
 }

@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100166.map",
+  "FilePath": "../../database/server/maps/lod20166.map",
   "Cols": 50,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100166,
+  "Id": 20166,
   "Music": 0,
   "Name": "블랙오피온의굴29층",
   "Rows": 50,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100166
+  "ID": 20166
 }

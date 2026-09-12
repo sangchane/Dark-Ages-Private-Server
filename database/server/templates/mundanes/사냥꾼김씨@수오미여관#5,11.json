@@ -1,0 +1,26 @@
+{
+  "Name": "사냥꾼김씨@수오미여관#5,11",
+  "AreaID": 20358,
+  "X": 5,
+  "Y": 11,
+  "Direction": 2,
+  "Image": 113,
+  "Level": 1,
+  "MaximumHp": 1000,
+  "MaximumMp": 1000,
+  "Speech": [
+    "사냥꾼김씨: 난 사냥꾼이지!! 까불면 죽어!"
+  ],
+  "ScriptKey": "pack_speaker",
+  "DefaultMerchantStock": [],
+  "EnableWalking": false,
+  "EnableTurning": false,
+  "EnableAttacking": false,
+  "EnableCasting": false,
+  "WalkRate": 0,
+  "TurnRate": 0,
+  "CastRate": 0,
+  "ChatRate": 0,
+  "PathQualifer": 1,
+  "ViewingQualifer": 1
+}

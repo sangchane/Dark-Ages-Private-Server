@@ -1,7 +1,7 @@
 {
   "Name": "녹색벌",
   "BaseName": "녹색벌",
-  "AreaID": 100394,
+  "AreaID": 20394,
   "SpawnMax": 10,
   "SpawnType": 2,
   "SpawnRate": 30,

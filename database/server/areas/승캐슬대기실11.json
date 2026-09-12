@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100564.map",
+  "FilePath": "../../database/server/maps/lod20564.map",
   "Cols": 9,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100564,
+  "Id": 20564,
   "Music": 0,
   "Name": "승캐슬대기실11",
   "Rows": 9,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100564
+  "ID": 20564
 }

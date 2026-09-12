@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100647.map",
+  "FilePath": "../../database/server/maps/lod20647.map",
   "Cols": 30,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100647,
+  "Id": 20647,
   "Music": 142,
   "Name": "몬스터관",
   "Rows": 27,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100647
+  "ID": 20647
 }

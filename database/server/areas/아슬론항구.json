@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100604.map",
+  "FilePath": "../../database/server/maps/lod20604.map",
   "Cols": 55,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100604,
+  "Id": 20604,
   "Music": 0,
   "Name": "아슬론항구",
   "Rows": 33,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100604
+  "ID": 20604
 }

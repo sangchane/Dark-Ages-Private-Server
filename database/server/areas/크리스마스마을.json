@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100711.map",
+  "FilePath": "../../database/server/maps/lod20711.map",
   "Cols": 35,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100711,
+  "Id": 20711,
   "Music": 157,
   "Name": "크리스마스마을",
   "Rows": 30,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100711
+  "ID": 20711
 }

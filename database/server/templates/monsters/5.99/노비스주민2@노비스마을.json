@@ -1,7 +1,7 @@
 {
   "Name": "노비스주민2",
   "BaseName": "노비스주민2",
-  "AreaID": 100373,
+  "AreaID": 20373,
   "SpawnMax": 1,
   "SpawnType": 2,
   "SpawnRate": 30,

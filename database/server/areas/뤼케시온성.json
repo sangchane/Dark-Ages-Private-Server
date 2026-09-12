@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100341.map",
+  "FilePath": "../../database/server/maps/lod20341.map",
   "Cols": 50,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100341,
+  "Id": 20341,
   "Music": 144,
   "Name": "뤼케시온성",
   "Rows": 50,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100341
+  "ID": 20341
 }

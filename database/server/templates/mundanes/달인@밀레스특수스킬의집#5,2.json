@@ -1,0 +1,26 @@
+{
+  "Name": "달인@밀레스특수스킬의집#5,2",
+  "AreaID": 20297,
+  "X": 5,
+  "Y": 2,
+  "Direction": 2,
+  "Image": 33,
+  "Level": 1,
+  "MaximumHp": 1000,
+  "MaximumMp": 1000,
+  "Speech": [
+    "달인: 내 실생활 기술들을 가르쳐주지.. 단 EG를 받고말이야!"
+  ],
+  "ScriptKey": "pack_speaker",
+  "DefaultMerchantStock": [],
+  "EnableWalking": false,
+  "EnableTurning": false,
+  "EnableAttacking": false,
+  "EnableCasting": false,
+  "WalkRate": 0,
+  "TurnRate": 0,
+  "CastRate": 0,
+  "ChatRate": 0,
+  "PathQualifer": 1,
+  "ViewingQualifer": 1
+}

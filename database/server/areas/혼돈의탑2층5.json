@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100756.map",
+  "FilePath": "../../database/server/maps/lod20756.map",
   "Cols": 30,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100756,
+  "Id": 20756,
   "Music": 160,
   "Name": "혼돈의탑2층5",
   "Rows": 30,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100756
+  "ID": 20756
 }

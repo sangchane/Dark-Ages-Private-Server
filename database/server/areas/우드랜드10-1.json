@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100018.map",
+  "FilePath": "../../database/server/maps/lod20018.map",
   "Cols": 50,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100018,
+  "Id": 20018,
   "Music": 173,
   "Name": "우드랜드10-1",
   "Rows": 50,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100018
+  "ID": 20018
 }

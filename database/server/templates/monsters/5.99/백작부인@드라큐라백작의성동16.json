@@ -1,7 +1,7 @@
 {
   "Name": "백작부인",
   "BaseName": "백작부인",
-  "AreaID": 100407,
+  "AreaID": 20407,
   "SpawnMax": 1,
   "SpawnType": 2,
   "SpawnRate": 300,

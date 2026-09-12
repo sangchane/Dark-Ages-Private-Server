@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100291.map",
+  "FilePath": "../../database/server/maps/lod20291.map",
   "Cols": 12,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100291,
+  "Id": 20291,
   "Music": 151,
   "Name": "밀레스신전",
   "Rows": 12,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100291
+  "ID": 20291
 }

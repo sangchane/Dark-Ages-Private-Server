@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100642.map",
+  "FilePath": "../../database/server/maps/lod20642.map",
   "Cols": 13,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100642,
+  "Id": 20642,
   "Music": 191,
   "Name": "오렌주택7",
   "Rows": 20,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100642
+  "ID": 20642
 }

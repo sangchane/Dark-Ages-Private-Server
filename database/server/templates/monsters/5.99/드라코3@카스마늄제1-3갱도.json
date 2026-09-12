@@ -1,7 +1,7 @@
 {
   "Name": "드라코3",
   "BaseName": "드라코3",
-  "AreaID": 100693,
+  "AreaID": 20693,
   "SpawnMax": 10,
   "SpawnType": 2,
   "SpawnRate": 50,

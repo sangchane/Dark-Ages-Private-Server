@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100614.map",
+  "FilePath": "../../database/server/maps/lod20614.map",
   "Cols": 133,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100614,
+  "Id": 20614,
   "Music": 191,
   "Name": "오렌",
   "Rows": 200,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100614
+  "ID": 20614
 }

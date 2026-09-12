@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100367.map",
+  "FilePath": "../../database/server/maps/lod20367.map",
   "Cols": 16,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100367,
+  "Id": 20367,
   "Music": 0,
   "Name": "홀리루딘성메인홀",
   "Rows": 16,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100367
+  "ID": 20367
 }

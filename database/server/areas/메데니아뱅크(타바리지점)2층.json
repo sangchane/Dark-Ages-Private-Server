@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100493.map",
+  "FilePath": "../../database/server/maps/lod20493.map",
   "Cols": 25,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100493,
+  "Id": 20493,
   "Music": 900,
   "Name": "메데니아뱅크(타바리지점)2층",
   "Rows": 25,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100493
+  "ID": 20493
 }

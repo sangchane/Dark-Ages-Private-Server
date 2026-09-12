@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100442.map",
+  "FilePath": "../../database/server/maps/lod20442.map",
   "Cols": 16,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100442,
+  "Id": 20442,
   "Music": 0,
   "Name": "루어스성1층홀",
   "Rows": 16,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100442
+  "ID": 20442
 }

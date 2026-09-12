@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100030.map",
+  "FilePath": "../../database/server/maps/lod20030.map",
   "Cols": 70,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100030,
+  "Id": 20030,
   "Music": 141,
   "Name": "아벨마을",
   "Rows": 78,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100030
+  "ID": 20030
 }

@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100700.map",
+  "FilePath": "../../database/server/maps/lod20700.map",
   "Cols": 50,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100700,
+  "Id": 20700,
   "Music": 157,
   "Name": "마운틴메리2-1",
   "Rows": 50,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100700
+  "ID": 20700
 }

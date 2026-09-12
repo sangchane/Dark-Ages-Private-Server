@@ -1,7 +1,7 @@
 {
   "Name": "녹색말벌1",
   "BaseName": "녹색말벌1",
-  "AreaID": 100017,
+  "AreaID": 20017,
   "SpawnMax": 10,
   "SpawnType": 2,
   "SpawnRate": 50,

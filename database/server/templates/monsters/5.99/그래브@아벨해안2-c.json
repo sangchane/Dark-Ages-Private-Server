@@ -1,7 +1,7 @@
 {
   "Name": "그래브",
   "BaseName": "그래브",
-  "AreaID": 100588,
+  "AreaID": 20588,
   "SpawnMax": 6,
   "SpawnType": 2,
   "SpawnRate": 30,

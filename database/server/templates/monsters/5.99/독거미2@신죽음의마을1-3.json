@@ -1,7 +1,7 @@
 {
   "Name": "독거미2",
   "BaseName": "독거미2",
-  "AreaID": 100675,
+  "AreaID": 20675,
   "SpawnMax": 14,
   "SpawnType": 2,
   "SpawnRate": 250,

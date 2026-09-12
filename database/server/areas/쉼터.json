@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100196.map",
+  "FilePath": "../../database/server/maps/lod20196.map",
   "Cols": 50,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100196,
+  "Id": 20196,
   "Music": 0,
   "Name": "쉼터",
   "Rows": 50,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100196
+  "ID": 20196
 }

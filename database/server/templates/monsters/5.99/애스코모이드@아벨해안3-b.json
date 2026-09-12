@@ -1,7 +1,7 @@
 {
   "Name": "애스코모이드",
   "BaseName": "애스코모이드",
-  "AreaID": 100590,
+  "AreaID": 20590,
   "SpawnMax": 16,
   "SpawnType": 2,
   "SpawnRate": 30,

@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100655.map",
+  "FilePath": "../../database/server/maps/lod20655.map",
   "Cols": 30,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100655,
+  "Id": 20655,
   "Music": 142,
   "Name": "인물관",
   "Rows": 27,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100655
+  "ID": 20655
 }

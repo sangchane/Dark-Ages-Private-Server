@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100528.map",
+  "FilePath": "../../database/server/maps/lod20528.map",
   "Cols": 20,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100528,
+  "Id": 20528,
   "Music": 902,
   "Name": "화론-민가1",
   "Rows": 10,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100528
+  "ID": 20528
 }

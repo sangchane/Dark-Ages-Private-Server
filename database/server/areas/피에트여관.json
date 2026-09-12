@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100315.map",
+  "FilePath": "../../database/server/maps/lod20315.map",
   "Cols": 20,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100315,
+  "Id": 20315,
   "Music": 0,
   "Name": "피에트여관",
   "Rows": 20,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100315
+  "ID": 20315
 }

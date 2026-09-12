@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100587.map",
+  "FilePath": "../../database/server/maps/lod20587.map",
   "Cols": 50,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100587,
+  "Id": 20587,
   "Music": 0,
   "Name": "아벨해안2-B",
   "Rows": 50,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100587
+  "ID": 20587
 }

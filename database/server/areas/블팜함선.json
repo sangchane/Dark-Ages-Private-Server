@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100000.map",
+  "FilePath": "../../database/server/maps/lod20000.map",
   "Cols": 50,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100000,
+  "Id": 20000,
   "Music": 162,
   "Name": "블팜함선",
   "Rows": 30,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100000
+  "ID": 20000
 }

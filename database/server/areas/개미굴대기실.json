@@ -1,13 +1,13 @@
 {
-  "FilePath": "../../database/server/maps/lod100054.map",
+  "FilePath": "../../database/server/maps/lod20054.map",
   "Cols": 50,
   "ContentName": null,
   "Flags": 106240,
-  "Id": 100054,
+  "Id": 20054,
   "Music": 0,
   "Name": "개미굴대기실",
   "Rows": 50,
   "Blocks": [],
   "ScriptKey": null,
-  "ID": 100054
+  "ID": 20054
 }
