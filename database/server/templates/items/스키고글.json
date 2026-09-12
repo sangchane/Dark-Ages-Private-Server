@@ -1,0 +1,7 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "스키고글",
+  "Image": 735,
+  "DisplayImage": 149,
+  "Gender": 1
+}

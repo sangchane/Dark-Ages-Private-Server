@@ -1,0 +1,6 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "자르반의검",
+  "Value": 100,
+  "Image": 13681
+}

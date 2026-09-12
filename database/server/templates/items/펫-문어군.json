@@ -1,0 +1,11 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "펫-문어군",
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 2
+  },
+  "Image": 12136,
+  "DisplayImage": 175
+}

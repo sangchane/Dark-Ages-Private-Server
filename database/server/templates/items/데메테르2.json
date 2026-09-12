@@ -1,0 +1,33 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "데메테르2",
+  "MaxDurability": 515000,
+  "Value": 0,
+  "CarryWeight": 4,
+  "LevelRequired": 99,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 65
+  },
+  "HealthModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 5000
+  },
+  "ManaModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 20000
+  },
+  "MrModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 3
+  },
+  "Image": 985,
+  "DisplayImage": 179,
+  "Gender": 1,
+  "Class": 4,
+  "StageRequired": 0
+}

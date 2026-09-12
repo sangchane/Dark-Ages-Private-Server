@@ -1,0 +1,12 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "단독군장",
+  "Value": 50000000,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 3
+  },
+  "Image": 12134,
+  "DisplayImage": 179
+}

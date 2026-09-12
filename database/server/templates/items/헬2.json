@@ -1,0 +1,15 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "헬2",
+  "MaxDurability": 1000000,
+  "Value": 0,
+  "CarryWeight": 34,
+  "LevelRequired": 99,
+  "DmgMin": 800,
+  "DmgMax": 900,
+  "Image": 925,
+  "DisplayImage": 96,
+  "Gender": 255,
+  "Class": 1,
+  "StageRequired": 0
+}

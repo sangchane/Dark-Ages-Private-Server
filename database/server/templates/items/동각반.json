@@ -1,0 +1,17 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "동각반",
+  "MaxDurability": 6000,
+  "Value": 5000,
+  "CarryWeight": 6,
+  "LevelRequired": 21,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 3
+  },
+  "Image": 250,
+  "Gender": 255,
+  "Class": 0,
+  "StageRequired": 0
+}

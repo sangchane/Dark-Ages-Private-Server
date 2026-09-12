@@ -1,0 +1,18 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "스카웃튜닉",
+  "MaxDurability": 3000,
+  "Value": 300,
+  "CarryWeight": 4,
+  "LevelRequired": 1,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 8
+  },
+  "Image": 99,
+  "DisplayImage": 4,
+  "Gender": 1,
+  "Class": 2,
+  "StageRequired": 0
+}

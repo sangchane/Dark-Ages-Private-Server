@@ -1,0 +1,35 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "용팔찌",
+  "MaxDurability": 5000,
+  "Value": 4000,
+  "CarryWeight": 0,
+  "LevelRequired": 99,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 4
+  },
+  "HealthModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 500
+  },
+  "ManaModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 1500
+  },
+  "DexModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 10
+  },
+  "Image": 955,
+  "DisplayImage": 0,
+  "Gender": 255,
+  "Class": 5,
+  "StageRequired": 1
+}

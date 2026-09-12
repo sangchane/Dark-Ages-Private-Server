@@ -1,0 +1,18 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "키톤",
+  "MaxDurability": 12000,
+  "Value": 15000,
+  "CarryWeight": 13,
+  "LevelRequired": 81,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 29
+  },
+  "Image": 149,
+  "DisplayImage": 19,
+  "Gender": 1,
+  "Class": 2,
+  "StageRequired": 0
+}

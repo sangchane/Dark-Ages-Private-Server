@@ -1,0 +1,9 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "러브핑크홀리데이코트",
+  "MaxDurability": 18000,
+  "Value": 50000000,
+  "Image": 3295,
+  "DisplayImage": 339,
+  "Gender": 1
+}

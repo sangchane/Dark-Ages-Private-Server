@@ -1,0 +1,18 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "아벨길드복",
+  "MaxDurability": 1000000,
+  "Value": 100,
+  "CarryWeight": 4,
+  "LevelRequired": 1,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 2
+  },
+  "Image": 851,
+  "DisplayImage": 151,
+  "Gender": 2,
+  "Class": 0,
+  "StageRequired": 0
+}

@@ -1,0 +1,15 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "뤼케시온길드칼",
+  "MaxDurability": 70000,
+  "Value": 100000,
+  "CarryWeight": 7,
+  "LevelRequired": 41,
+  "DmgMin": 180,
+  "DmgMax": 210,
+  "Image": 847,
+  "DisplayImage": 70,
+  "Gender": 255,
+  "Class": 0,
+  "StageRequired": 0
+}

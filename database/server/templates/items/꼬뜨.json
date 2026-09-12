@@ -1,0 +1,18 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "꼬뜨",
+  "MaxDurability": 3000,
+  "Value": 300,
+  "CarryWeight": 4,
+  "LevelRequired": 1,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 8
+  },
+  "Image": 118,
+  "DisplayImage": 4,
+  "Gender": 2,
+  "Class": 2,
+  "StageRequired": 0
+}

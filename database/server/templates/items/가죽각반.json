@@ -1,0 +1,17 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "가죽각반",
+  "MaxDurability": 3000,
+  "Value": 3000,
+  "CarryWeight": 4,
+  "LevelRequired": 11,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 2
+  },
+  "Image": 238,
+  "Gender": 255,
+  "Class": 0,
+  "StageRequired": 0
+}

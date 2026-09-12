@@ -1,0 +1,6 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "주작의서클릿",
+  "Value": 65000000,
+  "Image": 2079
+}

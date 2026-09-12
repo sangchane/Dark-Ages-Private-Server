@@ -1,0 +1,15 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "매직파나",
+  "MaxDurability": 3000,
+  "Value": 150000,
+  "CarryWeight": 5,
+  "LevelRequired": 1,
+  "DmgMin": 180,
+  "DmgMax": 200,
+  "Image": 550,
+  "DisplayImage": 62,
+  "Gender": 255,
+  "Class": 3,
+  "StageRequired": 0
+}

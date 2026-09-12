@@ -1,0 +1,18 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "선풍도복",
+  "MaxDurability": 12000,
+  "Value": 15000,
+  "CarryWeight": 11,
+  "LevelRequired": 81,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 29
+  },
+  "Image": 148,
+  "DisplayImage": 18,
+  "Gender": 1,
+  "Class": 5,
+  "StageRequired": 0
+}

@@ -1,0 +1,15 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "자이언트스톤해머",
+  "MaxDurability": 400000,
+  "Value": 100000,
+  "CarryWeight": 29,
+  "LevelRequired": 99,
+  "DmgMin": 170,
+  "DmgMax": 190,
+  "Image": 516,
+  "DisplayImage": 44,
+  "Gender": 255,
+  "Class": 0,
+  "StageRequired": 0
+}

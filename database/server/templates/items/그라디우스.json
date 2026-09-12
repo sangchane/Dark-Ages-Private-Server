@@ -1,0 +1,15 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "그라디우스",
+  "MaxDurability": 8000,
+  "Value": 3000,
+  "CarryWeight": 5,
+  "LevelRequired": 21,
+  "DmgMin": 80,
+  "DmgMax": 90,
+  "Image": 90,
+  "DisplayImage": 5,
+  "Gender": 255,
+  "Class": 1,
+  "StageRequired": 0
+}

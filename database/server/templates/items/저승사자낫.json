@@ -1,0 +1,29 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "저승사자낫",
+  "MaxDurability": 6000,
+  "Value": 100000,
+  "CarryWeight": 5,
+  "LevelRequired": 1,
+  "DmgMin": 500,
+  "DmgMax": 500,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 1
+  },
+  "HealthModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 500
+  },
+  "ManaModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 500
+  },
+  "Image": 12215,
+  "Gender": 255,
+  "Class": 0,
+  "StageRequired": 0
+}

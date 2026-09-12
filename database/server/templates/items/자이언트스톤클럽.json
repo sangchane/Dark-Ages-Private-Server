@@ -1,0 +1,15 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "자이언트스톤클럽",
+  "MaxDurability": 500000,
+  "Value": 10000000,
+  "CarryWeight": 19,
+  "LevelRequired": 99,
+  "DmgMin": 180,
+  "DmgMax": 200,
+  "Image": 509,
+  "DisplayImage": 37,
+  "Gender": 255,
+  "Class": 1,
+  "StageRequired": 0
+}

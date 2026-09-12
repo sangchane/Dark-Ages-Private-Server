@@ -1,0 +1,15 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "매스케이드",
+  "MaxDurability": 12000,
+  "Value": 7000,
+  "CarryWeight": 7,
+  "LevelRequired": 51,
+  "DmgMin": 124,
+  "DmgMax": 140,
+  "Image": 170,
+  "DisplayImage": 11,
+  "Gender": 255,
+  "Class": 1,
+  "StageRequired": 0
+}

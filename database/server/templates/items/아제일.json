@@ -1,0 +1,14 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "아제일",
+  "Value": 10000,
+  "LevelRequired": 21,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 3
+  },
+  "Image": 1332,
+  "DisplayImage": 184,
+  "Gender": 2
+}

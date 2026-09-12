@@ -1,0 +1,9 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "엘리스토끼의상",
+  "MaxDurability": 18000,
+  "Value": 50000000,
+  "Image": 3460,
+  "DisplayImage": 333,
+  "Gender": 1
+}

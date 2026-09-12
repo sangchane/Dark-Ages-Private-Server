@@ -1,0 +1,20 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "은장갑",
+  "MaxDurability": 5000,
+  "Value": 3000,
+  "CarryWeight": 0,
+  "LevelRequired": 51,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 4
+  },
+  "Image": 228,
+  "DisplayImage": 0,
+  "Gender": 255,
+  "Class": 0,
+  "StageRequired": 0
+}

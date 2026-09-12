@@ -1,0 +1,27 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "강화날각",
+  "MaxDurability": 12000,
+  "Value": 9000,
+  "CarryWeight": 10,
+  "LevelRequired": 99,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 18
+  },
+  "HealthModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 10000
+  },
+  "ManaModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 10000
+  },
+  "Image": 1355,
+  "Gender": 255,
+  "Class": 0,
+  "StageRequired": 2
+}

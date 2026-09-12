@@ -1,0 +1,15 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "자이언트스톤액스",
+  "MaxDurability": 400000,
+  "Value": 100000,
+  "CarryWeight": 17,
+  "LevelRequired": 1,
+  "DmgMin": 180,
+  "DmgMax": 200,
+  "Image": 513,
+  "DisplayImage": 41,
+  "Gender": 255,
+  "Class": 1,
+  "StageRequired": 0
+}

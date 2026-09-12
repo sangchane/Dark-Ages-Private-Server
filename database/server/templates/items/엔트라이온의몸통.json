@@ -1,0 +1,6 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "엔트라이온의몸통",
+  "Value": 100,
+  "Image": 1510
+}

@@ -1,0 +1,40 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "샤크블레이드",
+  "MaxDurability": 3000000,
+  "Value": 3000000,
+  "CarryWeight": 10,
+  "LevelRequired": 99,
+  "DmgMin": 2200,
+  "DmgMax": 2200,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 3
+  },
+  "HealthModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 1200
+  },
+  "ManaModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 300
+  },
+  "HitModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 10
+  },
+  "DmgModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 10
+  },
+  "Image": 3413,
+  "DisplayImage": 203,
+  "Gender": 255,
+  "Class": 0,
+  "StageRequired": 0
+}

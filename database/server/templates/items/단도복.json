@@ -1,0 +1,18 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "단도복",
+  "MaxDurability": 6000,
+  "Value": 3000,
+  "CarryWeight": 6,
+  "LevelRequired": 21,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 14
+  },
+  "Image": 108,
+  "DisplayImage": 13,
+  "Gender": 1,
+  "Class": 5,
+  "StageRequired": 0
+}

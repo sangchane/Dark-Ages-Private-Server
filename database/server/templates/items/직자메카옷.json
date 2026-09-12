@@ -1,0 +1,28 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "직자메카옷",
+  "MaxDurability": 15000,
+  "Value": 20000,
+  "CarryWeight": 14,
+  "LevelRequired": 99,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 60
+  },
+  "HealthModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 10000
+  },
+  "ManaModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 10000
+  },
+  "Image": 13466,
+  "DisplayImage": 3750,
+  "Gender": 255,
+  "Class": 4,
+  "StageRequired": 0
+}

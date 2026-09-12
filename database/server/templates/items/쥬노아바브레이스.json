@@ -1,0 +1,30 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "쥬노아바브레이스",
+  "MaxDurability": 5000,
+  "Value": 4000,
+  "CarryWeight": 0,
+  "LevelRequired": 99,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 8
+  },
+  "HealthModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 5000
+  },
+  "ManaModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 5000
+  },
+  "Image": 2236,
+  "DisplayImage": 0,
+  "Gender": 255,
+  "Class": 5,
+  "StageRequired": 2
+}

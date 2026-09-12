@@ -1,0 +1,18 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "브리간딘",
+  "MaxDurability": 6000,
+  "Value": 3000,
+  "CarryWeight": 6,
+  "LevelRequired": 21,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 14
+  },
+  "Image": 123,
+  "DisplayImage": 9,
+  "Gender": 2,
+  "Class": 2,
+  "StageRequired": 0
+}

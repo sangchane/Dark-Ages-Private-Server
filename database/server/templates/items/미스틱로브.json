@@ -1,0 +1,18 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "미스틱로브",
+  "MaxDurability": 6000,
+  "Value": 3000,
+  "CarryWeight": 5,
+  "LevelRequired": 21,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 10
+  },
+  "Image": 124,
+  "DisplayImage": 10,
+  "Gender": 2,
+  "Class": 4,
+  "StageRequired": 0
+}

@@ -1,0 +1,6 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "로즈힐가면",
+  "Image": 545,
+  "DisplayImage": 152
+}

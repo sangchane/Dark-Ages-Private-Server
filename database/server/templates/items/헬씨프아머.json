@@ -1,0 +1,28 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "헬씨프아머",
+  "MaxDurability": 7500,
+  "Value": 0,
+  "CarryWeight": 22,
+  "LevelRequired": 99,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 51
+  },
+  "HealthModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 900
+  },
+  "DexModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 2
+  },
+  "Image": 302,
+  "DisplayImage": 37,
+  "Gender": 255,
+  "Class": 2,
+  "StageRequired": 0
+}

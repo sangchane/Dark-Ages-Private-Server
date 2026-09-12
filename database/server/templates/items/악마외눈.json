@@ -1,0 +1,7 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "악마외눈",
+  "Value": 250000000,
+  "Image": 12223,
+  "DisplayImage": 192
+}

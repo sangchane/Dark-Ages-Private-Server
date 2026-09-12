@@ -1,0 +1,26 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "별의귀걸이",
+  "MaxDurability": 3000,
+  "Value": 10000,
+  "CarryWeight": 0,
+  "LevelRequired": 1,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 1
+  },
+  "HealthModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 30
+  },
+  "ManaModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 30
+  },
+  "Image": 13433,
+  "Class": 0,
+  "StageRequired": 0
+}

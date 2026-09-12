@@ -1,0 +1,18 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "지폰",
+  "MaxDurability": 6000,
+  "Value": 3000,
+  "CarryWeight": 7,
+  "LevelRequired": 21,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 16
+  },
+  "Image": 102,
+  "DisplayImage": 7,
+  "Gender": 1,
+  "Class": 1,
+  "StageRequired": 0
+}

@@ -1,0 +1,15 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "토마호크",
+  "MaxDurability": 8000,
+  "Value": 100000,
+  "CarryWeight": 5,
+  "LevelRequired": 11,
+  "DmgMin": 16,
+  "DmgMax": 26,
+  "Image": 527,
+  "DisplayImage": 54,
+  "Gender": 255,
+  "Class": 1,
+  "StageRequired": 0
+}

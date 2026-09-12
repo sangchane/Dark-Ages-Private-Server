@@ -1,0 +1,20 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "에페",
+  "MaxDurability": 4000,
+  "Value": 500,
+  "CarryWeight": 3,
+  "LevelRequired": 1,
+  "DmgMin": 15,
+  "DmgMax": 20,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 1
+  },
+  "Image": 87,
+  "DisplayImage": 2,
+  "Gender": 255,
+  "Class": 0,
+  "StageRequired": 0
+}

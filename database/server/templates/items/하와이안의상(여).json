@@ -1,0 +1,10 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "하와이안의상(여)",
+  "MaxDurability": 18000,
+  "Value": 50000000,
+  "CarryWeight": 0,
+  "Image": 3215,
+  "DisplayImage": 332,
+  "Gender": 1
+}

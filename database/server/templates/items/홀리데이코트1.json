@@ -1,0 +1,8 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "홀리데이코트1",
+  "CarryWeight": 0,
+  "Image": 1736,
+  "DisplayImage": 257,
+  "Gender": 1
+}

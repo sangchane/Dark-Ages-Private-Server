@@ -1,0 +1,12 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "버터플라이윙",
+  "Value": 60000000,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 2
+  },
+  "Image": 12102,
+  "DisplayImage": 165
+}

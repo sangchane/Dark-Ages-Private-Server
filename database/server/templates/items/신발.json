@@ -1,0 +1,13 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "신발",
+  "Value": 1500,
+  "LevelRequired": 11,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 3
+  },
+  "Image": 1783,
+  "DisplayImage": 10
+}

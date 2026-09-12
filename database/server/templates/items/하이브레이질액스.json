@@ -1,0 +1,15 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "하이브레이질액스",
+  "MaxDurability": 20000,
+  "Value": 100000,
+  "CarryWeight": 11,
+  "LevelRequired": 56,
+  "DmgMin": 60,
+  "DmgMax": 80,
+  "Image": 512,
+  "DisplayImage": 40,
+  "Gender": 255,
+  "Class": 1,
+  "StageRequired": 0
+}

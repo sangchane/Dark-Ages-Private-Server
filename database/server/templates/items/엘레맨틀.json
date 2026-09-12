@@ -1,0 +1,18 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "엘레맨틀",
+  "MaxDurability": 9000,
+  "Value": 7000,
+  "CarryWeight": 7,
+  "LevelRequired": 51,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 18
+  },
+  "Image": 129,
+  "DisplayImage": 15,
+  "Gender": 2,
+  "Class": 4,
+  "StageRequired": 0
+}

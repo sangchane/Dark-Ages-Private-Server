@@ -1,0 +1,16 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "뮤레칸의소서러귀걸이+1",
+  "MaxDurability": 3000,
+  "Value": 10000,
+  "CarryWeight": 0,
+  "LevelRequired": 99,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 1
+  },
+  "Image": 13366,
+  "Class": 3,
+  "StageRequired": 2
+}

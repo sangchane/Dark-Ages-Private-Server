@@ -1,0 +1,12 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "Effect-벚꽃",
+  "Value": 130000000,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 7
+  },
+  "Image": 12068,
+  "DisplayImage": 161
+}

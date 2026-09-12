@@ -1,0 +1,8 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "퀼트모자",
+  "Value": 150000000,
+  "Image": 1983,
+  "DisplayImage": 227,
+  "Gender": 1
+}

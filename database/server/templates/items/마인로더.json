@@ -1,0 +1,9 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "마인로더",
+  "MaxDurability": 18000,
+  "Value": 50000000,
+  "Image": 3370,
+  "DisplayImage": 342,
+  "Gender": 1
+}

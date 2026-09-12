@@ -1,0 +1,12 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "니에가방",
+  "Value": 30000000,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 5
+  },
+  "Image": 10110,
+  "DisplayImage": 202
+}

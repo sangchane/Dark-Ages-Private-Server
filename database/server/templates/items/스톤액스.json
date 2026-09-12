@@ -1,0 +1,15 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "스톤액스",
+  "MaxDurability": 10000,
+  "Value": 100000,
+  "CarryWeight": 11,
+  "LevelRequired": 99,
+  "DmgMin": 155,
+  "DmgMax": 175,
+  "Image": 514,
+  "DisplayImage": 42,
+  "Gender": 255,
+  "Class": 1,
+  "StageRequired": 0
+}

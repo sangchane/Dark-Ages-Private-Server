@@ -1,0 +1,12 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "쥐머리띠",
+  "Value": 100000000,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 10
+  },
+  "Image": 12236,
+  "DisplayImage": 197
+}

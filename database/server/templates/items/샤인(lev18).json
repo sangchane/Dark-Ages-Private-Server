@@ -1,0 +1,40 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "샤인(Lev18)",
+  "MaxDurability": 1000000,
+  "Value": 1500000,
+  "CarryWeight": 0,
+  "LevelRequired": 99,
+  "DmgMin": 800,
+  "DmgMax": 900,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 1
+  },
+  "HealthModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 3000
+  },
+  "ManaModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 3000
+  },
+  "IntModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 5
+  },
+  "WisModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 5
+  },
+  "Image": 2040,
+  "DisplayImage": 147,
+  "Gender": 255,
+  "Class": 3,
+  "StageRequired": 2
+}

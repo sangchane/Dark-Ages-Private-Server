@@ -1,0 +1,8 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "귀족의상(여)",
+  "Value": 3500000,
+  "Image": 12089,
+  "DisplayImage": 413,
+  "Gender": 2
+}

@@ -1,0 +1,17 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "은각반",
+  "MaxDurability": 9000,
+  "Value": 7000,
+  "CarryWeight": 8,
+  "LevelRequired": 51,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 4
+  },
+  "Image": 239,
+  "Gender": 255,
+  "Class": 0,
+  "StageRequired": 0
+}

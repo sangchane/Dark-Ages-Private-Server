@@ -1,0 +1,20 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "매직마르시아",
+  "MaxDurability": 3000,
+  "Value": 500,
+  "CarryWeight": 5,
+  "LevelRequired": 1,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 1
+  },
+  "Image": 132,
+  "DisplayImage": 7,
+  "Gender": 255,
+  "Class": 3,
+  "StageRequired": 0
+}

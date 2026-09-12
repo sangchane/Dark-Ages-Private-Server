@@ -1,0 +1,15 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "용의발톱",
+  "MaxDurability": 100000,
+  "Value": 0,
+  "CarryWeight": 19,
+  "LevelRequired": 1,
+  "DmgMin": 180,
+  "DmgMax": 200,
+  "Image": 1098,
+  "DisplayImage": 86,
+  "Gender": 255,
+  "Class": 5,
+  "StageRequired": 0
+}

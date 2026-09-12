@@ -1,0 +1,8 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "젓소옷",
+  "Value": 50000000,
+  "Image": 12231,
+  "DisplayImage": 432,
+  "Gender": 255
+}

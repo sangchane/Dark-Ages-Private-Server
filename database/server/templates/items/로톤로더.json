@@ -1,0 +1,7 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "로톤로더",
+  "Value": 500000000,
+  "Image": 1048,
+  "DisplayImage": 224
+}

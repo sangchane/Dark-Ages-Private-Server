@@ -1,0 +1,16 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "구리방패",
+  "Value": 6000,
+  "LevelRequired": 51,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 7
+  },
+  "Image": 189,
+  "DisplayImage": 6,
+  "Gender": 255,
+  "Class": 0,
+  "StageRequired": 0
+}

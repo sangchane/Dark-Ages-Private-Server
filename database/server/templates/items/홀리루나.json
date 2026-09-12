@@ -1,0 +1,15 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "홀리루나",
+  "MaxDurability": 3000,
+  "Value": 13000,
+  "CarryWeight": 5,
+  "LevelRequired": 99,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "Image": 185,
+  "DisplayImage": 26,
+  "Gender": 255,
+  "Class": 4,
+  "StageRequired": 0
+}

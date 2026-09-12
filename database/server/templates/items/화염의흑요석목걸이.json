@@ -1,0 +1,17 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "화염의흑요석목걸이",
+  "MaxDurability": 5000,
+  "Value": 50000,
+  "CarryWeight": 0,
+  "LevelRequired": 81,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 2
+  },
+  "Image": 1570,
+  "Gender": 255,
+  "Class": 0,
+  "StageRequired": 0
+}

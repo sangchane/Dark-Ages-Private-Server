@@ -1,0 +1,15 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "피4",
+  "MaxDurability": 1000000,
+  "Value": 0,
+  "CarryWeight": 34,
+  "LevelRequired": 99,
+  "DmgMin": 900,
+  "DmgMax": 1100,
+  "Image": 924,
+  "DisplayImage": 100,
+  "Gender": 255,
+  "Class": 1,
+  "StageRequired": 0
+}

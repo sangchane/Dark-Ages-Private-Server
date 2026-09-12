@@ -1,0 +1,15 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "매직머큐리아",
+  "MaxDurability": 3000,
+  "Value": 1300,
+  "CarryWeight": 5,
+  "LevelRequired": 21,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "Image": 133,
+  "DisplayImage": 8,
+  "Gender": 255,
+  "Class": 3,
+  "StageRequired": 0
+}

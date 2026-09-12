@@ -1,0 +1,13 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "파파야방패",
+  "Value": 0,
+  "LevelRequired": 81,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 16
+  },
+  "Image": 1362,
+  "DisplayImage": 18
+}

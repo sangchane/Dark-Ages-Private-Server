@@ -1,0 +1,8 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "화룡의상(남)",
+  "Value": 3500000,
+  "Image": 12036,
+  "DisplayImage": 411,
+  "Gender": 1
+}

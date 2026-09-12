@@ -1,0 +1,18 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "네크로브",
+  "MaxDurability": 15000,
+  "Value": 20000,
+  "CarryWeight": 14,
+  "LevelRequired": 99,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 35
+  },
+  "Image": 155,
+  "DisplayImage": 25,
+  "Gender": 1,
+  "Class": 4,
+  "StageRequired": 0
+}

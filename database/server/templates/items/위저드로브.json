@@ -1,0 +1,18 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "위저드로브",
+  "MaxDurability": 12000,
+  "Value": 13000,
+  "CarryWeight": 10,
+  "LevelRequired": 81,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 25
+  },
+  "Image": 150,
+  "DisplayImage": 20,
+  "Gender": 1,
+  "Class": 4,
+  "StageRequired": 0
+}

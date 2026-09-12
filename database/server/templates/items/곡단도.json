@@ -1,0 +1,15 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "곡단도",
+  "MaxDurability": 31000,
+  "Value": 0,
+  "CarryWeight": 12,
+  "LevelRequired": 99,
+  "DmgMin": 125,
+  "DmgMax": 130,
+  "Image": 1013,
+  "DisplayImage": 102,
+  "Gender": 255,
+  "Class": 2,
+  "StageRequired": 0
+}

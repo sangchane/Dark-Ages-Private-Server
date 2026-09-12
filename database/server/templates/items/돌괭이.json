@@ -1,0 +1,20 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "돌괭이",
+  "MaxDurability": 4000,
+  "Value": 1400,
+  "CarryWeight": 3,
+  "LevelRequired": 1,
+  "DmgMin": 1,
+  "DmgMax": 2,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 1
+  },
+  "Image": 514,
+  "DisplayImage": 42,
+  "Gender": 255,
+  "Class": 0,
+  "StageRequired": 0
+}

@@ -1,0 +1,20 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "헬클레릭후드",
+  "MaxDurability": 5000,
+  "Value": 0,
+  "CarryWeight": 23,
+  "LevelRequired": 99,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 5
+  },
+  "Image": 305,
+  "DisplayImage": 139,
+  "Gender": 1,
+  "Class": 4,
+  "StageRequired": 0
+}

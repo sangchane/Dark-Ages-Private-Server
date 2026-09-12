@@ -1,0 +1,6 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "화이어윙",
+  "Image": 12016,
+  "DisplayImage": 142
+}

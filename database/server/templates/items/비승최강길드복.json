@@ -1,0 +1,18 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "비승최강길드복",
+  "MaxDurability": 1000000,
+  "Value": 100,
+  "CarryWeight": 4,
+  "LevelRequired": 1,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 2
+  },
+  "Image": 3388,
+  "DisplayImage": 347,
+  "Gender": 2,
+  "Class": 0,
+  "StageRequired": 0
+}

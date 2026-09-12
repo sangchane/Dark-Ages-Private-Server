@@ -1,0 +1,6 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "화염의씰",
+  "Value": 0,
+  "Image": 2188
+}

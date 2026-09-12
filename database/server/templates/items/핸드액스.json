@@ -1,0 +1,15 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "핸드액스",
+  "MaxDurability": 8000,
+  "Value": 100000,
+  "CarryWeight": 5,
+  "LevelRequired": 11,
+  "DmgMin": 16,
+  "DmgMax": 26,
+  "Image": 510,
+  "DisplayImage": 38,
+  "Gender": 255,
+  "Class": 1,
+  "StageRequired": 0
+}

@@ -1,0 +1,35 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "영월궁",
+  "MaxDurability": 31000,
+  "Value": 15000000,
+  "CarryWeight": 17,
+  "LevelRequired": 99,
+  "DmgMin": 3000,
+  "DmgMax": 3500,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 1
+  },
+  "HealthModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 30000
+  },
+  "ManaModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 30000
+  },
+  "DexModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 10
+  },
+  "Image": 2373,
+  "DisplayImage": 175,
+  "Gender": 255,
+  "Class": 2,
+  "StageRequired": 2
+}

@@ -1,0 +1,6 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "브릴윙투구(봉인)",
+  "Value": 100,
+  "Image": 12171
+}

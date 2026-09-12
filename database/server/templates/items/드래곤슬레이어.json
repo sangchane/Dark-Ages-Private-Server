@@ -1,0 +1,15 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "드래곤슬레이어",
+  "MaxDurability": 3000000,
+  "Value": 100,
+  "CarryWeight": 0,
+  "LevelRequired": 99,
+  "DmgMin": 10000,
+  "DmgMax": 10000,
+  "Image": 179,
+  "DisplayImage": 20,
+  "Gender": 255,
+  "Class": 0,
+  "StageRequired": 1
+}

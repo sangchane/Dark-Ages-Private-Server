@@ -1,0 +1,18 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "레더로브",
+  "MaxDurability": 6000,
+  "Value": 3000,
+  "CarryWeight": 5,
+  "LevelRequired": 21,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 10
+  },
+  "Image": 105,
+  "DisplayImage": 10,
+  "Gender": 1,
+  "Class": 4,
+  "StageRequired": 0
+}

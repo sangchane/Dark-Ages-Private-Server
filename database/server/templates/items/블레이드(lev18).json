@@ -1,0 +1,34 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "블레이드(Lev18)",
+  "MaxDurability": 1000,
+  "Value": 1500000,
+  "CarryWeight": 3,
+  "DmgMin": 1000,
+  "DmgMax": 1200,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 1
+  },
+  "HealthModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 3000
+  },
+  "ManaModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 3000
+  },
+  "StrModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 5
+  },
+  "Image": 2038,
+  "DisplayImage": 145,
+  "Gender": 255,
+  "Class": 1,
+  "StageRequired": 2
+}

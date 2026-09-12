@@ -1,0 +1,15 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "신월도",
+  "MaxDurability": 31000,
+  "Value": 0,
+  "CarryWeight": 15,
+  "LevelRequired": 99,
+  "DmgMin": 165,
+  "DmgMax": 170,
+  "Image": 1012,
+  "DisplayImage": 103,
+  "Gender": 255,
+  "Class": 2,
+  "StageRequired": 0
+}

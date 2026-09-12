@@ -1,0 +1,20 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "설단검",
+  "MaxDurability": 2000,
+  "Value": 500,
+  "CarryWeight": 3,
+  "LevelRequired": 1,
+  "DmgMin": 7,
+  "DmgMax": 12,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 1
+  },
+  "Image": 91,
+  "DisplayImage": 6,
+  "Gender": 255,
+  "Class": 2,
+  "StageRequired": 0
+}

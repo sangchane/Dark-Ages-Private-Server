@@ -1,0 +1,18 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "페플로스",
+  "MaxDurability": 12000,
+  "Value": 15000,
+  "CarryWeight": 13,
+  "LevelRequired": 81,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 29
+  },
+  "Image": 159,
+  "DisplayImage": 19,
+  "Gender": 2,
+  "Class": 2,
+  "StageRequired": 0
+}

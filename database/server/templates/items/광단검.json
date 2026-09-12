@@ -1,0 +1,15 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "광단검",
+  "MaxDurability": 6000,
+  "Value": 17000,
+  "CarryWeight": 7,
+  "LevelRequired": 56,
+  "DmgMin": 60,
+  "DmgMax": 80,
+  "Image": 254,
+  "DisplayImage": 30,
+  "Gender": 255,
+  "Class": 2,
+  "StageRequired": 0
+}

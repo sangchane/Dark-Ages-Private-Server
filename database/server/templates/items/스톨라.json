@@ -1,0 +1,18 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "스톨라",
+  "MaxDurability": 9000,
+  "Value": 7000,
+  "CarryWeight": 6,
+  "LevelRequired": 51,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 18
+  },
+  "Image": 130,
+  "DisplayImage": 16,
+  "Gender": 2,
+  "Class": 3,
+  "StageRequired": 0
+}

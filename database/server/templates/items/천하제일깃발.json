@@ -1,0 +1,6 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "천하제일깃발",
+  "Image": 135,
+  "DisplayImage": 122
+}

@@ -1,0 +1,8 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "새너클로우",
+  "Value": 3500000,
+  "Image": 12232,
+  "DisplayImage": 433,
+  "Gender": 255
+}

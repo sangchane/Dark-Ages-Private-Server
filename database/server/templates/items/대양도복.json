@@ -1,0 +1,18 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "대양도복",
+  "MaxDurability": 15000,
+  "Value": 23000,
+  "CarryWeight": 14,
+  "LevelRequired": 99,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 40
+  },
+  "Image": 163,
+  "DisplayImage": 23,
+  "Gender": 2,
+  "Class": 5,
+  "StageRequired": 0
+}

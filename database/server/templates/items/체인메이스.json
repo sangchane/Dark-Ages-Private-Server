@@ -1,0 +1,15 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "체인메이스",
+  "MaxDurability": 300000,
+  "Value": 10000000,
+  "CarryWeight": 23,
+  "LevelRequired": 99,
+  "DmgMin": 150,
+  "DmgMax": 160,
+  "Image": 517,
+  "DisplayImage": 45,
+  "Gender": 255,
+  "Class": 1,
+  "StageRequired": 0
+}

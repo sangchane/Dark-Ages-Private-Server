@@ -1,0 +1,9 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "분홍색튜브",
+  "MaxDurability": 18000,
+  "Value": 0,
+  "CarryWeight": 0,
+  "Image": 2215,
+  "DisplayImage": 318
+}
