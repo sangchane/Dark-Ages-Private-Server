@@ -25,10 +25,30 @@ namespace Darkages.Storage
 
         public int Count => Directory.GetFiles(StoragePath, "*.json", SearchOption.TopDirectoryOnly).Length;
 
+        /// <summary>Six bytes a tile: a floor and two walls, each a ushort.</summary>
+        private const int BytesPerTile = 6;
+
         public static bool LoadMap(Area mapObj, string mapFile, bool save = false)
         {
+            var bytes = File.ReadAllBytes(mapFile);
+            var expected = mapObj.Cols * mapObj.Rows * BytesPerTile;
+
+            // A map short of its own size does not fail to load — the reader fills what is missing with
+            // wall and reports success all the same, so an empty or truncated file becomes a sealed room
+            // that nothing complains about, cached and counted towards Map Templates Loaded. The size is
+            // known exactly from the area's own dimensions, so say so instead of guessing at wall.
+            if (bytes.Length != expected)
+            {
+                ServerContext.Logger(
+                    $"Map {mapObj.Id} ({mapObj.Name}): {Path.GetFileName(mapFile)} is {bytes.Length} bytes, " +
+                    $"expected {expected} for {mapObj.Cols}x{mapObj.Rows}. Not loaded.",
+                    Microsoft.Extensions.Logging.LogLevel.Error);
+
+                return false;
+            }
+
             mapObj.FilePath = mapFile;
-            mapObj.Data = File.ReadAllBytes(mapFile);
+            mapObj.Data = bytes;
             mapObj.Hash = Crc16Provider.ComputeChecksum(mapObj.Data);
             {
                 if (save) StorageManager.AreaBucket.Save(mapObj);
@@ -57,8 +77,11 @@ namespace Darkages.Storage
 
                 if (mapFile != null && File.Exists(mapFile))
                 {
+                    // An area whose tiles did not load is not an area. Caching it anyway is how a map
+                    // made entirely of wall ends up in the world with nothing said about it.
                     if (!LoadMap(mapObj, mapFile, true))
                     {
+                        continue;
                     }
 
                     if (!string.IsNullOrEmpty(mapObj.ScriptKey))
