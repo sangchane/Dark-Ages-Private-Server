@@ -1,0 +1,13 @@
+{
+  "FilePath": "../../database/server/maps/lod100710.map",
+  "Cols": 12,
+  "ContentName": null,
+  "Flags": 106240,
+  "Id": 100710,
+  "Music": 157,
+  "Name": "스키장리프트대기실",
+  "Rows": 12,
+  "Blocks": [],
+  "ScriptKey": null,
+  "ID": 100710
+}

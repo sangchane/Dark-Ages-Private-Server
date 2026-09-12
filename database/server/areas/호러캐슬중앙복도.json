@@ -1,0 +1,13 @@
+{
+  "FilePath": "../../database/server/maps/lod100721.map",
+  "Cols": 10,
+  "ContentName": null,
+  "Flags": 106240,
+  "Id": 100721,
+  "Music": 154,
+  "Name": "호러캐슬중앙복도",
+  "Rows": 35,
+  "Blocks": [],
+  "ScriptKey": null,
+  "ID": 100721
+}
