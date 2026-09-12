@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 100301,
+  "Activations": [
+    {
+      "AreaID": 100301,
+      "Location": {
+        "X": 10,
+        "Y": 6
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 100300,
+    "Location": {
+      "X": 10,
+      "Y": 6
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 신들의세계(10,6) to 세토아신전(10,6)"
+}

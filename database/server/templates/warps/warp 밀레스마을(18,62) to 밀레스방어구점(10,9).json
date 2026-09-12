@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 100287,
+  "Activations": [
+    {
+      "AreaID": 100287,
+      "Location": {
+        "X": 18,
+        "Y": 62
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 100289,
+    "Location": {
+      "X": 10,
+      "Y": 9
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 밀레스마을(18,62) to 밀레스방어구점(10,9)"
+}

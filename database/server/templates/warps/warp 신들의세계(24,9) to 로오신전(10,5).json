@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 100301,
+  "Activations": [
+    {
+      "AreaID": 100301,
+      "Location": {
+        "X": 24,
+        "Y": 9
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 100284,
+    "Location": {
+      "X": 10,
+      "Y": 5
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 신들의세계(24,9) to 로오신전(10,5)"
+}

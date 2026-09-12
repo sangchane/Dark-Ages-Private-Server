@@ -1,5 +1,6 @@
-﻿#region
+#region
 
+using System;
 using System.IO;
 using System.Text.Json;
 using Darkages.Types;
@@ -32,6 +33,18 @@ namespace Darkages.Storage
             foreach (var area in areaNames)
             {
                 var obj = StorageManager.WarpBucket.Load(Path.GetFileNameWithoutExtension(area));
+
+                // Adding whatever came back made the count the number of files, always — a check that
+                // cannot go red — and left nulls in the list for something else to trip over later.
+                if (obj == null)
+                {
+                    ServerContext.Logger(
+                        $"Warp {Path.GetFileName(area)} could not be read. Not loaded.",
+                        Microsoft.Extensions.Logging.LogLevel.Error);
+
+                    continue;
+                }
+
                 ServerContext.GlobalWarpTemplateCache.Add(obj);
             }
         }
@@ -43,9 +56,19 @@ namespace Darkages.Storage
             if (!File.Exists(path))
                 return null;
 
-            using var s = File.OpenRead(path);
-            using var f = new StreamReader(s);
-            return StorageManager.Deserialize<WarpTemplate>(f.ReadToEnd());
+            // One warp that does not parse used to end startup for the whole server: Deserialize throws
+            // and nothing here caught it. A file we cannot read is a file to name and skip.
+            try
+            {
+                using var s = File.OpenRead(path);
+                using var f = new StreamReader(s);
+                return StorageManager.Deserialize<WarpTemplate>(f.ReadToEnd());
+            }
+            catch (Exception ex)
+            {
+                ServerContext.Logger(ex.Message, Microsoft.Extensions.Logging.LogLevel.Error);
+                return null;
+            }
         }
 
         public void Save(WarpTemplate obj)

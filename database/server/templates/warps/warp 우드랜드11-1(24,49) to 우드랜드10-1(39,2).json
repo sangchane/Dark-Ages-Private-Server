@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 100019,
+  "Activations": [
+    {
+      "AreaID": 100019,
+      "Location": {
+        "X": 24,
+        "Y": 49
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 100018,
+    "Location": {
+      "X": 39,
+      "Y": 2
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 우드랜드11-1(24,49) to 우드랜드10-1(39,2)"
+}

@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 100587,
+  "Activations": [
+    {
+      "AreaID": 100587,
+      "Location": {
+        "X": 36,
+        "Y": 49
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 100585,
+    "Location": {
+      "X": 22,
+      "Y": 2
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 아벨해안2-B(36,49) to 아벨해안1-B(22,2)"
+}

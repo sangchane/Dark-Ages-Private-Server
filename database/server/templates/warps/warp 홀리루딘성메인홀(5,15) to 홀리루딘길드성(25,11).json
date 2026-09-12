@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 100367,
+  "Activations": [
+    {
+      "AreaID": 100367,
+      "Location": {
+        "X": 5,
+        "Y": 15
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 100366,
+    "Location": {
+      "X": 25,
+      "Y": 11
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 홀리루딘성메인홀(5,15) to 홀리루딘길드성(25,11)"
+}

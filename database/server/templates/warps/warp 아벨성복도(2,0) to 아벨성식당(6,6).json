@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 100035,
+  "Activations": [
+    {
+      "AreaID": 100035,
+      "Location": {
+        "X": 2,
+        "Y": 0
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 100036,
+    "Location": {
+      "X": 6,
+      "Y": 6
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 아벨성복도(2,0) to 아벨성식당(6,6)"
+}

@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 100335,
+  "Activations": [
+    {
+      "AreaID": 100335,
+      "Location": {
+        "X": 6,
+        "Y": 9
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 100334,
+    "Location": {
+      "X": 3,
+      "Y": 3
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp (뤼케)성식당(6,9) to (뤼케)성복도(3,3)"
+}

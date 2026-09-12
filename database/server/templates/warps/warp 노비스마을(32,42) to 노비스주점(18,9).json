@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 100373,
+  "Activations": [
+    {
+      "AreaID": 100373,
+      "Location": {
+        "X": 32,
+        "Y": 42
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 100379,
+    "Location": {
+      "X": 18,
+      "Y": 9
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 노비스마을(32,42) to 노비스주점(18,9)"
+}

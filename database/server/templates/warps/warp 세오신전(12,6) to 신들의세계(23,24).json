@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 100299,
+  "Activations": [
+    {
+      "AreaID": 100299,
+      "Location": {
+        "X": 12,
+        "Y": 6
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 100301,
+    "Location": {
+      "X": 23,
+      "Y": 24
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 세오신전(12,6) to 신들의세계(23,24)"
+}

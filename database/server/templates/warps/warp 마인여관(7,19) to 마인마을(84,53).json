@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 100306,
+  "Activations": [
+    {
+      "AreaID": 100306,
+      "Location": {
+        "X": 7,
+        "Y": 19
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 100304,
+    "Location": {
+      "X": 84,
+      "Y": 53
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 마인여관(7,19) to 마인마을(84,53)"
+}

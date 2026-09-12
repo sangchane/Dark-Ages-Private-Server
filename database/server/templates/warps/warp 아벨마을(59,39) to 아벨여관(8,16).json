@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 100030,
+  "Activations": [
+    {
+      "AreaID": 100030,
+      "Location": {
+        "X": 59,
+        "Y": 39
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 100038,
+    "Location": {
+      "X": 8,
+      "Y": 16
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 아벨마을(59,39) to 아벨여관(8,16)"
+}

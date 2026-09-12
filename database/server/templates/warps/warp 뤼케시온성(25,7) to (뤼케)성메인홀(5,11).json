@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 100341,
+  "Activations": [
+    {
+      "AreaID": 100341,
+      "Location": {
+        "X": 25,
+        "Y": 7
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 100333,
+    "Location": {
+      "X": 5,
+      "Y": 11
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 뤼케시온성(25,7) to (뤼케)성메인홀(5,11)"
+}

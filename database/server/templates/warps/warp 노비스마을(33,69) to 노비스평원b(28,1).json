@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 100373,
+  "Activations": [
+    {
+      "AreaID": 100373,
+      "Location": {
+        "X": 33,
+        "Y": 69
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 100394,
+    "Location": {
+      "X": 28,
+      "Y": 1
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 노비스마을(33,69) to 노비스평원B(28,1)"
+}

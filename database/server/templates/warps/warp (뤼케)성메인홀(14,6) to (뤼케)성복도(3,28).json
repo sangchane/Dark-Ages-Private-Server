@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 100333,
+  "Activations": [
+    {
+      "AreaID": 100333,
+      "Location": {
+        "X": 14,
+        "Y": 6
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 100334,
+    "Location": {
+      "X": 3,
+      "Y": 28
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp (뤼케)성메인홀(14,6) to (뤼케)성복도(3,28)"
+}

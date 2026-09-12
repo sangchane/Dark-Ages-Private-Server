@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 100681,
+  "Activations": [
+    {
+      "AreaID": 100681,
+      "Location": {
+        "X": 52,
+        "Y": 0
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 100682,
+    "Location": {
+      "X": 53,
+      "Y": 95
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 죽음의마을3(52,0) to 죽음의마을4(53,95)"
+}

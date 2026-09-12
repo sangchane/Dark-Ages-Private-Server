@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 100308,
+  "Activations": [
+    {
+      "AreaID": 100308,
+      "Location": {
+        "X": 6,
+        "Y": 14
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 100304,
+    "Location": {
+      "X": 46,
+      "Y": 22
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 마인제조상점(6,14) to 마인마을(46,22)"
+}

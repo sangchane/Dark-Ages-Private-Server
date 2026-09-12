@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 100582,
+  "Activations": [
+    {
+      "AreaID": 100582,
+      "Location": {
+        "X": 8,
+        "Y": 7
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 100583,
+    "Location": {
+      "X": 17,
+      "Y": 10
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 시장(8,7) to 시장은행(17,10)"
+}

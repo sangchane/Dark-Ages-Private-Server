@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 100295,
+  "Activations": [
+    {
+      "AreaID": 100295,
+      "Location": {
+        "X": 8,
+        "Y": 14
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 100287,
+    "Location": {
+      "X": 63,
+      "Y": 63
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 밀레스음식점(8,14) to 밀레스마을(63,63)"
+}

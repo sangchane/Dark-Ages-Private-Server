@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 100374,
+  "Activations": [
+    {
+      "AreaID": 100374,
+      "Location": {
+        "X": 19,
+        "Y": 5
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 100373,
+    "Location": {
+      "X": 30,
+      "Y": 49
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 노비스마을식당(19,5) to 노비스마을(30,49)"
+}

@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 100286,
+  "Activations": [
+    {
+      "AreaID": 100286,
+      "Location": {
+        "X": 6,
+        "Y": 14
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 100287,
+    "Location": {
+      "X": 42,
+      "Y": 59
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 밀레스리콜상점(6,14) to 밀레스마을(42,59)"
+}

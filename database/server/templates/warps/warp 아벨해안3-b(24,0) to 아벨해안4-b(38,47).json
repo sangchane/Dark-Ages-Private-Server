@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 100590,
+  "Activations": [
+    {
+      "AreaID": 100590,
+      "Location": {
+        "X": 24,
+        "Y": 0
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 100593,
+    "Location": {
+      "X": 38,
+      "Y": 47
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 아벨해안3-B(24,0) to 아벨해안4-B(38,47)"
+}

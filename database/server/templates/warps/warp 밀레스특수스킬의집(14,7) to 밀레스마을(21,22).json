@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 100297,
+  "Activations": [
+    {
+      "AreaID": 100297,
+      "Location": {
+        "X": 14,
+        "Y": 7
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 100287,
+    "Location": {
+      "X": 21,
+      "Y": 22
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 밀레스특수스킬의집(14,7) to 밀레스마을(21,22)"
+}

@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 100670,
+  "Activations": [
+    {
+      "AreaID": 100670,
+      "Location": {
+        "X": 1,
+        "Y": 2
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 100669,
+    "Location": {
+      "X": 3,
+      "Y": 6
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 신죽마집안5-2(1,2) to 신죽마집안5-1(3,6)"
+}

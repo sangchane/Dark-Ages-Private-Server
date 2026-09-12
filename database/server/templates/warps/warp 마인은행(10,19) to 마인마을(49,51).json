@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 100307,
+  "Activations": [
+    {
+      "AreaID": 100307,
+      "Location": {
+        "X": 10,
+        "Y": 19
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 100304,
+    "Location": {
+      "X": 49,
+      "Y": 51
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 마인은행(10,19) to 마인마을(49,51)"
+}

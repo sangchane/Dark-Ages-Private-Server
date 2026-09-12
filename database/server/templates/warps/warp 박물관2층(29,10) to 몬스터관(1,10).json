@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 100649,
+  "Activations": [
+    {
+      "AreaID": 100649,
+      "Location": {
+        "X": 29,
+        "Y": 10
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 100647,
+    "Location": {
+      "X": 1,
+      "Y": 10
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 박물관2층(29,10) to 몬스터관(1,10)"
+}

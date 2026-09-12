@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 100655,
+  "Activations": [
+    {
+      "AreaID": 100655,
+      "Location": {
+        "X": 29,
+        "Y": 21
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 100649,
+    "Location": {
+      "X": 1,
+      "Y": 21
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 인물관(29,21) to 박물관2층(1,21)"
+}

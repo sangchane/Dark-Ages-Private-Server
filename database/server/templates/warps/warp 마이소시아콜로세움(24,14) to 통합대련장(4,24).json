@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 100606,
+  "Activations": [
+    {
+      "AreaID": 100606,
+      "Location": {
+        "X": 24,
+        "Y": 14
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 100610,
+    "Location": {
+      "X": 4,
+      "Y": 24
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 마이소시아콜로세움(24,14) to 통합대련장(4,24)"
+}

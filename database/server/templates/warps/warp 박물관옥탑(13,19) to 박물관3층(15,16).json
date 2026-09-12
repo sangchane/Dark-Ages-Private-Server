@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 100651,
+  "Activations": [
+    {
+      "AreaID": 100651,
+      "Location": {
+        "X": 13,
+        "Y": 19
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 100650,
+    "Location": {
+      "X": 15,
+      "Y": 16
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 박물관옥탑(13,19) to 박물관3층(15,16)"
+}

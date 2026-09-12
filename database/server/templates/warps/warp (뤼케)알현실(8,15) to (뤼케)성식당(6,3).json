@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 100336,
+  "Activations": [
+    {
+      "AreaID": 100336,
+      "Location": {
+        "X": 8,
+        "Y": 15
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 100335,
+    "Location": {
+      "X": 6,
+      "Y": 3
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp (뤼케)알현실(8,15) to (뤼케)성식당(6,3)"
+}

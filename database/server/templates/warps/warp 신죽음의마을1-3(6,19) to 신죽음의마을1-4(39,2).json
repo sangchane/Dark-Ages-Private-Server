@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 100675,
+  "Activations": [
+    {
+      "AreaID": 100675,
+      "Location": {
+        "X": 6,
+        "Y": 19
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 100676,
+    "Location": {
+      "X": 39,
+      "Y": 2
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 신죽음의마을1-3(6,19) to 신죽음의마을1-4(39,2)"
+}

@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 100368,
+  "Activations": [
+    {
+      "AreaID": 100368,
+      "Location": {
+        "X": 2,
+        "Y": 32
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 100367,
+    "Location": {
+      "X": 14,
+      "Y": 9
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 홀리루딘성복도(2,32) to 홀리루딘성메인홀(14,9)"
+}

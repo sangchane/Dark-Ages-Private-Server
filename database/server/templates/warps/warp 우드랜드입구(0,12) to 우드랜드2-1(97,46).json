@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 100028,
+  "Activations": [
+    {
+      "AreaID": 100028,
+      "Location": {
+        "X": 0,
+        "Y": 12
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 100022,
+    "Location": {
+      "X": 97,
+      "Y": 46
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 우드랜드입구(0,12) to 우드랜드2-1(97,46)"
+}

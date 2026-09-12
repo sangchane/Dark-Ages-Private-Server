@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 100393,
+  "Activations": [
+    {
+      "AreaID": 100393,
+      "Location": {
+        "X": 36,
+        "Y": 9
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 100380,
+    "Location": {
+      "X": 9,
+      "Y": 32
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 노비스평원A(36,9) to 노비스지하던전A1(9,32)"
+}

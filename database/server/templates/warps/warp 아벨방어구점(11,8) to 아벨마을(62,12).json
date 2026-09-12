@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 100032,
+  "Activations": [
+    {
+      "AreaID": 100032,
+      "Location": {
+        "X": 11,
+        "Y": 8
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 100030,
+    "Location": {
+      "X": 62,
+      "Y": 12
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 아벨방어구점(11,8) to 아벨마을(62,12)"
+}

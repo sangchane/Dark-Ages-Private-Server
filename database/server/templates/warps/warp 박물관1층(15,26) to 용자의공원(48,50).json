@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 100648,
+  "Activations": [
+    {
+      "AreaID": 100648,
+      "Location": {
+        "X": 15,
+        "Y": 26
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 100653,
+    "Location": {
+      "X": 48,
+      "Y": 50
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 박물관1층(15,26) to 용자의공원(48,50)"
+}

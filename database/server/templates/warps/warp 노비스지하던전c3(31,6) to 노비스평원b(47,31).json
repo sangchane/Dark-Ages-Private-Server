@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 100388,
+  "Activations": [
+    {
+      "AreaID": 100388,
+      "Location": {
+        "X": 31,
+        "Y": 6
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 100394,
+    "Location": {
+      "X": 47,
+      "Y": 31
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 노비스지하던전C3(31,6) to 노비스평원B(47,31)"
+}

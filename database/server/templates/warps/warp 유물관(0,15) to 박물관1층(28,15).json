@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 100654,
+  "Activations": [
+    {
+      "AreaID": 100654,
+      "Location": {
+        "X": 0,
+        "Y": 15
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 100648,
+    "Location": {
+      "X": 28,
+      "Y": 15
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 유물관(0,15) to 박물관1층(28,15)"
+}

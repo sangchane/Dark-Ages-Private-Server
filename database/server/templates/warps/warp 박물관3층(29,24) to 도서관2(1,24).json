@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 100650,
+  "Activations": [
+    {
+      "AreaID": 100650,
+      "Location": {
+        "X": 29,
+        "Y": 24
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 100646,
+    "Location": {
+      "X": 1,
+      "Y": 24
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 박물관3층(29,24) to 도서관2(1,24)"
+}

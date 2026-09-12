@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 100034,
+  "Activations": [
+    {
+      "AreaID": 100034,
+      "Location": {
+        "X": 15,
+        "Y": 6
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 100035,
+    "Location": {
+      "X": 3,
+      "Y": 28
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 아벨성메인홀(15,6) to 아벨성복도(3,28)"
+}

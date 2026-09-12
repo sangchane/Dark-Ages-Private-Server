@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 100378,
+  "Activations": [
+    {
+      "AreaID": 100378,
+      "Location": {
+        "X": 9,
+        "Y": 19
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 100373,
+    "Location": {
+      "X": 44,
+      "Y": 26
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 노비스잡화상점(9,19) to 노비스마을(44,26)"
+}

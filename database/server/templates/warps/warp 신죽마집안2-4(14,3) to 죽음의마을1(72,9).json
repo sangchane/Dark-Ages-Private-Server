@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 100660,
+  "Activations": [
+    {
+      "AreaID": 100660,
+      "Location": {
+        "X": 14,
+        "Y": 3
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 100679,
+    "Location": {
+      "X": 72,
+      "Y": 9
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 신죽마집안2-4(14,3) to 죽음의마을1(72,9)"
+}

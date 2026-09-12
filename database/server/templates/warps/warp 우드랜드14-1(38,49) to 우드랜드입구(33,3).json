@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 100020,
+  "Activations": [
+    {
+      "AreaID": 100020,
+      "Location": {
+        "X": 38,
+        "Y": 49
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 100028,
+    "Location": {
+      "X": 33,
+      "Y": 3
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 우드랜드14-1(38,49) to 우드랜드입구(33,3)"
+}

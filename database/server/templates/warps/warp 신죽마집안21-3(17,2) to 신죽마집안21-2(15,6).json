@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 100663,
+  "Activations": [
+    {
+      "AreaID": 100663,
+      "Location": {
+        "X": 17,
+        "Y": 2
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 100662,
+    "Location": {
+      "X": 15,
+      "Y": 6
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 신죽마집안21-3(17,2) to 신죽마집안21-2(15,6)"
+}

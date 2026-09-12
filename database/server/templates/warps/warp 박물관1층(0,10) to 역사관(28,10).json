@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 100648,
+  "Activations": [
+    {
+      "AreaID": 100648,
+      "Location": {
+        "X": 0,
+        "Y": 10
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 100652,
+    "Location": {
+      "X": 28,
+      "Y": 10
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 박물관1층(0,10) to 역사관(28,10)"
+}

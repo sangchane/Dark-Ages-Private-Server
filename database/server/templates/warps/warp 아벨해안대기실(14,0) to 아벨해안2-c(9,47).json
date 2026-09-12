@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 100595,
+  "Activations": [
+    {
+      "AreaID": 100595,
+      "Location": {
+        "X": 14,
+        "Y": 0
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 100588,
+    "Location": {
+      "X": 9,
+      "Y": 47
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 아벨해안대기실(14,0) to 아벨해안2-C(9,47)"
+}

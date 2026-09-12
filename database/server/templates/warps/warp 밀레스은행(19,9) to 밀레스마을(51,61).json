@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 100294,
+  "Activations": [
+    {
+      "AreaID": 100294,
+      "Location": {
+        "X": 19,
+        "Y": 9
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 100287,
+    "Location": {
+      "X": 51,
+      "Y": 61
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 밀레스은행(19,9) to 밀레스마을(51,61)"
+}

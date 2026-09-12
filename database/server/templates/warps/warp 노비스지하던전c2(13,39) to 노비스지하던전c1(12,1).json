@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 100387,
+  "Activations": [
+    {
+      "AreaID": 100387,
+      "Location": {
+        "X": 13,
+        "Y": 39
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 100386,
+    "Location": {
+      "X": 12,
+      "Y": 1
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 노비스지하던전C2(13,39) to 노비스지하던전C1(12,1)"
+}
