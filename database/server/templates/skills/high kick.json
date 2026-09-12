@@ -1,0 +1,13 @@
+{
+  "Name": "High Kick",
+  "ScriptName": null,
+  "Prerequisites": {
+    "Class_Required": 5,
+    "ExpLevel_Required": 5,
+    "Skill_Required": "Kick"
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Group": null,
+  "Description": null
+}

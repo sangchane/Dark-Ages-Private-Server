@@ -1,0 +1,13 @@
+{
+  "Name": "Assault",
+  "ScriptName": null,
+  "Prerequisites": {
+    "Class_Required": 1,
+    "ExpLevel_Required": 1,
+    "Skill_Required": "Assail"
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Group": null,
+  "Description": null
+}

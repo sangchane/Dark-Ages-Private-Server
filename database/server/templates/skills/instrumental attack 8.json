@@ -1,0 +1,13 @@
+{
+  "Name": "Instrumental Attack 8",
+  "ScriptName": null,
+  "Prerequisites": {
+    "Class_Required": 4,
+    "ExpLevel_Required": 100,
+    "Skill_Required": "Instrumental Attack 7"
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Group": null,
+  "Description": null
+}

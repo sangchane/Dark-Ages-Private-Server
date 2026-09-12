@@ -1,0 +1,13 @@
+{
+  "Name": "Elemental Bless 5",
+  "ScriptName": null,
+  "Prerequisites": {
+    "Class_Required": 3,
+    "ExpLevel_Required": 0,
+    "Skill_Required": "Elemental Bless 4"
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Group": null,
+  "Description": null
+}

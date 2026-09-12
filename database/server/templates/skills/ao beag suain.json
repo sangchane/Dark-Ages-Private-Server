@@ -1,0 +1,13 @@
+{
+  "Name": "ao beag suain",
+  "ScriptName": null,
+  "Prerequisites": {
+    "Class_Required": 1,
+    "ExpLevel_Required": 60,
+    "Skill_Required": "Rescue"
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Group": null,
+  "Description": null
+}

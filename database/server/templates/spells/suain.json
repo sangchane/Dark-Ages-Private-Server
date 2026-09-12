@@ -1,0 +1,13 @@
+{
+  "Name": "suain",
+  "ScriptName": null,
+  "Prerequisites": {
+    "Class_Required": 4,
+    "ExpLevel_Required": 70,
+    "Spell_Required": "dall"
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Group": null,
+  "Description": null
+}

@@ -1,0 +1,13 @@
+{
+  "Name": "athar",
+  "ScriptName": "athar",
+  "Prerequisites": {
+    "Class_Required": 3,
+    "ExpLevel_Required": 30,
+    "Spell_Required": "beag athar"
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Group": null,
+  "Description": null
+}

@@ -1,0 +1,12 @@
+{
+  "Name": "fas nadur",
+  "ScriptName": "fas nadur",
+  "Prerequisites": {
+    "Class_Required": 3,
+    "ExpLevel_Required": 0
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Group": null,
+  "Description": null
+}

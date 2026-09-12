@@ -1,0 +1,13 @@
+{
+  "Name": "Thrust Attack 6",
+  "ScriptName": null,
+  "Prerequisites": {
+    "Class_Required": 1,
+    "ExpLevel_Required": 0,
+    "Skill_Required": "Thrust Attack 5"
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Group": null,
+  "Description": null
+}

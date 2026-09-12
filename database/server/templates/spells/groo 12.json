@@ -1,0 +1,13 @@
+{
+  "Name": "Groo 12",
+  "ScriptName": null,
+  "Prerequisites": {
+    "Class_Required": 3,
+    "ExpLevel_Required": 100,
+    "Spell_Required": "Groo 11"
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Group": null,
+  "Description": null
+}

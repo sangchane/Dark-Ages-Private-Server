@@ -1,0 +1,12 @@
+{
+  "Name": "beag nochd",
+  "ScriptName": null,
+  "Prerequisites": {
+    "Class_Required": 5,
+    "ExpLevel_Required": 0
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Group": null,
+  "Description": null
+}

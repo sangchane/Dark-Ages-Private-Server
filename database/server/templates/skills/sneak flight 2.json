@@ -1,0 +1,13 @@
+{
+  "Name": "Sneak Flight 2",
+  "ScriptName": null,
+  "Prerequisites": {
+    "Class_Required": 5,
+    "ExpLevel_Required": 100,
+    "Skill_Required": "Sneak Flight 1"
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Group": null,
+  "Description": null
+}

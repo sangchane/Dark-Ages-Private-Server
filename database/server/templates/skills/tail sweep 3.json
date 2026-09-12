@@ -1,0 +1,13 @@
+{
+  "Name": "Tail Sweep 3",
+  "ScriptName": null,
+  "Prerequisites": {
+    "Class_Required": 5,
+    "ExpLevel_Required": 100,
+    "Skill_Required": "Tail Sweep 2"
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Group": null,
+  "Description": null
+}

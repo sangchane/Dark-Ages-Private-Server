@@ -1,0 +1,13 @@
+{
+  "Name": "Instrumental 4",
+  "ScriptName": null,
+  "Prerequisites": {
+    "Class_Required": 4,
+    "ExpLevel_Required": 0,
+    "Skill_Required": "Instrumental 3"
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Group": null,
+  "Description": null
+}

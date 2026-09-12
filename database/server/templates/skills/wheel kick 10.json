@@ -1,0 +1,13 @@
+{
+  "Name": "Wheel Kick 10",
+  "ScriptName": null,
+  "Prerequisites": {
+    "Class_Required": 1,
+    "ExpLevel_Required": 100,
+    "Skill_Required": "Wheel Kick 9"
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Group": null,
+  "Description": null
+}

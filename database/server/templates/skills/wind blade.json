@@ -1,0 +1,13 @@
+{
+  "Name": "Wind Blade",
+  "ScriptName": "Wind Blade",
+  "Prerequisites": {
+    "Class_Required": 1,
+    "ExpLevel_Required": 20,
+    "Skill_Required": "Assail"
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Group": null,
+  "Description": null
+}

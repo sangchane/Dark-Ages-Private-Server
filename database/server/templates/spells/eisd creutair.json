@@ -1,0 +1,13 @@
+{
+  "Name": "eisd creutair",
+  "ScriptName": null,
+  "Prerequisites": {
+    "Class_Required": 2,
+    "ExpLevel_Required": 30,
+    "Spell_Required": "Hide"
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Group": null,
+  "Description": null
+}

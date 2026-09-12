@@ -1,0 +1,13 @@
+{
+  "Name": "sonruich nadur",
+  "ScriptName": null,
+  "Prerequisites": {
+    "Class_Required": 4,
+    "ExpLevel_Required": 10,
+    "Spell_Required": "spion beathach"
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Group": null,
+  "Description": null
+}

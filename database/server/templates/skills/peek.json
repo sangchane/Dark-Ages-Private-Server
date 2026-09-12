@@ -1,0 +1,13 @@
+{
+  "Name": "Peek",
+  "ScriptName": null,
+  "Prerequisites": {
+    "Class_Required": 2,
+    "ExpLevel_Required": 20,
+    "Skill_Required": "Study Creature"
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Group": null,
+  "Description": null
+}

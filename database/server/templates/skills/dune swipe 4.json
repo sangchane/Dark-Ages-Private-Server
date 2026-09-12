@@ -1,0 +1,13 @@
+{
+  "Name": "Dune Swipe 4",
+  "ScriptName": null,
+  "Prerequisites": {
+    "Class_Required": 1,
+    "ExpLevel_Required": 100,
+    "Skill_Required": "Dune Swipe 3"
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Group": null,
+  "Description": null
+}

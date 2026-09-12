@@ -1,0 +1,13 @@
+{
+  "Name": "beag naomh aite",
+  "ScriptName": null,
+  "Prerequisites": {
+    "Class_Required": 4,
+    "ExpLevel_Required": 20,
+    "Spell_Required": "armachd"
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Group": null,
+  "Description": null
+}

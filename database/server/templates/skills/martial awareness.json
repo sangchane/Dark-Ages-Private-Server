@@ -1,0 +1,13 @@
+{
+  "Name": "Martial Awareness",
+  "ScriptName": null,
+  "Prerequisites": {
+    "Class_Required": 5,
+    "ExpLevel_Required": 10,
+    "Skill_Required": "Assail"
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Group": null,
+  "Description": null
+}

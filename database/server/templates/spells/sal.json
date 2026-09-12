@@ -1,0 +1,13 @@
+{
+  "Name": "sal",
+  "ScriptName": "sal",
+  "Prerequisites": {
+    "Class_Required": 3,
+    "ExpLevel_Required": 30,
+    "Spell_Required": "beag sal"
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Group": null,
+  "Description": null
+}

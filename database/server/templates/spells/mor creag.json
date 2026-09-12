@@ -1,0 +1,13 @@
+{
+  "Name": "mor creag",
+  "ScriptName": "mor creag",
+  "Prerequisites": {
+    "Class_Required": 3,
+    "ExpLevel_Required": 60,
+    "Spell_Required": "creag"
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Group": null,
+  "Description": null
+}

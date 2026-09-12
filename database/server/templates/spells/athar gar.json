@@ -1,0 +1,13 @@
+{
+  "Name": "athar gar",
+  "ScriptName": null,
+  "Prerequisites": {
+    "Class_Required": 3,
+    "ExpLevel_Required": 90,
+    "Spell_Required": "athar meall"
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Group": null,
+  "Description": null
+}

@@ -1,0 +1,13 @@
+{
+  "Name": "Throw Smoke Bomb",
+  "ScriptName": null,
+  "Prerequisites": {
+    "Class_Required": 2,
+    "ExpLevel_Required": 30,
+    "Skill_Required": "Throw Surigum"
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Group": null,
+  "Description": null
+}

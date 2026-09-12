@@ -1,0 +1,13 @@
+{
+  "Name": "fas deireas",
+  "ScriptName": null,
+  "Prerequisites": {
+    "Class_Required": 4,
+    "ExpLevel_Required": 30,
+    "Spell_Required": "beannaich"
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Group": null,
+  "Description": null
+}

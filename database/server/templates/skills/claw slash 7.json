@@ -1,0 +1,13 @@
+{
+  "Name": "Claw Slash 7",
+  "ScriptName": null,
+  "Prerequisites": {
+    "Class_Required": 5,
+    "ExpLevel_Required": 100,
+    "Skill_Required": "Claw Slash 6"
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Group": null,
+  "Description": null
+}

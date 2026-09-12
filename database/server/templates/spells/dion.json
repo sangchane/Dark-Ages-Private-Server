@@ -1,0 +1,13 @@
+{
+  "Name": "dion",
+  "ScriptName": "dion",
+  "Prerequisites": {
+    "Class_Required": 5,
+    "ExpLevel_Required": 60,
+    "Spell_Required": "Mist"
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Group": null,
+  "Description": null
+}

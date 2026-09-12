@@ -1,0 +1,13 @@
+{
+  "Name": "ard creag",
+  "ScriptName": "ard creag",
+  "Prerequisites": {
+    "Class_Required": 3,
+    "ExpLevel_Required": 75,
+    "Spell_Required": "mor creag"
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Group": null,
+  "Description": null
+}

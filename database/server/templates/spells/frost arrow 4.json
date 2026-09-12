@@ -1,0 +1,13 @@
+{
+  "Name": "Frost Arrow 4",
+  "ScriptName": null,
+  "Prerequisites": {
+    "Class_Required": 2,
+    "ExpLevel_Required": 100,
+    "Spell_Required": "Frost Arrow 3"
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Group": null,
+  "Description": null
+}

@@ -1,0 +1,13 @@
+{
+  "Name": "Strikedown 2",
+  "ScriptName": null,
+  "Prerequisites": {
+    "Class_Required": 1,
+    "ExpLevel_Required": 100,
+    "Skill_Required": "Strikedown 1"
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Group": null,
+  "Description": null
+}

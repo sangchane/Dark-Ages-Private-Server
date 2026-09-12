@@ -1,0 +1,13 @@
+{
+  "Name": "Paralyze Force",
+  "ScriptName": null,
+  "Prerequisites": {
+    "Class_Required": 1,
+    "ExpLevel_Required": 100,
+    "Skill_Required": "beag suain"
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Group": null,
+  "Description": null
+}

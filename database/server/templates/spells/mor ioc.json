@@ -1,0 +1,13 @@
+{
+  "Name": "mor ioc",
+  "ScriptName": null,
+  "Prerequisites": {
+    "Class_Required": 4,
+    "ExpLevel_Required": 75,
+    "Spell_Required": "ioc"
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Group": null,
+  "Description": null
+}
