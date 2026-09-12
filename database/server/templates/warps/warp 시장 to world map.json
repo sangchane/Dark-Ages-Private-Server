@@ -1,0 +1,50 @@
+{
+  "ActivationMapId": 20582,
+  "Activations": [
+    {
+      "AreaID": 20582,
+      "Location": {
+        "X": 13,
+        "Y": 0
+      },
+      "PortalKey": 0
+    },
+    {
+      "AreaID": 20582,
+      "Location": {
+        "X": 14,
+        "Y": 0
+      },
+      "PortalKey": 0
+    },
+    {
+      "AreaID": 20582,
+      "Location": {
+        "X": 15,
+        "Y": 0
+      },
+      "PortalKey": 0
+    },
+    {
+      "AreaID": 20582,
+      "Location": {
+        "X": 16,
+        "Y": 0
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 0,
+    "Location": null,
+    "PortalKey": 1
+  },
+  "WarpRadius": 0,
+  "WarpType": "World",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 시장 to world map"
+}

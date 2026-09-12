@@ -1,0 +1,50 @@
+{
+  "ActivationMapId": 20030,
+  "Activations": [
+    {
+      "AreaID": 20030,
+      "Location": {
+        "X": 69,
+        "Y": 22
+      },
+      "PortalKey": 0
+    },
+    {
+      "AreaID": 20030,
+      "Location": {
+        "X": 69,
+        "Y": 23
+      },
+      "PortalKey": 0
+    },
+    {
+      "AreaID": 20030,
+      "Location": {
+        "X": 69,
+        "Y": 24
+      },
+      "PortalKey": 0
+    },
+    {
+      "AreaID": 20030,
+      "Location": {
+        "X": 69,
+        "Y": 25
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 0,
+    "Location": null,
+    "PortalKey": 1
+  },
+  "WarpRadius": 0,
+  "WarpType": "World",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 아벨마을 to world map"
+}

@@ -1,0 +1,146 @@
+{
+  "ActivationMapId": 20489,
+  "Activations": [
+    {
+      "AreaID": 20489,
+      "Location": {
+        "X": 32,
+        "Y": 57
+      },
+      "PortalKey": 0
+    },
+    {
+      "AreaID": 20489,
+      "Location": {
+        "X": 33,
+        "Y": 57
+      },
+      "PortalKey": 0
+    },
+    {
+      "AreaID": 20489,
+      "Location": {
+        "X": 34,
+        "Y": 57
+      },
+      "PortalKey": 0
+    },
+    {
+      "AreaID": 20489,
+      "Location": {
+        "X": 35,
+        "Y": 57
+      },
+      "PortalKey": 0
+    },
+    {
+      "AreaID": 20489,
+      "Location": {
+        "X": 36,
+        "Y": 57
+      },
+      "PortalKey": 0
+    },
+    {
+      "AreaID": 20489,
+      "Location": {
+        "X": 37,
+        "Y": 57
+      },
+      "PortalKey": 0
+    },
+    {
+      "AreaID": 20489,
+      "Location": {
+        "X": 38,
+        "Y": 57
+      },
+      "PortalKey": 0
+    },
+    {
+      "AreaID": 20489,
+      "Location": {
+        "X": 39,
+        "Y": 57
+      },
+      "PortalKey": 0
+    },
+    {
+      "AreaID": 20489,
+      "Location": {
+        "X": 40,
+        "Y": 57
+      },
+      "PortalKey": 0
+    },
+    {
+      "AreaID": 20489,
+      "Location": {
+        "X": 41,
+        "Y": 57
+      },
+      "PortalKey": 0
+    },
+    {
+      "AreaID": 20489,
+      "Location": {
+        "X": 42,
+        "Y": 57
+      },
+      "PortalKey": 0
+    },
+    {
+      "AreaID": 20489,
+      "Location": {
+        "X": 43,
+        "Y": 57
+      },
+      "PortalKey": 0
+    },
+    {
+      "AreaID": 20489,
+      "Location": {
+        "X": 44,
+        "Y": 57
+      },
+      "PortalKey": 0
+    },
+    {
+      "AreaID": 20489,
+      "Location": {
+        "X": 45,
+        "Y": 57
+      },
+      "PortalKey": 0
+    },
+    {
+      "AreaID": 20489,
+      "Location": {
+        "X": 46,
+        "Y": 57
+      },
+      "PortalKey": 0
+    },
+    {
+      "AreaID": 20489,
+      "Location": {
+        "X": 47,
+        "Y": 57
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 0,
+    "Location": null,
+    "PortalKey": 1
+  },
+  "WarpRadius": 0,
+  "WarpType": "World",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 베크나탑입구 to world map"
+}

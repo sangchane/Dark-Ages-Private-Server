@@ -1,0 +1,42 @@
+{
+  "ActivationMapId": 20329,
+  "Activations": [
+    {
+      "AreaID": 20329,
+      "Location": {
+        "X": 53,
+        "Y": 88
+      },
+      "PortalKey": 0
+    },
+    {
+      "AreaID": 20329,
+      "Location": {
+        "X": 54,
+        "Y": 88
+      },
+      "PortalKey": 0
+    },
+    {
+      "AreaID": 20329,
+      "Location": {
+        "X": 55,
+        "Y": 88
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 0,
+    "Location": null,
+    "PortalKey": 1
+  },
+  "WarpRadius": 0,
+  "WarpType": "World",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 루어스마을 to world map"
+}

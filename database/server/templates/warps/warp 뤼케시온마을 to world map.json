@@ -1,0 +1,42 @@
+{
+  "ActivationMapId": 20338,
+  "Activations": [
+    {
+      "AreaID": 20338,
+      "Location": {
+        "X": 28,
+        "Y": 0
+      },
+      "PortalKey": 0
+    },
+    {
+      "AreaID": 20338,
+      "Location": {
+        "X": 29,
+        "Y": 0
+      },
+      "PortalKey": 0
+    },
+    {
+      "AreaID": 20338,
+      "Location": {
+        "X": 30,
+        "Y": 0
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 0,
+    "Location": null,
+    "PortalKey": 1
+  },
+  "WarpRadius": 0,
+  "WarpType": "World",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 뤼케시온마을 to world map"
+}

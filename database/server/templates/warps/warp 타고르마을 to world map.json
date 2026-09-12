@@ -1,0 +1,42 @@
+{
+  "ActivationMapId": 20363,
+  "Activations": [
+    {
+      "AreaID": 20363,
+      "Location": {
+        "X": 21,
+        "Y": 99
+      },
+      "PortalKey": 0
+    },
+    {
+      "AreaID": 20363,
+      "Location": {
+        "X": 22,
+        "Y": 99
+      },
+      "PortalKey": 0
+    },
+    {
+      "AreaID": 20363,
+      "Location": {
+        "X": 23,
+        "Y": 99
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 0,
+    "Location": null,
+    "PortalKey": 1
+  },
+  "WarpRadius": 0,
+  "WarpType": "World",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 타고르마을 to world map"
+}

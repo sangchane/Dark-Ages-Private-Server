@@ -1,0 +1,66 @@
+{
+  "ActivationMapId": 20311,
+  "Activations": [
+    {
+      "AreaID": 20311,
+      "Location": {
+        "X": 0,
+        "Y": 8
+      },
+      "PortalKey": 0
+    },
+    {
+      "AreaID": 20311,
+      "Location": {
+        "X": 0,
+        "Y": 9
+      },
+      "PortalKey": 0
+    },
+    {
+      "AreaID": 20311,
+      "Location": {
+        "X": 0,
+        "Y": 10
+      },
+      "PortalKey": 0
+    },
+    {
+      "AreaID": 20311,
+      "Location": {
+        "X": 0,
+        "Y": 11
+      },
+      "PortalKey": 0
+    },
+    {
+      "AreaID": 20311,
+      "Location": {
+        "X": 0,
+        "Y": 12
+      },
+      "PortalKey": 0
+    },
+    {
+      "AreaID": 20311,
+      "Location": {
+        "X": 0,
+        "Y": 13
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 0,
+    "Location": null,
+    "PortalKey": 1
+  },
+  "WarpRadius": 0,
+  "WarpType": "World",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 피에트마을 to world map"
+}

@@ -1,0 +1,26 @@
+{
+  "ActivationMapId": 20373,
+  "Activations": [
+    {
+      "AreaID": 20373,
+      "Location": {
+        "X": 63,
+        "Y": 49
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 0,
+    "Location": null,
+    "PortalKey": 1
+  },
+  "WarpRadius": 0,
+  "WarpType": "World",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 노비스마을 to world map"
+}

@@ -1,0 +1,90 @@
+{
+  "ActivationMapId": 20304,
+  "Activations": [
+    {
+      "AreaID": 20304,
+      "Location": {
+        "X": 99,
+        "Y": 29
+      },
+      "PortalKey": 0
+    },
+    {
+      "AreaID": 20304,
+      "Location": {
+        "X": 99,
+        "Y": 30
+      },
+      "PortalKey": 0
+    },
+    {
+      "AreaID": 20304,
+      "Location": {
+        "X": 99,
+        "Y": 31
+      },
+      "PortalKey": 0
+    },
+    {
+      "AreaID": 20304,
+      "Location": {
+        "X": 99,
+        "Y": 32
+      },
+      "PortalKey": 0
+    },
+    {
+      "AreaID": 20304,
+      "Location": {
+        "X": 99,
+        "Y": 33
+      },
+      "PortalKey": 0
+    },
+    {
+      "AreaID": 20304,
+      "Location": {
+        "X": 99,
+        "Y": 34
+      },
+      "PortalKey": 0
+    },
+    {
+      "AreaID": 20304,
+      "Location": {
+        "X": 99,
+        "Y": 35
+      },
+      "PortalKey": 0
+    },
+    {
+      "AreaID": 20304,
+      "Location": {
+        "X": 99,
+        "Y": 36
+      },
+      "PortalKey": 0
+    },
+    {
+      "AreaID": 20304,
+      "Location": {
+        "X": 99,
+        "Y": 37
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 0,
+    "Location": null,
+    "PortalKey": 1
+  },
+  "WarpRadius": 0,
+  "WarpType": "World",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 마인마을 to world map"
+}

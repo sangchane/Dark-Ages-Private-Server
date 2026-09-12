@@ -1,0 +1,66 @@
+{
+  "ActivationMapId": 20319,
+  "Activations": [
+    {
+      "AreaID": 20319,
+      "Location": {
+        "X": 99,
+        "Y": 64
+      },
+      "PortalKey": 0
+    },
+    {
+      "AreaID": 20319,
+      "Location": {
+        "X": 99,
+        "Y": 65
+      },
+      "PortalKey": 0
+    },
+    {
+      "AreaID": 20319,
+      "Location": {
+        "X": 99,
+        "Y": 66
+      },
+      "PortalKey": 0
+    },
+    {
+      "AreaID": 20319,
+      "Location": {
+        "X": 99,
+        "Y": 67
+      },
+      "PortalKey": 0
+    },
+    {
+      "AreaID": 20319,
+      "Location": {
+        "X": 99,
+        "Y": 68
+      },
+      "PortalKey": 0
+    },
+    {
+      "AreaID": 20319,
+      "Location": {
+        "X": 99,
+        "Y": 69
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 0,
+    "Location": null,
+    "PortalKey": 1
+  },
+  "WarpRadius": 0,
+  "WarpType": "World",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 로톤마을 to world map"
+}

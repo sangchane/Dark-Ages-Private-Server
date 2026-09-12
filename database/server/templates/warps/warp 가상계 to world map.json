@@ -1,0 +1,50 @@
+{
+  "ActivationMapId": 20046,
+  "Activations": [
+    {
+      "AreaID": 20046,
+      "Location": {
+        "X": 4,
+        "Y": 3
+      },
+      "PortalKey": 0
+    },
+    {
+      "AreaID": 20046,
+      "Location": {
+        "X": 4,
+        "Y": 5
+      },
+      "PortalKey": 0
+    },
+    {
+      "AreaID": 20046,
+      "Location": {
+        "X": 3,
+        "Y": 4
+      },
+      "PortalKey": 0
+    },
+    {
+      "AreaID": 20046,
+      "Location": {
+        "X": 5,
+        "Y": 4
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 0,
+    "Location": null,
+    "PortalKey": 1
+  },
+  "WarpRadius": 0,
+  "WarpType": "World",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 가상계 to world map"
+}

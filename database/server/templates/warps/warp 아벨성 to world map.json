@@ -1,0 +1,50 @@
+{
+  "ActivationMapId": 20033,
+  "Activations": [
+    {
+      "AreaID": 20033,
+      "Location": {
+        "X": 39,
+        "Y": 15
+      },
+      "PortalKey": 0
+    },
+    {
+      "AreaID": 20033,
+      "Location": {
+        "X": 39,
+        "Y": 16
+      },
+      "PortalKey": 0
+    },
+    {
+      "AreaID": 20033,
+      "Location": {
+        "X": 39,
+        "Y": 17
+      },
+      "PortalKey": 0
+    },
+    {
+      "AreaID": 20033,
+      "Location": {
+        "X": 39,
+        "Y": 18
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 0,
+    "Location": null,
+    "PortalKey": 1
+  },
+  "WarpRadius": 0,
+  "WarpType": "World",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 아벨성 to world map"
+}
