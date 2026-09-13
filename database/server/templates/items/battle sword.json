@@ -1,0 +1,41 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "Battle Sword",
+  "Image": 12,
+  "DisplayImage": 32939,
+  "EquipmentSlot": 1,
+  "Class": 1,
+  "Gender": 255,
+  "LevelRequired": 26,
+  "ScriptName": "Weapon",
+  "Flags": 4221,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 5000,
+  "DmgMin": 33,
+  "DmgMax": 43,
+  "MaxDurability": 10000,
+  "DropRate": 1.0,
+  "WisModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": -1
+  },
+  "ManaModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": -1000
+  },
+  "HitModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 0
+  },
+  "DmgModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 0
+  },
+  "Group": "하데스표",
+  "ID": 0
+}

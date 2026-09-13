@@ -1,0 +1,20 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "Human Remains",
+  "Image": 1075,
+  "DisplayImage": 33843,
+  "EquipmentSlot": 0,
+  "Class": 0,
+  "Gender": 0,
+  "LevelRequired": 3,
+  "Flags": 2236,
+  "CanStack": true,
+  "MaxStack": 10,
+  "Value": 500,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 0,
+  "DropRate": 70.0,
+  "Group": "하데스표",
+  "ID": 0
+}

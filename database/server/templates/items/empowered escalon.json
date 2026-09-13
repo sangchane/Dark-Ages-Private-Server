@@ -1,0 +1,41 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "Empowered Escalon",
+  "Image": 22,
+  "DisplayImage": 32949,
+  "EquipmentSlot": 1,
+  "Class": 0,
+  "Gender": 255,
+  "LevelRequired": 99,
+  "ScriptName": "Weapon",
+  "Flags": 4221,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 3000000,
+  "DmgMin": 624,
+  "DmgMax": 784,
+  "MaxDurability": 4000000,
+  "DropRate": 1.0,
+  "StrModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 1
+  },
+  "ManaModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 1000
+  },
+  "HitModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 0
+  },
+  "DmgModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 0
+  },
+  "Group": "하데스표",
+  "ID": 0
+}

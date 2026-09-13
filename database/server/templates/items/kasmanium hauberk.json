@@ -1,0 +1,26 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "Kasmanium Hauberk",
+  "Image": 17,
+  "DisplayImage": 32925,
+  "EquipmentSlot": 2,
+  "Class": 1,
+  "Gender": 2,
+  "LevelRequired": 41,
+  "ScriptName": "Armor",
+  "Flags": 125,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 35450,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 60000,
+  "DropRate": 0.0,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 30
+  },
+  "Group": "하데스표",
+  "ID": 0
+}

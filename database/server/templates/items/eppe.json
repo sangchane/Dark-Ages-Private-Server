@@ -1,0 +1,36 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "Eppe",
+  "Image": 2,
+  "DisplayImage": 32855,
+  "EquipmentSlot": 1,
+  "Class": 0,
+  "Gender": 255,
+  "LevelRequired": 2,
+  "ScriptName": "Weapon",
+  "Flags": 4221,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 500,
+  "DmgMin": 3,
+  "DmgMax": 15,
+  "MaxDurability": 4000,
+  "DropRate": 50.0,
+  "ManaModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 100
+  },
+  "HitModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 0
+  },
+  "DmgModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 0
+  },
+  "Group": "하데스표",
+  "ID": 0
+}

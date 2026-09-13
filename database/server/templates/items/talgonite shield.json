@@ -1,0 +1,36 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "Talgonite Shield",
+  "Image": 8,
+  "DisplayImage": 32959,
+  "EquipmentSlot": 3,
+  "Class": 1,
+  "Gender": 255,
+  "LevelRequired": 98,
+  "ScriptName": "Shield",
+  "Flags": 77,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 18750,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 17000,
+  "DropRate": 0.11,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 20
+  },
+  "ManaModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 500
+  },
+  "MrModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 30
+  },
+  "Group": "하데스표",
+  "ID": 0
+}

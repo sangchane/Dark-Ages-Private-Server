@@ -1,0 +1,36 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "Deoch Beryl Ring",
+  "Image": 210,
+  "DisplayImage": 32974,
+  "EquipmentSlot": 5,
+  "Class": 0,
+  "Gender": 255,
+  "LevelRequired": 9,
+  "ScriptName": "Generic",
+  "Flags": 95,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 3000,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 2000,
+  "DropRate": 0.2,
+  "WisModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 1
+  },
+  "ConModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 2
+  },
+  "ManaModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 50
+  },
+  "Group": "하데스표",
+  "ID": 0
+}

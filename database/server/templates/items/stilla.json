@@ -1,0 +1,46 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "Stilla",
+  "Image": 17,
+  "DisplayImage": 32944,
+  "EquipmentSlot": 1,
+  "Class": 0,
+  "Gender": 255,
+  "LevelRequired": 61,
+  "ScriptName": "Weapon",
+  "Flags": 4221,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 11800,
+  "DmgMin": 49,
+  "DmgMax": 75,
+  "MaxDurability": 22000,
+  "DropRate": 1.0,
+  "IntModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": -1
+  },
+  "WisModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": -1
+  },
+  "ManaModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": -3000
+  },
+  "HitModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 0
+  },
+  "DmgModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 0
+  },
+  "Group": "하데스표",
+  "ID": 0
+}

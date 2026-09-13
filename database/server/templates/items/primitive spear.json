@@ -1,0 +1,36 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "Primitive Spear",
+  "Image": 83,
+  "DisplayImage": 33863,
+  "EquipmentSlot": 1,
+  "Class": 0,
+  "Gender": 255,
+  "LevelRequired": 49,
+  "ScriptName": "Weapon",
+  "Flags": 4221,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 8000,
+  "DmgMin": 1,
+  "DmgMax": 120,
+  "MaxDurability": 6000,
+  "DropRate": 1.0,
+  "ManaModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": -50
+  },
+  "HitModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 0
+  },
+  "DmgModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 0
+  },
+  "Group": "하데스표",
+  "ID": 0
+}

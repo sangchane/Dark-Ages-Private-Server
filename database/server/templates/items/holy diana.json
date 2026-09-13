@@ -1,0 +1,21 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "Holy Diana",
+  "Image": 26,
+  "DisplayImage": 32953,
+  "EquipmentSlot": 1,
+  "Class": 4,
+  "Gender": 255,
+  "LevelRequired": 11,
+  "ScriptName": "Weapon",
+  "Flags": 13435,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 100000,
+  "DmgMin": 13,
+  "DmgMax": 19,
+  "MaxDurability": 0,
+  "DropRate": 13.0,
+  "Group": "하데스표",
+  "ID": 0
+}

@@ -1,0 +1,46 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "Morrigu Disciple Pellison",
+  "Image": 38,
+  "DisplayImage": 33075,
+  "EquipmentSlot": 2,
+  "Class": 4,
+  "Gender": 2,
+  "LevelRequired": 80,
+  "ScriptName": "Armor",
+  "Flags": 77,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 308000,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 7500,
+  "DropRate": 30.0,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 21
+  },
+  "StrModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 2
+  },
+  "WisModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 2
+  },
+  "HealthModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 500
+  },
+  "MrModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 20
+  },
+  "Group": "하데스표",
+  "ID": 0
+}

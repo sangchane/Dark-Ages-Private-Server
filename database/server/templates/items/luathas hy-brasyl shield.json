@@ -1,0 +1,41 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "Luathas Hy-Brasyl Shield",
+  "Image": 3,
+  "DisplayImage": 32862,
+  "EquipmentSlot": 3,
+  "Class": 0,
+  "Gender": 255,
+  "LevelRequired": 77,
+  "ScriptName": "Shield",
+  "Flags": 77,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 12750,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 13000,
+  "DropRate": 0.1,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 15
+  },
+  "IntModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 1
+  },
+  "ManaModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 1500
+  },
+  "MrModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 20
+  },
+  "Group": "하데스표",
+  "ID": 0
+}

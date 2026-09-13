@@ -1,0 +1,21 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "Training Staff",
+  "Image": 8,
+  "DisplayImage": 32901,
+  "EquipmentSlot": 1,
+  "Class": 0,
+  "Gender": 255,
+  "LevelRequired": 1,
+  "ScriptName": "Weapon",
+  "Flags": 4221,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 100,
+  "DmgMin": 4,
+  "DmgMax": 30,
+  "MaxDurability": 1000,
+  "DropRate": 0.9,
+  "Group": "하데스표",
+  "ID": 0
+}

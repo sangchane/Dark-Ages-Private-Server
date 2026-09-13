@@ -1,0 +1,26 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "Leather Bracer",
+  "Image": 224,
+  "DisplayImage": 32992,
+  "EquipmentSlot": 10,
+  "Class": 5,
+  "Gender": 255,
+  "LevelRequired": 9,
+  "ScriptName": "Generic",
+  "Flags": 4189,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 15000,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 3000,
+  "DropRate": 19.0,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 1
+  },
+  "Group": "하데스표",
+  "ID": 0
+}

@@ -1,0 +1,51 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "Holy Hy-Brasyl Gnarl",
+  "Image": 75,
+  "DisplayImage": 33644,
+  "EquipmentSlot": 1,
+  "Class": 4,
+  "Gender": 255,
+  "LevelRequired": 99,
+  "ScriptName": "Weapon",
+  "Flags": 13435,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 24500,
+  "DmgMin": 1,
+  "DmgMax": 300,
+  "MaxDurability": 300000,
+  "DropRate": 2.0,
+  "StrModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 2
+  },
+  "IntModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 2
+  },
+  "WisModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 1
+  },
+  "HealthModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 500
+  },
+  "ManaModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 1000
+  },
+  "MrModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 20
+  },
+  "Group": "하데스표",
+  "ID": 0
+}

@@ -1,0 +1,56 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "Aosdic Pattern Walker",
+  "Image": 40,
+  "DisplayImage": 33072,
+  "EquipmentSlot": 2,
+  "Class": 5,
+  "Gender": 1,
+  "LevelRequired": 80,
+  "ScriptName": "Armor",
+  "Flags": 77,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 1000000,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 1000,
+  "DropRate": 30.0,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 37
+  },
+  "ConModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 2
+  },
+  "HealthModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 500
+  },
+  "ManaModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 250
+  },
+  "MrModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 10
+  },
+  "HitModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 5
+  },
+  "DmgModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 1
+  },
+  "Group": "하데스표",
+  "ID": 0
+}

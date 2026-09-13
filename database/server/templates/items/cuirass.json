@@ -1,0 +1,26 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "Cuirass",
+  "Image": 7,
+  "DisplayImage": 32889,
+  "EquipmentSlot": 2,
+  "Class": 1,
+  "Gender": 2,
+  "LevelRequired": 11,
+  "ScriptName": "Armor",
+  "Flags": 125,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 9450,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 6000,
+  "DropRate": 0.0,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 17
+  },
+  "Group": "하데스표",
+  "ID": 0
+}

@@ -1,0 +1,21 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "Magus Diana",
+  "Image": 26,
+  "DisplayImage": 32953,
+  "EquipmentSlot": 1,
+  "Class": 3,
+  "Gender": 255,
+  "LevelRequired": 6,
+  "ScriptName": "Weapon",
+  "Flags": 12381,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 245000,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 3000,
+  "DropRate": 26.0,
+  "Group": "하데스표",
+  "ID": 0
+}

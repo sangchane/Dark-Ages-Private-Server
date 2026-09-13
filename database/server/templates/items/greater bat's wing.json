@@ -1,0 +1,20 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "Greater Bat's Wing",
+  "Image": 326,
+  "DisplayImage": 33094,
+  "EquipmentSlot": 0,
+  "Class": 0,
+  "Gender": 0,
+  "LevelRequired": 3,
+  "Flags": 2236,
+  "CanStack": true,
+  "MaxStack": 10,
+  "Value": 2000,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 0,
+  "DropRate": 30.0,
+  "Group": "하데스표",
+  "ID": 0
+}

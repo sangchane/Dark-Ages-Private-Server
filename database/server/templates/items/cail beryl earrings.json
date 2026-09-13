@@ -1,0 +1,31 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "Cail Beryl Earrings",
+  "Image": 231,
+  "DisplayImage": 33000,
+  "EquipmentSlot": 5,
+  "Class": 0,
+  "Gender": 255,
+  "LevelRequired": 8,
+  "ScriptName": "Earring",
+  "Flags": 4189,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 3000,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 1000,
+  "DropRate": 1.0,
+  "IntModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 1
+  },
+  "ConModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 1
+  },
+  "Group": "하데스표",
+  "ID": 0
+}

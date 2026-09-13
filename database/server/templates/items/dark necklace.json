@@ -1,0 +1,21 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "Dark Necklace",
+  "Image": 202,
+  "DisplayImage": 32970,
+  "EquipmentSlot": 6,
+  "Class": 0,
+  "Gender": 255,
+  "LevelRequired": 6,
+  "ScriptName": "Necklace",
+  "Flags": 5241,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 1000000,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 5000,
+  "DropRate": 0.2,
+  "Group": "하데스표",
+  "ID": 0
+}

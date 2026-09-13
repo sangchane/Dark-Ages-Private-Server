@@ -1,0 +1,31 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "Lorum",
+  "Image": 14,
+  "DisplayImage": 32879,
+  "EquipmentSlot": 2,
+  "Class": 3,
+  "Gender": 1,
+  "LevelRequired": 11,
+  "ScriptName": "Armor",
+  "Flags": 4189,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 14750,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 6000,
+  "DropRate": 14.0,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 12
+  },
+  "DexModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 2,
+    "Value": 1
+  },
+  "Group": "하데스표",
+  "ID": 0
+}

@@ -1,0 +1,26 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "Magus Kronos",
+  "Image": 24,
+  "DisplayImage": 32951,
+  "EquipmentSlot": 1,
+  "Class": 3,
+  "Gender": 255,
+  "LevelRequired": 11,
+  "ScriptName": "Weapon",
+  "Flags": 12381,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 24500,
+  "DmgMin": 1,
+  "DmgMax": 39,
+  "MaxDurability": 0,
+  "DropRate": 0.1,
+  "ManaModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 100
+  },
+  "Group": "하데스표",
+  "ID": 0
+}

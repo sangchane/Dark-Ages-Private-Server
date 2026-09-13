@@ -1,0 +1,26 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "Earth's Bodice",
+  "Image": 3,
+  "DisplayImage": 32885,
+  "EquipmentSlot": 2,
+  "Class": 5,
+  "Gender": 2,
+  "LevelRequired": 1,
+  "ScriptName": "Armor",
+  "Flags": 91,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 850,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 3000,
+  "DropRate": 0.2,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 7
+  },
+  "Group": "하데스표",
+  "ID": 0
+}

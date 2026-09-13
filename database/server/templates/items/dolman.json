@@ -1,0 +1,31 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "Dolman",
+  "Image": 20,
+  "DisplayImage": 32928,
+  "EquipmentSlot": 2,
+  "Class": 4,
+  "Gender": 2,
+  "LevelRequired": 71,
+  "ScriptName": "Armor",
+  "Flags": 77,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 23300,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 12000,
+  "DropRate": 30.0,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 34
+  },
+  "DexModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 1
+  },
+  "Group": "하데스표",
+  "ID": 0
+}

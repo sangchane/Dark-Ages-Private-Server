@@ -1,0 +1,26 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "Fire Gold Jade Necklace",
+  "Image": 205,
+  "DisplayImage": 32963,
+  "EquipmentSlot": 6,
+  "Class": 0,
+  "Gender": 255,
+  "LevelRequired": 6,
+  "ScriptName": "Necklace",
+  "Flags": 5241,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 800,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 2000,
+  "DropRate": 0.5,
+  "DmgModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 1
+  },
+  "Group": "하데스표",
+  "ID": 0
+}

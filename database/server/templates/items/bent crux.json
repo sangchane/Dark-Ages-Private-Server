@@ -1,0 +1,20 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "Bent Crux",
+  "Image": 32851,
+  "DisplayImage": 32851,
+  "EquipmentSlot": 0,
+  "Class": 0,
+  "Gender": 0,
+  "LevelRequired": 1,
+  "Flags": 2492,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 0,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 0,
+  "DropRate": 15.0,
+  "Group": "하데스표",
+  "ID": 0
+}

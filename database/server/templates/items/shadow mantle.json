@@ -1,0 +1,51 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "Shadow Mantle",
+  "Image": 159,
+  "DisplayImage": 33633,
+  "EquipmentSlot": 2,
+  "Class": 2,
+  "Gender": 255,
+  "LevelRequired": 99,
+  "ScriptName": "Armor",
+  "Flags": 4189,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 1000,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 1000000,
+  "DropRate": 25.0,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 62
+  },
+  "StrModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 1
+  },
+  "DexModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 1
+  },
+  "HealthModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 1000
+  },
+  "ManaModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 500
+  },
+  "MrModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 30
+  },
+  "Group": "하데스표",
+  "ID": 0
+}

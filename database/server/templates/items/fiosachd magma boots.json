@@ -1,0 +1,26 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "Fiosachd Magma Boots",
+  "Image": 1,
+  "DisplayImage": 32881,
+  "EquipmentSlot": 13,
+  "Class": 0,
+  "Gender": 255,
+  "LevelRequired": 82,
+  "ScriptName": "Boot",
+  "Flags": 4189,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 80000,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 33000,
+  "DropRate": 0.1,
+  "DexModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 5
+  },
+  "Group": "하데스표",
+  "ID": 0
+}

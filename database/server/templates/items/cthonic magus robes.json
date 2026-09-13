@@ -1,0 +1,31 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "Cthonic Magus Robes",
+  "Image": 38,
+  "DisplayImage": 33072,
+  "EquipmentSlot": 2,
+  "Class": 3,
+  "Gender": 1,
+  "LevelRequired": 80,
+  "ScriptName": "Armor",
+  "Flags": 77,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 1000000,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 1000,
+  "DropRate": 30.0,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 21
+  },
+  "MrModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 10
+  },
+  "Group": "하데스표",
+  "ID": 0
+}

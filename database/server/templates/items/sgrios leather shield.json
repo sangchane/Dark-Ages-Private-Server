@@ -1,0 +1,46 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "Sgrios Leather Shield",
+  "Image": 5,
+  "DisplayImage": 32956,
+  "EquipmentSlot": 3,
+  "Class": 0,
+  "Gender": 255,
+  "LevelRequired": 15,
+  "ScriptName": "Shield",
+  "Flags": 77,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 750,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 5000,
+  "DropRate": 0.2,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 5
+  },
+  "StrModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 2
+  },
+  "WisModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 1
+  },
+  "ConModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 1
+  },
+  "ManaModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 1500
+  },
+  "Group": "하데스표",
+  "ID": 0
+}

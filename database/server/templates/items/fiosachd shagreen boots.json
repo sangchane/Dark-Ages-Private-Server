@@ -1,0 +1,26 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "Fiosachd Shagreen Boots",
+  "Image": 1,
+  "DisplayImage": 32882,
+  "EquipmentSlot": 13,
+  "Class": 0,
+  "Gender": 255,
+  "LevelRequired": 33,
+  "ScriptName": "Boot",
+  "Flags": 4189,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 10000,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 15000,
+  "DropRate": 0.2,
+  "DexModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 3
+  },
+  "Group": "하데스표",
+  "ID": 0
+}

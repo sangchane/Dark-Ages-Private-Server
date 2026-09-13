@@ -1,0 +1,21 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "Holy Apollo",
+  "Image": 25,
+  "DisplayImage": 32952,
+  "EquipmentSlot": 1,
+  "Class": 4,
+  "Gender": 255,
+  "LevelRequired": 11,
+  "ScriptName": "Weapon",
+  "Flags": 12381,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 24500,
+  "DmgMin": 5,
+  "DmgMax": 59,
+  "MaxDurability": 3000,
+  "DropRate": 0.1,
+  "Group": "하데스표",
+  "ID": 0
+}

@@ -1,0 +1,20 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "Komadium",
+  "Image": 32814,
+  "DisplayImage": 32814,
+  "EquipmentSlot": 0,
+  "Class": 0,
+  "Gender": 255,
+  "LevelRequired": 1,
+  "Flags": 444,
+  "CanStack": true,
+  "MaxStack": 200,
+  "Value": 200,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 0,
+  "DropRate": 80.0,
+  "Group": "하데스표",
+  "ID": 0
+}

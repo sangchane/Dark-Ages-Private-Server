@@ -1,0 +1,26 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "Lorica",
+  "Image": 12,
+  "DisplayImage": 32875,
+  "EquipmentSlot": 2,
+  "Class": 1,
+  "Gender": 1,
+  "LevelRequired": 26,
+  "ScriptName": "Armor",
+  "Flags": 125,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 15450,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 6000,
+  "DropRate": 0.0,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 24
+  },
+  "Group": "하데스표",
+  "ID": 0
+}

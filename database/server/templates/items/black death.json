@@ -1,0 +1,36 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "Black Death",
+  "Image": 13,
+  "DisplayImage": 32940,
+  "EquipmentSlot": 1,
+  "Class": 1,
+  "Gender": 255,
+  "LevelRequired": 45,
+  "ScriptName": "Weapon",
+  "Flags": 4221,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 8800,
+  "DmgMin": 40,
+  "DmgMax": 60,
+  "MaxDurability": 16000,
+  "DropRate": 1.0,
+  "IntModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": "1"
+  },
+  "WisModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": "1"
+  },
+  "ManaModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": "2500"
+  },
+  "Group": "하데스표",
+  "ID": 0
+}

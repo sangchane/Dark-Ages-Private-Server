@@ -1,0 +1,41 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "Sgrios Saffian Boots",
+  "Image": 1,
+  "DisplayImage": 32863,
+  "EquipmentSlot": 13,
+  "Class": 0,
+  "Gender": 255,
+  "LevelRequired": 66,
+  "ScriptName": "Boot",
+  "Flags": 4189,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 40000,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 27000,
+  "DropRate": 0.1,
+  "StrModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 2
+  },
+  "WisModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 1
+  },
+  "ConModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 1
+  },
+  "DexModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 4
+  },
+  "Group": "하데스표",
+  "ID": 0
+}

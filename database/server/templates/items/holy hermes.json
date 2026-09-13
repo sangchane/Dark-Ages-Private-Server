@@ -1,0 +1,21 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "Holy Hermes",
+  "Image": 7,
+  "DisplayImage": 32900,
+  "EquipmentSlot": 1,
+  "Class": 4,
+  "Gender": 255,
+  "LevelRequired": 11,
+  "ScriptName": "Weapon",
+  "Flags": 12381,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 24500,
+  "DmgMin": 10,
+  "DmgMax": 19,
+  "MaxDurability": 3000,
+  "DropRate": 0.2,
+  "Group": "하데스표",
+  "ID": 0
+}

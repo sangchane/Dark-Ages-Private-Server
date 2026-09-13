@@ -1,0 +1,21 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "Blossom Dagger",
+  "Image": 30,
+  "DisplayImage": 33019,
+  "EquipmentSlot": 1,
+  "Class": 2,
+  "Gender": 255,
+  "LevelRequired": 14,
+  "ScriptName": "Weapon",
+  "Flags": 4221,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 7000,
+  "DmgMin": 35,
+  "DmgMax": 50,
+  "MaxDurability": 6000,
+  "DropRate": 1.0,
+  "Group": "하데스표",
+  "ID": 0
+}

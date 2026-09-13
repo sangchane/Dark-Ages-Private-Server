@@ -1,0 +1,31 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "Hy-Brasyl Battle Axe",
+  "Image": 96,
+  "DisplayImage": 33693,
+  "EquipmentSlot": 1,
+  "Class": 1,
+  "Gender": 255,
+  "LevelRequired": 95,
+  "ScriptName": "Weapon",
+  "Flags": 12413,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 100000,
+  "DmgMin": 342,
+  "DmgMax": 420,
+  "MaxDurability": 300000,
+  "DropRate": 1.0,
+  "HitModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 10
+  },
+  "DmgModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 10
+  },
+  "Group": "하데스표",
+  "ID": 0
+}

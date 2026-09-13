@@ -1,0 +1,21 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "Light Dagger",
+  "Image": 30,
+  "DisplayImage": 33022,
+  "EquipmentSlot": 1,
+  "Class": 2,
+  "Gender": 255,
+  "LevelRequired": 42,
+  "ScriptName": "Weapon",
+  "Flags": 4221,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 12500,
+  "DmgMin": 45,
+  "DmgMax": 60,
+  "MaxDurability": 10000,
+  "DropRate": 1.0,
+  "Group": "하데스표",
+  "ID": 0
+}

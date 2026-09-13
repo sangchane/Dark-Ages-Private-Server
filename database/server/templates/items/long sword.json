@@ -1,0 +1,36 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "Long Sword",
+  "Image": 15,
+  "DisplayImage": 32942,
+  "EquipmentSlot": 1,
+  "Class": 1,
+  "Gender": 255,
+  "LevelRequired": 56,
+  "ScriptName": "Weapon",
+  "Flags": 4221,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 12200,
+  "DmgMin": 55,
+  "DmgMax": 75,
+  "MaxDurability": 20000,
+  "DropRate": 1.0,
+  "IntModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": "1"
+  },
+  "WisModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": "1"
+  },
+  "ManaModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": "3000"
+  },
+  "Group": "하데스표",
+  "ID": 0
+}

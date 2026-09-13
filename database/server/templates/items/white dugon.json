@@ -1,0 +1,21 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "White Dugon",
+  "Image": 141,
+  "DisplayImage": 33305,
+  "EquipmentSlot": 5,
+  "Class": 5,
+  "Gender": 1,
+  "LevelRequired": 11,
+  "ScriptName": "Helmet",
+  "Flags": 4189,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 80000,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 80000,
+  "DropRate": 27.0,
+  "Group": "하데스표",
+  "ID": 0
+}

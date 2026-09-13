@@ -1,0 +1,26 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "Broad Sword",
+  "Image": 5,
+  "DisplayImage": 32938,
+  "EquipmentSlot": 1,
+  "Class": 1,
+  "Gender": 255,
+  "LevelRequired": 17,
+  "ScriptName": "Weapon",
+  "Flags": 4221,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 1700,
+  "DmgMin": 20,
+  "DmgMax": 30,
+  "MaxDurability": 8000,
+  "DropRate": 1.0,
+  "ManaModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": "750"
+  },
+  "Group": "하데스표",
+  "ID": 0
+}

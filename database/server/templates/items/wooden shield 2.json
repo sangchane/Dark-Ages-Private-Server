@@ -1,0 +1,31 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "Wooden Shield 2",
+  "Image": 1,
+  "DisplayImage": 32860,
+  "EquipmentSlot": 3,
+  "Class": 0,
+  "Gender": 255,
+  "LevelRequired": 1,
+  "ScriptName": "Shield",
+  "Flags": 77,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 100,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 3000,
+  "DropRate": 28.0,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 3
+  },
+  "ManaModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 1000
+  },
+  "Group": "하데스표",
+  "ID": 0
+}

@@ -1,0 +1,51 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "Master Celestial Staff",
+  "Image": 110,
+  "DisplayImage": 34129,
+  "EquipmentSlot": 1,
+  "Class": 4,
+  "Gender": 255,
+  "LevelRequired": 99,
+  "ScriptName": "Weapon",
+  "Flags": 13435,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 24500,
+  "DmgMin": 1,
+  "DmgMax": 30,
+  "MaxDurability": 300000,
+  "DropRate": 2.0,
+  "StrModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 1
+  },
+  "IntModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 0
+  },
+  "WisModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 0
+  },
+  "HealthModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 500
+  },
+  "ManaModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 2000
+  },
+  "MrModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 30
+  },
+  "Group": "하데스표",
+  "ID": 0
+}

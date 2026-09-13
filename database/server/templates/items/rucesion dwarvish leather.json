@@ -1,0 +1,31 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "Rucesion Dwarvish Leather",
+  "Image": 47,
+  "DisplayImage": 33165,
+  "EquipmentSlot": 2,
+  "Class": 2,
+  "Gender": 1,
+  "LevelRequired": 11,
+  "ScriptName": "Armor",
+  "Flags": 4189,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 10400,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 3000,
+  "DropRate": 25.0,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 20
+  },
+  "IntModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 1
+  },
+  "Group": "하데스표",
+  "ID": 0
+}

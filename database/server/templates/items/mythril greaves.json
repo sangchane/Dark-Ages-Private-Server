@@ -1,0 +1,31 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "Mythril Greaves",
+  "Image": 250,
+  "DisplayImage": 33007,
+  "EquipmentSlot": 12,
+  "Class": 0,
+  "Gender": 255,
+  "LevelRequired": 59,
+  "ScriptName": "Generic",
+  "Flags": 4189,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 100000,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 9000,
+  "DropRate": 0.2,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 6
+  },
+  "ManaModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 1000
+  },
+  "Group": "하데스표",
+  "ID": 0
+}

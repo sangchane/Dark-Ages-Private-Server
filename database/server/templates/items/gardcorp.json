@@ -1,0 +1,26 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "Gardcorp",
+  "Image": 6,
+  "DisplayImage": 32869,
+  "EquipmentSlot": 2,
+  "Class": 3,
+  "Gender": 1,
+  "LevelRequired": 1,
+  "ScriptName": "Armor",
+  "Flags": 4189,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 750,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 3000,
+  "DropRate": 14.0,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 5
+  },
+  "Group": "하데스표",
+  "ID": 0
+}

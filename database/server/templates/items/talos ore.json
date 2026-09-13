@@ -1,0 +1,20 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "Talos Ore",
+  "Image": 33088,
+  "DisplayImage": 33088,
+  "EquipmentSlot": 0,
+  "Class": 0,
+  "Gender": 0,
+  "LevelRequired": 1,
+  "Flags": 2492,
+  "CanStack": true,
+  "MaxStack": 50,
+  "Value": 0,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 0,
+  "DropRate": 15.0,
+  "Group": "하데스표",
+  "ID": 0
+}

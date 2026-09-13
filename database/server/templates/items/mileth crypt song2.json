@@ -1,0 +1,20 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "Mileth Crypt Song2",
+  "Image": 32775,
+  "DisplayImage": 32775,
+  "EquipmentSlot": 0,
+  "Class": 0,
+  "Gender": 0,
+  "LevelRequired": 1,
+  "Flags": 2492,
+  "CanStack": true,
+  "MaxStack": 100,
+  "Value": 1000,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 0,
+  "DropRate": 0.91,
+  "Group": "하데스표",
+  "ID": 0
+}

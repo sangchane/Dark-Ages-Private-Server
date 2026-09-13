@@ -1,0 +1,36 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "Fiosachd Hy-Brasyl Greaves",
+  "Image": 250,
+  "DisplayImage": 33008,
+  "EquipmentSlot": 12,
+  "Class": 0,
+  "Gender": 255,
+  "LevelRequired": 93,
+  "ScriptName": "Generic",
+  "Flags": 4189,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 300000,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 12000,
+  "DropRate": 0.18,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 6
+  },
+  "DexModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 1
+  },
+  "ManaModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 1000
+  },
+  "Group": "하데스표",
+  "ID": 0
+}

@@ -1,0 +1,21 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "Ancuisa Ceir",
+  "Image": 331,
+  "DisplayImage": 33099,
+  "EquipmentSlot": 11,
+  "Class": 0,
+  "Gender": 255,
+  "LevelRequired": 11,
+  "ScriptName": "Belt",
+  "Flags": 5213,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 2500,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 500,
+  "DropRate": 2.0,
+  "Group": "하데스표",
+  "ID": 0
+}

@@ -1,0 +1,20 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "beag spiorad deum",
+  "Image": 32815,
+  "DisplayImage": 32815,
+  "EquipmentSlot": 0,
+  "Class": 0,
+  "Gender": 0,
+  "LevelRequired": 1,
+  "Flags": 2492,
+  "CanStack": true,
+  "MaxStack": 100,
+  "Value": 0,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 0,
+  "DropRate": 0.05,
+  "Group": "하데스표",
+  "ID": 0
+}

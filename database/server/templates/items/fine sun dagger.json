@@ -1,0 +1,21 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "Fine Sun Dagger",
+  "Image": 30,
+  "DisplayImage": 33021,
+  "EquipmentSlot": 1,
+  "Class": 2,
+  "Gender": 255,
+  "LevelRequired": 66,
+  "ScriptName": "Weapon",
+  "Flags": 4221,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 19250,
+  "DmgMin": 76,
+  "DmgMax": 101,
+  "MaxDurability": 12000,
+  "DropRate": 0.1,
+  "Group": "하데스표",
+  "ID": 0
+}

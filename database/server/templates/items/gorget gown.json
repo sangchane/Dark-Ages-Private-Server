@@ -1,0 +1,26 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "Gorget Gown",
+  "Image": 5,
+  "DisplayImage": 32887,
+  "EquipmentSlot": 2,
+  "Class": 4,
+  "Gender": 2,
+  "LevelRequired": 1,
+  "ScriptName": "Armor",
+  "Flags": 4189,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 800,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 3000,
+  "DropRate": 12.0,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 8
+  },
+  "Group": "하데스표",
+  "ID": 0
+}

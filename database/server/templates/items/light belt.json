@@ -1,0 +1,21 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "Light Belt",
+  "Image": 383,
+  "DisplayImage": 33667,
+  "EquipmentSlot": 11,
+  "Class": 0,
+  "Gender": 255,
+  "LevelRequired": 11,
+  "ScriptName": "Belt",
+  "Flags": 1117,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 10000000,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 50000,
+  "DropRate": 1.0,
+  "Group": "하데스표",
+  "ID": 0
+}

@@ -1,0 +1,26 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "Mystic Gown",
+  "Image": 10,
+  "DisplayImage": 32892,
+  "EquipmentSlot": 2,
+  "Class": 4,
+  "Gender": 2,
+  "LevelRequired": 11,
+  "ScriptName": "Armor",
+  "Flags": 4189,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 8300,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 6000,
+  "DropRate": 14.0,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 17
+  },
+  "Group": "하데스표",
+  "ID": 0
+}

@@ -1,0 +1,26 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "Piet Cowl",
+  "Image": 75,
+  "DisplayImage": 33183,
+  "EquipmentSlot": 2,
+  "Class": 4,
+  "Gender": 1,
+  "LevelRequired": 1,
+  "ScriptName": "Armor",
+  "Flags": 4189,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 800,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 3000,
+  "DropRate": 7.0,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 8
+  },
+  "Group": "하데스표",
+  "ID": 0
+}

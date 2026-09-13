@@ -1,0 +1,21 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "Blood Dagger",
+  "Image": 32,
+  "DisplayImage": 33024,
+  "EquipmentSlot": 1,
+  "Class": 2,
+  "Gender": 255,
+  "LevelRequired": 89,
+  "ScriptName": "Weapon",
+  "Flags": 4221,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 50000,
+  "DmgMin": 95,
+  "DmgMax": 120,
+  "MaxDurability": 16000,
+  "DropRate": 1.0,
+  "Group": "하데스표",
+  "ID": 0
+}

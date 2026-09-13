@@ -1,0 +1,21 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "Light Coral Necklace",
+  "Image": 951,
+  "DisplayImage": 33719,
+  "EquipmentSlot": 6,
+  "Class": 0,
+  "Gender": 255,
+  "LevelRequired": 1,
+  "ScriptName": "Necklace",
+  "Flags": 5213,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 100000000,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 3000000,
+  "DropRate": 23.0,
+  "Group": "하데스표",
+  "ID": 0
+}

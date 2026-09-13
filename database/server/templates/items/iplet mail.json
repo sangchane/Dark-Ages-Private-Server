@@ -1,0 +1,26 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "Iplet Mail",
+  "Image": 28,
+  "DisplayImage": 33029,
+  "EquipmentSlot": 2,
+  "Class": 1,
+  "Gender": 1,
+  "LevelRequired": 60,
+  "ScriptName": "Armor",
+  "Flags": 125,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 4000,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 16000,
+  "DropRate": 0.1,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 38
+  },
+  "Group": "하데스표",
+  "ID": 0
+}

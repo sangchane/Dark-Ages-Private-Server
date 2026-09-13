@@ -1,0 +1,26 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "Might Ruby Ring",
+  "Image": 210,
+  "DisplayImage": 32978,
+  "EquipmentSlot": 8,
+  "Class": 0,
+  "Gender": 255,
+  "LevelRequired": 6,
+  "ScriptName": "Generic",
+  "Flags": 95,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 20000,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 2000,
+  "DropRate": 0.1,
+  "HealthModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 300
+  },
+  "Group": "하데스표",
+  "ID": 0
+}

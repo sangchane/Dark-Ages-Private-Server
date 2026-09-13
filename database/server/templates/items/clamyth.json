@@ -1,0 +1,31 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "Clamyth",
+  "Image": 26,
+  "DisplayImage": 32934,
+  "EquipmentSlot": 2,
+  "Class": 3,
+  "Gender": 2,
+  "LevelRequired": 97,
+  "ScriptName": "Armor",
+  "Flags": 77,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 28750,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 15000,
+  "DropRate": 1.0,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 18
+  },
+  "DexModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 0
+  },
+  "Group": "하데스표",
+  "ID": 0
+}
