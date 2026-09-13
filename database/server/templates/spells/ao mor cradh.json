@@ -1,6 +1,6 @@
 {
   "Name": "ao mor cradh",
-  "ScriptName": "ao mor cradh",
+  "ScriptKey": "ao mor cradh",
   "Prerequisites": {
     "Class_Required": 4,
     "ExpLevel_Required": 60,

@@ -1,6 +1,6 @@
 {
   "Name": "athar",
-  "ScriptName": "athar",
+  "ScriptKey": "athar",
   "Prerequisites": {
     "Class_Required": 3,
     "ExpLevel_Required": 30,

@@ -1,6 +1,6 @@
 {
   "Name": "Stiletto Trap",
-  "ScriptName": "Stiletto Trap",
+  "ScriptKey": "Stiletto Trap",
   "Prerequisites": {
     "Class_Required": 2,
     "ExpLevel_Required": 0

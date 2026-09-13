@@ -1,6 +1,6 @@
 {
   "Name": "fas spiorad",
-  "ScriptName": "fas spiorad",
+  "ScriptKey": "fas spiorad",
   "Prerequisites": {
     "Class_Required": 3,
     "ExpLevel_Required": 0

@@ -1,6 +1,6 @@
 {
   "Name": "beag ioc fein",
-  "ScriptName": "beag ioc fein",
+  "ScriptKey": "beag ioc fein",
   "Prerequisites": {
     "Class_Required": 4,
     "ExpLevel_Required": 0
@@ -8,5 +8,11 @@
   "MaxLevel": 100,
   "ID": 0,
   "Description": null,
-  "Group": "원작표"
+  "Group": "원작표",
+  "Icon": 21,
+  "TargetType": 5,
+  "Pane": 1,
+  "Text": "자신의 체력을 회복합니다.",
+  "ManaCost": 1,
+  "BaseLines": 0
 }

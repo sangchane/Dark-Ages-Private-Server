@@ -59,6 +59,7 @@
 
 		// Skills
 		"GiveAssailOnCreate": true,
+		"StarterSpellOnCreate": "beag ioc fein",
 		"ObjectServerPort": 2620,
 		"GlobalBaseSkillDelay": 500.0,
 		"AssailsCancelSpells": true,

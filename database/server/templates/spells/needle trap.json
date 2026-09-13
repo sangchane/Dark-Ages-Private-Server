@@ -1,6 +1,6 @@
 {
   "Name": "Needle Trap",
-  "ScriptName": "Needle Trap",
+  "ScriptKey": "Needle Trap",
   "Prerequisites": {
     "Class_Required": 2,
     "ExpLevel_Required": 0

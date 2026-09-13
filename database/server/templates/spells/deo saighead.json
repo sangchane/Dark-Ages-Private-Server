@@ -1,6 +1,6 @@
 {
   "Name": "deo saighead",
-  "ScriptName": "deo saighead",
+  "ScriptKey": "deo saighead",
   "Prerequisites": {
     "Class_Required": 4,
     "ExpLevel_Required": 45,

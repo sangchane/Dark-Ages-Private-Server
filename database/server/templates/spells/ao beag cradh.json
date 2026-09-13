@@ -1,6 +1,6 @@
 {
   "Name": "ao beag cradh",
-  "ScriptName": "ao beag cradh",
+  "ScriptKey": "ao beag cradh",
   "Prerequisites": {
     "Class_Required": 4,
     "ExpLevel_Required": 0

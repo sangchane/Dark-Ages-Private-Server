@@ -1,6 +1,6 @@
 {
   "Name": "ard sal",
-  "ScriptName": "ard sal",
+  "ScriptKey": "ard sal",
   "Prerequisites": {
     "Class_Required": 3,
     "ExpLevel_Required": 75,

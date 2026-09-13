@@ -1,6 +1,6 @@
 {
   "Name": "sal",
-  "ScriptName": "sal",
+  "ScriptKey": "sal",
   "Prerequisites": {
     "Class_Required": 3,
     "ExpLevel_Required": 30,

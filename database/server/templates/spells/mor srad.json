@@ -1,6 +1,6 @@
 {
   "Name": "mor srad",
-  "ScriptName": "mor srad",
+  "ScriptKey": "mor srad",
   "Prerequisites": {
     "Class_Required": 3,
     "ExpLevel_Required": 60,

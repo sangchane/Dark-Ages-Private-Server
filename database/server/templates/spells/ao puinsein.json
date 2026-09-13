@@ -1,6 +1,6 @@
 {
   "Name": "ao puinsein",
-  "ScriptName": "ao puinsein",
+  "ScriptKey": "ao puinsein",
   "Prerequisites": {
     "Class_Required": 4,
     "ExpLevel_Required": 0

@@ -1,6 +1,6 @@
 {
   "Name": "디소루마",
-  "ScriptName": "ao suain",
+  "ScriptKey": "ao suain",
   "Prerequisites": {
     "Class_Required": 4,
     "ExpLevel_Required": 75,

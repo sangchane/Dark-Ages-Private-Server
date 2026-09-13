@@ -1,6 +1,6 @@
 {
   "Name": "beag athar",
-  "ScriptName": "beag athar",
+  "ScriptKey": "beag athar",
   "Prerequisites": {
     "Class_Required": 3,
     "ExpLevel_Required": 0

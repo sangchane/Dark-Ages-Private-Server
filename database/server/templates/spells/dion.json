@@ -1,6 +1,6 @@
 {
   "Name": "dion",
-  "ScriptName": "dion",
+  "ScriptKey": "dion",
   "Prerequisites": {
     "Class_Required": 5,
     "ExpLevel_Required": 60,

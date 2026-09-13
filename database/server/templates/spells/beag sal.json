@@ -1,6 +1,6 @@
 {
   "Name": "beag sal",
-  "ScriptName": "beag sal",
+  "ScriptKey": "beag sal",
   "Prerequisites": {
     "Class_Required": 3,
     "ExpLevel_Required": 0

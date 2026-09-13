@@ -249,6 +249,11 @@ namespace Darkages
             if (ServerContext.Config.GiveAssailOnCreate)
                 Skill.GiveTo(result, "Assail", 1);
 
+            // Keep one real spell in the fresh-character path while trainers are still being ported. An
+            // empty value restores the original behaviour without a code change.
+            if (!string.IsNullOrWhiteSpace(ServerContext.Config.StarterSpellOnCreate))
+                Spell.GiveTo(result, ServerContext.Config.StarterSpellOnCreate, 1);
+
             //if (ServerContext.Config.DevMode)
             //{
             //    foreach (var temp in ServerContext.GlobalSpellTemplateCache)

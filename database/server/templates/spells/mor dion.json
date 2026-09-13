@@ -1,6 +1,6 @@
 {
   "Name": "mor dion",
-  "ScriptName": "mor dion",
+  "ScriptKey": "mor dion",
   "Prerequisites": {
     "Class_Required": 4,
     "ExpLevel_Required": 75,

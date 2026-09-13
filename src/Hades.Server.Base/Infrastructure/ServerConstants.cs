@@ -54,6 +54,7 @@ namespace Darkages
         double FasNadurStrength { get; set; }
         List<string> GameMasters { get; set; }
         bool GiveAssailOnCreate { get; }
+        string StarterSpellOnCreate { get; }
         double GlobalBaseSkillDelay { get; set; }
         double GlobalSpawnTimer { get; set; }
         double GroupExpBonus { get; set; }
@@ -245,6 +246,8 @@ namespace Darkages
         public List<string> GameMasters { get; set; }
 
         public bool GiveAssailOnCreate { get; set; }
+
+        public string StarterSpellOnCreate { get; set; }
 
         public double GlobalBaseSkillDelay { get; set; }
 

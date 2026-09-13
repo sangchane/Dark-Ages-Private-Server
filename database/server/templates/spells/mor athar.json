@@ -1,6 +1,6 @@
 {
   "Name": "mor athar",
-  "ScriptName": "mor athar",
+  "ScriptKey": "mor athar",
   "Prerequisites": {
     "Class_Required": 3,
     "ExpLevel_Required": 60,

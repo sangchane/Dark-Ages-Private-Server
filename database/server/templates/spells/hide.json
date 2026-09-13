@@ -1,6 +1,6 @@
 {
   "Name": "Hide",
-  "ScriptName": "Hide",
+  "ScriptKey": "Hide",
   "Prerequisites": {
     "Class_Required": 2,
     "ExpLevel_Required": 0

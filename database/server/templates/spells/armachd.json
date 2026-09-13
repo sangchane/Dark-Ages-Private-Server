@@ -1,6 +1,6 @@
 {
   "Name": "armachd",
-  "ScriptName": "armachd",
+  "ScriptKey": "armachd",
   "Prerequisites": {
     "Class_Required": 4,
     "ExpLevel_Required": 0

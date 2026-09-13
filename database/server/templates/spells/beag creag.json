@@ -1,6 +1,6 @@
 {
   "Name": "beag creag",
-  "ScriptName": "beag creag",
+  "ScriptKey": "beag creag",
   "Prerequisites": {
     "Class_Required": 3,
     "ExpLevel_Required": 0
