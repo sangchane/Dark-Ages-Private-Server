@@ -1,8 +1,0 @@
-{
-  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
-  "Name": "월화이어투구(봉인)",
-  "Value": 100,
-  "Image": 12166,
-  "CanStack": true,
-  "Flags": 384
-}

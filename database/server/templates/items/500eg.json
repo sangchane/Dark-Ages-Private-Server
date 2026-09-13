@@ -1,7 +1,0 @@
-{
-  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
-  "Name": "500EG",
-  "Image": 137,
-  "CanStack": true,
-  "Flags": 384
-}

@@ -1,9 +1,0 @@
-{
-  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
-  "Name": "Effect-소나기",
-  "Image": 13570,
-  "DisplayImage": 248,
-  "EquipSlot": 14,
-  "EquipmentSlot": 14,
-  "Flags": 1
-}

@@ -1,9 +1,0 @@
-{
-  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
-  "Name": "물안경",
-  "Image": 288,
-  "DisplayImage": 358,
-  "EquipSlot": 4,
-  "EquipmentSlot": 4,
-  "Flags": 1
-}

@@ -1,8 +1,0 @@
-{
-  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
-  "Name": "바크의척추뼈",
-  "Value": 0,
-  "Image": 566,
-  "CanStack": true,
-  "Flags": 384
-}

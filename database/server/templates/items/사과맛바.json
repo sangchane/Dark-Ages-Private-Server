@@ -1,9 +1,0 @@
-{
-  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
-  "Name": "사과맛바",
-  "Image": 8186,
-  "DisplayImage": 130,
-  "EquipSlot": 14,
-  "EquipmentSlot": 14,
-  "Flags": 1
-}

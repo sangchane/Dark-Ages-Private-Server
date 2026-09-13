@@ -1,8 +1,0 @@
-{
-  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
-  "Name": "좀비의공문",
-  "Value": 0,
-  "Image": 145,
-  "CanStack": true,
-  "Flags": 384
-}

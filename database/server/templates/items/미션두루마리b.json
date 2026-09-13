@@ -1,8 +1,0 @@
-{
-  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
-  "Name": "미션두루마리B",
-  "Value": 3000,
-  "Image": 3206,
-  "CanStack": true,
-  "Flags": 384
-}

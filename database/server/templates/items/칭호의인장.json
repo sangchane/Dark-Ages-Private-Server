@@ -1,8 +1,0 @@
-{
-  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
-  "Name": "칭호의인장",
-  "Value": 0,
-  "Image": 13047,
-  "CanStack": true,
-  "Flags": 384
-}

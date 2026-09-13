@@ -1,8 +1,0 @@
-{
-  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
-  "Name": "브레스럭장갑(봉인)",
-  "Value": 100,
-  "Image": 12152,
-  "CanStack": true,
-  "Flags": 384
-}

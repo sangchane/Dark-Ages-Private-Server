@@ -1,8 +1,0 @@
-{
-  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
-  "Name": "퐁퐁이의점액질",
-  "Value": 0,
-  "Image": 562,
-  "CanStack": true,
-  "Flags": 384
-}

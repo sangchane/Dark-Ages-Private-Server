@@ -1,8 +1,0 @@
-{
-  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
-  "Name": "카슈마나이트",
-  "Value": 600,
-  "Image": 724,
-  "CanStack": true,
-  "Flags": 384
-}

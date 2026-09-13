@@ -1,8 +1,0 @@
-{
-  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
-  "Name": "애니비아의알",
-  "Value": 0,
-  "Image": 1525,
-  "CanStack": true,
-  "Flags": 384
-}

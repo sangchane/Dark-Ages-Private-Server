@@ -1,8 +1,0 @@
-{
-  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
-  "Name": "팜팻의정수",
-  "Value": 0,
-  "Image": 13473,
-  "CanStack": true,
-  "Flags": 384
-}

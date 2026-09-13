@@ -1,8 +1,0 @@
-{
-  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
-  "Name": "동굴지네의껍질",
-  "Value": 0,
-  "Image": 344,
-  "CanStack": true,
-  "Flags": 384
-}

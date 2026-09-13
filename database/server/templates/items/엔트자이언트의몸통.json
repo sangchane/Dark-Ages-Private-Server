@@ -1,8 +1,0 @@
-{
-  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
-  "Name": "엔트자이언트의몸통",
-  "Value": 0,
-  "Image": 1510,
-  "CanStack": true,
-  "Flags": 384
-}

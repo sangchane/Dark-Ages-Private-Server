@@ -1,8 +1,0 @@
-{
-  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
-  "Name": "바다의씰",
-  "Value": 0,
-  "Image": 2186,
-  "CanStack": true,
-  "Flags": 384
-}

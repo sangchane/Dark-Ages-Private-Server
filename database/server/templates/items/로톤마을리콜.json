@@ -1,8 +1,0 @@
-{
-  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
-  "Name": "로톤마을리콜",
-  "Value": 100,
-  "Image": 7,
-  "CanStack": true,
-  "Flags": 384
-}
