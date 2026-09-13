@@ -1,4 +1,4 @@
-﻿using Darkages.Common;
+using Darkages.Common;
 using Darkages.Network.ServerFormats;
 using Darkages.Scripting;
 using Darkages.Types;
@@ -218,8 +218,14 @@ namespace Darkages.Storage.locales.Scripts.Formulas
         {
             int exp;
 
-            var seed = _monster.Template.Level * 0.1 + 1.5;
+            // 정의가 경험치를 적어 두면 그것이 답이다. 안 적어 둔 괴물은 그대로 레벨에서 나온다.
+            if (_monster.Template.Exp is { } stated)
             {
+                exp = stated;
+            }
+            else
+            {
+                var seed = _monster.Template.Level * 0.1 + 1.5;
                 exp = (int)(_monster.Template.Level * seed * 300);
             }
 

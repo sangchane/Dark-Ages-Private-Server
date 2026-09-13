@@ -1,4 +1,4 @@
-﻿#region
+#region
 
 using System;
 using System.Collections.Generic;
@@ -16,6 +16,13 @@ namespace Darkages.Types
         [Description("What Drops?")]
         public List<string> Drops = new List<string>();
 
+        /// <summary>
+        /// Its armour, when the definition states one. Lower is better and the floor is -70.
+        /// Null leaves it to the level, which is what the monsters Hades itself ships do.
+        /// </summary>
+        [Description("Armour. Lower is better. Leave unset to work it out from Level.")]
+        public int? Ac { get; set; }
+
         public int AreaID { get; set; }
 
         public int AttackSpeed { get; set; }
@@ -32,7 +39,21 @@ namespace Darkages.Types
         [Description("Leave empty unless SpawnQualifer = Defined.")]
         public ushort DefinedY { get; set; }
 
+        /// <summary>
+        /// The most and least one of its blows is worth, before armour and elements, when the definition
+        /// states them. Null for either leaves the blow to the level.
+        /// </summary>
+        [Description("Hardest blow, before armour. Leave unset to work it out from Level.")]
+        public int? DmgMax { get; set; }
+
+        [Description("Softest blow, before armour. Leave unset to work it out from Level.")]
+        public int? DmgMin { get; set; }
+
         public ElementQualifer ElementType { get; set; }
+
+        /// <summary>What killing it is worth. Null leaves it to the level.</summary>
+        [Description("Experience for killing it. Leave unset to work it out from Level.")]
+        public int? Exp { get; set; }
 
         public int EngagedWalkingSpeed { get; set; }
         

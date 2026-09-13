@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Darkages.Common;
@@ -78,19 +78,28 @@ namespace Darkages.Storage.locales.Scripts.Creations
                 CastTimer = new GameServerTimer(TimeSpan.FromMilliseconds(1 + template.CastSpeed)),
                 BashTimer = new GameServerTimer(TimeSpan.FromMilliseconds(1 + template.AttackSpeed)),
                 WalkTimer = new GameServerTimer(TimeSpan.FromMilliseconds(1 + template.MovementSpeed)),
-                CastEnabled = template.MaximumMP > 0,
                 TaggedAislings = new HashSet<int>()
             };
 
             if (obj.Template.Grow)
                 obj.Template.Level++;
 
-            var mod = (obj.Template.Level + 1) * 0.01;
-            var hp = mod + 50 + obj.Template.Level * (obj.Template.Level + 40);
-            var mp = hp / 3;
+            // 정의가 체력을 적어 두면 그것이 답이다. 예전에는 여기서 레벨로 만든 값을 그 위에 덮어써서,
+            // 파일에 적힌 숫자가 쓰이지 않았다 — 하데스가 싣는 spider.json 의 680 도 275 로 덮였다.
+            // 안 적어 둔 정의(bees·minion 은 0)는 그대로 레벨로 만든다. Grow 는 젠할 때마다 레벨을
+            // 올리므로 늘 다시 만든다.
+            if (obj.Template.Grow || obj.Template.MaximumHP <= 0)
+            {
+                var mod = (obj.Template.Level + 1) * 0.01;
+                var hp = mod + 50 + obj.Template.Level * (obj.Template.Level + 40);
 
-            obj.Template.MaximumHP = (int)hp;
-            obj.Template.MaximumMP = (int)mp;
+                obj.Template.MaximumHP = (int)hp;
+                obj.Template.MaximumMP = (int)(hp / 3);
+            }
+
+            // 마력을 정한 **뒤에** 본다. 예전에는 위 초기화 구문에서 읽어, 아직 0 이던 첫 젠은 마법이
+            // 꺼지고 두 번째부터 켜졌다 — 같은 정의인데 결과가 달랐다.
+            obj.CastEnabled = obj.Template.MaximumMP > 0;
 
             var stat = RandomEnumValue<PrimaryStat>();
 
@@ -125,7 +134,9 @@ namespace Darkages.Storage.locales.Scripts.Creations
 
             obj.MajorAttribute = stat;
 
-            obj.BonusAc = (int)(70 - obj.Template.Level * 0.5 / 1.0);
+            // 정의가 방어를 적어 두면 그것이 답이다. 0 도 적어 둔 값일 수 있으므로(초보 사냥터 괴물이
+            // 그렇다) "없음" 은 null 로 가린다.
+            obj.BonusAc = obj.Template.Ac ?? (int)(70 - obj.Template.Level * 0.5 / 1.0);
 
             if (obj.BonusAc < -70) obj.BonusAc = -70;
 
