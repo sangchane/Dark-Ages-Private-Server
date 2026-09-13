@@ -3,8 +3,14 @@
   "ScriptKey": "ard athar",
   "Prerequisites": {
     "Class_Required": 3,
-    "ExpLevel_Required": 75,
-    "Spell_Required": "mor athar"
+    "ExpLevel_Required": 34,
+    "Str_Required": 12,
+    "Int_Required": 32,
+    "Wis_Required": 19,
+    "Con_Required": 62,
+    "Dex_Required": 12,
+    "Spell_Required": "mor athar",
+    "Spell_Level_Required": 75
   },
   "MaxLevel": 100,
   "ID": 0,

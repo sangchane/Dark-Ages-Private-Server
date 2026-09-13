@@ -3,8 +3,12 @@
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 2,
-    "ExpLevel_Required": 20,
-    "Skill_Required": "Study Creature"
+    "ExpLevel_Required": 21,
+    "Int_Required": 33,
+    "Wis_Required": 13,
+    "Con_Required": 38,
+    "Skill_Required": "Study Creature",
+    "Skill_Level_Required": 20
   },
   "MaxLevel": 100,
   "ID": 0,

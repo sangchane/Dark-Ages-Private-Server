@@ -3,7 +3,12 @@
   "ScriptKey": "Poison Trap",
   "Prerequisites": {
     "Class_Required": 2,
-    "ExpLevel_Required": 0
+    "ExpLevel_Required": 6,
+    "Str_Required": 6,
+    "Int_Required": 7,
+    "Wis_Required": 6,
+    "Con_Required": 12,
+    "Dex_Required": 8
   },
   "MaxLevel": 100,
   "ID": 0,

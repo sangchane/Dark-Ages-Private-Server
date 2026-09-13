@@ -3,8 +3,14 @@
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 4,
-    "ExpLevel_Required": 10,
-    "Spell_Required": "spion beathach"
+    "ExpLevel_Required": 60,
+    "Str_Required": 8,
+    "Int_Required": 80,
+    "Wis_Required": 80,
+    "Con_Required": 8,
+    "Dex_Required": 8,
+    "Spell_Required": "spion beathach",
+    "Spell_Level_Required": 10
   },
   "MaxLevel": 100,
   "ID": 0,

@@ -3,8 +3,11 @@
   "ScriptKey": "ao mor cradh",
   "Prerequisites": {
     "Class_Required": 4,
-    "ExpLevel_Required": 60,
-    "Spell_Required": "ao cradh"
+    "ExpLevel_Required": 33,
+    "Int_Required": 59,
+    "Wis_Required": 47,
+    "Spell_Required": "ao cradh",
+    "Spell_Level_Required": 60
   },
   "MaxLevel": 100,
   "ID": 0,

@@ -3,8 +3,14 @@
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 1,
-    "ExpLevel_Required": 10,
-    "Skill_Required": "Wallop"
+    "ExpLevel_Required": 17,
+    "Str_Required": 70,
+    "Int_Required": 8,
+    "Wis_Required": 8,
+    "Con_Required": 25,
+    "Dex_Required": 18,
+    "Skill_Required": "Wallop",
+    "Skill_Level_Required": 10
   },
   "MaxLevel": 100,
   "ID": 0,

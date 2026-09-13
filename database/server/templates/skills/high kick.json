@@ -3,8 +3,10 @@
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 5,
-    "ExpLevel_Required": 5,
-    "Skill_Required": "Kick"
+    "ExpLevel_Required": 4,
+    "Dex_Required": 7,
+    "Skill_Required": "Kick",
+    "Skill_Level_Required": 5
   },
   "MaxLevel": 100,
   "ID": 0,

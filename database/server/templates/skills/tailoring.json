@@ -3,7 +3,10 @@
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 2,
-    "ExpLevel_Required": 0
+    "ExpLevel_Required": 3,
+    "Str_Required": 5,
+    "Int_Required": 8,
+    "Con_Required": 12
   },
   "MaxLevel": 100,
   "ID": 0,

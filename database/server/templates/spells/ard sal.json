@@ -3,8 +3,14 @@
   "ScriptKey": "ard sal",
   "Prerequisites": {
     "Class_Required": 3,
-    "ExpLevel_Required": 75,
-    "Spell_Required": "마레누스"
+    "ExpLevel_Required": 34,
+    "Str_Required": 16,
+    "Int_Required": 32,
+    "Wis_Required": 72,
+    "Con_Required": 35,
+    "Dex_Required": 16,
+    "Spell_Required": "마레누스",
+    "Spell_Level_Required": 75
   },
   "MaxLevel": 100,
   "ID": 0,

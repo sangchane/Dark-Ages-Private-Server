@@ -3,8 +3,11 @@
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 4,
-    "ExpLevel_Required": 10,
-    "Spell_Required": "seun"
+    "ExpLevel_Required": 50,
+    "Int_Required": 65,
+    "Wis_Required": 81,
+    "Spell_Required": "seun",
+    "Spell_Level_Required": 10
   },
   "MaxLevel": 100,
   "ID": 0,

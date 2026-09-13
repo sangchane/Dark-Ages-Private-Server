@@ -3,8 +3,14 @@
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 4,
-    "ExpLevel_Required": 80,
-    "Spell_Required": "armachd"
+    "ExpLevel_Required": 62,
+    "Str_Required": 13,
+    "Int_Required": 83,
+    "Wis_Required": 73,
+    "Con_Required": 13,
+    "Dex_Required": 13,
+    "Spell_Required": "armachd",
+    "Spell_Level_Required": 80
   },
   "MaxLevel": 100,
   "ID": 0,

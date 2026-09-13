@@ -3,8 +3,14 @@
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 1,
-    "ExpLevel_Required": 60,
-    "Skill_Required": "Rescue"
+    "ExpLevel_Required": 4,
+    "Str_Required": 31,
+    "Int_Required": 9,
+    "Wis_Required": 9,
+    "Con_Required": 13,
+    "Dex_Required": 25,
+    "Skill_Required": "Rescue",
+    "Skill_Level_Required": 60
   },
   "MaxLevel": 100,
   "ID": 0,

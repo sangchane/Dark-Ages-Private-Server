@@ -3,8 +3,14 @@
   "ScriptName": "Wallop",
   "Prerequisites": {
     "Class_Required": 1,
-    "ExpLevel_Required": 10,
-    "Skill_Required": "Clobber"
+    "ExpLevel_Required": 14,
+    "Str_Required": 23,
+    "Int_Required": 7,
+    "Wis_Required": 7,
+    "Con_Required": 13,
+    "Dex_Required": 7,
+    "Skill_Required": "Clobber",
+    "Skill_Level_Required": 10
   },
   "MaxLevel": 100,
   "ID": 0,

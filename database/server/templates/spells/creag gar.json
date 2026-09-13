@@ -3,8 +3,14 @@
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 3,
-    "ExpLevel_Required": 90,
-    "Spell_Required": "creag meall"
+    "ExpLevel_Required": 30,
+    "Str_Required": 25,
+    "Int_Required": 34,
+    "Wis_Required": 15,
+    "Con_Required": 15,
+    "Dex_Required": 84,
+    "Spell_Required": "creag meall",
+    "Spell_Level_Required": 90
   },
   "MaxLevel": 100,
   "ID": 0,

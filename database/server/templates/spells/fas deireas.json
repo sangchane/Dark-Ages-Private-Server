@@ -3,8 +3,12 @@
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 4,
-    "ExpLevel_Required": 30,
-    "Spell_Required": "beannaich"
+    "ExpLevel_Required": 3,
+    "Str_Required": 6,
+    "Int_Required": 6,
+    "Wis_Required": 9,
+    "Spell_Required": "beannaich",
+    "Spell_Level_Required": 30
   },
   "MaxLevel": 100,
   "ID": 0,

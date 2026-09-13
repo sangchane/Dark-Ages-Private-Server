@@ -3,8 +3,13 @@
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 4,
-    "ExpLevel_Required": 75,
-    "Spell_Required": "breisleich"
+    "ExpLevel_Required": 40,
+    "Int_Required": 57,
+    "Wis_Required": 46,
+    "Con_Required": 33,
+    "Dex_Required": 6,
+    "Spell_Required": "breisleich",
+    "Spell_Level_Required": 75
   },
   "MaxLevel": 100,
   "ID": 0,

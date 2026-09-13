@@ -3,7 +3,9 @@
   "ScriptName": "Claw Fist",
   "Prerequisites": {
     "Class_Required": 5,
-    "ExpLevel_Required": 0
+    "ExpLevel_Required": 55,
+    "Int_Required": 14,
+    "Con_Required": 20
   },
   "MaxLevel": 100,
   "ID": 0,

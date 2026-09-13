@@ -3,8 +3,14 @@
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 3,
-    "ExpLevel_Required": 50,
-    "Spell_Required": "마레누스"
+    "ExpLevel_Required": 35,
+    "Str_Required": 11,
+    "Int_Required": 22,
+    "Wis_Required": 50,
+    "Con_Required": 25,
+    "Dex_Required": 11,
+    "Spell_Required": "마레누스",
+    "Spell_Level_Required": 50
   },
   "MaxLevel": 100,
   "ID": 0,

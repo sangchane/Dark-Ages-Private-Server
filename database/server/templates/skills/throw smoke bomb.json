@@ -3,8 +3,11 @@
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 2,
-    "ExpLevel_Required": 30,
-    "Skill_Required": "표창던지기"
+    "ExpLevel_Required": 5,
+    "Str_Required": 10,
+    "Con_Required": 16,
+    "Skill_Required": "표창던지기",
+    "Skill_Level_Required": 30
   },
   "MaxLevel": 100,
   "ID": 0,

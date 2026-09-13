@@ -3,11 +3,13 @@
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 4,
-    "ExpLevel_Required": 100,
-    "Spell_Required": "Regeneration 5"
+    "ExpLevel_Required": 99,
+    "Stage_Required": 1,
+    "Spell_Required": "Regeneration 5",
+    "Spell_Level_Required": 100
   },
   "MaxLevel": 100,
   "ID": 0,
   "Description": null,
-  "Group": "원작표"
+  "Group": "원작표/2차65"
 }

@@ -3,8 +3,14 @@
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 3,
-    "ExpLevel_Required": 70,
-    "Spell_Required": "athar"
+    "ExpLevel_Required": 22,
+    "Str_Required": 12,
+    "Int_Required": 10,
+    "Wis_Required": 19,
+    "Con_Required": 62,
+    "Dex_Required": 12,
+    "Spell_Required": "athar",
+    "Spell_Level_Required": 70
   },
   "MaxLevel": 100,
   "ID": 0,

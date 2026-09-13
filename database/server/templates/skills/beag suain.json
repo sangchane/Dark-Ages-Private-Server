@@ -3,8 +3,14 @@
   "ScriptName": "beag suain",
   "Prerequisites": {
     "Class_Required": 1,
-    "ExpLevel_Required": 70,
-    "Skill_Required": "Rescue"
+    "ExpLevel_Required": 21,
+    "Str_Required": 23,
+    "Int_Required": 13,
+    "Wis_Required": 13,
+    "Con_Required": 33,
+    "Dex_Required": 13,
+    "Skill_Required": "Rescue",
+    "Skill_Level_Required": 70
   },
   "MaxLevel": 100,
   "ID": 0,

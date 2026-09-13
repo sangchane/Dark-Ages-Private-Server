@@ -3,8 +3,12 @@
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 3,
-    "ExpLevel_Required": 30,
-    "Spell_Required": "srad"
+    "ExpLevel_Required": 10,
+    "Str_Required": 17,
+    "Int_Required": 7,
+    "Dex_Required": 6,
+    "Spell_Required": "srad",
+    "Spell_Level_Required": 30
   },
   "MaxLevel": 100,
   "ID": 0,

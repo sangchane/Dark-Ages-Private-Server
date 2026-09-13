@@ -4,7 +4,10 @@
   "Prerequisites": {
     "Class_Required": 5,
     "ExpLevel_Required": 10,
-    "Skill_Required": "Assail"
+    "Int_Required": 12,
+    "Con_Required": 8,
+    "Skill_Required": "Assail",
+    "Skill_Level_Required": 10
   },
   "MaxLevel": 100,
   "ID": 0,

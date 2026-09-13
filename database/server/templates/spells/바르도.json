@@ -3,8 +3,14 @@
   "ScriptKey": "cradh",
   "Prerequisites": {
     "Class_Required": 4,
-    "ExpLevel_Required": 30,
-    "Spell_Required": "렌토"
+    "ExpLevel_Required": 20,
+    "Str_Required": 10,
+    "Int_Required": 25,
+    "Wis_Required": 20,
+    "Con_Required": 10,
+    "Dex_Required": 10,
+    "Spell_Required": "렌토",
+    "Spell_Level_Required": 30
   },
   "MaxLevel": 100,
   "ID": 0,

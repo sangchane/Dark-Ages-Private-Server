@@ -3,8 +3,11 @@
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 4,
-    "ExpLevel_Required": 10,
-    "Spell_Required": "beag seun"
+    "ExpLevel_Required": 12,
+    "Int_Required": 22,
+    "Wis_Required": 31,
+    "Spell_Required": "beag seun",
+    "Spell_Level_Required": 10
   },
   "MaxLevel": 100,
   "ID": 0,

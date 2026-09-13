@@ -3,8 +3,14 @@
   "ScriptKey": "mor cradh",
   "Prerequisites": {
     "Class_Required": 4,
-    "ExpLevel_Required": 75,
-    "Spell_Required": "바르도"
+    "ExpLevel_Required": 42,
+    "Str_Required": 6,
+    "Int_Required": 22,
+    "Wis_Required": 86,
+    "Con_Required": 6,
+    "Dex_Required": 13,
+    "Spell_Required": "바르도",
+    "Spell_Level_Required": 75
   },
   "MaxLevel": 100,
   "ID": 0,

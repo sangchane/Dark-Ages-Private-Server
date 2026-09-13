@@ -3,11 +3,13 @@
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 1,
-    "ExpLevel_Required": 100,
-    "Skill_Required": "Dune Swipe 8"
+    "ExpLevel_Required": 99,
+    "Stage_Required": 1,
+    "Skill_Required": "Dune Swipe 8",
+    "Skill_Level_Required": 100
   },
   "MaxLevel": 100,
   "ID": 0,
   "Description": null,
-  "Group": "원작표"
+  "Group": "원작표/2차95"
 }

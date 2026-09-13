@@ -3,8 +3,11 @@
   "ScriptKey": "mor dion",
   "Prerequisites": {
     "Class_Required": 4,
-    "ExpLevel_Required": 75,
-    "Spell_Required": "armachd"
+    "ExpLevel_Required": 59,
+    "Int_Required": 96,
+    "Wis_Required": 75,
+    "Spell_Required": "armachd",
+    "Spell_Level_Required": 75
   },
   "MaxLevel": 100,
   "ID": 0,

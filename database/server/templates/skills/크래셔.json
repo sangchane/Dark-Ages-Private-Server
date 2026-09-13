@@ -3,8 +3,14 @@
   "ScriptName": "Crasher",
   "Prerequisites": {
     "Class_Required": 1,
-    "ExpLevel_Required": 10,
-    "Skill_Required": "Wallop"
+    "ExpLevel_Required": 25,
+    "Str_Required": 50,
+    "Int_Required": 10,
+    "Wis_Required": 10,
+    "Con_Required": 20,
+    "Dex_Required": 28,
+    "Skill_Required": "Wallop",
+    "Skill_Level_Required": 10
   },
   "MaxLevel": 100,
   "ID": 0,

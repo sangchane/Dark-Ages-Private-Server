@@ -3,7 +3,12 @@
   "ScriptKey": "fas nadur",
   "Prerequisites": {
     "Class_Required": 3,
-    "ExpLevel_Required": 0
+    "ExpLevel_Required": 10,
+    "Str_Required": 10,
+    "Int_Required": 10,
+    "Wis_Required": 10,
+    "Con_Required": 10,
+    "Dex_Required": 10
   },
   "MaxLevel": 100,
   "ID": 0,

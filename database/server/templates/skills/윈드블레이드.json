@@ -3,8 +3,13 @@
   "ScriptName": "Wind Blade",
   "Prerequisites": {
     "Class_Required": 1,
-    "ExpLevel_Required": 20,
-    "Skill_Required": "Assail"
+    "ExpLevel_Required": 5,
+    "Str_Required": 6,
+    "Int_Required": 5,
+    "Con_Required": 12,
+    "Dex_Required": 5,
+    "Skill_Required": "Assail",
+    "Skill_Level_Required": 20
   },
   "MaxLevel": 100,
   "ID": 0,

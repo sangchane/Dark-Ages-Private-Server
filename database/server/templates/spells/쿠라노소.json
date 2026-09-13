@@ -3,8 +3,14 @@
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 4,
-    "ExpLevel_Required": 75,
-    "Spell_Required": "쿠라노"
+    "ExpLevel_Required": 33,
+    "Str_Required": 6,
+    "Int_Required": 38,
+    "Wis_Required": 50,
+    "Con_Required": 6,
+    "Dex_Required": 13,
+    "Spell_Required": "쿠라노",
+    "Spell_Level_Required": 75
   },
   "MaxLevel": 100,
   "ID": 0,

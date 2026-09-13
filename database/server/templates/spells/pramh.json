@@ -3,8 +3,12 @@
   "ScriptKey": "pramh",
   "Prerequisites": {
     "Class_Required": 4,
-    "ExpLevel_Required": 60,
-    "Spell_Required": "puinsein"
+    "ExpLevel_Required": 38,
+    "Int_Required": 25,
+    "Wis_Required": 78,
+    "Con_Required": 22,
+    "Spell_Required": "puinsein",
+    "Spell_Level_Required": 60
   },
   "MaxLevel": 100,
   "ID": 0,

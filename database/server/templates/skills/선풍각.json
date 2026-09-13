@@ -2,11 +2,10 @@
   "Name": "선풍각",
   "ScriptName": null,
   "Prerequisites": {
-    "Class_Required": 5,
-    "ExpLevel_Required": 0
+    "Class_Required": 5
   },
   "MaxLevel": 100,
   "ID": 0,
   "Description": null,
-  "Group": "원작표"
+  "Group": "원작표/조건없음"
 }

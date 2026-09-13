@@ -3,8 +3,14 @@
   "ScriptKey": "ao suain",
   "Prerequisites": {
     "Class_Required": 4,
-    "ExpLevel_Required": 75,
-    "Spell_Required": "ao dall"
+    "ExpLevel_Required": 30,
+    "Str_Required": 8,
+    "Int_Required": 76,
+    "Wis_Required": 59,
+    "Con_Required": 8,
+    "Dex_Required": 8,
+    "Spell_Required": "ao dall",
+    "Spell_Level_Required": 75
   },
   "MaxLevel": 100,
   "ID": 0,

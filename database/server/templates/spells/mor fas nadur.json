@@ -3,7 +3,12 @@
   "ScriptKey": "mor fas nadur",
   "Prerequisites": {
     "Class_Required": 3,
-    "ExpLevel_Required": 0
+    "ExpLevel_Required": 10,
+    "Str_Required": 14,
+    "Int_Required": 14,
+    "Wis_Required": 14,
+    "Con_Required": 14,
+    "Dex_Required": 14
   },
   "MaxLevel": 100,
   "ID": 0,

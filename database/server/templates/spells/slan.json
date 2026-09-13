@@ -3,8 +3,13 @@
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 4,
-    "ExpLevel_Required": 10,
-    "Spell_Required": "beag slan"
+    "ExpLevel_Required": 15,
+    "Str_Required": 8,
+    "Int_Required": 8,
+    "Wis_Required": 32,
+    "Dex_Required": 16,
+    "Spell_Required": "beag slan",
+    "Spell_Level_Required": 10
   },
   "MaxLevel": 100,
   "ID": 0,

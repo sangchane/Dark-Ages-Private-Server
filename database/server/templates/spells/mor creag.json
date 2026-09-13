@@ -3,8 +3,14 @@
   "ScriptKey": "mor creag",
   "Prerequisites": {
     "Class_Required": 3,
-    "ExpLevel_Required": 60,
-    "Spell_Required": "creag"
+    "ExpLevel_Required": 20,
+    "Str_Required": 14,
+    "Int_Required": 14,
+    "Wis_Required": 8,
+    "Con_Required": 8,
+    "Dex_Required": 44,
+    "Spell_Required": "creag",
+    "Spell_Level_Required": 60
   },
   "MaxLevel": 100,
   "ID": 0,

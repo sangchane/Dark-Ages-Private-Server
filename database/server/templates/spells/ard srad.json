@@ -3,8 +3,14 @@
   "ScriptKey": "ard srad",
   "Prerequisites": {
     "Class_Required": 3,
-    "ExpLevel_Required": 75,
-    "Spell_Required": "mor srad"
+    "ExpLevel_Required": 34,
+    "Str_Required": 54,
+    "Int_Required": 32,
+    "Wis_Required": 12,
+    "Con_Required": 12,
+    "Dex_Required": 19,
+    "Spell_Required": "mor srad",
+    "Spell_Level_Required": 75
   },
   "MaxLevel": 100,
   "ID": 0,

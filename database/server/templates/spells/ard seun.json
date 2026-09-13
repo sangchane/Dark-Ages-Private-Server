@@ -4,7 +4,13 @@
   "Prerequisites": {
     "Class_Required": 4,
     "ExpLevel_Required": 40,
-    "Spell_Required": "mor seun"
+    "Str_Required": 8,
+    "Int_Required": 15,
+    "Wis_Required": 50,
+    "Con_Required": 8,
+    "Dex_Required": 8,
+    "Spell_Required": "mor seun",
+    "Spell_Level_Required": 40
   },
   "MaxLevel": 100,
   "ID": 0,

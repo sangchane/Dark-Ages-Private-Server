@@ -3,8 +3,12 @@
   "ScriptKey": "ard cradh",
   "Prerequisites": {
     "Class_Required": 4,
-    "ExpLevel_Required": 70,
-    "Spell_Required": "데프레코"
+    "ExpLevel_Required": 45,
+    "Int_Required": 49,
+    "Wis_Required": 108,
+    "Dex_Required": 23,
+    "Spell_Required": "데프레코",
+    "Spell_Level_Required": 70
   },
   "MaxLevel": 100,
   "ID": 0,

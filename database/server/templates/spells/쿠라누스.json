@@ -3,8 +3,14 @@
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 4,
-    "ExpLevel_Required": 20,
-    "Spell_Required": "쿠러스"
+    "ExpLevel_Required": 15,
+    "Str_Required": 4,
+    "Int_Required": 18,
+    "Wis_Required": 28,
+    "Con_Required": 4,
+    "Dex_Required": 4,
+    "Spell_Required": "쿠러스",
+    "Spell_Level_Required": 20
   },
   "MaxLevel": 100,
   "ID": 0,

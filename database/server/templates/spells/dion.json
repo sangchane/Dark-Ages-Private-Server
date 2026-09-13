@@ -3,8 +3,14 @@
   "ScriptKey": "dion",
   "Prerequisites": {
     "Class_Required": 5,
-    "ExpLevel_Required": 60,
-    "Spell_Required": "Mist"
+    "ExpLevel_Required": 54,
+    "Str_Required": 10,
+    "Int_Required": 43,
+    "Wis_Required": 18,
+    "Con_Required": 13,
+    "Dex_Required": 48,
+    "Spell_Required": "Mist",
+    "Spell_Level_Required": 60
   },
   "MaxLevel": 100,
   "ID": 0,

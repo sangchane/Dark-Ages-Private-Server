@@ -3,8 +3,14 @@
   "ScriptKey": "sal",
   "Prerequisites": {
     "Class_Required": 3,
-    "ExpLevel_Required": 30,
-    "Spell_Required": "beag sal"
+    "ExpLevel_Required": 4,
+    "Str_Required": 4,
+    "Int_Required": 7,
+    "Wis_Required": 18,
+    "Con_Required": 13,
+    "Dex_Required": 5,
+    "Spell_Required": "beag sal",
+    "Spell_Level_Required": 30
   },
   "MaxLevel": 100,
   "ID": 0,
