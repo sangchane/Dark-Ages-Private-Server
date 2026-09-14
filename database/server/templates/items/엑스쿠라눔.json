@@ -1,0 +1,14 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "엑스쿠라눔",
+  "Value": 700000,
+  "HealthModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 10000
+  },
+  "Image": 2173,
+  "CanStack": true,
+  "Flags": 384,
+  "Group": "팩드롭"
+}

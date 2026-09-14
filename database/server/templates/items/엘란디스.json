@@ -1,0 +1,9 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "엘란디스",
+  "Value": 0,
+  "Image": 606,
+  "CanStack": true,
+  "Flags": 384,
+  "Group": "팩드롭"
+}

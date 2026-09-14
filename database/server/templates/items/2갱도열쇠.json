@@ -1,0 +1,9 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "2갱도열쇠",
+  "Value": 0,
+  "Image": 1455,
+  "CanStack": true,
+  "Flags": 384,
+  "Group": "팩드롭"
+}

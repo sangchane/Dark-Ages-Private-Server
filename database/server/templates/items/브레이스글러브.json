@@ -1,0 +1,19 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "브레이스글러브",
+  "MaxDurability": 100000,
+  "Value": 0,
+  "CarryWeight": 22,
+  "LevelRequired": 99,
+  "DmgMin": 700,
+  "DmgMax": 800,
+  "Image": 1587,
+  "DisplayImage": 127,
+  "Gender": 255,
+  "Class": 5,
+  "StageRequired": 0,
+  "EquipSlot": 1,
+  "EquipmentSlot": 1,
+  "Flags": 65,
+  "Group": "팩드롭"
+}

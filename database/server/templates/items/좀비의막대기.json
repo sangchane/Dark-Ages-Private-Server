@@ -1,0 +1,9 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "좀비의막대기",
+  "Value": 100,
+  "Image": 86,
+  "CanStack": true,
+  "Flags": 384,
+  "Group": "팩드롭"
+}

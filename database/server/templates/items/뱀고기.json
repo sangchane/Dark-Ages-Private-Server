@@ -1,0 +1,14 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "뱀고기",
+  "Value": 350,
+  "HealthModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 20
+  },
+  "Image": 35,
+  "CanStack": true,
+  "Flags": 384,
+  "Group": "팩드롭"
+}

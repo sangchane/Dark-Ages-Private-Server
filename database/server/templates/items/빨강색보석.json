@@ -1,0 +1,9 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "빨강색보석",
+  "Value": 1000,
+  "Image": 671,
+  "CanStack": true,
+  "Flags": 384,
+  "Group": "팩드롭"
+}

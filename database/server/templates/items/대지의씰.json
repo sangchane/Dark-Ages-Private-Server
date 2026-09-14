@@ -1,0 +1,9 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "대지의씰",
+  "Value": 0,
+  "Image": 2185,
+  "CanStack": true,
+  "Flags": 384,
+  "Group": "팩드롭"
+}
