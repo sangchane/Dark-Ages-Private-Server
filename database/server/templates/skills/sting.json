@@ -1,6 +1,6 @@
 {
   "Name": "Sting",
-  "ScriptName": null,
+  "ScriptName": "Sting",
   "Prerequisites": {
     "Class_Required": 5
   },

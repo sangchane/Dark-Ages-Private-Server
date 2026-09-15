@@ -1,6 +1,6 @@
 {
   "Name": "High Kick",
-  "ScriptName": null,
+  "ScriptName": "High Kick",
   "Prerequisites": {
     "Class_Required": 5,
     "ExpLevel_Required": 4,

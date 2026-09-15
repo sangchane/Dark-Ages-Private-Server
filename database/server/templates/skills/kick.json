@@ -1,6 +1,6 @@
 {
   "Name": "Kick",
-  "ScriptName": null,
+  "ScriptName": "Kick",
   "Prerequisites": {
     "Class_Required": 5,
     "ExpLevel_Required": 1,
