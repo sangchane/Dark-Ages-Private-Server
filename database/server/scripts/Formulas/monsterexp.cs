@@ -1,4 +1,4 @@
-using Darkages.Common;
+﻿using Darkages.Common;
 using Darkages.Network.ServerFormats;
 using Darkages.Scripting;
 using Darkages.Types;
@@ -49,7 +49,6 @@ namespace Darkages.Storage.locales.Scripts.Formulas
 
             if (player.ExpNext >= int.MaxValue) player.ExpNext = 0;
 
-            var seed = player.ExpLevel * 0.1 + 0.5;
             {
                 if (player.ExpLevel >= ServerContext.Config.PlayerLevelCap)
                     return;
@@ -57,7 +56,9 @@ namespace Darkages.Storage.locales.Scripts.Formulas
 
             while (player.ExpNext <= 0 && player.ExpLevel < 99)
             {
-                player.ExpNext = (uint)(player.ExpLevel * seed * 5000);
+                // 지금 ExpLevel 은 아직 오르기 전의 값이다. 아래에서 Levelup 이 하나 올리므로, 그 뒤에
+                // 사람이 바라볼 다음 목표는 (지금+2) 레벨에 닿는 값이다.
+                player.ExpNext = ExperienceCurve.ToReach(player.ExpLevel + 2);
 
                 if (player.ExpLevel == 99)
                     break;
