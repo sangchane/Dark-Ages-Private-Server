@@ -1,4 +1,4 @@
-#region
+﻿#region
 
 using System;
 using System.Collections.Generic;
@@ -125,15 +125,20 @@ namespace Darkages.Types
             };
         }
 
-        public bool ReadyToSpawn()
+        /// <summary>
+        /// 이번 순회에 이 정의를 세워도 되는지 묻고, 세운다면 <paramref name="seconds" /> 만큼 재운다.
+        /// </summary>
+        /// <remarks>
+        /// 간격이 <see cref="SpawnRate" /> 가 아니라 인자인 이유는 같은 정의라도 맵이 넓으면 더 자주
+        /// 세워야 같은 밀도가 되기 때문이다. 부르는 쪽(<c>MonolithComponent</c>)이 맵 넓이를 안다.
+        /// </remarks>
+        public bool ReadyToSpawn(double seconds)
         {
-            if (Ready)
-            {
-                NextAvailableSpawn = DateTime.UtcNow.AddSeconds(SpawnRate);
-                return true;
-            }
+            if (!Ready)
+                return false;
 
-            return false;
+            NextAvailableSpawn = DateTime.UtcNow.AddSeconds(seconds);
+            return true;
         }
     }
 }

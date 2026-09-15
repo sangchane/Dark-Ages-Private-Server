@@ -39,21 +39,46 @@ namespace Darkages.Storage.locales.Scripts.Creations
                     template.Level = 1;
             }
 
+            // 한 번 젠할 때 자리를 찾아 보는 횟수. 우드랜드1-1 은 3,600칸 중 벽이 절반이 안 되므로
+            // 열 번이면 사실상 늘 찾는다. 벽뿐인 실내에서 영영 돌지 않게 상한을 둔다.
+            const int TilePicks = 10;
+
             bool FindBestMonsterMapSlot(Monster monster)
             {
                 switch (template.SpawnType)
                 {
                     case SpawnQualifer.Random:
                         {
-                            var x = Generator.Random.Next(1, map.Cols);
-                            var y = Generator.Random.Next(1, map.Rows);
+                            // 칸을 한 번만 찍어 보고 벽이면 포기하던 자리다. 포기는 공짜가 아니다 —
+                            // 부르는 쪽이 이미 ReadyToSpawn() 을 써 버렸으므로 그 정의는 SpawnRate 만큼
+                            // (우드랜드는 50초) 다시 잠든다. 벽은 실패가 아니라 다시 찍으면 되는 것이므로
+                            // 설 만한 칸이 나올 때까지 몇 번 더 찍는다. 그래도 못 찾으면 그때는 정말
+                            // 자리가 없는 것이다(사람이 꽉 찬 방, 벽뿐인 실내).
+                            for (var pick = 0; pick < TilePicks; pick++)
+                            {
+                                int x, y;
 
-                            monster.XPos = x;
-                            monster.YPos = y;
+                                lock (Generator.Random)
+                                {
+                                    x = Generator.Random.Next(1, map.Cols);
+                                    y = Generator.Random.Next(1, map.Rows);
+                                }
 
-                            if (map.IsWall(x, y))
-                                return true;
-                            break;
+                                if (map.IsWall(x, y))
+                                    continue;
+
+                                // 이미 누가 서 있는 칸에 세우면 둘이 겹친다. ObjectGrid 가 그 칸에 선
+                                // 괴물·NPC·사람을 알고 있으므로 물어보고 피한다.
+                                if (map.ObjectGrid[x, y].Sprites.Count > 0)
+                                    continue;
+
+                                monster.XPos = x;
+                                monster.YPos = y;
+
+                                return false;
+                            }
+
+                            return true;
                         }
                     case SpawnQualifer.Defined:
                         monster.XPos = template.DefinedX;
