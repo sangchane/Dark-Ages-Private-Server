@@ -183,8 +183,10 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                 case "effect":
                 {
                     var target = Find(a, 0) ?? _me;
-                    _me.Show(Scope.NearbyAislings, new ServerFormat29((uint) _me.Serial, (uint) target.Serial,
-                        (ushort) Arg(a, 1), (ushort) Arg(a, 2), (ushort) Math.Max(1, Arg(a, 3))));
+                    // 0x29 는 첫 그림을 맞는 쪽에, 둘째 그림을 쓴 쪽에 그린다 — 하데스는 인자 이름이 거꾸로다
+                    // (`CasterEffect` 가 첫 자리). 5.99 `effect @대상, 쓴쪽그림, 대상그림, 속도` 를 그 순서로 보낸다.
+                    _me.Show(Scope.NearbyAislings, new ServerFormat29((uint) (_actor ?? _me).Serial, (uint) target.Serial,
+                        (ushort) Arg(a, 2), (ushort) Arg(a, 1), (ushort) Math.Max(1, Arg(a, 3))));
                     return 0;
                 }
                 case "motion":
@@ -231,7 +233,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                         SetHealth(member, member.CurrentHp + Arg(a, 0));
                         if (Arg(a, 1) > 0)
                             _me.Show(Scope.NearbyAislings, new ServerFormat29((uint) _me.Serial,
-                                (uint) member.Serial, 0, (ushort) Arg(a, 1), 100));
+                                (uint) member.Serial, (ushort) Arg(a, 1), 0, 100));
                     }
                     return 0;
                 case "manal_del": return SetMana(_me, _me.CurrentMp - Arg(a, 0));
@@ -308,7 +310,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                     {
                         Grant(member, "enare", Arg(a, 1));
                         _me.Show(Scope.NearbyAislings, new ServerFormat29((uint) _me.Serial, (uint) member.Serial,
-                            0, (ushort) Arg(a, 0), 100));
+                            (ushort) Arg(a, 0), 0, 100));
                     }
                     return 1;
                 // 리베라토 — 걸린 효과를 지운다. 저주 같은 디버프는 남는다(사용자 확인). 5.99 는 에나르마 두 칸을 지운다.
@@ -393,7 +395,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                     {
                         member.RemoveDebuff(name == "group_mobsor_end" ? "frozen" : "sleep");
                         _me.Show(Scope.NearbyAislings, new ServerFormat29((uint) _me.Serial, (uint) member.Serial,
-                            0, (ushort) Arg(a, 0), 100));
+                            (ushort) Arg(a, 0), 0, 100));
                     }
                     return 1;
                 // 딜루메니 — 사람에게 거는 실명.
