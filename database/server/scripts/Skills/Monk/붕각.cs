@@ -4,7 +4,7 @@ using Darkages.Types;
 namespace Darkages.Storage.locales.Scripts.Skills
 {
     /// <summary>
-    /// 붕각 — 공격력 ×3.5 + 지구력 ×59
+    /// 붕각 — 공격력 ×3.5 + 지구력 ×59 · 마나 70
     /// </summary>
     /// <remarks>
     /// 손으로 고치지 말 것. `scripts/build-monk-skills.py` 가 5.99 서버팩 스크립트에서 다시 만든다.
@@ -22,6 +22,9 @@ namespace Darkages.Storage.locales.Scripts.Skills
 
         public override void OnSuccess(Sprite sprite)
         {
+            if (!MonkStrike.Spend(sprite, Skill, 70))
+                return;
+
             MonkStrike.Use(sprite, Skill, 350, 5900, 0x85);
         }
 

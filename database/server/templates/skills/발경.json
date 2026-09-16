@@ -1,0 +1,15 @@
+﻿{
+  "Name": "발경",
+  "ScriptName": "발경",
+  "Prerequisites": {
+    "Class_Required": 5,
+    "ExpLevel_Required": 93
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Description": null,
+  "Group": "5.99표/무도가",
+  "Sound": 8,
+  "TargetAnimation": 0,
+  "Cooldown": 18
+}

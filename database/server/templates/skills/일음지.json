@@ -1,11 +1,14 @@
-{
+﻿{
   "Name": "일음지",
-  "ScriptName": null,
+  "ScriptName": "일음지",
   "Prerequisites": {
     "Class_Required": 5
   },
   "MaxLevel": 100,
   "ID": 0,
   "Description": null,
-  "Group": "원작표/조건없음"
+  "Group": "원작표/조건없음",
+  "Sound": 8,
+  "TargetAnimation": 276,
+  "Cooldown": 15
 }

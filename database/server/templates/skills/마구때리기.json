@@ -1,0 +1,14 @@
+﻿{
+  "Name": "마구때리기",
+  "ScriptName": "마구때리기",
+  "Prerequisites": {
+    "Class_Required": 5
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Description": null,
+  "Group": "5.99표/무도가",
+  "Sound": 52,
+  "TargetAnimation": 158,
+  "Cooldown": 3
+}

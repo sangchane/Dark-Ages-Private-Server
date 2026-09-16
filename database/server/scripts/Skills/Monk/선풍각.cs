@@ -4,7 +4,7 @@ using Darkages.Types;
 namespace Darkages.Storage.locales.Scripts.Skills
 {
     /// <summary>
-    /// 선풍각 — 공격력 ×3.5 + 지구력 ×66
+    /// 선풍각 — 둘레 네 칸에 공격력 ×3.5 + 지구력 ×66 · 마나 85
     /// </summary>
     /// <remarks>
     /// 손으로 고치지 말 것. `scripts/build-monk-skills.py` 가 5.99 서버팩 스크립트에서 다시 만든다.
@@ -22,7 +22,10 @@ namespace Darkages.Storage.locales.Scripts.Skills
 
         public override void OnSuccess(Sprite sprite)
         {
-            MonkStrike.Use(sprite, Skill, 350, 6600, 0x85);
+            if (!MonkStrike.Spend(sprite, Skill, 85))
+                return;
+
+            MonkStrike.Use(sprite, Skill, 350, 6600, 0x85, around: true);
         }
 
         public override void OnUse(Sprite sprite)

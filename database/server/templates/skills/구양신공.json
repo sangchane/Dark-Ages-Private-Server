@@ -1,6 +1,6 @@
-{
+﻿{
   "Name": "구양신공",
-  "ScriptName": null,
+  "ScriptName": "구양신공",
   "Prerequisites": {
     "Class_Required": 5,
     "ExpLevel_Required": 99,
@@ -9,5 +9,8 @@
   "MaxLevel": 100,
   "ID": 0,
   "Description": null,
-  "Group": "원작표/2차0"
+  "Group": "원작표/2차0",
+  "Sound": 17,
+  "TargetAnimation": 65,
+  "Cooldown": 10
 }

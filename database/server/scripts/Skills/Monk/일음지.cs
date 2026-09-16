@@ -1,18 +1,19 @@
 ﻿using Darkages.Scripting;
+using Darkages.Storage.locales.debuffs;
 using Darkages.Types;
 
 namespace Darkages.Storage.locales.Scripts.Skills
 {
     /// <summary>
-    /// 달마신공 — 현재 체력의 30%, 내 체력도 그 값으로
+    /// 일음지 — 앞의 적을 10초 실명 · 마나 80
     /// </summary>
     /// <remarks>
     /// 손으로 고치지 말 것. `scripts/build-monk-skills.py` 가 5.99 서버팩 스크립트에서 다시 만든다.
     /// </remarks>
-    [Script("달마신공", "5.99표/무도가")]
-    public class MonkB2ECB9C8C2E0ACF5 : SkillScript
+    [Script("일음지", "5.99표/무도가")]
+    public class MonkC77CC74CC9C0 : SkillScript
     {
-        public MonkB2ECB9C8C2E0ACF5(Skill skill) : base(skill)
+        public MonkC77CC74CC9C0(Skill skill) : base(skill)
         {
         }
 
@@ -22,7 +23,10 @@ namespace Darkages.Storage.locales.Scripts.Skills
 
         public override void OnSuccess(Sprite sprite)
         {
-            MonkStrike.UseVitality(sprite, Skill, 30, 0x84);
+            if (!MonkStrike.Spend(sprite, Skill, 80))
+                return;
+
+            MonkStrike.Afflict(sprite, Skill, new debuff_blind(), 10, false, 0x84);
         }
 
         public override void OnUse(Sprite sprite)

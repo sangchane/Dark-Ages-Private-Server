@@ -2,12 +2,15 @@
   "Name": "연환포",
   "ScriptName": "연환포",
   "Prerequisites": {
-    "Class_Required": 5
+    "Class_Required": 5,
+    "ExpLevel_Required": 44,
+    "Int_Required": 17,
+    "Dex_Required": 30
   },
   "MaxLevel": 100,
   "ID": 0,
   "Description": null,
-  "Group": "5.99표/무도가",
+  "Group": "원작표",
   "Sound": 14,
   "TargetAnimation": 8,
   "Cooldown": 8

@@ -1,0 +1,15 @@
+﻿{
+  "Name": "소수신공",
+  "ScriptName": "소수신공",
+  "Prerequisites": {
+    "Class_Required": 5,
+    "ExpLevel_Required": 70
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Description": null,
+  "Group": "5.99표/무도가",
+  "Sound": 81,
+  "TargetAnimation": 260,
+  "Cooldown": 15
+}

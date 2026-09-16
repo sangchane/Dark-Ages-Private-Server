@@ -2,7 +2,8 @@
   "Name": "백보신권",
   "ScriptName": "백보신권",
   "Prerequisites": {
-    "Class_Required": 5
+    "Class_Required": 5,
+    "ExpLevel_Required": 87
   },
   "MaxLevel": 100,
   "ID": 0,

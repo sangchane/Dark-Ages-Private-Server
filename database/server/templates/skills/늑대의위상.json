@@ -1,6 +1,6 @@
 ﻿{
-  "Name": "정권",
-  "ScriptName": "정권",
+  "Name": "늑대의위상",
+  "ScriptName": "늑대의위상",
   "Prerequisites": {
     "Class_Required": 5
   },
@@ -8,7 +8,7 @@
   "ID": 0,
   "Description": null,
   "Group": "5.99표/무도가",
-  "Sound": 18,
-  "TargetAnimation": 27,
-  "Cooldown": 2
+  "Sound": 7,
+  "TargetAnimation": 186,
+  "Cooldown": 6
 }

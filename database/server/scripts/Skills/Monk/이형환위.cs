@@ -4,15 +4,15 @@ using Darkages.Types;
 namespace Darkages.Storage.locales.Scripts.Skills
 {
     /// <summary>
-    /// 달마신공 — 현재 체력의 30%, 내 체력도 그 값으로
+    /// 이형환위 — 앞의 적을 넘어 2칸 건너뛰고 돌아선다
     /// </summary>
     /// <remarks>
     /// 손으로 고치지 말 것. `scripts/build-monk-skills.py` 가 5.99 서버팩 스크립트에서 다시 만든다.
     /// </remarks>
-    [Script("달마신공", "5.99표/무도가")]
-    public class MonkB2ECB9C8C2E0ACF5 : SkillScript
+    [Script("이형환위", "5.99표/무도가")]
+    public class MonkC774D615D658C704 : SkillScript
     {
-        public MonkB2ECB9C8C2E0ACF5(Skill skill) : base(skill)
+        public MonkC774D615D658C704(Skill skill) : base(skill)
         {
         }
 
@@ -22,7 +22,7 @@ namespace Darkages.Storage.locales.Scripts.Skills
 
         public override void OnSuccess(Sprite sprite)
         {
-            MonkStrike.UseVitality(sprite, Skill, 30, 0x84);
+            MonkStrike.Step(sprite, Skill, 2);
         }
 
         public override void OnUse(Sprite sprite)
