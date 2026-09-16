@@ -335,6 +335,72 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                 // "사용불가 지역입니다" 검사. 하데스에는 그런 지역이 없다.
                 case "get_solo":
                     return 0;
+                case "get_pk": return _me.Map.Flags.HasFlag(MapFlags.PlayerKill) ? 1 : 0;
+                case "time": return DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+                // 5.99 는 민첩과 같은 칸(0xA7)을 읽는다.
+                case "get_body": return Who(a, 0).Dex;
+                // 암살 — 몬스터 등 뒤로 간다.
+                case "get_mobside": return Find(a, 0)?.Direction ?? 0;
+                case "get_xs1": return Find(a, 0)?.XPos ?? 0;
+                case "get_ys1": return Find(a, 0)?.YPos ?? 0;
+
+                // 풀기 — 디소루마(빙결) · 디나르콜리(수면) · 일루메나(실명). `group_` 은 파티 전체, 인자는 애니메이션.
+                case "mobsor_end": return Find(a, 0)?.RemoveDebuff("frozen") == true ? 1 : 0;
+                case "mobnar_end": return Find(a, 0)?.RemoveDebuff("sleep") == true ? 1 : 0;
+                case "set_delstrabismus": return Find(a, 0)?.RemoveDebuff("blind") == true ? 1 : 0;
+                case "group_mobsor_end":
+                case "group_mobnar_end":
+                    foreach (var member in Party())
+                    {
+                        member.RemoveDebuff(name == "group_mobsor_end" ? "frozen" : "sleep");
+                        _me.Show(Scope.NearbyAislings, new ServerFormat29((uint) _me.Serial, (uint) member.Serial,
+                            0, (ushort) Arg(a, 0), 100));
+                    }
+                    return 1;
+                // 딜루메니 — 사람에게 거는 실명.
+                case "set_strabismus": return Afflict(Find(a, 0), new debuff_blind(), Arg(a, 1));
+
+                // 효과 크기가 엔진 안에 있는 상태들 — 걸고 확인만 한다.
+                //   silence 침묵 · defens 완전방어 · dell 델리스펠라스 · sokup_delay 속성강화 · set_rest 휴식(회복 1.5배)
+                case "silence":
+                    if (Find(a, 0) is Sprite hushed && Has(hushed, "silence"))
+                    {
+                        _me.Client.SendMessage(0x02, "이미 사일런스가 걸려있습니다.");
+                        return 0;
+                    }
+                    return State(Find(a, 0), name, Arg(a, 1));
+                case "defens":
+                case "dell":
+                case "sokup_delay":
+                case "set_rest":
+                    return State(Find(a, 0) ?? _me, name, Math.Max(2, Arg(a, 1)));
+                // 슈페이아움 — 파티에 건다. `iaum_delay 애니메이션, 초`.
+                case "iaum_delay":
+                    foreach (var member in Party())
+                        Grant(member, name, Arg(a, 1));
+                    return 1;
+
+                // 소지품 — 표창던지기가 투척용표창을 쓴다.
+                case "item_exist":
+                    return (Who(a, 0) as Aisling)?.Inventory?.Items.Values
+                        .Where(i => i?.Template?.Name == Text(a, 1)).Sum(i => Math.Max(1, (int) i.Stacks)) ?? 0;
+                case "item_del":
+                {
+                    var left = Math.Max(1, Arg(a, 1));
+                    foreach (var item in _me.Inventory.Items.Values.Where(i => i?.Template?.Name == Text(a, 0)).ToList())
+                    {
+                        var take = (int) Math.Min(left, Math.Max(1, (int) item.Stacks));
+                        _me.Inventory.RemoveRange(_me.Client, item, take);
+                        left -= take;
+                        if (left <= 0)
+                            break;
+                    }
+                    return 1;
+                }
+                // 다라밀공 — 말을 한다.
+                case "user_say":
+                    _me.Client.SendMessage(Scope.NearbyAislings, 0x00, $"{_me.Username}: {Text(a, 1)}");
+                    return 0;
 
                 default:
                     return Unknown(name);
