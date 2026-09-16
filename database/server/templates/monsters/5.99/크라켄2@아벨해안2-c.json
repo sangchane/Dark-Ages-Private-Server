@@ -1,4 +1,4 @@
-{
+﻿{
   "Name": "크라켄2",
   "BaseName": "크라켄2",
   "AreaID": 20588,
@@ -32,5 +32,8 @@
   "UpdateMapWide": true,
   "UpdateRate": 1000.0,
   "Grow": false,
-  "IgnoreCollision": false
+  "IgnoreCollision": false,
+  "SpellScripts": [
+    "Monster_나르콜리"
+  ]
 }

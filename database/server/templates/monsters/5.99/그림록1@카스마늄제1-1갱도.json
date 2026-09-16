@@ -1,4 +1,4 @@
-{
+﻿{
   "Name": "그림록1",
   "BaseName": "그림록1",
   "AreaID": 20691,
@@ -32,5 +32,8 @@
   "UpdateMapWide": true,
   "UpdateRate": 1000.0,
   "Grow": false,
-  "IgnoreCollision": false
+  "IgnoreCollision": false,
+  "SpellScripts": [
+    "Monster_나르콜리"
+  ]
 }

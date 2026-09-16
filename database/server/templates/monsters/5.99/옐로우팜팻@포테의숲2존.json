@@ -1,4 +1,4 @@
-{
+﻿{
   "Name": "옐로우팜팻",
   "BaseName": "옐로우팜팻",
   "AreaID": 20264,
@@ -32,5 +32,8 @@
   "UpdateMapWide": true,
   "UpdateRate": 1000.0,
   "Grow": false,
-  "IgnoreCollision": false
+  "IgnoreCollision": false,
+  "SpellScripts": [
+    "Monster_마레노"
+  ]
 }

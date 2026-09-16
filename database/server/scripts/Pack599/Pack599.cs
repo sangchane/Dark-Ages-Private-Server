@@ -38,7 +38,9 @@ namespace Darkages.Storage.locales.Scripts.Pack599
         public override bool Equals(object obj) => obj is V v && (this == v).Truth;
         public override int GetHashCode() => ToString().GetHashCode();
 
-        public static V operator +(V a, V b) => a.IsText || b.IsText ? a.ToString() + b : a._n + b._n;
+        // `a.ToString() + b` 라고 쓰면 C# 이 문자열 더하기가 아니라 이 연산자를 다시 골라(글자가 V 로 바뀐다)
+        // 끝없이 불러 서버가 죽는다. 둘 다 글자로 바꿔 더한다.
+        public static V operator +(V a, V b) => a.IsText || b.IsText ? string.Concat(a.ToString(), b.ToString()) : a._n + b._n;
         public static V operator -(V a, V b) => a.Num - b.Num;
         public static V operator *(V a, V b) => a.Num * b.Num;
         public static V operator /(V a, V b) => b.Num == 0 ? 0 : a.Num / b.Num;
@@ -92,11 +94,26 @@ namespace Darkages.Storage.locales.Scripts.Pack599
         private readonly Aisling _me;
         private readonly Sprite _chosen;
 
+        /// <summary>괴물이 쓴 마법이면 그 괴물. 이때 `get_myid` 는 맞는 사람이다(`Mob_Spell.txt`).</summary>
+        private readonly Sprite _actor;
+
         public Pack599(Sprite sprite, Sprite chosen)
         {
             _me = sprite as Aisling;
             _chosen = chosen;
         }
+
+        private Pack599(Aisling victim, Sprite monster)
+        {
+            _me = victim;
+            _actor = monster;
+        }
+
+        /// <summary>
+        /// 괴물 마법(`Monster_이름`). 5.99 는 이 블록을 **맞는 사람 쪽에서** 돌린다 — `get_myid` 가 맞는 사람이고,
+        /// 쓴 괴물은 `object_name`·`get_object_id`·`get_last_object_xs` 로 부른다. 피해를 주는 쪽은 괴물이다.
+        /// </summary>
+        public static Pack599 ForMonster(Sprite monster, Sprite target) => new Pack599(target as Aisling, monster);
 
         public bool Ready => _me != null && !_me.Dead;
 
@@ -199,11 +216,11 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                 case "char_damaged3":
                 {
                     var target = Find(a, 0);
-                    if (target == null || target.Serial == _me.Serial || !target.Attackable)
+                    if (target == null || (_actor == null && target.Serial == _me.Serial) || !target.Attackable)
                         return 0;
                     if (target is Aisling && name == "damaged")
                         return 0;
-                    target.ApplyDamage(_me, (int) Math.Min(int.MaxValue, Math.Max(0, Arg(a, 1))), (byte) 0);
+                    target.ApplyDamage(_actor ?? _me, (int) Math.Min(int.MaxValue, Math.Max(0, Arg(a, 1))), (byte) 0);
                     return 0;
                 }
                 case "set_vital": return SetHealth(_me, Arg(a, 0));
@@ -241,6 +258,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                 //   6 포효 — 바투처럼 움직이지 못한다(사용자 확인)
                 //   7 빙결 — 같은 자리에 사람에겐 `mobsor_delay` 를 쓴다
                 //   8 어둠의각인 — 프라보보다 강한 저주, 저주와 칸이 따로다(사용자 확인)
+                //   10 완전방어 — 결계 괴물이 "완전방어!" 하고 제게 거는 무적(하데스 dion)
                 case "magic":
                     switch (Arg(a, 0))
                     {
@@ -250,6 +268,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                         case 6: return Afflict(Find(a, 1), new debuff_beagsuain(), Arg(a, 3));
                         case 7: return Afflict(Find(a, 1), new debuff_frozen(), Arg(a, 3));
                         case 8: return Afflict(Find(a, 1), new Curse(Curse.Mark, Arg(a, 4)), Arg(a, 3));
+                        case 10: return Shield(Find(a, 1), Arg(a, 3));
                         default: return Unknown(name + " " + Arg(a, 0));
                     }
                 case "magic_exist":
@@ -261,6 +280,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                         case 6: return Find(a, 1)?.HasDebuff("beag suain") == true ? 1 : 0;
                         case 7: return Find(a, 1)?.HasDebuff("frozen") == true ? 1 : 0;
                         case 8: return Find(a, 1)?.HasDebuff(Curse.Mark) == true ? 1 : 0;
+                        case 10: return Find(a, 1)?.HasBuff("dion") == true ? 1 : 0;
                         default: return Unknown(name + " " + Arg(a, 0));
                     }
 
@@ -322,16 +342,35 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                 case "immortal":
                 {
                     var who = Find(a, 0) ?? _me;
-                    var buff = new buff_dion();
-                    if (who.HasBuff(buff.Name))
+                    if (who.HasBuff("dion"))
                     {
                         (who as Aisling)?.Client.SendMessage(0x02, "이미 걸려있습니다.");
                         return 0;
                     }
-                    buff.Timer.Tick = buff.Length - (int) Arg(a, 1);
-                    buff.OnApplied(who, buff);
-                    return 1;
+                    return Shield(who, Arg(a, 1));
                 }
+                // ── 괴물 마법 ────────────────────────────────────────────
+                case "object_name": return (_actor as Monster)?.Template?.Name ?? "";
+                case "get_object_id": return _actor?.Serial ?? 0;
+                case "get_last_object_xs": return _actor?.XPos ?? 1000;
+                case "get_last_object_ys": return _actor?.YPos ?? 1000;
+                // 괴물이 말한다 — `mob_say2 괴물, 0, 0, "메테오."`.
+                case "mob_say2":
+                    Find(a, 0)?.Show(Scope.NearbyAislings, new ServerFormat0D
+                    {
+                        Serial = (int) Arg(a, 0),
+                        Type = 0x00,
+                        Text = $"{(Find(a, 0) as Monster)?.Template?.Name}: {Text(a, 3)}"
+                    });
+                    return 0;
+                // 자르반·엘리멘탈의 메테오 — 맞는 사람 파티에서 가장 큰 최대 체력을 나눈 만큼 파티 전체를 친다.
+                case "group_bighp": return Party().Select(m => (long) m.MaximumHp).DefaultIfEmpty(0).Max();
+                case "group_damaged2":
+                    foreach (var member in (Find(a, 0) as Aisling)?.PartyMembers?.Where(m => m?.Map == _me.Map) ??
+                                           new[] { Find(a, 0) as Aisling })
+                        member?.ApplyDamage(_actor ?? _me, (int) Math.Min(int.MaxValue, Math.Max(0, Arg(a, 1))), (byte) 0);
+                    return 0;
+
                 // "사용불가 지역입니다" 검사. 하데스에는 그런 지역이 없다.
                 case "get_solo":
                     return 0;
@@ -419,6 +458,16 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                 default:
                     return Unknown(name);
             }
+        }
+
+        private static V Shield(Sprite who, long seconds)
+        {
+            if (who == null || who.HasBuff("dion"))
+                return 0;
+            var buff = new buff_dion();
+            buff.Timer.Tick = buff.Length - (int) seconds;
+            buff.OnApplied(who, buff);
+            return 1;
         }
 
         private V Unknown(string name)

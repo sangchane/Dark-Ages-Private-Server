@@ -1,4 +1,4 @@
-{
+﻿{
   "Name": "노비스엔트자이언트",
   "BaseName": "노비스엔트자이언트",
   "AreaID": 20384,
@@ -32,5 +32,8 @@
   "UpdateMapWide": true,
   "UpdateRate": 1000.0,
   "Grow": false,
-  "IgnoreCollision": false
+  "IgnoreCollision": false,
+  "SpellScripts": [
+    "Monster_플라모"
+  ]
 }

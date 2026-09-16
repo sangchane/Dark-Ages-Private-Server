@@ -1,4 +1,4 @@
-{
+﻿{
   "Name": "광산드워프2",
   "BaseName": "광산드워프2",
   "AreaID": 20692,
@@ -32,5 +32,8 @@
   "UpdateMapWide": true,
   "UpdateRate": 1000.0,
   "Grow": false,
-  "IgnoreCollision": false
+  "IgnoreCollision": false,
+  "SpellScripts": [
+    "Monster_소루마"
+  ]
 }

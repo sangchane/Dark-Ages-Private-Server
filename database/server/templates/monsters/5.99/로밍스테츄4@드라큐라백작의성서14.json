@@ -1,4 +1,4 @@
-{
+﻿{
   "Name": "로밍스테츄4",
   "BaseName": "로밍스테츄4",
   "AreaID": 20421,
@@ -30,5 +30,8 @@
   "UpdateMapWide": true,
   "UpdateRate": 1000.0,
   "Grow": false,
-  "IgnoreCollision": false
+  "IgnoreCollision": false,
+  "SpellScripts": [
+    "Monster_나르콜리"
+  ]
 }

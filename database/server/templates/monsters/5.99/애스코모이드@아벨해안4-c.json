@@ -1,4 +1,4 @@
-{
+﻿{
   "Name": "애스코모이드",
   "BaseName": "애스코모이드",
   "AreaID": 20594,
@@ -30,5 +30,8 @@
   "UpdateMapWide": true,
   "UpdateRate": 1000.0,
   "Grow": false,
-  "IgnoreCollision": false
+  "IgnoreCollision": false,
+  "SpellScripts": [
+    "Monster_소루마"
+  ]
 }

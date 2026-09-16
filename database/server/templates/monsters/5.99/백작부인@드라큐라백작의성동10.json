@@ -1,4 +1,4 @@
-{
+﻿{
   "Name": "백작부인",
   "BaseName": "백작부인",
   "AreaID": 20401,
@@ -30,5 +30,8 @@
   "UpdateMapWide": true,
   "UpdateRate": 1000.0,
   "Grow": false,
-  "IgnoreCollision": false
+  "IgnoreCollision": false,
+  "SpellScripts": [
+    "Monster_결계직자"
+  ]
 }
