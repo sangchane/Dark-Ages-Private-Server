@@ -2,7 +2,6 @@
 
 using System;
 using System.IO;
-using System.Text;
 using System.Text.Json;
 
 #endregion
@@ -101,17 +100,13 @@ namespace Darkages.Storage
                 if (text == null)
                     return null;
 
-                var content = Encoding.ASCII.GetBytes(text);
+                // 글자를 ASCII 바이트로 바꿨다 되돌리던 자리다. 한글이 모두 '?' 가 되어, 5.99 기술처럼 이름이
+                // 한글인 것은 다시 들어올 때마다 이름을 잃고 템플릿과 끊겼다. 끝의 '}' 둘을 다듬는 일만 글자로 한다.
+                var jsoncontent = text;
 
-                // ReSharper disable UseIndexFromEndExpression
-                if (content[content.Length - 1] == 0x7D && content[content.Length - 3] == 0x7D)
-                {
-                    content[content.Length - 3] = 0x7D;
-                    content[content.Length - 2] = 0x20;
-                    content[content.Length - 1] = 0x20;
-                }
+                if (text.Length >= 3 && text[text.Length - 1] == '}' && text[text.Length - 3] == '}')
+                    jsoncontent = text.Substring(0, text.Length - 2) + "  ";
 
-                var jsoncontent = Encoding.ASCII.GetString(content);
                 var aisling = StorageManager.Deserialize<Aisling>(jsoncontent);
 
                 return aisling;
