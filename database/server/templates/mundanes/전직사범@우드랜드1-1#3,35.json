@@ -1,0 +1,26 @@
+{
+  "Name": "전직사범@우드랜드1-1#3,35",
+  "AreaID": 20015,
+  "X": 3,
+  "Y": 35,
+  "Direction": 2,
+  "Image": 29,
+  "Level": 1,
+  "MaximumHp": 1000,
+  "MaximumMp": 1000,
+  "Speech": [
+    "전직사범: 길을 고를 때가 되었구나."
+  ],
+  "ScriptKey": "Class Chooser",
+  "DefaultMerchantStock": [],
+  "EnableWalking": false,
+  "EnableTurning": false,
+  "EnableAttacking": false,
+  "EnableCasting": false,
+  "WalkRate": 0,
+  "TurnRate": 0,
+  "CastRate": 0,
+  "ChatRate": 0,
+  "PathQualifer": 1,
+  "ViewingQualifer": 1
+}

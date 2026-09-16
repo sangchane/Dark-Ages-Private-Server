@@ -1276,7 +1276,13 @@ namespace Darkages.Network.Game
 
             if (!Aisling.GameMaster)
             {
-                if (Aisling.Map.Tile[Aisling.X, Aisling.Y] == TileContent.Wall)
+                // 배열을 직접 찝지 않고 맵에 묻는다. 캐릭터는 제 맵 밖에 설 수 있다 — 저장된 자리는
+                // 저장할 때의 맵 것이고, 더 작은 맵을 그 밑에 깔 때 그 자리가 아직 맞는지 아무도
+                // 확인하지 않는다. 거기서 배열을 찝으면 **맥박마다** 예외가 난다(5분에 16,000번).
+                // 예외 하나가 이 갱신의 나머지를 통째로 버리므로 세계가 도착하지 않는다 — 괴물도,
+                // 상인도, 걸음도. 캐릭터는 빈 벌판에 굳고 클라이언트는 아무 말도 듣지 못한다.
+                // Area.IsWall 은 바깥을 벽으로 답해서 캐릭터를 마지막 자리로 되돌린다.
+                if (Aisling.Map.IsWall(Aisling.X, Aisling.Y))
                 {
                     if (LastKnownPosition != null)
                     {
