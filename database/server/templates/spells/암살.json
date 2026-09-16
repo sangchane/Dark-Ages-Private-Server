@@ -1,0 +1,15 @@
+﻿{
+  "Name": "암살",
+  "Prerequisites": {
+    "ExpLevel_Required": 99,
+    "Class_Required": 2
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Description": null,
+  "Group": "5.99표/도적(비전직)",
+  "Icon": 169,
+  "TargetType": 2,
+  "ScriptKey": "암살",
+  "Cooldown": 0
+}

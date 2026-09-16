@@ -1,0 +1,12 @@
+﻿{
+  "Name": "휴식",
+  "Prerequisites": {},
+  "MaxLevel": 100,
+  "ID": 0,
+  "Description": "제자리에서 휴식을 취한다.",
+  "Group": "5.99표/공통스킬",
+  "Icon": 203,
+  "TargetType": 5,
+  "ScriptKey": "휴식",
+  "Cooldown": 0
+}

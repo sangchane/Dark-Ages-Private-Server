@@ -1,0 +1,14 @@
+﻿{
+  "Name": "퀘이크",
+  "Prerequisites": {
+    "Class_Required": 3
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Description": null,
+  "Group": "5.99표/Wizard",
+  "Icon": 135,
+  "TargetType": 2,
+  "ScriptKey": "퀘이크",
+  "Cooldown": 0
+}

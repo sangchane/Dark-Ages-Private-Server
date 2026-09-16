@@ -1,0 +1,10 @@
+﻿{
+  "Name": "봉인",
+  "Prerequisites": {},
+  "MaxLevel": 100,
+  "ID": 0,
+  "Description": null,
+  "Group": "5.99표/공통스킬",
+  "ScriptKey": "봉인",
+  "Cooldown": 0
+}

@@ -1,0 +1,14 @@
+﻿{
+  "Name": "숏블레이드",
+  "Prerequisites": {
+    "ExpLevel_Required": 5,
+    "Class_Required": 1
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Description": "전방 1칸 공격(데미지: 무기와 STR의 영향)",
+  "Group": "5.99표/전사(비전직)",
+  "Icon": 1,
+  "ScriptName": "숏블레이드",
+  "Cooldown": 3
+}

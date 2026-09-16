@@ -1,0 +1,14 @@
+﻿{
+  "Name": "화이라소환(Lev2)",
+  "Prerequisites": {
+    "Class_Required": 3
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Description": null,
+  "Group": "5.99표/Wizard",
+  "Icon": 154,
+  "TargetType": 5,
+  "ScriptKey": "화이라소환(Lev2)",
+  "Cooldown": 0
+}

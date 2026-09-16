@@ -1,6 +1,6 @@
-{
+﻿{
   "Name": "윈드블레이드",
-  "ScriptName": "Wind Blade",
+  "ScriptName": "윈드블레이드",
   "Prerequisites": {
     "Class_Required": 1,
     "ExpLevel_Required": 5,
@@ -14,5 +14,6 @@
   "MaxLevel": 100,
   "ID": 0,
   "Description": null,
-  "Group": "원작표"
+  "Group": "원작표",
+  "Cooldown": 4
 }

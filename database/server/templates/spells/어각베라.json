@@ -1,0 +1,12 @@
+﻿{
+  "Name": "어각베라",
+  "Prerequisites": {
+    "Class_Required": 3
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Description": null,
+  "Group": "5.99표/Wizard",
+  "ScriptKey": "어각베라",
+  "Cooldown": 0
+}

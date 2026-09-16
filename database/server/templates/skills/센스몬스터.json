@@ -1,0 +1,13 @@
+﻿{
+  "Name": "센스몬스터",
+  "Prerequisites": {
+    "Class_Required": 2
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Description": null,
+  "Group": "5.99표/도적(비전직)",
+  "Icon": 10,
+  "ScriptName": "센스몬스터",
+  "Cooldown": 0
+}

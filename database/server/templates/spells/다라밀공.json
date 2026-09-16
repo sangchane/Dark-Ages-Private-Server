@@ -1,0 +1,15 @@
+﻿{
+  "Name": "다라밀공",
+  "Prerequisites": {
+    "ExpLevel_Required": 99,
+    "Class_Required": 5
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Description": null,
+  "Group": "5.99표/무도가(비전직)",
+  "Icon": 39,
+  "TargetType": 2,
+  "ScriptKey": "다라밀공",
+  "Cooldown": 0
+}

@@ -1,0 +1,12 @@
+﻿{
+  "Name": "나르콜룸",
+  "Prerequisites": {
+    "Class_Required": 3
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Description": null,
+  "Group": "5.99표/Wizard",
+  "ScriptKey": "나르콜룸",
+  "Cooldown": 0
+}

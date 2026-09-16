@@ -1,0 +1,13 @@
+﻿{
+  "Name": "암살격진",
+  "Prerequisites": {
+    "Class_Required": 2
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Description": null,
+  "Group": "5.99표/Rogue",
+  "Icon": 31,
+  "ScriptName": "암살격진",
+  "Cooldown": 5
+}

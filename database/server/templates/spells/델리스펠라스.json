@@ -1,0 +1,14 @@
+﻿{
+  "Name": "델리스펠라스",
+  "Prerequisites": {
+    "Class_Required": 3
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Description": null,
+  "Group": "5.99표/Wizard",
+  "Icon": 149,
+  "TargetType": 5,
+  "ScriptKey": "델리스펠라스",
+  "Cooldown": 0
+}

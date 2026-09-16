@@ -1,0 +1,15 @@
+﻿{
+  "Name": "명중률향상(Lev1)",
+  "Prerequisites": {
+    "ExpLevel_Required": 11,
+    "Class_Required": 2
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Description": "크리티컬 확률이 10% 상승한다.",
+  "Group": "5.99표/도적(비전직)",
+  "Icon": 16,
+  "TargetType": 0,
+  "ScriptKey": "명중률향상(Lev1)",
+  "Cooldown": 0
+}

@@ -1,6 +1,6 @@
-{
+﻿{
   "Name": "품뒤져보기",
-  "ScriptName": null,
+  "ScriptName": "품뒤져보기",
   "Prerequisites": {
     "Class_Required": 2,
     "ExpLevel_Required": 21,
@@ -13,5 +13,6 @@
   "MaxLevel": 100,
   "ID": 0,
   "Description": null,
-  "Group": "원작표"
+  "Group": "원작표",
+  "Cooldown": 0
 }

@@ -1,0 +1,15 @@
+﻿{
+  "Name": "에나르마",
+  "Prerequisites": {
+    "ExpLevel_Required": 21,
+    "Class_Required": 4
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Description": "대상의 물리공격력을 상승시킨다.",
+  "Group": "5.99표/성직자(비전직)",
+  "Icon": 52,
+  "TargetType": 2,
+  "ScriptKey": "에나르마",
+  "Cooldown": 0
+}

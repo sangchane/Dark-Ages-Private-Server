@@ -1,0 +1,14 @@
+﻿{
+  "Name": "만개표창",
+  "Prerequisites": {
+    "ExpLevel_Required": 71,
+    "Class_Required": 2
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Description": "자신의 주변에 표창을 뿌린다.",
+  "Group": "5.99표/도적(비전직)",
+  "Icon": 77,
+  "ScriptName": "만개표창",
+  "Cooldown": 12
+}

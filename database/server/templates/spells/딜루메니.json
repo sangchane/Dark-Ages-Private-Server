@@ -1,0 +1,15 @@
+﻿{
+  "Name": "딜루메니",
+  "Prerequisites": {
+    "ExpLevel_Required": 87,
+    "Class_Required": 3
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Description": null,
+  "Group": "5.99표/법사(비전직)",
+  "Icon": 3,
+  "TargetType": 2,
+  "ScriptKey": "딜루메니",
+  "Cooldown": 0
+}

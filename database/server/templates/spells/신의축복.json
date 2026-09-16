@@ -1,0 +1,12 @@
+﻿{
+  "Name": "신의축복",
+  "Prerequisites": {
+    "Class_Required": 4
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Description": null,
+  "Group": "5.99표/Jigja",
+  "ScriptKey": "신의축복",
+  "Cooldown": 0
+}

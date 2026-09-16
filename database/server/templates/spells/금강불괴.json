@@ -1,0 +1,12 @@
+﻿{
+  "Name": "금강불괴",
+  "Prerequisites": {
+    "Class_Required": 5
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Description": null,
+  "Group": "5.99표/무도가(비전직)",
+  "ScriptKey": "금강불괴",
+  "Cooldown": 0
+}

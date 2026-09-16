@@ -1,0 +1,13 @@
+﻿{
+  "Name": "데빌크래셔",
+  "Prerequisites": {
+    "Class_Required": 1
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Description": null,
+  "Group": "5.99표/Warrior",
+  "Icon": 105,
+  "ScriptName": "데빌크래셔",
+  "Cooldown": 8
+}

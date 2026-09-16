@@ -1,0 +1,15 @@
+﻿{
+  "Name": "콘푸지오",
+  "Prerequisites": {
+    "ExpLevel_Required": 15,
+    "Class_Required": 3
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Description": "타겟의 공격대상을 재설정하게한다.(대상기준 제일 가까운 유저)",
+  "Group": "5.99표/법사(비전직)",
+  "Icon": 20,
+  "TargetType": 2,
+  "ScriptKey": "콘푸지오",
+  "Cooldown": 0
+}

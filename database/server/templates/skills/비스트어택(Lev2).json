@@ -1,0 +1,12 @@
+﻿{
+  "Name": "비스트어택(Lev2)",
+  "Prerequisites": {
+    "Class_Required": 5
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Description": null,
+  "Group": "5.99표/Monk",
+  "ScriptName": "비스트어택(Lev2)",
+  "Cooldown": 1
+}

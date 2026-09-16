@@ -1,0 +1,15 @@
+﻿{
+  "Name": "침묵",
+  "Prerequisites": {
+    "ExpLevel_Required": 74,
+    "Class_Required": 3
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Description": null,
+  "Group": "5.99표/법사(비전직)",
+  "Icon": 111,
+  "TargetType": 2,
+  "ScriptKey": "침묵",
+  "Cooldown": 0
+}

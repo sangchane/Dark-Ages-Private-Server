@@ -1,6 +1,6 @@
-{
+﻿{
   "Name": "표창던지기",
-  "ScriptName": null,
+  "ScriptName": "표창던지기",
   "Prerequisites": {
     "Class_Required": 2,
     "ExpLevel_Required": 4,
@@ -10,5 +10,6 @@
   "MaxLevel": 100,
   "ID": 0,
   "Description": null,
-  "Group": "원작표"
+  "Group": "원작표",
+  "Cooldown": 3
 }

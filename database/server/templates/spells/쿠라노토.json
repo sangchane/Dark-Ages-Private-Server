@@ -1,0 +1,12 @@
+﻿{
+  "Name": "쿠라노토",
+  "Prerequisites": {
+    "ExpLevel_Required": 55
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Description": null,
+  "Group": "5.99표/공통스킬",
+  "ScriptKey": "쿠라노토",
+  "Cooldown": 0
+}

@@ -1,0 +1,13 @@
+﻿{
+  "Name": "매드소울진",
+  "Prerequisites": {
+    "Class_Required": 1
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Description": "매드소울 업그레이드",
+  "Group": "5.99표/Warrior",
+  "Icon": 20,
+  "ScriptName": "매드소울진",
+  "Cooldown": 8
+}

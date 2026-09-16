@@ -1,0 +1,13 @@
+﻿{
+  "Name": "할퀴기(Lev1)",
+  "Prerequisites": {
+    "Class_Required": 5
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Description": null,
+  "Group": "5.99표/Monk",
+  "Icon": 96,
+  "ScriptName": "할퀴기(Lev1)",
+  "Cooldown": 6
+}

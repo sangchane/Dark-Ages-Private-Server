@@ -1,0 +1,15 @@
+﻿{
+  "Name": "원소이해력",
+  "Prerequisites": {
+    "ExpLevel_Required": 11,
+    "Class_Required": 3
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Description": "마레노의 대미지가 상승한다.",
+  "Group": "5.99표/법사(비전직)",
+  "Icon": 1,
+  "TargetType": 0,
+  "ScriptKey": "원소이해력",
+  "Cooldown": 0
+}

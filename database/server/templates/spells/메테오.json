@@ -1,0 +1,14 @@
+﻿{
+  "Name": "메테오",
+  "Prerequisites": {
+    "Class_Required": 3
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Description": null,
+  "Group": "5.99표/Wizard",
+  "Icon": 108,
+  "TargetType": 5,
+  "ScriptKey": "메테오",
+  "Cooldown": 0
+}

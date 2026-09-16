@@ -1,4 +1,4 @@
-{
+﻿{
   "Name": "쿠라노",
   "ScriptName": null,
   "Prerequisites": {
@@ -12,5 +12,7 @@
   "MaxLevel": 100,
   "ID": 0,
   "Description": null,
-  "Group": "원작표"
+  "Group": "원작표",
+  "ScriptKey": "쿠라노",
+  "Cooldown": 0
 }

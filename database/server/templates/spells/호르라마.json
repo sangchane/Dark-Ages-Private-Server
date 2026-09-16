@@ -1,0 +1,15 @@
+﻿{
+  "Name": "호르라마",
+  "Prerequisites": {
+    "ExpLevel_Required": 15,
+    "Class_Required": 4
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Description": "타겟 버프, 적에게 받는대미지를 반으로 줄인다.",
+  "Group": "5.99표/성직자(비전직)",
+  "Icon": 11,
+  "TargetType": 2,
+  "ScriptKey": "호르라마",
+  "Cooldown": 0
+}

@@ -1,0 +1,12 @@
+﻿{
+  "Name": "아이스블러스트",
+  "Prerequisites": {
+    "Class_Required": 3
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Description": null,
+  "Group": "5.99표/Wizard",
+  "ScriptKey": "아이스블러스트",
+  "Cooldown": 0
+}

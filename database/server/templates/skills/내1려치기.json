@@ -1,0 +1,12 @@
+﻿{
+  "Name": "내1려치기",
+  "Prerequisites": {
+    "Class_Required": 1
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Description": null,
+  "Group": "5.99표/전사(비전직)",
+  "ScriptName": "내1려치기",
+  "Cooldown": 7
+}

@@ -1,0 +1,11 @@
+﻿{
+  "Name": "수영",
+  "Prerequisites": {},
+  "MaxLevel": 100,
+  "ID": 0,
+  "Description": "물속에서 수영이 가능하게 된다.",
+  "Group": "5.99표/공통스킬",
+  "Icon": 110,
+  "ScriptName": "수영",
+  "Cooldown": 0
+}

@@ -1,0 +1,15 @@
+﻿{
+  "Name": "마구찌르기",
+  "Prerequisites": {
+    "ExpLevel_Required": 11,
+    "Class_Required": 2
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Description": "찌르기의 대미지가 상승한다.",
+  "Group": "5.99표/도적(비전직)",
+  "Icon": 142,
+  "TargetType": 0,
+  "ScriptKey": "마구찌르기",
+  "Cooldown": 0
+}

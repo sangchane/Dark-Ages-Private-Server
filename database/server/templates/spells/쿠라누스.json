@@ -1,4 +1,4 @@
-{
+﻿{
   "Name": "쿠라누스",
   "ScriptName": null,
   "Prerequisites": {
@@ -15,5 +15,7 @@
   "MaxLevel": 100,
   "ID": 0,
   "Description": null,
-  "Group": "원작표"
+  "Group": "원작표",
+  "ScriptKey": "쿠라누스",
+  "Cooldown": 0
 }

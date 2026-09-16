@@ -1,0 +1,15 @@
+﻿{
+  "Name": "리베라토",
+  "Prerequisites": {
+    "ExpLevel_Required": 99,
+    "Class_Required": 4
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Description": null,
+  "Group": "5.99표/성직자(비전직)",
+  "Icon": 8,
+  "TargetType": 2,
+  "ScriptKey": "리베라토",
+  "Cooldown": 0
+}

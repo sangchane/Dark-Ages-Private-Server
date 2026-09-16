@@ -1,0 +1,12 @@
+﻿{
+  "Name": "어둠의각인",
+  "Prerequisites": {
+    "Class_Required": 3
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Description": null,
+  "Group": "5.99표/Wizard",
+  "ScriptKey": "어둠의각인",
+  "Cooldown": 0
+}

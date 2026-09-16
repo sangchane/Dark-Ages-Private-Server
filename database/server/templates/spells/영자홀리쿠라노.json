@@ -1,0 +1,14 @@
+﻿{
+  "Name": "영자홀리쿠라노",
+  "Prerequisites": {
+    "Class_Required": 4
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Description": null,
+  "Group": "5.99표/Jigja",
+  "Icon": 180,
+  "TargetType": 2,
+  "ScriptKey": "영자홀리쿠라노",
+  "Cooldown": 0
+}

@@ -1,0 +1,14 @@
+﻿{
+  "Name": "소매치기",
+  "Prerequisites": {
+    "ExpLevel_Required": 62,
+    "Class_Required": 2
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Description": "몬스터에게 일정확률로 돈훔침.",
+  "Group": "5.99표/도적(비전직)",
+  "Icon": 23,
+  "ScriptName": "소매치기",
+  "Cooldown": 30
+}

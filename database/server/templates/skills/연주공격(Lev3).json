@@ -1,0 +1,13 @@
+﻿{
+  "Name": "연주공격(Lev3)",
+  "Prerequisites": {
+    "Class_Required": 4
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Description": null,
+  "Group": "5.99표/Jigja",
+  "Icon": 98,
+  "ScriptName": "연주공격(Lev3)",
+  "Cooldown": 1
+}

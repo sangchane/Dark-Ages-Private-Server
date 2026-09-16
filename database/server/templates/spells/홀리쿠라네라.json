@@ -1,4 +1,4 @@
-{
+﻿{
   "Name": "홀리쿠라네라",
   "ScriptName": null,
   "Prerequisites": {
@@ -9,5 +9,7 @@
   "MaxLevel": 100,
   "ID": 0,
   "Description": null,
-  "Group": "원작표/2차1"
+  "Group": "원작표/2차1",
+  "ScriptKey": "홀리쿠라네라",
+  "Cooldown": 0
 }

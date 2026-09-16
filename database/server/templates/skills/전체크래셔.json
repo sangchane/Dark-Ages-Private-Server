@@ -1,0 +1,12 @@
+﻿{
+  "Name": "전체크래셔",
+  "Prerequisites": {
+    "Class_Required": 1
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Description": null,
+  "Group": "5.99표/Warrior",
+  "ScriptName": "전체크래셔",
+  "Cooldown": 2
+}

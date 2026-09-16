@@ -1,0 +1,12 @@
+﻿{
+  "Name": "프라베라M",
+  "Prerequisites": {
+    "Class_Required": 3
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Description": null,
+  "Group": "5.99표/Wizard",
+  "ScriptKey": "프라베라M",
+  "Cooldown": 0
+}

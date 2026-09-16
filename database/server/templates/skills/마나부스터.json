@@ -1,0 +1,12 @@
+﻿{
+  "Name": "마나부스터",
+  "Prerequisites": {
+    "Class_Required": 3
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Description": null,
+  "Group": "5.99표/법사(비전직)",
+  "ScriptName": "마나부스터",
+  "Cooldown": 60
+}

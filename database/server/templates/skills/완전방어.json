@@ -1,0 +1,14 @@
+﻿{
+  "Name": "완전방어",
+  "Prerequisites": {
+    "ExpLevel_Required": 41,
+    "Class_Required": 1
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Description": "적의 모든 기술을 막는다.",
+  "Group": "5.99표/전사(비전직)",
+  "Icon": 19,
+  "ScriptName": "완전방어",
+  "Cooldown": 16
+}

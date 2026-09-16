@@ -1,0 +1,13 @@
+﻿{
+  "Name": "검투술(Lev1)",
+  "Prerequisites": {
+    "Class_Required": 1
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Description": null,
+  "Group": "5.99표/Warrior",
+  "Icon": 72,
+  "ScriptName": "검투술(Lev1)",
+  "Cooldown": 1
+}

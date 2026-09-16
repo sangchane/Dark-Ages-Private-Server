@@ -1,6 +1,6 @@
-{
+﻿{
   "Name": "M포효",
-  "ScriptName": null,
+  "ScriptName": "M포효",
   "Prerequisites": {
     "Class_Required": 1,
     "ExpLevel_Required": 99,
@@ -15,5 +15,6 @@
   "MaxLevel": 100,
   "ID": 0,
   "Description": null,
-  "Group": "원작표/2차0"
+  "Group": "원작표/2차0",
+  "Cooldown": 22
 }
