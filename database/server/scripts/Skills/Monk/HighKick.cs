@@ -1,4 +1,4 @@
-using Darkages.Scripting;
+﻿using Darkages.Scripting;
 using Darkages.Types;
 
 namespace Darkages.Storage.locales.Scripts.Skills
@@ -16,7 +16,8 @@ namespace Darkages.Storage.locales.Scripts.Skills
 
         public override void OnSuccess(Sprite sprite)
         {
-            MonkStrike.Use(sprite, Skill, 5, 0, 3, 0x85);
+            // High Kick — 5.99 의 백보신권과 같은 3.5배 자리. 한글 이름은 아직 미확정.
+            MonkStrike.Use(sprite, Skill, 350, 0, 0x85);
         }
 
         public override void OnUse(Sprite sprite)

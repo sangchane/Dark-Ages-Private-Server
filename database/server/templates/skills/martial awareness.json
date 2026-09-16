@@ -1,6 +1,6 @@
-{
+﻿{
   "Name": "Martial Awareness",
-  "ScriptName": null,
+  "ScriptName": "Martial Awareness",
   "Prerequisites": {
     "Class_Required": 5,
     "ExpLevel_Required": 10,

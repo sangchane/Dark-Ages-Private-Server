@@ -3,10 +3,16 @@ using Darkages.Types;
 
 namespace Darkages.Storage.locales.Scripts.Skills
 {
-    [Script("Sting", "LOD")]
-    public class Sting : SkillScript
+    /// <summary>
+    /// 정권 — 평타의 2.5배
+    /// </summary>
+    /// <remarks>
+    /// 손으로 고치지 말 것. `scripts/build-monk-skills.py` 가 5.99 서버팩 스크립트에서 다시 만든다.
+    /// </remarks>
+    [Script("정권", "5.99표/무도가")]
+    public class MonkC815AD8C : SkillScript
     {
-        public Sting(Skill skill) : base(skill)
+        public MonkC815AD8C(Skill skill) : base(skill)
         {
         }
 
@@ -16,7 +22,6 @@ namespace Darkages.Storage.locales.Scripts.Skills
 
         public override void OnSuccess(Sprite sprite)
         {
-            // Sting — 5.99 정권의 2.5배. 조건 없는 첫 주먹이라 가장 낮다.
             MonkStrike.Use(sprite, Skill, 250, 0, 0x84);
         }
 

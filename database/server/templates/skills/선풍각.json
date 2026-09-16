@@ -1,11 +1,14 @@
-{
+﻿{
   "Name": "선풍각",
-  "ScriptName": null,
+  "ScriptName": "선풍각",
   "Prerequisites": {
     "Class_Required": 5
   },
   "MaxLevel": 100,
   "ID": 0,
   "Description": null,
-  "Group": "원작표/조건없음"
+  "Group": "5.99표/무도가",
+  "Sound": 14,
+  "TargetAnimation": 249,
+  "Cooldown": 7
 }

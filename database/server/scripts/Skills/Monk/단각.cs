@@ -3,10 +3,16 @@ using Darkages.Types;
 
 namespace Darkages.Storage.locales.Scripts.Skills
 {
-    [Script("Kick", "LOD")]
-    public class Kick : SkillScript
+    /// <summary>
+    /// 단각 — 평타의 2.8배
+    /// </summary>
+    /// <remarks>
+    /// 손으로 고치지 말 것. `scripts/build-monk-skills.py` 가 5.99 서버팩 스크립트에서 다시 만든다.
+    /// </remarks>
+    [Script("단각", "5.99표/무도가")]
+    public class MonkB2E8AC01 : SkillScript
     {
-        public Kick(Skill skill) : base(skill)
+        public MonkB2E8AC01(Skill skill) : base(skill)
         {
         }
 
@@ -16,7 +22,6 @@ namespace Darkages.Storage.locales.Scripts.Skills
 
         public override void OnSuccess(Sprite sprite)
         {
-            // 단각 — 5.99: 공격력 ÷10 ×28 = 평타의 2.8배. 지구력 계수 없음.
             MonkStrike.Use(sprite, Skill, 280, 0, 0x83);
         }
 

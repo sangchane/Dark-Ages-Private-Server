@@ -1,4 +1,4 @@
-using System.Linq;
+﻿using System.Linq;
 using Darkages.Scripting;
 using Darkages.Storage.locales.debuffs;
 using Darkages.Types;
@@ -18,7 +18,8 @@ namespace Darkages.Storage.locales.Scripts.Skills
 
         public override void OnSuccess(Sprite sprite)
         {
-            MonkStrike.Use(sprite, Skill, 4, 2, 0, 0x84, target =>
+            // Poison Punch — 주먹 배수는 정권과 같고, 독은 아래 onHit 가 건다.
+            MonkStrike.Use(sprite, Skill, 250, 0, 0x84, target =>
             {
                 if (target.Debuffs.Values.OfType<Debuff_poison>().Any())
                     return;

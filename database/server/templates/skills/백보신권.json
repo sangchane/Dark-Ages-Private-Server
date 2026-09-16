@@ -1,6 +1,6 @@
 ﻿{
-  "Name": "달마신공",
-  "ScriptName": "달마신공",
+  "Name": "백보신권",
+  "ScriptName": "백보신권",
   "Prerequisites": {
     "Class_Required": 5
   },
@@ -8,7 +8,7 @@
   "ID": 0,
   "Description": null,
   "Group": "5.99표/무도가",
-  "Sound": 17,
-  "TargetAnimation": 48,
-  "Cooldown": 7
+  "Sound": 18,
+  "TargetAnimation": 168,
+  "Cooldown": 4
 }
