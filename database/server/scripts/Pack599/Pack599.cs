@@ -397,6 +397,20 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                     }
                     return 1;
                 }
+                // 적갑옷해체·적무기해체 — 정면 캐릭터의 갑옷·무기를 벗겨 그 사람의 가방으로 보낸다(사용자 확인).
+                // 스스로 벗을 때 하데스가 쓰는 길(`RemoveFromExisting`)을 그대로 탄다.
+                case "arm_del":
+                case "weapon_del":
+                {
+                    if (!(Find(a, 0) is Aisling bare) || bare.Serial == _me.Serial)
+                        return 0;
+                    var slot = name == "arm_del" ? ItemSlots.Armor : ItemSlots.Weapon;
+                    var worn = bare.EquipmentManager?.Equipment;
+                    if (worn == null || !worn.ContainsKey(slot) || worn[slot]?.Item == null)
+                        return 0;
+                    return bare.EquipmentManager.RemoveFromExisting(slot) ? 1 : 0;
+                }
+
                 // 다라밀공 — 말을 한다.
                 case "user_say":
                     _me.Client.SendMessage(Scope.NearbyAislings, 0x00, $"{_me.Username}: {Text(a, 1)}");

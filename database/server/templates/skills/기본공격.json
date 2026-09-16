@@ -6,6 +6,6 @@
   "Description": "기본공격(Space Bar)",
   "Group": "5.99표/공통스킬",
   "Icon": 1,
-  "ScriptName": "기본공격",
+  "ScriptName": "Assail",
   "Cooldown": 0
 }
