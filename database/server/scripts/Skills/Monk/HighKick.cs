@@ -17,7 +17,8 @@ namespace Darkages.Storage.locales.Scripts.Skills
         public override void OnSuccess(Sprite sprite)
         {
             // High Kick — 5.99 의 백보신권과 같은 3.5배 자리. 한글 이름은 아직 미확정.
-            MonkStrike.Use(sprite, Skill, 350, 0, 0x85);
+            // 평타 3.5배를 편 것: 힘 ×14 + 민첩성 ×7
+            MonkStrike.Use(sprite, Skill, 1400, 0, 700, 0x85);
         }
 
         public override void OnUse(Sprite sprite)

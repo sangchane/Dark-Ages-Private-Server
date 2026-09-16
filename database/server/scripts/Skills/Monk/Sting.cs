@@ -17,7 +17,8 @@ namespace Darkages.Storage.locales.Scripts.Skills
         public override void OnSuccess(Sprite sprite)
         {
             // Sting — 5.99 정권의 2.5배. 조건 없는 첫 주먹이라 가장 낮다.
-            MonkStrike.Use(sprite, Skill, 250, 0, 0x84);
+            // 평타 2.5배(정권)를 편 것: 힘 ×10 + 민첩성 ×5
+            MonkStrike.Use(sprite, Skill, 1000, 0, 500, 0x84);
         }
 
         public override void OnUse(Sprite sprite)
