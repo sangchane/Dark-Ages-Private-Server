@@ -4,7 +4,7 @@ using Darkages.Types;
 namespace Darkages.Storage.locales.Scripts.Skills
 {
     /// <summary>
-    /// 파천각 — 힘 ×20 + 지구력 ×110 + 민첩성 ×10  (팩의 공격력 5배를 편 것)
+    /// 파천각 — 공격력 ×5 + 지구력 ×110
     /// </summary>
     /// <remarks>
     /// 손으로 고치지 말 것. `scripts/build-monk-skills.py` 가 5.99 서버팩 스크립트에서 다시 만든다.
@@ -22,7 +22,7 @@ namespace Darkages.Storage.locales.Scripts.Skills
 
         public override void OnSuccess(Sprite sprite)
         {
-            MonkStrike.Use(sprite, Skill, 2000, 11000, 1000, 0x85);
+            MonkStrike.Use(sprite, Skill, 500, 11000, 0x85);
         }
 
         public override void OnUse(Sprite sprite)

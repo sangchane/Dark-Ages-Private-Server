@@ -20,11 +20,8 @@ namespace Darkages.Storage.locales.Scripts.Skills
 
         public override void OnSuccess(Sprite sprite)
         {
-            // 붕각 — 5.99: (공격력 ×3 + 공격력 ÷2) = 평타의 3.5배, 거기에 지구력 ×59.
-            // Novaonline 은 같은 자리를 `힘 + 114` 로 적는데 정권(53)·단각(75)보다 크고
-            // 선풍각(184)보다 작다 — 5.99 의 배수 순서와 같다.
-            // 붕각 — 평타 3.5배 + 지구력 59: 힘 ×14 + 지구력 ×59 + 민첩성 ×7
-            MonkStrike.Use(sprite, Skill, 1400, 5900, 700, 0x85);
+            // 붕각 — 공격력 ×3.5 + 지구력 ×59
+            MonkStrike.Use(sprite, Skill, 350, 5900, 0x85);
         }
 
         public override void OnUse(Sprite sprite)

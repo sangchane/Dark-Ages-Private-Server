@@ -16,9 +16,8 @@ namespace Darkages.Storage.locales.Scripts.Skills
 
         public override void OnSuccess(Sprite sprite)
         {
-            // 단각 — 5.99: 공격력 ÷10 ×28 = 평타의 2.8배. 지구력 계수 없음.
-            // 평타 2.8배를 편 것: 힘 ×11.2 + 민첩성 ×5.6
-            MonkStrike.Use(sprite, Skill, 1120, 0, 560, 0x83);
+            // 단각 — 5.99: 공격력 ÷10 ×28 = 공격력 ×2.8
+            MonkStrike.Use(sprite, Skill, 280, 0, 0x83);
         }
 
         public override void OnUse(Sprite sprite)

@@ -4,7 +4,7 @@ using Darkages.Types;
 namespace Darkages.Storage.locales.Scripts.Skills
 {
     /// <summary>
-    /// 백보신권 — 힘 ×14 + 민첩성 ×7  (팩의 공격력 3.5배를 편 것)
+    /// 백보신권 — 공격력 ×3.5
     /// </summary>
     /// <remarks>
     /// 손으로 고치지 말 것. `scripts/build-monk-skills.py` 가 5.99 서버팩 스크립트에서 다시 만든다.
@@ -22,7 +22,7 @@ namespace Darkages.Storage.locales.Scripts.Skills
 
         public override void OnSuccess(Sprite sprite)
         {
-            MonkStrike.Use(sprite, Skill, 1400, 0, 700, 0x84);
+            MonkStrike.Use(sprite, Skill, 350, 0, 0x84);
         }
 
         public override void OnUse(Sprite sprite)

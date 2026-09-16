@@ -4,7 +4,7 @@ using Darkages.Types;
 namespace Darkages.Storage.locales.Scripts.Skills
 {
     /// <summary>
-    /// 무영신공 — 힘 ×60 + 지구력 ×130 + 민첩성 ×30  (팩의 공격력 15배를 편 것)
+    /// 무영신공 — 공격력 ×15 + 지구력 ×130
     /// </summary>
     /// <remarks>
     /// 손으로 고치지 말 것. `scripts/build-monk-skills.py` 가 5.99 서버팩 스크립트에서 다시 만든다.
@@ -22,7 +22,7 @@ namespace Darkages.Storage.locales.Scripts.Skills
 
         public override void OnSuccess(Sprite sprite)
         {
-            MonkStrike.Use(sprite, Skill, 6000, 13000, 3000, 0x84);
+            MonkStrike.Use(sprite, Skill, 1500, 13000, 0x84);
         }
 
         public override void OnUse(Sprite sprite)
