@@ -137,8 +137,13 @@ namespace Darkages.Storage.locales.Scripts.Pack599
             {
                 if (_me == null)
                     return;
-                _me.PackVariables ??= new Dictionary<string, string>();
-                _me.PackVariables[name] = value.ToString();
+                // 고친 사본으로 통째로 바꿔 끼운다. 자동 저장이 같은 캐릭터를 직렬화하며 이 사전을 훑는 중에 그 자리를
+                // 고치면 "열거 중 변경" 예외가 난다 — 바꿔 끼우면 저장은 옛 사전을 끝까지 읽는다.
+                var kept = _me.PackVariables == null
+                    ? new Dictionary<string, string>()
+                    : new Dictionary<string, string>(_me.PackVariables);
+                kept[name] = value.ToString();
+                _me.PackVariables = kept;
             }
         }
 
@@ -244,9 +249,14 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                     var count = Math.Max(1, Arg(a, 1));
                     if (template.CanStack)
                     {
-                        var item = Item.Create(_me, template);
-                        item.Stacks = (ushort) Math.Min(count, Math.Max((int) template.MaxStack, 1));
-                        item.GiveTo(_me, false);
+                        // 한 묶음 한도(MaxStack)를 넘는 개수는 여러 묶음으로 준다 — 한 묶음으로 자르면 나머지가 말없이 사라진다.
+                        var perStack = Math.Max((int) template.MaxStack, 1);
+                        for (var left = count; left > 0; left -= perStack)
+                        {
+                            var item = Item.Create(_me, template);
+                            item.Stacks = (ushort) Math.Min(left, perStack);
+                            item.GiveTo(_me, false);
+                        }
                     }
                     else
                     {

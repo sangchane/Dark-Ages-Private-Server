@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,12 @@ namespace Darkages.Storage.locales.Scripts.Pack599
     /// 고를 때까지 멈춘다. 그래서 대화는 C# 이터레이터로 옮겨지고(<c>yield return</c> 이 멈추는 자리), 누른 답이 오면
     /// (<see cref="OnResponse" />) 멈춘 자리에서 이어 간다. `mes 0` 은 끝맺는 말이라 기다리지 않는다 — 뒤에 적힌 문장
     /// (배우기 따위)은 곧장 돈다. 창을 닫으면 대화는 그대로 버려지고, 다시 누르면 처음부터다.
+    /// <para>
+    /// 대화는 NPC 스크립트 인스턴스 하나(서버가 켜져 있는 내내 산다)에 캐릭터 번호로 쌓인다. 끝까지 가지 않고 창을 닫거나
+    /// 접속을 끊은 대화는 스스로 지워지지 않고, 캐릭터 번호는 접속마다 새로 나오므로 다시 들어와도 치워지지 않는다 —
+    /// 그래서 누가 말을 걸 때마다 접속이 끊긴 번호를 치운다. 스크립트가 도중에 예외를 내면 그 대화를 버리고 창을 닫는다
+    /// (남겨 두면 반쯤 돈 대화가 박혀 그 NPC 와 다시 말할 수 없다).
+    /// </para>
     /// </remarks>
     public abstract class PackNpc : MundaneScript
     {
@@ -32,6 +39,8 @@ namespace Darkages.Storage.locales.Scripts.Pack599
 
         public override void OnClick(GameServer server, GameClient client)
         {
+            ForgetTheGone(server);
+
             var reply = new Reply();
             _talking[client.Aisling.Serial] = (Talk(new Pack599(client.Aisling, Mundane), reply).GetEnumerator(), reply);
             Advance(client);
@@ -59,20 +68,37 @@ namespace Darkages.Storage.locales.Scripts.Pack599
         {
             var steps = _talking[client.Aisling.Serial].Steps;
 
-            while (steps.MoveNext())
+            try
             {
-                var prompt = steps.Current;
-                if (prompt.Typing)
-                    client.Send(new ServerFormat2F(Mundane, prompt.Text, new TextInputData {Step = 1}));
-                else
-                    client.SendOptionsDialog(Mundane, prompt.Text,
-                        prompt.Choices.Select((choice, i) => new OptionsDataItem((short) (i + 1), choice)).ToArray());
+                while (steps.MoveNext())
+                {
+                    var prompt = steps.Current;
+                    if (prompt.Typing)
+                        client.Send(new ServerFormat2F(Mundane, prompt.Text, new TextInputData {Step = 1}));
+                    else
+                        client.SendOptionsDialog(Mundane, prompt.Text,
+                            prompt.Choices.Select((choice, i) => new OptionsDataItem((short) (i + 1), choice)).ToArray());
 
-                if (prompt.Waits)
-                    return;
+                    if (prompt.Waits)
+                        return;
+                }
+            }
+            catch (Exception error)
+            {
+                ServerContext.Logger($"[5.99] {Mundane.Template?.Name} 대화가 도중에 멈췄습니다: {error.Message}");
+                client.CloseDialog();
             }
 
             _talking.TryRemove(client.Aisling.Serial, out _);
+        }
+
+        /// <summary>접속이 끊긴 캐릭터 번호의 대화를 치운다.</summary>
+        private void ForgetTheGone(GameServer server)
+        {
+            var online = server.Clients.Where(c => c?.Aisling != null).Select(c => c.Aisling.Serial).ToHashSet();
+
+            foreach (var serial in _talking.Keys.Where(serial => !online.Contains(serial)).ToList())
+                _talking.TryRemove(serial, out _);
         }
 
         /// <summary>`mes 종류, 글`. 종류 1 은 "다음"을 누를 때까지 기다리고, 0 은 끝맺는 말이라 기다리지 않는다.</summary>
