@@ -4,7 +4,7 @@
   "DisplayImage": 34941,
   "Flags": 444,
   "CanStack": true,
-  "MaxStack": 100,
+  "MaxStack": 1000,
   "Value": 700000,
   "ScriptName": "Consumable",
   "HealthRestore": 10000,

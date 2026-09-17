@@ -1,12 +1,13 @@
 {
   "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
-  "Name": "최하급체력포션",
-  "DisplayImage": 32823,
+  "Name": "마라디움",
+  "DisplayImage": 32815,
   "Flags": 444,
   "CanStack": true,
   "MaxStack": 1000,
-  "Value": 100,
+  "Value": 1000,
   "ScriptName": "Consumable",
-  "HealthRestore": 500,
-  "Group": "5.99표/물약"
+  "DropRate": 0.5,
+  "Group": "원작표/시약",
+  "ManaRestore": 100
 }

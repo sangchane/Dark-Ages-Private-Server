@@ -24,8 +24,12 @@
   "PathQualifer": 1,
   "LootType": 34,
   "Drops": {
+    "$type": "System.Collections.Generic.List`1[[System.String, System.Private.CoreLib]], System.Private.CoreLib",
     "$values": [
-      "엔트자이언트의몸통"
+      "엔트자이언트의몸통",
+      "쿠룸",
+      "마라디움",
+      "커틀라스"
     ]
   },
   "ScriptName": "Common Monster",

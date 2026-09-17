@@ -4,7 +4,7 @@
   "DisplayImage": 32829,
   "Flags": 444,
   "CanStack": true,
-  "MaxStack": 100,
+  "MaxStack": 1000,
   "Value": 800,
   "ScriptName": "Consumable",
   "ManaRestore": 1500,

@@ -22,9 +22,14 @@
   "CastSpeed": 8000,
   "MoodType": 4,
   "PathQualifer": 1,
-  "LootType": 32,
+  "LootType": 34,
   "Drops": {
-    "$values": []
+    "$type": "System.Collections.Generic.List`1[[System.String, System.Private.CoreLib]], System.Private.CoreLib",
+    "$values": [
+      "쿠룸",
+      "마라디움",
+      "로브"
+    ]
   },
   "ScriptName": "Common Monster",
   "UpdateMapWide": true,
