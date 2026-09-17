@@ -11,7 +11,7 @@
   "Speech": [
     "달인: 내 실생활 기술들을 가르쳐주지.. 단 EG를 받고말이야!"
   ],
-  "ScriptKey": "pack_speaker",
+  "ScriptKey": "NPC_달인",
   "DefaultMerchantStock": [],
   "EnableWalking": false,
   "EnableTurning": false,

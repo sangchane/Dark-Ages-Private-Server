@@ -11,7 +11,7 @@
   "Speech": [
     "리신: 무도가 사범담당 리신입니다. 심안의 힘으로!"
   ],
-  "ScriptKey": "pack_speaker",
+  "ScriptKey": "NPC_리신3",
   "DefaultMerchantStock": [],
   "EnableWalking": false,
   "EnableTurning": false,

@@ -11,7 +11,7 @@
   "Speech": [
     "럭스: 마법사 사범담당 럭스입니다. 데마시아!"
   ],
-  "ScriptKey": "pack_speaker",
+  "ScriptKey": "NPC_럭스2",
   "DefaultMerchantStock": [],
   "EnableWalking": false,
   "EnableTurning": false,

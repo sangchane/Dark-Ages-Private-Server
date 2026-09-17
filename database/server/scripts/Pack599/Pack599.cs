@@ -176,6 +176,50 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                 case "spell_exist": return _me.SpellBook.Has(a.Length > 0 ? a[0].ToString() : "") ? 1 : 0;
                 case "group_exist": return (_me.PartyMembers?.Count ?? 0) > 1 ? 1 : 0;
 
+                // ── 배우기 (NPC 스크립트 — PackNpc) ───────────────────────
+                // `…2` 는 2차 직업 기술에만 쓰인다(Npc_Skill.txt, get_class_sub() == 2) — 2차 칸에 넣는 판으로 보이지만
+                // 하데스 기술책에는 그런 칸 구분이 없어 같은 것으로 둔다.
+                case "skill_exist": return _me.SkillBook.Skills.Values.Any(s => s?.Template?.Name == Text(a, 0)) ? 1 : 0;
+                case "skill_add":
+                case "skill_add2":
+                    return ServerContext.GlobalSkillTemplateCache.ContainsKey(Text(a, 0))
+                        ? Skill.GiveTo(_me.Client, Text(a, 0)) ? 1 : 0
+                        : Unknown($"skill_add {Text(a, 0)}");
+                case "spell_add":
+                case "spell_add2":
+                    return ServerContext.GlobalSpellTemplateCache.ContainsKey(Text(a, 0))
+                        ? Spell.GiveTo(_me.Client, Text(a, 0)) ? 1 : 0
+                        : Unknown($"spell_add {Text(a, 0)}");
+                case "skill_del":
+                case "skill_del2":
+                {
+                    var skill = _me.SkillBook.Skills.Values.FirstOrDefault(s => s?.Template?.Name == Text(a, 0));
+                    if (skill == null)
+                        return 0;
+                    _me.SkillBook.Remove(skill.Slot);
+                    _me.Client.Send(new ServerFormat2D(skill.Slot));
+                    return 1;
+                }
+                case "spell_del":
+                {
+                    var spell = _me.SpellBook.Spells.Values.FirstOrDefault(s => s?.Template?.Name == Text(a, 0));
+                    if (spell == null)
+                        return 0;
+                    _me.SpellBook.Remove(spell.Slot);
+                    _me.Client.Send(new ServerFormat18(spell.Slot));
+                    return 1;
+                }
+
+                // ── 금화·단계 ─────────────────────────────────────────────
+                case "get_money": return _me.GoldPoints;
+                case "money_del":
+                    _me.GoldPoints = (int) Math.Max(0, _me.GoldPoints - Arg(a, 0));
+                    _me.Client.SendStats(StatusFlags.StructC);
+                    return 0;
+                // 5.99 의 전직 단계 0 1차 · 1 승급 · 2 2차 — 하데스 ClassStage 의 Class·Master·Dedicated 와 차례가 같다.
+                case "get_class_sub": return (long) _me.Stage;
+                case "get_ability": return _me.AbpLevel;
+
                 case "get_att_damage": return Who(a, 0) is Aisling hitter ? AttackPower(hitter) : 0;
                 case "get_mgc_damage": return Who(a, 0) is Aisling caster ? MagicPower(caster) : 0;
 

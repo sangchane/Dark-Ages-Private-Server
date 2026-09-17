@@ -11,7 +11,7 @@
   "Speech": [
     "이블린: 도적 사범담당 이블린입니다."
   ],
-  "ScriptKey": "pack_speaker",
+  "ScriptKey": "NPC_이블린3",
   "DefaultMerchantStock": [],
   "EnableWalking": false,
   "EnableTurning": false,

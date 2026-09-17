@@ -11,7 +11,7 @@
   "Speech": [
     "소라카: 성직자 사범담당 소라카입니다. 별의 부름을!"
   ],
-  "ScriptKey": "pack_speaker",
+  "ScriptKey": "NPC_소라카",
   "DefaultMerchantStock": [],
   "EnableWalking": false,
   "EnableTurning": false,

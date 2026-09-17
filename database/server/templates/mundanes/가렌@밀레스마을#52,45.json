@@ -11,7 +11,7 @@
   "Speech": [
     "가렌: 전사 사범담당 가렌입니다. 데마시아!"
   ],
-  "ScriptKey": "pack_speaker",
+  "ScriptKey": "NPC_가렌2",
   "DefaultMerchantStock": [],
   "EnableWalking": false,
   "EnableTurning": false,
