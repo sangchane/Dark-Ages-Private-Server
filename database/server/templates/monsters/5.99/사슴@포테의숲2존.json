@@ -22,7 +22,7 @@
   "CastSpeed": 8000,
   "MoodType": 4,
   "PathQualifer": 1,
-  "LootType": 4,
+  "LootType": 2,
   "Drops": {
     "$values": [
       "사슴의정수"

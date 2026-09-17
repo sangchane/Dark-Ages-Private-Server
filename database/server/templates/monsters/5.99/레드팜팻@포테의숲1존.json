@@ -1,4 +1,4 @@
-﻿{
+{
   "Name": "레드팜팻",
   "BaseName": "레드팜팻",
   "AreaID": 20263,
@@ -22,7 +22,7 @@
   "CastSpeed": 8000,
   "MoodType": 4,
   "PathQualifer": 1,
-  "LootType": 36,
+  "LootType": 34,
   "Drops": {
     "$values": [
       "레드팜팻의알"

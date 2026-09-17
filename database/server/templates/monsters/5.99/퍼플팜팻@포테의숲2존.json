@@ -1,4 +1,4 @@
-﻿{
+{
   "Name": "퍼플팜팻",
   "BaseName": "퍼플팜팻",
   "AreaID": 20264,
@@ -22,7 +22,7 @@
   "CastSpeed": 8000,
   "MoodType": 4,
   "PathQualifer": 1,
-  "LootType": 36,
+  "LootType": 34,
   "Drops": {
     "$values": [
       "퍼플팜팻의알"

@@ -22,7 +22,7 @@
   "CastSpeed": 8000,
   "MoodType": 4,
   "PathQualifer": 1,
-  "LootType": 36,
+  "LootType": 34,
   "Drops": {
     "$values": [
       "뱀고기"

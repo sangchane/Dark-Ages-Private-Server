@@ -1,4 +1,4 @@
-﻿{
+{
   "Name": "놀",
   "BaseName": "놀",
   "AreaID": 20266,
@@ -22,7 +22,7 @@
   "CastSpeed": 8000,
   "MoodType": 4,
   "PathQualifer": 1,
-  "LootType": 36,
+  "LootType": 34,
   "Drops": {
     "$values": [
       "놀의단검"

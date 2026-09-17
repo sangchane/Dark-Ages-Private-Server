@@ -1,4 +1,4 @@
-﻿{
+{
   "Name": "노비스엔트자이언트",
   "BaseName": "노비스엔트자이언트",
   "AreaID": 20384,
@@ -22,7 +22,7 @@
   "CastSpeed": 8000,
   "MoodType": 4,
   "PathQualifer": 1,
-  "LootType": 36,
+  "LootType": 34,
   "Drops": {
     "$values": [
       "엔트자이언트의몸통"
