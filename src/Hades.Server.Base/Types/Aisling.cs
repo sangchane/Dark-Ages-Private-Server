@@ -104,6 +104,12 @@ namespace Darkages
 
         public int GoldPoints { get; set; }
 
+        /// <summary>
+        /// 5.99 스크립트가 캐릭터에 남기는 값(`#gragas`·`#EG`·`$map_num` …) — 퀘스트 진행, 한 번만 받는 보상 따위.
+        /// 하데스에 같은 칸이 없어 이름 → 글자로 둔다(scripts/Pack599/Pack599.cs 의 인덱서가 읽고 쓴다).
+        /// </summary>
+        public Dictionary<string, string> PackVariables { get; set; } = new Dictionary<string, string>();
+
         [JsonIgnore]
         public Party GroupParty => ServerContext.GlobalGroupCache.ContainsKey(GroupId)
             ? ServerContext.GlobalGroupCache[GroupId]

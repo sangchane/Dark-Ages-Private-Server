@@ -43,6 +43,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                 return;
 
             talk.Reply.Choice = responseId;
+            talk.Reply.Words = args ?? "";
             Advance(client);
         }
 
@@ -61,8 +62,11 @@ namespace Darkages.Storage.locales.Scripts.Pack599
             while (steps.MoveNext())
             {
                 var prompt = steps.Current;
-                client.SendOptionsDialog(Mundane, prompt.Text,
-                    prompt.Choices.Select((choice, i) => new OptionsDataItem((short) (i + 1), choice)).ToArray());
+                if (prompt.Typing)
+                    client.Send(new ServerFormat2F(Mundane, prompt.Text, new TextInputData {Step = 1}));
+                else
+                    client.SendOptionsDialog(Mundane, prompt.Text,
+                        prompt.Choices.Select((choice, i) => new OptionsDataItem((short) (i + 1), choice)).ToArray());
 
                 if (prompt.Waits)
                     return;
@@ -79,24 +83,30 @@ namespace Darkages.Storage.locales.Scripts.Pack599
         protected static Prompt Menu(V question, params V[] choices) =>
             new Prompt(question, choices.Select(choice => choice.ToString()).ToArray(), true);
 
+        /// <summary>`input @글$, 종류, "물음", …`. 쳐 넣은 글은 <see cref="Reply.Words" /> 에 온다.</summary>
+        protected static Prompt Input(V question) => new Prompt(question, new string[0], true, typing: true);
+
         protected sealed class Prompt
         {
-            public Prompt(V text, string[] choices, bool waits)
+            public Prompt(V text, string[] choices, bool waits, bool typing = false)
             {
                 // 팩 글은 줄바꿈을 `\n` 두 글자로 적는다.
                 Text = text.ToString().Replace("\\n", "\n");
                 Choices = choices;
                 Waits = waits;
+                Typing = typing;
             }
 
             public string Text { get; }
             public string[] Choices { get; }
             public bool Waits { get; }
+            public bool Typing { get; }
         }
 
         protected sealed class Reply
         {
             public V Choice;
+            public V Words = "";
         }
     }
 }

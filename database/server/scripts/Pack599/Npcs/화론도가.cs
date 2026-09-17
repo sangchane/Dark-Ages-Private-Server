@@ -132,6 +132,8 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                 yield return Mes((V)1L, (V)"할퀴기(Lev1)을 배우기에는 능력치가 충족되지 않습니다.");
                 goto L_re;
             }
+            // 말도 메뉴도 없는 스크립트(적룡의결계 …)도 이터레이터여야 한다.
+            yield break;
         }
     }
 }

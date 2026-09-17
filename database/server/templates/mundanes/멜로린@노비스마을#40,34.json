@@ -12,7 +12,7 @@
     "멜로린: 노비스마을에 오신것을 환영해요!",
     "멜로린: 항상 즐거운 블팜온라인을 만듭시다!"
   ],
-  "ScriptKey": "pack_speaker",
+  "ScriptKey": "NPC_멜로린",
   "DefaultMerchantStock": [],
   "EnableWalking": false,
   "EnableTurning": false,

@@ -124,6 +124,24 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                 _me.Client.TrainSkill(skill);
         }
 
+        /// <summary>
+        /// 캐릭터에 남는 스크립트 값(`#이름`·`$이름`). 없으면 0. 수로 읽히는 것은 수로 돌려준다 — 글자로 두면 `#EG + 200` 이
+        /// 이어붙이기가 된다.
+        /// </summary>
+        public V this[string name]
+        {
+            get => _me?.PackVariables != null && _me.PackVariables.TryGetValue(name, out var kept)
+                ? long.TryParse(kept, out var number) ? (V) number : (V) kept
+                : 0;
+            set
+            {
+                if (_me == null)
+                    return;
+                _me.PackVariables ??= new Dictionary<string, string>();
+                _me.PackVariables[name] = value.ToString();
+            }
+        }
+
         public V Call(string name, params V[] a)
         {
             switch (name)
@@ -209,6 +227,36 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                     _me.Client.Send(new ServerFormat18(spell.Slot));
                     return 1;
                 }
+
+                // ── 이동·주기 (NPC 스크립트) ──────────────────────────────
+                case "warp":
+                {
+                    var area = ServerContext.GlobalMapCache.Values.FirstOrDefault(map => map.Name == Text(a, 0));
+                    if (area == null)
+                        return Unknown($"warp {Text(a, 0)}");
+                    _me.Client.TransitionToMap(area, new Position((int) Arg(a, 1), (int) Arg(a, 2)));
+                    return 1;
+                }
+                case "item_add":
+                {
+                    if (!ServerContext.GlobalItemTemplateCache.TryGetValue(Text(a, 0), out var template))
+                        return Unknown($"item_add {Text(a, 0)}");
+                    var count = Math.Max(1, Arg(a, 1));
+                    if (template.CanStack)
+                    {
+                        var item = Item.Create(_me, template);
+                        item.Stacks = (ushort) Math.Min(count, Math.Max((int) template.MaxStack, 1));
+                        item.GiveTo(_me, false);
+                    }
+                    else
+                    {
+                        for (var i = 0; i < count; i++)
+                            Item.Create(_me, template).GiveTo(_me, false);
+                    }
+
+                    return 1;
+                }
+                case "get_sex": return (Who(a, 0) as Aisling) is { } person ? (long) person.Gender : 0;
 
                 // ── 겉모습 (아이템 스크립트 — 염색약) ─────────────────────
                 case "set_haircolor":

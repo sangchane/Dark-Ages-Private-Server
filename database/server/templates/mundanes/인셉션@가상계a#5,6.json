@@ -11,7 +11,7 @@
   "Speech": [
     "인셉션: 당신이 존재해야 할곳으로 보내드립니다."
   ],
-  "ScriptKey": "pack_speaker",
+  "ScriptKey": "NPC_인셉션",
   "DefaultMerchantStock": [],
   "EnableWalking": false,
   "EnableTurning": false,

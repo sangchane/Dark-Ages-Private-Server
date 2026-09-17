@@ -11,7 +11,7 @@
   "Speech": [
     "그라가스: 난 늘 배고파... 먹을걸 내놔... 술도좋아!"
   ],
-  "ScriptKey": "pack_speaker",
+  "ScriptKey": "NPC_그라가스",
   "DefaultMerchantStock": [],
   "EnableWalking": false,
   "EnableTurning": false,

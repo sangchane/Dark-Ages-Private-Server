@@ -11,7 +11,7 @@
   "Speech": [
     "뮤레칸: 부활하고 싶다면 나의 머리를 눌러라."
   ],
-  "ScriptKey": "pack_speaker",
+  "ScriptKey": "NPC_뮤레칸",
   "DefaultMerchantStock": [],
   "EnableWalking": false,
   "EnableTurning": false,

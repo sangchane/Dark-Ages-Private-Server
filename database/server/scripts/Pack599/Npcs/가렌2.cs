@@ -121,6 +121,8 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                 yield return Mes((V)1L, (V)"매드소울를 익히셧습니다. 앞으로 전사로서 사명감을 가져주시길 바랍니다.");
                 goto L_re;
             }
+            // 말도 메뉴도 없는 스크립트(적룡의결계 …)도 이터레이터여야 한다.
+            yield break;
         }
     }
 }
