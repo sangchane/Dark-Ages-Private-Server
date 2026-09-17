@@ -924,14 +924,17 @@ namespace Darkages.Network.Game
             }
         }
 
+        /// <summary>
+        /// 이 맵의 곡을 알린다(0x19). 번호는 **16비트 그대로** 보낸다 — 예전에는 높은 바이트에 0xFF 를 넣고 낮은
+        /// 바이트만 보내, 900 번대를 쓰는 맵 39장(화론마을 21장 …)이 132~135 로 잘려 **엉뚱한 곡**이 나왔다.
+        /// 원작 클라이언트의 규칙은 값이 128 미만이면 효과음, 이상이면 (값 − 128) 번 곡, 228 이면 끄기다
+        /// (Legend.exe 0x54c440). 효과음과 **같은 패킷(0x19)** 으로, 같은 길로 보낸다 — 예전에는 날바이트로
+        /// 보내 암호를 거치지 않아 클라이언트가 아예 받지 못했다(2026-09-18 확인).
+        /// </summary>
         public GameClient SendMusic()
         {
             if (Aisling.Map != null)
-                Aisling.Client.Send(new byte[]
-                {
-                    0x19, 0x00, 0xFF,
-                    (byte) Aisling.Map.Music
-                });
+                Aisling.Client.Send(new ServerFormat19 { Number = (short) Aisling.Map.Music });
 
             return this;
         }
@@ -1525,6 +1528,10 @@ namespace Darkages.Network.Game
             RefreshMap();
             UpdateDisplay();
             SendLocation();
+
+            // 맵이 바뀔 때만 보내면 **다시 접속했을 때는 조용하다** — 나갈 때와 같은 맵이라 RefreshMap 의 조건에
+            // 걸리지 않는다(2026-09-18 확인). 들어올 때도 한 번 알린다.
+            SendMusic();
 
             return this;
         }
