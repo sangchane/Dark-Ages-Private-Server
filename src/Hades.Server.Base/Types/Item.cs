@@ -496,13 +496,14 @@ namespace Darkages.Types
 
                 if (Template.Flags.HasFlag(ItemFlags.Stackable))
                 {
-                    var numStacks = (byte) Stacks;
+                    // 1바이트로 자르면 256 개를 주웠을 때 0 이 된다 — 한도가 255 를 넘을 수 있게 되며 드러났다.
+                    var numStacks = Stacks;
 
                     if (numStacks <= 0)
                         numStacks = 1;
 
                     var item = ((Aisling) sprite).Inventory.Get(i => i != null && i.Template.Name == Template.Name
-                                                                               && i.Stacks + numStacks <
+                                                                               && i.Stacks + numStacks <=
                                                                                i.Template.MaxStack).FirstOrDefault();
 
                     if (item != null)

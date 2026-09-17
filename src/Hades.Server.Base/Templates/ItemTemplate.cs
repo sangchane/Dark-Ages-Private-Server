@@ -111,7 +111,12 @@ namespace Darkages.Types
         [Category("Requirements")] public byte LevelRequired { get; set; }
         [Category("Mods")] public StatusOperator ManaModifer { get; set; }
         [Category("Item Properties")] public uint MaxDurability { get; set; }
-        public byte MaxStack { get; set; }
+        /// <summary>
+        /// 한 칸에 쌓을 수 있는 수. 예전에는 1바이트라 255 를 넘는 값을 적으면 **아이템 정의를 읽다 실패하고 서버가
+        /// 접속을 받지 못했다**(2026-09-18, 시약을 1000 으로 두었을 때). 보내는 쪽은 이미 더 큰 수를 담는다 —
+        /// 묶음 수는 <see cref="Types.Item.Stacks" /> 가 2바이트이고 0x0F 는 4바이트로 쓴다.
+        /// </summary>
+        public int MaxStack { get; set; }
         [Category("Mods")] public StatusOperator MrModifer { get; set; }
         [Browsable(false)] public string NpcKey { get; set; }
 

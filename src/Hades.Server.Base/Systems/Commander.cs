@@ -358,7 +358,7 @@ namespace Darkages.Systems.CLI
                             {
                                 {
                                     var item = Item.Create(client.Aisling, template);
-                                    item.Stacks = template.MaxStack;
+                                    item.Stacks = (ushort) Math.Min(template.MaxStack, ushort.MaxValue);
                                     item.GiveTo(client.Aisling, false);
                                 }
                             }
