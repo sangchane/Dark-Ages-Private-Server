@@ -1,0 +1,20 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "용자의옷(남)",
+  "Image": 415,
+  "DisplayImage": 44863,
+  "EquipmentSlot": 2,
+  "Class": 0,
+  "Gender": 1,
+  "LevelRequired": 1,
+  "ScriptName": "Armor",
+  "Flags": 53,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 50000000,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 0,
+  "CarryWeight": 0,
+  "Group": "5.99표/갑옷/Dress"
+}

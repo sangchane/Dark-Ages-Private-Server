@@ -1,0 +1,25 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "이프리트메일",
+  "Image": 28,
+  "DisplayImage": 33029,
+  "EquipmentSlot": 2,
+  "Class": 1,
+  "Gender": 1,
+  "LevelRequired": 81,
+  "ScriptName": "Armor",
+  "Flags": 125,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 15000,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 18000,
+  "CarryWeight": 19,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 32
+  },
+  "Group": "5.99표/갑옷/전사방어구"
+}

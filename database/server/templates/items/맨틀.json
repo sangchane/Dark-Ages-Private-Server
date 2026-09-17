@@ -1,0 +1,25 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "맨틀",
+  "Image": 15,
+  "DisplayImage": 32878,
+  "EquipmentSlot": 2,
+  "Class": 4,
+  "Gender": 1,
+  "LevelRequired": 51,
+  "ScriptName": "Armor",
+  "Flags": 125,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 7000,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 9000,
+  "CarryWeight": 7,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 18
+  },
+  "Group": "5.99표/갑옷/성직자방어구"
+}

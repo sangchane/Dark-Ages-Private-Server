@@ -1,0 +1,36 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "도가메카옷",
+  "Image": 3770,
+  "DisplayImage": 46236,
+  "EquipmentSlot": 2,
+  "Class": 5,
+  "Gender": 255,
+  "LevelRequired": 99,
+  "ScriptName": "Armor",
+  "Flags": 117,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 23000,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 15000,
+  "CarryWeight": 14,
+  "AttackMotion": 132,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 60
+  },
+  "HealthModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 10000
+  },
+  "ManaModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 10000
+  },
+  "Group": "5.99표/갑옷/무도가방어구"
+}

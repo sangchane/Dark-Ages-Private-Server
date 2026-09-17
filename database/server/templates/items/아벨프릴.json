@@ -1,0 +1,20 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "아벨프릴",
+  "Image": 343,
+  "DisplayImage": 36141,
+  "EquipmentSlot": 2,
+  "Class": 0,
+  "Gender": 2,
+  "LevelRequired": 1,
+  "ScriptName": "Armor",
+  "Flags": 61,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 50000000,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 18000,
+  "CarryWeight": 0,
+  "Group": "5.99표/갑옷/치장아이템"
+}

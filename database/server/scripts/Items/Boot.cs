@@ -43,6 +43,13 @@ namespace Darkages.Storage.locales.Scripts.Items
             {
                 var client = (sprite as Aisling).Client;
 
+                // 5.99 서버(Novaonline.exe 0x41d387): 공격모션 132(주먹) 옷 — 도복 — 을 입고는 신발을 신지 못한다.
+                if (client.Aisling.EquipmentManager.Armor?.Item?.Template?.AttackMotion == 132)
+                {
+                    client.SendMessage(0x02, "신발이 불편하여 입을수가 없습니다.");
+                    return;
+                }
+
                 if (Item.Template.Flags.HasFlag(ItemFlags.Equipable))
                     if (client.CheckReqs(client, Item))
                         client.Aisling.EquipmentManager.Add(Item.Template.EquipmentSlot, Item);

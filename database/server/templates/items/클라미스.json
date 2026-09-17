@@ -1,0 +1,25 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "클라미스",
+  "Image": 26,
+  "DisplayImage": 32934,
+  "EquipmentSlot": 2,
+  "Class": 3,
+  "Gender": 2,
+  "LevelRequired": 99,
+  "ScriptName": "Armor",
+  "Flags": 125,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 20000,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 15000,
+  "CarryWeight": 10,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 35
+  },
+  "Group": "5.99표/갑옷/마법사방어구"
+}

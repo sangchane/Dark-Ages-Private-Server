@@ -1,0 +1,25 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "셍즈",
+  "Image": 5,
+  "DisplayImage": 32868,
+  "EquipmentSlot": 2,
+  "Class": 4,
+  "Gender": 1,
+  "LevelRequired": 1,
+  "ScriptName": "Armor",
+  "Flags": 125,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 300,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 3000,
+  "CarryWeight": 4,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 6
+  },
+  "Group": "5.99표/갑옷/성직자방어구"
+}

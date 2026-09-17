@@ -1,0 +1,35 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "전사메카옷",
+  "Image": 3760,
+  "DisplayImage": 46235,
+  "EquipmentSlot": 2,
+  "Class": 1,
+  "Gender": 255,
+  "LevelRequired": 99,
+  "ScriptName": "Armor",
+  "Flags": 117,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 23000,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 24000,
+  "CarryWeight": 25,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 60
+  },
+  "HealthModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 10000
+  },
+  "ManaModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 10000
+  },
+  "Group": "5.99표/갑옷/전사방어구"
+}

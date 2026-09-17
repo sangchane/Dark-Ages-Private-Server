@@ -1,0 +1,20 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "프린세스더블릿",
+  "Image": 397,
+  "DisplayImage": 40857,
+  "EquipmentSlot": 2,
+  "Class": 0,
+  "Gender": 1,
+  "LevelRequired": 1,
+  "ScriptName": "Armor",
+  "Flags": 53,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 300000000,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 0,
+  "CarryWeight": 0,
+  "Group": "5.99표/갑옷/Dress"
+}

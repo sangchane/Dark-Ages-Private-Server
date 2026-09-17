@@ -1,10 +1,21 @@
 {
   "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
   "Name": "헬소서리스로브",
-  "MaxDurability": 7500,
-  "Value": 0,
-  "CarryWeight": 27,
+  "Image": 38,
+  "DisplayImage": 33072,
+  "EquipmentSlot": 2,
+  "Class": 3,
+  "Gender": 2,
   "LevelRequired": 99,
+  "ScriptName": "Armor",
+  "Flags": 117,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 0,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 7500,
+  "CarryWeight": 27,
   "AcModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
     "Option": 1,
@@ -20,13 +31,5 @@
     "Option": 1,
     "Value": 2
   },
-  "Image": 304,
-  "DisplayImage": 38,
-  "Gender": 2,
-  "Class": 3,
-  "StageRequired": 0,
-  "EquipSlot": 2,
-  "EquipmentSlot": 2,
-  "Flags": 65,
-  "Group": "팩드롭"
+  "Group": "5.99표/갑옷/헬셋"
 }

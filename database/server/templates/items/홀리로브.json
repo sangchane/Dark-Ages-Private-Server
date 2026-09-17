@@ -1,0 +1,25 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "홀리로브",
+  "Image": 20,
+  "DisplayImage": 32928,
+  "EquipmentSlot": 2,
+  "Class": 4,
+  "Gender": 2,
+  "LevelRequired": 81,
+  "ScriptName": "Armor",
+  "Flags": 125,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 13000,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 12000,
+  "CarryWeight": 10,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 25
+  },
+  "Group": "5.99표/갑옷/성직자방어구"
+}

@@ -1,0 +1,25 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "뤼케시온길드복",
+  "Image": 152,
+  "DisplayImage": 33620,
+  "EquipmentSlot": 2,
+  "Class": 0,
+  "Gender": 2,
+  "LevelRequired": 1,
+  "ScriptName": "Armor",
+  "Flags": 125,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 100,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 1000000,
+  "CarryWeight": 4,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 2
+  },
+  "Group": "5.99표/갑옷/길드용품"
+}

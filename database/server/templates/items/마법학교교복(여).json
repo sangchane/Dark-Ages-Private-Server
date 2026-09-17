@@ -1,0 +1,20 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "마법학교교복(여)",
+  "Image": 412,
+  "DisplayImage": 44826,
+  "EquipmentSlot": 2,
+  "Class": 0,
+  "Gender": 2,
+  "LevelRequired": 1,
+  "ScriptName": "Armor",
+  "Flags": 53,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 3500000,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 0,
+  "CarryWeight": 0,
+  "Group": "5.99표/갑옷/Dress"
+}

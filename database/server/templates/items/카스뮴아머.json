@@ -1,0 +1,25 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "카스뮴아머",
+  "Image": 17,
+  "DisplayImage": 32915,
+  "EquipmentSlot": 2,
+  "Class": 1,
+  "Gender": 1,
+  "LevelRequired": 51,
+  "ScriptName": "Armor",
+  "Flags": 125,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 7000,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 12000,
+  "CarryWeight": 13,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 25
+  },
+  "Group": "5.99표/갑옷/전사방어구"
+}

@@ -1,0 +1,25 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "클리머스",
+  "Image": 21,
+  "DisplayImage": 32929,
+  "EquipmentSlot": 2,
+  "Class": 3,
+  "Gender": 2,
+  "LevelRequired": 81,
+  "ScriptName": "Armor",
+  "Flags": 125,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 13000,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 12000,
+  "CarryWeight": 8,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 25
+  },
+  "Group": "5.99표/갑옷/마법사방어구"
+}
