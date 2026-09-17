@@ -15,6 +15,15 @@ namespace Darkages.Scripting.Scripts.Skills
 
         public Sprite Target;
 
+        /// <summary>
+        /// 뒤에서 친 평타는 두 배다. 5.99 서버(Novaonline.exe)도 평타 안에서 같은 판정을 한다 — 앞칸 상대의 방향이
+        /// 내 방향과 **같으면**(= 내가 등 뒤에 서 있다) 배수를 2 로 만든다(괴물 0x416331 · 사람 0x4168d8). 다만
+        /// 그 빌드는 그 배수를 읽지 않은 채 버리고(죽은 코드), 배수가 실제로 곱해지는 것은 아무도 부르지 않는
+        /// 여러 대상 무기 공격(0x415d86 → 0x4150f2)뿐이다. 원작 의도대로 넣기로 했다(사용자, 2026-09-18).
+        /// </summary>
+        private static int Behind(Sprite attacker, Sprite target, int damage) =>
+            attacker.Direction == target.Direction ? damage * 2 : damage;
+
         public Assail(Skill skill) : base(skill)
         {
             _skill = skill;
@@ -95,7 +104,7 @@ namespace Darkages.Scripting.Scripts.Skills
                     {
                         Target = i;
 
-                        i.ApplyDamage(sprite, dmg, Skill.Template.Sound);
+                        i.ApplyDamage(sprite, Behind(sprite, i, dmg), Skill.Template.Sound);
                         success = true;
 
                         if (i is Aisling)
@@ -161,7 +170,7 @@ namespace Darkages.Scripting.Scripts.Skills
 
                         var dmg = sprite.GetBaseDamage(Target, MonsterDamageType.Physical);
                         {
-                            i.ApplyDamage(sprite, dmg, sprite.OffenseElement);
+                            i.ApplyDamage(sprite, Behind(sprite, i, dmg), sprite.OffenseElement);
                         }
 
                         if (Skill.Template.TargetAnimation > 0)
