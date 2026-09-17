@@ -1,0 +1,25 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "선풍기",
+  "Image": 107,
+  "DisplayImage": 40925,
+  "EquipmentSlot": 14,
+  "Class": 0,
+  "Gender": 255,
+  "LevelRequired": 1,
+  "ScriptName": "Generic",
+  "Flags": 61,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 0,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 0,
+  "CarryWeight": 0,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 1
+  },
+  "Group": "5.99표/장식/공통장식"
+}

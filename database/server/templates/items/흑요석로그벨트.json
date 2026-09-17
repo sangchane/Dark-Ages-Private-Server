@@ -1,0 +1,45 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "흑요석로그벨트",
+  "Image": 0,
+  "DisplayImage": 46149,
+  "EquipmentSlot": 11,
+  "Class": 2,
+  "Gender": 255,
+  "LevelRequired": 1,
+  "ScriptName": "Belt",
+  "Flags": 117,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 1,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 5000,
+  "CarryWeight": 0,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 5
+  },
+  "HealthModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 200
+  },
+  "ManaModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 200
+  },
+  "StrModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 2
+  },
+  "DexModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 5
+  },
+  "Group": "5.99표/허리띠/흑요석"
+}

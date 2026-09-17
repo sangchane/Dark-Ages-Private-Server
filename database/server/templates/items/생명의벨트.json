@@ -1,0 +1,36 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "생명의벨트",
+  "Image": 0,
+  "DisplayImage": 33667,
+  "EquipmentSlot": 11,
+  "Class": 0,
+  "Gender": 255,
+  "LevelRequired": 99,
+  "ScriptName": "Belt",
+  "Flags": 125,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 6500000,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 5000,
+  "CarryWeight": 0,
+  "StageRequired": 1,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 5
+  },
+  "HealthModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 10000
+  },
+  "ManaModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 10000
+  },
+  "Group": "5.99표/허리띠/공통벨트"
+}

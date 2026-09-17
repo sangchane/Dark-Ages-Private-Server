@@ -1,0 +1,40 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "흑요석로그장갑",
+  "Image": 0,
+  "DisplayImage": 46154,
+  "EquipmentSlot": 9,
+  "Class": 2,
+  "Gender": 255,
+  "LevelRequired": 81,
+  "ScriptName": "Generic",
+  "Flags": 117,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 20000,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 5000,
+  "CarryWeight": 0,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 4
+  },
+  "MrModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 10
+  },
+  "HealthModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 150
+  },
+  "ManaModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 150
+  },
+  "Group": "5.99표/장갑/흑요석"
+}

@@ -1,0 +1,25 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "신발",
+  "Image": 10,
+  "DisplayImage": 34551,
+  "EquipmentSlot": 13,
+  "Class": 0,
+  "Gender": 255,
+  "LevelRequired": 11,
+  "ScriptName": "Boot",
+  "Flags": 61,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 1500,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 0,
+  "CarryWeight": 0,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 3
+  },
+  "Group": "5.99표/신발/공통신발"
+}

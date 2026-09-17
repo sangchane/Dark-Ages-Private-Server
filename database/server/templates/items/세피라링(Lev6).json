@@ -1,0 +1,35 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "세피라링(Lev6)",
+  "Image": 0,
+  "DisplayImage": 34591,
+  "EquipmentSlot": 7,
+  "Class": 0,
+  "Gender": 255,
+  "LevelRequired": 11,
+  "ScriptName": "Generic",
+  "Flags": 61,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 100000,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 5000,
+  "CarryWeight": 0,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 1
+  },
+  "HealthModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 600
+  },
+  "ManaModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 600
+  },
+  "Group": "5.99표/반지/공통반지"
+}

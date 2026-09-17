@@ -1,0 +1,21 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "자이언트스톤클럽",
+  "Image": 37,
+  "DisplayImage": 33277,
+  "EquipmentSlot": 14,
+  "Class": 1,
+  "Gender": 255,
+  "LevelRequired": 99,
+  "ScriptName": "Generic",
+  "Flags": 125,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 10000000,
+  "DmgMin": 180,
+  "DmgMax": 200,
+  "MaxDurability": 500000,
+  "CarryWeight": 19,
+  "AttackMotion": 129,
+  "Group": "5.99표/장식/전사방어구"
+}

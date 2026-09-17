@@ -1,0 +1,36 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "베네티각반",
+  "Image": 0,
+  "DisplayImage": 34120,
+  "EquipmentSlot": 12,
+  "Class": 0,
+  "Gender": 255,
+  "LevelRequired": 99,
+  "ScriptName": "Generic",
+  "Flags": 125,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 9000,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 12000,
+  "CarryWeight": 10,
+  "StageRequired": 1,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 8
+  },
+  "HealthModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 1500
+  },
+  "ManaModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 1500
+  },
+  "Group": "5.99표/각반/공통각반"
+}

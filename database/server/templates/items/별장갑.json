@@ -1,0 +1,41 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "별장갑",
+  "Image": 0,
+  "DisplayImage": 46203,
+  "EquipmentSlot": 9,
+  "Class": 0,
+  "Gender": 255,
+  "LevelRequired": 99,
+  "ScriptName": "Generic",
+  "Flags": 125,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 1,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 5000,
+  "CarryWeight": 0,
+  "StageRequired": 1,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 8
+  },
+  "MrModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 10
+  },
+  "HealthModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 250
+  },
+  "ManaModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 250
+  },
+  "Group": "5.99표/장갑/별셋트"
+}

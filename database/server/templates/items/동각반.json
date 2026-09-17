@@ -1,0 +1,25 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "동각반",
+  "Image": 0,
+  "DisplayImage": 33018,
+  "EquipmentSlot": 12,
+  "Class": 0,
+  "Gender": 255,
+  "LevelRequired": 21,
+  "ScriptName": "Generic",
+  "Flags": 125,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 5000,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 6000,
+  "CarryWeight": 6,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 3
+  },
+  "Group": "5.99표/각반/공통각반"
+}

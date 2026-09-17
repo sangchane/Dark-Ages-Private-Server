@@ -1,0 +1,40 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "흑요석몽크각반",
+  "Image": 0,
+  "DisplayImage": 46144,
+  "EquipmentSlot": 12,
+  "Class": 5,
+  "Gender": 255,
+  "LevelRequired": 81,
+  "ScriptName": "Generic",
+  "Flags": 117,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 1000,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 9000,
+  "CarryWeight": 6,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 8
+  },
+  "MrModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 1
+  },
+  "HealthModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 500
+  },
+  "ManaModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 300
+  },
+  "Group": "5.99표/각반/흑요석"
+}

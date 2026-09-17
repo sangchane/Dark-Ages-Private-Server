@@ -1,0 +1,25 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "바람의흑요석목걸이",
+  "Image": 0,
+  "DisplayImage": 34337,
+  "EquipmentSlot": 6,
+  "Class": 0,
+  "Gender": 255,
+  "LevelRequired": 81,
+  "ScriptName": "Necklace",
+  "Flags": 117,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 50000,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 5000,
+  "CarryWeight": 0,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 2
+  },
+  "Group": "5.99표/목걸이/흑요석"
+}

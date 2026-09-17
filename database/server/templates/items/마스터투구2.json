@@ -1,0 +1,41 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "마스터투구2",
+  "Image": 178,
+  "DisplayImage": 33809,
+  "EquipmentSlot": 4,
+  "Class": 1,
+  "Gender": 2,
+  "LevelRequired": 99,
+  "ScriptName": "Helmet",
+  "Flags": 117,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 200000,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 515000,
+  "CarryWeight": 5,
+  "StageRequired": 1,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 12
+  },
+  "MrModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 10
+  },
+  "HealthModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 400
+  },
+  "ManaModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 100
+  },
+  "Group": "5.99표/투구/1차승급방어구"
+}

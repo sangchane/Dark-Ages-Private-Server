@@ -1,0 +1,36 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "별귀걸이",
+  "Image": 0,
+  "DisplayImage": 46201,
+  "EquipmentSlot": 5,
+  "Class": 0,
+  "Gender": 255,
+  "LevelRequired": 99,
+  "ScriptName": "Earring",
+  "Flags": 125,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 10000,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 3000,
+  "CarryWeight": 0,
+  "StageRequired": 1,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 1
+  },
+  "HealthModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 400
+  },
+  "ManaModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 400
+  },
+  "Group": "5.99표/귀걸이/별셋트"
+}

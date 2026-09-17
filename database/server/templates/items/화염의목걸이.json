@@ -1,24 +1,26 @@
 {
   "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
   "Name": "화염의목걸이",
-  "MaxDurability": 5000,
-  "Value": 1000,
-  "CarryWeight": 0,
+  "Image": 0,
+  "DisplayImage": 32973,
+  "EquipmentSlot": 6,
+  "Class": 0,
+  "Gender": 255,
   "LevelRequired": 1,
+  "ScriptName": "Necklace",
+  "Flags": 125,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 1000,
   "DmgMin": 0,
   "DmgMax": 0,
+  "MaxDurability": 5000,
+  "CarryWeight": 0,
+  "AttackMotion": 1,
   "AcModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
     "Option": 1,
     "Value": 1
   },
-  "Image": 205,
-  "DisplayImage": 0,
-  "Gender": 255,
-  "Class": 0,
-  "StageRequired": 0,
-  "EquipSlot": 6,
-  "EquipmentSlot": 6,
-  "Flags": 65,
-  "Group": "팩드롭"
+  "Group": "5.99표/목걸이/공통목걸이"
 }

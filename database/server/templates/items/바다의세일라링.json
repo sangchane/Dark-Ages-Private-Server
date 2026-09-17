@@ -1,0 +1,45 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "바다의세일라링",
+  "Image": 0,
+  "DisplayImage": 36215,
+  "EquipmentSlot": 5,
+  "Class": 0,
+  "Gender": 255,
+  "LevelRequired": 99,
+  "ScriptName": "Earring",
+  "Flags": 125,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 70000000,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 3000,
+  "CarryWeight": 0,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 6
+  },
+  "HealthModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 5000
+  },
+  "ManaModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 5000
+  },
+  "IntModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 10
+  },
+  "WisModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 10
+  },
+  "Group": "5.99표/귀걸이/공통귀걸이"
+}

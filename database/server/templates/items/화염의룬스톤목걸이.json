@@ -1,0 +1,35 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "화염의룬스톤목걸이",
+  "Image": 0,
+  "DisplayImage": 34349,
+  "EquipmentSlot": 6,
+  "Class": 0,
+  "Gender": 255,
+  "LevelRequired": 11,
+  "ScriptName": "Necklace",
+  "Flags": 125,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 20000000,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 3000,
+  "CarryWeight": 0,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 2
+  },
+  "HealthModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 1000
+  },
+  "ManaModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 1000
+  },
+  "Group": "5.99표/목걸이/공통목걸이"
+}

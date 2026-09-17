@@ -1,0 +1,45 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "윙부츠",
+  "Image": 240,
+  "DisplayImage": 46283,
+  "EquipmentSlot": 13,
+  "Class": 0,
+  "Gender": 255,
+  "LevelRequired": 1,
+  "ScriptName": "Boot",
+  "Flags": 61,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 180000000,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 0,
+  "CarryWeight": 0,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 10
+  },
+  "HealthModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 10000
+  },
+  "ManaModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 10000
+  },
+  "StrModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 5
+  },
+  "DexModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 1
+  },
+  "Group": "5.99표/신발/공통신발"
+}

@@ -1,0 +1,25 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "로톤캐프린",
+  "Image": 181,
+  "DisplayImage": 33811,
+  "EquipmentSlot": 4,
+  "Class": 0,
+  "Gender": 2,
+  "LevelRequired": 1,
+  "ScriptName": "Helmet",
+  "Flags": 125,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 500000000,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 5000,
+  "CarryWeight": 0,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 1
+  },
+  "Group": "5.99표/투구/치장아이템"
+}

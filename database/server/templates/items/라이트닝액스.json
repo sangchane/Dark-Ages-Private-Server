@@ -1,0 +1,36 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "라이트닝액스",
+  "Image": 0,
+  "DisplayImage": 46171,
+  "EquipmentSlot": 1,
+  "Class": 0,
+  "Gender": 255,
+  "LevelRequired": 1,
+  "ScriptName": "Weapon",
+  "Flags": 125,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 50000000,
+  "DmgMin": 500,
+  "DmgMax": 500,
+  "MaxDurability": 6000,
+  "CarryWeight": 5,
+  "AttackMotion": 1,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 1
+  },
+  "HealthModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 500
+  },
+  "ManaModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 500
+  },
+  "Group": "5.99표/무기/치장아이템"
+}

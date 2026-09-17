@@ -1,0 +1,36 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "데스나이트의방패",
+  "Image": 16,
+  "DisplayImage": 34135,
+  "EquipmentSlot": 3,
+  "Class": 0,
+  "Gender": 255,
+  "LevelRequired": 99,
+  "ScriptName": "Shield",
+  "Flags": 61,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 200000,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 0,
+  "CarryWeight": 0,
+  "StageRequired": 1,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 25
+  },
+  "HealthModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 2000
+  },
+  "ManaModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 2000
+  },
+  "Group": "5.99표/방패/공통방패"
+}

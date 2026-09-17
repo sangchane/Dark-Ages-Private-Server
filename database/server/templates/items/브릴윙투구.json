@@ -1,0 +1,45 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "브릴윙투구",
+  "Image": 0,
+  "DisplayImage": 44939,
+  "EquipmentSlot": 4,
+  "Class": 5,
+  "Gender": 255,
+  "LevelRequired": 1,
+  "ScriptName": "Helmet",
+  "Flags": 61,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 0,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 100000,
+  "CarryWeight": 0,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 15
+  },
+  "HealthModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 30000
+  },
+  "ManaModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 30000
+  },
+  "StrModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 20
+  },
+  "ConModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 10
+  },
+  "Group": "5.99표/투구/블랙세트"
+}

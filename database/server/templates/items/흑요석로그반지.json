@@ -1,0 +1,45 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "흑요석로그반지",
+  "Image": 0,
+  "DisplayImage": 46153,
+  "EquipmentSlot": 7,
+  "Class": 2,
+  "Gender": 255,
+  "LevelRequired": 81,
+  "ScriptName": "Generic",
+  "Flags": 117,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 50000,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 0,
+  "CarryWeight": 0,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 1
+  },
+  "HealthModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 200
+  },
+  "ManaModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 200
+  },
+  "StrModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 4
+  },
+  "DexModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 7
+  },
+  "Group": "5.99표/반지/흑요석"
+}
