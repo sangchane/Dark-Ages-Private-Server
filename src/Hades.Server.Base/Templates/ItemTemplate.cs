@@ -45,6 +45,14 @@ namespace Darkages.Types
     {
         [Category("Mods")] public StatusOperator AcModifer { get; set; }
 
+        /// <summary>
+        /// 5.99 아이템의 공격모션·공격속도. 5.99 서버(Novaonline.exe 0x4160f7)는 평타의 몸 동작을 무기에서, 무기가
+        /// 없으면 갑옷에서 고른다(도복 132 주먹 · 단검 134 찌르기 · 활 142). 0 은 칸이 없는 것이다.
+        /// </summary>
+        [Category("Item Properties")] public byte AttackMotion { get; set; }
+
+        [Category("Item Properties")] public byte AttackSpeed { get; set; }
+
         /*
                 [Category("Script")] public ActivationTrigger ActivationTrigger { get; set; } = ActivationTrigger.OnUse;
         */

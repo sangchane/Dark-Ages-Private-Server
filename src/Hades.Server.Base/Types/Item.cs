@@ -67,6 +67,8 @@ namespace Darkages.Types
                 obj.Template = new ItemTemplate
                 {
                     AcModifer = template.AcModifer,
+                    AttackMotion = template.AttackMotion,
+                    AttackSpeed = template.AttackSpeed,
                     CanStack = template.CanStack,
                     CarryWeight = template.CarryWeight,
                     Class = template.Class,

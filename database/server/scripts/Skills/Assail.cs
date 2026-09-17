@@ -31,19 +31,45 @@ namespace Darkages.Scripting.Scripts.Skills
                 }
         }
 
+        /// <summary>
+        /// 평타의 몸 동작과 속도. 5.99 서버(Novaonline.exe 0x4160f7)대로 무기를 꼈으면 무기의 공격모션·공격속도, 무기가
+        /// 없으면 갑옷의 것 — 칸이 0 이면 동작은 1, 속도는 20(갑옷만 입고 둘 다 0 이면 22). 방패·직업·배운 기술은 보지
+        /// 않는다. 공격모션이 없는 하데스 무기는 하데스가 하던 대로 전사 양손이면 0x81 이다.
+        /// </summary>
+        private static (byte Number, short Speed) BlowMotion(Aisling aisling)
+        {
+            var weapon = aisling.EquipmentManager?.Weapon?.Item?.Template;
+
+            if (weapon != null)
+            {
+                if (weapon.AttackMotion == 0 && weapon.AttackSpeed == 0)
+                    return ((byte) (aisling.Path == Class.Warrior && aisling.UsingTwoHanded ? 0x81 : 0x01), 20);
+
+                return (weapon.AttackMotion == 0 ? (byte) 1 : weapon.AttackMotion,
+                    (short) (weapon.AttackSpeed == 0 ? 20 : weapon.AttackSpeed));
+            }
+
+            var armor = aisling.EquipmentManager?.Armor?.Item?.Template;
+
+            if (armor != null)
+                return (armor.AttackMotion == 0 ? (byte) 1 : armor.AttackMotion,
+                    (short) (armor.AttackSpeed != 0 ? armor.AttackSpeed : armor.AttackMotion != 0 ? 20 : 22));
+
+            return (1, 20);
+        }
+
         public override void OnSuccess(Sprite sprite)
         {
             if (sprite is Aisling)
             {
                 var client = (sprite as Aisling).Client;
 
+                var (number, speed) = BlowMotion(client.Aisling);
                 var action = new ServerFormat1A
                 {
                     Serial = client.Aisling.Serial,
-                    Number = (byte) (client.Aisling.Path == Class.Warrior
-                        ? client.Aisling.UsingTwoHanded ? 0x81 : 0x01
-                        : 0x01),
-                    Speed = 20
+                    Number = number,
+                    Speed = speed
                 };
 
                 var enemy = client.Aisling.GetInfront();

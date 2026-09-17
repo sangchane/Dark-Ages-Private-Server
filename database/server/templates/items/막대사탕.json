@@ -16,5 +16,6 @@
   "DmgMax": 28,
   "MaxDurability": 6000,
   "CarryWeight": 5,
+  "AttackMotion": 1,
   "Group": "5.99표/무기/치장아이템"
 }

@@ -16,5 +16,7 @@
   "DmgMax": 320,
   "MaxDurability": 60000,
   "CarryWeight": 26,
+  "AttackMotion": 129,
+  "AttackSpeed": 37,
   "Group": "5.99표/무기/전사무기"
 }

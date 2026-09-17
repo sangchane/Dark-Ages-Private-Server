@@ -16,5 +16,6 @@
   "DmgMax": 800,
   "MaxDurability": 100000,
   "CarryWeight": 22,
+  "AttackMotion": 132,
   "Group": "5.99표/무기/무도가무기"
 }

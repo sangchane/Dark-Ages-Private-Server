@@ -16,6 +16,8 @@
   "DmgMax": 20,
   "MaxDurability": 4000,
   "CarryWeight": 3,
+  "AttackMotion": 1,
+  "AttackSpeed": 25,
   "AcModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
     "Option": 1,

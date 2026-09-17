@@ -16,5 +16,6 @@
   "DmgMax": 60,
   "MaxDurability": 25000,
   "CarryWeight": 12,
+  "AttackMotion": 1,
   "Group": "5.99표/무기/전사방어구"
 }
