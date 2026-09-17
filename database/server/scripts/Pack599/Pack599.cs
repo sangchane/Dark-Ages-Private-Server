@@ -521,15 +521,37 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                     return 1;
                 }
                 // 코마 — 하데스의 빈사(skulled). 코마디아가 풀어 준다(사용자 확인).
+                // ── 혼수(빈사) ─────────────────────────────────────────────
+                // 5.99 서버(Novaonline.exe) 역어셈블: set_coma 는 캐릭터 0x6D 칸(혼수), coma_delay 는 0xF1 칸(남은 초)에 쓰고, 서버가 1초마다
+                // 그 초를 줄이며 그림 24 와 아이콘 89 를 보낸다(0x46f677). 0 이 되도록 살아나지 못하면 `__COMA_END__` 가 죽인다.
+                // 하데스 빈사 디버프(debuff_reeping — 아이콘 89 · 그림 24, 끝나면 죽음)가 같은 것이라 그것을 건다.
+                // set_state · set_state1 은 보이는 상태 칸(0xF0 — 1 혼수 모습 · 0 보통)에 쓰고 주변에 모습을 다시 보낸다(0x462ec1).
+                // 혼수 모습은 빈사 디버프가 보내므로 따로 할 일이 없다. 5.99 스크립트는 0 과 1 만 쓴다.
                 case "get_coma":
                 case "get_state1":
                     return (Find(a, 0) as Aisling)?.Skulled == true ? 1 : 0;
                 case "set_coma":
-                case "set_state1":
+                {
+                    var target = Find(a, 0);
+                    if (target == null)
+                        return 0;
+                    if (Arg(a, 1) == 0)
+                        return target.RemoveDebuff("skulled", true) ? 1 : 0;
+                    return Afflict(target, new debuff_reeping(), ServerContext.Config.SkullLength);
+                }
                 case "coma_delay":
-                    return Arg(a, 1) == 0 ? 0 : Unknown(name + " 켜기");
+                {
+                    if (Find(a, 0) is not { } target || Arg(a, 1) <= 0 || !target.Debuffs.TryGetValue("skulled", out var coma))
+                        return 0;
+                    coma.Timer.Tick = coma.Length - (int) Arg(a, 1);
+                    return 1;
+                }
+                case "set_state":
+                case "set_state1":
+                    return 1;
+                // 하데스 RemoveDebuff("skulled") 는 취소 표시가 없으면 지우지 않는다(죽음을 건너뛰지 못하게) — 살려 내는 것이므로 취소로 지운다.
                 case "del_coma":
-                    return Find(a, 0)?.RemoveDebuff("skulled") == true ? 1 : 0;
+                    return Find(a, 0)?.RemoveDebuff("skulled", true) == true ? 1 : 0;
                 // 센스·센스몬스터·품뒤져보기 — 앞에 선 대상의 정보를 보여 준다(사용자 확인).
                 case "sense_user":
                 case "sense_monster":
