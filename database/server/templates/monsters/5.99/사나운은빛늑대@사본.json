@@ -1,0 +1,36 @@
+{
+  "Name": "사나운은빛늑대",
+  "BaseName": "사나운은빛늑대",
+  "AreaID": 0,
+  "SpawnMax": 1,
+  "SpawnType": 2,
+  "SpawnRate": 30,
+  "SpawnSize": 0,
+  "SpawnOnlyOnActiveMaps": false,
+  "Image": 16662,
+  "ImageVarience": 0,
+  "MaximumHP": 5850,
+  "MaximumMP": 0,
+  "Exp": 17808,
+  "DmgMin": 240,
+  "DmgMax": 250,
+  "Ac": -45,
+  "Level": 1,
+  "MovementSpeed": 1200,
+  "EngagedWalkingSpeed": 1200,
+  "AttackSpeed": 1000,
+  "CastSpeed": 8000,
+  "MoodType": 4,
+  "PathQualifer": 1,
+  "LootType": 36,
+  "Drops": {
+    "$values": [
+      "은빛늑대의갈기털"
+    ]
+  },
+  "ScriptName": "Common Monster",
+  "UpdateMapWide": true,
+  "UpdateRate": 1000.0,
+  "Grow": false,
+  "IgnoreCollision": false
+}

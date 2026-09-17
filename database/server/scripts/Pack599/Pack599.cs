@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Darkages.Network.Object;
+using Darkages.Scripting;
+using Darkages.Systems;
+using Darkages.Templates;
 using Darkages.Network.ServerFormats;
 using Darkages.Storage.locales.Buffs;
 using Darkages.Storage.locales.debuffs;
@@ -319,6 +323,89 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                         member.Client.SendMessage((byte) Arg(a, 0), Text(a, 1));
                     return 0;
 
+                // ── 개인 던전(map_create 사본 — Systems/Instances) ────────────────────
+                // `map_create 번호, 이름, 보일이름, 가로, 세로, 음악, 단계, 세부단계, "팩맵파일"`. 사본마다 1초에 한 번
+                // 던전 스크립트(Dungeon__Script)가 그 안 사람마다 돈다(PackRoutine).
+                case "map_create":
+                {
+                    var original = PackMap(Text(a, 8));
+                    if (original == null)
+                        return Unknown($"map_create {Text(a, 8)}");
+                    var area = Instances.Create(original, Text(a, 1), Text(a, 2), (int) Arg(a, 5), (int) Arg(a, 6), (int) Arg(a, 7));
+                    if (area != null && (area.Scripts == null || area.Scripts.Count == 0))
+                        area.Scripts = ScriptManager.Load<AreaScript>("PACK_Dungeon__Script", area);
+                    return area?.Id ?? 0;
+                }
+                // `warp_create 종류, 출발맵, x, y, 도착맵, x, y, 최소레벨, 최대레벨, 막힘` — 막힘 1 은 괴물을 다 잡아야 지나간다.
+                case "warp_create":
+                {
+                    var from = MapNamed(Text(a, 1));
+                    var to = MapNamed(Text(a, 4));
+                    if (from == null || to == null || Arg(a, 0) != 0)
+                        return Unknown($"warp_create {Arg(a, 0)} {Text(a, 1)} → {Text(a, 4)}");
+                    Instances.AddWarp(new WarpTemplate
+                    {
+                        Name = $"warp {from.Name}({Arg(a, 2)},{Arg(a, 3)}) to {to.Name}({Arg(a, 5)},{Arg(a, 6)})",
+                        ActivationMapId = from.Id,
+                        Activations = new List<Warp> { new Warp { AreaId = from.Id, Location = new Position((int) Arg(a, 2), (int) Arg(a, 3)) } },
+                        To = new Warp { AreaId = to.Id, Location = new Position((int) Arg(a, 5), (int) Arg(a, 6)) },
+                        WarpType = WarpType.Map,
+                        LevelRequired = (byte) Math.Clamp(Arg(a, 7), 1, 99),
+                        LevelMaximum = (byte) (Arg(a, 8) >= 99 ? 0 : Math.Clamp(Arg(a, 8), 1, 98)),
+                        RequiresClear = Arg(a, 9) == 1
+                    });
+                    return 1;
+                }
+                // `group_warp 맵, x, y` — 같은 맵에 선 그룹원도 함께.
+                case "group_warp":
+                {
+                    var area = MapNamed(Text(a, 0));
+                    if (area == null)
+                        return Unknown($"group_warp {Text(a, 0)}");
+                    foreach (var member in Party().ToList())
+                        member.Client.TransitionToMap(area, new Position((int) Arg(a, 1), (int) Arg(a, 2)));
+                    return 1;
+                }
+                // `mob_spawn3 괴물, 맵, 최소공격력, 최대공격력, 체력, 마릿수` — 맵 안 빈 칸 아무 데나. 공격력 둘은 튜토리얼 팜팻(1, 2)이
+                // 정의의 공격력과 같아 그렇게 읽었다. 하데스 괴물 피해는 식이 정하므로 체력만 쓴다.
+                case "mob_spawn3":
+                {
+                    var area = MapNamed(Text(a, 1));
+                    var template = ServerContext.GlobalMonsterTemplateCache.FirstOrDefault(t => t.Name == Text(a, 0));
+                    if (area == null || template == null)
+                        return Unknown($"mob_spawn3 {Text(a, 0)} @ {Text(a, 1)}");
+                    for (var i = 0; i < Arg(a, 5); i++)
+                    {
+                        // 괴물 생성은 빈 칸을 몇 번만 찍어 보고 못 찾으면 null 이다 — 좁은 방에서는 마릿수가 모자란다. 5.99 는 적은 수를 다 세운다.
+                        Monster monster = null;
+                        for (var attempt = 0; attempt < 20 && monster == null; attempt++)
+                            monster = Monster.Create(template, area);
+                        if (monster == null)
+                            continue;
+                        if (Arg(a, 4) > 0)
+                        {
+                            monster._MaximumHp = (int) Arg(a, 4);
+                            monster.CurrentHp = (int) Arg(a, 4);
+                        }
+                        _me.AddObject(monster);
+                    }
+                    return 1;
+                }
+                case "mob_clear": return Instances.Clear<Monster>(MapNamed(Text(a, 0)));
+                case "item_clear": return Instances.Clear<Item>(MapNamed(Text(a, 0))) + Instances.Clear<Money>(MapNamed(Text(a, 0)));
+                case "get_map_stage": return Who(a, 0).Map?.Stage ?? 0;
+                case "get_map_sub_stage": return Who(a, 0).Map?.SubStage ?? 0;
+                case "map_objmob":
+                {
+                    var map = Who(a, 0).Map;
+                    return map == null ? 0 : _me.GetObjects<Monster>(map, m => m.CurrentHp > 0 && m.CurrentMapId == map.Id).Count();
+                }
+                case "get_clear_time": return Who(a, 0).Map is { } cleared ? (long) (DateTime.UtcNow - cleared.CreatedAt).TotalSeconds : 0;
+                case "get_kill_mob": return Who(a, 0).Map?.Kills ?? 0;
+                case "exp_add":
+                    Monster.DistributeExperience(_me, Arg(a, 0));
+                    return 1;
+
                 // ── 피해·회복·마력 ────────────────────────────────────────
                 case "damaged":
                 case "char_damaged":
@@ -625,6 +712,36 @@ namespace Darkages.Storage.locales.Scripts.Pack599
             return _me.GetObjects(_me.Map, s => s.XPos == who.XPos + dx && s.YPos == who.YPos + dy && s is T, Living)
                 .OfType<T>().FirstOrDefault(s => s.Serial != who.Serial);
         }
+
+        private static Area MapNamed(string name) =>
+            ServerContext.GlobalMapCache.Values.FirstOrDefault(map => map.Name == name);
+
+        /// <summary>
+        /// 팩 스크립트가 적는 맵 파일(`db/maps/default/maps/lod4612.map`) → 서버 맵. 표는 `tools/pack-import/import.py --kind maps` 가
+        /// `static/pack599-mapfiles.tsv` 로 쓴다(팩 파일 경로 · 서버 맵 번호).
+        /// </summary>
+        private static Area PackMap(string file)
+        {
+            if (PackMapFiles == null)
+            {
+                var table = new Dictionary<string, int>();
+                var path = Path.Combine(ServerContext.StoragePath, "static", "pack599-mapfiles.tsv");
+                if (File.Exists(path))
+                    foreach (var line in File.ReadAllLines(path))
+                    {
+                        var cells = line.Split('\t');
+                        if (cells.Length == 2 && int.TryParse(cells[1], out var id))
+                            table[cells[0]] = id;
+                    }
+                PackMapFiles = table;
+            }
+
+            return PackMapFiles.TryGetValue(file, out var number) && ServerContext.GlobalMapCache.TryGetValue(number, out var area)
+                ? area
+                : null;
+        }
+
+        private static Dictionary<string, int> PackMapFiles;
 
         private IEnumerable<Aisling> Party() =>
             _me.PartyMembers?.Where(m => m != null && m.Map == _me.Map) ?? new[] { _me };

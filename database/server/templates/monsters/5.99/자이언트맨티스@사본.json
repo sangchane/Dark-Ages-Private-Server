@@ -1,0 +1,39 @@
+{
+  "Name": "자이언트맨티스",
+  "BaseName": "자이언트맨티스",
+  "AreaID": 0,
+  "SpawnMax": 1,
+  "SpawnType": 2,
+  "SpawnRate": 90,
+  "SpawnSize": 0,
+  "SpawnOnlyOnActiveMaps": false,
+  "Image": 16650,
+  "ImageVarience": 0,
+  "MaximumHP": 19500,
+  "MaximumMP": 0,
+  "Exp": 87671,
+  "DmgMin": 300,
+  "DmgMax": 350,
+  "Ac": -45,
+  "Level": 1,
+  "MovementSpeed": 1000,
+  "EngagedWalkingSpeed": 1000,
+  "AttackSpeed": 1000,
+  "CastSpeed": 8000,
+  "MoodType": 4,
+  "PathQualifer": 1,
+  "LootType": 36,
+  "Drops": {
+    "$values": [
+      "세줄금반지"
+    ]
+  },
+  "ScriptName": "Common Monster",
+  "UpdateMapWide": true,
+  "UpdateRate": 1000.0,
+  "Grow": false,
+  "IgnoreCollision": false,
+  "SpellScripts": [
+    "Monster_리베라토"
+  ]
+}

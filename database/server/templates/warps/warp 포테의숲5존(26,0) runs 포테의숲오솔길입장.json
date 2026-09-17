@@ -1,0 +1,31 @@
+{
+  "ActivationMapId": 20267,
+  "Activations": [
+    {
+      "AreaID": 20267,
+      "Location": {
+        "X": 26,
+        "Y": 0
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 21,
+  "LevelMaximum": 52,
+  "ScriptNpc": "NPC_포테의숲오솔길입장",
+  "To": {
+    "AreaID": 20267,
+    "Location": {
+      "X": 26,
+      "Y": 0
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 포테의숲5존(26,0) runs 포테의숲오솔길입장"
+}
