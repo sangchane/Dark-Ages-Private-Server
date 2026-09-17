@@ -1,0 +1,20 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "액스",
+  "Image": 39,
+  "DisplayImage": 33279,
+  "EquipmentSlot": 1,
+  "Class": 1,
+  "Gender": 255,
+  "LevelRequired": 41,
+  "ScriptName": "Weapon",
+  "Flags": 125,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 100000,
+  "DmgMin": 35,
+  "DmgMax": 43,
+  "MaxDurability": 13000,
+  "CarryWeight": 7,
+  "Group": "5.99표/무기/전사방어구"
+}

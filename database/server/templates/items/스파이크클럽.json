@@ -1,0 +1,20 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "스파이크클럽",
+  "Image": 35,
+  "DisplayImage": 33275,
+  "EquipmentSlot": 1,
+  "Class": 1,
+  "Gender": 255,
+  "LevelRequired": 71,
+  "ScriptName": "Weapon",
+  "Flags": 125,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 10000000,
+  "DmgMin": 40,
+  "DmgMax": 60,
+  "MaxDurability": 25000,
+  "CarryWeight": 12,
+  "Group": "5.99표/무기/전사방어구"
+}

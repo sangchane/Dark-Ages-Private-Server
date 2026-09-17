@@ -1,0 +1,20 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "자이언트클럽",
+  "Image": 36,
+  "DisplayImage": 33276,
+  "EquipmentSlot": 1,
+  "Class": 1,
+  "Gender": 255,
+  "LevelRequired": 86,
+  "ScriptName": "Weapon",
+  "Flags": 125,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 10000000,
+  "DmgMin": 90,
+  "DmgMax": 110,
+  "MaxDurability": 40000,
+  "CarryWeight": 15,
+  "Group": "5.99표/무기/전사방어구"
+}

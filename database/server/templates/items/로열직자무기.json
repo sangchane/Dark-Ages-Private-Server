@@ -1,14 +1,14 @@
 {
   "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
-  "Name": "매직세페우스",
-  "Image": 110,
-  "DisplayImage": 34129,
+  "Name": "로열직자무기",
+  "Image": 188,
+  "DisplayImage": 36025,
   "EquipmentSlot": 1,
-  "Class": 3,
+  "Class": 4,
   "Gender": 255,
   "LevelRequired": 99,
   "ScriptName": "Weapon",
-  "Flags": 117,
+  "Flags": 125,
   "CanStack": false,
   "MaxStack": 0,
   "Value": 1000,
@@ -16,5 +16,5 @@
   "DmgMax": 1,
   "MaxDurability": 3000,
   "CarryWeight": 5,
-  "Group": "5.99표/무기/마법사무기"
+  "Group": "5.99표/무기/성직자무기"
 }

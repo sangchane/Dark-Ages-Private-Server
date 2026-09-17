@@ -1,0 +1,20 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "스톤액스",
+  "Image": 42,
+  "DisplayImage": 33282,
+  "EquipmentSlot": 1,
+  "Class": 1,
+  "Gender": 255,
+  "LevelRequired": 99,
+  "ScriptName": "Weapon",
+  "Flags": 125,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 100000,
+  "DmgMin": 155,
+  "DmgMax": 175,
+  "MaxDurability": 10000,
+  "CarryWeight": 11,
+  "Group": "5.99표/무기/전사방어구"
+}
