@@ -23,13 +23,13 @@
         {
             if (Area != null)
             {
-                writer.Write((ushort) Area.Id);
+                writer.Write((ushort) (Area.ClientNumber > 0 ? Area.ClientNumber : Area.Id));
                 writer.Write((byte) Area.Cols);
                 writer.Write((byte) Area.Rows);
                 writer.Write((byte) Area.Flags);
                 writer.Write(ushort.MinValue);
                 writer.Write(Area.Hash);
-                writer.WriteStringA(Area.Name);
+                writer.WriteStringA(Area.ClientName ?? Area.Name);
             }
         }
     }

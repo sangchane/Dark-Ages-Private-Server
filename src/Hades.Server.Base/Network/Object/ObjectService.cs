@@ -13,20 +13,48 @@ namespace Darkages.Network.Object
 {
     public sealed class ObjectService
     {
-        private readonly Dictionary<int, IDictionary<Type, object>> _spriteCollections =
+        // 맵마다 종류별 목록. 개인 사본 맵(Systems/Instances)이 생기고 없어질 때 고친 사본으로 통째로 바꿔 끼운다 —
+        // 다른 스레드가 잠금 없이 읽고 있어서 그 자리를 고치면 안 된다.
+        private Dictionary<int, IDictionary<Type, object>> _spriteCollections =
             new Dictionary<int, IDictionary<Type, object>>();
+
+        private readonly object _mapsGate = new object();
 
         public ObjectService()
         {
             foreach (var map in ServerContext.GlobalMapCache.Values)
-                _spriteCollections.Add(map.Id, new Dictionary<Type, object>
-                {
-                    {typeof(Monster), new SpriteList<Monster>(Enumerable.Empty<Monster>())},
-                    {typeof(Aisling), new SpriteList<Aisling>(Enumerable.Empty<Aisling>())},
-                    {typeof(Mundane), new SpriteList<Mundane>(Enumerable.Empty<Mundane>())},
-                    {typeof(Item), new SpriteList<Item>(Enumerable.Empty<Item>())},
-                    {typeof(Money), new SpriteList<Money>(Enumerable.Empty<Money>())}
-                });
+                _spriteCollections.Add(map.Id, NewCollections());
+        }
+
+        private static IDictionary<Type, object> NewCollections() => new Dictionary<Type, object>
+        {
+            {typeof(Monster), new SpriteList<Monster>(Enumerable.Empty<Monster>())},
+            {typeof(Aisling), new SpriteList<Aisling>(Enumerable.Empty<Aisling>())},
+            {typeof(Mundane), new SpriteList<Mundane>(Enumerable.Empty<Mundane>())},
+            {typeof(Item), new SpriteList<Item>(Enumerable.Empty<Item>())},
+            {typeof(Money), new SpriteList<Money>(Enumerable.Empty<Money>())}
+        };
+
+        /// <summary>나중에 생긴 맵의 목록을 만든다. 시작할 때 있던 맵만 목록이 있어, 새 맵에 넣는 것은 말없이 버려졌다.</summary>
+        public void AddMap(int mapId)
+        {
+            lock (_mapsGate)
+            {
+                if (_spriteCollections.ContainsKey(mapId))
+                    return;
+
+                _spriteCollections = new Dictionary<int, IDictionary<Type, object>>(_spriteCollections) { [mapId] = NewCollections() };
+            }
+        }
+
+        public void RemoveMap(int mapId)
+        {
+            lock (_mapsGate)
+            {
+                var maps = new Dictionary<int, IDictionary<Type, object>>(_spriteCollections);
+                maps.Remove(mapId);
+                _spriteCollections = maps;
+            }
         }
 
         public void AddGameObject<T>(T obj) where T : Sprite

@@ -367,7 +367,15 @@ namespace Darkages.Network.Game
                 return null;
 
             if (!ServerContext.GlobalMapCache.ContainsKey(Aisling.AreaId))
-                return null;
+            {
+                // 없어진 맵(서버가 다시 켜지며 사라진 개인 사본 따위)에 저장된 캐릭터는 들어오지 못하던 채로 남았다 — 시작 자리로 보낸다.
+                if (!ServerContext.GlobalMapCache.ContainsKey(ServerContext.Config.StartingMap))
+                    return null;
+
+                Aisling.CurrentMapId = ServerContext.Config.StartingMap;
+                Aisling.XPos = ServerContext.Config.StartingPosition.X;
+                Aisling.YPos = ServerContext.Config.StartingPosition.Y;
+            }
 
             SetAislingStartupVariables();
 
@@ -1458,6 +1466,31 @@ namespace Darkages.Network.Game
                     if (warps.LevelMaximum > 0 && Aisling.ExpLevel > warps.LevelMaximum)
                     {
                         SendMessage(0x02, "이곳에 들어가기엔 늙었습니다.");
+                        return;
+                    }
+                }
+
+                if (!string.IsNullOrEmpty(warps.ScriptNpc))
+                {
+                    var host = ServerContext.Game.ObjectFactory
+                        .QueryAll<Mundane>(Aisling.Map, npc => npc.Template?.ScriptKey == warps.ScriptNpc).FirstOrDefault();
+
+                    if (host?.Scripts != null)
+                        foreach (var script in host.Scripts.Values)
+                            script.OnClick(ServerContext.Game, this);
+
+                    return;
+                }
+
+                if (warps.RequiresClear)
+                {
+                    var left = ServerContext.Game.ObjectFactory
+                        .QueryAll<Monster>(Aisling.Map, monster => monster.CurrentHp > 0).Count();
+
+                    if (left > 0)
+                    {
+                        // 5.99 서버 문구(Novaonline.exe 0x904b0 부근).
+                        SendMessage(0x03, $"{{=q안내 : 이동할수 없습니다. [남아있는 몬스터수 : {left}]");
                         return;
                     }
                 }

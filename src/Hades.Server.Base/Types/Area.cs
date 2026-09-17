@@ -26,6 +26,21 @@ namespace Darkages
 
         public string FilePath { get; set; }
 
+        // ── 5.99 map_create 의 개인 사본(Systems/Instances) ─────────────────────────────
+        /// <summary>클라이언트에게 알리는 맵 번호. 사본은 원래 맵 번호를 알려 그 맵 파일·그림을 쓰게 한다. 0 이면 Id.</summary>
+        [JsonIgnore] public int ClientNumber { get; set; }
+
+        /// <summary>클라이언트에게 알리는 이름. 사본의 Name 은 캐릭터 이름이 붙은 고유 이름이라 5.99 가 보여 주는 이름을 따로 둔다.</summary>
+        [JsonIgnore] public string ClientName { get; set; }
+
+        /// <summary>5.99 `get_map_stage` · `get_map_sub_stage` — 던전 스크립트(Dungeon__Script)가 어느 던전 몇 번째 방인지 가린다.</summary>
+        [JsonIgnore] public int Stage { get; set; }
+        [JsonIgnore] public int SubStage { get; set; }
+
+        /// <summary>사본을 만든 때와 그 안에서 잡힌 괴물 수 — 5.99 `get_clear_time` · `get_kill_mob`.</summary>
+        [JsonIgnore] public DateTime CreatedAt { get; set; }
+        [JsonIgnore] public int Kills;
+
         public int NumberOfAislings() =>
             GetObjects<Aisling>(this, n => n?.Map != null && n.Map.Ready && n.CurrentMapId == Id).Count();
 
@@ -224,6 +239,7 @@ namespace Darkages
                                         }
 
                                         UpdateKillCounters(monster);
+                                        Kills++;
 
 
                                         monster.Skulled = true;
