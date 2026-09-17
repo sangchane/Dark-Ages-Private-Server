@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 20360,
+  "Activations": [
+    {
+      "AreaID": 20360,
+      "Location": {
+        "X": 11,
+        "Y": 14
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 20359,
+    "Location": {
+      "X": 12,
+      "Y": 2
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 수오미주점(11,14) to 수오미음식점(12,2)"
+}

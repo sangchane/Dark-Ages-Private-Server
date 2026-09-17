@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 20353,
+  "Activations": [
+    {
+      "AreaID": 20353,
+      "Location": {
+        "X": 11,
+        "Y": 0
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 20354,
+    "Location": {
+      "X": 2,
+      "Y": 11
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 수오미기술사범의집(11,0) to 수오미마법사범의집(2,11)"
+}

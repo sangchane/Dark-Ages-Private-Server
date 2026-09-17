@@ -10,7 +10,8 @@
       "PortalKey": 0
     }
   ],
-  "LevelRequired": 1,
+  "LevelRequired": 10,
+  "LevelMaximum": 22,
   "To": {
     "AreaID": 20386,
     "Location": {

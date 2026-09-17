@@ -1446,19 +1446,21 @@ namespace Darkages.Network.Game
 
             if (ServerContext.GlobalMapCache.Values.Any(i => i.Id == warps.ActivationMapId))
             {
+                // 문구는 5.99 서버(Novaonline.exe 0x904b0 부근) 그대로다.
                 if (!Aisling.GameMaster)
+                {
                     if (warps.LevelRequired > 0 && Aisling.ExpLevel < warps.LevelRequired)
                     {
-                        var msgTier = Math.Abs(Aisling.ExpLevel - warps.LevelRequired);
-
-                        SendMessage(0x02, msgTier <= 10
-                            ? string.Format(CultureInfo.CurrentCulture, "You can't enter there just yet. ({0} req)",
-                                warps.LevelRequired)
-                            : string.Format(CultureInfo.CurrentCulture,
-                                "Nightmarish visions of your own death repel you. ({0} Req)", warps.LevelRequired));
-
+                        SendMessage(0x02, "아직 들어가기엔 레벨이 낮습니다.");
                         return;
                     }
+
+                    if (warps.LevelMaximum > 0 && Aisling.ExpLevel > warps.LevelMaximum)
+                    {
+                        SendMessage(0x02, "이곳에 들어가기엔 늙었습니다.");
+                        return;
+                    }
+                }
 
                 if (Aisling.Map.Id != warps.To.AreaId)
                 {

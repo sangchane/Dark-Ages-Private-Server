@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 20357,
+  "Activations": [
+    {
+      "AreaID": 20357,
+      "Location": {
+        "X": 0,
+        "Y": 9
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 20356,
+    "Location": {
+      "X": 12,
+      "Y": 1
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 수오미방어구점(0,9) to 수오미무기점(12,1)"
+}

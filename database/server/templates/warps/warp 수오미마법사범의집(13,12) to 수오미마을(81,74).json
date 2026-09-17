@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 20354,
+  "Activations": [
+    {
+      "AreaID": 20354,
+      "Location": {
+        "X": 13,
+        "Y": 12
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 20355,
+    "Location": {
+      "X": 81,
+      "Y": 74
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 수오미마법사범의집(13,12) to 수오미마을(81,74)"
+}

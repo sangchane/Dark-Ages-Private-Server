@@ -11,6 +11,7 @@
     }
   ],
   "LevelRequired": 1,
+  "LevelMaximum": 22,
   "To": {
     "AreaID": 20393,
     "Location": {

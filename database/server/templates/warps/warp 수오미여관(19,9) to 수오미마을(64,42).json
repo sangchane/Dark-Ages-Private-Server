@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 20358,
+  "Activations": [
+    {
+      "AreaID": 20358,
+      "Location": {
+        "X": 19,
+        "Y": 9
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 20355,
+    "Location": {
+      "X": 64,
+      "Y": 42
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 수오미여관(19,9) to 수오미마을(64,42)"
+}
