@@ -1,12 +1,12 @@
 {
   "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
-  "Name": "엑스쿠라눔",
-  "DisplayImage": 34941,
+  "Name": "블루피치",
+  "DisplayImage": 34270,
   "ScriptName": "Consumable",
-  "Flags": 444,
+  "Flags": 436,
   "CanStack": true,
   "MaxStack": 100,
-  "Value": 700000,
-  "HealthRestore": 10000,
+  "Value": 45000,
+  "ManaRestore": 2500,
   "Group": "5.99표/물약"
 }

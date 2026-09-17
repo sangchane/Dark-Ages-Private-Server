@@ -1,0 +1,14 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "블루굴8층",
+  "DisplayImage": 32769,
+  "ScriptName": "Consumable",
+  "Flags": 436,
+  "CanStack": true,
+  "MaxStack": 100,
+  "Value": 10000,
+  "RecallArea": 20188,
+  "RecallX": 3,
+  "RecallY": 30,
+  "Group": "5.99표/귀환"
+}

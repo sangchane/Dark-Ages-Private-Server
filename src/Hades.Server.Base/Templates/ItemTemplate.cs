@@ -53,6 +53,21 @@ namespace Darkages.Types
 
         [Category("Item Properties")] public byte AttackSpeed { get; set; }
 
+        /// <summary>
+        /// 5.99 소모품의 체력변화·마력변화 — 쓰면 그만큼 돌아온다(물약·음식). 장비의 같은 칸은 입었을 때 최대치를 올리는
+        /// 것이라 <see cref="HealthModifer" /> 로 가고, 쓰고 없어지는 것만 이 칸을 쓴다(scripts/Items/Consumable.cs).
+        /// </summary>
+        [Category("Item Properties")] public int HealthRestore { get; set; }
+
+        [Category("Item Properties")] public int ManaRestore { get; set; }
+
+        /// <summary>5.99 귀환 주문서의 이동맵·이동좌표 — 쓰면 그 맵 그 칸으로 간다. 맵 번호 0 은 칸이 없는 것이다.</summary>
+        [Category("Item Properties")] public int RecallArea { get; set; }
+
+        [Category("Item Properties")] public int RecallX { get; set; }
+
+        [Category("Item Properties")] public int RecallY { get; set; }
+
         /*
                 [Category("Script")] public ActivationTrigger ActivationTrigger { get; set; } = ActivationTrigger.OnUse;
         */

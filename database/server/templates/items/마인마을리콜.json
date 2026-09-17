@@ -1,0 +1,14 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "마인마을리콜",
+  "DisplayImage": 32769,
+  "ScriptName": "Consumable",
+  "Flags": 444,
+  "CanStack": true,
+  "MaxStack": 100,
+  "Value": 100,
+  "RecallArea": 20304,
+  "RecallX": 47,
+  "RecallY": 59,
+  "Group": "5.99표/귀환"
+}

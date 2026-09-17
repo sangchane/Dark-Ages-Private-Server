@@ -1,0 +1,14 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "수오미마을리콜",
+  "DisplayImage": 32770,
+  "ScriptName": "Consumable",
+  "Flags": 444,
+  "CanStack": true,
+  "MaxStack": 100,
+  "Value": 100,
+  "RecallArea": 20355,
+  "RecallX": 33,
+  "RecallY": 22,
+  "Group": "5.99표/귀환"
+}

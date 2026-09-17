@@ -1,0 +1,14 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "홀리루딘성리콜",
+  "DisplayImage": 32769,
+  "ScriptName": "Consumable",
+  "Flags": 444,
+  "CanStack": true,
+  "MaxStack": 100,
+  "Value": 100,
+  "RecallArea": 20282,
+  "RecallX": 60,
+  "RecallY": 50,
+  "Group": "5.99표/귀환"
+}

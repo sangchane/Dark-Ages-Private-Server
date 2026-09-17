@@ -1,0 +1,14 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "승급의리콜",
+  "DisplayImage": 32769,
+  "ScriptName": "Consumable",
+  "Flags": 436,
+  "CanStack": true,
+  "MaxStack": 100,
+  "Value": 0,
+  "RecallArea": 20209,
+  "RecallX": 6,
+  "RecallY": 7,
+  "Group": "5.99표/귀환"
+}

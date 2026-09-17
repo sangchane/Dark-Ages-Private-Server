@@ -1,12 +1,12 @@
 {
   "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
-  "Name": "뱀고기",
-  "DisplayImage": 32803,
+  "Name": "중급마력포션",
+  "DisplayImage": 32829,
   "ScriptName": "Consumable",
   "Flags": 444,
   "CanStack": true,
   "MaxStack": 100,
-  "Value": 350,
-  "HealthRestore": 20,
-  "Group": "5.99표/음식"
+  "Value": 800,
+  "ManaRestore": 1500,
+  "Group": "5.99표/물약"
 }

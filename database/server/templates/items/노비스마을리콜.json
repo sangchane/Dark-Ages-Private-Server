@@ -1,0 +1,14 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "노비스마을리콜",
+  "DisplayImage": 32914,
+  "ScriptName": "Consumable",
+  "Flags": 444,
+  "CanStack": true,
+  "MaxStack": 100,
+  "Value": 100,
+  "RecallArea": 20373,
+  "RecallX": 40,
+  "RecallY": 33,
+  "Group": "5.99표/귀환"
+}
