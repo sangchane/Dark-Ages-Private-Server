@@ -1,0 +1,10 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "미션두루마리A",
+  "DisplayImage": 35974,
+  "Flags": 180,
+  "CanStack": true,
+  "MaxStack": 100,
+  "Value": 1000,
+  "Group": "5.99표/퀘스트"
+}

@@ -1,0 +1,10 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "페리도트",
+  "DisplayImage": 34231,
+  "Flags": 188,
+  "CanStack": true,
+  "MaxStack": 100,
+  "Value": 2000,
+  "Group": "5.99표/기타"
+}

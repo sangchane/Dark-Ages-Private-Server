@@ -1,0 +1,10 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "여관길드공문",
+  "DisplayImage": 32911,
+  "Flags": 188,
+  "CanStack": true,
+  "MaxStack": 100,
+  "Value": 100,
+  "Group": "5.99표/기타"
+}

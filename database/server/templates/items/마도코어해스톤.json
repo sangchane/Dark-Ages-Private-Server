@@ -1,0 +1,10 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "마도코어해스톤",
+  "DisplayImage": 46262,
+  "Flags": 188,
+  "CanStack": true,
+  "MaxStack": 100,
+  "Value": 10000,
+  "Group": "5.99표/기타"
+}

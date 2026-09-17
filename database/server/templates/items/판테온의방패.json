@@ -1,0 +1,10 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "판테온의방패",
+  "DisplayImage": 32955,
+  "Flags": 180,
+  "CanStack": true,
+  "MaxStack": 100,
+  "Value": 0,
+  "Group": "5.99표/기타"
+}

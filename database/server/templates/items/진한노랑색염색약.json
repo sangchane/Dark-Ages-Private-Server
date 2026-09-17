@@ -1,0 +1,11 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "진한노랑색염색약",
+  "DisplayImage": 34676,
+  "Flags": 188,
+  "CanStack": true,
+  "MaxStack": 100,
+  "Value": 1000000,
+  "ScriptName": "ITEM_진한노랑색염색약",
+  "Group": "5.99표/염색"
+}

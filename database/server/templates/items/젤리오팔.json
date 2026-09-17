@@ -1,0 +1,10 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "젤리오팔",
+  "DisplayImage": 34235,
+  "Flags": 188,
+  "CanStack": true,
+  "MaxStack": 100,
+  "Value": 2000,
+  "Group": "5.99표/기타"
+}

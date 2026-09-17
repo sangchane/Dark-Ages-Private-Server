@@ -1,0 +1,10 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "폭죽",
+  "DisplayImage": 32787,
+  "Flags": 188,
+  "CanStack": true,
+  "MaxStack": 100,
+  "Value": 1000,
+  "Group": "5.99표/기타"
+}

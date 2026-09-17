@@ -1,9 +1,10 @@
 {
   "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
   "Name": "좀비의공문",
-  "Value": 0,
-  "Image": 145,
+  "DisplayImage": 32913,
+  "Flags": 180,
   "CanStack": true,
-  "Flags": 384,
-  "Group": "팩드롭"
+  "MaxStack": 100,
+  "Value": 0,
+  "Group": "5.99표/기타"
 }

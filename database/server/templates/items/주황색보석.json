@@ -1,9 +1,10 @@
 {
   "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
   "Name": "주황색보석",
-  "Value": 1000,
-  "Image": 672,
+  "DisplayImage": 33440,
+  "Flags": 188,
   "CanStack": true,
-  "Flags": 384,
-  "Group": "팩드롭"
+  "MaxStack": 100,
+  "Value": 1000,
+  "Group": "5.99표/기타"
 }

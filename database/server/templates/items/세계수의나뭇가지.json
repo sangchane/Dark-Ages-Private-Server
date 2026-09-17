@@ -1,0 +1,10 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "세계수의나뭇가지",
+  "DisplayImage": 33086,
+  "Flags": 188,
+  "CanStack": true,
+  "MaxStack": 100,
+  "Value": 0,
+  "Group": "5.99표/기타"
+}

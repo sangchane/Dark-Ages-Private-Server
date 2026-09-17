@@ -1,0 +1,10 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "보로보로껍질",
+  "DisplayImage": 35700,
+  "Flags": 188,
+  "CanStack": true,
+  "MaxStack": 100,
+  "Value": 1500000,
+  "Group": "5.99표/기타"
+}

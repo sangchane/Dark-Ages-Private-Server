@@ -1,0 +1,10 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "메가토닉",
+  "DisplayImage": 44745,
+  "Flags": 188,
+  "CanStack": true,
+  "MaxStack": 100,
+  "Value": 500000,
+  "Group": "5.99표/기타"
+}

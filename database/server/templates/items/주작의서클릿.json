@@ -1,0 +1,10 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "주작의서클릿",
+  "DisplayImage": 34847,
+  "Flags": 188,
+  "CanStack": true,
+  "MaxStack": 100,
+  "Value": 65000000,
+  "Group": "5.99표/기타"
+}

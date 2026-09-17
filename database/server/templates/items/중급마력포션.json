@@ -2,11 +2,11 @@
   "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
   "Name": "중급마력포션",
   "DisplayImage": 32829,
-  "ScriptName": "Consumable",
   "Flags": 444,
   "CanStack": true,
   "MaxStack": 100,
   "Value": 800,
+  "ScriptName": "Consumable",
   "ManaRestore": 1500,
   "Group": "5.99표/물약"
 }

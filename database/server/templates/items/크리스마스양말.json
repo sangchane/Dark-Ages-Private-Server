@@ -1,0 +1,10 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "크리스마스양말",
+  "DisplayImage": 44795,
+  "Flags": 188,
+  "CanStack": true,
+  "MaxStack": 100,
+  "Value": 1000,
+  "Group": "5.99표/기타"
+}

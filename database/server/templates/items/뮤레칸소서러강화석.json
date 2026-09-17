@@ -1,0 +1,10 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "뮤레칸소서러강화석",
+  "DisplayImage": 33019,
+  "Flags": 188,
+  "CanStack": true,
+  "MaxStack": 100,
+  "Value": 500000,
+  "Group": "5.99표/기타"
+}

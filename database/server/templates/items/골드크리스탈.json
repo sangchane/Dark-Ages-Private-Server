@@ -1,0 +1,10 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "골드크리스탈",
+  "DisplayImage": 34951,
+  "Flags": 188,
+  "CanStack": true,
+  "MaxStack": 100,
+  "Value": 30000,
+  "Group": "5.99표/기타"
+}

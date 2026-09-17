@@ -1,0 +1,10 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "아만의증표",
+  "DisplayImage": 34847,
+  "Flags": 188,
+  "CanStack": true,
+  "MaxStack": 100,
+  "Value": 0,
+  "Group": "5.99표/기타"
+}

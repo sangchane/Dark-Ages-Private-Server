@@ -1,0 +1,10 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "루비",
+  "DisplayImage": 34238,
+  "Flags": 188,
+  "CanStack": true,
+  "MaxStack": 100,
+  "Value": 2000,
+  "Group": "5.99표/기타"
+}

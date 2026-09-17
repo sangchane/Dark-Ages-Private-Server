@@ -2,11 +2,11 @@
   "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
   "Name": "닭고기",
   "DisplayImage": 32803,
-  "ScriptName": "Consumable",
   "Flags": 444,
   "CanStack": true,
   "MaxStack": 100,
   "Value": 500,
+  "ScriptName": "Consumable",
   "HealthRestore": 30,
   "Group": "5.99표/음식"
 }

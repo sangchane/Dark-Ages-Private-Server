@@ -1,0 +1,10 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "카슈마나이트",
+  "DisplayImage": 33492,
+  "Flags": 188,
+  "CanStack": true,
+  "MaxStack": 100,
+  "Value": 600,
+  "Group": "5.99표/기타"
+}

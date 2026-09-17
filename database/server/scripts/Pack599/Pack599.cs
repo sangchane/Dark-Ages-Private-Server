@@ -210,6 +210,12 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                     return 1;
                 }
 
+                // ── 겉모습 (아이템 스크립트 — 염색약) ─────────────────────
+                case "set_haircolor":
+                    _me.HairColor = (byte) Arg(a, 0);
+                    _me.Client.UpdateDisplay();
+                    return 0;
+
                 // ── 금화·단계 ─────────────────────────────────────────────
                 case "get_money": return _me.GoldPoints;
                 case "money_del":

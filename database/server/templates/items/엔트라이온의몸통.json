@@ -1,9 +1,10 @@
 {
   "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
   "Name": "엔트라이온의몸통",
-  "Value": 100,
-  "Image": 1510,
+  "DisplayImage": 34278,
+  "Flags": 188,
   "CanStack": true,
-  "Flags": 384,
-  "Group": "팩드롭"
+  "MaxStack": 100,
+  "Value": 100,
+  "Group": "5.99표/기타"
 }

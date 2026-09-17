@@ -1,0 +1,10 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "나겔링썬",
+  "DisplayImage": 46262,
+  "Flags": 188,
+  "CanStack": true,
+  "MaxStack": 100,
+  "Value": 100,
+  "Group": "5.99표/기타"
+}
