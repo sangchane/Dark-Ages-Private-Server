@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 20267,
+  "Activations": [
+    {
+      "AreaID": 20267,
+      "Location": {
+        "X": 0,
+        "Y": 15
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 20266,
+    "Location": {
+      "X": 38,
+      "Y": 10
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 포테의숲5존(0,15) to 포테의숲4존(38,10)"
+}

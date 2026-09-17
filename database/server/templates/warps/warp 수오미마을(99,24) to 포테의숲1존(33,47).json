@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 20355,
+  "Activations": [
+    {
+      "AreaID": 20355,
+      "Location": {
+        "X": 99,
+        "Y": 24
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 20263,
+    "Location": {
+      "X": 33,
+      "Y": 47
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 수오미마을(99,24) to 포테의숲1존(33,47)"
+}
