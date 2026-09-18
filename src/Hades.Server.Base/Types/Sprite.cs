@@ -725,10 +725,13 @@ namespace Darkages.Types
             {
                 if (Map != null && Map.IsWall(PendingX, PendingY))
                     return false;
-
-                if (Map != null && !Map.ObjectGrid[PendingX, PendingY].IsPassable(this, this is Aisling))
-                    return false;
             }
+
+            // **남이 선 칸에는 들어가지 않는다 — 벽을 지나가는 것과는 다른 이야기다.** 운영자의 통과걷기도
+            // 여기는 못 지난다: 괴물 위에 겹쳐 서면 그 괴물을 평생 못 때린다(평타는 앞 칸만 훑는다).
+            // 겹치는 것이 허락되는 때는 젠 뿐이다(사용자, 2026-09-19).
+            if (Map != null && !Map.ObjectGrid[PendingX, PendingY].IsPassable(this, this is Aisling))
+                return false;
 
             //commit.
             Step(savedX, savedY);
