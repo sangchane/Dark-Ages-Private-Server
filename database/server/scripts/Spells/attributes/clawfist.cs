@@ -52,7 +52,7 @@ namespace Darkages.Storage.locales.Scripts.Spells
                 }
                 else
                 {
-                    client.SendMessage(0x02, "Your hands are already empowered.");
+                    client.SendMessage(0x02, "이미 주먹에 기운이 서려 있습니다.");
                 }
             }
         }

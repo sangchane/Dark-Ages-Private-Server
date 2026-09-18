@@ -218,7 +218,11 @@ namespace Darkages.Types
         [JsonIgnore] public DateTime LastUpdated { get; set; }
         public PrimaryStat MajorAttribute { get; set; }
         [JsonIgnore] public bool Alive => CurrentHp > 0;
-        [JsonIgnore] public bool Attackable => this is Monster || this is Aisling || this is Mundane;
+        /// <summary>
+        /// 때릴 수 있는 것. **NPC 는 아니다** — 마을 상인·사범을 밤새 때리고 있을 수 있었다(사용자,
+        /// 2026-09-18). 원작도 주민은 못 때린다. 괴물과 사람만 남긴다.
+        /// </summary>
+        [JsonIgnore] public bool Attackable => this is Monster || this is Aisling;
         [JsonIgnore] public bool CanCast => !(IsFrozen || IsSleeping);
         [JsonIgnore] public bool CanMove => !(IsFrozen || IsSleeping || IsParalyzed);
         [JsonIgnore] public byte Dmg => (byte)(_Dmg + BonusDmg).Clamp(0, byte.MaxValue);
