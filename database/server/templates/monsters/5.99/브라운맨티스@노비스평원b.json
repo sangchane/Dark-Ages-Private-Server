@@ -2,7 +2,7 @@
   "Name": "브라운맨티스",
   "BaseName": "브라운맨티스",
   "AreaID": 20394,
-  "SpawnMax": 7,
+  "SpawnMax": 15,
   "SpawnType": 2,
   "SpawnRate": 30,
   "SpawnSize": 0,

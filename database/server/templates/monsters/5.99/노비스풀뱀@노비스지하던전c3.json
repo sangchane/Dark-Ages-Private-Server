@@ -2,7 +2,7 @@
   "Name": "노비스풀뱀",
   "BaseName": "노비스풀뱀",
   "AreaID": 20388,
-  "SpawnMax": 10,
+  "SpawnMax": 15,
   "SpawnType": 2,
   "SpawnRate": 30,
   "SpawnSize": 0,

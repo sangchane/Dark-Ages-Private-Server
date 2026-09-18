@@ -2,7 +2,7 @@
   "Name": "팜팻2",
   "BaseName": "팜팻2",
   "AreaID": 20393,
-  "SpawnMax": 4,
+  "SpawnMax": 15,
   "SpawnType": 2,
   "SpawnRate": 30,
   "SpawnSize": 0,

@@ -2,7 +2,7 @@
   "Name": "지네",
   "BaseName": "지네",
   "AreaID": 20384,
-  "SpawnMax": 11,
+  "SpawnMax": 15,
   "SpawnType": 2,
   "SpawnRate": 30,
   "SpawnSize": 0,
