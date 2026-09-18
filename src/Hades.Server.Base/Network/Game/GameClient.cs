@@ -1199,6 +1199,9 @@ namespace Darkages.Network.Game
             if (area == null)
                 return null;
 
+            // 괴물이 선 칸에 내려놓으면 겹쳐 서서 그 괴물과는 싸울 수가 없다 — 빈 칸을 찾아 놓는다.
+            position = area.FreeSpotNear(position);
+
             if (area.Id != Aisling.CurrentMapId)
             {
                 LeaveArea(true, true);
@@ -1504,9 +1507,11 @@ namespace Darkages.Network.Game
                 }
                 else
                 {
+                    var landing = Aisling.Map.FreeSpotNear(warps.To.Location);
+
                     LeaveArea(true);
-                    Aisling.XPos = warps.To.Location.X;
-                    Aisling.YPos = warps.To.Location.Y;
+                    Aisling.XPos = landing.X;
+                    Aisling.YPos = landing.Y;
                     EnterArea();
                     Aisling.Client.CloseDialog();
                 }
@@ -1515,8 +1520,10 @@ namespace Darkages.Network.Game
 
         public void WarpTo(Position position)
         {
-            Aisling.XPos = position.X;
-            Aisling.YPos = position.Y;
+            var landing = Aisling.Map?.FreeSpotNear(position) ?? position;
+
+            Aisling.XPos = landing.X;
+            Aisling.YPos = landing.Y;
 
             Refresh();
         }

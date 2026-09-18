@@ -72,8 +72,13 @@ namespace Darkages
                 if (!ServerContext.GlobalMapCache.ContainsKey(destinationMap))
                     return;
 
-                client.Aisling.XPos = x >= 0 ? x : ServerContext.Config.TransitionPointX;
-                client.Aisling.YPos = y >= 0 ? y : ServerContext.Config.TransitionPointY;
+                // 괴물이 선 칸에 내려놓으면 겹쳐 서서 그 괴물과는 싸울 수가 없다 — 빈 칸을 찾아 놓는다.
+                var landing = ServerContext.GlobalMapCache[destinationMap].FreeSpotNear(new Position(
+                    x >= 0 ? x : ServerContext.Config.TransitionPointX,
+                    y >= 0 ? y : ServerContext.Config.TransitionPointY));
+
+                client.Aisling.XPos = landing.X;
+                client.Aisling.YPos = landing.Y;
 
                 client.Aisling.CurrentMapId = destinationMap;
                 client.LeaveArea(true, true);
