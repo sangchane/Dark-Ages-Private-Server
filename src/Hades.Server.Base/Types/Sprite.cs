@@ -710,6 +710,12 @@ namespace Darkages.Types
             else if (Direction == 3)
                 PendingX--;
 
+            // 맵 밖은 누구도 나갈 수 없다 — 운영자도. 벽을 지나가는 것과 맵을 벗어나는 것은 다르다:
+            // 밖에는 바닥도 괴물도 없어 화면이 검게 남고, 걸어서 돌아오기 전에는 손쓸 길이 없다
+            // (2026-09-18, 시험 캐릭터가 -23,42 까지 걸어 나갔다).
+            if (Map != null && (PendingX < 0 || PendingY < 0 || PendingX >= Map.Cols || PendingY >= Map.Rows))
+                return false;
+
             //check position after we take a step.
             if (!allowGhostWalk)
             {

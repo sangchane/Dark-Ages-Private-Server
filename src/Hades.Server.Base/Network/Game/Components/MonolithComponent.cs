@@ -69,8 +69,13 @@ namespace Darkages.Network.Game.Components
                     if (!template.ReadyToSpawn(template.SpawnRate / (double) spread))
                         continue;
 
-                    if (count < template.SpawnMax)
-                        if (count < map.Rows * map.Cols / 6)
+                    // 마릿수도 넓이에 맞춘다. 정의가 적은 SpawnMax 는 20x20 방 기준이라, 3,600칸짜리
+                    // 사냥터에 그대로 쓰면 스무 칸에 한 마리도 안 선다(사용자, 2026-09-18). 넓이에 비례해
+                    // 늘리되 넓이의 제곱근만큼만 — 그대로 곱하면 우드랜드1-1 에 450마리가 선다.
+                    var most = (int) Math.Round(template.SpawnMax * Math.Sqrt(spread));
+
+                    if (count < most)
+                        if (count < map.Rows * map.Cols / 40)
                             CreateFromTemplate(template, map);
                 }
             }
