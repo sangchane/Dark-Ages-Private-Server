@@ -1523,6 +1523,18 @@ namespace Darkages.Network.Game
 
         private GameClient Enter()
         {
+            // 맵 밖에 저장된 캐릭터를 안으로 들여놓는다. 예전 빌드가 내보낸 자리가 그대로 남아 있으면
+            // 바닥도 괴물도 없는 곳에서 깨어나고, 스스로는 돌아올 길이 없다(2026-09-18).
+            if (Aisling.Map != null)
+            {
+                if (Aisling.X < 0 || Aisling.Y < 0 || Aisling.X >= Aisling.Map.Cols || Aisling.Y >= Aisling.Map.Rows)
+                {
+                    Aisling.X = Math.Clamp(Aisling.X, 0, Math.Max(0, Aisling.Map.Cols - 1));
+                    Aisling.Y = Math.Clamp(Aisling.Y, 0, Math.Max(0, Aisling.Map.Rows - 1));
+                    SystemMessage("맵 밖에 있어 안으로 들어왔습니다.");
+                }
+            }
+
             SendSerial();
             Insert();
             RefreshMap();
