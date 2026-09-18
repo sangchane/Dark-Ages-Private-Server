@@ -329,6 +329,9 @@ namespace Darkages.Network.Game
 
             var success = client.Aisling.Walk();
 
+            // 한 걸음도 못 갔다면 갇혔는지 본다 — 사방이 막혀 있으면 스스로 꺼내 준다.
+            if (!success)
+                client.FreeIfStuck();
 
             if (success)
             {

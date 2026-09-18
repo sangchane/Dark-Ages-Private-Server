@@ -109,6 +109,43 @@ namespace Darkages
             return wanted;
         }
 
+        /// <summary>
+        /// 사방이 막혀 오도 가도 못하는지. 벽 안에 서 있거나, 네 칸이 모두 벽·사람·괴물이면 그렇다.
+        /// </summary>
+        public bool Enclosed(int x, int y)
+        {
+            if (IsWall(x, y))
+                return true;
+
+            return !Standable(x, y - 1) && !Standable(x, y + 1) && !Standable(x - 1, y) && !Standable(x + 1, y);
+        }
+
+        /// <summary>
+        /// 여기서 가장 가까운, 설 수 있는 칸. 한 칸씩 넓혀 가며 먼저 닿는 것을 고른다(너비 우선) — 지도
+        /// 길찾기와 같은 방식이라, 벽이 아무리 두꺼워도 반대편의 가까운 빈터를 찾아낸다.
+        /// 갇힌 사람을 꺼내는 데 쓴다. 아무 데도 없으면 <c>null</c>.
+        /// </summary>
+        /// <param name="reach">몇 칸까지 넓혀 볼지. 맵 하나를 다 훑을 일은 없다.</param>
+        public Position FreeWayOut(int x, int y, int reach = 24)
+        {
+            for (var ring = 1; ring <= reach; ring++)
+                for (var dx = -ring; dx <= ring; dx++)
+                for (var dy = -ring; dy <= ring; dy++)
+                {
+                    if (Math.Max(Math.Abs(dx), Math.Abs(dy)) != ring)
+                        continue;
+
+                    // 벽 안이 아니라 **설 수 있고, 거기서 또 움직일 수 있는** 칸이라야 꺼내 놓을 자리다.
+                    if (Standable(x + dx, y + dy) && !Enclosed(x + dx, y + dy))
+                        return new Position(x + dx, y + dy);
+                }
+
+            return null;
+        }
+
+        /// <summary>Whether a tile can be stood on at all — inside the map and not a wall.</summary>
+        private bool Standable(int x, int y) => x >= 0 && y >= 0 && x < Cols && y < Rows && !IsWall(x, y);
+
         /// <summary>Whether somebody can be put down here — inside the map, not a wall, and nobody standing on it.</summary>
         private bool IsFreeSpot(int x, int y)
         {

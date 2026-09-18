@@ -667,6 +667,27 @@ namespace Darkages.Network.Game
             }
         }
 
+        /// <summary>
+        /// 갇혔으면 꺼낸다. 벽 속에 서 있거나 네 칸이 모두 막혀 있으면, 가장 가까운 트인 칸으로 옮긴다 —
+        /// 그런 자리에서는 방향키를 아무리 눌러도 아무 일도 일어나지 않아, 사람 눈에는 게임이 멎은 것과 같다
+        /// (사용자, 2026-09-18). 어디서 그렇게 됐는지 몰라도 스스로 빠져나온다.
+        /// </summary>
+        public bool FreeIfStuck()
+        {
+            if (Aisling?.Map == null || !Aisling.Map.Enclosed(Aisling.X, Aisling.Y))
+                return false;
+
+            if (Aisling.Map.FreeWayOut(Aisling.X, Aisling.Y) is not { } out_)
+                return false;
+
+            Aisling.XPos = out_.X;
+            Aisling.YPos = out_.Y;
+            SendLocation();
+            SystemMessage("길이 막혀 가까운 곳으로 옮겼습니다.");
+
+            return true;
+        }
+
         public GameClient Refresh(bool delete = false)
         {
             LeaveArea(delete);
@@ -1540,6 +1561,9 @@ namespace Darkages.Network.Game
                     Aisling.Y = Math.Clamp(Aisling.Y, 0, Math.Max(0, Aisling.Map.Rows - 1));
                     SystemMessage("맵 밖에 있어 안으로 들어왔습니다.");
                 }
+
+                // 벽 속이나 사방이 막힌 구석에서 깨어나면 걸어 나올 길이 없다. 가장 가까운 트인 칸으로 꺼낸다.
+                FreeIfStuck();
             }
 
             SendSerial();
