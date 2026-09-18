@@ -1,0 +1,20 @@
+{
+  "Name": "양의신권",
+  "ScriptName": "Assail",
+  "Icon": 4,
+  "Pane": 2,
+  "Type": 0,
+  "Sound": 1,
+  "TargetAnimation": 203,
+  "MissAnimation": 0,
+  "LevelRate": 0.5,
+  "Cooldown": 0,
+  "MaxLevel": 100,
+  "Prerequisites": {
+    "Class_Required": 5,
+    "ExpLevel_Required": 21
+  },
+  "ID": 0,
+  "Description": "일정확률로 기본공격이 2번 나간다.",
+  "Group": "5.99표/무도가"
+}
