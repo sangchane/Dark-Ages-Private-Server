@@ -204,8 +204,40 @@ namespace Darkages.Storage.locales.Scripts.Formulas
             }
         }
 
+        /// <summary>
+        /// 저보다 한참 낮은 괴물은 경험치를 거의 주지 않는다. 다섯 레벨까지는 그대로 주고, 그 뒤로는 다섯
+        /// 레벨마다 반으로 줄여 2% 에서 멈춘다 — 24레벨이 1레벨 괴물을 잡으면 1,100 이 아니라 90 남짓이다.
+        /// </summary>
+        /// <remarks>
+        /// **이 값은 우리가 정한 것이다.** 원작 표에도 5.99 팩에도 레벨 차이로 경험치를 깎는 규칙은 없었다
+        /// (2026-09-18 찾아봄). 없이 두었더니 24레벨이 노비스평원에서 한 대에 1~7 맞으며 한 마리에 1,100 씩
+        /// 벌고 있었다(사용자). 근거가 나오면 그 값으로 바꾼다.
+        /// </remarks>
+        private double ForLevel(Aisling player, double exp)
+        {
+            var gap = player.ExpLevel - _monster.Template.Level;
+
+            if (gap <= Forgiven)
+                return exp;
+
+            var share = Math.Pow(0.5, (gap - Forgiven) / (double) Halving);
+
+            return exp * Math.Max(Least, share);
+        }
+
+        /// <summary>몇 레벨 차이까지는 깎지 않나.</summary>
+        private const int Forgiven = 5;
+
+        /// <summary>그 뒤로 몇 레벨마다 반으로 줄이나.</summary>
+        private const int Halving = 5;
+
+        /// <summary>아무리 낮아도 이만큼은 준다 — 0 이면 잡을 까닭이 아예 없어진다.</summary>
+        private const double Least = 0.02;
+
         public void DistributeExperience(Aisling player, double exp)
         {
+            exp = ForLevel(player, exp);
+
             var chunks = exp / 1000;
 
             if (chunks <= 1)
