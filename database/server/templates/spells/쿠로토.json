@@ -8,5 +8,7 @@
   "Description": null,
   "Group": "5.99표/공통스킬",
   "ScriptKey": "쿠로토",
-  "Cooldown": 0
+  "Cooldown": 0,
+  "Icon": 21,
+  "Pane": 1
 }
