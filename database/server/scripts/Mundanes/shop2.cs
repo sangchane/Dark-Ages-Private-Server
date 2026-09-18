@@ -38,13 +38,13 @@ namespace Darkages.Storage.locales.Scripts.Mundanes
             switch (responseID)
             {
                 case 0x0001:
-                    client.SendItemShopDialog(Mundane, "I stock only high-end gear.", 0x0004,
+                    client.SendItemShopDialog(Mundane, "좋은 물건만 들여놓았습니다.", 0x0004,
                         ServerContext.GlobalItemTemplateCache.Values.Where(i => i.NpcKey == Mundane.Template.Name)
                             .OrderBy(i => i.LevelRequired).ToList().Concat(defaultbag.Where(n => n != null)));
                     break;
 
                 case 0x0002:
-                    client.SendItemSellDialog(Mundane, "What do you want to sell?", 0x0005,
+                    client.SendItemSellDialog(Mundane, "무엇을 파시겠습니까?", 0x0005,
                         client.Aisling.Inventory.Items.Values.Where(i => i != null && i.Template != null)
                             .Select(i => i.Slot).ToList());
 
@@ -113,7 +113,7 @@ namespace Darkages.Storage.locales.Scripts.Mundanes
                                     };
 
                                     client.SendOptionsDialog(Mundane, string.Format(
-                                            "I will give offer you {0} gold for {1} of those ({2} Gold Each), Deal?",
+                                            "{1}개에 {0} 전 드리겠습니다(하나에 {2} 전). 괜찮으십니까?",
                                             client.PendingItemSessions.Offer,
                                             amount, client.PendingItemSessions.Offer / amount, item.Template.Name),
                                         opts2.ToArray());
@@ -155,7 +155,7 @@ namespace Darkages.Storage.locales.Scripts.Mundanes
                         };
 
                         client.Send(new ServerFormat2F(Mundane,
-                            $"How many [{item.Template.Name}] do you want to sell?",
+                            $"{item.Template.Name}, 몇 개나 파시겠습니까?",
                             new TextInputData()));
                     }
                     else
@@ -167,7 +167,7 @@ namespace Darkages.Storage.locales.Scripts.Mundanes
                         };
 
                         client.SendOptionsDialog(Mundane,
-                            $"I will give offer you {offer} gold for that {item.Template.Name}, Deal?",
+                            $"{item.Template.Name}, {offer} 전에 사겠습니다. 괜찮으십니까?",
                             item.Template.Name, opts2.ToArray());
                     }
                 }
@@ -219,12 +219,12 @@ namespace Darkages.Storage.locales.Scripts.Mundanes
                             new OptionsDataItem(0x0015, ServerContext.Config.MerchantCancelMessage)
                         };
                         client.SendOptionsDialog(Mundane,
-                            "It will cost " + repair_sum + " Gold to repair everything. Do you Agree?",
+                            "모두 손보는 데 " + repair_sum + " 전이 듭니다. 맡기시겠습니까?",
                             repair_sum.ToString(), opts.ToArray());
                     }
                     else
                     {
-                        client.SendOptionsDialog(Mundane, "You have nothing that needs repairing.");
+                        client.SendOptionsDialog(Mundane, "손볼 것이 없습니다.");
                     }
 
                     break;
@@ -273,27 +273,18 @@ namespace Darkages.Storage.locales.Scripts.Mundanes
                                     client.Aisling.GoldPoints = 0;
 
                                 client.SendStats(StatusFlags.All);
-                                client.SendOptionsDialog(Mundane, $"You have a brand new {args}");
+                                client.SendOptionsDialog(Mundane, $"{args}, 여기 있습니다.");
                             }
                             else
                             {
                                 client.SendMessage(0x02,
-                                    "You could not buy this item, because you can't physically hold it.");
+                                    "더 들 수 없습니다.");
                             }
                         }
                         else
                         {
-                            if (ServerContext.GlobalSpellTemplateCache.ContainsKey("ard cradh"))
-                            {
-                                var scripts = ScriptManager.Load<SpellScript>("ard cradh",
-                                    Spell.Create(1, ServerContext.GlobalSpellTemplateCache["ard cradh"]));
-
-                                foreach (var script in scripts.Values)
-                                    script.OnUse(Mundane, client.Aisling);
-
-                                client.SendOptionsDialog(Mundane,
-                                    ServerContext.Config.MerchantWarningMessage);
-                            }
+                            // 돈이 모자란다고 손님에게 저주를 걸던 자리다(ard cradh). 원작 상점은 그러지 않는다.
+                            client.SendOptionsDialog(Mundane, "돈이 모자랍니다.");
                         }
                 }
                     break;
@@ -312,7 +303,7 @@ namespace Darkages.Storage.locales.Scripts.Mundanes
             {
                 new OptionsDataItem(0x0001, ServerContext.Config.MerchantBuy),
                 new OptionsDataItem(0x0002, ServerContext.Config.MerchantSell),
-                new OptionsDataItem(0x0003, "Repair Items")
+                new OptionsDataItem(0x0003, "수리합니다")
             };
 
             client.SendOptionsDialog(Mundane, ServerContext.Config.MerchantBuyMessage, opts.ToArray());
