@@ -7,6 +7,7 @@ using Darkages.Storage;
 using Darkages.Types;
 using ServiceStack.Text;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -17,6 +18,20 @@ namespace Darkages.Network.Login
 {
     public class LoginServer : NetworkServer<LoginClient>
     {
+        // The five base-class armour pairs are the 5.99 imported level-one templates.  Their Image values
+        // are precisely the first clothing values in skill.tbl's ST lists: warrior 2, rogue 4, wizard 6,
+        // priest 5, monk 3.  Equipping one real item (instead of faking an appearance byte) means saves,
+        // reconnects, inventory and the motion gate all agree.
+        private static readonly IReadOnlyDictionary<Class, (string Male, string Female)> StarterOutfits =
+            new Dictionary<Class, (string Male, string Female)>
+            {
+                [Class.Warrior] = ("레더튜닉", "튜닉"),
+                [Class.Rogue] = ("스카웃튜닉", "꼬뜨"),
+                [Class.Wizard] = ("후드로브", "매직스커트"),
+                [Class.Priest] = ("셍즈", "로브"),
+                [Class.Monk] = ("도복", "연무복")
+            };
+
         public LoginServer(int capacity)
             : base(capacity)
         {
@@ -171,6 +186,14 @@ namespace Darkages.Network.Login
                 return;
             }
 
+            if (format.Path < (byte)Class.Warrior || format.Path > (byte)Class.Monk)
+            {
+                client.SendMessageBox(0x02, "A valid primary class must be selected.");
+                client.CreateInfo = null;
+                return;
+            }
+
+            var path = (Class)format.Path;
             var template = Aisling.Create();
             template.Display = (BodySprite) (format.Gender * 16);
             template.Username = client.CreateInfo.AislingUsername;
@@ -178,9 +201,79 @@ namespace Darkages.Network.Login
             template.Gender = (Gender) format.Gender;
             template.HairColor = format.HairColor;
             template.HairStyle = format.HairStyle;
+            template.Path = path;
+
+            if (!EquipStarterOutfit(template, path, template.Gender))
+            {
+                client.SendMessageBox(0x02, "The selected class outfit is not configured.");
+                client.CreateInfo = null;
+                return;
+            }
+
+            // The mobile creator chooses the path before the first world entry, bypassing ClassChooser.
+            // Keep the Monk's two requested opening techniques on that new-character path.  Aisling.Create
+            // has already supplied Assail when the server configuration requires a base attack; do not add
+            // Kick here as well, because this project maps 단각 to that same kick motion and the two would
+            // become separate, duplicate attacks in the technique pane.
+            if (!GiveMonkStarterSkills(template, path))
+            {
+                client.SendMessageBox(0x02, "The Monk starter skills are not configured.");
+                client.CreateInfo = null;
+                return;
+            }
 
             StorageManager.AislingBucket.Save(template);
+            client.CreateInfo = null;
             client.SendMessageBox(0x00, "\0");
+        }
+
+        /// <summary>
+        /// Puts a real, equipped level-one class outfit in the character JSON before its first login.
+        /// EquipmentManager needs a live GameClient to send packets, so creation records the slot directly;
+        /// GameClient.LoadEquipment restores its template/scripts and sends ServerFormat37 on first entry.
+        /// </summary>
+        private static bool EquipStarterOutfit(Aisling aisling, Class path, Gender gender)
+        {
+            if (!StarterOutfits.TryGetValue(path, out (string Male, string Female) names))
+            {
+                return false;
+            }
+
+            string name = gender == Gender.Female ? names.Female : names.Male;
+
+            if (!ServerContext.GlobalItemTemplateCache.TryGetValue(name, out var outfitTemplate))
+            {
+                return false;
+            }
+
+            Item outfit = Item.Create(aisling, outfitTemplate);
+
+            if (outfit?.Template == null || outfit.Template.EquipmentSlot != ItemSlots.Armor)
+            {
+                return false;
+            }
+
+            aisling.EquipmentManager.Equipment[ItemSlots.Armor] =
+                new EquipmentSlot(ItemSlots.Armor, outfit);
+
+            return true;
+        }
+
+        /// <summary>
+        /// Gives only the two deliberately selected Monk starters to a character created as a Monk.
+        /// <see cref="Skill.GiveTo(Aisling, string, int)"/> also loads the template's script and assigns the
+        /// appropriate skill-pane slots before the character is serialized, so the same entries return on
+        /// every later login.
+        /// </summary>
+        private static bool GiveMonkStarterSkills(Aisling aisling, Class path)
+        {
+            if (path != Class.Monk)
+            {
+                return true;
+            }
+
+            return Skill.GiveTo(aisling, "이형환위", 1)
+                   && Skill.GiveTo(aisling, "단각", 1);
         }
 
         protected override void Format0BHandler(LoginClient client, ClientFormat0B format)
