@@ -1841,10 +1841,60 @@ namespace Darkages.Network.Game
             skill.InUse = false;
         }
 
+        /// <summary>
+        /// 월드맵을 열어 달라는 말. 괴물이 있는 맵에서는 거절한다 — 창이 열린 동안 서버는 고르기 말고
+        /// 이 접속의 패킷을 모두 버리므로(`NetworkServer.cs:141`), 싸우는 중에 열면 손이 묶인다.
+        /// </summary>
+        protected override void FormatF0Handler(GameClient client, ClientFormatF0 format)
+        {
+            if (client?.Aisling == null || !client.Aisling.LoggedIn)
+                return;
+
+            if (client.MapOpen)
+                return;
+
+            if (client.Aisling.Map == null || ServerContext.GlobalWorldMapTemplateCache.Count == 0)
+                return;
+
+            var monsters = client.Aisling.GetObjects<Monster>(client.Aisling.Map, i => i != null && i.Alive);
+
+            if (monsters != null && monsters.Any())
+            {
+                client.SendMessage(0x02, "이곳에서는 지도를 펼 수 없습니다.");
+                return;
+            }
+
+            // client.Aisling.World 는 원작의 숨은 칸(WarpType.World)을 밟아야 채워진다
+            // (CheckWarpTransitions, 이 파일 2530행 근처) — 메뉴는 그 칸을 못 찾는 사람을 위한 것이므로
+            // 그 값을 믿지 않고 지금 있는 (하나뿐인) 월드맵 번호로 맞춘다.
+            var fieldNumber = ServerContext.GlobalWorldMapTemplateCache.Keys.First();
+
+            if (client.Aisling.World != fieldNumber)
+                client.Aisling.World = fieldNumber;
+
+            client.Aisling.PortalSession = new PortalSession { FieldNumber = fieldNumber };
+            client.Aisling.PortalSession.ShowFieldMap(client);
+        }
+
         protected override void Format3FHandler(GameClient client, ClientFormat3F format)
         {
             if (client.Aisling == null || !client.Aisling.LoggedIn)
                 return;
+
+            // 갈 맵 0 = 취소. 원작에는 없지만 메뉴로 여는 이상 닫을 길이 있어야 한다(사용자, 2026-09-19).
+            // 여기서 MapOpen 을 내리지 않으면 이 접속은 영영 걸음도 말도 못 한다.
+            if (format.Index == 0)
+            {
+                client.PendingNode = null;
+                client.MapOpen = false;
+                client.Aisling.PortalSession = new PortalSession { IsMapOpen = false };
+
+                if (client.Aisling.Abyss)
+                    client.Aisling.LeaveAbyss(client);
+
+                client.Refresh();
+                return;
+            }
 
             if (ServerContext.GlobalWorldMapTemplateCache.ContainsKey(client.Aisling.World))
             {
