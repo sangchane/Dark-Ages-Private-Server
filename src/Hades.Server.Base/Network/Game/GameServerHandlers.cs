@@ -1859,8 +1859,10 @@ namespace Darkages.Network.Game
 
             // 마을에도 꾸밈용 '괴물' 이 선다 — 노비스마을의 노비스주민1·2 는 경험치 0 에 죽지 않는
             // 체력(int.MaxValue)이다. 그것까지 세면 새 캐릭터가 시작하는 바로 그 마을에서 지도가 안
-            // 열린다. 싸울 거리가 되는 것만 센다 — 템플릿 567장 중 경험치 0 은 4장뿐이고 전부 꾸밈용.
-            // Exp 가 비어 있으면 서버가 레벨에서 뽑으므로(MonsterTemplate.Exp 주석) 진짜 괴물로 친다.
+            // 열린다. 싸울 거리가 되는 것만 센다 — 템플릿 567장 중 경험치 0 은 2장뿐이고(노비스주민1·2,
+            // 맵 20373) 둘 다 꾸밈용이다. Exp 가 비어 있는 것도 2장 있다(insight_1/spider.json·
+            // bees.json, 맵 3029) — 그런 것은 서버가 레벨에서 뽑으므로(MonsterTemplate.Exp 주석) 진짜
+            // 괴물로 친다.
             var monsters = client.Aisling.GetObjects<Monster>(client.Aisling.Map,
                 i => i != null && i.Alive && (i.Template == null || (i.Template.Exp ?? 1) > 0));
 
@@ -1926,7 +1928,12 @@ namespace Darkages.Network.Game
             var selectedPortalNode = client.PendingNode;
 
             if (selectedPortalNode == null)
+            {
+                // 목록에 없는 번호가 왔다. 여기서 MapOpen 을 안 내리면 이 접속은 영영 걸음도 말도 못 한다.
+                client.MapOpen = false;
+                client.Refresh();
                 return;
+            }
 
             if (client.Aisling.Abyss)
                 await Task.Delay(500).ContinueWith(ct => { client.Aisling.LeaveAbyss(client); }).ConfigureAwait(true);
