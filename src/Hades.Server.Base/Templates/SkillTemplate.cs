@@ -10,7 +10,7 @@ namespace Darkages.Types
     public class SkillTemplate : Template
     {
         public Buff Buff { get; set; }
-        public int Cooldown { get; set; }
+        public double Cooldown { get; set; }
         public Debuff Debuff { get; set; }
         public string FailMessage { get; set; }
         public byte Icon { get; set; }

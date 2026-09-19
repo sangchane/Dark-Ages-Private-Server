@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Darkages.Network.Game;
 using Darkages.Network.ServerFormats;
@@ -159,12 +160,20 @@ namespace Darkages.Storage.locales.Scripts.Mundanes
 
                 if (client.Aisling.Path == Class.Monk)
                 {
-                    Skill.GiveTo(client.Aisling, "Wolf Fang Fist", 1);
-                    Skill.GiveTo(client.Aisling, "Claw Fist", 1);
-                    Skill.GiveTo(client.Aisling, "Krane Kick", 1);
-                    Skill.GiveTo(client.Aisling, "Claw Fist", 1);
-                    Skill.GiveTo(client.Aisling, "Hurricane Kick", 1);
-                    Skill.GiveTo(client.Aisling, "Kelberoth Strike", 1);
+                    // 캐릭터 생성 때(Peasant) 이미 받은 영어 기본공격 "Assail" 을 지우고
+                    // 무도가 전용 기본공격 "양의신권" 으로 바꾼다 — 둘 다 두면 평타마다 두 번 나간다.
+                    var assail = client.Aisling.SkillBook
+                        .Get(i => i.Template != null && i.Template.Name == "Assail")
+                        .FirstOrDefault();
+                    if (assail != null)
+                    {
+                        client.Aisling.SkillBook.Remove(assail.Slot);
+                        client.Send(new ServerFormat2D(assail.Slot));
+                    }
+
+                    Skill.GiveTo(client.Aisling, "이형환위", 1);
+                    Skill.GiveTo(client.Aisling, "단각", 1);
+                    Skill.GiveTo(client.Aisling, "양의신권", 1);
 
                     Spell.GiveTo(client.Aisling, "beag ioc fein", 1);
                     Spell.GiveTo(client.Aisling, "dion", 1);

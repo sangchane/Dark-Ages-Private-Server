@@ -1196,7 +1196,7 @@ namespace Darkages.Network.Game
 
             Send(new ServerFormat3F(1,
                 skill.Slot,
-                skill.Template.Cooldown));
+                (int)skill.Template.Cooldown));
         }
 
         public void TrainSpell(Spell spell)

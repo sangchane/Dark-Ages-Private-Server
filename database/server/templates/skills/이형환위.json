@@ -14,7 +14,7 @@
   "Group": "원작표",
   "Sound": 0,
   "TargetAnimation": 0,
-  "Cooldown": 7,
+  "Cooldown": 0.25,
   "Icon": 42,
   "Pane": 2
 }
