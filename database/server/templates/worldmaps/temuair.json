@@ -15,16 +15,29 @@
     },
     {
       "Destination": {
-        "AreaID": 20028,
+        "AreaID": 20015,
         "Location": {
           "X": 10,
           "Y": 18
         },
         "PortalKey": 0
       },
-      "DisplayName": "우드랜드입구",
+      "DisplayName": "우드랜드",
       "PointX": 516,
       "PointY": 176
+    },
+    {
+      "Destination": {
+        "AreaID": 20373,
+        "Location": {
+          "X": 34,
+          "Y": 34
+        },
+        "PortalKey": 0
+      },
+      "DisplayName": "노비스마을",
+      "PointX": 200,
+      "PointY": 200
     }
   ],
   "FieldNumber": 1,
