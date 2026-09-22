@@ -1842,9 +1842,9 @@ namespace Darkages.Network.Game
         }
 
         /// <summary>
-        /// 월드맵을 열어 달라는 말. 싸울 거리가 되는 괴물이 있는 맵에서는 거절한다 — 창이 열린 동안
-        /// 서버는 고르기 말고 이 접속의 패킷을 모두 버리므로(`NetworkServer.cs:141`), 싸우는 중에 열면
-        /// 손이 묶인다.
+        /// 월드맵을 열어 달라는 말. 사냥터에서도 연다(사용자 결정, 2026-09-23). 창이 열린 동안 서버는
+        /// 고르기 말고 이 접속의 패킷을 모두 버리므로(`NetworkServer.cs:141`) 손이 묶일 수 있지만,
+        /// 닫으면 그대로 풀린다.
         /// </summary>
         protected override void FormatF0Handler(GameClient client, ClientFormatF0 format)
         {
@@ -1857,20 +1857,8 @@ namespace Darkages.Network.Game
             if (client.Aisling.Map == null || ServerContext.GlobalWorldMapTemplateCache.Count == 0)
                 return;
 
-            // 마을에도 꾸밈용 '괴물' 이 선다 — 노비스마을의 노비스주민1·2 는 경험치 0 에 죽지 않는
-            // 체력(int.MaxValue)이다. 그것까지 세면 새 캐릭터가 시작하는 바로 그 마을에서 지도가 안
-            // 열린다. 싸울 거리가 되는 것만 센다 — 템플릿 567장 중 경험치 0 은 2장뿐이고(노비스주민1·2,
-            // 맵 20373) 둘 다 꾸밈용이다. Exp 가 비어 있는 것도 3장 있다(insight_1/spider.json·
-            // bees.json, 맵 3029) — 그런 것은 서버가 레벨에서 뽑으므로(MonsterTemplate.Exp 주석) 진짜
-            // 괴물로 친다.
-            var monsters = client.Aisling.GetObjects<Monster>(client.Aisling.Map,
-                i => i != null && i.Alive && (i.Template == null || (i.Template.Exp ?? 1) > 0));
-
-            if (monsters != null && monsters.Any())
-            {
-                client.SendMessage(0x02, "이곳에서는 지도를 펼 수 없습니다.");
-                return;
-            }
+            // 사냥터(괴물이 있는 맵)에서도 지도를 연다(사용자 결정, 2026-09-23) — 예전엔 경험치를 주는
+            // 괴물이 하나라도 살아 있으면 거절했지만, 이제는 그 조건 없이 연다.
 
             // client.Aisling.World 는 원작의 숨은 칸(WarpType.World)을 밟아야 채워진다
             // (CheckWarpTransitions, 이 파일 2530행 근처) — 메뉴는 그 칸을 못 찾는 사람을 위한 것이므로
