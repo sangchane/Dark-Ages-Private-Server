@@ -99,9 +99,14 @@ namespace Darkages.Types
             }
 
             foreach (var item in broken.Where(item => item?.Template != null)
-                .Where(item => RemoveFromExisting(item.Template.EquipmentSlot)))
+                .Where(item => RemoveFromExisting(item.Template.EquipmentSlot, false)))
+            {
+                // RemoveFromExisting(.., false) 가 무게를 깎지만 그 앞에서 이미 한 번 보낸 상태값(OnEquipmentRemoved)
+                // 에는 깎이기 전 무게가 실려 있다 — 다시 보내야 클라이언트가 줄어든 무게를 본다.
+                Client.SendStats(StatusFlags.StructA);
                 Client.SendMessage(0x02,
-                    $"{item.Template.Name} has broken.");
+                    $"{item.Template.Name}이(가) 부서졌습니다.");
+            }
         }
 
         public void DisplayToEquipment(byte displayslot, Item item)
