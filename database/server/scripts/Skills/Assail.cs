@@ -67,7 +67,7 @@ namespace Darkages.Scripting.Scripts.Skills
                 return (armor.AttackMotion == 0 ? (byte) 1 : armor.AttackMotion,
                     (short) (armor.AttackSpeed != 0 ? armor.AttackSpeed : armor.AttackMotion != 0 ? 20 : 22));
 
-            return (1, 20);
+            return (aisling.Path == Class.Monk ? (byte) 132 : (byte) 1, 20);
         }
 
         public override void OnSuccess(Sprite sprite)
