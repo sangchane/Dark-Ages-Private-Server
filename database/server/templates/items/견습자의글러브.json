@@ -1,0 +1,31 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "견습자의글러브",
+  "Image": 86,
+  "DisplayImage": 33866,
+  "EquipmentSlot": 1,
+  "Class": 5,
+  "Gender": 255,
+  "LevelRequired": 11,
+  "ScriptName": "Weapon",
+  "Flags": 125,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 1500,
+  "DmgMin": 100,
+  "DmgMax": 120,
+  "MaxDurability": 100000,
+  "CarryWeight": 9,
+  "AttackMotion": 132,
+  "HealthModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 100
+  },
+  "ManaModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 50
+  },
+  "Group": "노바표/무기/LCT"
+}
