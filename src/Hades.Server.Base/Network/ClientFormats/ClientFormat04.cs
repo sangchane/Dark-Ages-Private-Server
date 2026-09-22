@@ -11,12 +11,15 @@
         public byte Gender { get; set; }
         public byte HairColor { get; set; }
         public byte HairStyle { get; set; }
+        /// <summary>Mobile creation extension: primary class, 1 (Warrior) through 5 (Monk).</summary>
+        public byte Path { get; set; }
 
         public override void Serialize(NetworkPacketReader reader)
         {
             HairStyle = reader.ReadByte();
             Gender = reader.ReadByte();
             HairColor = reader.ReadByte();
+            Path = reader.ReadByte();
         }
 
         public override void Serialize(NetworkPacketWriter writer)
