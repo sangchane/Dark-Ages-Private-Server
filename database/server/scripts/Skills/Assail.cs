@@ -24,6 +24,9 @@ namespace Darkages.Scripting.Scripts.Skills
         private static int Behind(Sprite attacker, Sprite target, int damage) =>
             attacker.Direction == target.Direction ? damage * 2 : damage;
 
+        /// <summary>5.99 공격속성 배수(Novaonline.exe 0x415cff — 속성 1~5 면 ×13/10).</summary>
+        private const double MonsterBlowElement = 1.3;
+
         public Assail(Skill skill) : base(skill)
         {
             _skill = skill;
@@ -170,7 +173,13 @@ namespace Darkages.Scripting.Scripts.Skills
 
                         var dmg = sprite.GetBaseDamage(Target, MonsterDamageType.Physical);
                         {
-                            i.ApplyDamage(sprite, Behind(sprite, i, dmg), sprite.OffenseElement);
+                            // 5.99 는 괴물 평타를 방어로 거른 뒤 공격속성으로 ×1.3 한다(Novaonline.exe 0x425dc3 →
+                            // 0x415cff). 공격속성이 안 적힌 괴물에게도 생길 때 1~4 를 붙이므로(0x422bc5) 괴물 평타는
+                            // 늘 ×1.3 이다. 괴물 마법(`char_damaged2`)은 이 단계를 거치지 않는다.
+                            if (sprite is Monster)
+                                i.ApplyDamageAfterArmour(sprite, Behind(sprite, i, dmg), MonsterBlowElement);
+                            else
+                                i.ApplyDamage(sprite, Behind(sprite, i, dmg), sprite.OffenseElement);
                         }
 
                         if (Skill.Template.TargetAnimation > 0)

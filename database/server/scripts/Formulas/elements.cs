@@ -20,7 +20,10 @@ namespace Darkages.Storage.locales.Scripts.formulas
             if (defenseElement == ElementManager.Element.None && element != ElementManager.Element.None)
                 return 1.00;
 
-            if (defenseElement == ElementManager.Element.None && element == ElementManager.Element.None) return 0.50;
+            // 속성이 없는 쪽끼리는 그대로다. 예전에는 0.50 이라 사람과 괴물 사이의 거의 모든 한 방이 반이 됐다 —
+            // 5.99 서버(Novaonline.exe)의 피해 함수에는 상대 속성을 보는 표도, 반으로 깎는 단계도 없다
+            // (괴물이 맞을 때 0x424215, 사람이 맞을 때 0x415341).
+            if (defenseElement == ElementManager.Element.None && element == ElementManager.Element.None) return 1.00;
 
             if (defenseElement == ElementManager.Element.Fire)
                 switch (element)

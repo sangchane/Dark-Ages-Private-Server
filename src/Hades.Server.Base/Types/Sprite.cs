@@ -873,6 +873,27 @@ namespace Darkages.Types
             return this;
         }
 
+        /// <summary>방어를 거친 뒤에 곱하는 배수. <see cref="ApplyDamageAfterArmour" /> 가 한 번의 피해 동안만 바꾼다.</summary>
+        [JsonIgnore] private double _afterArmour = 1;
+
+        /// <summary>
+        /// 방어를 거친 한 방에 <paramref name="afterArmour" /> 를 더 곱해 넣는다. 5.99 괴물 평타가 이 순서다 —
+        /// 굴린 공격력을 사람 방어로 먼저 거르고(Novaonline.exe 0x425d6e → 0x415173) 그 뒤 공격속성으로
+        /// ×1.3 한다(0x425dc3 → 0x415cff). 방어 앞에서 곱하면 작은 한 방이 버림에 깎여 5.99 보다 모자란다.
+        /// </summary>
+        public void ApplyDamageAfterArmour(Sprite source, int dmg, double afterArmour, byte sound = 1)
+        {
+            _afterArmour = afterArmour;
+            try
+            {
+                ApplyDamage(source, dmg, sound);
+            }
+            finally
+            {
+                _afterArmour = 1;
+            }
+        }
+
         public void ApplyDamage(Sprite source, int dmg, Element element, byte sound = 1)
         {
             element = CheckRandomElement(element);
@@ -1003,7 +1024,7 @@ namespace Darkages.Types
             if (IsAited && dmg > 5)
                 dmg /= ServerContext.Config.AiteDamageReductionMod;
 
-            var amplifier = GetElementalModifier(damageDealingSprite);
+            var amplifier = GetElementalModifier(damageDealingSprite) * _afterArmour;
             {
                 dmg = ComputeDmgFromAc(dmg);
                 dmg = CompleteDamageApplication(dmg, sound, dmgcb, amplifier);
