@@ -239,7 +239,7 @@ namespace Darkages.Types
                             idx = Generator.Random.Next(SpellScripts.Count);
                         }
 
-                        SpellScripts[idx].OnUse(this, Target);
+                        CastingSpell(() => SpellScripts[idx].OnUse(this, Target));
                     }
 
                     Template.SpellTimer.Reset();

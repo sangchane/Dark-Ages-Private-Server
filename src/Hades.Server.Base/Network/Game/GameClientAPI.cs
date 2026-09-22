@@ -99,7 +99,10 @@ namespace Darkages.Network.Game
                 var scripts = ScriptManager.Load<SpellScript>(spellName,
                     Spell.Create(1, ServerContext.GlobalSpellTemplateCache[spellName]));
                 {
-                    foreach (var script in scripts.Values) script.OnUse(caster, target);
+                    caster.CastingSpell(() =>
+                    {
+                        foreach (var script in scripts.Values) script.OnUse(caster, target);
+                    });
 
                     return true;
                 }
@@ -259,12 +262,6 @@ namespace Darkages.Network.Game
             SendStats(StatusFlags.All);
         }
 
-        public bool IsBehind(Sprite sprite)
-        {
-            var delta = sprite.Direction - Aisling.Direction;
-            return Aisling.Position.IsNextTo(sprite.Position) && delta == 0;
-        }
-
         public void KillPlayer(string u)
         {
             var user = GetObject<Aisling>(null, i => i.Username.Equals(u, StringComparison.OrdinalIgnoreCase));
@@ -332,8 +329,11 @@ namespace Darkages.Network.Game
 
             if (spell != null)
             {
-                foreach (var script in spell.Scripts.Values)
-                    script?.OnUse(Aisling, target);
+                Aisling.CastingSpell(() =>
+                {
+                    foreach (var script in spell.Scripts.Values)
+                        script?.OnUse(Aisling, target);
+                });
 
                 return true;
             }

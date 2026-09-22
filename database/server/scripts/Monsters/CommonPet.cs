@@ -162,7 +162,7 @@ namespace Darkages.Storage.locales.Scripts.Monsters
                         var spellidx = _random.Next(_spellScripts.Count);
 
                         if (_spellScripts[spellidx] != null)
-                            _spellScripts[spellidx].OnUse(Monster, Monster.Target);
+                            Monster.CastingSpell(() => _spellScripts[spellidx].OnUse(Monster, Monster.Target));
                     }
                 }
             }

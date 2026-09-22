@@ -16,6 +16,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Threading;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Newtonsoft.Json;
 
@@ -877,6 +878,111 @@ namespace Darkages.Types
         [JsonIgnore] private double _afterArmour = 1;
 
         /// <summary>
+        /// 등 뒤에서 친 한 방. 5.99 서버(Novaonline.exe)도 등 뒤 배수를 2 로 쓴다 — 세 군데에 같은 모양으로
+        /// 있다(평타→괴물 0x416331 · 평타→사람 0x4168d8 · 여러 대상 무기 공격 0x415f5d, 셋 다 `shl` 한 번).
+        /// 다만 <b>그 빌드에서는 한 번도 걸리지 않는다</b>: 앞의 둘은 만든 배수를 읽지 않고 버리고(`[ebp-40]`
+        /// 읽는 곳 없음), 셋째는 호출자가 없다. 원작 의도대로 살려 쓰기로 했다(사용자, 2026-09-18).
+        /// </summary>
+        private const double FromBehind = 2.0;
+
+        /// <summary>
+        /// 옆에서 친 한 방. <b>근거 없음</b> — 사용자가 정한 값(2026-09-23)이다. 5.99 실행 파일에는 옆 배수가
+        /// 없다: 1.5 짜리 부동소수 상수가 아예 없고, 정수로 만든 ×3/2(0x42442e `imul 3` + `shr`)는 방향이
+        /// 아니라 걸린 버프(캐릭터 +0x15E == 1, `sokup_delay` 가 켠다)를 본다.
+        /// </summary>
+        private const double FromTheSide = 1.5;
+
+        /// <summary>정면에서 친 한 방. 배수 없음.</summary>
+        private const double FromInFront = 1.0;
+
+        /// <summary>방향 0~3(북·동·남·서)이 보는 칸. <see cref="GetInfront" /> 의 표와 같다.</summary>
+        private static readonly int[] FacingX = {0, +1, 0, -1};
+
+        private static readonly int[] FacingY = {-1, 0, +1, 0};
+
+        /// <summary>마법을 쓰는 동안만 0 보다 크다. 겹쳐 쓸 수 있으므로 센다.</summary>
+        [JsonIgnore] private int _casting;
+
+        /// <summary>
+        /// 이 사람·괴물이 지금 마법을 쓰는 중인가. 방향 배수는 <b>때리는 것</b>에만 걸고 마법은 그대로 두기로
+        /// 했으므로(사용자, 2026-09-23) 마법을 쓰는 동안만 이 표시를 올려 그 한 길에서 갈라낸다.
+        /// </summary>
+        [JsonIgnore] public bool Casting => _casting > 0;
+
+        /// <summary>
+        /// 마법 스크립트를 <see cref="Casting" /> 표시를 올린 채 돌린다. 마법을 거는 곳은 몇 군데뿐이므로
+        /// (사람 <c>Aisling.CastSpell</c> · NPC <c>Mundane</c> · 괴물 <c>CommonMonster.CastSpell</c> ·
+        /// 애완 <c>CommonPet</c> · API <c>GameClient.CastSpell</c>) 거기서만 감싸면 된다. 기술은 감싸지 않으므로
+        /// 새로 만드는 기술도 따로 적을 것 없이 방향 배수를 받는다.
+        /// </summary>
+        public void CastingSpell(Action cast)
+        {
+            Interlocked.Increment(ref _casting);
+            try
+            {
+                cast();
+            }
+            finally
+            {
+                Interlocked.Decrement(ref _casting);
+            }
+        }
+
+        /// <summary>
+        /// 때린 자리에 따른 배수 — 등 뒤 ×2 · 옆 ×1.5 · 정면 ×1.
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// <b>자리로 잰다.</b> 맞는 쪽이 보는 방향과, 때린 쪽이 서 있는 자리를 견준다. 두 사람이 보는 방향끼리
+        /// 견주는 방식(5.99 가 그렇게 한다 — <c>0x416331</c>)은 때리는 쪽이 대상을 안 보고 치는 기술
+        /// (둘레를 치는 선풍각·파천각, 멀리 나가는 기술)에서 틀린다.
+        /// </para>
+        /// <para>
+        /// 대상이 보는 쪽 단위벡터를 F 라 하고 때린 쪽이 대상에서 떨어진 만큼을 (dx, dy) 라 할 때
+        /// 앞쪽 = dx·Fx + dy·Fy, 옆쪽 = |dx·Fy − dy·Fx| 이다. 앞쪽이 옆쪽보다 크면 정면, 뒤쪽이 옆쪽보다
+        /// 크면 등 뒤, 나머지는 옆이다. 그래서 <b>대각선은 옆</b>(앞쪽 = 옆쪽 = 1)이고, 여러 칸 떨어진
+        /// 기술도 같은 잣대로 갈린다(비율만 보므로 거리가 늘어도 답이 안 바뀐다). <b>같은 칸</b>은
+        /// (dx, dy) 가 0 이라 방향을 말할 수 없으므로 덤을 주지 않고 정면으로 본다.
+        /// </para>
+        /// <para>
+        /// <b>때리는 쪽이 사람일 때만 걸린다.</b> 5.99 도 그렇다 — 방향을 견주는 자리는 실행 파일을 통틀어
+        /// 셋뿐이고(0x415f5d · 0x416331 · 0x4168d8) 셋 다 사람이 휘두르는 길이다. 괴물이 사람을 치는 길
+        /// (0x4258a4 → 0x425dc3 → 0x415341)에는 사람 방향 바이트(+0x9E)를 읽는 명령이 하나도 없고 배수
+        /// 인자가 늘 1 이다. 그러니 사람이 사람을 칠 때는 걸리고(0x4168d8), 괴물이 사람을 칠 때는 안 걸린다.
+        /// </para>
+        /// <para>
+        /// <b>마법은 빠진다</b>(사용자, 2026-09-23 — <see cref="Casting" /> 참고). 5.99 도 같다: 마법·기술이
+        /// 쓰는 내장함수(`damaged` 0x449b3c · `char_damaged*` 0x44e015~0x44e4d5 · `group_damaged*`)는 모두
+        /// 배수 인자로 상수 1 을 넘긴다(`6a 01 push 1`).
+        /// </para>
+        /// </remarks>
+        private double BlowFacing(Sprite attacker)
+        {
+            if (!(attacker is Aisling) || attacker.Serial == Serial || attacker.Casting)
+                return FromInFront;
+
+            if (Direction > 3)
+                return FromInFront;
+
+            var dx = attacker.XPos - XPos;
+            var dy = attacker.YPos - YPos;
+
+            if (dx == 0 && dy == 0)
+                return FromInFront;
+
+            var facingX = FacingX[Direction];
+            var facingY = FacingY[Direction];
+
+            var front = dx * facingX + dy * facingY;
+            var side = Math.Abs(dx * facingY - dy * facingX);
+
+            if (front > side)
+                return FromInFront;
+
+            return -front > side ? FromBehind : FromTheSide;
+        }
+
+        /// <summary>
         /// 방어를 거친 한 방에 <paramref name="afterArmour" /> 를 더 곱해 넣는다. 5.99 괴물 평타가 이 순서다 —
         /// 굴린 공격력을 사람 방어로 먼저 거르고(Novaonline.exe 0x425d6e → 0x415173) 그 뒤 공격속성으로
         /// ×1.3 한다(0x425dc3 → 0x415cff). 방어 앞에서 곱하면 작은 한 방이 버림에 깎여 5.99 보다 모자란다.
@@ -918,14 +1024,6 @@ namespace Darkages.Types
                 return dmg;
             }
 
-            int ApplyBehindTargetMod()
-            {
-                if (!(damageDealingSprite is Aisling aisling)) return dmg;
-                if (aisling.Client.IsBehind(this))
-                    dmg += (int)((dmg + ServerContext.Config.BehindDamageMod) / 1.99);
-                return dmg;
-            }
-
             if (!WithinRangeOf(damageDealingSprite))
                 return;
 
@@ -936,7 +1034,6 @@ namespace Darkages.Types
                 return;
 
             dmg = ApplyPVPMod();
-            dmg = ApplyBehindTargetMod();
             dmg = ApplyWeaponBonuses(damageDealingSprite, dmg);
 
             if (dmg > 0)
@@ -1024,7 +1121,10 @@ namespace Darkages.Types
             if (IsAited && dmg > 5)
                 dmg /= ServerContext.Config.AiteDamageReductionMod;
 
-            var amplifier = GetElementalModifier(damageDealingSprite) * _afterArmour;
+            // 방어를 거친 뒤에 곱하는 것들은 여기 한 줄에 모인다 — 속성 · 괴물 평타 ×1.3 · 때린 자리.
+            // 방어 앞에서 곱하면 작은 한 방이 버림에 깎여 1 : 1.5 : 2 가 어긋난다(ApplyDamageAfterArmour 와 같은 이유).
+            // 곱셈이므로 이 셋 사이의 순서는 값에 영향이 없다.
+            var amplifier = GetElementalModifier(damageDealingSprite) * _afterArmour * BlowFacing(damageDealingSprite);
             {
                 dmg = ComputeDmgFromAc(dmg);
                 dmg = CompleteDamageApplication(dmg, sound, dmgcb, amplifier);
@@ -1124,6 +1224,8 @@ namespace Darkages.Types
             if (!(this is Monster))
                 return;
 
+            FaceWhoeverHit(source);
+
             if (!(source is Aisling aisling))
                 return;
 
@@ -1134,6 +1236,52 @@ namespace Darkages.Types
 
             foreach (var script in monsterScripts.Values)
                 script?.OnDamaged(aisling?.Client, dmg, source);
+        }
+
+        /// <summary>
+        /// 맞은 괴물은 때린 쪽을 바라본다 — 원작이 그렇다(`docs/monster-behaviour.md`).
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// 이걸 안 하면 등 뒤 배수가 거저 나온다. 괴물은 방향 0(북)으로 서므로(아무 데서도 정해 주지 않는다)
+        /// 북쪽 문으로 들어와 남쪽에서 치면 첫 타가 늘 등 뒤다. 하데스는 괴물이 <c>CommonMonster</c> 의
+        /// 돌아가는 차례에서만 돌아섰고, 그 차례는 <c>Monster.CanMove</c> 가 막으면 오지 않으므로
+        /// <b>제자리 고정 괴물은 영영 안 돌아섰다</b>. 여기는 걸음과 무관하게 돈다.
+        /// </para>
+        /// <para>
+        /// 한 방이 다 들어간 뒤에 돈다(<see cref="ApplyDamage" /> 가 <see cref="DamageTarget" /> 다음에
+        /// <see cref="OnDamaged" /> 를 부른다). 그래서 등 뒤에서 친 첫 타는 ×2 를 받고, 다음 타부터 정면이다.
+        /// 대각선(|dx| = |dy|)은 가로를 먼저 본다 — <see cref="Facing" /> 의 표는 대각선을 −1 로 내놓아
+        /// 그대로 쓰면 방향이 255 가 된다.
+        /// </para>
+        /// <para>
+        /// 5.99 는 여기서 돌지 않고 <b>표적만 적어 둔다</b>(0x4242ab `M+0x18 = 1` · 0x4242bb
+        /// `M+0x1C = 때린 사람`). 몸은 다음 AI 차례에 돌고(0x425de6 · 0x425e88 · 0x425f0b · 0x425f8e),
+        /// 도는 차례에는 때리지 않는다. 그 판에서는 AI 차례보다 빨리 돌면 등 뒤를 계속 잡을 수 있다는
+        /// 뜻인데, 5.99 는 등 뒤 배수 자체가 죽은 코드라 아무도 그걸 겪지 않았다. 여기서는 맞는 즉시 돌린다 —
+        /// 사용자가 말한 대로이고, 빨리 치는 것만으로 등 뒤 ×2 를 계속 받는 길을 막는다.
+        /// </para>
+        /// </remarks>
+        private void FaceWhoeverHit(Sprite source)
+        {
+            if (source == null || source.Serial == Serial)
+                return;
+
+            var dx = source.XPos - XPos;
+            var dy = source.YPos - YPos;
+
+            if (dx == 0 && dy == 0)
+                return;
+
+            var facing = Math.Abs(dx) >= Math.Abs(dy)
+                ? dx > 0 ? (byte) 1 : (byte) 3
+                : dy > 0 ? (byte) 2 : (byte) 0;
+
+            if (Direction == facing)
+                return;
+
+            Direction = facing;
+            Turn();
         }
 
         public bool HasBuff(string buff)

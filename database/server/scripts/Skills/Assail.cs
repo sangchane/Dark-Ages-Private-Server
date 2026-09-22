@@ -15,14 +15,8 @@ namespace Darkages.Scripting.Scripts.Skills
 
         public Sprite Target;
 
-        /// <summary>
-        /// 뒤에서 친 평타는 두 배다. 5.99 서버(Novaonline.exe)도 평타 안에서 같은 판정을 한다 — 앞칸 상대의 방향이
-        /// 내 방향과 **같으면**(= 내가 등 뒤에 서 있다) 배수를 2 로 만든다(괴물 0x416331 · 사람 0x4168d8). 다만
-        /// 그 빌드는 그 배수를 읽지 않은 채 버리고(죽은 코드), 배수가 실제로 곱해지는 것은 아무도 부르지 않는
-        /// 여러 대상 무기 공격(0x415d86 → 0x4150f2)뿐이다. 원작 의도대로 넣기로 했다(사용자, 2026-09-18).
-        /// </summary>
-        private static int Behind(Sprite attacker, Sprite target, int damage) =>
-            attacker.Direction == target.Direction ? damage * 2 : damage;
+        // 등 뒤 ×2 · 옆 ×1.5 · 정면 ×1 은 여기가 아니라 피해가 들어가는 공통 길에 있다
+        // (Sprite.BlowFacing). 평타만이 아니라 때리는 기술이 모두 같은 판정을 받는다.
 
         /// <summary>5.99 공격속성 배수(Novaonline.exe 0x415cff — 속성 1~5 면 ×13/10).</summary>
         private const double MonsterBlowElement = 1.3;
@@ -107,7 +101,7 @@ namespace Darkages.Scripting.Scripts.Skills
                     {
                         Target = i;
 
-                        i.ApplyDamage(sprite, Behind(sprite, i, dmg), Skill.Template.Sound);
+                        i.ApplyDamage(sprite, dmg, Skill.Template.Sound);
                         success = true;
 
                         if (i is Aisling)
@@ -177,9 +171,9 @@ namespace Darkages.Scripting.Scripts.Skills
                             // 0x415cff). 공격속성이 안 적힌 괴물에게도 생길 때 1~4 를 붙이므로(0x422bc5) 괴물 평타는
                             // 늘 ×1.3 이다. 괴물 마법(`char_damaged2`)은 이 단계를 거치지 않는다.
                             if (sprite is Monster)
-                                i.ApplyDamageAfterArmour(sprite, Behind(sprite, i, dmg), MonsterBlowElement);
+                                i.ApplyDamageAfterArmour(sprite, dmg, MonsterBlowElement);
                             else
-                                i.ApplyDamage(sprite, Behind(sprite, i, dmg), sprite.OffenseElement);
+                                i.ApplyDamage(sprite, dmg, sprite.OffenseElement);
                         }
 
                         if (Skill.Template.TargetAnimation > 0)

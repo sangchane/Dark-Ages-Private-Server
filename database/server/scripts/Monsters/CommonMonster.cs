@@ -208,12 +208,13 @@ namespace Darkages.Storage.locales.Scripts.Monsters
                     var spellidx = _random.Next(_spellScripts.Count);
 
                     if (_spellScripts[spellidx] != null)
-                        _spellScripts[spellidx].OnUse(Monster, Target);
+                        // 마법에는 방향 배수를 걸지 않는다(Sprite.BlowFacing).
+                        Monster.CastingSpell(() => _spellScripts[spellidx].OnUse(Monster, Target));
                 }
 
             if (Monster != null && Monster.Target != null && Monster.Target.CurrentHp > 0)
                 if (DefaultSpell != null)
-                    DefaultSpell.OnUse(Monster, Monster.Target);
+                    Monster.CastingSpell(() => DefaultSpell.OnUse(Monster, Monster.Target));
         }
 
         private void ClearTarget()
