@@ -35,5 +35,7 @@
   "IgnoreCollision": false,
   "SpellScripts": [
     "Monster_마레노"
-  ]
+  ],
+  "Gold": 60,
+  "GoldChance": 30
 }

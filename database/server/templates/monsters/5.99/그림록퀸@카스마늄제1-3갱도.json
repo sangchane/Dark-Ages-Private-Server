@@ -1,4 +1,4 @@
-﻿{
+{
   "Name": "그림록퀸",
   "BaseName": "그림록퀸",
   "AreaID": 20693,
@@ -35,5 +35,7 @@
   "IgnoreCollision": false,
   "SpellScripts": [
     "Monster_소루마"
-  ]
+  ],
+  "Gold": 500,
+  "GoldChance": 30
 }

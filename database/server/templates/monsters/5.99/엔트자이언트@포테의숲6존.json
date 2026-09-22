@@ -35,5 +35,7 @@
   "IgnoreCollision": false,
   "SpellScripts": [
     "Monster_나르콜리"
-  ]
+  ],
+  "Gold": 60,
+  "GoldChance": 30
 }

@@ -286,14 +286,37 @@ namespace Darkages.Storage.locales.Scripts.Formulas
             player.Client.SendMessage(0x02, $"You received {exp} Experience!.");
         }
 
+        /// <summary>
+        /// 정의가 금화를 적어 두면 그것이 답이다 — 5.99 의 <c>골드 &lt;액수&gt; &lt;확률%&gt;</c> 를 그대로 옮겨
+        /// 적었다(<c>scripts/build-pack-gold.py</c>). 안 적어 둔 괴물만 레벨에서 나온다.
+        /// </summary>
+        /// <remarks>
+        /// 레벨 쪽 식은 손대지 않았지만 지금 세상에는 거의 쓰이지 않는다. 하데스의 정의 568개가 모두
+        /// <c>Level 1</c> 이라, 그 길로 가면 세상의 모든 괴물이 한 마리에 500~999 전을 냈다 — 레더튜닉이
+        /// 300전이고 5.99 는 같은 노비스 괴물에게 스무 전을 셋에 하나꼴로 준다.
+        /// </remarks>
         private void GenerateGold()
         {
             if (!_monster.Template.LootType.HasFlag(LootQualifer.Gold))
                 return;
 
-            var sum = Generator.Random.Next(
-                _monster.Template.Level * 500,
-                _monster.Template.Level * 1000);
+            int sum;
+
+            if (_monster.Template.Gold is { } stated)
+            {
+                var chance = _monster.Template.GoldChance ?? 100;
+
+                if (chance <= 0 || Generator.Random.Next(100) >= chance)
+                    return;
+
+                sum = stated;
+            }
+            else
+            {
+                sum = Generator.Random.Next(
+                    _monster.Template.Level * 500,
+                    _monster.Template.Level * 1000);
+            }
 
             if (sum > 0)
                 Money.Create(_monster, sum, new Position(_monster.XPos, _monster.YPos));

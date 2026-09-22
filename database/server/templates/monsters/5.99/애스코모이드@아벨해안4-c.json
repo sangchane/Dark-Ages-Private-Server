@@ -1,4 +1,4 @@
-﻿{
+{
   "Name": "애스코모이드",
   "BaseName": "애스코모이드",
   "AreaID": 20594,
@@ -33,5 +33,7 @@
   "IgnoreCollision": false,
   "SpellScripts": [
     "Monster_소루마"
-  ]
+  ],
+  "Gold": 300,
+  "GoldChance": 40
 }

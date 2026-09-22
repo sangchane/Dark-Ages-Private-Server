@@ -1,4 +1,4 @@
-﻿{
+{
   "Name": "오크병사3",
   "BaseName": "오크병사3",
   "AreaID": 20693,
@@ -33,5 +33,7 @@
   "IgnoreCollision": false,
   "SpellScripts": [
     "Monster_소루마"
-  ]
+  ],
+  "Gold": 500,
+  "GoldChance": 30
 }

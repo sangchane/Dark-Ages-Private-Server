@@ -1,4 +1,4 @@
-﻿{
+{
   "Name": "광산드워프1",
   "BaseName": "광산드워프1",
   "AreaID": 20691,
@@ -35,5 +35,7 @@
   "IgnoreCollision": false,
   "SpellScripts": [
     "Monster_소루마"
-  ]
+  ],
+  "Gold": 500,
+  "GoldChance": 30
 }

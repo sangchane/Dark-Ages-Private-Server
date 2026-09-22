@@ -56,7 +56,18 @@ namespace Darkages.Types
         public int? Exp { get; set; }
 
         public int EngagedWalkingSpeed { get; set; }
-        
+
+        /// <summary>
+        /// 죽을 때 떨구는 금화. 5.99 의 <c>골드 &lt;액수&gt; &lt;확률%&gt;</c> 를 그대로 옮긴 것이다.
+        /// Null 은 레벨에 맡긴다는 뜻인데, 하데스의 정의는 모두 <c>Level 1</c> 이라 그 길은 500~999 전이다.
+        /// </summary>
+        [Description("Gold it drops. Leave unset to work it out from Level.")]
+        public int? Gold { get; set; }
+
+        /// <summary>백에 몇 번 떨어지나. Null 이면 늘 떨어진다. <see cref="Gold" /> 가 없으면 보지 않는다.</summary>
+        [Description("Chance in a hundred the gold drops at all. Leave unset for always.")]
+        public int? GoldChance { get; set; }
+
         public string FamilyKey { get; set; }
 
         [Description("Does this monster grow stonger over time? default = false")]

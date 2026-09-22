@@ -1,4 +1,4 @@
-﻿{
+{
   "Name": "백작부인",
   "BaseName": "백작부인",
   "AreaID": 20401,
@@ -33,5 +33,7 @@
   "IgnoreCollision": false,
   "SpellScripts": [
     "Monster_결계직자"
-  ]
+  ],
+  "Gold": 630,
+  "GoldChance": 20
 }

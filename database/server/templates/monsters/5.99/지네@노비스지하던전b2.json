@@ -38,5 +38,7 @@
   "IgnoreCollision": false,
   "SpellScripts": [
     "Monster_플라모"
-  ]
+  ],
+  "Gold": 30,
+  "GoldChance": 30
 }

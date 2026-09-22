@@ -1,4 +1,4 @@
-﻿{
+{
   "Name": "고블린가드1",
   "BaseName": "고블린가드1",
   "AreaID": 20020,
@@ -35,5 +35,7 @@
   "IgnoreCollision": false,
   "SpellScripts": [
     "Monster_나르콜리"
-  ]
+  ],
+  "Gold": 0,
+  "GoldChance": 100
 }

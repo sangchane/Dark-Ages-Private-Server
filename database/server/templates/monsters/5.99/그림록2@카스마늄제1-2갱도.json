@@ -1,4 +1,4 @@
-﻿{
+{
   "Name": "그림록2",
   "BaseName": "그림록2",
   "AreaID": 20692,
@@ -35,5 +35,7 @@
   "IgnoreCollision": false,
   "SpellScripts": [
     "Monster_나르콜리"
-  ]
+  ],
+  "Gold": 500,
+  "GoldChance": 30
 }

@@ -1,4 +1,4 @@
-﻿{
+{
   "Name": "로밍스테츄3",
   "BaseName": "로밍스테츄3",
   "AreaID": 20402,
@@ -33,5 +33,7 @@
   "IgnoreCollision": false,
   "SpellScripts": [
     "Monster_나르콜리"
-  ]
+  ],
+  "Gold": 620,
+  "GoldChance": 20
 }

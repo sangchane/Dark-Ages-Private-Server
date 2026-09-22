@@ -35,5 +35,7 @@
   "UpdateMapWide": true,
   "UpdateRate": 1000.0,
   "Grow": false,
-  "IgnoreCollision": false
+  "IgnoreCollision": false,
+  "Gold": 20,
+  "GoldChance": 30
 }

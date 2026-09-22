@@ -1,4 +1,4 @@
-﻿{
+{
   "Name": "니크르",
   "BaseName": "니크르",
   "AreaID": 20668,
@@ -33,5 +33,7 @@
   "IgnoreCollision": false,
   "SpellScripts": [
     "Monster_타겟홀드"
-  ]
+  ],
+  "Gold": 450,
+  "GoldChance": 20
 }

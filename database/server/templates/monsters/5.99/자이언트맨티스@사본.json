@@ -35,5 +35,7 @@
   "IgnoreCollision": false,
   "SpellScripts": [
     "Monster_리베라토"
-  ]
+  ],
+  "Gold": 1000,
+  "GoldChance": 100
 }
