@@ -12,5 +12,6 @@
   "TargetAnimation": 249,
   "Cooldown": 2,
   "Icon": 2,
-  "Pane": 2
+  "Pane": 2,
+  "Type": 1
 }

@@ -11,5 +11,6 @@
   "Group": "5.99표/무도가",
   "Sound": 8,
   "TargetAnimation": 0,
-  "Cooldown": 18
+  "Cooldown": 18,
+  "Type": 1
 }
