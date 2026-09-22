@@ -180,7 +180,11 @@ namespace Darkages.Storage.locales.Scripts.Skills
             var x = aisling.XPos + dx * distance;
             var y = aisling.YPos + dy * distance;
 
-            if (aisling.Map.IsWall(x, y) || aisling.Map.ObjectGrid[x, y].Sprites.Any())
+            // A leap must obey the same landing rule as a normal step: it cannot leave the map, land in a
+            // wall, or overlap an occupied tile.  `IsWall` treats out-of-map coordinates as walls; the
+            // TileGrid check keeps the collision exceptions (for example a summon) identical to Walk.
+            if (aisling.Map.IsWall(x, y)
+                || !aisling.Map.ObjectGrid[x, y].IsPassable(aisling, isAisling: true))
                 return;
 
             aisling.XPos = x;
