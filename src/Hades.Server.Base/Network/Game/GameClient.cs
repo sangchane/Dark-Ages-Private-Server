@@ -760,6 +760,26 @@ namespace Darkages.Network.Game
             return this;
         }
 
+        /// <summary>
+        /// 한 번에 저절로 차는 체력(마력). 5.99 의 식 그대로(Novaonline.exe 0x46d25a~0x46d35f):
+        /// 최대 ÷ 100 × 능력치 ÷ 4.3 을 버림하고, 최대의 15% 아래면 15%, 25% 위거나 능력치가 108 이상이면 25%.
+        /// 백분율은 최대 ÷ 100 을 먼저 버림한 뒤 곱한다. 5.99 가 한 가지 더 보는 캐릭터 칸(+98, 켜져 있으면 1.5배)은
+        /// 무엇인지 몰라 옮기지 않았다.
+        /// </summary>
+        public static int NaturalRecovery(int maximum, int attribute)
+        {
+            var hundredth = (int) (maximum / 100.0);
+            var amount = (int) (maximum / 100.0 * (attribute / 4.3));
+
+            if (amount < hundredth * 15)
+                amount = hundredth * 15;
+
+            if (amount > hundredth * 25 || attribute >= 108)
+                amount = hundredth * 25;
+
+            return amount;
+        }
+
         public GameClient Regen(TimeSpan elapsedTime)
         {
             if (Aisling.Con > Aisling.ExpLevel + 1)
@@ -777,25 +797,17 @@ namespace Darkages.Network.Game
             if (!MpRegenTimer.Disabled)
                 b = MpRegenTimer.Update(elapsedTime);
 
+            // 5.99 서버(Novaonline.exe 0x46d1a5)는 한 함수에서 체력은 지구력으로, 마력은 지혜로 채운다. 둘 다
+            // 장비를 뺀 능력치(캐릭터 +163 · +162)이고, 장비의 회복 칸 합(+152)을 그대로 더한다 — 하데스에서 그
+            // 자리는 Regen 이다. 주기는 21초(0x4766aa)라 LoruleConfig 의 RegenRate 가 정한다.
+            // 전에는 5초마다 최대의 10~20% 를 채워서, 괴물 하나가 치는 것보다 빨리 차올랐다.
             if (a && !HpRegenTimer.Disabled)
-            {
-                var hpRegenSeed = (Aisling.Con - Aisling.ExpLevel).Clamp(0, 10) * 0.01;
-                var hpRegenAmount = Aisling.MaximumHp * (hpRegenSeed + 0.10);
-
-                hpRegenAmount += hpRegenAmount / 100 * (1 + Aisling.Regen);
-
-                Aisling.CurrentHp = (Aisling.CurrentHp + (int) hpRegenAmount).Clamp(0, Aisling.MaximumHp);
-            }
+                Aisling.CurrentHp = (Aisling.CurrentHp + NaturalRecovery(Aisling.MaximumHp, Aisling._Con) + Aisling.Regen)
+                    .Clamp(0, Aisling.MaximumHp);
 
             if (b && !MpRegenTimer.Disabled)
-            {
-                var mpRegenSeed = (Aisling.Wis - Aisling.ExpLevel).Clamp(0, 10) * 0.01;
-                var mpRegenAmount = Aisling.MaximumMp * (mpRegenSeed + 0.10);
-
-                mpRegenAmount += mpRegenAmount / 100 * (3 + Aisling.Regen);
-
-                Aisling.CurrentMp = (Aisling.CurrentMp + (int) mpRegenAmount).Clamp(0, Aisling.MaximumMp);
-            }
+                Aisling.CurrentMp = (Aisling.CurrentMp + NaturalRecovery(Aisling.MaximumMp, Aisling._Wis) + Aisling.Regen)
+                    .Clamp(0, Aisling.MaximumMp);
 
             if (a || b) SendStats(StatusFlags.StructB);
 
