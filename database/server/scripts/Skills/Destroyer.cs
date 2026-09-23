@@ -52,8 +52,7 @@ namespace Darkages.Scripting.Scripts.Skills
             {
                 var client = (sprite as Aisling).Client;
                 if (Target != null)
-                    client.Aisling.Show(Scope.NearbyAislings,
-                        new ServerFormat29(Skill.Template.MissAnimation, (ushort) Target.XPos, (ushort) Target.YPos));
+                    Darkages.Storage.locales.Scripts.Skills.MonkStrike.ShowMiss(client.Aisling, Skill);
             }
         }
 

@@ -133,8 +133,11 @@ namespace Darkages.Storage.locales.debuffs
                 };
 
                 (Affected as Aisling).Show(Scope.Self, hpbar);
-                (Affected as Aisling).Flags = AislingFlags.Ghost;
+                // CastDeath() only runs AislingToGhostForm() (which stops HP/MP regen) when the Ghost flag is
+                // not set yet — set it first and the regen timers never stop, so a "dead" character keeps
+                // healing.
                 (Affected as Aisling).CastDeath();
+                (Affected as Aisling).Flags = AislingFlags.Ghost;
                 (Affected as Aisling).SendToHell();
             }
 
