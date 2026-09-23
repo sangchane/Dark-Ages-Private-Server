@@ -120,7 +120,10 @@ namespace Darkages.Scripting.Scripts.Skills
                 }
 
                 if (!success)
+                {
                     client.Aisling.Show(Scope.VeryNearbyAislings, new ServerFormat13(0, 0, Skill.Template.Sound));
+                    Darkages.Storage.locales.Scripts.Skills.MonkStrike.ShowMiss(client.Aisling, Skill);
+                }
 
                 client.Aisling.Show(Scope.NearbyAislings, action);
             }

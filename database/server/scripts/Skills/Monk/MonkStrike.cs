@@ -148,7 +148,8 @@ namespace Darkages.Storage.locales.Scripts.Skills
                 aisling.SendAnimation(skill.Template.TargetAnimation, aisling, aisling);
             aisling.Client.SendMessage(0x02, said);
 
-            Swing(aisling, skill, motion, false);
+            // 제 몸에 거는 기술이라 헛침이 아니다.
+            Swing(aisling, skill, motion, false, attack: false);
         }
 
         /// <summary>
@@ -314,10 +315,39 @@ namespace Darkages.Storage.locales.Scripts.Skills
             aisling.Client.SendStats(StatusFlags.StructB);
         }
 
-        private static void Swing(Aisling aisling, Skill skill, byte motion, bool hit)
+        /// <summary>
+        /// 헛친 기술의 「Miss」 그림. 원작 roh.dat 의 efct115 — 마법이 빗나갈 때 쓰는 efct033(붉은 「Miss」)과
+        /// 같은 글씨·같은 틀을 파란색으로 칠한 짝이다. 5.99 팩·서버는 기술 헛침에 이 번호를 보내는 곳이 없어
+        /// (마법 빗나감 33 만 보낸다) 「기술 = 파랑」은 그림의 짝으로 고른 것이다. 템플릿의 `MissAnimation` 이
+        /// 적혀 있으면 그것이 먼저다.
+        /// </summary>
+        public const ushort SkillMiss = 115;
+
+        /// <summary>
+        /// 아무도 못 맞힌 기술 — 하데스 `OnFailed` 가 하던 대로 휘두른 칸(보는 쪽 앞 칸)에 헛침 그림을 띄운다.
+        /// </summary>
+        public static void ShowMiss(Aisling aisling, Skill skill)
+        {
+            var (dx, dy) = aisling.Direction switch
+            {
+                0 => (0, -1),
+                1 => (1, 0),
+                2 => (0, 1),
+                _ => (-1, 0)
+            };
+            var miss = skill.Template.MissAnimation > 0 ? skill.Template.MissAnimation : SkillMiss;
+
+            aisling.Show(Scope.NearbyAislings,
+                new ServerFormat29(miss, (ushort) (aisling.XPos + dx), (ushort) (aisling.YPos + dy)));
+        }
+
+        private static void Swing(Aisling aisling, Skill skill, byte motion, bool hit, bool attack = true)
         {
             if (!hit)
                 aisling.Show(Scope.VeryNearbyAislings, new ServerFormat13(0, 0, skill.Template.Sound));
+
+            if (!hit && attack)
+                ShowMiss(aisling, skill);
 
             aisling.Show(Scope.NearbyAislings, new ServerFormat1A
             {

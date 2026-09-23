@@ -41,10 +41,16 @@ namespace Darkages.Storage.locales.Scripts.Spells
                         Speed = 30
                     };
 
+                    // 혼자일 때는 마력만 빼고 아무도 채우지 않아 이펙트도 안 나갔다 — 혼자면 자기 한 사람이 무리다.
+                    // (GroupId 0 으로 AislingsNearby 를 거르면 무리 없는 주변 사람 모두가 걸리므로 따로 둔다.)
                     if (sprite.GroupId == 0)
                         client.Aisling.CurrentMp -= Spell.Template.ManaCost;
-                    else
-                        foreach (var obj in sprite.AislingsNearby().Where(i => i.GroupId == sprite.GroupId))
+
+                    var party = sprite.GroupId == 0
+                        ? new[] { client.Aisling }
+                        : sprite.AislingsNearby().Where(i => i.GroupId == sprite.GroupId);
+
+                    foreach (var obj in party)
                         {
                             if (obj.Dead)
                                 continue;
