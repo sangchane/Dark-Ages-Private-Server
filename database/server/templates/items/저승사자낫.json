@@ -11,26 +11,11 @@
   "Flags": 125,
   "CanStack": false,
   "MaxStack": 0,
-  "Value": 100000,
-  "DmgMin": 500,
-  "DmgMax": 500,
-  "MaxDurability": 6000,
-  "CarryWeight": 5,
+  "Value": 50,
+  "DmgMin": 1,
+  "DmgMax": 2,
+  "MaxDurability": 10000,
+  "CarryWeight": 0,
   "AttackMotion": 1,
-  "AcModifer": {
-    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
-    "Option": 1,
-    "Value": 1
-  },
-  "HealthModifer": {
-    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
-    "Option": 0,
-    "Value": 500
-  },
-  "ManaModifer": {
-    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
-    "Option": 0,
-    "Value": 500
-  },
   "Group": "5.99표/무기/치장아이템"
 }

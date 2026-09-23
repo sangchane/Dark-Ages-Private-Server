@@ -11,18 +11,13 @@
   "Flags": 125,
   "CanStack": false,
   "MaxStack": 0,
-  "Value": 200000,
-  "DmgMin": 1,
-  "DmgMax": 1,
+  "Value": 1300000,
+  "DmgMin": 4,
+  "DmgMax": 20,
   "MaxDurability": 1300000,
   "CarryWeight": 5,
   "AttackMotion": 1,
   "AttackSpeed": 33,
-  "AcModifer": {
-    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
-    "Option": 0,
-    "Value": 3
-  },
   "HealthModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
     "Option": 1,
@@ -31,7 +26,7 @@
   "ManaModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
     "Option": 0,
-    "Value": 1500
+    "Value": 1000
   },
   "StrModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",

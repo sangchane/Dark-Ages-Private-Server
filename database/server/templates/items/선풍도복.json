@@ -6,12 +6,12 @@
   "EquipmentSlot": 2,
   "Class": 5,
   "Gender": 1,
-  "LevelRequired": 81,
+  "LevelRequired": 71,
   "ScriptName": "Armor",
   "Flags": 125,
   "CanStack": false,
   "MaxStack": 0,
-  "Value": 15000,
+  "Value": 24850,
   "DmgMin": 0,
   "DmgMax": 0,
   "MaxDurability": 12000,
@@ -20,7 +20,7 @@
   "AcModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
     "Option": 1,
-    "Value": 29
+    "Value": 38
   },
   "Group": "5.99표/갑옷/무도가방어구"
 }

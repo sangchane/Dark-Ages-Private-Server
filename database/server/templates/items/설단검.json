@@ -11,18 +11,13 @@
   "Flags": 125,
   "CanStack": false,
   "MaxStack": 0,
-  "Value": 500,
-  "DmgMin": 7,
-  "DmgMax": 12,
+  "Value": 1000,
+  "DmgMin": 10,
+  "DmgMax": 20,
   "MaxDurability": 2000,
   "CarryWeight": 3,
   "AttackMotion": 134,
   "AttackSpeed": 18,
-  "AcModifer": {
-    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
-    "Option": 1,
-    "Value": 1
-  },
   "Group": "5.99표/무기/도적무기",
   "DropRate": 0.1
 }

@@ -11,62 +11,47 @@
   "Flags": 125,
   "CanStack": false,
   "MaxStack": 0,
-  "Value": 100000,
-  "DmgMin": 2500,
-  "DmgMax": 2000,
-  "MaxDurability": 31000,
-  "CarryWeight": 10,
+  "Value": 1032000,
+  "DmgMin": 214,
+  "DmgMax": 284,
+  "MaxDurability": 800000,
+  "CarryWeight": 13,
   "StageRequired": 1,
   "AttackMotion": 140,
   "AcModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
-    "Option": 1,
-    "Value": 1
+    "Option": 0,
+    "Value": 5
   },
   "HitModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
     "Option": 0,
-    "Value": 10
+    "Value": 12
   },
   "DmgModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
     "Option": 0,
-    "Value": 10
+    "Value": 11
   },
   "HealthModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
     "Option": 0,
-    "Value": 30000
+    "Value": 2000
   },
   "ManaModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
     "Option": 0,
-    "Value": 30000
+    "Value": 1000
   },
   "StrModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
     "Option": 0,
-    "Value": 10
+    "Value": 2
   },
   "DexModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
     "Option": 0,
-    "Value": 10
-  },
-  "IntModifer": {
-    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
-    "Option": 0,
-    "Value": 10
-  },
-  "WisModifer": {
-    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
-    "Option": 0,
-    "Value": 10
-  },
-  "ConModifer": {
-    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
-    "Option": 0,
-    "Value": 10
+    "Value": 1
   },
   "Group": "5.99표/무기/전사무기"
 }

@@ -11,15 +11,15 @@
   "Flags": 117,
   "CanStack": false,
   "MaxStack": 0,
-  "Value": 0,
+  "Value": 30000000,
   "DmgMin": 0,
   "DmgMax": 0,
   "MaxDurability": 515000,
-  "CarryWeight": 4,
+  "CarryWeight": 10,
   "AcModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
     "Option": 1,
-    "Value": 65
+    "Value": 60
   },
   "MrModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
@@ -29,22 +29,37 @@
   "HealthModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
     "Option": 0,
-    "Value": 5000
+    "Value": 1300
   },
   "ManaModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
     "Option": 0,
-    "Value": 20000
+    "Value": 200
   },
   "IntModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
     "Option": 0,
-    "Value": 5
+    "Value": 2
   },
   "WisModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
     "Option": 0,
-    "Value": 5
+    "Value": 1
   },
-  "Group": "5.99표/갑옷/승급옷업"
+  "Group": "5.99표/갑옷/승급옷업",
+  "StrModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 2
+  },
+  "DexModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 2
+  },
+  "ConModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 3
+  }
 }

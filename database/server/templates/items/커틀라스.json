@@ -4,7 +4,7 @@
   "Image": 3,
   "DisplayImage": 32856,
   "EquipmentSlot": 1,
-  "Class": 1,
+  "Class": 0,
   "Gender": 255,
   "LevelRequired": 11,
   "ScriptName": "Weapon",

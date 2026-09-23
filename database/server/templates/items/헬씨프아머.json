@@ -11,15 +11,15 @@
   "Flags": 117,
   "CanStack": false,
   "MaxStack": 0,
-  "Value": 0,
+  "Value": 349000,
   "DmgMin": 0,
   "DmgMax": 0,
   "MaxDurability": 7500,
-  "CarryWeight": 22,
+  "CarryWeight": 12,
   "AcModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
     "Option": 1,
-    "Value": 51
+    "Value": 57
   },
   "HealthModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
@@ -31,5 +31,15 @@
     "Option": 1,
     "Value": 2
   },
-  "Group": "5.99표/갑옷/헬셋"
+  "Group": "5.99표/갑옷/헬셋",
+  "HitModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 10
+  },
+  "DmgModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 1
+  }
 }

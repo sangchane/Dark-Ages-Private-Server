@@ -14,8 +14,8 @@
   "Value": 23000,
   "DmgMin": 75,
   "DmgMax": 95,
-  "MaxDurability": 6000,
-  "CarryWeight": 7,
+  "MaxDurability": 12000,
+  "CarryWeight": 13,
   "AttackMotion": 134,
   "AttackSpeed": 18,
   "Group": "5.99표/무기/도적무기"

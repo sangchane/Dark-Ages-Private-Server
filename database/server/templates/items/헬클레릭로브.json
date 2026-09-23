@@ -11,15 +11,15 @@
   "Flags": 117,
   "CanStack": false,
   "MaxStack": 0,
-  "Value": 0,
+  "Value": 308000,
   "DmgMin": 0,
   "DmgMax": 0,
-  "MaxDurability": 750,
-  "CarryWeight": 23,
+  "MaxDurability": 7500,
+  "CarryWeight": 10,
   "AcModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
     "Option": 1,
-    "Value": 45
+    "Value": 51
   },
   "ManaModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",

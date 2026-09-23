@@ -6,15 +6,20 @@
   "EquipmentSlot": 2,
   "Class": 0,
   "Gender": 255,
-  "LevelRequired": 1,
+  "LevelRequired": 11,
   "ScriptName": "Armor",
   "Flags": 61,
   "CanStack": false,
   "MaxStack": 0,
-  "Value": 50000000,
+  "Value": 5000000,
   "DmgMin": 0,
   "DmgMax": 0,
-  "MaxDurability": 18000,
-  "CarryWeight": 0,
-  "Group": "5.99표/갑옷/치장아이템"
+  "MaxDurability": 50,
+  "CarryWeight": 1,
+  "Group": "5.99표/갑옷/치장아이템",
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 1
+  }
 }

@@ -11,7 +11,7 @@
   "Flags": 125,
   "CanStack": false,
   "MaxStack": 0,
-  "Value": 100000,
+  "Value": 10000,
   "DmgMin": 155,
   "DmgMax": 175,
   "MaxDurability": 10000,
