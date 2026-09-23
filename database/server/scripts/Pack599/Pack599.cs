@@ -404,6 +404,8 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                 case "get_kill_mob": return Who(a, 0).Map?.Kills ?? 0;
                 case "exp_add":
                     Monster.DistributeExperience(_me, Arg(a, 0));
+                    // 경험치만 올리고 알리지 않아 화면(과 시험)이 다음 능력치 알림까지 옛 값을 보였다 — 괴물 보상(GenerateRewards)처럼 알린다.
+                    _me.UpdateStats();
                     return 1;
 
                 // ── 피해·회복·마력 ────────────────────────────────────────
@@ -422,6 +424,21 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                 }
                 case "set_vital": return SetHealth(_me, Arg(a, 0));
                 case "set_vita": return SetHealth(Find(a, 0), Arg(a, 1));
+                // 5.99 `set_body` 16·32 = 산 몸(남·여), 64 = 유령. 하데스의 유령은 AislingFlags.Ghost 라, 뮤레칸·빛의이아가 산 몸을 입힐 때
+                // 유령을 푼다. 체력은 앞의 set_vita 가 정한 대로 두고(하데스 Revive 는 가득 채운다), 멈췄던 회복만 다시 돌린다.
+                case "set_body":
+                {
+                    if (Find(a, 0) is not Aisling who)
+                        return 0;
+                    if ((Arg(a, 1) == 16 || Arg(a, 1) == 32) && who.Dead)
+                    {
+                        who.Flags = AislingFlags.Normal;
+                        who.Client.HpRegenTimer.Disabled = false;
+                        who.Client.MpRegenTimer.Disabled = false;
+                        who.Client.SendStats(StatusFlags.All);
+                    }
+                    return 1;
+                }
                 case "group_hill":
                     foreach (var member in Party())
                     {
@@ -542,6 +559,10 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                 case "coma_delay":
                 {
                     if (Find(a, 0) is not { } target || Arg(a, 1) <= 0 || !target.Debuffs.TryGetValue("skulled", out var coma))
+                        return 0;
+                    // 이미 도는 혼수를 늘리지 않는다. 오솔길 함정(Dungeon__Script)은 터진 뒤 자리를 다시 적지 않아(5.99 Dungeon.txt 도 같다)
+                    // 혼수로 서 있는 동안에도 1초마다 1/5 로 다시 터지고, 그때마다 12초로 되감겨 혼수가 끝나지 않았다(PoteDungeonTests).
+                    if (coma.Length - coma.Timer.Tick <= Arg(a, 1))
                         return 0;
                     coma.Timer.Tick = coma.Length - (int) Arg(a, 1);
                     return 1;

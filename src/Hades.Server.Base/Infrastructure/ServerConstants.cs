@@ -40,6 +40,7 @@ namespace Darkages
         int DeathMap { get; set; }
         int DeathMapX { get; set; }
         int DeathMapY { get; set; }
+        bool DeathDropsItems { get; set; }
         string DeathReepingMessage { get; set; }
         bool DebugMode { get; set; }
         ItemColor DefaultItemColor { get; set; }
@@ -217,6 +218,9 @@ namespace Darkages
         public int DeathMapX { get; set; }
 
         public int DeathMapY { get; set; }
+
+        /// <summary>죽으면 소지품·장비·골드를 시체 주머니로 떨어뜨리나. 없으면 false — 지금은 죽음 벌칙을 켜지 않는다.</summary>
+        public bool DeathDropsItems { get; set; }
 
         public string DeathReepingMessage { get; set; }
 

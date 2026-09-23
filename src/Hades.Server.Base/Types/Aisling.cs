@@ -740,18 +740,22 @@ namespace Darkages
             if (CurrentMapId == ServerContext.Config.DeathMap)
                 return;
 
-            Remains.Owner = this;
-
-            var reepStack = Remains;
-            var items = reepStack.Items;
-
-            if (items.Count > 0)
+            // 죽음 벌칙(소지품·장비·골드를 시체 주머니로)은 꺼 둔다 — 사용자 결정 2026-09-23. 켜려면 LoruleConfig 의 DeathDropsItems.
+            if (ServerContext.Config.DeathDropsItems)
             {
-                Remains.ReepItems(items.ToList());
-            }
-            else
-            {
-                if (Inventory.Length > 0 || EquipmentManager.Length > 0) Remains.ReepItems();
+                Remains.Owner = this;
+
+                var reepStack = Remains;
+                var items = reepStack.Items;
+
+                if (items.Count > 0)
+                {
+                    Remains.ReepItems(items.ToList());
+                }
+                else
+                {
+                    if (Inventory.Length > 0 || EquipmentManager.Length > 0) Remains.ReepItems();
+                }
             }
 
             for (var i = 0; i < 2; i++)
