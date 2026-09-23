@@ -1,5 +1,6 @@
 {
   "Name": "ao puinsein",
+  "Animation": 279,
   "ScriptKey": "ao puinsein",
   "Prerequisites": {
     "Class_Required": 4,

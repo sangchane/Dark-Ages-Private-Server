@@ -1,5 +1,6 @@
 {
   "Name": "ao ard cradh",
+  "Animation": 245,
   "ScriptKey": "ao ard cradh",
   "Prerequisites": {
     "Class_Required": 4,

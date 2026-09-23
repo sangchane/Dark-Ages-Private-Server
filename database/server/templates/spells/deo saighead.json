@@ -1,5 +1,6 @@
 {
   "Name": "deo saighead",
+  "Animation": 273,
   "ScriptKey": "deo saighead",
   "Prerequisites": {
     "Class_Required": 4,

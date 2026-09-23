@@ -451,9 +451,10 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                     foreach (var member in Party())
                     {
                         SetHealth(member, member.CurrentHp + Arg(a, 0));
+                        // 속도 60 — 5.99 서버가 박아 둔 값이다(Novaonline.exe 0x44a183). god_bless·group_mob*_end 는 100.
                         if (Arg(a, 1) > 0)
                             _me.Show(Scope.NearbyAislings, new ServerFormat29((uint) _me.Serial,
-                                (uint) member.Serial, (ushort) Arg(a, 1), 0, 100));
+                                (uint) member.Serial, (ushort) Arg(a, 1), 0, 60));
                     }
                     return 0;
                 case "manal_del": return SetMana(_me, _me.CurrentMp - Arg(a, 0));
@@ -520,10 +521,26 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                 case "suenare":
                 case "focus":
                 case "horrama":
-                case "hprecovery":
                 case "phoenix":
                 case "sosusin":
                     return State(Find(a, 0), name, Arg(a, 1));
+                // 체력 회복(콜라마·리젠) — `hprecovery 대상, 초, 1초마다 채울 양`. 5.99 서버(Novaonline.exe 0x44ed93)는 칸 0x122 에
+                // 초를, 0x124 에 양을 적고, 이미 걸려 있으면 "이미 걸려있습니다." 로 거절한다. 그 뒤 1초마다(0x46e0ed) 초를 하나
+                // 줄이며 대상에게 그림 22 를 속도 75 로 보내고(0x46e120 → 0x46b66a), 상태 아이콘 144 를 알리고, 체력을 채운다.
+                case "hprecovery":
+                {
+                    var who = Find(a, 0);
+                    if (who == null)
+                        return 0;
+                    if (who.HasBuff(Regen.Slot))
+                    {
+                        (who as Aisling)?.Client.SendMessage(0x03, "이미 걸려있습니다.");
+                        return 0;
+                    }
+                    var regen = new Regen(Arg(a, 1), Arg(a, 2));
+                    regen.OnApplied(who, regen);
+                    return 1;
+                }
                 // 신의축복 — 에나르마와 같은 칸(0x156)을 파티에 건다. `god_bless 애니메이션, 초`.
                 case "god_bless":
                     foreach (var member in Party())
@@ -851,6 +868,37 @@ namespace Darkages.Storage.locales.Scripts.Pack599
             {
                 affected.BonusAc -= _amount;
                 base.OnEnded(affected, debuff);
+            }
+        }
+
+        /// <summary>
+        /// 5.99 체력 회복(`hprecovery`). 1초마다 그림 22(속도 75)를 대상에게 보이고 체력을 채운다 — 스크립트가 아니라
+        /// 5.99 서버가 하는 일이라 팩 스크립트에는 그림 번호가 없다(Novaonline.exe 0x46e0ed~0x46e1af). 아이콘은 144.
+        /// </summary>
+        public sealed class Regen : Buff
+        {
+            public const string Slot = "5.99 체력회복";
+            private readonly int _amount;
+
+            // 하데스가 버프 종류를 모을 때 인자 없이 만든다(서버 시작 `Loading Extensions`).
+            public Regen() : this(0, 0)
+            {
+            }
+
+            public Regen(long seconds, long amount)
+            {
+                Name = Slot;
+                Length = (int) seconds;
+                Icon = 144;
+                _amount = (int) amount;
+            }
+
+            public override void OnDurationUpdate(Sprite affected, Buff buff)
+            {
+                affected.Show(Scope.NearbyAislings,
+                    new ServerFormat29((uint) affected.Serial, (uint) affected.Serial, 22, 0, 75));
+                SetHealth(affected, affected.CurrentHp + _amount);
+                base.OnDurationUpdate(affected, buff);
             }
         }
 
