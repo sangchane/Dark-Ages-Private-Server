@@ -16,7 +16,8 @@
         {
             Type = reader.ReadByte();
 
-            if (Type == 0x02)
+            // 1 청하기(모집창) · 2 청하기 · 3 받아들이기 — 셋 다 뒤에 이름 하나 (Arbiter ClientGroupAction).
+            if (Type == 0x01 || Type == 0x02 || Type == 0x03)
                 Name = reader.ReadStringA();
 
             if (Type == 0x08)

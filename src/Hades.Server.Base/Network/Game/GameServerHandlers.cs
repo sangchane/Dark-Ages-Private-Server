@@ -843,6 +843,24 @@ namespace Darkages.Network.Game
 
             client.LastWhisperMessageSent = DateTime.UtcNow;
 
+            // 그룹말 — 받는 이 이름 자리에 "!" 하나(원작). 5.99 서버는 "[그룹말]%s" 로 적는다.
+            if (format.Name == "!")
+            {
+                var members = client.Aisling.GroupParty?.PartyMembers;
+
+                if (members == null || members.Count <= 1)
+                {
+                    client.SendMessage(0x02, "그룹이 없습니다.");
+                    return;
+                }
+
+                foreach (var member in members)
+                    member.Client?.Send(new ServerFormat0A((byte) ServerFormat0A.MsgType.Party,
+                        $"[그룹말]{client.Aisling.Username}: {format.Message}"));
+
+                return;
+            }
+
             if (format.Name == "!!" && !string.IsNullOrEmpty(client.Aisling.Clan))
             {
                 client.Aisling.Show(Scope.Clan, new ServerFormat0A(0x02, "{=o" + $"{client.Aisling.Username}> " + "{=a" + format.Message));
@@ -1100,11 +1118,40 @@ namespace Darkages.Network.Game
 
             #endregion
 
-            if (format.Type != 0x02)
+            if (string.IsNullOrEmpty(format.Name))
                 return;
 
+            // 원작은 청하면 상대에게 묻고(0x63), 상대가 받아들여야(0x2E 3) 들어온다 — 5.99 클라이언트의
+            // GroupAskList·GroupAlertPane, Arbiter ClientGroupAction. 전에는 청하는 즉시 넣어 버렸다.
+            switch (format.Type)
+            {
+                case 0x01:
+                case 0x02:
+                    AskToGroup(client, format.Name);
+                    break;
+
+                case 0x03:
+                    AcceptGroup(client, format.Name);
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// 그룹을 청한다. 제 이름을 대면 그룹에서 나간다 — 원작에서 그룹을 떠나는 길이 그것이다.
+        /// 새로 적는 글은 5.99 서버(Novaonline.exe)의 것을 쓴다.
+        /// </summary>
+        private void AskToGroup(GameClient client, string name)
+        {
+            if (string.Equals(name, client.Aisling.Username, StringComparison.OrdinalIgnoreCase))
+            {
+                if (client.Aisling.GroupParty != null)
+                    Party.RemovePartyMember(client.Aisling);
+
+                return;
+            }
+
             var player = GetObject<Aisling>(client.Aisling.Map,
-                i => i.Username.ToLower() == format.Name.ToLower() &&
+                i => i.Username.ToLower() == name.ToLower() &&
                      i.WithinRangeOf(client.Aisling));
 
             if (player == null)
@@ -1120,8 +1167,48 @@ namespace Darkages.Network.Game
                 return;
             }
 
-            if (Party.AddPartyMember(client.Aisling, player))
-                client.Aisling.PartyStatus = GroupStatus.AcceptingRequests;
+            if (player.GroupParty != null)
+            {
+                client.SendMessage(0x02, $"{player.Username}님은 이미 그룹 중 입니다.");
+                return;
+            }
+
+            if (client.Aisling.GroupParty != null && !client.Aisling.LeaderPrivileges)
+            {
+                client.SendMessage(0x02, "그룹장만 할 수 있습니다.");
+                return;
+            }
+
+            player.GroupAskedBy = client.Aisling.Username;
+            player.Client.Send(new ServerFormat63(ServerFormat63.Ask, client.Aisling.Username));
+        }
+
+        /// <summary>청을 받아들인다. 내게 마지막으로 청한 사람이어야 하고, 그 사람이 아직 곁에 있어야 한다.</summary>
+        private void AcceptGroup(GameClient client, string name)
+        {
+            if (!string.Equals(client.Aisling.GroupAskedBy, name, StringComparison.OrdinalIgnoreCase))
+                return;
+
+            client.Aisling.GroupAskedBy = null;
+
+            var asker = GetObject<Aisling>(client.Aisling.Map,
+                i => i.Username.ToLower() == name.ToLower() &&
+                     i.WithinRangeOf(client.Aisling));
+
+            if (asker == null)
+            {
+                client.SendMessage(0x02, ServerContext.Config.BadRequestMessage);
+                return;
+            }
+
+            if (client.Aisling.GroupParty != null)
+            {
+                client.SendMessage(0x02, "이미 그룹 중 입니다.");
+                return;
+            }
+
+            if (Party.AddPartyMember(asker, client.Aisling))
+                asker.PartyStatus = GroupStatus.AcceptingRequests;
         }
 
         protected override void Format2FHandler(GameClient client, ClientFormat2F format)

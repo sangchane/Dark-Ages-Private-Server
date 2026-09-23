@@ -200,10 +200,6 @@
     {
     }
 
-    public class ServerFormat63
-    {
-    }
-
     public class ServerFormat64
     {
     }

@@ -195,6 +195,9 @@ namespace Darkages
         public int World { get; set; } = 2;
         [JsonIgnore] public List<Aisling> PartyMembers => GroupParty?.PartyMembers;
 
+        /// <summary>마지막으로 내게 그룹을 청한 사람. 받아들이기(0x2E 3)는 이 이름일 때만 듣는다.</summary>
+        [JsonIgnore] public string GroupAskedBy { get; set; }
+
         public byte Lantern { get; set; }
 
         [JsonIgnore]
