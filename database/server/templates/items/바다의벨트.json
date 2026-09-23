@@ -1,0 +1,20 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "바다의벨트",
+  "Image": 0,
+  "DisplayImage": 33009,
+  "EquipmentSlot": 11,
+  "Class": 0,
+  "Gender": 255,
+  "LevelRequired": 1,
+  "ScriptName": "Belt",
+  "Flags": 125,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 10000,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 1000,
+  "CarryWeight": 1,
+  "Group": "원작표/허리띠"
+}
