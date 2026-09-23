@@ -24,8 +24,10 @@
   "PathQualifer": 1,
   "LootType": 2,
   "Drops": {
+    "$type": "System.Collections.Generic.List`1[[System.String, System.Private.CoreLib]], System.Private.CoreLib",
     "$values": [
-      "사슴의정수"
+      "사슴의정수",
+      "홀리머큐리아"
     ]
   },
   "ScriptName": "Common Monster",

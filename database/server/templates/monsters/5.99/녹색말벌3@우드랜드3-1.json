@@ -22,10 +22,12 @@
   "CastSpeed": 8000,
   "MoodType": 4,
   "PathQualifer": 1,
-  "LootType": 36,
+  "LootType": 34,
   "Drops": {
+    "$type": "System.Collections.Generic.List`1[[System.String, System.Private.CoreLib]], System.Private.CoreLib",
     "$values": [
-      "엘란디스"
+      "엘란디스",
+      "지폰"
     ]
   },
   "ScriptName": "Common Monster",

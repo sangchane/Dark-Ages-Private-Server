@@ -24,8 +24,10 @@
   "PathQualifer": 1,
   "LootType": 34,
   "Drops": {
+    "$type": "System.Collections.Generic.List`1[[System.String, System.Private.CoreLib]], System.Private.CoreLib",
     "$values": [
-      "놀의단검"
+      "놀의단검",
+      "매단검"
     ]
   },
   "ScriptName": "Common Monster",

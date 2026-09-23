@@ -27,8 +27,7 @@
     "$type": "System.Collections.Generic.List`1[[System.String, System.Private.CoreLib]], System.Private.CoreLib",
     "$values": [
       "쿠룸",
-      "마라디움",
-      "매직스커트"
+      "마라디움"
     ]
   },
   "ScriptName": "Common Monster",
