@@ -5,7 +5,7 @@
   "Flags": 444,
   "CanStack": true,
   "MaxStack": 1000,
-  "Value": 500,
+  "Value": 250,
   "ScriptName": "Consumable",
   "DropRate": 0.5,
   "Group": "원작표/시약",

@@ -6,7 +6,7 @@
   "EquipmentSlot": 1,
   "Class": 4,
   "Gender": 255,
-  "LevelRequired": 1,
+  "LevelRequired": 11,
   "ScriptName": "Weapon",
   "Flags": 125,
   "CanStack": false,
