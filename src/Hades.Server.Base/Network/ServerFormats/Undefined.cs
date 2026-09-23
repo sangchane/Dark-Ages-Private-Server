@@ -180,10 +180,6 @@
     {
     }
 
-    public class ServerFormat5C
-    {
-    }
-
     public class ServerFormat5D
     {
     }

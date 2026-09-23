@@ -165,7 +165,12 @@ namespace Darkages.Network.Game.Components
 
 
                     if (payload.Count > 0)
+                    {
                         user.Show(Scope.Self, new ServerFormat07(payload.ToArray()));
+
+                        foreach (var seen in payload)
+                            ServerFormat5C.TellAll(seen, user);
+                    }
                 }
             });
         }

@@ -101,6 +101,13 @@ namespace Darkages.Storage.locales.Scripts.Pack599
         /// <summary>괴물이 쓴 마법이면 그 괴물. 이때 `get_myid` 는 맞는 사람이다(`Mob_Spell.txt`).</summary>
         private readonly Sprite _actor;
 
+        // 한 번 외우는 동안 대상에게 건 상태와 대상에게 그린 그림. 5.99 는 `magic` 과 `effect` 를 따로 부르므로
+        // 둘 중 뒤에 온 쪽이 짝을 맞춰 상태에 그림 번호를 적는다 — 괴물을 그 그림의 색으로 물들이는 근거다(0x5C).
+        private Debuff _laid;
+        private Sprite _laidOn;
+        private Sprite _painted;
+        private ushort _paint;
+
         public Pack599(Sprite sprite, Sprite chosen)
         {
             _me = sprite as Aisling;
@@ -299,6 +306,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                     // (`CasterEffect` 가 첫 자리). 5.99 `effect @대상, 쓴쪽그림, 대상그림, 속도` 를 그 순서로 보낸다.
                     _me.Show(Scope.NearbyAislings, new ServerFormat29((uint) (_actor ?? _me).Serial, (uint) target.Serial,
                         (ushort) Arg(a, 2), (ushort) Arg(a, 1), (ushort) Math.Max(1, Arg(a, 3))));
+                    Paint(target, (ushort) Arg(a, 2));
                     return 0;
                 }
                 case "motion":
@@ -961,13 +969,30 @@ namespace Darkages.Storage.locales.Scripts.Pack599
         }
 
         /// <summary>하데스 디버프는 길이가 클래스에 박혀 있다. 남은 시간이 `Length - Tick` 이라 Tick 을 당긴다.</summary>
-        private static V Afflict(Sprite target, Debuff debuff, long seconds)
+        private V Afflict(Sprite target, Debuff debuff, long seconds)
         {
             if (target == null || target.HasDebuff(debuff.Name))
                 return 0;
             debuff.Timer.Tick = debuff.Length - (int) seconds;
+            if (target == _painted && _paint != 0)
+                debuff.Animation = _paint;
             debuff.OnApplied(target, debuff);
+            _laid = debuff;
+            _laidOn = target;
             return 1;
+        }
+
+        /// <summary>그림이 상태보다 뒤에 오면(프라보: `magic` 다음 `effect`) 방금 건 상태에 그 그림을 적고 다시 알린다.</summary>
+        private void Paint(Sprite target, ushort picture)
+        {
+            _painted = target;
+            _paint = picture;
+
+            if (picture == 0 || target != _laidOn || _laid == null || _laid.Animation != 0)
+                return;
+
+            _laid.Animation = picture;
+            _laid.Retell(target);
         }
     }
 }

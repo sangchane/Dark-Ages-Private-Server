@@ -410,6 +410,9 @@ namespace Darkages.Types
             }
             else
                 nearbyAisling.Show(Scope.Self, new ServerFormat07(new[] { this }));
+
+            // 방금 보게 된 사람에게 걸려 있는 것도 알린다(0x5C) — 등급이 바뀔 때까지 기다리게 두지 않는다.
+            ServerFormat5C.TellAll(this, nearbyAisling);
         }
 
         public Aisling[] AislingsNearby()
@@ -1362,6 +1365,10 @@ namespace Darkages.Types
         {
             Show(Scope.NearbyAislings, new ServerFormat0E(Serial));
             Show(Scope.NearbyAislings, new ServerFormat07(new[] { this }));
+
+            // 0x0E 가 받는 쪽의 상태 기록까지 지우므로 다시 알린다(0x5C).
+            foreach (var viewer in AislingsNearby())
+                ServerFormat5C.TellAll(this, viewer);
         }
 
         public void UpdateBuffs(TimeSpan elapsedTime)

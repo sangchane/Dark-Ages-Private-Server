@@ -43,6 +43,25 @@ namespace Darkages.Types
 
             (affected as Aisling)?.Client
                 .Send(new ServerFormat3A(Icon, (byte) colorInt));
+
+            // 둘레 사람에게도 알린다(0x5C, 우리 확장) — 등급이 바뀔 때만. 매초 보내면 둘레가 시끄럽다.
+            if (Grade != colorInt)
+            {
+                Grade = (byte) colorInt;
+                ServerFormat5C.Tell(affected, Icon, Grade, true, Animation);
+            }
+        }
+
+        /// <summary>
+        /// The time grade last told to everybody else (0x5C): 6 is over ninety seconds … 1 under ten, 0 not yet told.
+        /// </summary>
+        public byte Grade { get; private set; }
+
+        /// <summary>Tells everybody around again, as when the picture this debuff is drawn with becomes known.</summary>
+        public void Retell(Sprite affected)
+        {
+            Grade = 0;
+            Display(affected);
         }
 
         public bool Has(string name)
@@ -63,8 +82,11 @@ namespace Darkages.Types
         public virtual void OnEnded(Sprite affected, Debuff debuff)
         {
             if (affected.Debuffs.TryRemove(debuff.Name, out var removed))
+            {
                 (affected as Aisling)?.Client
                     .Send(new ServerFormat3A(Icon, byte.MinValue));
+                ServerFormat5C.Tell(affected, Icon, byte.MinValue, true, Animation);
+            }
         }
 
         internal void Update(Sprite affected, TimeSpan elapsedTime)
