@@ -24,10 +24,10 @@
 
 		// Starting Zone
 		"NationReturnHours": 3,
-		"StartingMap": 1,
+		"StartingMap": 20373,
 		"StartingPosition": {
-			"X": 4,
-			"Y": 4
+			"X": 37,
+			"Y": 29
 		},
 
 		// World Transitions
@@ -46,7 +46,6 @@
 		"BaseDamageMod": 60,
 		"AiteDamageReductionMod": 3,
 		"SleepProcsDoubleDmg": true,
-		"BehindDamageMod": 0.45,
 
 		// Defense
 		"BaseStatAttribute": 5,
