@@ -1,4 +1,4 @@
-{
+﻿{
   "Name": "Kick",
   "ScriptName": "Kick",
   "Prerequisites": {
@@ -10,5 +10,7 @@
   "MaxLevel": 100,
   "ID": 0,
   "Description": null,
-  "Group": "원작표"
+  "Group": "원작표",
+  "TargetAnimation": 249,
+  "Sound": 14
 }
