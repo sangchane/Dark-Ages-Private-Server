@@ -974,7 +974,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
             if (target == null || target.HasDebuff(debuff.Name))
                 return 0;
             debuff.Timer.Tick = debuff.Length - (int) seconds;
-            if (target == _painted && _paint != 0)
+            if (target == _painted && _paint != 0 && Stains(debuff))
                 debuff.Animation = _paint;
             debuff.OnApplied(target, debuff);
             _laid = debuff;
@@ -982,13 +982,19 @@ namespace Darkages.Storage.locales.Scripts.Pack599
             return 1;
         }
 
+        /// <summary>
+        /// 몸을 물들이는 것은 저주 칸(렌토·바르도·데프레코·프라보·어둠의각인 — 모두 `magic 1`)뿐이다. 발경(빙결)·
+        /// 수면 같은 것은 그림을 적지 않아 물들지 않는다(사용자, 2026-09-23).
+        /// </summary>
+        private static bool Stains(Debuff debuff) => debuff is Curse && debuff.Name == Curse.Slot;
+
         /// <summary>그림이 상태보다 뒤에 오면(프라보: `magic` 다음 `effect`) 방금 건 상태에 그 그림을 적고 다시 알린다.</summary>
         private void Paint(Sprite target, ushort picture)
         {
             _painted = target;
             _paint = picture;
 
-            if (picture == 0 || target != _laidOn || _laid == null || _laid.Animation != 0)
+            if (picture == 0 || target != _laidOn || _laid == null || _laid.Animation != 0 || !Stains(_laid))
                 return;
 
             _laid.Animation = picture;
