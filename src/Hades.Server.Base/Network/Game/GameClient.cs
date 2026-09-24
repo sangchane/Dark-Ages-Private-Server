@@ -1506,12 +1506,13 @@ namespace Darkages.Network.Game
 
             if (ServerContext.GlobalMapCache.Values.Any(i => i.Id == warps.ActivationMapId))
             {
-                // 문구는 5.99 서버(Novaonline.exe 0x904b0 부근) 그대로다.
+                // 문구는 5.99 서버(Novaonline.exe 0x904b0 부근) 그대로다. 낮다는 말 뒤에는 몇 레벨부터인지를
+                // 붙인다 — 5.99 는 말하지 않지만 모르면 몇 번이고 다시 부딪친다(사용자, 2026-09-24).
                 if (!Aisling.GameMaster)
                 {
                     if (warps.LevelRequired > 0 && Aisling.ExpLevel < warps.LevelRequired)
                     {
-                        SendMessage(0x02, "아직 들어가기엔 레벨이 낮습니다.");
+                        SendMessage(0x02, $"아직 들어가기엔 레벨이 낮습니다. (입장 레벨 {warps.LevelRequired})");
                         return;
                     }
 
