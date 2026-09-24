@@ -444,6 +444,9 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                         who.Client.HpRegenTimer.Disabled = false;
                         who.Client.MpRegenTimer.Disabled = false;
                         who.Client.SendStats(StatusFlags.All);
+                        // 유령 모습을 거두고 입은 대로 다시 그린다(나·곁의 사람). 뮤레칸은 곧 워프해 새 맵에서도 그려지지만
+                        // 빛의이아처럼 그 자리에서 살리는 NPC 는 이것이 없으면 유령 그림 그대로 남는다.
+                        who.Client.UpdateDisplay();
                     }
                     return 1;
                 }

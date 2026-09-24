@@ -136,11 +136,14 @@ namespace Darkages.Network
                 if (!Clients.Exists(i => i.Serial == client.Serial))
                     return;
 
+                // 들은 것은 버리더라도 살아 있다는 표시다 — 월드맵을 펴 둔 사람의 심장박동 답(0x45)도 여기서 센다.
+                // 버리기 전에 적지 않으면 지도를 편 채 가만히 있는 사람이 조용한 접속으로 빠진다(GameServer.UpdateClients).
+                client.LastMessageFromClient = DateTime.UtcNow;
+
                 if (client.MapOpen && !(format is ClientFormat3F))
                     return;
 
                 client.Read(packet, format);
-                client.LastMessageFromClient = DateTime.UtcNow;
 
                 if (_handlers[format.Command] != null)
                     _handlers[format.Command].Invoke(this,

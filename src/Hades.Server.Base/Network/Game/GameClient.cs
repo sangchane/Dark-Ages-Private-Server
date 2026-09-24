@@ -860,6 +860,9 @@ namespace Darkages.Network.Game
             MpRegenTimer.Disabled = false;
 
             Aisling.Recover();
+
+            // 유령 모습(ServerFormat33 몸 0x30·0x40, 입은 것 없음)을 거두고 입은 대로 다시 그리게 한다 — 나와 곁의 사람 모두.
+            UpdateDisplay();
             return Aisling.CurrentHp > 0;
         }
 
@@ -1376,13 +1379,6 @@ namespace Darkages.Network.Game
                 {
                     LastKnownPosition = new Position(Aisling.X, Aisling.Y);
                 }
-            }
-
-            if ((DateTime.UtcNow - LastMessageFromClient).TotalSeconds > 120)
-            {
-                Aisling?.Remove(true);
-
-                Server.ClientDisconnected(this);
             }
 
             DoUpdate(elapsedTime);

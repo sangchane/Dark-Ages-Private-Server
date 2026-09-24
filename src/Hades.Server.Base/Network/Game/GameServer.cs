@@ -87,6 +87,12 @@ namespace Darkages.Network.Game
             }
         }
 
+        /// <summary>
+        /// 이만큼 아무 말이 없으면 접속이 죽은 것으로 보고 캐릭터를 뺀다. 심장박동 세 번(PingInterval 10초)을 거른 셈이다 —
+        /// 한 번 늦은 답으로는 빼지 않는다.
+        /// </summary>
+        public static readonly TimeSpan IdleLimit = TimeSpan.FromSeconds(30);
+
         public void UpdateClients(TimeSpan elapsedTime)
         {
             lock (Clients)
@@ -95,6 +101,15 @@ namespace Darkages.Network.Game
                 {
                     try
                     {
+                        // 조용해진 접속은 곧 세계에서 뺀다 — 소켓을 쥔 채 멈춘 앱(iOS 가 뒤로 보낸 것)·끊긴 망은 0 바이트 읽기가
+                        // 오지 않아 서버가 모른다. 심장박동(0x3B, PingInterval 10초)에 답이 없으면 그런 것이다. 전에는 120초였고
+                        // 월드맵·워프 중인 접속은 이 검사(GameClient.Update)를 아예 건너뛰어 괴물의 과녁으로 남았다.
+                        if (DateTime.UtcNow - client.LastMessageFromClient > IdleLimit)
+                        {
+                            ClientDisconnected(client);
+                            continue;
+                        }
+
                         if (client != null && !client.Aisling.LoggedIn)
                         {
                             continue;
