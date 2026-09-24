@@ -17,7 +17,7 @@ namespace Darkages.Storage.locales.Buffs
             if (Affected is Aisling)
                 (Affected as Aisling)
                     .Client
-                    .SendMessage(0x02, "Your hands are empowered!");
+                    .SendMessage(0x02, "두 손에 힘이 깃듭니다!");
 
             Affected.EmpoweredAssail = true;
 
@@ -34,7 +34,7 @@ namespace Darkages.Storage.locales.Buffs
             if (Affected is Aisling)
                 (Affected as Aisling)
                     .Client
-                    .SendMessage(0x02, "Your hands turn back to normal.");
+                    .SendMessage(0x02, "두 손이 원래대로 돌아옵니다.");
 
             Affected.EmpoweredAssail = false;
 

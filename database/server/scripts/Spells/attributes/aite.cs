@@ -21,7 +21,7 @@ namespace Darkages.Storage.locales.Scripts.Spells
             if (sprite is Aisling)
             {
                 var client = (sprite as Aisling).Client;
-                client.SendMessage(0x02, "failed.");
+                client.SendMessage(0x02, "실패했습니다.");
             }
         }
 
@@ -48,12 +48,12 @@ namespace Darkages.Storage.locales.Scripts.Spells
 
                     client.SendAnimation(Spell.Template.Animation, target, client.Aisling);
                     client.Aisling.Show(Scope.NearbyAislings, action);
-                    client.SendMessage(0x02, "you cast " + Spell.Template.Name + ".");
+                    client.SendMessage(0x02, $"{Spell.Template.Name}을(를) 외웠습니다.");
                     client.SendStats(StatusFlags.All);
                 }
                 else
                 {
-                    client.SendMessage(0x02, "That target is already empowered.");
+                    client.SendMessage(0x02, "이미 걸려있습니다.");
                 }
             }
         }

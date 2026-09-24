@@ -861,13 +861,15 @@ namespace Darkages.Network.Game
                 return;
             }
 
-            if (format.Name == "!!" && !string.IsNullOrEmpty(client.Aisling.Clan))
+            // 길드말 — 받는 이 이름 자리에 "!!". 길드원에게 보내고 끝낸다(전에는 아래 귓속말 찾기로 흘러 "!!" 라는 사람을
+            // 찾다가 "없습니다" 까지 보냈다). 5.99 서버: "길드가 없습니다."
+            if (format.Name == "!!")
             {
-                client.Aisling.Show(Scope.Clan, new ServerFormat0A(0x02, "{=o" + $"{client.Aisling.Username}> " + "{=a" + format.Message));
-            }
-            else if (format.Name == "!!" && string.IsNullOrEmpty(client.Aisling.Clan))
-            {
-                client.SystemMessage("You are not in a guild.");
+                if (string.IsNullOrEmpty(client.Aisling.Clan))
+                    client.SystemMessage("길드가 없습니다.");
+                else
+                    client.Aisling.Show(Scope.Clan, new ServerFormat0A(0x02, "{=o" + $"{client.Aisling.Username}> " + "{=a" + format.Message));
+
                 return;
             }
 
@@ -875,7 +877,7 @@ namespace Darkages.Network.Game
                                                    format.Name.ToLower(CultureInfo.CurrentCulture));
 
             if (user == null)
-                client.SendMessage(0x02, string.Format(CultureInfo.CurrentCulture, "{0} is nowhere to be found.", format.Name));
+                client.SendMessage(0x02, string.Format(CultureInfo.CurrentCulture, "{0}님은 마이소시아에 없습니다", format.Name));
 
             if (user == null)
                 return;
@@ -1774,7 +1776,7 @@ namespace Darkages.Network.Game
                     return;
                 }
 
-                client.FlushAndSend(new ForumCallback("Unable to retrieve more.", 0x06, true));
+                client.FlushAndSend(new ForumCallback("더 불러올 글이 없습니다.", 0x06, true));
                 return;
             }
 
@@ -1800,7 +1802,7 @@ namespace Darkages.Network.Game
                     np.Associate(client.Aisling.Username);
                     boards.Posts.Add(np);
                     ServerContext.SaveCommunityAssets();
-                    client.FlushAndSend(new ForumCallback("Message Delivered.", 0x06, true));
+                    client.FlushAndSend(new ForumCallback("편지를 보냈습니다.", 0x06, true));
                 }
 
                 return;
@@ -1828,7 +1830,7 @@ namespace Darkages.Network.Game
 
                     boards.Posts.Add(np);
                     ServerContext.SaveCommunityAssets();
-                    client.FlushAndSend(new ForumCallback("Post Added.", 0x06, true));
+                    client.FlushAndSend(new ForumCallback("글을 올렸습니다.", 0x06, true));
                 }
 
                 return;
@@ -1850,12 +1852,12 @@ namespace Darkages.Network.Game
                         {
                             client.FlushAndSend(new ForumCallback("\0", 0x07, true));
                             client.FlushAndSend(new BoardList(ServerContext.Community));
-                            client.FlushAndSend(new ForumCallback("Post Deleted.", 0x07, true));
+                            client.FlushAndSend(new ForumCallback("글을 지웠습니다.", 0x07, true));
 
                             community.Posts.RemoveAt(format.TopicIndex - 1);
                             ServerContext.SaveCommunityAssets();
 
-                            client.FlushAndSend(new ForumCallback("Post Deleted.", 0x07, true));
+                            client.FlushAndSend(new ForumCallback("글을 지웠습니다.", 0x07, true));
                         }
                         else
                         {
@@ -2387,8 +2389,8 @@ namespace Darkages.Network.Game
                             }
                             else
                             {
-                                trader.Client.SendMessage(0x02, "You can't hold this.");
-                                client.SendMessage(0x02, "They can't hold that.");
+                                trader.Client.SendMessage(0x02, "더 이상 가질 수 없습니다.");
+                                client.SendMessage(0x02, "상대가 더 이상 가질 수 없습니다.");
                             }
 
                     break;
@@ -2485,7 +2487,7 @@ namespace Darkages.Network.Game
 
                     packet.Write((byte) 0x05);
                     packet.Write((byte) 0x00);
-                    packet.WriteStringA("Trade was completed.");
+                    packet.WriteStringA("교환에 성공하였습니다.");
                     client.Send(packet);
 
                     packet = new NetworkPacketWriter();
@@ -2494,7 +2496,7 @@ namespace Darkages.Network.Game
 
                     packet.Write((byte) 0x05);
                     packet.Write((byte) 0x01);
-                    packet.WriteStringA("Trade was completed.");
+                    packet.WriteStringA("교환에 성공하였습니다.");
                     trader.Client.Send(packet);
                 }
                     break;
@@ -2782,14 +2784,14 @@ namespace Darkages.Network.Game
 
             if (client.Aisling == null)
             {
-                client.SendMessage(0x02, "Your have has been corrupted. Please report this bug to lorule staff.");
+                client.SendMessage(0x02, "캐릭터 자료가 손상되었습니다. 운영자에게 알려 주십시오.");
                 base.ClientDisconnected(client);
                 return null;
             }
 
             if (client.Aisling._Str <= 0 || client.Aisling.Ac > 200 || client.Aisling.ExpLevel > 99)
             {
-                client.SendMessage(0x02, "Your have has been corrupted. Please report this bug to lorule staff.");
+                client.SendMessage(0x02, "캐릭터 자료가 손상되었습니다. 운영자에게 알려 주십시오.");
                 base.ClientDisconnected(client);
                 return null;
             }

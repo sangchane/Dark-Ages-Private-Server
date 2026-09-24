@@ -31,7 +31,7 @@ namespace Darkages.Storage.locales.Buffs
             if (Affected is Aisling)
                 (Affected as Aisling)
                     .Client
-                    .SendMessage(0x02, "Spells attacking you now stop reflecting.");
+                    .SendMessage(0x02, "마법 반사가 끝났습니다.");
 
             base.OnEnded(Affected, buff);
         }

@@ -341,7 +341,7 @@ namespace Darkages
 
             packet.Write((byte) 0x04);
             packet.Write((byte) 0x00);
-            packet.WriteStringA("Trade was aborted.");
+            packet.WriteStringA("교환이 취소되었습니다.");
             Client.Send(packet);
 
             packet = new NetworkPacketWriter();
@@ -350,7 +350,7 @@ namespace Darkages
 
             packet.Write((byte) 0x04);
             packet.Write((byte) 0x01);
-            packet.WriteStringA("Trade was aborted.");
+            packet.WriteStringA("교환이 취소되었습니다.");
             trader.Client.Send(packet);
         }
 
@@ -391,7 +391,7 @@ namespace Darkages
                 if (CurrentMp < 0)
                     CurrentMp = 0;
 
-                Client.SendMessage(0x02, "you cast " + spell.Template.Name + ".");
+                Client.SendMessage(0x02, $"{spell.Template.Name}을(를) 외웠습니다.");
             }
 
             return this;

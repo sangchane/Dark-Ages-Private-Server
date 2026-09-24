@@ -54,7 +54,7 @@ namespace Darkages.Network.Login
 
                 if (!ServerContext.GlobalMapCache.ContainsKey(aisling.AreaId))
                 {
-                    client.SendMessageBox(0x03, $"There is no map configured for {aisling.AreaId}\0");
+                    client.SendMessageBox(0x03, $"{aisling.AreaId}번 맵이 준비되어 있지 않습니다.\0");
                     return;
                 }
 
@@ -115,7 +115,7 @@ namespace Darkages.Network.Login
             }
             else
             {
-                client.SendMessageBox(0x03, "Character Already Exists.\0");
+                client.SendMessageBox(0x03, "이미 등록된 계정입니다.\0");
                 client.CreateInfo = null;
             }
         }
@@ -132,7 +132,7 @@ namespace Darkages.Network.Login
                 {
                     if (!Passwords.Verify(aisling.Password, format.Password, out bool needsRehash))
                     {
-                        client.SendMessageBox(0x02, "Sorry, Incorrect Password.");
+                        client.SendMessageBox(0x02, "비밀번호가 틀렸습니다.");
                         return;
                     }
 
@@ -147,7 +147,7 @@ namespace Darkages.Network.Login
                 else
                 {
                     client.SendMessageBox(0x02,
-                        $"{format.Username} does not exist in this world. You can make this hero by clicking on 'Create'.");
+                        $"{format.Username}: 없는 계정 입니다.");
                     return;
                 }
             }
@@ -157,7 +157,7 @@ namespace Darkages.Network.Login
                 ServerContext.Logger(ex.StackTrace, Microsoft.Extensions.Logging.LogLevel.Error);
 
                 client.SendMessageBox(0x02,
-                    $"{format.Username} is not supported by the new server. Please remake your character. This will not happen when the server goes to beta.");
+                    $"{format.Username}: 이 서버에서 읽을 수 없는 캐릭터입니다. 새로 만들어 주십시오.");
 
                 return;
             }
@@ -188,7 +188,7 @@ namespace Darkages.Network.Login
 
             if (format.Path < (byte)Class.Warrior || format.Path > (byte)Class.Monk)
             {
-                client.SendMessageBox(0x02, "A valid primary class must be selected.");
+                client.SendMessageBox(0x02, "직업을 골라 주십시오.");
                 client.CreateInfo = null;
                 return;
             }
@@ -205,7 +205,7 @@ namespace Darkages.Network.Login
 
             if (!EquipStarterOutfit(template, path, template.Gender))
             {
-                client.SendMessageBox(0x02, "The selected class outfit is not configured.");
+                client.SendMessageBox(0x02, "고른 직업의 옷이 준비되어 있지 않습니다.");
                 client.CreateInfo = null;
                 return;
             }
@@ -217,7 +217,7 @@ namespace Darkages.Network.Login
             // become separate, duplicate attacks in the technique pane.
             if (!GiveMonkStarterSkills(template, path))
             {
-                client.SendMessageBox(0x02, "The Monk starter skills are not configured.");
+                client.SendMessageBox(0x02, "무도가의 첫 기술이 준비되어 있지 않습니다.");
                 client.CreateInfo = null;
                 return;
             }
@@ -297,19 +297,19 @@ namespace Darkages.Network.Login
 
             if (aisling == null)
             {
-                client.SendMessageBox(0x02, "Incorrect Information provided.");
+                client.SendMessageBox(0x02, "계정을 바르게 적어주시길 바랍니다.");
                 return;
             }
 
             if (!Passwords.Verify(aisling.Password, format.Password, out _))
             {
-                client.SendMessageBox(0x02, "Incorrect Information provided.");
+                client.SendMessageBox(0x02, "계정을 바르게 적어주시길 바랍니다.");
                 return;
             }
 
             if (string.IsNullOrEmpty(format.NewPassword) || format.NewPassword.Length < 3)
             {
-                client.SendMessageBox(0x02, "new password not accepted.");
+                client.SendMessageBox(0x02, "암호를 바르게 적어주시길 바랍니다.");
                 return;
             }
 

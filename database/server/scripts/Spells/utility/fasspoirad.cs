@@ -57,12 +57,12 @@ namespace Darkages.Assets.locales.Scripts.Spells.utility
 
                     client.SendAnimation(1, client.Aisling, client.Aisling);
                     client.Aisling.Show(Scope.NearbyAislings, action);
-                    client.SendMessage(0x02, "you invoke your will.");
+                    client.SendMessage(0x02, "의지를 모읍니다.");
                     client.SendStats(StatusFlags.All);
                 }
                 else
                 {
-                    client.SendMessage(0x02, "you failed to concretrate.");
+                    client.SendMessage(0x02, "정신을 모으지 못했습니다.");
                 }
             }
         }

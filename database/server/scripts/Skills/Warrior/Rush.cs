@@ -29,7 +29,7 @@ namespace Darkages.Scripting.Scripts.Skills
                 var client = (sprite as Aisling).Client;
 
                 client.SendMessage(0x02,
-                    string.IsNullOrEmpty(Skill.Template.FailMessage) ? Skill.Template.FailMessage : "failed.");
+                    string.IsNullOrEmpty(Skill.Template.FailMessage) ? Skill.Template.FailMessage : "실패했습니다.");
             }
         }
 

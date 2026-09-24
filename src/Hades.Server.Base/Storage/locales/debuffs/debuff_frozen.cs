@@ -68,7 +68,7 @@ namespace Darkages.Storage.locales.debuffs
 
                 (Affected as Aisling)
                     .Client
-                    .SendMessage(0x02, "Your body is frozen.");
+                    .SendMessage(0x02, "몸이 얼어 움직일수 없습니다.");
             }
             else
             {
@@ -95,7 +95,7 @@ namespace Darkages.Storage.locales.debuffs
             if (Affected is Aisling)
                 (Affected as Aisling)
                     .Client
-                    .SendMessage(0x02, "Your body thaws out.");
+                    .SendMessage(0x02, "동면 끝.");
             base.OnEnded(Affected, debuff);
         }
     }

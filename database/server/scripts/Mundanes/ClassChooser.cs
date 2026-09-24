@@ -27,16 +27,16 @@ namespace Darkages.Storage.locales.Scripts.Mundanes
             {
                 var options = new List<OptionsDataItem>
                 {
-                    new OptionsDataItem(0x06, "I'm ready to choose a Path,"),
-                    new OptionsDataItem(0x07, "I'm not ready.")
+                    new OptionsDataItem(0x06, "직업을 고르겠습니다."),
+                    new OptionsDataItem(0x07, "아직 아닙니다.")
                 };
                 client.SendOptionsDialog(Mundane,
-                    "Hm? You look weak. you are a peasant. You can't survive this world without a set of skills and discipline. You must make a choice. Now is the time.",
+                    "음? 약해 보이는군. 아직 아무 직업도 없는 몸이야. 기술과 수련 없이는 이 세상에서 살아남을 수 없네. 이제 길을 골라야 할 때일세.",
                     options.ToArray());
             }
             else
             {
-                client.SendOptionsDialog(Mundane, "You have already chosen your path.");
+                client.SendOptionsDialog(Mundane, "이미 길을 골랐군.");
             }
         }
 
@@ -53,14 +53,14 @@ namespace Darkages.Storage.locales.Scripts.Mundanes
                 {
                     var options = new List<OptionsDataItem>
                     {
-                        new OptionsDataItem(0x01, "Warrior"),
-                        new OptionsDataItem(0x02, "Rogue"),
-                        new OptionsDataItem(0x03, "Wizard"),
-                        new OptionsDataItem(0x04, "Priest"),
-                        new OptionsDataItem(0x05, "Monk")
+                        new OptionsDataItem(0x01, "전사"),
+                        new OptionsDataItem(0x02, "도적"),
+                        new OptionsDataItem(0x03, "마법사"),
+                        new OptionsDataItem(0x04, "성직자"),
+                        new OptionsDataItem(0x05, "무도가")
                     };
 
-                    client.SendOptionsDialog(Mundane, "What do you seek?", options.ToArray());
+                    client.SendOptionsDialog(Mundane, "어느 직업을 선택 하겠습니까?", options.ToArray());
                 }
 
                 if (responseID == 7)
@@ -71,7 +71,7 @@ namespace Darkages.Storage.locales.Scripts.Mundanes
             {
                 client.Aisling.Path = (Class)responseID;
 
-                client.SendOptionsDialog(Mundane, $"Congratulations! You are now a {Convert.ToString(client.Aisling.Path)}");
+                client.SendOptionsDialog(Mundane, $"축하하네! 이제 자네는 {PathName(client.Aisling.Path)}일세.");
 
                 client.Aisling.Stage = ClassStage.Master;
                 client.Aisling.ExpLevel = 1;
@@ -208,7 +208,7 @@ namespace Darkages.Storage.locales.Scripts.Mundanes
                     Category = "Class",
                     Color = (byte)LegendColor.Blue,
                     Icon = (byte)LegendIcon.Victory,
-                    Value = $"Devoted to the path of {Convert.ToString(client.Aisling.Path)} "
+                    Value = $"{PathName(client.Aisling.Path)}의 길에 들어섬"
                 });
 
                 client.Aisling.LegendBook.AddLegend(new Legend.LegendItem
@@ -216,7 +216,7 @@ namespace Darkages.Storage.locales.Scripts.Mundanes
                     Category = "Alpha Aisling",
                     Color = (byte)LegendColor.Yellow,
                     Icon = (byte)LegendIcon.Heart,
-                    Value = $"Alpha Aisling - Endured the harsh winter of the beginning"
+                    Value = $"첫 아이슬링 - 처음의 혹독한 겨울을 견뎌 냄"
                 });
 
                 client.Aisling.GoHome();
@@ -225,6 +225,16 @@ namespace Darkages.Storage.locales.Scripts.Mundanes
                 Task.Delay(350).ContinueWith(ct => { client.Aisling.Animate(5); });
             }
         }
+
+        private static string PathName(Class path) => path switch
+        {
+            Class.Warrior => "전사",
+            Class.Rogue => "도적",
+            Class.Wizard => "마법사",
+            Class.Priest => "성직자",
+            Class.Monk => "무도가",
+            _ => path.ToString()
+        };
 
         public override void TargetAcquired(Sprite Target)
         {

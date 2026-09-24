@@ -79,7 +79,7 @@ namespace Darkages.Storage.locales.Scripts.Spells
                         }
 
                     client.Aisling.Show(Scope.NearbyAislings, action);
-                    client.SendMessage(0x02, "you cast " + Spell.Template.Name + ".");
+                    client.SendMessage(0x02, $"{Spell.Template.Name}을(를) 외웠습니다.");
                     client.SendStats(StatusFlags.All);
                 }
                 else

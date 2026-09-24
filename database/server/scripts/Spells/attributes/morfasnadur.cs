@@ -28,7 +28,7 @@ namespace Darkages.Storage.locales.Scripts.Spells
 
                 if (target.HasDebuff("mor fas nadur") || target.HasDebuff("fas nadur"))
                 {
-                    client.SendMessage(0x02, "You have already casted that spell.");
+                    client.SendMessage(0x02, "이미 걸려있습니다.");
                     return;
                 }
 
@@ -43,9 +43,9 @@ namespace Darkages.Storage.locales.Scripts.Spells
                     if (target is Aisling)
                         (target as Aisling).Client
                             .SendMessage(0x02,
-                                $"{client.Aisling.Username} Casts {Spell.Template.Name} on you. Elements augmented.");
+                                $"{client.Aisling.Username}님이 {Spell.Template.Name}을(를) 외워주셨습니다. 속성이 강해집니다.");
 
-                    client.SendMessage(0x02, $"you cast {Spell.Template.Name}");
+                    client.SendMessage(0x02, $"{Spell.Template.Name}을(를) 외웠습니다.");
                     client.SendAnimation(126, target, sprite);
 
                     var action = new ServerFormat1A
@@ -68,7 +68,7 @@ namespace Darkages.Storage.locales.Scripts.Spells
                 }
                 else
                 {
-                    client.SendMessage(0x02, "You have already casted that spell.");
+                    client.SendMessage(0x02, "이미 걸려있습니다.");
                 }
             }
             else
@@ -84,7 +84,7 @@ namespace Darkages.Storage.locales.Scripts.Spells
                     if (target is Aisling)
                         (target as Aisling).Client
                             .SendMessage(0x02,
-                                $"{(sprite is Monster ? (sprite as Monster).Template.Name : (sprite as Mundane).Template.Name) ?? "Monster"} Casts {Spell.Template.Name} on you. Elements augmented.");
+                                $"{(sprite is Monster ? (sprite as Monster).Template.Name : (sprite as Mundane).Template.Name) ?? "괴물"}이(가) {Spell.Template.Name}을(를) 걸었습니다. 속성이 강해집니다.");
 
                     target.SendAnimation(126, target, sprite);
 

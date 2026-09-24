@@ -28,7 +28,7 @@ namespace Darkages.Storage.locales.Buffs
             {
                 (Affected as Aisling)
                     .Client
-                    .SendMessage(0x02, "Your armor has been increased.");
+                    .SendMessage(0x02, "방어력이 올랐습니다.");
                 (Affected as Aisling)
                     .Client.SendStats(StatusFlags.All);
             }
@@ -52,7 +52,7 @@ namespace Darkages.Storage.locales.Buffs
             {
                 (Affected as Aisling)
                     .Client
-                    .SendMessage(0x02, "Your armor returns to normal.");
+                    .SendMessage(0x02, "방어력이 원래대로 돌아옵니다.");
                 (Affected as Aisling)
                     .Client.SendStats(StatusFlags.All);
             }

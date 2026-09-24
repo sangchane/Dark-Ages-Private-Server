@@ -160,7 +160,7 @@ namespace Darkages.Network.Game
                     : ServerContext.Config.CantWearYetMessage;
 
             if (!item.Template.Class.HasFlag(client.Aisling.Path) && item.Template.Class != Class.Peasant)
-                message = "You are forbidden to wear that.";
+                message = "감히 사용할 수 없습니다.";
 
             if (!(message != null && string.IsNullOrEmpty(message)))
             {
@@ -449,7 +449,7 @@ namespace Darkages.Network.Game
                         nitem.Release(Aisling, Aisling.Position);
 
                         SendMessage(0x02,
-                            string.Format(CultureInfo.CurrentCulture, "{0} is too heavy to hold.",
+                            string.Format(CultureInfo.CurrentCulture, "{0}: 너무 무거워서 들 수 없습니다.",
                                 nitem.Template.Name));
 
                         continue;
@@ -518,7 +518,7 @@ namespace Darkages.Network.Game
                                 copy.Release(Aisling, Aisling.Position);
 
                                 SendMessage(0x02,
-                                    string.Format(CultureInfo.CurrentCulture, "You stumble and drop {0}",
+                                    string.Format(CultureInfo.CurrentCulture, "비틀거리다 {0}을(를) 떨어뜨렸습니다.",
                                         item.Template.Name));
                             }
                         }
@@ -1157,12 +1157,12 @@ namespace Darkages.Network.Game
                     {
                         if (target is Aisling)
                             SendMessage(Scope.NearbyAislings, 0x02,
-                                Aisling.Username + " has been killed by " + (target as Aisling).Username);
+                                Aisling.Username + "님이 " + (target as Aisling).Username + "님에게 죽었습니다.");
                     }
                     else
                     {
                         SendMessage(Scope.NearbyAislings, 0x02,
-                            Aisling.Username + " has been killed, somehow.");
+                            Aisling.Username + "님이 죽었습니다.");
                     }
 
                     return this;
@@ -1200,7 +1200,7 @@ namespace Darkages.Network.Game
                     skill.Uses = 0;
                     Send(new ServerFormat2C(skill.Slot, skill.Icon, skill.Name));
 
-                    SendMessage(0x02, string.Format(CultureInfo.CurrentCulture, "{0} has improved. (Lv. {1})",
+                    SendMessage(0x02, string.Format(CultureInfo.CurrentCulture, "{0}의 숙련도가 올랐습니다. (Lv. {1})",
                         skill.Template.Name,
                         skill.Level));
                 }
@@ -1222,7 +1222,7 @@ namespace Darkages.Network.Game
                     spell.Casts = 0;
                     Send(new ServerFormat17(spell));
                     SendMessage(0x02,
-                        string.Format(CultureInfo.CurrentCulture, "{0} has improved.", spell.Template.Name));
+                        string.Format(CultureInfo.CurrentCulture, "{0}의 숙련도가 올랐습니다.", spell.Template.Name));
                 }
             }
         }

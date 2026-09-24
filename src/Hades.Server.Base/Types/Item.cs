@@ -266,7 +266,7 @@ namespace Darkages.Types
                 if (Template.AcModifer.Option == Operator.Remove)
                     client.Aisling.BonusAc -= Template.AcModifer.Value;
 
-                client.SendMessage(0x03, $"E: {Template.Name}, AC: {client.Aisling.Ac}");
+                client.SendMessage(0x03, $"{Template.Name}: 갑옷 강도 {client.Aisling.Ac}");
                 client.SendStats(StatusFlags.StructD);
             }
 
@@ -519,7 +519,7 @@ namespace Darkages.Types
                         ((Aisling) sprite).Client.Send(new ServerFormat0F(item));
 
                         ((Aisling) sprite).Client.SendMessage(Scope.Self, 0x02,
-                            $"Received {DisplayName}, You now have ({(item.Stacks == 0 ? item.Stacks + 1 : item.Stacks)})");
+                            $"{DisplayName}을(를) 얻었습니다. ({(item.Stacks == 0 ? item.Stacks + 1 : item.Stacks)}개)");
 
                         return true;
                     }
@@ -544,7 +544,7 @@ namespace Darkages.Types
                     var format = new ServerFormat0F(this);
                     ((Aisling) sprite).Show(Scope.Self, format);
                     ((Aisling) sprite).Client.SendMessage(Scope.Self, 0x02,
-                        $"{DisplayName} Received.");
+                        $"{DisplayName}을(를) 얻었습니다.");
 
                     if (checkWeight)
                     {
@@ -637,7 +637,7 @@ namespace Darkages.Types
                         break;
                 }
 
-                client.SendMessage(0x03, $"E: {Template.Name}, AC: {client.Aisling.Ac}");
+                client.SendMessage(0x03, $"{Template.Name}: 갑옷 강도 {client.Aisling.Ac}");
                 client.SendStats(StatusFlags.StructD);
             }
 

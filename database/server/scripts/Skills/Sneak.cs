@@ -27,7 +27,7 @@ namespace Darkages.Storage.locales.Scripts.Skills
             {
                 var client = (sprite as Aisling).Client;
 
-                client.SendMessage(0x02, "failed.");
+                client.SendMessage(0x02, "실패했습니다.");
             }
         }
 
@@ -42,7 +42,7 @@ namespace Darkages.Storage.locales.Scripts.Skills
 
                     if (client.Aisling.Invisible)
                     {
-                        client.SendMessage(0x02, "You blend in to the shadows.");
+                        client.SendMessage(0x02, "그림자 속으로 몸을 숨깁니다.");
 
                         client.Aisling.Show(Scope.NearbyAislings,
                             new ServerFormat29(Skill.Template.TargetAnimation,

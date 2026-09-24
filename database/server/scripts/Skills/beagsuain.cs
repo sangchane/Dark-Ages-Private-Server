@@ -28,7 +28,7 @@ namespace Darkages.Storage.locales.Scripts.Skills
                 var client = (sprite as Aisling).Client;
                 MonkStrike.ShowMiss(client.Aisling, Skill);
 
-                client.SendMessage(0x02, "The enemy has made it through.");
+                client.SendMessage(0x02, "빗나갔습니다.");
             }
         }
 
@@ -43,7 +43,7 @@ namespace Darkages.Storage.locales.Scripts.Skills
                 if (sprite is Aisling)
                 {
                     var client = (sprite as Aisling).Client;
-                    client.SendMessage(0x02, "The enemy has made it through.");
+                    client.SendMessage(0x02, "빗나갔습니다.");
                     return;
                 }
 

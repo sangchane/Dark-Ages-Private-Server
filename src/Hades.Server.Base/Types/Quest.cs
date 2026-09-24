@@ -246,7 +246,7 @@ namespace Darkages.Types
             if (GoldReward > 0)
             {
                 user.GoldPoints += (int) GoldReward;
-                user.Client.SendMessage(0x02, $"You are awarded {GoldReward} gold.");
+                user.Client.SendMessage(0x02, $"금전 {GoldReward}전을 받았습니다.");
             }
 
             if (equipLoot)

@@ -63,7 +63,7 @@ namespace Darkages.Storage.locales.debuffs
 
                 (Affected as Aisling)
                     .Client
-                    .SendMessage(0x02, "Your armor feels light...");
+                    .SendMessage(0x02, "갑옷이 가벼워진 듯합니다...");
             }
             else
             {
@@ -90,7 +90,7 @@ namespace Darkages.Storage.locales.debuffs
             if (Affected is Aisling)
                 (Affected as Aisling)
                     .Client
-                    .SendMessage(0x02, "The hurricane has passed.");
+                    .SendMessage(0x02, "허리케인이 지나갔습니다.");
 
             if (AcModifer.Option == Operator.Add)
                 Affected.BonusAc -= AcModifer.Value;

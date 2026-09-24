@@ -19,7 +19,7 @@ namespace Darkages.Storage.locales.Scripts.Spells
             if (sprite is Aisling)
             {
                 var client = (sprite as Aisling).Client;
-                client.SendMessage(0x02, "failed.");
+                client.SendMessage(0x02, "실패했습니다.");
             }
         }
 
@@ -33,7 +33,7 @@ namespace Darkages.Storage.locales.Scripts.Spells
             {
                 if (aobj.HasBuff("deireas faileas"))
                 {
-                    aobj.Client.SendMessage(0x02, "Spells are already being reflected.");
+                    aobj.Client.SendMessage(0x02, "이미 걸려있습니다.");
                     return;
                 }
 

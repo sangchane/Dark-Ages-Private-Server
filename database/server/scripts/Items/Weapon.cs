@@ -46,7 +46,7 @@ namespace Darkages.Storage.locales.Scripts.Items
                 if (obj.EquipmentManager.Shield != null)
                     if (!obj.EquipmentManager.RemoveFromExisting(obj.EquipmentManager.Shield.Slot))
                     {
-                        obj.Client.SendMessage(0x02, "You require both hands to equip such an item.");
+                        obj.Client.SendMessage(0x02, "두 손을 모두 써야 하는 물건입니다.");
                         return;
                     }
             }

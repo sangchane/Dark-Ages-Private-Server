@@ -31,7 +31,7 @@ namespace Darkages.Storage.locales.debuffs
             if (Affected is Aisling)
                 (Affected as Aisling)
                     .Client
-                    .SendMessage(0x02, "You return to normal.");
+                    .SendMessage(0x02, "원래대로 돌아왔습니다.");
 
             base.OnEnded(Affected, debuff);
         }

@@ -28,7 +28,7 @@ namespace Darkages.Storage.locales.Scripts.Skills
                 var client = aisling.Client;
 
                 client.SendMessage(0x02,
-                    string.IsNullOrEmpty(Skill.Template.FailMessage) ? Skill.Template.FailMessage : "failed.");
+                    string.IsNullOrEmpty(Skill.Template.FailMessage) ? Skill.Template.FailMessage : "실패했습니다.");
             }
         }
 

@@ -62,7 +62,7 @@ namespace Darkages.Storage.locales.debuffs
 
                 (Affected as Aisling)
                     .Client
-                    .SendMessage(0x02, "You are infected with poison.");
+                    .SendMessage(0x02, "중독되었습니다.");
             }
             else
             {
@@ -91,7 +91,7 @@ namespace Darkages.Storage.locales.debuffs
             if (Affected is Aisling)
                 (Affected as Aisling)
                     .Client
-                    .SendMessage(0x02, "you feel better now.");
+                    .SendMessage(0x02, "중독 끝.");
 
             base.OnEnded(Affected, debuff);
         }

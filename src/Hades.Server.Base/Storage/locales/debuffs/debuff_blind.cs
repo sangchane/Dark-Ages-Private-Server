@@ -25,7 +25,7 @@ namespace Darkages.Storage.locales.debuffs
                     .Client
                     .SendStats(StatusFlags.StructD);
                 aisling
-                    .Client.SendMessage(0x02, "You are blinded!");
+                    .Client.SendMessage(0x02, "눈이 멀었습니다!");
                 aisling
                     .Client.Refresh();
             }
@@ -59,7 +59,7 @@ namespace Darkages.Storage.locales.debuffs
                     .Client
                     .SendStats(StatusFlags.StructD);
                 aisling
-                    .Client.SendMessage(0x02, "You can see again.");
+                    .Client.SendMessage(0x02, "다시 앞이 보입니다.");
 
                 aisling
                     .Client.Refresh();

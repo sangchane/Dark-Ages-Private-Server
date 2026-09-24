@@ -71,7 +71,7 @@ namespace Darkages.Types
                 var nitem = ObjectManager.Clone<Item>(item);
 
                 if (nitem.GiveTo(Owner))
-                    Owner.Client.SendMessage(0x02, $"You have recovered {item.Template.Name}.");
+                    Owner.Client.SendMessage(0x02, $"{item.Template.Name}을(를) 되찾았습니다.");
             }
 
             Items = new List<Item>();

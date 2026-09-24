@@ -59,7 +59,7 @@ namespace Darkages.Storage.locales.debuffs
 
                 (affected as Aisling)
                     .Client
-                    .SendMessage(0x02, "You've been incapacitated.");
+                    .SendMessage(0x02, "몸이 굳어 움직일 수 없습니다.");
             }
             else
             {
@@ -83,7 +83,7 @@ namespace Darkages.Storage.locales.debuffs
             if (affected is Aisling)
                 (affected as Aisling)
                     .Client
-                    .SendMessage(0x02, "Your are free again.");
+                    .SendMessage(0x02, "다시 움직일 수 있습니다.");
 
             base.OnEnded(affected, debuff);
         }

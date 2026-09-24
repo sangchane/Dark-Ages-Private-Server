@@ -59,7 +59,7 @@ namespace Darkages.Storage.locales.debuffs
 
                 (Affected as Aisling)
                     .Client
-                    .SendMessage(0x02, "You have been put to sleep.");
+                    .SendMessage(0x02, "잠이 쏟아져 옵니다.");
             }
             else
             {
@@ -86,7 +86,7 @@ namespace Darkages.Storage.locales.debuffs
             if (Affected is Aisling)
                 (Affected as Aisling)
                     .Client
-                    .SendMessage(0x02, "awake!");
+                    .SendMessage(0x02, "잠에서 깨어났습니다.");
 
             base.OnEnded(Affected, debuff);
         }

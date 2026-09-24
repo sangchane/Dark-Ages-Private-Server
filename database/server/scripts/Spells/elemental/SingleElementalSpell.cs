@@ -24,7 +24,7 @@ namespace Darkages.Storage.locales.Scripts.Spells
             {
                 (sprite as Aisling)
                     .Client
-                    .SendMessage(0x02, "Your spell has been deflected.");
+                    .SendMessage(0x02, "걸리지 않습니다.");
                 (sprite as Aisling)
                     .Client
                     .SendAnimation(33, target, sprite);
@@ -47,7 +47,7 @@ namespace Darkages.Storage.locales.Scripts.Spells
                 if (target is Aisling)
                     (target as Aisling).Client
                         .SendMessage(0x02,
-                            $"{client.Aisling.Username} Attacks you with {Spell.Template.Name}.");
+                            $"{client.Aisling.Username}님이 {Spell.Template.Name}(으)로 공격합니다.");
 
                 var imp = Spell.Level * 2 / 100;
                 var dmg = (int) (client.Aisling.Int / 2 * Spell.Template.DamageExponent);
@@ -56,7 +56,7 @@ namespace Darkages.Storage.locales.Scripts.Spells
 
                 target.ApplyDamage(sprite, dmg, Spell.Template.ElementalProperty, Spell.Template.Sound);
 
-                client.SendMessage(0x02, $"you cast {Spell.Template.Name}");
+                client.SendMessage(0x02, $"{Spell.Template.Name}을(를) 외웠습니다.");
                 client.SendAnimation(Spell.Template.Animation, target, sprite);
 
                 var action = new ServerFormat1A
@@ -78,7 +78,7 @@ namespace Darkages.Storage.locales.Scripts.Spells
                 if (target is Aisling)
                     (target as Aisling).Client
                         .SendMessage(0x02,
-                            $"{(sprite is Monster ? (sprite as Monster).Template.Name : (sprite as Mundane).Template.Name) ?? "Monster"} Attacks you with {Spell.Template.Name}.");
+                            $"{(sprite is Monster ? (sprite as Monster).Template.Name : (sprite as Mundane).Template.Name) ?? "괴물"}이(가) {Spell.Template.Name}(으)로 공격합니다.");
 
                 target.SendAnimation(Spell.Template.Animation, target, sprite);
 

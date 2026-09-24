@@ -42,7 +42,7 @@ namespace Darkages.Storage.locales.debuffs
             {
                 (Affected as Aisling)
                     .Client
-                    .SendMessage(0x02, $"{Name} has ended.");
+                    .SendMessage(0x02, $"{Name} 끝.");
                 (Affected as Aisling)
                     .Client
                     .SendStats(StatusFlags.StructD);

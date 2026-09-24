@@ -22,7 +22,7 @@ namespace Darkages.Storage.locales.Buffs
                 {
                     client.Aisling.Invisible = true;
 
-                    if (client.Aisling.Invisible) client.SendMessage(0x02, "You blend in to the shadows.");
+                    if (client.Aisling.Invisible) client.SendMessage(0x02, "그림자 속으로 몸을 숨깁니다.");
 
                     var sound = new ServerFormat13
                     {
@@ -51,7 +51,7 @@ namespace Darkages.Storage.locales.Buffs
             if (Affected is Aisling)
                 (Affected as Aisling)
                     .Client
-                    .SendMessage(0x02, "You emerge from the shadows.");
+                    .SendMessage(0x02, "그림자 밖으로 모습을 드러냅니다.");
             {
                 var client = (Affected as Aisling).Client;
                 {

@@ -123,7 +123,7 @@ namespace Darkages.Storage.locales.debuffs
             {
                 (Affected as Aisling)
                     .Client
-                    .SendMessage(0x02, "You have died.");
+                    .SendMessage(0x02, "죽었습니다.");
 
                 var hpbar = new ServerFormat13
                 {

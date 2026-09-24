@@ -182,11 +182,12 @@ namespace Darkages.Storage.locales.Scripts.Formulas
 
                                 if (user is Aisling aisling)
                                 {
-                                    var party = aisling.GroupParty.PartyMembers;
+                                    // 그룹이 없으면 GroupParty 가 null 이다 — 그때는 잡은 사람 혼자 듣는다.
+                                    var party = aisling.GroupParty?.PartyMembers ?? new List<Aisling> { aisling };
 
                                     foreach (var player in party)
                                         player.Client.SendMessage(0x03,
-                                            $"Special Drop: {rolledItem.DisplayName}");
+                                            $"귀한 물건이 떨어졌습니다: {rolledItem.DisplayName}");
 
                                     Task.Delay(1000).ContinueWith(ct => { rolledItem.Animate(160, 200); });
                                 }
@@ -279,11 +280,11 @@ namespace Darkages.Storage.locales.Scripts.Formulas
                     DistributeExperience(party, exp);
 
                     party.Client.SendStats(StatusFlags.StructC);
-                    party.Client.SendMessage(0x02, $"You received {exp} Experience!.");
+                    party.Client.SendMessage(0x02, $"경험치가 {exp} 올랐습니다");
                 }
 
             player.Client.SendStats(StatusFlags.StructC);
-            player.Client.SendMessage(0x02, $"You received {exp} Experience!.");
+            player.Client.SendMessage(0x02, $"경험치가 {exp} 올랐습니다");
         }
 
         /// <summary>

@@ -37,9 +37,9 @@ namespace Darkages.Storage.locales.Scripts.Spells
                     if (target is Aisling)
                         (target as Aisling).Client
                             .SendMessage(0x02,
-                                $"{client.Aisling.Username} casts {Spell.Template.Name} on you.");
+                                $"{client.Aisling.Username}님이 {Spell.Template.Name}을(를) 외워주셨습니다.");
 
-                    client.SendMessage(0x02, $"you cast {Spell.Template.Name}");
+                    client.SendMessage(0x02, $"{Spell.Template.Name}을(를) 외웠습니다.");
                     client.SendAnimation(Spell.Template.Animation, target, sprite);
 
                     var action = new ServerFormat1A
@@ -62,7 +62,7 @@ namespace Darkages.Storage.locales.Scripts.Spells
                 }
                 else
                 {
-                    client.SendMessage(0x02, "You already cast this.");
+                    client.SendMessage(0x02, "이미 걸려있습니다.");
                 }
             }
         }

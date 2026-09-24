@@ -185,18 +185,18 @@ namespace Darkages.Types
             if (p10 <= 10 && !item.Warnings[0])
             {
                 Client.SendMessage(0x02,
-                    $"{item.Template.Name} is almost broken!. Please repair it soon (< 10%)");
+                    $"{item.Template.Name}이(가) 곧 부서집니다. 어서 고치십시오. (10% 미만)");
                 item.Warnings[0] = true;
             }
             else if (p10 <= 30 && p10 > 10 && !item.Warnings[1])
             {
                 Client.SendMessage(0x02,
-                    $"{item.Template.Name} is wearing out soon. Please repair it ASAP. (< 30%)");
+                    $"{item.Template.Name}이(가) 많이 닳았습니다. 되도록 빨리 고치십시오. (30% 미만)");
                 item.Warnings[1] = true;
             }
             else if (p10 <= 50 && p10 > 30 && !item.Warnings[2])
             {
-                Client.SendMessage(0x02, $"{item.Template.Name} will need a repair soon. (< 50%)");
+                Client.SendMessage(0x02, $"{item.Template.Name}을(를) 곧 고쳐야 합니다. (50% 미만)");
                 item.Warnings[2] = true;
             }
         }

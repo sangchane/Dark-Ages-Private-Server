@@ -46,7 +46,7 @@ namespace Darkages.Assets.locales.Scripts.Traps
             Trap.Set(sprite, 300, 1, OnTriggeredBy);
 
             if (sprite is Aisling)
-                (sprite as Aisling).Client.SendMessage(0x02, $"You Cast {Spell.Template.Name}");
+                (sprite as Aisling).Client.SendMessage(0x02, $"{Spell.Template.Name}을(를) 외웠습니다.");
         }
     }
 }

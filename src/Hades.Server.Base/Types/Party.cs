@@ -27,10 +27,8 @@ namespace Darkages.Types
             {
                 if (playerToAdd.GroupId != 0 && playerToAdd.GroupId != partyLeader.GroupId)
                 {
-                    partyLeader.Client.SystemMessage(
-                        $"{playerToAdd.Username} belongs to another party, and was not able to join your party.");
-                    playerToAdd.Client.SystemMessage(
-                        $"{partyLeader.Username}'s requested you to join his party. However you belong to another party.");
+                    partyLeader.Client.SystemMessage($"{playerToAdd.Username}님은 이미 그룹 중 입니다.");
+                    playerToAdd.Client.SystemMessage("이미 그룹 중 입니다.");
 
                     return false;
                 }
@@ -40,19 +38,18 @@ namespace Darkages.Types
 
                 playerToAdd.GroupId = partyLeader.GroupId;
 
-                partyLeader.Client.SystemMessage($"{playerToAdd.Username} has joined your party.");
-                playerToAdd.Client.SystemMessage($"You have joined {partyLeader.Username}'s party.");
+                partyLeader.Client.SystemMessage($"{playerToAdd.Username}님 그룹에 참여");
+                playerToAdd.Client.SystemMessage($"{partyLeader.Username}님의 그룹에 참여");
 
                 return true;
             }
 
             if (playerToAdd.GroupId != 0 && partyLeader.GroupId == 0)
             {
-                playerToAdd.Client.SystemMessage(
-                    $"{partyLeader.Username} belongs to another party, and was not able to join your party.");
+                // 전에는 두 말이 뒤바뀌어 갔다(그룹에 든 쪽은 청한 이가, 청한 이는 제 객체 이름을 들었다).
+                playerToAdd.Client.SystemMessage("이미 그룹 중 입니다.");
 
-                partyLeader.Client.SystemMessage(
-                    $"{playerToAdd}'s requested you to join his party. However you belong to another party.");
+                partyLeader.Client.SystemMessage($"{playerToAdd.Username}님은 이미 그룹 중 입니다.");
 
                 return false;
             }
@@ -64,9 +61,9 @@ namespace Darkages.Types
             playerToAdd.GroupId = party.Id;
 
             foreach (var player in party.PartyMembers)
-                player.Client.SystemMessage($"{playerToAdd.Username} has joined the party.");
+                player.Client.SystemMessage($"{playerToAdd.Username}님 그룹에 참여");
 
-            playerToAdd.Client.SystemMessage($"You have joined {partyLeader.Username}'s party.");
+            playerToAdd.Client.SystemMessage($"{partyLeader.Username}님의 그룹에 참여");
             playerToAdd.GroupId = party.Id;
 
             return true;
@@ -103,7 +100,7 @@ namespace Darkages.Types
             foreach (var player in group.PartyMembers)
             {
                 player.GroupId = 0;
-                player.Client.SendMessage("The party has now been disbanded.");
+                player.Client.SendMessage("그룹 해체");
             }
         }
 
@@ -116,7 +113,7 @@ namespace Darkages.Types
                 if (group != null)
                 {
                     foreach (var player in group.PartyMembers)
-                        player.Client.SendMessage($"{playerToRemove.Username} has left the party.");
+                        player.Client.SendMessage($"{playerToRemove.Username}님 그룹 해체");
 
                     playerToRemove.GroupId = 0;
 
@@ -134,7 +131,7 @@ namespace Darkages.Types
                         group.LeaderName = nextPlayer.Username;
 
                         foreach (var player in group.PartyMembers)
-                            player.Client.SendMessage($"{nextPlayer.Username} is now the party leader.");
+                            player.Client.SendMessage($"{nextPlayer.Username}님이 그룹장이 되셨습니다");
                     }
                 }
             }

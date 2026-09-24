@@ -23,7 +23,7 @@ namespace Darkages.Storage.locales.Scripts.Spells.rogue
             if (sprite is Aisling aisling)
             {
                 aisling.MakeReactor("GramailPrayer", 30);
-                aisling.Client.SystemMessage($"You cast {Spell.Template.Name}.");
+                aisling.Client.SystemMessage($"{Spell.Template.Name}을(를) 외웠습니다.");
             }
         }
 

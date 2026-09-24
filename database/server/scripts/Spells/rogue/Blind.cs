@@ -49,7 +49,7 @@ namespace Darkages.Storage.locales.Scripts.Spells.rogue
                     Speed = 30
                 };
                 sprite.Show(Scope.NearbyAislings, action);
-                aisling.Client.SendMessage(0x02, "you cast " + Spell.Template.Name + ".");
+                aisling.Client.SendMessage(0x02, $"{Spell.Template.Name}을(를) 외웠습니다.");
             }
         }
 

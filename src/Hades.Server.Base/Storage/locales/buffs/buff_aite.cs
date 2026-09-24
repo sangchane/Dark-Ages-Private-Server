@@ -18,7 +18,7 @@ namespace Darkages.Storage.locales.Buffs
             if (affected is Aisling)
                 (affected as Aisling)
                     .Client
-                    .SendMessage(0x02, "Aite! You are empowered. You glow like gold.");
+                    .SendMessage(0x02, "아이테! 몸이 금빛으로 빛나며 힘이 솟습니다.");
 
             base.OnApplied(affected, buff);
         }
@@ -37,7 +37,7 @@ namespace Darkages.Storage.locales.Buffs
             if (affected is Aisling)
                 (affected as Aisling)
                     .Client
-                    .SendMessage(0x02, "Aite is gone. Your armor returns to normal.");
+                    .SendMessage(0x02, "아이테가 끝났습니다. 방어력이 원래대로 돌아옵니다.");
 
             base.OnEnded(affected, buff);
         }

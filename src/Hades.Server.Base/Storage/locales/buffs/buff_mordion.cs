@@ -17,7 +17,7 @@ namespace Darkages.Storage.locales.Buffs
             if (Affected is Aisling)
                 (Affected as Aisling)
                     .Client
-                    .SendMessage(0x02, "Your skin turns to stone.");
+                    .SendMessage(0x02, "피부가 돌처럼 단단해집니다.");
 
             Affected.Immunity = true;
 
@@ -34,7 +34,7 @@ namespace Darkages.Storage.locales.Buffs
             if (Affected is Aisling)
                 (Affected as Aisling)
                     .Client
-                    .SendMessage(0x02, "Your skin turns back to flesh.");
+                    .SendMessage(0x02, "피부가 원래대로 돌아옵니다.");
 
             Affected.Immunity = false;
 
