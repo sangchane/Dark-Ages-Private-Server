@@ -38,6 +38,45 @@
       "DisplayName": "노비스마을",
       "PointX": 200,
       "PointY": 200
+    },
+    {
+      "Destination": {
+        "AreaID": 20030,
+        "Location": {
+          "X": 58,
+          "Y": 22
+        },
+        "PortalKey": 0
+      },
+      "DisplayName": "아벨",
+      "PointX": 324,
+      "PointY": 269
+    },
+    {
+      "Destination": {
+        "AreaID": 20287,
+        "Location": {
+          "X": 50,
+          "Y": 50
+        },
+        "PortalKey": 0
+      },
+      "DisplayName": "밀레스",
+      "PointX": 389,
+      "PointY": 190
+    },
+    {
+      "Destination": {
+        "AreaID": 20304,
+        "Location": {
+          "X": 89,
+          "Y": 32
+        },
+        "PortalKey": 0
+      },
+      "DisplayName": "마인",
+      "PointX": 137,
+      "PointY": 113
     }
   ],
   "FieldNumber": 1,

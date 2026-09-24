@@ -26,6 +26,9 @@ namespace Darkages.Storage.locales.Scripts.Items
         {
             "노비스마을리콜",
             "수오미마을리콜",
+            "밀레스마을리콜",
+            "아벨마을리콜",
+            "마인마을리콜",
         };
 
         public Recall(Item item) : base(item)
