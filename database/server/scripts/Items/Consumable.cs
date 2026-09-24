@@ -1,6 +1,7 @@
 #region
 
 using System;
+using Darkages.Network.ServerFormats;
 using Darkages.Scripting;
 using Darkages.Types;
 
@@ -30,7 +31,11 @@ namespace Darkages.Storage.locales.Scripts.Items
                 return;
 
             if (template.HealthRestore != 0)
+            {
+                var before = aisling.CurrentHp;
                 aisling.CurrentHp = Math.Clamp(aisling.CurrentHp + template.HealthRestore, 0, aisling.MaximumHp);
+                ServerFormat5D.Healed(aisling, aisling, before);
+            }
 
             if (template.ManaRestore != 0)
                 aisling.CurrentMp = Math.Clamp(aisling.CurrentMp + template.ManaRestore, 0, aisling.MaximumMp);

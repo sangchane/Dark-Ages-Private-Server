@@ -1133,6 +1133,9 @@ namespace Darkages.Types
                 dmg = CompleteDamageApplication(dmg, sound, dmgcb, amplifier);
             }
 
+            // 얼마나 들어갔나(0x5D, 우리 확장) — 0x13 은 백분율뿐이라 모바일이 숫자를 띄울 수 없다.
+            ServerFormat5D.Hurt(this, damageDealingSprite, dmg);
+
             return true;
         }
 

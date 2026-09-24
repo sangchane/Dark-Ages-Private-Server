@@ -828,7 +828,10 @@ namespace Darkages.Storage.locales.Scripts.Pack599
         {
             if (who == null)
                 return 0;
+            var before = who.CurrentHp;
             who.CurrentHp = (int) Math.Max(1, Math.Min(value, who.MaximumHp));
+            // 채운 만큼(0x5D, 우리 확장) — 쿠로토·쿠라노·그룹 회복·리젠이 모두 여기를 지난다. 깎을 때는 알리지 않는다.
+            ServerFormat5D.Healed(who, null, before);
             (who as Aisling)?.Client.SendStats(StatusFlags.StructB);
             return 1;
         }

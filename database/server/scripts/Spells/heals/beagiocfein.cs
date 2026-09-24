@@ -55,10 +55,13 @@ namespace Darkages.Storage.locales.Scripts.Spells
                             if (obj.Dead)
                                 continue;
 
+                            var before = obj.CurrentHp;
                             obj.CurrentHp += obj.MaximumHp / 10;
 
                             if (obj.CurrentHp > obj.MaximumHp)
                                 obj.CurrentHp = obj.MaximumHp;
+
+                            ServerFormat5D.Healed(obj, client.Aisling, before);
 
                             if (client.Aisling.CurrentMp < 0)
                                 client.Aisling.CurrentMp = 0;

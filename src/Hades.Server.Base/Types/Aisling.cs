@@ -565,9 +565,12 @@ namespace Darkages
 
         public Aisling GiveHealth(Sprite target, int value)
         {
+            var before = target.CurrentHp;
             target.CurrentHp += value;
 
             if (target.CurrentHp > target.MaximumHp) target.CurrentHp = target.MaximumHp;
+
+            ServerFormat5D.Healed(target, this, before);
 
             return this;
         }
