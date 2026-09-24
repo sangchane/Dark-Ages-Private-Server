@@ -16,6 +16,9 @@ namespace Darkages.Network.Game.Components
         /// </summary>
         private const int RoomTiles = 20 * 20;
 
+        /// <summary>넓이에 맞춰 늘린 마릿수 중 실제로 세우는 몫. 2026-09-24 사용자 결정으로 30% 줄였다.</summary>
+        private const double Thinned = 0.7;
+
         private readonly GameServerTimer _timer;
 
         public MonolithComponent(GameServer server)
@@ -72,7 +75,13 @@ namespace Darkages.Network.Game.Components
                     // 마릿수도 넓이에 맞춘다. 정의가 적은 SpawnMax 는 20x20 방 기준이라, 3,600칸짜리
                     // 사냥터에 그대로 쓰면 스무 칸에 한 마리도 안 선다(사용자, 2026-09-18). 넓이에 비례해
                     // 늘리되 넓이의 제곱근만큼만 — 그대로 곱하면 우드랜드1-1 에 450마리가 선다.
-                    var most = (int) Math.Round(template.SpawnMax * Math.Sqrt(spread));
+                    // 그렇게 늘린 수에서 다시 30% 를 덜어 낸다 — 아이폰으로 돌아본 사용자가 "많다"고 했다
+                    // (2026-09-24, 사용자 결정). 1마리짜리 정의는 반올림으로 1마리가 남는다.
+                    // 경험치가 0 인 정의는 사냥감이 아니라 꾸밈이다(노비스마을의 노비스주민1·2 — 5.99 Npc_Spawn 에
+                    // 한 명씩 적힌 걸어 다니는 주민). 넓이로 늘리면 죽지 않는 "괴물" 이 마을에 여섯 선다.
+                    var most = template.Exp == 0
+                        ? template.SpawnMax
+                        : (int) Math.Round(template.SpawnMax * Math.Sqrt(spread) * Thinned);
 
                     if (count < most)
                         if (count < map.Rows * map.Cols / 40)

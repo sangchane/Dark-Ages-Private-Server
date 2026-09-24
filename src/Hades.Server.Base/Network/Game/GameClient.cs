@@ -698,6 +698,26 @@ namespace Darkages.Network.Game
 
         public GameClient RefreshMap(bool updateView = false)
         { 
+            // 시야를 비우기 **전에** 보여 주던 것을 거둔다. 비우기만 하면 서버는 그것들을 다시는 거두지 않는다 —
+            // ObjectComponent 는 시야에 든 것만 0x0E 로 지운다. 0x15 에 화면을 비우지 않는 클라이언트(모바일)에는
+            // 사냥터 괴물이 움직이지도 죽지도 않는 채로 마을 위에 남았고, 마을이 더 작으면 맵 밖에 섰다
+            // (2026-09-24 사용자 보고 "마을에 좀비 괴물"). 같은 맵 순간이동·이형환위도 이 길을 탄다.
+            Sprite[] shown;
+
+            try
+            {
+                shown = Aisling.View.ToArray();
+            }
+            catch (InvalidOperationException)
+            {
+                // 다른 스레드가 시야를 고치던 중이면 이번에는 거두지 못한다 — 서버 다른 곳처럼 넘어간다.
+                shown = Array.Empty<Sprite>();
+            }
+
+            foreach (var seen in shown)
+                if (seen != null && seen.Serial != Aisling.Serial)
+                    seen.HideFrom(Aisling);
+
             Aisling.View.Clear();
             ShouldUpdateMap = false;
 
