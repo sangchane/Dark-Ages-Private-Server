@@ -211,10 +211,11 @@ namespace Darkages.Network.Login
             }
 
             // The mobile creator chooses the path before the first world entry, bypassing ClassChooser.
-            // Keep the Monk's two requested opening techniques on that new-character path.  Aisling.Create
-            // has already supplied Assail when the server configuration requires a base attack; do not add
-            // Kick here as well, because this project maps 단각 to that same kick motion and the two would
-            // become separate, duplicate attacks in the technique pane.
+            // A new Monk starts with exactly 이형환위 · 붕각 · 단각 and the spell 쿠로토 (user, 2026-09-24).
+            // Aisling.Create has already supplied Assail when the server configuration requires a base attack —
+            // it stays, because the attack button (0x13) only swings the Assail-type skills in the book — and
+            // the configured starter spell, which the Monk gives up for 쿠로토.  Do not add Kick here as well:
+            // this project maps 단각 to that same kick motion and the two would become duplicate attacks.
             if (!GiveMonkStarterSkills(template, path))
             {
                 client.SendMessageBox(0x02, "무도가의 첫 기술이 준비되어 있지 않습니다.");
@@ -260,7 +261,8 @@ namespace Darkages.Network.Login
         }
 
         /// <summary>
-        /// Gives only the two deliberately selected Monk starters to a character created as a Monk.
+        /// Gives only the deliberately selected Monk starters to a character created as a Monk: the techniques
+        /// 이형환위 · 붕각 · 단각 beside the base attack, and 쿠로토 in place of the configured starter spell.
         /// <see cref="Skill.GiveTo(Aisling, string, int)"/> also loads the template's script and assigns the
         /// appropriate skill-pane slots before the character is serialized, so the same entries return on
         /// every later login.
@@ -272,8 +274,12 @@ namespace Darkages.Network.Login
                 return true;
             }
 
+            aisling.SpellBook = new SpellBook();
+
             return Skill.GiveTo(aisling, "이형환위", 1)
-                   && Skill.GiveTo(aisling, "단각", 1);
+                   && Skill.GiveTo(aisling, "붕각", 1)
+                   && Skill.GiveTo(aisling, "단각", 1)
+                   && Spell.GiveTo(aisling, "쿠로토", 1);
         }
 
         protected override void Format0BHandler(LoginClient client, ClientFormat0B format)
