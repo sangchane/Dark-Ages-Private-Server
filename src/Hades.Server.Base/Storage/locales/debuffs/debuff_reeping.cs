@@ -121,27 +121,31 @@ namespace Darkages.Storage.locales.debuffs
 
             if (Affected is Aisling && !debuff.Cancelled)
             {
-                (Affected as Aisling)
-                    .Client
-                    .SendMessage(0x02, "죽었습니다.");
-
-                var hpbar = new ServerFormat13
-                {
-                    Serial = Affected.Serial,
-                    Health = 255,
-                    Sound = 5
-                };
-
-                (Affected as Aisling).Show(Scope.Self, hpbar);
-                // CastDeath() only runs AislingToGhostForm() (which stops HP/MP regen) when the Ghost flag is
-                // not set yet — set it first and the regen timers never stop, so a "dead" character keeps
-                // healing.
-                (Affected as Aisling).CastDeath();
-                (Affected as Aisling).Flags = AislingFlags.Ghost;
-                (Affected as Aisling).SendToHell();
+                Die(Affected as Aisling);
             }
 
             base.OnEnded(Affected, debuff);
+        }
+
+        /// <summary>죽어 유령이 되어 뮤레칸의방으로 간다 — 혼수가 끝났을 때, 그리고 무리 없이 체력이 0 이 되었을 때.</summary>
+        public static void Die(Aisling aisling)
+        {
+            aisling.Client.SendMessage(0x02, "죽었습니다.");
+
+            var hpbar = new ServerFormat13
+            {
+                Serial = aisling.Serial,
+                Health = 255,
+                Sound = 5
+            };
+
+            aisling.Show(Scope.Self, hpbar);
+            // CastDeath() only runs AislingToGhostForm() (which stops HP/MP regen) when the Ghost flag is
+            // not set yet — set it first and the regen timers never stop, so a "dead" character keeps
+            // healing.
+            aisling.CastDeath();
+            aisling.Flags = AislingFlags.Ghost;
+            aisling.SendToHell();
         }
     }
 }

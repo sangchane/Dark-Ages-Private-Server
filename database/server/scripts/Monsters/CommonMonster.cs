@@ -230,8 +230,9 @@ namespace Darkages.Storage.locales.Scripts.Monsters
             if (Monster.Target != null && Monster.TaggedAislings.Count > 0 && Monster.Template.EngagedWalkingSpeed > 0)
                 Monster.WalkTimer.Delay = TimeSpan.FromMilliseconds(Monster.Template.EngagedWalkingSpeed);
 
+            // 혼수(빈사)인 사람은 치지 않는다 — 원작 규칙(사용자 확인 2026-09-24). 숨은 사람과 같이 목표에서 뺀다.
             if (Monster.Target is Aisling aisling)
-                if (aisling.Invisible)
+                if (aisling.Invisible || aisling.Skulled)
                 {
                     ClearTarget();
                     Monster.WalkTimer.Update(elapsedTime);
@@ -317,7 +318,7 @@ namespace Darkages.Storage.locales.Scripts.Monsters
         {
             if (Monster.Target is Aisling aisling)
             {
-                if (aisling!.Invisible || aisling.Dead || aisling.CurrentHp == 0)
+                if (aisling!.Invisible || aisling.Dead || aisling.Skulled || aisling.CurrentHp == 0)
                 {
                     ClearTarget();
                     return;
@@ -340,7 +341,7 @@ namespace Darkages.Storage.locales.Scripts.Monsters
             {
                 if (!Monster.Aggressive) return;
                 Monster.Target ??= GetObjects(Monster.Map, i => i.WithinRangeOf(Monster), Get.Aislings)
-                    .Where(n => n != null)
+                    .Where(n => n != null && !(n is Aisling { Skulled: true }))
                     .OrderBy(v => v.Position.DistanceFrom(Monster.Position.X, Monster.Position.Y))
                     .FirstOrDefault();
 

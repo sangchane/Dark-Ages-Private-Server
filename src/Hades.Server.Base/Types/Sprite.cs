@@ -1033,6 +1033,10 @@ namespace Darkages.Types
             if (!Attackable)
                 return;
 
+            // 혼수(빈사) 동안은 아무것도 들어가지 않는다 — 괴물·사람·마법·지속 피해 모두 여기를 지난다(원작 규칙, 사용자 확인 2026-09-24).
+            if (this is Aisling { Skulled: true })
+                return;
+
             if (!CanBeAttackedHere(damageDealingSprite))
                 return;
 

@@ -1129,6 +1129,9 @@ namespace Darkages.Network.Game
             }
         }
 
+        /// <summary>무리에 있는 사람이 체력 0 이 되어 빠지는 혼수의 길이 — Novaonline `__SCRIPT_DEAD__` 의 `coma_delay @myid, 15`.</summary>
+        public const int GroupComaSeconds = 15;
+
         public GameClient StatusCheck()
         {
             var proceed = false;
@@ -1173,8 +1176,18 @@ namespace Darkages.Network.Game
                     if (Aisling.CurrentMapId == ServerContext.Config.DeathMap)
                         return this;
 
+                    // 5.99·Novaonline `__SCRIPT_DEAD__`: 무리가 있으면 혼수(`set_coma` · `coma_delay 15`) — 그 사이 무리가 살릴 수 있다.
+                    // 무리가 없으면 혼수 없이 바로 죽어 뮤레칸의방으로 간다(`warp "뮤레칸의방", 10, 9` · `char_dead`). 무리 판정은 `group_exist` 와 같다.
+                    if ((Aisling.PartyMembers?.Count ?? 0) <= 1 && !Aisling.GameMaster)
+                    {
+                        debuff_reeping.Die(Aisling);
+                        return this;
+                    }
+
                     var debuff = new debuff_reeping();
                     {
+                        // 무리 혼수는 15초(coma_delay 15) — 설정 SkullLength(19)는 오솔길 함정 같은 다른 혼수에 그대로 둔다.
+                        debuff.Timer.Tick = Math.Max(0, debuff.Length - GroupComaSeconds);
                         debuff.OnApplied(Aisling, debuff);
                     }
                 }
