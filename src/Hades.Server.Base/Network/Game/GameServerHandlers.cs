@@ -384,7 +384,12 @@ namespace Darkages.Network.Game
             if (objs == null)
                 return;
 
-            foreach (var obj in objs.Reverse())
+            // 금화를 물건보다 먼저 줍는다. 전에는 물건부터 돌아, 물건 하나를 줍거나 못 들거나 남의 몫이면 거기서 멈춰
+            // 같은 칸의 금화가 남았다 — 괴물은 물건과 금화를 한 칸에 떨구고, 앱의 밟으면 줍기는 한 번 물은 것을 다시
+            // 묻지 않아 금화 그림이 바닥에 남았다(사용자 2026-09-25 "돈 위에 올라가도 이미지가 사라지지 않는다").
+            var ordered = objs.Reverse().ToArray();
+
+            foreach (var obj in ordered.OfType<Money>().Cast<Sprite>().Concat(ordered.Where(o => !(o is Money))))
             {
                 if (obj?.CurrentMapId != client.Aisling.CurrentMapId)
                     continue;
