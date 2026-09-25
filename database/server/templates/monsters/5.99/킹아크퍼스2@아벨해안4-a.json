@@ -22,8 +22,9 @@
   "CastSpeed": 8000,
   "MoodType": 4,
   "PathQualifer": 1,
-  "LootType": 4,
+  "LootType": 2,
   "Drops": {
+    "$type": "System.Collections.Generic.List`1[[System.String, System.Private.CoreLib]], System.Private.CoreLib",
     "$values": [
       "골드아쿠아링"
     ]
