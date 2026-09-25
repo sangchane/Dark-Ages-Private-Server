@@ -73,28 +73,10 @@ namespace Darkages.Network.Game.Components
                 }
                 else
                 {
-                    var skip = false;
-
-                    switch (obj)
-                    {
-                        case Money money:
-                        {
-                            var goldSetting = player.GameSettings.Find(i =>
-                                i.EnabledSettingStr.Contains("AUTO LOOT GOLD"));
-
-                            if (goldSetting != null)
-                                if (goldSetting.Enabled)
-                                {
-                                    money.GiveTo(money.Amount, player);
-                                    skip = true;
-                                }
-
-                            break;
-                        }
-                    }
-
-                    if (!skip)
-                        payload.Add(obj);
+                    // 바닥 금화는 보여 준다 — 서버가 대신 줍지 않는다(사용자 2026-09-25 "금전은 왜 드랍 안 돼").
+                    // 전에는 AUTO LOOT GOLD(모든 캐릭터가 켠 채로 시작)가 켜져 있으면 보여 주기도 전에 지갑에
+                    // 넣어 금화가 바닥에 한 번도 보이지 않았다. 줍기는 앱이 한다(밟으면 줍기 · 눌러 줍기).
+                    payload.Add(obj);
                 }
             }
         }
