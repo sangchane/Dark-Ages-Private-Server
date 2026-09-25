@@ -215,8 +215,9 @@ namespace Darkages.Network
             _listening = true;
             _stalledFrameSweep = new System.Threading.Timer(
                 _ => DisconnectStalledClients(), null, SweepInterval, SweepInterval);
-            _listener = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            _listener.Bind(new IPEndPoint(IPAddress.Any, port));
+            // IPv6 로도 듣는다(IPv4 도 함께) — 아이폰 테더링은 IPv6 뿐이라 폰이 IPv6 로만 닿는다.
+            _listener = new Socket(AddressFamily.InterNetworkV6, SocketType.Stream, ProtocolType.Tcp) { DualMode = true };
+            _listener.Bind(new IPEndPoint(IPAddress.IPv6Any, port));
             _listener.Listen(ServerContext.Config?.ConnectionCapacity ?? 1000);
             _listener.BeginAccept(EndConnectClient, _listener);
         }
