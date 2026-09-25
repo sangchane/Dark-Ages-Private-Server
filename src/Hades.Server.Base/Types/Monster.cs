@@ -189,13 +189,21 @@ namespace Darkages.Types
             }
         }
 
+        /// <summary>레벨마다 콘에 더해 오르는 최대 체력(원작 상수 30).</summary>
+        public const int HpPerLevel = 30;
+
+        /// <summary>레벨마다 위즈에 더해 오르는 최대 마력(원작 상수 25).</summary>
+        public const int MpPerLevel = 25;
+
         public static void Levelup(Aisling player)
         {
             if (player.ExpLevel >= ServerContext.Config.PlayerLevelCap)
                 return;
 
-            player._MaximumHp += (int) (ServerContext.Config.HpGainFactor * player.Con * 0.65);
-            player._MaximumMp += (int) (ServerContext.Config.MpGainFactor * player.Wis * 0.45);
+            // 원작(5.99 Novaonline.exe 0x469a46~0x469a94 · 혼든 Yuki.exe 0x45fa29~0x45fa46): 기본 최대 체력에
+            // 콘+30, 기본 최대 마력에 위즈+25. 장비로 붙는 몫이 아닌 제 능력치(_Con·_Wis)를 읽는다. 직업·무작위 없음.
+            player._MaximumHp += player._Con + HpPerLevel;
+            player._MaximumMp += player._Wis + MpPerLevel;
             player.StatPoints += ServerContext.Config.StatsPerLevel;
 
             player.ExpLevel++;
