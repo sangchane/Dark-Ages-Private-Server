@@ -277,9 +277,26 @@ namespace Darkages.Storage.locales.Scripts.Formulas
         /// 비례**시킨다. 노비스 괴물 11마리의 경험치(1,068~1,849)와 지금 금화(20~30)를 나눠 보면 비율이
         /// 0.0162~0.0247 사이(평균 0.0187)였다 — 그 폭 가운데 값으로 0.02 를 골라, 노비스 대부분(경험치
         /// 1,068~1,301)이 새 식에서도 20~31전으로 지금 폭과 거의 겹치게 했다(경험치가 큰 지네·독거미
-        /// 1,781~1,849 만 32~44전으로 조금 올라간다).
+        /// 1,781~1,849 만 32~44전으로 조금 올라간다). 그 0.02 는 이제 노비스에만 쓰고(<see cref="NoviceGoldPerExp"/>),
+        /// 노비스 밖은 그 다섯 배인 0.1 이다(사용자 2026-09-25).
         /// </summary>
-        private const double GoldPerExp = 0.02;
+        private const double GoldPerExp = 0.1;
+
+        /// <summary>
+        /// 노비스는 그대로 경험치 한 점당 0.02 — 위의 0.1 은 그 다섯 배다(사용자 2026-09-25: "포테 3존인데 47원씩
+        /// 들어오는데 금전이 너무 적다" → 경험치×0.1, 단 노비스는 지금 금액 그대로).
+        /// </summary>
+        private const double NoviceGoldPerExp = 0.02;
+
+        /// <summary>
+        /// 노비스 맵 번호 — <c>database/server/areas/</c> 에서 이름이 "노비스"로 시작하는 맵 전부:
+        /// 20083 노비스1 · 20084 노비스던전1 · 20085 노비스사냥터1 · 20086 노비스상점1 ·
+        /// 20373 노비스마을 · 20374~20379 노비스 마을 안 건물(식당·무기방어구상점·민가1·민가2·잡화상점·주점) ·
+        /// 20380~20388 노비스지하던전 a1~c3 · 20389~20392 노비스지하동굴 a~d · 20393·20394 노비스평원 a·b.
+        /// 괴물이 서는 곳은 지하던전(a1~b3·c3)과 평원 a·b 다(2026-09-25 templates/monsters 의 AreaID 로 셈).
+        /// </summary>
+        private static bool IsNovice(int mapId) =>
+            mapId is >= 20083 and <= 20086 or >= 20373 and <= 20394;
 
         /// <summary>무작위 폭 — 사용자가 정한 ±20%.</summary>
         private const double GoldVariance = 0.2;
@@ -308,7 +325,8 @@ namespace Darkages.Storage.locales.Scripts.Formulas
         /// </remarks>
         private void GenerateGold()
         {
-            var baseline = MonsterExp() * GoldPerExp;
+            var perExp = IsNovice(_monster.CurrentMapId) ? NoviceGoldPerExp : GoldPerExp;
+            var baseline = MonsterExp() * perExp;
             var factor = 1 + (Generator.Random.NextDouble() * 2 - 1) * GoldVariance;
             var sum = (int)Math.Round(baseline * factor);
 
