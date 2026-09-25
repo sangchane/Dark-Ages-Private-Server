@@ -29,7 +29,14 @@ namespace Darkages.Storage.locales.Scripts.Formulas
             GenerateDrops();
         }
 
-        private void HandleExp(Aisling player, double exp)
+        /// <summary>
+        /// 경험치를 더하고, 실제로 더한 값을 돌려준다 — 알림은 이 값을 적는다(아래 <see cref="GenerateExperience"/>).
+        /// </summary>
+        /// <remarks>
+        /// 레벨이 오를 때 남는 몫은 다음 레벨로 넘긴다. 예전에는 <c>ExpNext</c> 를 uint 로 빼서 음수가 되면 0 으로
+        /// 자르고 새 목표를 통째로 줘, 넘친 몫이 사라졌다(2026-09-25).
+        /// </remarks>
+        private uint HandleExp(Aisling player, double exp)
         {
             if (exp <= 0)
                 exp = 1;
@@ -44,40 +51,28 @@ namespace Darkages.Storage.locales.Scripts.Formulas
                     exp += bonus;
             }
 
-            player.ExpTotal += (uint)exp;
-            player.ExpNext -= (uint)exp;
+            var given = (uint)exp;
+            var left = given;
 
-            if (player.ExpNext >= int.MaxValue) player.ExpNext = 0;
+            player.ExpTotal = player.ExpTotal + given < player.ExpTotal ? uint.MaxValue : player.ExpTotal + given;
 
+            while (left >= player.ExpNext
+                   && player.ExpLevel < 99
+                   && player.ExpLevel < ServerContext.Config.PlayerLevelCap)
             {
-                if (player.ExpLevel >= ServerContext.Config.PlayerLevelCap)
-                    return;
-            }
+                left -= player.ExpNext;
 
-            while (player.ExpNext <= 0 && player.ExpLevel < 99)
-            {
                 // 지금 ExpLevel 은 아직 오르기 전의 값이다. 아래에서 Levelup 이 하나 올리므로, 그 뒤에
                 // 사람이 바라볼 다음 목표는 (지금+2) 레벨에 닿는 값이다.
-                player.ExpNext = ExperienceCurve.ToReach(player.ExpLevel + 2);
-
-                if (player.ExpLevel == 99)
-                    break;
-
-                if (player.ExpTotal <= 0)
-                    player.ExpTotal = uint.MaxValue;
-
-                if (player.ExpTotal >= uint.MaxValue)
-                    player.ExpTotal = uint.MaxValue;
-
-                if (player.ExpNext <= 0)
-                    player.ExpNext = 1;
-
-                if (player.ExpNext >= uint.MaxValue)
-                    player.ExpNext = uint.MaxValue;
+                player.ExpNext = Math.Max(1, ExperienceCurve.ToReach(player.ExpLevel + 2));
 
                 // 레벨업 식은 서버 한 곳(Monster.Levelup — 원작 콘+30·위즈+25)을 쓴다. 여기 따로 적힌 하데스 식을 치웠다(2026-09-25).
                 Darkages.Types.Monster.Levelup(player);
             }
+
+            player.ExpNext = left >= player.ExpNext ? 0 : player.ExpNext - left;
+
+            return given;
         }
 
         private List<string> DetermineDrop()
@@ -219,18 +214,12 @@ namespace Darkages.Storage.locales.Scripts.Formulas
         /// <summary>아무리 낮아도 이만큼은 준다 — 0 이면 잡을 까닭이 아예 없어진다.</summary>
         private const double Least = 0.02;
 
-        public void DistributeExperience(Aisling player, double exp)
-        {
-            exp = ForLevel(player, exp);
-
-            var chunks = exp / 1000;
-
-            if (chunks <= 1)
-                HandleExp(player, exp);
-            else
-                for (var i = 0; i < chunks; i++)
-                    HandleExp(player, 1000);
-        }
+        /// <returns>실제로 더한 경험치 — 레벨 차이로 깎고 그룹 몫을 더한 뒤의 값.</returns>
+        /// <remarks>
+        /// 예전에는 1,000 이 넘으면 1,000 씩 나눠 주면서 끝수를 올려(1,500 → 2,000) 알림과 달랐다. 레벨업 때 넘친 몫을
+        /// 이제 <see cref="HandleExp"/> 가 넘기므로 나눌 까닭이 없다(2026-09-25).
+        /// </remarks>
+        public uint DistributeExperience(Aisling player, double exp) => HandleExp(player, ForLevel(player, exp));
 
         private void GenerateExperience(Aisling player, bool canCrit = false)
         {
@@ -254,21 +243,23 @@ namespace Darkages.Storage.locales.Scripts.Formulas
                     if (critical >= 85) exp *= 2;
                 }
 
-            DistributeExperience(player, exp);
+            // 알림에는 괴물 정의의 값이 아니라 실제로 더한 값을 적는다 — 레벨 차이로 깎인 뒤다(사용자 2026-09-25:
+            // "경험치가 표시되는 것만큼 줄지 않는 것 같은데?" — 20레벨이 우드랜드에서 알림 466, 실제 66).
+            var mine = DistributeExperience(player, exp);
 
             if (player.PartyMembers != null)
                 foreach (var party in player.PartyMembers
                     .Where(party => party.Serial != player.Serial)
                     .Where(party => party.WithinRangeOf(player)))
                 {
-                    DistributeExperience(party, exp);
+                    var shared = DistributeExperience(party, exp);
 
                     party.Client.SendStats(StatusFlags.StructC);
-                    party.Client.SendMessage(0x02, $"경험치가 {exp} 올랐습니다");
+                    party.Client.SendMessage(0x02, $"경험치가 {shared} 올랐습니다");
                 }
 
             player.Client.SendStats(StatusFlags.StructC);
-            player.Client.SendMessage(0x02, $"경험치가 {exp} 올랐습니다");
+            player.Client.SendMessage(0x02, $"경험치가 {mine} 올랐습니다");
         }
 
         /// <summary>
