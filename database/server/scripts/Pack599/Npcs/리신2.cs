@@ -59,173 +59,70 @@ namespace Darkages.Storage.locales.Scripts.Pack599
             }
             if (V.T(((V)(v_select) == (V)((V)2L))))
             {
-                goto L_re;
-            }
-            if (V.T(((V)(v_select) == (V)((V)2L))))
-            {
-                yield return Mes((V)1L, (V)"이 스킬을 배울려면 하위스킬인 슬레쉬를 소유하고있어야하며, 좀비의살 20개, 좀비의막대기 10개가 필요합니다.");
-                if (V.T(V.B(V.T(((V)(p.Call("item_exist", v_myid, (V)"좀비의살")) < (V)((V)20L))) || V.T(((V)(p.Call("item_exist", v_myid, (V)"좀비의막대기")) < (V)((V)10L))))))
+                yield return Mes((V)1L, (V)"배우실려면 레벨이 31이상이셔야 합니다.");
+                if (V.T(((V)(p.Call("get_level", v_myid)) < (V)((V)31L))))
                 {
-                    yield return Mes((V)1L, (V)"재물이 부족하여 배울수 없습니다.");
+                    yield return Mes((V)1L, (V)"이스킬을 습득하시기엔 아직 어립니다. 심안의 힘으로!");
                     goto L_re;
                 }
-                if (V.T(p.Call("skill_exist", (V)"블로우")))
+                if (V.T(p.Call("skill_exist", (V)"단각")))
                 {
                     yield return Mes((V)1L, (V)"이미 이 스킬을 습득 하셧습니다.");
                     goto L_re;
                 }
-                if (V.T(V.B(!V.T(p.Call("skill_exist", (V)"슬레쉬")))))
-                {
-                    yield return Mes((V)1L, (V)"이스킬의 하위스킬이 없어 배울수 없습니다.");
-                    goto L_re;
-                }
-                if (V.T(((V)(p.Call("get_money", v_myid)) < (V)((V)50000L))))
-                {
-                    yield return Mes((V)1L, (V)"골드가 부족합니다.");
-                    goto L_re;
-                }
-                p.Call("money_del", (V)50000L);
-                p.Call("item_del", (V)"좀비의살", (V)20L);
-                p.Call("item_del", (V)"좀비의막대기", (V)10L);
-                p.Call("skill_add", (V)"블로우");
-                p.Call("skill_del", (V)"슬레쉬");
-                yield return Mes((V)1L, (V)"블로우를 습득하셧습니다.");
+                p.Call("skill_add", (V)"단각");
+                yield return Mes((V)1L, (V)"단각을 익히셧습니다. 앞으로 무도가로서 사명감을 가져주시길 바랍니다.");
                 goto L_re;
             }
             if (V.T(((V)(v_select) == (V)((V)3L))))
             {
-                if (V.T(((V)(p.Call("get_son")) == (V)((V)0L))))
+                yield return Mes((V)1L, (V)"배우실려면 레벨이 31이상이셔야 합니다.");
+                if (V.T(((V)(p.Call("get_level", v_myid)) < (V)((V)31L))))
                 {
-                    yield return Mes((V)1L, (V)"순수가 아닌자는 배울수없습니다.");
+                    yield return Mes((V)1L, (V)"이스킬을 습득하시기엔 아직 어립니다. 심안의 힘으로!");
                     goto L_re;
                 }
-                yield return Mes((V)1L, (V)"이 스킬을 배울려면 하위스킬인 습격을 소유하고있어야하며, 좀비의살 20개, 좀비의막대기 10개, 고사목뿌리 5개가 필요합니다.");
-                if (V.T(V.B(V.T(V.B(V.T(((V)(p.Call("item_exist", v_myid, (V)"좀비의살")) < (V)((V)20L))) || V.T(((V)(p.Call("item_exist", v_myid, (V)"좀비의막대기")) < (V)((V)10L))))) || V.T(((V)(p.Call("item_exist", v_myid, (V)"고사목뿌리")) < (V)((V)5L))))))
-                {
-                    yield return Mes((V)1L, (V)"재물이 부족하여 배울수 없습니다.");
-                    goto L_re;
-                }
-                if (V.T(p.Call("skill_exist", (V)"습격진")))
+                if (V.T(p.Call("spell_exist", (V)"장풍")))
                 {
                     yield return Mes((V)1L, (V)"이미 이 스킬을 습득 하셧습니다.");
                     goto L_re;
                 }
-                if (V.T(V.B(!V.T(p.Call("skill_exist", (V)"습격")))))
-                {
-                    yield return Mes((V)1L, (V)"이스킬의 하위스킬이 없어 배울수 없습니다.");
-                    goto L_re;
-                }
-                if (V.T(((V)(p.Call("get_money", v_myid)) < (V)((V)50000L))))
-                {
-                    yield return Mes((V)1L, (V)"골드가 부족합니다.");
-                    goto L_re;
-                }
-                p.Call("money_del", (V)50000L);
-                p.Call("item_del", (V)"좀비의살", (V)20L);
-                p.Call("item_del", (V)"좀비의막대기", (V)10L);
-                p.Call("item_del", (V)"고사목뿌리", (V)5L);
-                p.Call("skill_add", (V)"습격진");
-                p.Call("skill_del", (V)"습격");
-                yield return Mes((V)1L, (V)"습격진을 습득하셧습니다.");
+                p.Call("spell_add", (V)"장풍");
+                yield return Mes((V)1L, (V)"장풍을 익히셧습니다. 앞으로 무도가로서 사명감을 가져주시길 바랍니다.");
                 goto L_re;
             }
             if (V.T(((V)(v_select) == (V)((V)4L))))
             {
-                if (V.T(((V)(p.Call("get_son")) == (V)((V)0L))))
+                yield return Mes((V)1L, (V)"배우실려면 레벨이 41이상이셔야 합니다.");
+                if (V.T(((V)(p.Call("get_level", v_myid)) < (V)((V)41L))))
                 {
-                    yield return Mes((V)1L, (V)"순수가 아닌자는 배울수없습니다.");
+                    yield return Mes((V)1L, (V)"이스킬을 습득하시기엔 아직 어립니다. 심안의 힘으로!");
                     goto L_re;
                 }
-                yield return Mes((V)1L, (V)"이 스킬을 배울려면 좀비의살 20개, 좀비의막대기 10개, 고사목뿌리 8개가 필요합니다.");
-                if (V.T(V.B(V.T(V.B(V.T(((V)(p.Call("item_exist", v_myid, (V)"좀비의살")) < (V)((V)20L))) || V.T(((V)(p.Call("item_exist", v_myid, (V)"좀비의막대기")) < (V)((V)10L))))) || V.T(((V)(p.Call("item_exist", v_myid, (V)"고사목뿌리")) < (V)((V)8L))))))
-                {
-                    yield return Mes((V)1L, (V)"재물이 부족하여 배울수 없습니다.");
-                    goto L_re;
-                }
-                if (V.T(p.Call("skill_exist", (V)"백스텝")))
+                if (V.T(p.Call("spell_exist", (V)"금강불괴")))
                 {
                     yield return Mes((V)1L, (V)"이미 이 스킬을 습득 하셧습니다.");
                     goto L_re;
                 }
-                if (V.T(((V)(p.Call("get_money", v_myid)) < (V)((V)50000L))))
-                {
-                    yield return Mes((V)1L, (V)"골드가 부족합니다.");
-                    goto L_re;
-                }
-                p.Call("money_del", (V)50000L);
-                p.Call("item_del", (V)"좀비의살", (V)20L);
-                p.Call("item_del", (V)"좀비의막대기", (V)10L);
-                p.Call("item_del", (V)"고사목뿌리", (V)8L);
-                p.Call("skill_add", (V)"백스텝");
-                yield return Mes((V)1L, (V)"백스텝을 습득하셧습니다.");
+                p.Call("spell_add", (V)"금강불괴");
+                yield return Mes((V)1L, (V)"금강불괴를 익히셧습니다. 앞으로 무도가로서 사명감을 가져주시길 바랍니다.");
                 goto L_re;
             }
             if (V.T(((V)(v_select) == (V)((V)5L))))
             {
-                if (V.T(((V)(p.Call("get_son")) == (V)((V)0L))))
+                yield return Mes((V)1L, (V)"배우실려면 레벨이 50이상이셔야 합니다.");
+                if (V.T(((V)(p.Call("get_level", v_myid)) < (V)((V)50L))))
                 {
-                    yield return Mes((V)1L, (V)"순수가 아닌자는 배울수없습니다.");
+                    yield return Mes((V)1L, (V)"이스킬을 습득하시기엔 아직 어립니다. 심안의 힘으로!");
                     goto L_re;
                 }
-                yield return Mes((V)1L, (V)"이 스킬을 배울려면 좀비의살 20개, 좀비의막대기 10개, 고사목뿌리 8개가 필요합니다.");
-                if (V.T(V.B(V.T(V.B(V.T(((V)(p.Call("item_exist", v_myid, (V)"좀비의살")) < (V)((V)20L))) || V.T(((V)(p.Call("item_exist", v_myid, (V)"좀비의막대기")) < (V)((V)10L))))) || V.T(((V)(p.Call("item_exist", v_myid, (V)"고사목뿌리")) < (V)((V)8L))))))
-                {
-                    yield return Mes((V)1L, (V)"재물이 부족하여 배울수 없습니다.");
-                    goto L_re;
-                }
-                if (V.T(p.Call("skill_exist", (V)"파이어트랩")))
+                if (V.T(p.Call("skill_exist", (V)"구양신공")))
                 {
                     yield return Mes((V)1L, (V)"이미 이 스킬을 습득 하셧습니다.");
                     goto L_re;
                 }
-                if (V.T(((V)(p.Call("get_money", v_myid)) < (V)((V)50000L))))
-                {
-                    yield return Mes((V)1L, (V)"골드가 부족합니다.");
-                    goto L_re;
-                }
-                p.Call("money_del", (V)50000L);
-                p.Call("item_del", (V)"좀비의살", (V)20L);
-                p.Call("item_del", (V)"좀비의막대기", (V)10L);
-                p.Call("item_del", (V)"고사목뿌리", (V)8L);
-                p.Call("skill_add2", (V)"파이어트랩");
-                yield return Mes((V)1L, (V)"파이어트랩을 습득하셧습니다.");
-                goto L_re;
-            }
-            if (V.T(((V)(v_select) == (V)((V)6L))))
-            {
-                if (V.T(((V)(p.Call("get_son")) == (V)((V)0L))))
-                {
-                    yield return Mes((V)1L, (V)"순수가 아닌자는 배울수없습니다.");
-                    goto L_re;
-                }
-                yield return Mes((V)1L, (V)"이 스킬을 배울려면 하위스킬인 암살격을 소유하고있어야하며, 좀비의살 20개, 좀비의막대기 10개, 고사목뿌리 5개가 필요합니다.");
-                if (V.T(V.B(V.T(V.B(V.T(((V)(p.Call("item_exist", v_myid, (V)"좀비의살")) < (V)((V)20L))) || V.T(((V)(p.Call("item_exist", v_myid, (V)"좀비의막대기")) < (V)((V)10L))))) || V.T(((V)(p.Call("item_exist", v_myid, (V)"고사목뿌리")) < (V)((V)5L))))))
-                {
-                    yield return Mes((V)1L, (V)"재물이 부족하여 배울수 없습니다.");
-                    goto L_re;
-                }
-                if (V.T(p.Call("skill_exist", (V)"암살격진")))
-                {
-                    yield return Mes((V)1L, (V)"이미 이 스킬을 습득 하셧습니다.");
-                    goto L_re;
-                }
-                if (V.T(V.B(!V.T(p.Call("skill_exist", (V)"암살격")))))
-                {
-                    yield return Mes((V)1L, (V)"이스킬의 하위스킬이 없어 배울수 없습니다.");
-                    goto L_re;
-                }
-                if (V.T(((V)(p.Call("get_money", v_myid)) < (V)((V)50000L))))
-                {
-                    yield return Mes((V)1L, (V)"골드가 부족합니다.");
-                    goto L_re;
-                }
-                p.Call("money_del", (V)50000L);
-                p.Call("item_del", (V)"좀비의살", (V)20L);
-                p.Call("item_del", (V)"좀비의막대기", (V)10L);
-                p.Call("item_del", (V)"고사목뿌리", (V)5L);
-                p.Call("skill_add", (V)"암살격진");
-                p.Call("skill_del", (V)"암살격");
-                yield return Mes((V)1L, (V)"암살격진을 습득하셧습니다.");
+                p.Call("skill_add", (V)"구양신공");
+                yield return Mes((V)1L, (V)"구양신공을 익히셧습니다. 앞으로 무도가로서 사명감을 가져주시길 바랍니다.");
                 goto L_re;
             }
             // 말도 메뉴도 없는 스크립트(적룡의결계 …)도 이터레이터여야 한다.
