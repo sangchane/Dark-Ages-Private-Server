@@ -1,0 +1,26 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "칸의동각반",
+  "Image": 250,
+  "DisplayImage": 33018,
+  "EquipmentSlot": 12,
+  "ScriptName": "Generic",
+  "Flags": 4189,
+  "Class": 0,
+  "Gender": 255,
+  "LevelRequired": 41,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 100000,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 6000,
+  "CarryWeight": 6,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 4
+  },
+  "Group": "하데스표/각반/원작표",
+  "DropRate": 0.06
+}

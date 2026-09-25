@@ -6,15 +6,15 @@
   "EquipmentSlot": 5,
   "Class": 0,
   "Gender": 255,
-  "LevelRequired": 8,
+  "LevelRequired": 11,
   "ScriptName": "Earring",
   "Flags": 4189,
   "CanStack": false,
   "MaxStack": 0,
-  "Value": 10000,
+  "Value": 50000,
   "DmgMin": 0,
   "DmgMax": 0,
-  "MaxDurability": 2000,
+  "MaxDurability": 1000,
   "StrModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
     "Option": 0,
@@ -30,5 +30,6 @@
     "Option": 0,
     "Value": 10
   },
-  "Group": "하데스표/귀걸이/공통귀걸이"
+  "Group": "하데스표/귀걸이/공통귀걸이",
+  "CarryWeight": 1
 }

@@ -1,0 +1,26 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "칸의은제방패",
+  "Image": 2,
+  "DisplayImage": 32861,
+  "EquipmentSlot": 3,
+  "ScriptName": "Shield",
+  "Flags": 77,
+  "Class": 0,
+  "Gender": 255,
+  "LevelRequired": 56,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 48750,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 11000,
+  "CarryWeight": 6,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 13
+  },
+  "Group": "하데스표/방패/원작표",
+  "DropRate": 0.06
+}

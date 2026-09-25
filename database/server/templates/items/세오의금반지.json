@@ -6,29 +6,20 @@
   "EquipmentSlot": 5,
   "Class": 0,
   "Gender": 255,
-  "LevelRequired": 9,
+  "LevelRequired": 11,
   "ScriptName": "Generic",
   "Flags": 95,
   "CanStack": false,
   "MaxStack": 0,
-  "Value": 3000,
+  "Value": 15000,
   "DmgMin": 0,
   "DmgMax": 0,
   "MaxDurability": 2000,
-  "WisModifer": {
-    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
-    "Option": 1,
-    "Value": 1
-  },
-  "ConModifer": {
-    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
-    "Option": 0,
-    "Value": 2
-  },
   "ManaModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
     "Option": 0,
     "Value": 50
   },
-  "Group": "하데스표/반지/공통반지"
+  "Group": "하데스표/반지/공통반지",
+  "CarryWeight": 1
 }

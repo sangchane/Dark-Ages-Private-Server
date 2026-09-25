@@ -1,0 +1,35 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "축복의녹옥반지",
+  "Image": 210,
+  "DisplayImage": 32982,
+  "EquipmentSlot": 8,
+  "ScriptName": "Generic",
+  "Flags": 95,
+  "Class": 0,
+  "Gender": 255,
+  "LevelRequired": 11,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 500000,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 5000,
+  "CarryWeight": 1,
+  "HealthModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 300
+  },
+  "ManaModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 150
+  },
+  "HitModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 5
+  },
+  "Group": "하데스표/반지/원작표"
+}

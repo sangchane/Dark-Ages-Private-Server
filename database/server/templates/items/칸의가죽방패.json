@@ -1,0 +1,25 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "칸의가죽방패",
+  "Image": 5,
+  "DisplayImage": 32956,
+  "EquipmentSlot": 3,
+  "ScriptName": "Shield",
+  "Flags": 77,
+  "Class": 0,
+  "Gender": 255,
+  "LevelRequired": 11,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 3750,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 5000,
+  "CarryWeight": 3,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 5
+  },
+  "Group": "하데스표/방패/원작표"
+}

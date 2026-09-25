@@ -6,15 +6,15 @@
   "EquipmentSlot": 8,
   "Class": 0,
   "Gender": 255,
-  "LevelRequired": 16,
+  "LevelRequired": 11,
   "ScriptName": "Generic",
   "Flags": 95,
   "CanStack": false,
   "MaxStack": 0,
-  "Value": 100000,
+  "Value": 500000,
   "DmgMin": 0,
   "DmgMax": 0,
-  "MaxDurability": 2000,
+  "MaxDurability": 5000,
   "IntModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
     "Option": 0,
@@ -30,5 +30,6 @@
     "Option": 0,
     "Value": 150
   },
-  "Group": "하데스표/반지/공통반지"
+  "Group": "하데스표/반지/공통반지",
+  "CarryWeight": 1
 }

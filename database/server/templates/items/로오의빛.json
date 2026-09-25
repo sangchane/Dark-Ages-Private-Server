@@ -19,8 +19,8 @@
   "AttackMotion": 1,
   "HealthModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
-    "Option": 1,
-    "Value": 500
+    "Option": 0,
+    "Value": -500
   },
   "ManaModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
@@ -34,13 +34,13 @@
   },
   "IntModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
-    "Option": 1,
-    "Value": 1
+    "Option": 0,
+    "Value": -1
   },
   "WisModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
-    "Option": 1,
-    "Value": 1
+    "Option": 0,
+    "Value": -1
   },
   "Group": "5.99표/무기/공통무기"
 }

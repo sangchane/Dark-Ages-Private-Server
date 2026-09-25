@@ -6,12 +6,12 @@
   "EquipmentSlot": 5,
   "Class": 0,
   "Gender": 255,
-  "LevelRequired": 8,
+  "LevelRequired": 11,
   "ScriptName": "Earring",
   "Flags": 4189,
   "CanStack": false,
   "MaxStack": 0,
-  "Value": 8000,
+  "Value": 40000,
   "DmgMin": 0,
   "DmgMax": 0,
   "MaxDurability": 2000,
@@ -25,5 +25,6 @@
     "Option": 0,
     "Value": 2
   },
-  "Group": "하데스표/귀걸이/공통귀걸이"
+  "Group": "하데스표/귀걸이/공통귀걸이",
+  "CarryWeight": 1
 }

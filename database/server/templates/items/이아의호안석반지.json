@@ -6,12 +6,12 @@
   "EquipmentSlot": 8,
   "Class": 0,
   "Gender": 255,
-  "LevelRequired": 12,
+  "LevelRequired": 11,
   "ScriptName": "Generic",
   "Flags": 95,
   "CanStack": false,
   "MaxStack": 0,
-  "Value": 50000,
+  "Value": 250000,
   "DmgMin": 0,
   "DmgMax": 0,
   "MaxDurability": 4000,
@@ -31,5 +31,6 @@
     "Value": 100
   },
   "Group": "하데스표/반지/공통반지",
-  "DropRate": 0.06
+  "DropRate": 0.06,
+  "CarryWeight": 1
 }

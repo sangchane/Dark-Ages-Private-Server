@@ -22,10 +22,12 @@
   "CastSpeed": 8000,
   "MoodType": 4,
   "PathQualifer": 1,
-  "LootType": 36,
+  "LootType": 34,
   "Drops": {
+    "$type": "System.Collections.Generic.List`1[[System.String, System.Private.CoreLib]], System.Private.CoreLib",
     "$values": [
-      "거북이등껍질"
+      "거북이등껍질",
+      "메투스의은제방패"
     ]
   },
   "ScriptName": "Common Monster",

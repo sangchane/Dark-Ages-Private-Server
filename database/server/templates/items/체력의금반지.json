@@ -1,0 +1,30 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "체력의금반지",
+  "Image": 210,
+  "DisplayImage": 32974,
+  "EquipmentSlot": 5,
+  "ScriptName": "Generic",
+  "Flags": 95,
+  "Class": 0,
+  "Gender": 255,
+  "LevelRequired": 11,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 15000,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 2000,
+  "CarryWeight": 1,
+  "HealthModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 100
+  },
+  "ManaModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 50
+  },
+  "Group": "하데스표/반지/원작표"
+}

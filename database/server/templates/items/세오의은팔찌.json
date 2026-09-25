@@ -1,0 +1,30 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "세오의은팔찌",
+  "Image": 248,
+  "DisplayImage": 32993,
+  "EquipmentSlot": 10,
+  "ScriptName": "Generic",
+  "Flags": 4189,
+  "Class": 5,
+  "Gender": 255,
+  "LevelRequired": 71,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 350000,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 7000,
+  "CarryWeight": 4,
+  "DexModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 2
+  },
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 3
+  },
+  "Group": "하데스표/팔찌/원작표"
+}

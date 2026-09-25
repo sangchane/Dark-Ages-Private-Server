@@ -1,0 +1,30 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "이아의철방패",
+  "Image": 7,
+  "DisplayImage": 32958,
+  "EquipmentSlot": 3,
+  "ScriptName": "Shield",
+  "Flags": 125,
+  "Class": 0,
+  "Gender": 255,
+  "LevelRequired": 41,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 33750,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 9000,
+  "CarryWeight": 5,
+  "WisModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 1
+  },
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 10
+  },
+  "Group": "하데스표/방패/원작표"
+}

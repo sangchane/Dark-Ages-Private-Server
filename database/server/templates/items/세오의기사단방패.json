@@ -1,0 +1,25 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "세오의기사단방패",
+  "Image": 8,
+  "DisplayImage": 32959,
+  "EquipmentSlot": 3,
+  "ScriptName": "Shield",
+  "Flags": 61,
+  "Class": 0,
+  "Gender": 255,
+  "LevelRequired": 99,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 93750,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 17000,
+  "CarryWeight": 9,
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 20
+  },
+  "Group": "하데스표/방패/원작표"
+}

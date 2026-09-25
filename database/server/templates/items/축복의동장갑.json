@@ -1,0 +1,30 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "축복의동장갑",
+  "Image": 227,
+  "DisplayImage": 33017,
+  "EquipmentSlot": 10,
+  "ScriptName": "Generic",
+  "Flags": 4189,
+  "Class": 0,
+  "Gender": 255,
+  "LevelRequired": 41,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 50000,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 5000,
+  "CarryWeight": 3,
+  "HitModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 5
+  },
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 2
+  },
+  "Group": "하데스표/장갑/원작표"
+}

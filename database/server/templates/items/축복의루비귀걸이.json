@@ -1,0 +1,35 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "축복의루비귀걸이",
+  "Image": 231,
+  "DisplayImage": 33001,
+  "EquipmentSlot": 5,
+  "ScriptName": "Earring",
+  "Flags": 4189,
+  "Class": 0,
+  "Gender": 255,
+  "LevelRequired": 11,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 50000,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 1000,
+  "CarryWeight": 1,
+  "StrModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 1
+  },
+  "IntModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 1
+  },
+  "HitModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 5
+  },
+  "Group": "하데스표/귀걸이/원작표"
+}

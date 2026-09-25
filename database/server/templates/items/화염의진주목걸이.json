@@ -1,0 +1,25 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "화염의진주목걸이",
+  "Image": 205,
+  "DisplayImage": 32962,
+  "EquipmentSlot": 6,
+  "ScriptName": "Necklace",
+  "Flags": 5241,
+  "Class": 0,
+  "Gender": 255,
+  "LevelRequired": 11,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 20000,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 2000,
+  "CarryWeight": 1,
+  "HitModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 5
+  },
+  "Group": "하데스표/목걸이/원작표"
+}

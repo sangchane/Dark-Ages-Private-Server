@@ -11,36 +11,15 @@
   "Flags": 125,
   "CanStack": false,
   "MaxStack": 0,
-  "Value": 10000,
+  "Value": 43000,
   "DmgMin": 0,
   "DmgMax": 0,
-  "MaxDurability": 3000,
-  "CarryWeight": 0,
+  "MaxDurability": 5000,
+  "CarryWeight": 1,
   "AcModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
     "Option": 1,
-    "Value": 3
+    "Value": 1
   },
-  "HealthModifer": {
-    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
-    "Option": 0,
-    "Value": 2500
-  },
-  "ManaModifer": {
-    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
-    "Option": 0,
-    "Value": 2500
-  },
-  "IntModifer": {
-    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
-    "Option": 0,
-    "Value": 5
-  },
-  "WisModifer": {
-    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
-    "Option": 0,
-    "Value": 5
-  },
-  "Group": "5.99표/귀걸이/공통귀걸이",
-  "DropRate": 0.06
+  "Group": "5.99표/귀걸이/공통귀걸이"
 }

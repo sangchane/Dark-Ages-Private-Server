@@ -1,0 +1,30 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "체력의금제방패",
+  "Image": 3,
+  "DisplayImage": 32862,
+  "EquipmentSlot": 3,
+  "ScriptName": "Shield",
+  "Flags": 77,
+  "Class": 0,
+  "Gender": 255,
+  "LevelRequired": 71,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 63750,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 13000,
+  "CarryWeight": 7,
+  "HealthModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 100
+  },
+  "AcModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 15
+  },
+  "Group": "하데스표/방패/원작표"
+}

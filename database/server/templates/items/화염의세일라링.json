@@ -6,30 +6,35 @@
   "EquipmentSlot": 5,
   "Class": 0,
   "Gender": 255,
-  "LevelRequired": 11,
+  "LevelRequired": 71,
   "ScriptName": "Earring",
   "Flags": 125,
   "CanStack": false,
   "MaxStack": 0,
-  "Value": 70000000,
+  "Value": 143000,
   "DmgMin": 0,
   "DmgMax": 0,
-  "MaxDurability": 3000,
-  "CarryWeight": 0,
+  "MaxDurability": 5000,
+  "CarryWeight": 1,
   "AcModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
     "Option": 1,
-    "Value": 6
+    "Value": 1
   },
   "HealthModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
     "Option": 0,
-    "Value": 8000
+    "Value": 200
   },
-  "ManaModifer": {
+  "Group": "5.99표/귀걸이/공통귀걸이",
+  "HitModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
     "Option": 0,
-    "Value": 8000
+    "Value": 10
   },
-  "Group": "5.99표/귀걸이/공통귀걸이"
+  "DmgModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 2
+  }
 }

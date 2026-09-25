@@ -1,0 +1,30 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "체력의매직부츠",
+  "Image": 1,
+  "DisplayImage": 32843,
+  "EquipmentSlot": 13,
+  "ScriptName": "Boot",
+  "Flags": 4189,
+  "Class": 0,
+  "Gender": 255,
+  "LevelRequired": 99,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 1000000,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 40000,
+  "CarryWeight": 2,
+  "HealthModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 100
+  },
+  "DexModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 6
+  },
+  "Group": "하데스표/신발/원작표"
+}

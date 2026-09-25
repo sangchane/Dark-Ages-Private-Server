@@ -11,11 +11,11 @@
   "Flags": 125,
   "CanStack": false,
   "MaxStack": 0,
-  "Value": 20000000,
+  "Value": 600000,
   "DmgMin": 0,
   "DmgMax": 0,
-  "MaxDurability": 3000,
-  "CarryWeight": 0,
+  "MaxDurability": 9000,
+  "CarryWeight": 5,
   "AcModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
     "Option": 1,
@@ -24,17 +24,7 @@
   "HealthModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
     "Option": 0,
-    "Value": 1000
-  },
-  "ManaModifer": {
-    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
-    "Option": 0,
-    "Value": 1000
-  },
-  "StrModifer": {
-    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
-    "Option": 0,
-    "Value": 1
+    "Value": 200
   },
   "Group": "5.99표/장갑/공통장갑"
 }

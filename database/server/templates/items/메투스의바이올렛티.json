@@ -1,0 +1,30 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "메투스의바이올렛티",
+  "Image": 1,
+  "DisplayImage": 32863,
+  "EquipmentSlot": 13,
+  "ScriptName": "Boot",
+  "Flags": 4189,
+  "Class": 0,
+  "Gender": 255,
+  "LevelRequired": 71,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 200000,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 27000,
+  "CarryWeight": 2,
+  "DexModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 4
+  },
+  "ConModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 1
+  },
+  "Group": "하데스표/신발/원작표"
+}
