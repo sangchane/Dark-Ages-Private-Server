@@ -47,8 +47,8 @@ namespace Darkages.Network.Game
                 client.Aisling.CancelExchange();
                 client.Aisling.Remove(true);
 
-                if ((DateTime.UtcNow - client.LastSave).TotalSeconds > 2)
-                    client.Save();
+                // 나가는 자리는 늘 저장한다 — 2초 안에 저장했으면 건너뛰던 탓에 막 걸은 자리를 잃고 예전 자리에 섰다(2026-09-24).
+                client.Save();
             }
             catch (Exception ex)
             {

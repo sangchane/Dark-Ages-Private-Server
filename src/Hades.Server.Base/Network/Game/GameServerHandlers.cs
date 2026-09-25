@@ -231,8 +231,8 @@ namespace Darkages.Network.Game
                 Type = "2"
             };
 
-            if ((DateTime.UtcNow - client.LastSave).TotalSeconds > 2)
-                client.Save();
+            // 나가는 자리는 늘 저장한다(GameServer.ClientDisconnected 와 같은 까닭).
+            client.Save();
 
             if (ServerContext.Redirects.Contains(client.Aisling.Username.ToLower()))
                 ServerContext.Redirects.Remove(client.Aisling.Username.ToLower());
