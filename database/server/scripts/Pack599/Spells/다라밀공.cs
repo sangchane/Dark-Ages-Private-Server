@@ -68,7 +68,10 @@ namespace Darkages.Storage.locales.Scripts.Pack599
             }
             p.Call("user_say", (V)0L, (V)"대상은~!?");
             p.Call("game_sound", (V)98L, (V)0L);
-            p.Call("motion", (V)136L, (V)75L);
+            // 손본 곳(2026-09-25) — 생성기가 다시 만들면 되돌아간다(`build-pack-abilities.py --만` 으로 다른 것만 옮길 것).
+            // 5.99 표의 136(마법사 시전)은 원작 클라이언트가 skill.tbl 8번 줄 ST 옷(마법사 옷)에만 그려 도복 무도가는
+            // 몸이 안 움직인다 — 쿠로토와 같은 까닭. 혼든 팩의 다라밀공은 `motion 6, 30`(손 들기, 옷을 가리지 않는 03 파일)이다.
+            p.Call("motion", (sprite as Aisling)?.Path == Class.Wizard ? (V)136L : (V)6L, (V)75L);
         }
     }
 }
