@@ -1,0 +1,29 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "셔스의금반지",
+  "Image": 210,
+  "DisplayImage": 32974,
+  "EquipmentSlot": 5,
+  "Class": 0,
+  "Gender": 255,
+  "LevelRequired": 9,
+  "ScriptName": "Generic",
+  "Flags": 95,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 3000,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 2000,
+  "DexModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 1
+  },
+  "ManaModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 50
+  },
+  "Group": "하데스표/반지/공통반지"
+}

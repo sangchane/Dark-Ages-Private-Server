@@ -27,11 +27,10 @@
     "$type": "System.Collections.Generic.List`1[[System.String, System.Private.CoreLib]], System.Private.CoreLib",
     "$values": [
       "엘란디스",
-      "지폰",
-      "화염의목걸이",
-      "로오의반지",
       "하급체력포션",
-      "하급마력포션"
+      "하급마력포션",
+      "로오의반지",
+      "칸의목걸이"
     ]
   },
   "ScriptName": "Common Monster",

@@ -27,11 +27,9 @@
     "$type": "System.Collections.Generic.List`1[[System.String, System.Private.CoreLib]], System.Private.CoreLib",
     "$values": [
       "엘란디스",
-      "브리간딘",
-      "화염의벨트",
-      "칸의목걸이",
       "하급체력포션",
-      "하급마력포션"
+      "하급마력포션",
+      "이아의호안석반지"
     ]
   },
   "ScriptName": "Common Monster",

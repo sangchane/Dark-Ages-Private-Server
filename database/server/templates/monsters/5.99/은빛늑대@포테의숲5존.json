@@ -27,11 +27,9 @@
     "$type": "System.Collections.Generic.List`1[[System.String, System.Private.CoreLib]], System.Private.CoreLib",
     "$values": [
       "은빛늑대의갈기털",
-      "매직머큐리아",
-      "대지의목걸이",
-      "로오의반지",
       "중급체력포션",
-      "중급마력포션"
+      "중급마력포션",
+      "화염의룬스톤목걸이"
     ]
   },
   "ScriptName": "Common Monster",

@@ -1,0 +1,29 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "메투스의쌍금귀걸이",
+  "Image": 231,
+  "DisplayImage": 32999,
+  "EquipmentSlot": 5,
+  "Class": 0,
+  "Gender": 255,
+  "LevelRequired": 8,
+  "ScriptName": "Earring",
+  "Flags": 4189,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 10000,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 2000,
+  "StrModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 2
+  },
+  "ConModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 1
+  },
+  "Group": "하데스표/귀걸이/공통귀걸이"
+}

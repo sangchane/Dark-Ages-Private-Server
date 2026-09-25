@@ -1,0 +1,34 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "세오의고루반지",
+  "Image": 210,
+  "DisplayImage": 32983,
+  "EquipmentSlot": 8,
+  "Class": 0,
+  "Gender": 255,
+  "LevelRequired": 9,
+  "ScriptName": "Generic",
+  "Flags": 95,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 50000,
+  "DmgMin": 0,
+  "DmgMax": 0,
+  "MaxDurability": 4000,
+  "WisModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 1,
+    "Value": 1
+  },
+  "ConModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 2
+  },
+  "ManaModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 150
+  },
+  "Group": "하데스표/반지/공통반지"
+}

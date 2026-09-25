@@ -27,11 +27,9 @@
     "$type": "System.Collections.Generic.List`1[[System.String, System.Private.CoreLib]], System.Private.CoreLib",
     "$values": [
       "아칸더스",
-      "홀리로브",
-      "화염의목걸이",
-      "로오의반지",
       "하급체력포션",
-      "하급마력포션"
+      "하급마력포션",
+      "대지의홀디트링"
     ]
   },
   "ScriptName": "Common Monster",
