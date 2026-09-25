@@ -714,8 +714,12 @@ namespace Darkages.Network.Game
                 shown = Array.Empty<Sprite>();
             }
 
+            // 거두는 것은 이제 보이지 않을 것만 — 다른 맵이거나 새 자리에서 시야 밖인 것. 곁에 그대로 있는 것까지 거두면
+            // 같은 맵 새로고침(막힌 걸음·속도 초과의 Refresh)마다 괴물이 모두 사라졌다가 다음 시야 갱신에 돌아왔다
+            // (2026-09-25 사용자 "몬스터가 보였다가 사라진다"). 곁의 것은 시야를 비운 뒤 0x07 로 다시 보낸다.
             foreach (var seen in shown)
-                if (seen != null && seen.Serial != Aisling.Serial)
+                if (seen != null && seen.Serial != Aisling.Serial
+                                 && (seen.CurrentMapId != Aisling.CurrentMapId || !seen.WithinRangeOf(Aisling)))
                     seen.HideFrom(Aisling);
 
             Aisling.View.Clear();
