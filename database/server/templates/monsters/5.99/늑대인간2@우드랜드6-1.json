@@ -27,7 +27,11 @@
     "$type": "System.Collections.Generic.List`1[[System.String, System.Private.CoreLib]], System.Private.CoreLib",
     "$values": [
       "이슬",
-      "맨틀"
+      "맨틀",
+      "화염의벨트",
+      "칸의목걸이",
+      "하급체력포션",
+      "하급마력포션"
     ]
   },
   "ScriptName": "Common Monster",

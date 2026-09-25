@@ -22,9 +22,12 @@
   "CastSpeed": 8000,
   "MoodType": 4,
   "PathQualifer": 1,
-  "LootType": 32,
+  "LootType": 34,
   "Drops": {
-    "$values": []
+    "$values": [
+      "하급체력포션",
+      "하급마력포션"
+    ]
   },
   "ScriptName": "Common Monster",
   "UpdateMapWide": true,

@@ -75,25 +75,9 @@ namespace Darkages.Storage.locales.Scripts.Formulas
                 if (player.ExpNext >= uint.MaxValue)
                     player.ExpNext = uint.MaxValue;
 
-                Levelup(player);
+                // 레벨업 식은 서버 한 곳(Monster.Levelup — 원작 콘+30·위즈+25)을 쓴다. 여기 따로 적힌 하데스 식을 치웠다(2026-09-25).
+                Darkages.Types.Monster.Levelup(player);
             }
-        }
-
-        public static void Levelup(Aisling player)
-        {
-            if (player.ExpLevel >= ServerContext.Config.PlayerLevelCap)
-                return;
-
-            player._MaximumHp += (int)(ServerContext.Config.HpGainFactor * player.Con * 0.65);
-            player._MaximumMp += (int)(ServerContext.Config.MpGainFactor * player.Wis * 0.45);
-            player.StatPoints += ServerContext.Config.StatsPerLevel;
-
-            player.ExpLevel++;
-
-            player.Client.SendMessage(0x02,
-                string.Format(ServerContext.Config.LevelUpMessage, player.ExpLevel));
-            player.Show(Scope.NearbyAislings,
-                new ServerFormat29((uint)player.Serial, (uint)player.Serial, 0x004F, 0x004F, 64));
         }
 
         private List<string> DetermineDrop()
@@ -288,36 +272,45 @@ namespace Darkages.Storage.locales.Scripts.Formulas
         }
 
         /// <summary>
-        /// 정의가 금화를 적어 두면 그것이 답이다 — 5.99 의 <c>골드 &lt;액수&gt; &lt;확률%&gt;</c> 를 그대로 옮겨
-        /// 적었다(<c>scripts/build-pack-gold.py</c>). 안 적어 둔 괴물만 레벨에서 나온다.
+        /// 경험치 한 점당 금화. 원작에도 하데스에도 "몬스터 레벨"이라는 값이 없어(2026-09-24 조사 —
+        /// 서버팩 3개·원작 아카이브·참고저장소 16개 어디에도 몬스터 레벨 필드가 없다) 레벨 대신 **경험치에
+        /// 비례**시킨다. 노비스 괴물 11마리의 경험치(1,068~1,849)와 지금 금화(20~30)를 나눠 보면 비율이
+        /// 0.0162~0.0247 사이(평균 0.0187)였다 — 그 폭 가운데 값으로 0.02 를 골라, 노비스 대부분(경험치
+        /// 1,068~1,301)이 새 식에서도 20~31전으로 지금 폭과 거의 겹치게 했다(경험치가 큰 지네·독거미
+        /// 1,781~1,849 만 32~44전으로 조금 올라간다).
+        /// </summary>
+        private const double GoldPerExp = 0.02;
+
+        /// <summary>무작위 폭 — 사용자가 정한 ±20%.</summary>
+        private const double GoldVariance = 0.2;
+
+        /// <summary>
+        /// 경험치와 같은 값 — <see cref="GenerateExperience"/> 가 쓰는 "정의에 적힌 값, 없으면 레벨식"
+        /// 을 그대로 되풀이한다(그쪽 메서드는 손대지 않는다 — 실제 지급 경험치가 바뀌면 안 되므로).
+        /// </summary>
+        private int MonsterExp()
+        {
+            if (_monster.Template.Exp is { } stated)
+                return stated;
+
+            var seed = _monster.Template.Level * 0.1 + 1.5;
+            return (int)(_monster.Template.Level * seed * 300);
+        }
+
+        /// <summary>
+        /// 몬스터를 잡으면 금화는 <b>무조건</b> 떨어진다(사용자 결정, 2026-09-24). <c>LootType</c> 의
+        /// Gold 플래그와 <c>GoldChance</c> 는 더는 보지 않는다 — 있어도 없어도 항상 준다.
         /// </summary>
         /// <remarks>
-        /// 레벨 쪽 식은 손대지 않았지만 지금 세상에는 거의 쓰이지 않는다. 하데스의 정의 568개가 모두
-        /// <c>Level 1</c> 이라, 그 길로 가면 세상의 모든 괴물이 한 마리에 500~999 전을 냈다 — 레더튜닉이
-        /// 300전이고 5.99 는 같은 노비스 괴물에게 스무 전을 셋에 하나꼴로 준다.
+        /// <b>레벨 기반 최저금액 분기를 걷어내고 경험치 비례식으로 바꿨다(사용자 결정, 2026-09-24).</b>
+        /// 금화 = 경험치 × <see cref="GoldPerExp"/> × (0.8~1.2 무작위). 템플릿의 <c>Gold</c>·
+        /// <c>GoldChance</c> 칸은 더 이상 읽지 않지만 자료에서 지우지는 않았다(생성기는 더하고 고치기만).
         /// </remarks>
         private void GenerateGold()
         {
-            if (!_monster.Template.LootType.HasFlag(LootQualifer.Gold))
-                return;
-
-            int sum;
-
-            if (_monster.Template.Gold is { } stated)
-            {
-                var chance = _monster.Template.GoldChance ?? 100;
-
-                if (chance <= 0 || Generator.Random.Next(100) >= chance)
-                    return;
-
-                sum = stated;
-            }
-            else
-            {
-                sum = Generator.Random.Next(
-                    _monster.Template.Level * 500,
-                    _monster.Template.Level * 1000);
-            }
+            var baseline = MonsterExp() * GoldPerExp;
+            var factor = 1 + (Generator.Random.NextDouble() * 2 - 1) * GoldVariance;
+            var sum = (int)Math.Round(baseline * factor);
 
             if (sum > 0)
                 Money.Create(_monster, sum, new Position(_monster.XPos, _monster.YPos));

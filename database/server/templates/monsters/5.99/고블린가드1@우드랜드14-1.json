@@ -28,7 +28,11 @@
     "$values": [
       "아칸더스",
       "라비린스메일",
-      "선풍도복"
+      "선풍도복",
+      "대지의목걸이",
+      "로오의반지",
+      "하급체력포션",
+      "하급마력포션"
     ]
   },
   "ScriptName": "Common Monster",
@@ -39,6 +43,6 @@
   "SpellScripts": [
     "Monster_나르콜리"
   ],
-  "Gold": 0,
+  "Gold": 170,
   "GoldChance": 100
 }

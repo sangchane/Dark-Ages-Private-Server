@@ -8,5 +8,6 @@
   "Value": 800,
   "ScriptName": "Consumable",
   "HealthRestore": 2000,
-  "Group": "5.99표/물약"
+  "Group": "5.99표/물약",
+  "DropRate": 0.6
 }

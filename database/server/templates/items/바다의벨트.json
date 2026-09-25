@@ -16,5 +16,6 @@
   "DmgMax": 0,
   "MaxDurability": 1000,
   "CarryWeight": 1,
-  "Group": "원작표/허리띠"
+  "Group": "원작표/허리띠",
+  "DropRate": 0.045
 }

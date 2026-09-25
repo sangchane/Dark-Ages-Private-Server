@@ -8,5 +8,6 @@
   "Value": 300,
   "ScriptName": "Consumable",
   "ManaRestore": 1000,
-  "Group": "5.99표/물약"
+  "Group": "5.99표/물약",
+  "DropRate": 0.6
 }

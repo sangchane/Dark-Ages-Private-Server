@@ -27,7 +27,11 @@
     "$type": "System.Collections.Generic.List`1[[System.String, System.Private.CoreLib]], System.Private.CoreLib",
     "$values": [
       "그린팜팻의알",
-      "레더메일"
+      "레더메일",
+      "바람의벨트",
+      "칸의목걸이",
+      "중급체력포션",
+      "중급마력포션"
     ]
   },
   "ScriptName": "Common Monster",
