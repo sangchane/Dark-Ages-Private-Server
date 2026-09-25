@@ -47,8 +47,15 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                 v_hill = (V)300L;
             }
             v_type = p.Call("istype", v_myid);
-            p.Call("motion", (V)136L, (V)75L);
-            p.Call("effect", v_target, (V)4L, (V)0L, (V)75L);
+            // 손본 곳(2026-09-24, 사용자 "도복 입어도 쿠로토 모션 있어" · "쿠로토 빠르다") — 생성기가 다시 만들면 되돌아간다.
+            // 5.99 표의 136(마법사 시전)은 원작 클라이언트가 skill.tbl 8번 줄 ST 옷(마법사 옷)에만 그린다(Legend.exe 2005
+            // 0x4e1161~0x4e1171). 도복(착용이미지 3)은 거기 없어 무도가는 몸이 안 움직였다. 혼든 팩의 쿠로토는 `motion 6, 30`
+            // (손 들기 — 옷을 가리지 않는 03 파일)이고, 하데스 Aisling.Cast 도 사제 128 · 마법사 136 · 그 밖은 6 이다.
+            // 링은 5.99 의 75 에서 20%씩 두 번 느리게(75 / 0.8 / 0.8 ≈ 117). 몸은 앱이 모든 동작에 30% 를 더 걸어 링보다 늦었다
+            // (사용자 2026-09-25: "모션이 이펙트에 비해 느리다") — 117 / 1.3 ≈ 90 을 보내 링과 같은 빠르기로 맞춘다.
+            var kurotoPath = (sprite as Aisling)?.Path;
+            p.Call("motion", kurotoPath == Class.Priest ? (V)128L : kurotoPath == Class.Wizard ? (V)136L : (V)6L, (V)90L);
+            p.Call("effect", v_target, (V)4L, (V)0L, (V)117L);
             p.Call("game_sound", (V)8L, (V)0L);
             p.Call("set_vita", v_myid, ((V)(p.Call("get_vita", v_myid)) + (V)(v_hill)));
         }
