@@ -15,10 +15,10 @@
     },
     {
       "Destination": {
-        "AreaID": 20015,
+        "AreaID": 20028,
         "Location": {
           "X": 10,
-          "Y": 18
+          "Y": 21
         },
         "PortalKey": 0
       },
