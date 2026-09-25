@@ -41,11 +41,8 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                 return;
             }
             p.Call("manal_del", ((V)(((V)(p.Call("get_basemana", v_myid)) / (V)((V)100L))) * (V)((V)3L)));
-            v_hill = ((V)(p.Call("get_wis", v_myid)) * (V)((V)5L));
-            if (V.T(((V)(v_hill) > (V)((V)300L))))
-            {
-                v_hill = (V)300L;
-            }
+            // 5.99 는 위즈×5(최대 300) — 무도가는 위즈가 낮아 25 남짓이었다. 사용자 기억(2026-09-25): "쿠로토 체력 100 정도 회복".
+            v_hill = (V)100L;
             v_type = p.Call("istype", v_myid);
             // 손본 곳(2026-09-24, 사용자 "도복 입어도 쿠로토 모션 있어" · "쿠로토 빠르다") — 생성기가 다시 만들면 되돌아간다.
             // 5.99 표의 136(마법사 시전)은 원작 클라이언트가 skill.tbl 8번 줄 ST 옷(마법사 옷)에만 그린다(Legend.exe 2005
