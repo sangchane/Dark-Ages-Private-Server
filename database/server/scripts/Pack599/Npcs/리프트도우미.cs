@@ -34,7 +34,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
             }
             if (V.T(((V)(v_select) == (V)((V)1L))))
             {
-                yield return Mes((V)1L, (V)"NEXT를 누르시면 마을로 귀환시켜 드리겠습니다!");
+                yield return Mes((V)1L, (V)"다음을 누르시면 마을로 귀환시켜 드리겠습니다!");
                 p.Call("warp", (V)"밀레스마을", (V)49L, (V)45L);
                 yield return Mes((V)0L, (V)"이동이 완료되었습니다.");
                 yield break;

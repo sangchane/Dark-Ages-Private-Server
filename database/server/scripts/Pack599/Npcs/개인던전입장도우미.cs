@@ -26,7 +26,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
             v_myid = p.Call("get_myid");
             v_select = (V)0L;
             L_re: ;
-            yield return Menu((V)"솔로사냥터로 이동하시겠습니까?\\n요금은 1500Gold입니다.", (V)"지하수로(지존)", (V)"승급던전");
+            yield return Menu((V)"솔로사냥터로 이동하시겠습니까?\\n요금은 1500골드입니다.", (V)"지하수로(지존)", (V)"승급던전");
             v_select = reply.Choice;
             if (V.T(((V)(v_select) == (V)((V)0L))))
             {

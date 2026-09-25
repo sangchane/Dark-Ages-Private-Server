@@ -36,7 +36,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
             }
             if (V.T(((V)(v_select) == (V)((V)1L))))
             {
-                yield return Mes((V)1L, (V)"강화리젠트 를 주는 셀라임보스 등 이쁜마을 ^_^ 요금은 30만Gold라네.");
+                yield return Mes((V)1L, (V)"강화리젠트 를 주는 셀라임보스 등 이쁜마을 ^_^ 요금은 30만골드라네.");
                 L_re2: ;
                 yield return Menu((V)"요금을 내고 타바리마을로 이동하겠나?", (V)"이동한다.", (V)"이동하지 않는다.");
                 v_select2 = reply.Choice;

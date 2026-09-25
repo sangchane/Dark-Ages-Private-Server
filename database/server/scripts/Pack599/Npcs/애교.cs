@@ -27,7 +27,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
             v_select = (V)0L;
             yield return Mes((V)1L, (V)"어디든지 배를 타고갈수 있는곳이라면 대려다주지.");
             L_re: ;
-            yield return Menu((V)"참고로 운항비는 옆에 적혀있으니깐, 착오없도록해!", (V)"오렌마을(5000Gold)");
+            yield return Menu((V)"참고로 운항비는 옆에 적혀있으니깐, 착오없도록해!", (V)"오렌마을(5000골드)");
             v_select = reply.Choice;
             if (V.T(((V)(v_select) == (V)((V)0L))))
             {

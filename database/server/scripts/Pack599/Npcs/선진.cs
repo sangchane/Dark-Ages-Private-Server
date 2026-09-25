@@ -223,7 +223,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                     else
                         if (V.T(((V)(v_select) == (V)((V)4L))))
                         {
-                            yield return Mes((V)1L, (V)"대장장이의 신전으로 가시겠습니까?Next를 누르면 보내드리도록 해드리죠.");
+                            yield return Mes((V)1L, (V)"대장장이의 신전으로 가시겠습니까? 다음을 누르면 보내드리도록 해드리죠.");
                             p.Call("warp", (V)"대장장이신전", (V)7L, (V)6L);
                             yield return Mes((V)0L, (V)"대장장이신전으로 이동이 완료되었습니다.");
                             yield break;
@@ -231,7 +231,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
             yield break;
             L_go: ;
             yield return Mes((V)1L, (V)"당신은 충분히 전직할수 있는 체력과 마력을 지니셧군요.");
-            yield return Mes((V)1L, (V)"Next를 누르시면 당신이 전직할수있는 직업 목록표를 보여드리도록 하겠습니다.");
+            yield return Mes((V)1L, (V)"다음을 누르시면 당신이 전직할수있는 직업 목록표를 보여드리도록 하겠습니다.");
             L_re3: ;
             yield return Menu((V)"어느 직업으로 전직 하시겠습니까?\\n(전직시에 보유기술, 스펠은 보존됩니다.)", (V)"전사", (V)"도적", (V)"마법사", (V)"성직자");
             v_select2 = reply.Choice;

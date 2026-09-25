@@ -42,7 +42,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
             }
             if (V.T(((V)(v_select) == (V)((V)1L))))
             {
-                yield return Mes((V)1L, (V)"적룡플라밋의굴대기실로 이동하겠나? 요금은 1만Gold라네.");
+                yield return Mes((V)1L, (V)"적룡플라밋의굴대기실로 이동하겠나? 요금은 1만골드라네.");
                 L_re2: ;
                 yield return Menu((V)"요금을 내고 적룡플라밋의굴로 이동하겠나?", (V)"이동한다.", (V)"이동하지 않는다.");
                 v_select2 = reply.Choice;

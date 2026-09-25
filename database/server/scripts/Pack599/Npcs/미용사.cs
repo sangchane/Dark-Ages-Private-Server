@@ -27,7 +27,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
             v_myid = p.Call("get_myid");
             v_select = (V)0L;
             L_re: ;
-            yield return Menu((V)"안녕하십니까? 멋진 헤어스타일을 원하십니까??\\n어떤 가위로 자르시겠습니까?\\n(요금5000GOLD)", (V)"가위", (V)"금가위", (V)"가위머리보기(새창)");
+            yield return Menu((V)"안녕하십니까? 멋진 헤어스타일을 원하십니까??\\n어떤 가위로 자르시겠습니까?\\n(요금5000골드)", (V)"가위", (V)"금가위", (V)"가위머리보기(새창)");
             v_select = reply.Choice;
             if (V.T(((V)(p.Call("get_money", v_myid)) < (V)((V)5000L))))
             {

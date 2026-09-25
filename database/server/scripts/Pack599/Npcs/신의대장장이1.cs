@@ -23,7 +23,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
             V v_select = 0;
 
             yield return Mes((V)1L, (V)"안녕하세요? 저는 승급옷 업그레이드 담당 NPC 블랙팜 이에요~>ㅁ<");
-            yield return Mes((V)1L, (V)"우선 승급옷을 업글하실려면 생셋 or 암셋은 필수!");
+            yield return Mes((V)1L, (V)"우선 승급옷을 업글하실려면 생셋 또는 암셋은 필수!");
             yield return Menu((V)"무엇을 만드시겠습니까?", (V)"남전사(빛)", (V)"남도적(빛)", (V)"남도가(빛)", (V)"남법사(빛)", (V)"남사제(빛)", (V)"남전사(암)", (V)"남도적(암)", (V)"남도가(암)", (V)"남법사(암)", (V)"남사제(암)", (V)"여전사(빛)", (V)"여도적(빛)", (V)"여도가(빛)", (V)"여법사(빛)", (V)"여사제(빛)", (V)"여전사(암)", (V)"여도적(암)", (V)"여도가(암)", (V)"여법사(암)", (V)"여사제(암)");
             v_select = reply.Choice;
             if (V.T(((V)(v_select) == (V)((V)1L))))

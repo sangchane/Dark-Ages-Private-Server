@@ -53,7 +53,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                 yield return Mes((V)1L, (V)"블랙팜온라인은 필드사냥을 지향합니다.");
                 yield return Mes((V)1L, (V)"물약은 체력물약을 쓰든 마력물약을 쓰든 쿨타임이 중복됩니다.");
                 yield return Mes((V)1L, (V)"EG샵에서는 특수기능 아이템들을 구매하실수 있습니다.");
-                yield return Mes((V)1L, (V)"던전을 이용시, 던전마다 클리어 방식이 틀립니다. ex)모든 몬스터 처치, 특정 몬스터 처치");
+                yield return Mes((V)1L, (V)"던전을 이용시, 던전마다 클리어 방식이 틀립니다. 예)모든 몬스터 처치, 특정 몬스터 처치");
                 yield return Mes((V)1L, (V)"저희 블랙팜온라인에서는 배고픔 시스템이 구현되있습니다.");
                 yield return Mes((V)1L, (V)"배고픔수치는 최대 100, 최소 0입니다. 이 수치에 따라 게임에 패널티를 받게됩니다.");
                 yield return Mes((V)1L, (V)"배고픔수치 확인법은 상태창(G)의 GP수치를 보시면 됩니다.");
