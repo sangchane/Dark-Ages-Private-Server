@@ -195,7 +195,7 @@ namespace Darkages.Storage.locales.Scripts.Formulas
         /// </remarks>
         private double ForLevel(Aisling player, double exp)
         {
-            var gap = player.ExpLevel - _monster.Template.Level;
+            var gap = player.ExpLevel - HuntingGroundLevel(_monster.CurrentMapId, _monster.Template.Level);
 
             if (gap <= Forgiven)
                 return exp;
@@ -204,6 +204,34 @@ namespace Darkages.Storage.locales.Scripts.Formulas
 
             return exp * Math.Max(Least, share);
         }
+
+        /// <summary>
+        /// 깎기에 쓰는 괴물 레벨 — 그 괴물이 사는 사냥터의 입장 레벨 범위의 <b>위쪽 끝</b>(사용자 결정 2026-09-25).
+        /// 괴물 정의 568개 가운데 567개가 <c>Level</c> 1 이라(나머지 하나도 1), 정의의 레벨로 깎으면 7레벨부터 어디서든
+        /// 깎였다. 이 값은 <b>깎기에만</b> 쓴다 — 체력·능력치를 만드는 <c>Template.Level</c> 은 그대로다.
+        /// </summary>
+        /// <remarks>
+        /// 근거는 워프의 레벨문(5.99 <c>warp/*.txt</c> 줄 끝 두 칸 = 최소·최대, 추출본
+        /// <c>data/server-packs/extracted/5.99-server/warps.json</c>의 <c>raw</c>):
+        /// <list type="bullet">
+        /// <item>노비스 22 — 노비스마을→평원A·B 1~22, 평원→지하던전 5~22, 지하던전끼리 10~22(<c>Novice_Warp</c>, 하데스 워프도 같다).</item>
+        /// <item>포테의숲 1~6존 51 — 하데스 워프 템플릿 수오미마을→1존·존끼리 21~51(5.99 map_create 사본). 5.99 에는 5존→오솔길 21~52 한 줄뿐.</item>
+        /// <item>아벨해안 1-A~4-C 80 — 5.99 <c>Abel_Warp</c> 가 해안 안의 모든 문에 51~80. 하데스는 입구에만 남겼으므로 5.99 원본을 쓴다.</item>
+        /// <item>우드랜드 2~6·14 99 — 5.99 <c>WoodLand_Warp</c> 가 입구에서 11·21·21·51·51·81 이상만 묻고 위쪽은 99 다.</item>
+        /// <item>신죽음의마을·신죽마집안·죽음의마을 99 — 5.99 문이 모두 99~99.</item>
+        /// </list>
+        /// 레벨문이 없는 곳(우드랜드1-1~1-3·드라큐라백작의성·마운틴메리·지하수로D·카스마늄 갱도·승급던젼)은 정의의 레벨을 그대로 쓴다.
+        /// </remarks>
+        private static int HuntingGroundLevel(int mapId, int stated) => mapId switch
+        {
+            _ when IsNovice(mapId) => 22,
+            >= 20263 and <= 20268 => 51,  // 포테의숲1존~6존
+            >= 20584 and <= 20594 => 80,  // 아벨해안1-A~4-C
+            20020 => 99,                  // 우드랜드14-1
+            >= 20022 and <= 20026 => 99,  // 우드랜드2-1~6-1
+            >= 20657 and <= 20682 => 99,  // 신죽마집안·신죽음의마을·죽음의마을
+            _ => stated
+        };
 
         /// <summary>몇 레벨 차이까지는 깎지 않나.</summary>
         private const int Forgiven = 5;
