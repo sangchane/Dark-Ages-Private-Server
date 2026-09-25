@@ -24,6 +24,12 @@ namespace Darkages.Types
         [JsonIgnore] [Browsable(false)] public string Name => $"{Template.Name} (Lev:{Level}/{Template.MaxLevel})";
         public DateTime NextAvailableUse { get; set; }
         public bool Ready => DateTime.UtcNow > NextAvailableUse;
+
+        /// <summary>
+        /// 스크립트가 이번 한 번을 쓰지 않고 돌려보냈다(마력이 모자람 …). 0x3E 처리가 이것을 보고 기다림을 걸지 않는다 —
+        /// 5.99 스크립트는 거절하고 <c>end</c> 한 뒤에는 <c>skill_delay</c> 까지 가지 않는다.
+        /// </summary>
+        [JsonIgnore] public bool Refused { get; set; }
         [JsonIgnore] public Dictionary<string, SkillScript> Scripts { get; set; }
 
         public byte Slot { get; set; }

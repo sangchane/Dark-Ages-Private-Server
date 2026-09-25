@@ -29,6 +29,8 @@ namespace Darkages.Storage.locales.Scripts.Skills
             if (aisling.CurrentMp < mana)
             {
                 aisling.Client.SendMessage(0x02, $"사용하기에 마력량이적습니다. [필요마나 : {mana}이상]");
+                // 5.99 는 여기서 `end` — `skill_delay` 까지 가지 않으니 기다림도 없다.
+                skill.Refused = true;
                 return false;
             }
 

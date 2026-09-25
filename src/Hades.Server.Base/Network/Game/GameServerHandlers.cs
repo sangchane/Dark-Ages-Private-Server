@@ -1914,6 +1914,11 @@ namespace Darkages.Network.Game
 
             skill.InUse = true;
 
+            // 스크립트가 손에 쥔 Skill 은 기술 창의 것과 다른 사본일 수 있다(시험에서 확인) — 거절 표시는 둘 다 본다.
+            var held = skill.Scripts.Values.Where(script => script?.Skill != null).Select(script => script.Skill)
+                .Append(skill).Distinct().ToList();
+            held.ForEach(one => one.Refused = false);
+
             if (skill.Template.Type == SkillScope.Assail)
                 foreach (var assail in client.Aisling.GetAssails())
                 {
@@ -1925,6 +1930,15 @@ namespace Darkages.Network.Game
 
             foreach (var script in skill.Scripts.Values)
                 script.OnUse(client.Aisling);
+
+            // 스크립트가 쓰지 않고 돌려보냈으면(마력 모자람) 기다림을 걸지 않는다. 걸면 앱은 남은 초를 모른 채(0x3F 는
+            // 실제로 쓸 때만 간다) 단추를 눌러도 6초 동안 아무 일이 없다 — 「붕각이 가끔 안 나간다」(2026-09-25).
+            if (held.Any(one => one.Refused))
+            {
+                held.ForEach(one => one.Refused = false);
+                skill.InUse = false;
+                return;
+            }
 
             if (skill.Template.Cooldown > 0)
                 skill.NextAvailableUse = DateTime.UtcNow.AddSeconds(skill.Template.Cooldown);
