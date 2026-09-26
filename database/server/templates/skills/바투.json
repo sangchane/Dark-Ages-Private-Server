@@ -9,5 +9,6 @@
   "Description": null,
   "Group": "5.99표/전사(비전직)",
   "ScriptName": "바투",
-  "Cooldown": 20
+  "Cooldown": 20,
+  "Type": 1
 }

@@ -212,6 +212,9 @@ namespace Darkages.Types
                 string.Format(ServerContext.Config.LevelUpMessage, player.ExpLevel));
             player.Show(Scope.NearbyAislings,
                 new ServerFormat29((uint) player.Serial, (uint) player.Serial, 0x004F, 0x004F, 64));
+
+            // 그 레벨의 기술·마법을 저절로 익힌다(사용자 결정 2026-09-26 — 사범에게 가지 않아도).
+            AutoLearn.Catchup(player);
         }
     }
 }

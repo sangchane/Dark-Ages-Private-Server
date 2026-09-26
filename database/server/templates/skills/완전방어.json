@@ -10,5 +10,6 @@
   "Group": "5.99표/전사(비전직)",
   "Icon": 19,
   "ScriptName": "완전방어",
-  "Cooldown": 16
+  "Cooldown": 16,
+  "Type": 1
 }

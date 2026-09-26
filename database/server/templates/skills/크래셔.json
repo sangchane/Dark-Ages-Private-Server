@@ -16,5 +16,6 @@
   "ID": 0,
   "Description": null,
   "Group": "원작표",
-  "Cooldown": 8
+  "Cooldown": 8,
+  "Type": 1
 }

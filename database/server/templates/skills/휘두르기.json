@@ -10,5 +10,6 @@
   "Group": "5.99표/전사(비전직)",
   "Icon": 85,
   "ScriptName": "휘두르기",
-  "Cooldown": 6
+  "Cooldown": 6,
+  "Type": 1
 }

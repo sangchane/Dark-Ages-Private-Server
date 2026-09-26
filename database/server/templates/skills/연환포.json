@@ -13,5 +13,6 @@
   "Group": "원작표",
   "Sound": 14,
   "TargetAnimation": 8,
-  "Cooldown": 8
+  "Cooldown": 8,
+  "Type": 1
 }

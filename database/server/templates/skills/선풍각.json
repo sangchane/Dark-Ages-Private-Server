@@ -10,5 +10,6 @@
   "Group": "원작표/조건없음",
   "Sound": 14,
   "TargetAnimation": 249,
-  "Cooldown": 7
+  "Cooldown": 7,
+  "Type": 1
 }

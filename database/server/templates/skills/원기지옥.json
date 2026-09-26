@@ -10,5 +10,6 @@
   "Group": "5.99표/도적(비전직)",
   "Icon": 70,
   "ScriptName": "원기지옥",
-  "Cooldown": 8
+  "Cooldown": 8,
+  "Type": 1
 }
