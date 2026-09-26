@@ -1987,8 +1987,16 @@ namespace Darkages.Network.Game
         /// </summary>
         protected override void FormatF1Handler(GameClient client, ClientFormatF1 format)
         {
-            if (client?.Aisling == null || !client.Aisling.LoggedIn || client.Aisling.IsDead())
+            if (client?.Aisling == null || !client.Aisling.LoggedIn)
                 return;
+
+            // 죽은(유령) 사람도 봇을 보낼 수는 있다 — 전에는 모두 버려 [봇 보내기] 가 아무 반응이 없었다(사용자, 2026-09-26).
+            // 그 밖의 일(부르기·주기·깨우기)은 산 몸으로만.
+            if (client.Aisling.IsDead() && format.Kind != ClientFormatF1.Dismiss)
+            {
+                client.SendMessage(0x02, "죽은 몸으로는 할 수 없습니다.");
+                return;
+            }
 
             switch (format.Kind)
             {
@@ -2006,6 +2014,9 @@ namespace Darkages.Network.Game
                     break;
                 case ClientFormatF1.Wake:
                     Companions.Wake(client.Aisling);
+                    break;
+                case ClientFormatF1.WakeMaster:
+                    Companions.WakeMaster(client.Aisling);
                     break;
             }
         }
@@ -2885,6 +2896,9 @@ namespace Darkages.Network.Game
             if (objAisling != null)
             {
                 var playerObjAisling = objAisling;
+
+                // 이미 넘은 레벨의 기술·마법 중 빠진 것을 한꺼번에(사용자 결정 2026-09-26 — 레벨이 되면 저절로).
+                AutoLearn.Catchup(playerObjAisling);
 
                 if (playerObjAisling.Dead || playerObjAisling.CurrentHp <= 0)
                 {

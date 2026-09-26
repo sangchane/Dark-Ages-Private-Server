@@ -577,9 +577,9 @@ namespace Darkages.Types
         }
 
         /// <summary>
-        /// 내 가방의 코마디움으로 혼수인 봇을 깨운다(0xF1 4). 5.99 코마디움(<c>Item/Potion.txt</c>)은 **앞에 선 사람**
-        /// (<c>get_front_char</c>)에게 쓰는 물건이다 — 그래서 봇이 바로 옆 칸일 때만, 주인이 봇 쪽으로 돌아선 뒤 원작 스크립트 그대로
-        /// 쓴다(한 개 줄고, 혼수가 풀리고, 체력·마력 1000).
+        /// 혼수인 봇을 깨운다(0xF1 4) — **코마디움 없이, 아무것도 쓰지 않고**(사용자, 2026-09-26 "코마 사지 않아도 사용 가능하게").
+        /// 5.99 코마디움(<c>Item/Potion.txt</c>)처럼 앞에 선 사람에게 — 봇이 바로 옆 칸일 때만, 주인이 봇 쪽으로 돌아서서, 코마디움과
+        /// 같은 결과(혼수가 풀리고 체력·마력 1000).
         /// </summary>
         public static void Wake(Aisling owner)
         {
@@ -595,13 +595,6 @@ namespace Darkages.Types
                 return;
             }
 
-            var comadium = owner.Inventory.Get(i => i?.Template?.Name == "코마디움").FirstOrDefault();
-            if (comadium == null)
-            {
-                owner.Client.SendMessage(0x02, "코마디움이 없습니다.");
-                return;
-            }
-
             var dx = bot.XPos - owner.XPos;
             var dy = bot.YPos - owner.YPos;
             if (bot.CurrentMapId != owner.CurrentMapId || Math.Abs(dx) + Math.Abs(dy) != 1)
@@ -610,15 +603,50 @@ namespace Darkages.Types
                 return;
             }
 
-            owner.Direction = (byte) (dy < 0 ? 0 : dx > 0 ? 1 : dy > 0 ? 2 : 3);
-            owner.Show(Scope.NearbyAislings, new ServerFormat11 { Serial = owner.Serial, Direction = owner.Direction });
+            WakeUp(owner, bot);
+            owner.Client.SendMessage(0x02, $"봇 {bot.Username}님을 깨웠습니다.");
+        }
 
-            if (string.IsNullOrEmpty(comadium.Template.ScriptName))
+        /// <summary>
+        /// 봇이 혼수인 주인을 깨운다(0xF1 5, 사용자 결정 2026-09-26 "내가 혼수에 빠지면 봇이 옆으로 와서 깨운다"). 아무나 못 쓰게
+        /// 서버가 가린다: 부른 사람이 있는 봇 계정만, 봇이 살아 있고 혼수가 아닐 때, 주인이 혼수이고 바로 옆 칸일 때만.
+        /// </summary>
+        public static void WakeMaster(Aisling bot)
+        {
+            if (bot?.Client == null || !IsBot(bot.Username) || bot.Dead || bot.Skulled)
                 return;
 
-            comadium.Scripts ??= ScriptManager.Load<ItemScript>(comadium.Template.ScriptName, comadium);
-            foreach (var script in comadium.Scripts.Values)
-                script?.OnUse(owner, comadium.Slot);
+            string ownerName;
+            lock (Gate)
+            {
+                if (!OwnerOf.TryGetValue(bot.Username, out ownerName))
+                    return;
+            }
+
+            if (FindOnline(ownerName) is not { Skulled: true } owner || owner.Dead || owner.CurrentMapId != bot.CurrentMapId ||
+                Math.Abs(owner.XPos - bot.XPos) + Math.Abs(owner.YPos - bot.YPos) != 1)
+                return;
+
+            WakeUp(bot, owner);
+            owner.Client.SendMessage(0x02, "봇이 당신을 깨웠습니다.");
+        }
+
+        /// <summary>
+        /// 코마디움이 풀어 주는 것과 같은 일 — 깨우는 이가 대상 쪽으로 돌아서고, 혼수를 걷고, 체력·마력 1000(5.99 Item/Potion.txt 코마디움),
+        /// 그림 5(속도 75). 아무것도 쓰지 않는다.
+        /// </summary>
+        private static void WakeUp(Aisling waker, Aisling sleeper)
+        {
+            var dx = sleeper.XPos - waker.XPos;
+            var dy = sleeper.YPos - waker.YPos;
+            waker.Direction = (byte) (dy < 0 ? 0 : dx > 0 ? 1 : dy > 0 ? 2 : 3);
+            waker.Show(Scope.NearbyAislings, new ServerFormat11 { Serial = waker.Serial, Direction = waker.Direction });
+
+            sleeper.RemoveDebuff("skulled", true);
+            sleeper.CurrentHp = Math.Min(1000, sleeper.MaximumHp);
+            sleeper.CurrentMp = Math.Min(1000, sleeper.MaximumMp);
+            sleeper.Client.SendStats(StatusFlags.StructB);
+            waker.Show(Scope.NearbyAislings, new ServerFormat29((uint) waker.Serial, (uint) sleeper.Serial, 5, 0, 75));
         }
 
         /// <summary>원작 착용 규칙(<c>GameClient.CheckReqs</c>)을 봇 기준으로. 입을 수 있으면 null, 아니면 주인에게 보일 까닭.</summary>
