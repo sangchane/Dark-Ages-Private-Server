@@ -936,14 +936,16 @@ namespace Darkages.Network.Game
 
             #endregion
 
-            if (client.Aisling.Skulled)
+            var slot = format.Index;
+            var item = client.Aisling.Inventory.Get(i => i != null && i.Slot == slot).FirstOrDefault();
+
+            // 혼수 중에는 물건을 못 쓰지만, 엑스코마디움은 혼수인 제게 쓰는 물건이다 — 5.99 `Item/Potion.txt` 의 엑스코마디움은
+            // `get_coma(@myid) == 1` 일 때만 듣는다. 막으면 영영 쓸 수 없다.
+            if (client.Aisling.Skulled && item?.Template?.Name != "엑스코마디움")
             {
                 client.SystemMessage(ServerContext.Config.ReapMessageDuringAction);
                 return;
             }
-
-            var slot = format.Index;
-            var item = client.Aisling.Inventory.Get(i => i != null && i.Slot == slot).FirstOrDefault();
 
             if (item == null)
                 return;
@@ -2001,6 +2003,9 @@ namespace Darkages.Network.Game
                     break;
                 case ClientFormatF1.TakeOff:
                     Companions.TakeOff(client.Aisling, format.Slot);
+                    break;
+                case ClientFormatF1.Wake:
+                    Companions.Wake(client.Aisling);
                     break;
             }
         }

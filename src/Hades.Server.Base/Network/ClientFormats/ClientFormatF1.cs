@@ -5,7 +5,7 @@ namespace Darkages.Network.ClientFormats
     /// </summary>
     /// <remarks>
     /// 첫 바이트가 종류: 1 부르기 · 0 보내기 · 2 주기(내 가방 칸(1) · 개수(2) — 장비면 봇에게 입히고, 겹치는 물건(포션)이면
-    /// 그만큼 봇 가방으로, 개수 0 은 다) · 3 벗기기(봇 장비 자리(1) — 내 가방으로).
+    /// 그만큼 봇 가방으로, 개수 0 은 다) · 3 벗기기(봇 장비 자리(1) — 내 가방으로) · 4 내 코마디움으로 혼수인 봇 깨우기(몸 없음).
     /// 0xF1 인 까닭: 원작 클라이언트는 0x80 넘는 명령을 보내지 않고(0xF0 월드맵 열기와 같은 근거), 하데스는 0xF1 을
     /// <c>Undefined.cs</c> 의 빈 자리로만 두었다 — 0xF0 다음 빈 번호다.
     /// </remarks>
@@ -15,6 +15,7 @@ namespace Darkages.Network.ClientFormats
         public const byte Call = 1;
         public const byte Give = 2;
         public const byte TakeOff = 3;
+        public const byte Wake = 4;
 
         public ClientFormatF1()
         {

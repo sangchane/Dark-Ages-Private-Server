@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Darkages.Network.Object;
 using Darkages.Network.ServerFormats;
+using Darkages.Scripting;
 
 #endregion
 
@@ -66,6 +67,9 @@ namespace Darkages.Types
 
         private static readonly Companions Finder = new Companions();
 
+        // 쓰러졌다고 주인에게 이미 알린 봇.
+        private static readonly HashSet<string> Fallen = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+
         /// <summary>봇 레벨 = 부른 사람 − 2, 적어도 1 (사용자 결정).</summary>
         public static int LevelFor(int ownerLevel) => Math.Max(1, ownerLevel - 2);
 
@@ -91,34 +95,56 @@ namespace Darkages.Types
 
             lock (Gate)
             {
-                if (OwnerOf.Values.Any(o => string.Equals(o, caller.Username, StringComparison.OrdinalIgnoreCase)))
-                {
-                    caller.Client.SendMessage(0x02, "이미 봇이 함께 있습니다.");
-                    return;
-                }
+                var mine = OwnerOf.FirstOrDefault(p => string.Equals(p.Value, caller.Username, StringComparison.OrdinalIgnoreCase)).Key;
 
-                if (caller.GroupParty != null && !caller.LeaderPrivileges)
+                if (mine == null && caller.GroupParty != null && !caller.LeaderPrivileges)
                 {
                     caller.Client.SendMessage(0x02, "그룹장만 봇을 부를 수 있습니다.");
                     return;
                 }
 
-                var online = (ServerContext.Config.CompanionBots ?? new List<string>())
-                    .Select(FindOnline)
-                    .Where(one => one != null && !one.Dead)
-                    .ToList();
-
-                bot = online.FirstOrDefault(one => !OwnerOf.ContainsKey(one.Username));
-
-                if (bot == null)
+                if (mine != null)
                 {
-                    caller.Client.SendMessage(0x02, online.Any()
-                        ? "봇이 모두 다른 분과 함께 있습니다."
-                        : "지금 부를 수 있는 봇이 없습니다.");
-                    return;
+                    // 이미 부른 봇이 혼수 끝에 죽어(유령) 뮤레칸에 가 있으면 다시 누른 [봇 부르기] 가 되살려 데려온다(사용자, 2026-09-26).
+                    if (FindOnline(mine) is { Dead: true } fallen)
+                    {
+                        bot = fallen;
+                    }
+                    else
+                    {
+                        caller.Client.SendMessage(0x02, "이미 봇이 함께 있습니다.");
+                        return;
+                    }
+                }
+                else
+                {
+                    // 유령인 봇도 부를 수 있다 — 부르면 되살린다.
+                    var online = (ServerContext.Config.CompanionBots ?? new List<string>())
+                        .Select(FindOnline)
+                        .Where(one => one != null)
+                        .ToList();
+
+                    bot = online.FirstOrDefault(one => !OwnerOf.ContainsKey(one.Username));
+
+                    if (bot == null)
+                    {
+                        caller.Client.SendMessage(0x02, online.Any()
+                            ? "봇이 모두 다른 분과 함께 있습니다."
+                            : "지금 부를 수 있는 봇이 없습니다.");
+                        return;
+                    }
+
+                    OwnerOf[bot.Username] = caller.Username;
                 }
 
-                OwnerOf[bot.Username] = caller.Username;
+                Fallen.Remove(bot.Username);
+            }
+
+            if (bot.Dead)
+            {
+                bot.RemoveDebuff("skulled", true);
+                bot.Client.Revive();
+                caller.Client.SendMessage(0x02, $"봇 {bot.Username}님을 되살렸습니다.");
             }
 
             if (bot.GroupParty != null)
@@ -182,6 +208,19 @@ namespace Darkages.Types
                     continue;
                 }
 
+                // 쓰러진(유령) 봇은 데려오지 않는다 — 뮤레칸에서 [봇 부르기] 로 되살릴 때까지. 주인에게 한 번 알린다.
+                if (bot.Dead)
+                {
+                    bool told;
+                    lock (Gate)
+                    {
+                        told = !Fallen.Add(bot.Username);
+                    }
+
+                    if (!told)
+                        owner.Client.SendMessage(0x02, $"봇 {bot.Username}님이 쓰러졌습니다 — [봇 부르기] 로 되살립니다.");
+                }
+
                 bot.Client.Send(ServerFormat5E.Status(owner.Serial, StatusesOf(owner)));
                 bot.Client.Send(ServerFormat5E.Status(bot.Serial, StatusesOf(bot)));
 
@@ -190,7 +229,7 @@ namespace Darkages.Types
                 owner.Client.Send(ServerFormat5E.Life(bot.Serial, Percent(bot.CurrentHp, bot.MaximumHp),
                     Percent(bot.CurrentMp, bot.MaximumMp)));
 
-                if (owner.Client.IsWarping || owner.Client.MapOpen || owner.Map == null)
+                if (owner.Client.IsWarping || owner.Client.MapOpen || owner.Map == null || bot.Dead)
                     continue;
 
                 if (bot.CurrentMapId != owner.CurrentMapId || Stuck(bot, owner))
@@ -508,6 +547,51 @@ namespace Darkages.Types
             owner.Client.Save();
         }
 
+        /// <summary>
+        /// 내 가방의 코마디움으로 혼수인 봇을 깨운다(0xF1 4). 5.99 코마디움(<c>Item/Potion.txt</c>)은 **앞에 선 사람**
+        /// (<c>get_front_char</c>)에게 쓰는 물건이다 — 그래서 봇이 바로 옆 칸일 때만, 주인이 봇 쪽으로 돌아선 뒤 원작 스크립트 그대로
+        /// 쓴다(한 개 줄고, 혼수가 풀리고, 체력·마력 1000).
+        /// </summary>
+        public static void Wake(Aisling owner)
+        {
+            if (owner?.Client == null || CompanionOf(owner.Username) is not { } name || FindOnline(name) is not { } bot)
+            {
+                owner?.Client?.SendMessage(0x02, "함께 있는 봇이 없습니다.");
+                return;
+            }
+
+            if (!bot.Skulled)
+            {
+                owner.Client.SendMessage(0x02, "봇이 혼수 상태가 아닙니다.");
+                return;
+            }
+
+            var comadium = owner.Inventory.Get(i => i?.Template?.Name == "코마디움").FirstOrDefault();
+            if (comadium == null)
+            {
+                owner.Client.SendMessage(0x02, "코마디움이 없습니다.");
+                return;
+            }
+
+            var dx = bot.XPos - owner.XPos;
+            var dy = bot.YPos - owner.YPos;
+            if (bot.CurrentMapId != owner.CurrentMapId || Math.Abs(dx) + Math.Abs(dy) != 1)
+            {
+                owner.Client.SendMessage(0x02, "봇 바로 옆에 서야 코마디움을 쓸 수 있습니다.");
+                return;
+            }
+
+            owner.Direction = (byte) (dy < 0 ? 0 : dx > 0 ? 1 : dy > 0 ? 2 : 3);
+            owner.Show(Scope.NearbyAislings, new ServerFormat11 { Serial = owner.Serial, Direction = owner.Direction });
+
+            if (string.IsNullOrEmpty(comadium.Template.ScriptName))
+                return;
+
+            comadium.Scripts ??= ScriptManager.Load<ItemScript>(comadium.Template.ScriptName, comadium);
+            foreach (var script in comadium.Scripts.Values)
+                script?.OnUse(owner, comadium.Slot);
+        }
+
         /// <summary>원작 착용 규칙(<c>GameClient.CheckReqs</c>)을 봇 기준으로. 입을 수 있으면 null, 아니면 주인에게 보일 까닭.</summary>
         public static string CannotWear(Aisling bot, Item item)
         {
@@ -552,6 +636,11 @@ namespace Darkages.Types
             listed.AddRange(who.Buffs.Values.Where(b => b != null).Select(b => (b.Name, b.Length - b.Timer.Tick, false, (ushort) b.Icon)));
             listed.AddRange(who.Debuffs.Values.Where(d => d != null).Select(d => (d.Name, d.Length - d.Timer.Tick, true, (ushort) d.Icon)));
             listed.AddRange(TimedStates.Of(who).Select(s => (s.Name, s.Seconds, false, TimedStates.IconOf(s.Name))));
+
+            // 유령 — 봇 프로그램이 멈춰 있다가 되살아나면 다시 돈다(원작 상태 칸이 아니라 우리 표시, 그림 없음).
+            if (who is Aisling { Dead: true })
+                listed.Add(("ghost", 0, true, (ushort) 0));
+
             return listed.Take(byte.MaxValue).ToList();
         }
 
