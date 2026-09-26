@@ -304,7 +304,9 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                     var target = Find(a, 0) ?? _me;
                     // 0x29 는 첫 그림을 맞는 쪽에, 둘째 그림을 쓴 쪽에 그린다 — 하데스는 인자 이름이 거꾸로다
                     // (`CasterEffect` 가 첫 자리). 5.99 `effect @대상, 쓴쪽그림, 대상그림, 속도` 를 그 순서로 보낸다.
-                    _me.Show(Scope.NearbyAislings, new ServerFormat29((uint) (_actor ?? _me).Serial, (uint) target.Serial,
+                    // 쓴 쪽은 이 블록의 주인(_me)이다 — 괴물 마법은 맞는 사람 쪽에서 돌아 `effect @get_myid, 그림, 0`
+                    // 으로 쓰므로, 괴물(_actor)을 쓴 쪽에 두면 그림이 괴물 위로 간다(사용자 아이폰, 2026-09-26).
+                    _me.Show(Scope.NearbyAislings, new ServerFormat29((uint) _me.Serial, (uint) target.Serial,
                         (ushort) Arg(a, 2), (ushort) Arg(a, 1), (ushort) Math.Max(1, Arg(a, 3))));
                     Paint(target, (ushort) Arg(a, 2));
                     return 0;
