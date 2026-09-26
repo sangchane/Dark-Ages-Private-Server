@@ -229,6 +229,8 @@ namespace Darkages.Types
                 owner.Client.Send(ServerFormat5E.Life(bot.Serial, Percent(bot.CurrentHp, bot.MaximumHp),
                     Percent(bot.CurrentMp, bot.MaximumMp)));
 
+                TellCannotWake(bot, owner);
+
                 if (owner.Client.IsWarping || owner.Client.MapOpen || owner.Map == null || bot.Dead)
                     continue;
 
@@ -240,6 +242,33 @@ namespace Darkages.Types
         /// <summary>
         /// 옮겨 줄 때인가 — 12칸 넘게 떨어졌거나, <see cref="StuckFor" /> 동안 더 가까워지지 못했다(1초마다 부른다, Tick).
         /// </summary>
+        // 이번 수면에서 "못 푼다" 를 이미 알린 주인.
+        private static readonly HashSet<string> ToldAsleep = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+
+        /// <summary>
+        /// 주인이 잠들었는데 봇이 디나르콜리를 아직 못 배운 레벨(사범 21레벨)이면 주인에게 한 줄 — 잠들 때마다 한 번(사용자, 2026-09-26
+        /// "알람 띄워"). 서버가 보낸다: 주인의 수면도 봇의 마법책도 서버가 알고 있어 이것이 가장 작다(봇 프로그램·귓속말이 필요 없다).
+        /// </summary>
+        private static void TellCannotWake(Aisling bot, Aisling owner)
+        {
+            if (!owner.HasDebuff("sleep"))
+            {
+                lock (Gate)
+                    ToldAsleep.Remove(owner.Username);
+                return;
+            }
+
+            if (bot.SpellBook.Spells.Values.Any(s => s?.Template?.Name == "디나르콜리"))
+                return;
+
+            bool first;
+            lock (Gate)
+                first = ToldAsleep.Add(owner.Username);
+
+            if (first)
+                owner.Client.SendMessage(0x02, "봇이 아직 수면을 풀지 못합니다 (21레벨부터)");
+        }
+
         private static bool Stuck(Aisling bot, Aisling owner)
         {
             var distance = bot.Position.DistanceFrom(owner.Position);
