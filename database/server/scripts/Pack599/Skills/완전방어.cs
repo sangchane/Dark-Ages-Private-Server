@@ -51,7 +51,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                 return;
             }
             p.Call("defens", v_myid, (V)10L);
-            p.Call("effect", v_myid, (V)64L, (V)0L, (V)80L);  // 노바 이펙트(5.99: 301, 0)
+            p.Call("effect", v_myid, (V)64L, (V)0L, (V)100L);  // 노바 이펙트(5.99: 301, 0, 속도 80)
             p.Call("motion", (V)130L, (V)60L);
             p.Call("game_sound", (V)8L, (V)0L);
             p.Call("skill_delay", (V)18L);

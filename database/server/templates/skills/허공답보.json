@@ -10,7 +10,7 @@
   "Description": null,
   "Group": "5.99표/무도가",
   "Sound": 0,
-  "TargetAnimation": 0,
+  "TargetAnimation": 68,
   "Cooldown": 8,
   "Type": 1
 }

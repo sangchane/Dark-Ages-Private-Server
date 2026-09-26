@@ -50,7 +50,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
             v_type = p.Call("istype", v_target);
             if (V.T(((V)(v_type) == (V)((V)1L))))
             {
-                p.Call("effect", v_target, (V)0L, (V)47L, (V)130L);  // 노바 이펙트(5.99: 0, 288)
+                p.Call("effect", v_target, (V)0L, (V)47L, (V)75L);  // 노바 이펙트(5.99: 0, 288, 속도 130)
                 p.Call("damaged", v_target, v_damage);
                 p.Call("set_vital", (V)"1");
                 p.Call("set_manal", (V)"0");
@@ -60,7 +60,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                 if (V.T(V.B(V.T(((V)(v_type) == (V)((V)3L))) && V.T(p.Call("get_map_pk")))))
                 {
                     v_damage = p.Call("get_vita", v_myid);
-                    p.Call("effect", v_target, (V)0L, (V)47L, (V)130L);  // 노바 이펙트(5.99: 0, 288)
+                    p.Call("effect", v_target, (V)0L, (V)47L, (V)75L);  // 노바 이펙트(5.99: 0, 288, 속도 130)
                     p.Call("char_damaged2", v_target, v_damage, v_damage);
                     p.Call("set_vital", (V)"1");
                     p.Call("set_manal", (V)"0");

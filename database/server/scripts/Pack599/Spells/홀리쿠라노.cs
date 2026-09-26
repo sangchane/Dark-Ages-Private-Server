@@ -52,11 +52,11 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                 if (V.T(((V)(v_target) != (V)(v_myid))))
                 {
                     p.Call("message1", v_target, (V)3L, ((V)(p.Call("get_name")) + (V)((V)"님께서 홀리쿠라노를 외워주셨습니다.")));
-                    p.Call("effect", v_target, (V)71L, (V)71L, (V)120L);  // 노바 이펙트(5.99: 0, 71)
+                    p.Call("effect", v_target, (V)71L, (V)71L, (V)120L);  // 노바 이펙트(5.99: 0, 71, 속도 120)
                 }
                 else
                 {
-                    p.Call("effect", v_target, (V)71L, (V)71L, (V)120L);  // 노바 이펙트(5.99: 71, 0)
+                    p.Call("effect", v_target, (V)71L, (V)71L, (V)120L);  // 노바 이펙트(5.99: 71, 0, 속도 120)
                 }
                 p.Call("game_sound", (V)38L, (V)0L);
             }

@@ -4,15 +4,15 @@ using Darkages.Types;
 namespace Darkages.Storage.locales.Scripts.Pack599
 {
     /// <summary>
-    /// 수페라마레나 — 5.99 `법사(비전직).txt` 의 SPELL_수페라마레나 을 그대로 옮긴 것.
+    /// 엑스마레나 — 노바 `법사(비전직).txt` 의 SPELL_엑스마레나 을 그대로 옮긴 것.
     /// </summary>
     /// <remarks>
     /// 손으로 고치지 말 것. `scripts/build-pack-abilities.py` 가 다시 만든다.
     /// </remarks>
-    [Script("수페라마레나", "5.99표")]
-    public class SpellC218D398B77CB9C8B808B098 : SpellScript
+    [Script("엑스마레나", "5.99표")]
+    public class SpellC5D1C2A4B9C8B808B098 : SpellScript
     {
-        public SpellC218D398B77CB9C8B808B098(Spell spell) : base(spell)
+        public SpellC5D1C2A4B9C8B808B098(Spell spell) : base(spell)
         {
         }
 
@@ -43,19 +43,22 @@ namespace Darkages.Storage.locales.Scripts.Pack599
             V v_y1 = 0;
 
             v_myid = p.Call("get_myid");
-            if (V.T(((V)(p.Call("get_mana", v_myid)) < (V)((V)50L))))
+            if (V.T(((V)(p.Call("get_mana", v_myid)) < (V)((V)80L))))
             {
-                p.Call("message", (V)3L, (V)"사용하기에 마력량이적습니다. [필요마나 : 50이상]");
+                p.Call("message", (V)3L, (V)"마력이 부족합니다.");
                 return;
             }
-            p.Call("manal_del", (V)"50");
-            v_dam = ((V)(((V)(p.Call("get_mgc_damage", v_myid)) / (V)((V)10L))) * (V)((V)19L));
-            if (V.T(p.Call("get_critical", v_myid)))
+            p.Call("manal_del", (V)"80");
+            if (V.T(((V)(p.Call("get_mapname")) == (V)((V)"OX퀴즈장"))))
             {
-                v_dam = ((V)(v_dam) * (V)((V)2L));
+                p.Call("message", (V)3L, (V)"이벤트공간에서는 사용이불가능합니다.");
+                return;
             }
             v_x1 = p.Call("get_xs");
             v_y1 = p.Call("get_ys");
+            v_dam = ((V)(((p.Call("get_int", v_myid)))) + (V)((V)67L));
+            if (V.T(p.Call("enare", v_myid, (V)1L)))
+                v_dam = ((V)(v_dam) + (V)((V)30L));
             v_mob1 = p.Call("get_mobxy", v_x1, ((V)((v_y1)) - (V)((V)1L)));
             v_mob2 = p.Call("get_mobxy", v_x1, ((V)((v_y1)) + (V)((V)1L)));
             v_mob3 = p.Call("get_mobxy", ((V)((v_x1)) - (V)((V)1L)), v_y1);
@@ -68,10 +71,10 @@ namespace Darkages.Storage.locales.Scripts.Pack599
             {
                 p.Call("motion", (V)136L, (V)20L);
                 p.Call("game_sound", (V)47L, (V)0L);
-                p.Call("effect", v_mob1, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
-                p.Call("effect", v_mob2, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
-                p.Call("effect", v_mob3, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
-                p.Call("effect", v_mob4, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
+                p.Call("effect", v_mob1, (V)0L, (V)10L, (V)75L);
+                p.Call("effect", v_mob2, (V)0L, (V)10L, (V)75L);
+                p.Call("effect", v_mob3, (V)0L, (V)10L, (V)75L);
+                p.Call("effect", v_mob4, (V)0L, (V)10L, (V)75L);
                 p.Call("damaged", v_mob1, v_dam);
                 p.Call("damaged", v_mob2, v_dam);
                 p.Call("damaged", v_mob3, v_dam);
@@ -82,9 +85,9 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                 {
                     p.Call("motion", (V)136L, (V)20L);
                     p.Call("game_sound", (V)47L, (V)0L);
-                    p.Call("effect", v_mob2, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
-                    p.Call("effect", v_mob3, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
-                    p.Call("effect", v_mob4, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
+                    p.Call("effect", v_mob2, (V)0L, (V)10L, (V)75L);
+                    p.Call("effect", v_mob3, (V)0L, (V)10L, (V)75L);
+                    p.Call("effect", v_mob4, (V)0L, (V)10L, (V)75L);
                     p.Call("damaged", v_mob2, v_dam);
                     p.Call("damaged", v_mob3, v_dam);
                     p.Call("damaged", v_mob4, v_dam);
@@ -94,9 +97,9 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                     {
                         p.Call("motion", (V)136L, (V)20L);
                         p.Call("game_sound", (V)47L, (V)0L);
-                        p.Call("effect", v_mob1, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
-                        p.Call("effect", v_mob3, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
-                        p.Call("effect", v_mob4, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
+                        p.Call("effect", v_mob1, (V)0L, (V)10L, (V)75L);
+                        p.Call("effect", v_mob3, (V)0L, (V)10L, (V)75L);
+                        p.Call("effect", v_mob4, (V)0L, (V)10L, (V)75L);
                         p.Call("damaged", v_mob1, v_dam);
                         p.Call("damaged", v_mob3, v_dam);
                         p.Call("damaged", v_mob4, v_dam);
@@ -106,9 +109,9 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                         {
                             p.Call("motion", (V)136L, (V)20L);
                             p.Call("game_sound", (V)47L, (V)0L);
-                            p.Call("effect", v_mob1, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
-                            p.Call("effect", v_mob2, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
-                            p.Call("effect", v_mob4, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
+                            p.Call("effect", v_mob1, (V)0L, (V)10L, (V)75L);
+                            p.Call("effect", v_mob2, (V)0L, (V)10L, (V)75L);
+                            p.Call("effect", v_mob4, (V)0L, (V)10L, (V)75L);
                             p.Call("damaged", v_mob1, v_dam);
                             p.Call("damaged", v_mob2, v_dam);
                             p.Call("damaged", v_mob4, v_dam);
@@ -118,9 +121,9 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                             {
                                 p.Call("motion", (V)136L, (V)20L);
                                 p.Call("game_sound", (V)47L, (V)0L);
-                                p.Call("effect", v_mob1, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
-                                p.Call("effect", v_mob2, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
-                                p.Call("effect", v_mob3, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
+                                p.Call("effect", v_mob1, (V)0L, (V)10L, (V)75L);
+                                p.Call("effect", v_mob2, (V)0L, (V)10L, (V)75L);
+                                p.Call("effect", v_mob3, (V)0L, (V)10L, (V)75L);
                                 p.Call("damaged", v_mob1, v_dam);
                                 p.Call("damaged", v_mob2, v_dam);
                                 p.Call("damaged", v_mob3, v_dam);
@@ -130,8 +133,8 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                                 {
                                     p.Call("motion", (V)136L, (V)20L);
                                     p.Call("game_sound", (V)47L, (V)0L);
-                                    p.Call("effect", v_mob3, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
-                                    p.Call("effect", v_mob4, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
+                                    p.Call("effect", v_mob3, (V)0L, (V)10L, (V)75L);
+                                    p.Call("effect", v_mob4, (V)0L, (V)10L, (V)75L);
                                     p.Call("damaged", v_mob3, v_dam);
                                     p.Call("damaged", v_mob4, v_dam);
                                 }
@@ -140,8 +143,8 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                                     {
                                         p.Call("motion", (V)136L, (V)20L);
                                         p.Call("game_sound", (V)47L, (V)0L);
-                                        p.Call("effect", v_mob2, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
-                                        p.Call("effect", v_mob4, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
+                                        p.Call("effect", v_mob2, (V)0L, (V)10L, (V)75L);
+                                        p.Call("effect", v_mob4, (V)0L, (V)10L, (V)75L);
                                         p.Call("damaged", v_mob2, v_dam);
                                         p.Call("damaged", v_mob4, v_dam);
                                     }
@@ -150,8 +153,8 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                                         {
                                             p.Call("motion", (V)136L, (V)20L);
                                             p.Call("game_sound", (V)47L, (V)0L);
-                                            p.Call("effect", v_mob2, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
-                                            p.Call("effect", v_mob3, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
+                                            p.Call("effect", v_mob2, (V)0L, (V)10L, (V)75L);
+                                            p.Call("effect", v_mob3, (V)0L, (V)10L, (V)75L);
                                             p.Call("damaged", v_mob2, v_dam);
                                             p.Call("damaged", v_mob3, v_dam);
                                         }
@@ -160,8 +163,8 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                                             {
                                                 p.Call("motion", (V)136L, (V)20L);
                                                 p.Call("game_sound", (V)47L, (V)0L);
-                                                p.Call("effect", v_mob1, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
-                                                p.Call("effect", v_mob4, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
+                                                p.Call("effect", v_mob1, (V)0L, (V)10L, (V)75L);
+                                                p.Call("effect", v_mob4, (V)0L, (V)10L, (V)75L);
                                                 p.Call("damaged", v_mob1, v_dam);
                                                 p.Call("damaged", v_mob4, v_dam);
                                             }
@@ -170,8 +173,8 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                                                 {
                                                     p.Call("motion", (V)136L, (V)20L);
                                                     p.Call("game_sound", (V)47L, (V)0L);
-                                                    p.Call("effect", v_mob1, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
-                                                    p.Call("effect", v_mob3, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
+                                                    p.Call("effect", v_mob1, (V)0L, (V)10L, (V)75L);
+                                                    p.Call("effect", v_mob3, (V)0L, (V)10L, (V)75L);
                                                     p.Call("damaged", v_mob1, v_dam);
                                                     p.Call("damaged", v_mob3, v_dam);
                                                 }
@@ -180,8 +183,8 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                                                     {
                                                         p.Call("motion", (V)136L, (V)20L);
                                                         p.Call("game_sound", (V)47L, (V)0L);
-                                                        p.Call("effect", v_mob1, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
-                                                        p.Call("effect", v_mob2, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
+                                                        p.Call("effect", v_mob1, (V)0L, (V)10L, (V)75L);
+                                                        p.Call("effect", v_mob2, (V)0L, (V)10L, (V)75L);
                                                         p.Call("damaged", v_mob1, v_dam);
                                                         p.Call("damaged", v_mob2, v_dam);
                                                     }
@@ -190,7 +193,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                                                         {
                                                             p.Call("motion", (V)136L, (V)20L);
                                                             p.Call("game_sound", (V)47L, (V)0L);
-                                                            p.Call("effect", v_mob4, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
+                                                            p.Call("effect", v_mob4, (V)0L, (V)10L, (V)75L);
                                                             p.Call("damaged", v_mob4, v_dam);
                                                         }
                                                         else
@@ -198,7 +201,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                                                             {
                                                                 p.Call("motion", (V)136L, (V)20L);
                                                                 p.Call("game_sound", (V)47L, (V)0L);
-                                                                p.Call("effect", v_mob3, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
+                                                                p.Call("effect", v_mob3, (V)0L, (V)10L, (V)75L);
                                                                 p.Call("damaged", v_mob3, v_dam);
                                                             }
                                                             else
@@ -206,7 +209,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                                                                 {
                                                                     p.Call("motion", (V)136L, (V)20L);
                                                                     p.Call("game_sound", (V)47L, (V)0L);
-                                                                    p.Call("effect", v_mob2, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
+                                                                    p.Call("effect", v_mob2, (V)0L, (V)10L, (V)75L);
                                                                     p.Call("damaged", v_mob2, v_dam);
                                                                 }
                                                                 else
@@ -214,7 +217,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                                                                     {
                                                                         p.Call("motion", (V)136L, (V)20L);
                                                                         p.Call("game_sound", (V)47L, (V)0L);
-                                                                        p.Call("effect", v_mob1, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
+                                                                        p.Call("effect", v_mob1, (V)0L, (V)10L, (V)75L);
                                                                         p.Call("damaged", v_mob1, v_dam);
                                                                     }
             if (V.T(p.Call("get_map_pk")))
@@ -231,10 +234,10 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                 {
                     p.Call("motion", (V)136L, (V)20L);
                     p.Call("game_sound", (V)47L, (V)0L);
-                    p.Call("effect", v_mob1, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
-                    p.Call("effect", v_mob2, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
-                    p.Call("effect", v_mob3, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
-                    p.Call("effect", v_mob4, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
+                    p.Call("effect", v_mob1, (V)0L, (V)10L, (V)75L);
+                    p.Call("effect", v_mob2, (V)0L, (V)10L, (V)75L);
+                    p.Call("effect", v_mob3, (V)0L, (V)10L, (V)75L);
+                    p.Call("effect", v_mob4, (V)0L, (V)10L, (V)75L);
                     p.Call("char_damaged", v_mob1, v_dam, v_dam);
                     p.Call("char_damaged", v_mob2, v_dam, v_dam);
                     p.Call("char_damaged", v_mob3, v_dam, v_dam);
@@ -245,9 +248,9 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                     {
                         p.Call("motion", (V)136L, (V)20L);
                         p.Call("game_sound", (V)47L, (V)0L);
-                        p.Call("effect", v_mob2, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
-                        p.Call("effect", v_mob3, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
-                        p.Call("effect", v_mob4, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
+                        p.Call("effect", v_mob2, (V)0L, (V)10L, (V)75L);
+                        p.Call("effect", v_mob3, (V)0L, (V)10L, (V)75L);
+                        p.Call("effect", v_mob4, (V)0L, (V)10L, (V)75L);
                         p.Call("char_damaged", v_mob2, v_dam, v_dam);
                         p.Call("char_damaged", v_mob3, v_dam, v_dam);
                         p.Call("char_damaged", v_mob4, v_dam, v_dam);
@@ -257,9 +260,9 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                         {
                             p.Call("motion", (V)136L, (V)20L);
                             p.Call("game_sound", (V)47L, (V)0L);
-                            p.Call("effect", v_mob1, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
-                            p.Call("effect", v_mob3, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
-                            p.Call("effect", v_mob4, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
+                            p.Call("effect", v_mob1, (V)0L, (V)10L, (V)75L);
+                            p.Call("effect", v_mob3, (V)0L, (V)10L, (V)75L);
+                            p.Call("effect", v_mob4, (V)0L, (V)10L, (V)75L);
                             p.Call("char_damaged", v_mob1, v_dam, v_dam);
                             p.Call("char_damaged", v_mob3, v_dam, v_dam);
                             p.Call("char_damaged", v_mob4, v_dam, v_dam);
@@ -269,9 +272,9 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                             {
                                 p.Call("motion", (V)136L, (V)20L);
                                 p.Call("game_sound", (V)47L, (V)0L);
-                                p.Call("effect", v_mob1, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
-                                p.Call("effect", v_mob2, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
-                                p.Call("effect", v_mob4, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
+                                p.Call("effect", v_mob1, (V)0L, (V)10L, (V)75L);
+                                p.Call("effect", v_mob2, (V)0L, (V)10L, (V)75L);
+                                p.Call("effect", v_mob4, (V)0L, (V)10L, (V)75L);
                                 p.Call("char_damaged", v_mob1, v_dam, v_dam);
                                 p.Call("char_damaged", v_mob2, v_dam, v_dam);
                                 p.Call("char_damaged", v_mob4, v_dam, v_dam);
@@ -281,9 +284,9 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                                 {
                                     p.Call("motion", (V)136L, (V)20L);
                                     p.Call("game_sound", (V)47L, (V)0L);
-                                    p.Call("effect", v_mob1, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
-                                    p.Call("effect", v_mob2, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
-                                    p.Call("effect", v_mob3, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
+                                    p.Call("effect", v_mob1, (V)0L, (V)10L, (V)75L);
+                                    p.Call("effect", v_mob2, (V)0L, (V)10L, (V)75L);
+                                    p.Call("effect", v_mob3, (V)0L, (V)10L, (V)75L);
                                     p.Call("char_damaged", v_mob1, v_dam, v_dam);
                                     p.Call("char_damaged", v_mob2, v_dam, v_dam);
                                     p.Call("char_damaged", v_mob3, v_dam, v_dam);
@@ -293,8 +296,8 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                                     {
                                         p.Call("motion", (V)136L, (V)20L);
                                         p.Call("game_sound", (V)47L, (V)0L);
-                                        p.Call("effect", v_mob3, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
-                                        p.Call("effect", v_mob4, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
+                                        p.Call("effect", v_mob3, (V)0L, (V)10L, (V)75L);
+                                        p.Call("effect", v_mob4, (V)0L, (V)10L, (V)75L);
                                         p.Call("char_damaged", v_mob3, v_dam, v_dam);
                                         p.Call("char_damaged", v_mob4, v_dam, v_dam);
                                     }
@@ -303,8 +306,8 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                                         {
                                             p.Call("motion", (V)136L, (V)20L);
                                             p.Call("game_sound", (V)47L, (V)0L);
-                                            p.Call("effect", v_mob2, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
-                                            p.Call("effect", v_mob4, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
+                                            p.Call("effect", v_mob2, (V)0L, (V)10L, (V)75L);
+                                            p.Call("effect", v_mob4, (V)0L, (V)10L, (V)75L);
                                             p.Call("char_damaged", v_mob2, v_dam, v_dam);
                                             p.Call("char_damaged", v_mob4, v_dam, v_dam);
                                         }
@@ -313,8 +316,8 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                                             {
                                                 p.Call("motion", (V)136L, (V)20L);
                                                 p.Call("game_sound", (V)47L, (V)0L);
-                                                p.Call("effect", v_mob2, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
-                                                p.Call("effect", v_mob3, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
+                                                p.Call("effect", v_mob2, (V)0L, (V)10L, (V)75L);
+                                                p.Call("effect", v_mob3, (V)0L, (V)10L, (V)75L);
                                                 p.Call("char_damaged", v_mob2, v_dam, v_dam);
                                                 p.Call("char_damaged", v_mob3, v_dam, v_dam);
                                             }
@@ -323,8 +326,8 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                                                 {
                                                     p.Call("motion", (V)136L, (V)20L);
                                                     p.Call("game_sound", (V)47L, (V)0L);
-                                                    p.Call("effect", v_mob1, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
-                                                    p.Call("effect", v_mob4, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
+                                                    p.Call("effect", v_mob1, (V)0L, (V)10L, (V)75L);
+                                                    p.Call("effect", v_mob4, (V)0L, (V)10L, (V)75L);
                                                     p.Call("char_damaged", v_mob1, v_dam, v_dam);
                                                     p.Call("char_damaged", v_mob4, v_dam, v_dam);
                                                 }
@@ -333,8 +336,8 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                                                     {
                                                         p.Call("motion", (V)136L, (V)20L);
                                                         p.Call("game_sound", (V)47L, (V)0L);
-                                                        p.Call("effect", v_mob1, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
-                                                        p.Call("effect", v_mob3, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
+                                                        p.Call("effect", v_mob1, (V)0L, (V)10L, (V)75L);
+                                                        p.Call("effect", v_mob3, (V)0L, (V)10L, (V)75L);
                                                         p.Call("char_damaged", v_mob1, v_dam, v_dam);
                                                         p.Call("char_damaged", v_mob3, v_dam, v_dam);
                                                     }
@@ -343,8 +346,8 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                                                         {
                                                             p.Call("motion", (V)136L, (V)20L);
                                                             p.Call("game_sound", (V)47L, (V)0L);
-                                                            p.Call("effect", v_mob1, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
-                                                            p.Call("effect", v_mob2, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
+                                                            p.Call("effect", v_mob1, (V)0L, (V)10L, (V)75L);
+                                                            p.Call("effect", v_mob2, (V)0L, (V)10L, (V)75L);
                                                             p.Call("char_damaged", v_mob1, v_dam, v_dam);
                                                             p.Call("char_damaged", v_mob2, v_dam, v_dam);
                                                         }
@@ -353,7 +356,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                                                             {
                                                                 p.Call("motion", (V)136L, (V)20L);
                                                                 p.Call("game_sound", (V)47L, (V)0L);
-                                                                p.Call("effect", v_mob4, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
+                                                                p.Call("effect", v_mob4, (V)0L, (V)10L, (V)75L);
                                                                 p.Call("char_damaged", v_mob4, v_dam, v_dam);
                                                             }
                                                             else
@@ -361,7 +364,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                                                                 {
                                                                     p.Call("motion", (V)136L, (V)20L);
                                                                     p.Call("game_sound", (V)47L, (V)0L);
-                                                                    p.Call("effect", v_mob3, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
+                                                                    p.Call("effect", v_mob3, (V)0L, (V)10L, (V)75L);
                                                                     p.Call("char_damaged", v_mob3, v_dam, v_dam);
                                                                 }
                                                                 else
@@ -369,7 +372,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                                                                     {
                                                                         p.Call("motion", (V)136L, (V)20L);
                                                                         p.Call("game_sound", (V)47L, (V)0L);
-                                                                        p.Call("effect", v_mob2, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
+                                                                        p.Call("effect", v_mob2, (V)0L, (V)10L, (V)75L);
                                                                         p.Call("char_damaged", v_mob2, v_dam, v_dam);
                                                                     }
                                                                     else
@@ -377,7 +380,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                                                                         {
                                                                             p.Call("motion", (V)136L, (V)20L);
                                                                             p.Call("game_sound", (V)47L, (V)0L);
-                                                                            p.Call("effect", v_mob1, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
+                                                                            p.Call("effect", v_mob1, (V)0L, (V)10L, (V)75L);
                                                                             p.Call("char_damaged", v_mob1, v_dam, v_dam);
                                                                         }
             }

@@ -9,5 +9,6 @@
   "Group": "5.99표/도적(비전직)",
   "Icon": 10,
   "ScriptName": "센스몬스터",
-  "Cooldown": 0
+  "Cooldown": 0,
+  "Type": 1
 }

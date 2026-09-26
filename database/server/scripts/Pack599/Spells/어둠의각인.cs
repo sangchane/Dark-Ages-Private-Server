@@ -56,7 +56,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
             }
             p.Call("magic", (V)1L, v_target, (V)"어둠의각인", (V)120L, (V)60L, v_myid);
             p.Call("message", (V)3L, (V)"어둠의각인을 외웠습니다.");
-            p.Call("effect", v_target, (V)0L, (V)104L, (V)140L);
+            p.Call("effect", v_target, (V)0L, (V)104L, (V)130L);  // 노바 이펙트(5.99: 0, 104, 속도 140)
             p.Call("game_sound", (V)27L, (V)0L);
         }
     }

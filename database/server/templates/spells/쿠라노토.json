@@ -1,5 +1,6 @@
 ﻿{
   "Name": "쿠라노토",
+  "Icon": 21,
   "Prerequisites": {
     "ExpLevel_Required": 55
   },

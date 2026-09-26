@@ -67,7 +67,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
             }
             if (V.T(((V)(v_type) == (V)((V)1L))))
             {
-                p.Call("effect", v_target, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234)
+                p.Call("effect", v_target, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
                 p.Call("damaged", v_target, v_damage);
             }
             else
@@ -81,7 +81,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                     }
                 }
             }
-            p.Call("effect", v_target, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234)
+            p.Call("effect", v_target, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 234, 속도 75)
             p.Call("message", (V)3L, (V)"마레노를 외웠습니다.");
             p.Call("motion", (V)136L, (V)75L);
             p.Call("game_sound", (V)47L, (V)0L);

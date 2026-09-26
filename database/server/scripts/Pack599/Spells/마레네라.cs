@@ -4,15 +4,15 @@ using Darkages.Types;
 namespace Darkages.Storage.locales.Scripts.Pack599
 {
     /// <summary>
-    /// 마레누스 — 5.99 `법사(비전직).txt` 의 SPELL_마레누스 을 그대로 옮긴 것.
+    /// 마레네라 — 노바 `법사(비전직).txt` 의 SPELL_마레네라 을 그대로 옮긴 것.
     /// </summary>
     /// <remarks>
     /// 손으로 고치지 말 것. `scripts/build-pack-abilities.py` 가 다시 만든다.
     /// </remarks>
-    [Script("마레누스", "5.99표")]
-    public class SpellB9C8B808B204C2A4 : SpellScript
+    [Script("마레네라", "5.99표")]
+    public class SpellB9C8B808B124B77C : SpellScript
     {
-        public SpellB9C8B808B204C2A4(Spell spell) : base(spell)
+        public SpellB9C8B808B124B77C(Spell spell) : base(spell)
         {
         }
 
@@ -35,26 +35,19 @@ namespace Darkages.Storage.locales.Scripts.Pack599
             V v_type = 0;
 
             v_myid = p.Call("get_myid");
-            if (V.T(((V)(p.Call("get_mana", v_myid)) < (V)((V)44L))))
+            if (V.T(((V)(p.Call("get_mana", v_myid)) < (V)((V)320L))))
             {
-                p.Call("message", (V)3L, (V)"사용하기에 마력량이적습니다. [필요마나 : 44이상]");
+                p.Call("message", (V)3L, (V)"마력이 부족합니다. [필요마나 : 320]");
                 return;
             }
-            p.Call("manal_del", (V)"44");
-            v_damage = ((V)(((V)(p.Call("get_mgc_damage", v_myid)) / (V)((V)10L))) * (V)((V)22L));
-            if (V.T(p.Call("get_critical", v_myid)))
-            {
-                v_damage = ((V)(v_damage) * (V)((V)2L));
-            }
+            p.Call("manal_del", (V)"320");
+            v_damage = ((V)(((p.Call("get_int", v_myid)))) + (V)((V)116L));
+            if (V.T(p.Call("enare", v_myid, (V)1L)))
+                v_damage = ((V)(v_damage) + (V)((V)34L));
             v_target = p.Call("spell_target");
             v_type = p.Call("istype", v_target);
-            if (V.T(V.B(V.T(V.B(V.T(v_target) && V.T(((V)(v_type) == (V)((V)1L))))) && V.T(p.Call("get_mobdie")))))
-            {
-                return;
-            }
             if (V.T(((V)(v_type) == (V)((V)1L))))
             {
-                p.Call("effect", v_target, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 235, 속도 75)
                 p.Call("damaged", v_target, v_damage);
             }
             else
@@ -62,14 +55,10 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                 if (V.T(V.B(V.T(((V)(v_type) == (V)((V)3L))) && V.T(p.Call("get_map_pk")))))
                 {
                     p.Call("char_damaged2", v_target, v_damage, v_damage);
-                    if (V.T(((V)(v_target) != (V)(v_myid))))
-                    {
-                        p.Call("message1", v_target, (V)3L, ((V)(p.Call("get_name")) + (V)((V)"님께서 마레누스를 가합니다.")));
-                    }
                 }
             }
-            p.Call("effect", v_target, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 235, 속도 75)
-            p.Call("message", (V)3L, (V)"마레누스를 외웠습니다.");
+            p.Call("message", (V)3L, (V)"마레네라를 외웠습니다.");
+            p.Call("effect", v_target, (V)0L, (V)104L, (V)75L);
             p.Call("motion", (V)136L, (V)75L);
             p.Call("game_sound", (V)47L, (V)0L);
         }

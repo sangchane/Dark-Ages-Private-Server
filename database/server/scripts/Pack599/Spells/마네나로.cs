@@ -72,7 +72,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                     L_go_enter: ;
                     if (V.T(V.B(!f_go && V.T(V.B(V.T(v_mob) && V.T(((V)(v_type) == (V)((V)1L))))))))
                     {
-                        p.Call("effect", v_mob, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 236)
+                        p.Call("effect", v_mob, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 236, 속도 75)
                         p.Call("damaged", v_mob, v_damage);
                     }
                     else
@@ -84,7 +84,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                             if (V.T(((V)(v_myid) != (V)(v_mob))))
                             {
                                 p.Call("char_damaged2", v_mob, v_damage, v_damage);
-                                p.Call("effect", v_mob, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 236)
+                                p.Call("effect", v_mob, (V)0L, (V)10L, (V)75L);  // 노바 이펙트(5.99: 0, 236, 속도 75)
                             }
                         }
                     }

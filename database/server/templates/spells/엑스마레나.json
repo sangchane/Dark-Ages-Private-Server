@@ -1,0 +1,14 @@
+﻿{
+  "Name": "엑스마레나",
+  "Prerequisites": {
+    "Class_Required": 3
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Description": null,
+  "Group": "노바표/법사(비전직)",
+  "Icon": 64,
+  "TargetType": 5,
+  "ScriptKey": "엑스마레나",
+  "Cooldown": 0
+}

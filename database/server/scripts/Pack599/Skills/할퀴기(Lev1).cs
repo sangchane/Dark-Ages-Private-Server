@@ -53,7 +53,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                 p.Call("skill_delay", (V)6L);
                 p.Call("damaged", v_target, v_damage);
                 p.Call("motion", (V)135L, (V)20L);
-                p.Call("effect", v_target, (V)0L, (V)70L, (V)100L);  // 노바 이펙트(5.99: 0, 194)
+                p.Call("effect", v_target, (V)0L, (V)70L, (V)100L);  // 노바 이펙트(5.99: 0, 194, 속도 100)
                 p.Call("message", (V)3L, (V)"할퀴기을 시전했습니다.");
                 p.Call("game_sound", (V)7L, (V)0L);
                 return;
@@ -64,7 +64,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                 p.Call("skill_delay", (V)3L);
                 p.Call("damaged", v_target, v_damage);
                 p.Call("motion", (V)135L, (V)20L);
-                p.Call("effect", v_target, (V)0L, (V)70L, (V)100L);  // 노바 이펙트(5.99: 0, 194)
+                p.Call("effect", v_target, (V)0L, (V)70L, (V)100L);  // 노바 이펙트(5.99: 0, 194, 속도 100)
                 p.Call("game_sound", (V)7L, (V)0L);
                 p.Call("message", (V)3L, (V)"할퀴기(크리)을 시전했습니다.");
                 return;
