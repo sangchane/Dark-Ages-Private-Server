@@ -45,6 +45,19 @@ namespace Darkages.Types
         /// <summary>같은 맵에서 이만큼 넘게 떨어지면(막혀서 못 따라오면) 옆으로 옮긴다 — 화면(시야) 밖이다.</summary>
         public const int CatchUpDistance = 12;
 
+        /// <summary>
+        /// 이만큼 동안 주인에게 한 칸도 더 가까워지지 못하면(벽·괴물에 걸렸거나, 벽 파일이 없는 맵이라 벽을 모르거나) 옆으로 옮긴다
+        /// ("봇이 지형에 걸리면 잘 못 쫓아온다", 사용자 2026-09-26). 봇이 서는 거리(<see cref="CloseEnough" />) 안이면 재지 않는다.
+        /// </summary>
+        public static readonly TimeSpan StuckFor = TimeSpan.FromSeconds(3);
+
+        /// <summary>봇 판단이 따라 걷기를 멈추는 거리(CompanionSettings.FollowFrom 기본 3) — 이 안이면 막힌 것이 아니다.</summary>
+        public const int CloseEnough = 3;
+
+        // 봇 이름 → (지금까지 가장 가까웠던 거리, 그때). 가까워지면 새로 적는다.
+        private static readonly Dictionary<string, (int Best, DateTime Since)> Progress =
+            new Dictionary<string, (int, DateTime)>(StringComparer.OrdinalIgnoreCase);
+
         private static readonly object Gate = new object();
 
         // 봇 이름 → 부른 사람 이름. 둘 다 접속해 있는 동안만 산다.
@@ -175,9 +188,44 @@ namespace Darkages.Types
                 if (owner.Client.IsWarping || owner.Client.MapOpen || owner.Map == null)
                     continue;
 
-                if (bot.CurrentMapId != owner.CurrentMapId ||
-                    bot.Position.DistanceFrom(owner.Position) > CatchUpDistance)
+                if (bot.CurrentMapId != owner.CurrentMapId || Stuck(bot, owner))
                     MoveBeside(bot, owner);
+            }
+        }
+
+        /// <summary>
+        /// 옮겨 줄 때인가 — 12칸 넘게 떨어졌거나, <see cref="StuckFor" /> 동안 더 가까워지지 못했다(1초마다 부른다, Tick).
+        /// </summary>
+        private static bool Stuck(Aisling bot, Aisling owner)
+        {
+            var distance = bot.Position.DistanceFrom(owner.Position);
+            var now = DateTime.UtcNow;
+
+            lock (Gate)
+            {
+                if (distance <= CloseEnough)
+                {
+                    Progress.Remove(bot.Username);
+                    return false;
+                }
+
+                if (distance > CatchUpDistance)
+                {
+                    Progress.Remove(bot.Username);
+                    return true;
+                }
+
+                if (!Progress.TryGetValue(bot.Username, out var seen) || distance < seen.Best)
+                {
+                    Progress[bot.Username] = (distance, now);
+                    return false;
+                }
+
+                if (now - seen.Since < StuckFor)
+                    return false;
+
+                Progress.Remove(bot.Username);
+                return true;
             }
         }
 
