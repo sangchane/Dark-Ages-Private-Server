@@ -1,5 +1,6 @@
 ﻿{
   "Name": "소수신공",
+  "Icon": 43,
   "ScriptName": "소수신공",
   "Prerequisites": {
     "Class_Required": 5,

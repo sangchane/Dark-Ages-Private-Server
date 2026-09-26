@@ -1,5 +1,6 @@
 {
   "Name": "pramh",
+  "Icon": 90,
   "ScriptKey": "pramh",
   "Prerequisites": {
     "Class_Required": 4,

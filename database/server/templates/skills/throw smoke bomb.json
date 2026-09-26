@@ -1,5 +1,6 @@
 {
   "Name": "Throw Smoke Bomb",
+  "Icon": 24,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 2,

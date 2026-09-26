@@ -1,5 +1,6 @@
 {
   "Name": "Feral Form",
+  "Icon": 183,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 5,

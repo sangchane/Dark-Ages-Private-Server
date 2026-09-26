@@ -1,5 +1,6 @@
 {
   "Name": "creag meall",
+  "Icon": 70,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 3,

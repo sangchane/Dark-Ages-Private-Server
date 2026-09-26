@@ -1,5 +1,6 @@
 {
   "Name": "creag neart",
+  "Icon": 13,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 4,

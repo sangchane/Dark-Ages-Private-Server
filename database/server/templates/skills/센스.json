@@ -1,5 +1,6 @@
 ﻿{
   "Name": "센스",
+  "Icon": 9,
   "ScriptName": "센스",
   "Prerequisites": {
     "Class_Required": 2,

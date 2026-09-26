@@ -1,5 +1,6 @@
 ﻿{
   "Name": "선풍각",
+  "Icon": 34,
   "ScriptName": "선풍각",
   "Prerequisites": {
     "Class_Required": 5

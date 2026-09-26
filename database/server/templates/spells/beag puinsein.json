@@ -1,5 +1,6 @@
 {
   "Name": "beag puinsein",
+  "Icon": 35,
   "ScriptKey": "beag puinsein",
   "Prerequisites": {
     "Class_Required": 4,

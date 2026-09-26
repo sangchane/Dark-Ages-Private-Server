@@ -1,5 +1,6 @@
 ﻿{
   "Name": "붕각",
+  "Icon": 3,
   "ScriptName": "붕각",
   "Prerequisites": {
     "Class_Required": 5

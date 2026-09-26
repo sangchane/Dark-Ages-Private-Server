@@ -1,5 +1,6 @@
 {
   "Name": "dion",
+  "Icon": 53,
   "ScriptKey": "dion",
   "Prerequisites": {
     "Class_Required": 5,

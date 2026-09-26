@@ -1,5 +1,6 @@
 ﻿{
   "Name": "마레누스",
+  "Icon": 47,
   "ScriptKey": "마레누스",
   "Prerequisites": {
     "Class_Required": 3,

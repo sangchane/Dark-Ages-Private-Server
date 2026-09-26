@@ -1,5 +1,6 @@
 ﻿{
   "Name": "쿠라누스",
+  "Icon": 33,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 4,

@@ -1,5 +1,6 @@
 {
   "Name": "Instrumental Attack 12",
+  "Icon": 98,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 4,

@@ -1,5 +1,6 @@
 {
   "Name": "beag srad lamh",
+  "Icon": 60,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 3,

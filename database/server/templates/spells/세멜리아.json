@@ -1,5 +1,6 @@
 ﻿{
   "Name": "세멜리아",
+  "Icon": 72,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 3,

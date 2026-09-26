@@ -1,5 +1,6 @@
 {
   "Name": "Wallop",
+  "Icon": 11,
   "ScriptName": "Wallop",
   "Prerequisites": {
     "Class_Required": 1,

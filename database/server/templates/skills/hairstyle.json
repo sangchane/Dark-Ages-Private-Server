@@ -1,5 +1,6 @@
 {
   "Name": "Hairstyle",
+  "Icon": 38,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 2,

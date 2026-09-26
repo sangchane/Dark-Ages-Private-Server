@@ -1,5 +1,6 @@
 ﻿{
   "Name": "장풍",
+  "Icon": 27,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 5,

@@ -1,5 +1,6 @@
 {
   "Name": "breisleich",
+  "Icon": 20,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 2,

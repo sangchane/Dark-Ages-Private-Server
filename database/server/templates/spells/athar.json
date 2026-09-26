@@ -1,5 +1,6 @@
 {
   "Name": "athar",
+  "Icon": 43,
   "ScriptKey": "athar",
   "Prerequisites": {
     "Class_Required": 3,

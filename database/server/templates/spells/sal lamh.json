@@ -1,5 +1,6 @@
 {
   "Name": "sal lamh",
+  "Icon": 63,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 3,

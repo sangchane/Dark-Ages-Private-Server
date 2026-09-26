@@ -1,5 +1,6 @@
 {
   "Name": "Mud Wall",
+  "Icon": 173,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 3,

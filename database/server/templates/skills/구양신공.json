@@ -1,5 +1,6 @@
 ﻿{
   "Name": "구양신공",
+  "Icon": 37,
   "ScriptName": "구양신공",
   "Prerequisites": {
     "Class_Required": 5,

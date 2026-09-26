@@ -1,5 +1,6 @@
 ﻿{
   "Name": "붕신선각",
+  "Icon": 68,
   "ScriptName": "붕신선각",
   "Prerequisites": {
     "Class_Required": 5

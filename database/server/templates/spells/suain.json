@@ -1,5 +1,6 @@
 {
   "Name": "suain",
+  "Icon": 50,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 4,

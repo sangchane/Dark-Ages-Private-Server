@@ -1,5 +1,6 @@
 {
   "Name": "fas spiorad",
+  "Icon": 26,
   "ScriptKey": "fas spiorad",
   "Prerequisites": {
     "Class_Required": 3,

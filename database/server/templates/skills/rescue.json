@@ -1,5 +1,6 @@
 {
   "Name": "Rescue",
+  "Icon": 13,
   "ScriptName": "Rescue",
   "Prerequisites": {
     "Class_Required": 1,

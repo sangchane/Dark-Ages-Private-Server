@@ -1,5 +1,6 @@
 {
   "Name": "Stiletto Trap",
+  "Icon": 16,
   "ScriptKey": "Stiletto Trap",
   "Prerequisites": {
     "Class_Required": 2,

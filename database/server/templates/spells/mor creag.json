@@ -1,5 +1,6 @@
 {
   "Name": "mor creag",
+  "Icon": 58,
   "ScriptKey": "mor creag",
   "Prerequisites": {
     "Class_Required": 3,

@@ -1,5 +1,6 @@
 {
   "Name": "Inner Fire",
+  "Icon": 119,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 5,

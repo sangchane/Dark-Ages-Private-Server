@@ -1,5 +1,6 @@
 {
   "Name": "Torch 5",
+  "Icon": 154,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 3,

@@ -1,5 +1,6 @@
 {
   "Name": "Melee Lore",
+  "Icon": 27,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 1,

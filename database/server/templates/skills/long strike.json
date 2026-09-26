@@ -1,5 +1,6 @@
 {
   "Name": "Long Strike",
+  "Icon": 1,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 1,

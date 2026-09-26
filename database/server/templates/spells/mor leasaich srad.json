@@ -1,5 +1,6 @@
 {
   "Name": "mor leasaich srad",
+  "Icon": 40,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 3,

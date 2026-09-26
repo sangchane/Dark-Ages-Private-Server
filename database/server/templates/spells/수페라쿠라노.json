@@ -1,5 +1,6 @@
 ﻿{
   "Name": "수페라쿠라노",
+  "Icon": 31,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 4,

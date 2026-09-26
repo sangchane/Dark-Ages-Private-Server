@@ -1,5 +1,6 @@
 {
   "Name": "beag suain",
+  "Icon": 38,
   "ScriptName": "beag suain",
   "Prerequisites": {
     "Class_Required": 1,

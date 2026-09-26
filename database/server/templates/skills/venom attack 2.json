@@ -1,5 +1,6 @@
 {
   "Name": "Venom Attack 2",
+  "Icon": 95,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 5,

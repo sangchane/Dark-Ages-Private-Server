@@ -1,5 +1,6 @@
 {
   "Name": "Arrow Shot 1",
+  "Icon": 79,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 2,

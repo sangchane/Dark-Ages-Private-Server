@@ -1,5 +1,6 @@
 {
   "Name": "beag puinneag spiorad",
+  "Icon": 102,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 3,

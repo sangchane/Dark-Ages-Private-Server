@@ -1,5 +1,6 @@
 {
   "Name": "mor leasaich athar",
+  "Icon": 43,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 3,

@@ -1,5 +1,6 @@
 ﻿{
   "Name": "백보신권",
+  "Icon": 4,
   "ScriptName": "백보신권",
   "Prerequisites": {
     "Class_Required": 5,

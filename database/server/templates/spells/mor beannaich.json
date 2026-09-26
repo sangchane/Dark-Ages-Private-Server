@@ -1,5 +1,6 @@
 {
   "Name": "mor beannaich",
+  "Icon": 16,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 4,

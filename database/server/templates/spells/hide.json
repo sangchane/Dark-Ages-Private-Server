@@ -1,5 +1,6 @@
 {
   "Name": "Hide",
+  "Icon": 10,
   "ScriptKey": "Hide",
   "Prerequisites": {
     "Class_Required": 2,

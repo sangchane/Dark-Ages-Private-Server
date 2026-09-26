@@ -1,5 +1,6 @@
 ﻿{
   "Name": "표창던지기",
+  "Icon": 12,
   "ScriptName": "표창던지기",
   "Prerequisites": {
     "Class_Required": 2,

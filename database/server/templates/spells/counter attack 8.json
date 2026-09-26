@@ -1,5 +1,6 @@
 {
   "Name": "Counter Attack 8",
+  "Icon": 150,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 4,

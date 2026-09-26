@@ -1,5 +1,6 @@
 {
   "Name": "Frost Arrow 9",
+  "Icon": 151,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 2,

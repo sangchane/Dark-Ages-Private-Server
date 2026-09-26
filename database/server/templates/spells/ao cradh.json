@@ -1,5 +1,6 @@
 {
   "Name": "ao cradh",
+  "Icon": 79,
   "Animation": 245,
   "ScriptKey": "ao cradh",
   "Prerequisites": {

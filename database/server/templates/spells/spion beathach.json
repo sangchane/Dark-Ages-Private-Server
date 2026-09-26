@@ -1,5 +1,6 @@
 {
   "Name": "spion beathach",
+  "Icon": 49,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 4,

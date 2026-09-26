@@ -1,5 +1,6 @@
 {
   "Name": "ard srad",
+  "Icon": 42,
   "ScriptKey": "ard srad",
   "Prerequisites": {
     "Class_Required": 3,

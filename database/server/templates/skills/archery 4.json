@@ -1,5 +1,6 @@
 {
   "Name": "Archery 4",
+  "Icon": 79,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 2,

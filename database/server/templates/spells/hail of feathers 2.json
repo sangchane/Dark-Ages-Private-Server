@@ -1,5 +1,6 @@
 {
   "Name": "Hail of Feathers 2",
+  "Icon": 170,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 5,

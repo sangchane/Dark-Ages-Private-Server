@@ -1,5 +1,6 @@
 {
   "Name": "ao mor cradh",
+  "Icon": 80,
   "Animation": 245,
   "ScriptKey": "ao mor cradh",
   "Prerequisites": {

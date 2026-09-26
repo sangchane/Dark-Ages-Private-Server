@@ -1,5 +1,6 @@
 {
   "Name": "mor strioch bais meall",
+  "Icon": 74,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 3,

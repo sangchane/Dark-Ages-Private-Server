@@ -1,5 +1,6 @@
 ﻿{
   "Name": "홀리드래곤",
+  "Icon": 122,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 5,

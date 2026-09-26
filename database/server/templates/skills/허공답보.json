@@ -1,5 +1,6 @@
 ﻿{
   "Name": "허공답보",
+  "Icon": 51,
   "ScriptName": "허공답보",
   "Prerequisites": {
     "Class_Required": 5

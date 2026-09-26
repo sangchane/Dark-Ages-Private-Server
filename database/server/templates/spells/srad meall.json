@@ -1,5 +1,6 @@
 {
   "Name": "srad meall",
+  "Icon": 61,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 3,

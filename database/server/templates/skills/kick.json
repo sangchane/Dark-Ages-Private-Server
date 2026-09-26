@@ -1,5 +1,6 @@
 {
   "Name": "Kick",
+  "Icon": 2,
   "ScriptName": "Kick",
   "Prerequisites": {
     "Class_Required": 5,

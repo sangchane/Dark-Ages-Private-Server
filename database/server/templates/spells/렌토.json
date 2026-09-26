@@ -1,5 +1,6 @@
 ﻿{
   "Name": "렌토",
+  "Icon": 5,
   "ScriptKey": "렌토",
   "Prerequisites": {
     "Class_Required": 4,

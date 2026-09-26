@@ -1,5 +1,6 @@
 ﻿{
   "Name": "품뒤져보기",
+  "Icon": 26,
   "ScriptName": "품뒤져보기",
   "Prerequisites": {
     "Class_Required": 2,

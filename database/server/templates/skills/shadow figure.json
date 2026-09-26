@@ -1,5 +1,6 @@
 {
   "Name": "Shadow Figure",
+  "Icon": 8,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 2,

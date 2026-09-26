@@ -1,5 +1,6 @@
 {
   "Name": "Sneak Flight 4",
+  "Icon": 92,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 5,

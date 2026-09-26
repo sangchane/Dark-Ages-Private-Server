@@ -1,5 +1,6 @@
 {
   "Name": "TransferBlood",
+  "Icon": 45,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 4,

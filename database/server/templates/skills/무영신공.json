@@ -1,5 +1,6 @@
 ﻿{
   "Name": "무영신공",
+  "Icon": 70,
   "ScriptName": "무영신공",
   "Prerequisites": {
     "Class_Required": 5

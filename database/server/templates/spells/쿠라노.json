@@ -1,5 +1,6 @@
 ﻿{
   "Name": "쿠라노",
+  "Icon": 29,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 4,

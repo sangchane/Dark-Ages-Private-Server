@@ -1,5 +1,6 @@
 {
   "Name": "slan",
+  "Icon": 26,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 4,

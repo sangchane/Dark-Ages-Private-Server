@@ -1,5 +1,6 @@
 {
   "Name": "Wolf Fang Fist",
+  "Icon": 60,
   "ScriptName": "Wolf Fang Fist",
   "Prerequisites": {
     "Class_Required": 5,

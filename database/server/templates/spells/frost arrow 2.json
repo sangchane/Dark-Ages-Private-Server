@@ -1,5 +1,6 @@
 {
   "Name": "Frost Arrow 2",
+  "Icon": 151,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 2,

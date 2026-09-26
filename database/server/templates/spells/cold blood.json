@@ -1,5 +1,6 @@
 {
   "Name": "Cold Blood",
+  "Icon": 170,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 5,

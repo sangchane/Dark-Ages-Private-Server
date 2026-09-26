@@ -1,5 +1,6 @@
 {
   "Name": "Iron Skin",
+  "Icon": 53,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 5,

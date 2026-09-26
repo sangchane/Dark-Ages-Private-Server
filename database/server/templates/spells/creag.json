@@ -1,5 +1,6 @@
 {
   "Name": "creag",
+  "Icon": 57,
   "ScriptKey": "creag",
   "Prerequisites": {
     "Class_Required": 3,

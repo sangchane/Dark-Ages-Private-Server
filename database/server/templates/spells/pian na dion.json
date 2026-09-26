@@ -1,5 +1,6 @@
 {
   "Name": "pian na dion",
+  "Icon": 96,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 3,

@@ -1,5 +1,6 @@
 ﻿{
   "Name": "바르도",
+  "Icon": 82,
   "ScriptKey": "바르도",
   "Prerequisites": {
     "Class_Required": 4,

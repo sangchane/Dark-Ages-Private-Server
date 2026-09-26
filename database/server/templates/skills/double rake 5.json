@@ -1,5 +1,6 @@
 {
   "Name": "Double Rake 5",
+  "Icon": 97,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 5,

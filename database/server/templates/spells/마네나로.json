@@ -1,5 +1,6 @@
 ﻿{
   "Name": "마네나로",
+  "Icon": 68,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 3,

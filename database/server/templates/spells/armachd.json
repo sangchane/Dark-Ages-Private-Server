@@ -1,5 +1,6 @@
 {
   "Name": "armachd",
+  "Icon": 94,
   "Animation": 20,
   "ScriptKey": "armachd",
   "Prerequisites": {

@@ -1,5 +1,6 @@
 ﻿{
   "Name": "연환포",
+  "Icon": 58,
   "ScriptName": "연환포",
   "Prerequisites": {
     "Class_Required": 5,

@@ -1,5 +1,6 @@
 {
   "Name": "Inner Beast 1",
+  "Icon": 87,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 5,

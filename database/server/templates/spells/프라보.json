@@ -1,5 +1,6 @@
 ﻿{
   "Name": "프라보",
+  "Icon": 84,
   "ScriptKey": "프라보",
   "Prerequisites": {
     "Class_Required": 4,

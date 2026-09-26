@@ -1,5 +1,6 @@
 {
   "Name": "Sting",
+  "Icon": 4,
   "ScriptName": "Sting",
   "Prerequisites": {
     "Class_Required": 5

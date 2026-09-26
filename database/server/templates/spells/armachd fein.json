@@ -1,5 +1,6 @@
 {
   "Name": "armachd fein",
+  "Icon": 94,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 4,

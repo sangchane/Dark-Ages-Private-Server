@@ -1,5 +1,6 @@
 {
   "Name": "Strikedown 3",
+  "Icon": 73,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 1,

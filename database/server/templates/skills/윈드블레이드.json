@@ -1,5 +1,6 @@
 ﻿{
   "Name": "윈드블레이드",
+  "Icon": 15,
   "ScriptName": "윈드블레이드",
   "Prerequisites": {
     "Class_Required": 1,

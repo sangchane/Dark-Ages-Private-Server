@@ -1,5 +1,6 @@
 {
   "Name": "Lucky Hand",
+  "Icon": 62,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 5,

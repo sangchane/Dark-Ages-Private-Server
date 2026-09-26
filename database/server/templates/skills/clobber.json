@@ -1,5 +1,6 @@
 {
   "Name": "Clobber",
+  "Icon": 0,
   "ScriptName": "Clobber",
   "Prerequisites": {
     "Class_Required": 1,

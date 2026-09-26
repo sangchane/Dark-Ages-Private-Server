@@ -1,5 +1,6 @@
 {
   "Name": "deireas faileas",
+  "Icon": 54,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 4,

@@ -1,5 +1,6 @@
 {
   "Name": "Keeter 6",
+  "Icon": 153,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 3,

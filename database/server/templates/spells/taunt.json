@@ -1,5 +1,6 @@
 {
   "Name": "Taunt",
+  "Icon": 14,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 1,

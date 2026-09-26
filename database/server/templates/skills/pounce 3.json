@@ -1,5 +1,6 @@
 {
   "Name": "Pounce 3",
+  "Icon": 88,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 5,

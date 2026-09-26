@@ -1,5 +1,6 @@
 {
   "Name": "Claw Slash 2",
+  "Icon": 96,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 5,

@@ -1,5 +1,6 @@
 {
   "Name": "Blind Trap",
+  "Icon": 17,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 2,

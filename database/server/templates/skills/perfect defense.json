@@ -1,5 +1,6 @@
 {
   "Name": "Perfect Defense",
+  "Icon": 19,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 1,

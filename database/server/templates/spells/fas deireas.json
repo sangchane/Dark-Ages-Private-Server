@@ -1,5 +1,6 @@
 {
   "Name": "fas deireas",
+  "Icon": 52,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 4,

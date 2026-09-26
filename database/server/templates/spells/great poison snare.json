@@ -1,5 +1,6 @@
 {
   "Name": "Great Poison Snare",
+  "Icon": 35,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 2,

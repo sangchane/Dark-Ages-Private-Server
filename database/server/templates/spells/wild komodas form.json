@@ -1,5 +1,6 @@
 {
   "Name": "Wild Komodas Form",
+  "Icon": 185,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 5,

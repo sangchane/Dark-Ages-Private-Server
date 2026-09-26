@@ -1,5 +1,6 @@
 {
   "Name": "Needle Trap",
+  "Icon": 16,
   "ScriptKey": "Needle Trap",
   "Prerequisites": {
     "Class_Required": 2,

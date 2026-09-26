@@ -1,5 +1,6 @@
 {
   "Name": "Wield Staff",
+  "Icon": 14,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 3,

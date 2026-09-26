@@ -1,5 +1,6 @@
 ﻿{
   "Name": "M포효",
+  "Icon": 52,
   "ScriptName": "M포효",
   "Prerequisites": {
     "Class_Required": 1,

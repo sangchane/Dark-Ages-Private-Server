@@ -1,5 +1,6 @@
 {
   "Name": "Life Arrow",
+  "Icon": 86,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 2,

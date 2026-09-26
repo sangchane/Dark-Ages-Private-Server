@@ -1,5 +1,6 @@
 {
   "Name": "Groo 11",
+  "Icon": 156,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 3,

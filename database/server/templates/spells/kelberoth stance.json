@@ -1,5 +1,6 @@
 {
   "Name": "Kelberoth Stance",
+  "Icon": 13,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 5

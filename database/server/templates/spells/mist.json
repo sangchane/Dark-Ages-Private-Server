@@ -1,5 +1,6 @@
 {
   "Name": "Mist",
+  "Icon": 55,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 5,

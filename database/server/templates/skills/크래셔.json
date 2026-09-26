@@ -1,5 +1,6 @@
 ﻿{
   "Name": "크래셔",
+  "Icon": 21,
   "ScriptName": "크래셔",
   "Prerequisites": {
     "Class_Required": 1,

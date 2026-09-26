@@ -1,5 +1,6 @@
 {
   "Name": "Fiery Defender",
+  "Icon": 186,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 3,

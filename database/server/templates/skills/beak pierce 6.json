@@ -1,5 +1,6 @@
 {
   "Name": "Beak Pierce 6",
+  "Icon": 93,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 5,

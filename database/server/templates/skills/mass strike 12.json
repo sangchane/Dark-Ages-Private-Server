@@ -1,5 +1,6 @@
 {
   "Name": "Mass Strike 12",
+  "Icon": 85,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 5,

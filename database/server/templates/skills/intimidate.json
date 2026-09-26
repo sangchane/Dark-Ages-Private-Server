@@ -1,5 +1,6 @@
 {
   "Name": "Intimidate",
+  "Icon": 86,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 1,

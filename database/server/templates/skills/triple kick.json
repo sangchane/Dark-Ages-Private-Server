@@ -1,5 +1,6 @@
 {
   "Name": "Triple Kick",
+  "Icon": 11,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 5,

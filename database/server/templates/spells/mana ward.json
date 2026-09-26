@@ -1,5 +1,6 @@
 {
   "Name": "Mana Ward",
+  "Icon": 116,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 3,

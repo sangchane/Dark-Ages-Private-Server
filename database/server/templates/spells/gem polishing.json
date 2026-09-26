@@ -1,5 +1,6 @@
 {
   "Name": "Gem Polishing",
+  "Icon": 18,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 2,

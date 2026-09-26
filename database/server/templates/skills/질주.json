@@ -1,5 +1,6 @@
 ﻿{
   "Name": "질주",
+  "Icon": 49,
   "ScriptName": "질주",
   "Prerequisites": {
     "Class_Required": 1,

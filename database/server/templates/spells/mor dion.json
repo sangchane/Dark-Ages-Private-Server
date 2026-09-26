@@ -1,5 +1,6 @@
 {
   "Name": "mor dion",
+  "Icon": 53,
   "ScriptKey": "mor dion",
   "Prerequisites": {
     "Class_Required": 4,

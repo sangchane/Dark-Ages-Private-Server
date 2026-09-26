@@ -1,5 +1,6 @@
 {
   "Name": "Beothaich Lecture",
+  "Icon": 3,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 4,

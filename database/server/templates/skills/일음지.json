@@ -1,5 +1,6 @@
 ﻿{
   "Name": "일음지",
+  "Icon": 33,
   "ScriptName": "일음지",
   "Prerequisites": {
     "Class_Required": 5

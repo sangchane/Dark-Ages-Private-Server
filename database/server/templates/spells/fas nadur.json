@@ -1,5 +1,6 @@
 {
   "Name": "fas nadur",
+  "Icon": 53,
   "ScriptKey": "fas nadur",
   "Prerequisites": {
     "Class_Required": 3,

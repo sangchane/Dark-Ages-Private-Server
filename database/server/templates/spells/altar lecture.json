@@ -1,5 +1,6 @@
 {
   "Name": "Altar Lecture",
+  "Icon": 3,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 4,

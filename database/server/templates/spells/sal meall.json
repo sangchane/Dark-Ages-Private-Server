@@ -1,5 +1,6 @@
 {
   "Name": "sal meall",
+  "Icon": 64,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 3,

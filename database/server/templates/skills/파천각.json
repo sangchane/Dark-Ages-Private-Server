@@ -1,5 +1,6 @@
 ﻿{
   "Name": "파천각",
+  "Icon": 69,
   "ScriptName": "파천각",
   "Prerequisites": {
     "Class_Required": 5

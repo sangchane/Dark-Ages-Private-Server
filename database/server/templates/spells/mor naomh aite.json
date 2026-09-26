@@ -1,5 +1,6 @@
 {
   "Name": "mor naomh aite",
+  "Icon": 11,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 4,

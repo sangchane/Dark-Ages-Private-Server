@@ -1,5 +1,6 @@
 {
   "Name": "Shock Arrow",
+  "Icon": 161,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 2,

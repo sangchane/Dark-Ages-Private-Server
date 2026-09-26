@@ -1,5 +1,6 @@
 {
   "Name": "Combat Senses",
+  "Icon": 10,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 1,

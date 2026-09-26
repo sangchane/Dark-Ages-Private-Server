@@ -1,5 +1,6 @@
 {
   "Name": "Greater Sleep Snare",
+  "Icon": 50,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 2,

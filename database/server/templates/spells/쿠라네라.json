@@ -1,5 +1,6 @@
 ﻿{
   "Name": "쿠라네라",
+  "Icon": 34,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 4,

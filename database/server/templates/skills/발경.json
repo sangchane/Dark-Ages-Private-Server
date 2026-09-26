@@ -1,5 +1,6 @@
 ﻿{
   "Name": "발경",
+  "Icon": 35,
   "ScriptName": "발경",
   "Prerequisites": {
     "Class_Required": 5,

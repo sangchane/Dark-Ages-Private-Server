@@ -1,5 +1,6 @@
 ﻿{
   "Name": "슬레쉬",
+  "Icon": 6,
   "ScriptName": "슬레쉬",
   "Prerequisites": {
     "Class_Required": 2,

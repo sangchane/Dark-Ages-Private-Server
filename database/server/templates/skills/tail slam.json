@@ -1,5 +1,6 @@
 {
   "Name": "Tail Slam",
+  "Icon": 94,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 5,

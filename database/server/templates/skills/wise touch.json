@@ -1,5 +1,6 @@
 {
   "Name": "Wise Touch",
+  "Icon": 61,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 5,

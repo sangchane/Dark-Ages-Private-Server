@@ -1,5 +1,6 @@
 {
   "Name": "Draco Stance",
+  "Icon": 53,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 5

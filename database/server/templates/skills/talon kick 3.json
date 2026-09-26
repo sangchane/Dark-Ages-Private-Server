@@ -1,5 +1,6 @@
 {
   "Name": "Talon Kick 3",
+  "Icon": 94,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 5,

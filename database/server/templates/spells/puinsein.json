@@ -1,5 +1,6 @@
 {
   "Name": "puinsein",
+  "Icon": 35,
   "ScriptKey": "puinsein",
   "Prerequisites": {
     "Class_Required": 4,

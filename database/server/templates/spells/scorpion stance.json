@@ -1,5 +1,6 @@
 {
   "Name": "Scorpion Stance",
+  "Icon": 94,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 5

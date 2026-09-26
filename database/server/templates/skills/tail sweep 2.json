@@ -1,5 +1,6 @@
 {
   "Name": "Tail Sweep 2",
+  "Icon": 85,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 5,

@@ -1,5 +1,6 @@
 {
   "Name": "beag srad",
+  "Icon": 40,
   "ScriptKey": "beag srad",
   "Prerequisites": {
     "Class_Required": 3,

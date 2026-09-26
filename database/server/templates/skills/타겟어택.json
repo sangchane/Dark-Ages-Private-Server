@@ -1,5 +1,6 @@
 ﻿{
   "Name": "타겟어택",
+  "Icon": 39,
   "ScriptName": "타겟어택",
   "Prerequisites": {
     "Class_Required": 1,

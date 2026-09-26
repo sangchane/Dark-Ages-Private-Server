@@ -1,5 +1,6 @@
 {
   "Name": "Midnight Slash",
+  "Icon": 11,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 2,

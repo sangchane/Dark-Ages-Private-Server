@@ -1,5 +1,6 @@
 {
   "Name": "High Kick",
+  "Icon": 2,
   "ScriptName": "High Kick",
   "Prerequisites": {
     "Class_Required": 5,

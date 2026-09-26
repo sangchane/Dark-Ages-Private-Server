@@ -1,5 +1,6 @@
 {
   "Name": "creag gar",
+  "Icon": 59,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 3,

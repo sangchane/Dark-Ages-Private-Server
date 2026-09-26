@@ -1,5 +1,6 @@
 {
   "Name": "deo lamh",
+  "Icon": 73,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 4,

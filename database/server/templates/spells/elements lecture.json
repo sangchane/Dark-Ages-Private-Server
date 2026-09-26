@@ -1,5 +1,6 @@
 {
   "Name": "Elements Lecture",
+  "Icon": 3,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 3,

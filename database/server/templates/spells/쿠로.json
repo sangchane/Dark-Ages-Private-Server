@@ -1,5 +1,6 @@
 ﻿{
   "Name": "쿠로",
+  "Icon": 28,
   "ScriptKey": "쿠로",
   "Prerequisites": {
     "Class_Required": 4,

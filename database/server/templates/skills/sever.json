@@ -1,5 +1,6 @@
 {
   "Name": "Sever",
+  "Icon": 65,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 1,

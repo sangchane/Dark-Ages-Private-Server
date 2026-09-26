@@ -1,5 +1,6 @@
 {
   "Name": "Maiden Trap",
+  "Icon": 52,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 2,

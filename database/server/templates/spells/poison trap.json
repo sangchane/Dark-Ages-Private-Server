@@ -1,5 +1,6 @@
 {
   "Name": "Poison Trap",
+  "Icon": 35,
   "ScriptKey": "Poison Trap",
   "Prerequisites": {
     "Class_Required": 2,

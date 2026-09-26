@@ -1,5 +1,6 @@
 {
   "Name": "Mermaid 8",
+  "Icon": 155,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 3,

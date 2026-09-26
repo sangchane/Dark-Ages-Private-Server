@@ -1,5 +1,6 @@
 ﻿{
   "Name": "찌르기",
+  "Icon": 5,
   "ScriptName": "찌르기",
   "Prerequisites": {
     "Class_Required": 2,

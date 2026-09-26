@@ -1,5 +1,6 @@
 {
   "Name": "Claw Fist",
+  "Icon": 59,
   "ScriptName": "Claw Fist",
   "Prerequisites": {
     "Class_Required": 5,

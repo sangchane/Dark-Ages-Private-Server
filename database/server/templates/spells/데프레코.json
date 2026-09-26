@@ -1,5 +1,6 @@
 ﻿{
   "Name": "데프레코",
+  "Icon": 83,
   "ScriptKey": "데프레코",
   "Prerequisites": {
     "Class_Required": 4,

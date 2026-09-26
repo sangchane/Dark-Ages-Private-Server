@@ -1,5 +1,6 @@
 {
   "Name": "beag athar",
+  "Icon": 43,
   "ScriptKey": "beag athar",
   "Prerequisites": {
     "Class_Required": 3,

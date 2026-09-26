@@ -1,5 +1,6 @@
 ﻿{
   "Name": "메가블레이드",
+  "Icon": 16,
   "ScriptName": "메가블레이드",
   "Prerequisites": {
     "Class_Required": 1,

@@ -1,5 +1,6 @@
 {
   "Name": "Wheel Kick 10",
+  "Icon": 75,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 1,

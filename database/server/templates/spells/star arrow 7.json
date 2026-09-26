@@ -1,5 +1,6 @@
 {
   "Name": "Star Arrow 7",
+  "Icon": 159,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 2,

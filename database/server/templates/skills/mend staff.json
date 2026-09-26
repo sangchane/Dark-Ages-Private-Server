@@ -1,5 +1,6 @@
 {
   "Name": "Mend Staff",
+  "Icon": 32,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 3,

@@ -1,5 +1,6 @@
 ﻿{
   "Name": "홀리쿠라네라",
+  "Icon": 107,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 4,

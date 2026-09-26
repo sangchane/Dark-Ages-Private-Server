@@ -1,5 +1,6 @@
 {
   "Name": "ard leasaich sal",
+  "Icon": 46,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 3,

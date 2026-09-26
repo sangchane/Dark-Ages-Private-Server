@@ -1,5 +1,6 @@
 ﻿{
   "Name": "늑대의위상",
+  "Icon": 96,
   "ScriptName": "늑대의위상",
   "Prerequisites": {
     "Class_Required": 5

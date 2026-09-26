@@ -1,5 +1,6 @@
 {
   "Name": "Instrumental 4",
+  "Icon": 98,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 4,

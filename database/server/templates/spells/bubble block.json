@@ -1,5 +1,6 @@
 {
   "Name": "Bubble Block",
+  "Icon": 178,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 3,

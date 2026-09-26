@@ -1,5 +1,6 @@
 {
   "Name": "eisd creutair",
+  "Icon": 7,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 2,

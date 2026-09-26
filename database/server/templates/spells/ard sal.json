@@ -1,5 +1,6 @@
 {
   "Name": "ard sal",
+  "Icon": 48,
   "ScriptKey": "ard sal",
   "Prerequisites": {
     "Class_Required": 3,

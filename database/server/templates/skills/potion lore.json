@@ -1,5 +1,6 @@
 {
   "Name": "Potion Lore",
+  "Icon": 27,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 2,

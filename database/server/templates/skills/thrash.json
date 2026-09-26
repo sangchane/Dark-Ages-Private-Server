@@ -1,5 +1,6 @@
 {
   "Name": "Thrash",
+  "Icon": 48,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 1,

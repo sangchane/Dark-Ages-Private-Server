@@ -1,5 +1,6 @@
 {
   "Name": "Thrust Attack 1",
+  "Icon": 72,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 1,

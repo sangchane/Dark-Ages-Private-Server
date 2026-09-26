@@ -1,5 +1,6 @@
 ﻿{
   "Name": "연천단각",
+  "Icon": 67,
   "ScriptName": "연천단각",
   "Prerequisites": {
     "Class_Required": 5

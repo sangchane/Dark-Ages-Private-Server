@@ -1,5 +1,6 @@
 {
   "Name": "Elemental Bless 2",
+  "Icon": 14,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 3,

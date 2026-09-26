@@ -1,5 +1,6 @@
 {
   "Name": "dachaidh",
+  "Icon": 15,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 3,

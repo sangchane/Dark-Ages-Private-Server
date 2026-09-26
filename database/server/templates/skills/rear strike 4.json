@@ -1,5 +1,6 @@
 {
   "Name": "Rear Strike 4",
+  "Icon": 77,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 2,

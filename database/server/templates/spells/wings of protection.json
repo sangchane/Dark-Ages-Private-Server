@@ -1,5 +1,6 @@
 {
   "Name": "Wings of Protection",
+  "Icon": 53,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 3,

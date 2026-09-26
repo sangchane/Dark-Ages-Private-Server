@@ -1,5 +1,6 @@
 {
   "Name": "Sleep Trap",
+  "Icon": 50,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 2,

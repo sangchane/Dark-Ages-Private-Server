@@ -1,5 +1,6 @@
 ﻿{
   "Name": "달마신공",
+  "Icon": 36,
   "ScriptName": "달마신공",
   "Prerequisites": {
     "Class_Required": 5

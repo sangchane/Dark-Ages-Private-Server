@@ -1,5 +1,6 @@
 ﻿{
   "Name": "라그나로크",
+  "Icon": 75,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 3,

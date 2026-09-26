@@ -1,5 +1,6 @@
 ﻿{
   "Name": "아무네지아",
+  "Icon": 44,
   "ScriptName": "아무네지아",
   "Prerequisites": {
     "Class_Required": 2,

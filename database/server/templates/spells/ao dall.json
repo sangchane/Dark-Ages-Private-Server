@@ -1,5 +1,6 @@
 {
   "Name": "ao dall",
+  "Icon": 25,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 4,

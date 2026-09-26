@@ -1,5 +1,6 @@
 ﻿{
   "Name": "세오의손길",
+  "Icon": 124,
   "ScriptName": null,
   "Prerequisites": {
     "Class_Required": 5,
