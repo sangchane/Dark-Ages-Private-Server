@@ -20,7 +20,11 @@ namespace Darkages.Network.ServerFormats
         public IPEndPoint EndPoint { get; set; }
 
         public Redirect Redirect { get; set; }
-        public byte Remaining => (byte) (Redirect.Salt.Length + Redirect.Name.Length + 7);
+        // 이름은 WriteStringA 가 949(한글 2바이트)로 쓴다 — 글자 수로 세면 한글 이름에서 입장권 길이가 모자라, 받는 쪽이
+        // 입장권을 잘라 읽고 로그인이 끝나지 않았다(봇 "동료사제", 2026-09-26). 쓰는 바이트 수로 센다.
+        public byte Remaining => (byte) (Redirect.Salt.Length + NameEncoding.GetByteCount(Redirect.Name) + 7);
+
+        private static readonly Encoding NameEncoding = Encoding.GetEncoding(949);
 
         public override void Serialize(NetworkPacketReader reader)
         {
