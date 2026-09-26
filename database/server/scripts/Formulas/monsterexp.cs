@@ -90,8 +90,14 @@ namespace Darkages.Storage.locales.Scripts.Formulas
         /// 한 마리가 떨굴 물건 하나. 목록의 <c>DropRate</c> 를 한 줄로 이어 붙이고(전체 길이 = 목록 칸수) 그 위의
         /// 한 점을 뽑는다 — 한 물건이 나올 확률은 그대로 <c>DropRate ÷ 칸수</c> 다. 옛 셈(한 칸을 고르고 그 칸을
         /// 굴린다)과 1 이하에서는 같은 확률이지만, 옛 셈에서는 1 을 넘는 값이 1 처럼 굴었다. 마력 포션을 두 배로
-        /// 올리며(2026-09-26, 0.6 → 1.2) 바꿨다.
+        /// 올리며(2026-09-26, 0.6 → 1.2) 바꿨다. 실제 확률은 여기에 <see cref="DropBoost" /> 를 곱한 것이다.
         /// </summary>
+        /// <summary>
+        /// 목록 드랍 전체에 곱하는 배율 — 사용자 결정(2026-09-26): "전체 확률 올려", 1.5배. 물건마다의 <c>DropRate</c> 는
+        /// 그대로 두고(서로 사이의 비율은 생성기들이 맞춘 대로) 여기서 한꺼번에 올린다.
+        /// </summary>
+        private const double DropBoost = 1.5;
+
         private void DetermineRandomDrop()
         {
             var drops = _monster.Template.Drops;
@@ -105,7 +111,9 @@ namespace Darkages.Storage.locales.Scripts.Formulas
                 if (name == null || !ServerContext.GlobalItemTemplateCache.TryGetValue(name, out var template))
                     continue;
 
-                if (point < template.DropRate)
+                var rate = template.DropRate * DropBoost;
+
+                if (point < rate)
                 {
                     var item = Item.Create(_monster, template, true);
                     item.Stacks = BundleSize(item);
@@ -113,7 +121,7 @@ namespace Darkages.Storage.locales.Scripts.Formulas
                     return;
                 }
 
-                point -= Math.Max(0, template.DropRate);
+                point -= Math.Max(0, rate);
             }
         }
 

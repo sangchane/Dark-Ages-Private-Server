@@ -41,7 +41,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
             if (V.T(((V)(p.Call("horrama", v_myid, (V)60L)) == (V)((V)1L))))
             {
                 p.Call("game_sound", (V)8L, (V)0L);
-                p.Call("effect", v_myid, (V)262L, (V)0L, (V)100L);
+                p.Call("effect", v_myid, (V)66L, (V)0L, (V)100L);  // 노바 이펙트(5.99: 262, 0)
                 p.Call("message1", v_myid, (V)3L, (V)"자기보호를 외웠습니다.");
             }
         }

@@ -26,7 +26,9 @@
   "Drops": {
     "$type": "System.Collections.Generic.List`1[[System.String, System.Private.CoreLib]], System.Private.CoreLib",
     "$values": [
-      "이아의은제방패"
+      "이아의은제방패",
+      "상급체력포션",
+      "상급마력포션"
     ]
   },
   "ScriptName": "Common Monster",

@@ -69,7 +69,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                             if (V.T(((V)(v_rnd) < (V)((V)6L))))
                             {
                                 p.Call("magic", (V)1L, v_mob, (V)"프라베라", (V)120L, (V)45L, v_myid);
-                                p.Call("effect", v_mob, (V)0L, (V)257L, (V)100L);
+                                p.Call("effect", v_mob, (V)0L, (V)43L, (V)100L);  // 노바 이펙트(5.99: 0, 257)
                             }
                             else
                             {

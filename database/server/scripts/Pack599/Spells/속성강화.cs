@@ -46,14 +46,14 @@ namespace Darkages.Storage.locales.Scripts.Pack599
             {
                 p.Call("sokup_delay", v_target, (V)3000L);
                 p.Call("message", (V)3L, (V)"속성강화를 외었다!");
-                p.Call("effect", v_target, (V)0L, (V)263L, (V)100L);
+                p.Call("effect", v_target, (V)0L, (V)81L, (V)100L);  // 노바 이펙트(5.99: 0, 263)
                 return;
             }
             if (V.T(((V)(v_type) == (V)((V)3L))))
             {
                 p.Call("sokup_delay", v_target, (V)3000L);
                 p.Call("message", (V)3L, (V)"속성강화를 외었다!");
-                p.Call("effect", v_target, (V)0L, (V)263L, (V)100L);
+                p.Call("effect", v_target, (V)0L, (V)81L, (V)100L);  // 노바 이펙트(5.99: 0, 263)
                 p.Call("message1", v_target, (V)3L, ((V)(p.Call("get_name")) + (V)((V)"님께서 속성강화를 외워주셨습니다.")));
                 return;
             }

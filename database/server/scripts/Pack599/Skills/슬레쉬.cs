@@ -60,13 +60,13 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                     v_target = p.Call("get_front_char", v_myid);
                     p.Call("char_damaged", v_target, v_damage, v_damage);
                     p.Call("motion", (V)134L, (V)30L);
-                    p.Call("effect", v_target, (V)0L, (V)201L, (V)100L);
+                    p.Call("effect", v_target, (V)0L, (V)88L, (V)100L);  // 노바 이펙트(5.99: 0, 201)
                     p.Call("game_sound", (V)7L, (V)0L);
                 }
             }
             else
             {
-                p.Call("effect", v_target, (V)0L, (V)201L, (V)100L);
+                p.Call("effect", v_target, (V)0L, (V)88L, (V)100L);  // 노바 이펙트(5.99: 0, 201)
                 p.Call("damaged", v_target, v_damage);
                 p.Call("motion", (V)134L, (V)30L);
                 p.Call("game_sound", (V)7L, (V)0L);

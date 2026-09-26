@@ -56,7 +56,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
             }
             p.Call("magic", (V)1L, v_target, (V)"프라보", (V)120L, (V)45L, v_myid);
             p.Call("message", (V)3L, (V)"프라보를 외웠습니다.");
-            p.Call("effect", v_target, (V)0L, (V)257L, (V)140L);
+            p.Call("effect", v_target, (V)0L, (V)43L, (V)140L);  // 노바 이펙트(5.99: 0, 257)
             p.Call("game_sound", (V)27L, (V)0L);
         }
     }

@@ -52,7 +52,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
             {
                 p.Call("mob_reberato", v_target);
                 p.Call("message", (V)3L, (V)"리베라토를 외웠습니다.");
-                p.Call("effect", v_target, (V)0L, (V)232L, (V)100L);
+                p.Call("effect", v_target, (V)0L, (V)57L, (V)100L);  // 노바 이펙트(5.99: 0, 232)
             }
             else
                 if (V.T(((V)(v_type) == (V)((V)3L))))
@@ -62,10 +62,10 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                     p.Call("message", (V)3L, (V)"리베라토를 외웠습니다.");
                     if (V.T(((V)(v_target) == (V)(v_myid))))
                     {
-                        p.Call("effect", v_myid, (V)232L, (V)0L, (V)100L);
+                        p.Call("effect", v_myid, (V)57L, (V)0L, (V)100L);  // 노바 이펙트(5.99: 232, 0)
                         return;
                     }
-                    p.Call("effect", v_target, (V)0L, (V)232L, (V)100L);
+                    p.Call("effect", v_target, (V)0L, (V)57L, (V)100L);  // 노바 이펙트(5.99: 0, 232)
                     p.Call("message1", v_target, (V)3L, ((V)(p.Call("get_name")) + (V)((V)"님께서 리베라토를 시전하셧습니다.")));
                 }
             return;

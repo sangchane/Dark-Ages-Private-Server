@@ -63,7 +63,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                             {
                                 p.Call("magic", (V)2L, v_mob, (V)0L, (V)60L, (V)0L, v_myid);
                                 p.Call("message", (V)3L, (V)"봉인을 외웠습니다.");
-                                p.Call("effect", v_mob, (V)0L, (V)104L, (V)130L);
+                                p.Call("effect", v_mob, (V)0L, (V)43L, (V)130L);  // 노바 이펙트(5.99: 0, 104)
                                 p.Call("game_sound", (V)8L, (V)0L);
                             }
                             else
