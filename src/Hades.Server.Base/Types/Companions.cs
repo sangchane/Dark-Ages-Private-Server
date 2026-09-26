@@ -217,6 +217,7 @@ namespace Darkages.Types
         public static void Tick()
         {
             TellEachTheirOwn();
+            SendIdleHome();
 
             KeyValuePair<string, string>[] pairs;
 
@@ -275,6 +276,65 @@ namespace Darkages.Types
                 if (bot.CurrentMapId != owner.CurrentMapId || Stuck(bot, owner))
                     MoveBeside(bot, owner);
             }
+        }
+
+        /// <summary>짝 없는 봇이 대기 장소 밖에서 이만큼 서 있으면 돌려보낸다 — 막 들어와 곧 불릴 봇을 쓸데없이 옮기지 않게 조금 기다린다.</summary>
+        public static readonly TimeSpan IdleAwayFor = TimeSpan.FromSeconds(10);
+
+        // 짝 없는 봇 이름 → 대기 장소 밖에서 처음 본 때.
+        private static readonly Dictionary<string, DateTime> IdleAway = new Dictionary<string, DateTime>(StringComparer.OrdinalIgnoreCase);
+
+        /// <summary>
+        /// 짝 없는 봇은 대기 장소로(사용자 신고 2026-09-27 "앱 종료하고 다시 접속해도 봇이 마지막 자리에 좀비처럼 있다"). 짝은 서버 기억에만
+        /// 있어 짝을 맺은 채 서버가 다시 뜨면 풀어 줄 틈(<see cref="Release" />)이 없고, 봇은 저장된 마지막 자리 — 주인 곁 — 로 들어와
+        /// 주인 없이 서 있었다. 쓰러진(유령) 봇은 [봇 부르기] 로 되살릴 때까지 두므로 건드리지 않는다.
+        /// </summary>
+        private static void SendIdleHome()
+        {
+            var homeMap = HomeMap();
+            var now = DateTime.UtcNow;
+
+            foreach (var name in ServerContext.Config.CompanionBots ?? new List<string>())
+            {
+                bool paired;
+                lock (Gate)
+                    paired = OwnerOf.ContainsKey(name);
+
+                var bot = paired ? null : FindOnline(name);
+
+                if (bot == null || bot.Dead || bot.CurrentMapId == homeMap || bot.Client.IsWarping || bot.Client.MapOpen)
+                {
+                    lock (Gate)
+                        IdleAway.Remove(name);
+                    continue;
+                }
+
+                DateTime since;
+                lock (Gate)
+                {
+                    if (!IdleAway.TryGetValue(name, out since))
+                        IdleAway[name] = since = now;
+                }
+
+                if (now - since < IdleAwayFor)
+                    continue;
+
+                lock (Gate)
+                    IdleAway.Remove(name);
+
+                ServerContext.Logger($"봇 {name}: 짝 없이 맵 {bot.CurrentMapId} ({bot.XPos},{bot.YPos}) 에 있어 대기 장소로 보냄");
+                GoHome(bot);
+            }
+        }
+
+        private static int HomeMap() => ServerContext.Config.CompanionHomeMap > 0
+            ? ServerContext.Config.CompanionHomeMap
+            : ServerContext.Config.StartingMap;
+
+        private static void GoHome(Aisling bot)
+        {
+            var home = ServerContext.Config.CompanionHomePosition ?? ServerContext.Config.StartingPosition;
+            bot.Client.TransitionToMap(HomeMap(), new Position(home.X, home.Y));
         }
 
         /// <summary>
@@ -427,12 +487,7 @@ namespace Darkages.Types
             if (bot.GroupParty != null)
                 Party.RemovePartyMember(bot);
 
-            var homeMap = ServerContext.Config.CompanionHomeMap > 0
-                ? ServerContext.Config.CompanionHomeMap
-                : ServerContext.Config.StartingMap;
-            var home = ServerContext.Config.CompanionHomePosition ?? ServerContext.Config.StartingPosition;
-
-            bot.Client.TransitionToMap(homeMap, new Position(home.X, home.Y));
+            GoHome(bot);
             bot.Client.Send(new ServerFormat5E(ServerFormat5E.Master, 0, string.Empty));
         }
 
