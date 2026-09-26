@@ -21,7 +21,8 @@ namespace Darkages.Types
         /// 봇이 받는 성직자 회복·버프 마법과 그 레벨 — 5.99 사범 NPC 메뉴의 레벨이다(<c>Npc_Skill.txt</c>: 소라카
         /// "신성력강화[11] 쿠러스[11] 호르라마[15]", 소라카2 "에나르마[21] … 쿠라노[21]", "쿠라노소[55] 쿠라누스[63]",
         /// "수페라쿠라노[83] 쿠라네라[87] … 엑스쿠라노[99] 엑스쿠라네라[99]"). 쿠로는 직업을 고를 때 받는다(<c>Npc_Quest.txt:219</c>).
-        /// 공격(홀리볼트)·해제(디나르콜리·디소루마)·무적(이모탈)은 동료의 일이 아니라 주지 않는다.
+        /// 해제 둘(디나르콜리 = 수면 sleep, 디소루마 = 빙결 frozen — 스크립트의 mobnar_end·mobsor_end)도 준다.
+        /// 공격(홀리볼트)·무적(이모탈)은 봇의 일이 아니라 주지 않는다.
         /// </summary>
         public static readonly (int Level, string Name)[] PriestSpells =
         {
@@ -31,6 +32,8 @@ namespace Darkages.Types
             (15, "호르라마"),
             (21, "에나르마"),
             (21, "쿠라노"),
+            (21, "디나르콜리"),
+            (21, "디소루마"),
             (55, "쿠라노소"),
             (63, "쿠라누스"),
             (83, "수페라쿠라노"),
@@ -65,7 +68,7 @@ namespace Darkages.Types
             }
         }
 
-        /// <summary>[동료 부르기]. 알림은 모두 부른 사람에게 한국어 한 줄로.</summary>
+        /// <summary>[봇 부르기]. 알림은 모두 부른 사람에게 한국어 한 줄로.</summary>
         public static void Call(Aisling caller)
         {
             if (caller?.Client == null || IsBot(caller.Username))
@@ -77,13 +80,13 @@ namespace Darkages.Types
             {
                 if (OwnerOf.Values.Any(o => string.Equals(o, caller.Username, StringComparison.OrdinalIgnoreCase)))
                 {
-                    caller.Client.SendMessage(0x02, "이미 동료가 함께 있습니다.");
+                    caller.Client.SendMessage(0x02, "이미 봇이 함께 있습니다.");
                     return;
                 }
 
                 if (caller.GroupParty != null && !caller.LeaderPrivileges)
                 {
-                    caller.Client.SendMessage(0x02, "그룹장만 동료를 부를 수 있습니다.");
+                    caller.Client.SendMessage(0x02, "그룹장만 봇을 부를 수 있습니다.");
                     return;
                 }
 
@@ -97,8 +100,8 @@ namespace Darkages.Types
                 if (bot == null)
                 {
                     caller.Client.SendMessage(0x02, online.Any()
-                        ? "동료가 모두 다른 분과 함께 있습니다."
-                        : "지금 부를 수 있는 동료가 없습니다.");
+                        ? "봇이 모두 다른 분과 함께 있습니다."
+                        : "지금 부를 수 있는 봇이 없습니다.");
                     return;
                 }
 
@@ -114,10 +117,11 @@ namespace Darkages.Types
 
             bot.Client.Send(new ServerFormat5E(ServerFormat5E.Master, caller.Serial, caller.Username));
             caller.Client.Send(new ServerFormat5E(ServerFormat5E.Companion, bot.Serial, bot.Username));
-            caller.Client.SendMessage(0x02, $"동료 {bot.Username}님이 왔습니다. (레벨 {bot.ExpLevel})");
+            SendKit(bot, caller);
+            caller.Client.SendMessage(0x02, $"봇 {bot.Username}님이 왔습니다 (Lv{bot.ExpLevel})");
         }
 
-        /// <summary>[동료 보내기]. 파티에서 빼고 마을로.</summary>
+        /// <summary>[봇 보내기]. 파티에서 빼고 마을로.</summary>
         public static void Dismiss(Aisling caller)
         {
             if (caller?.Client == null)
@@ -128,12 +132,12 @@ namespace Darkages.Types
 
             if (name == null)
             {
-                caller.Client.SendMessage(0x02, "함께 있는 동료가 없습니다.");
+                caller.Client.SendMessage(0x02, "함께 있는 봇이 없습니다.");
                 return;
             }
 
             Release(name, bot, caller);
-            caller.Client.SendMessage(0x02, $"동료 {name}님을 보냈습니다.");
+            caller.Client.SendMessage(0x02, $"봇 {name}님을 보냈습니다.");
         }
 
         /// <summary>
@@ -157,11 +161,16 @@ namespace Darkages.Types
                 if (bot == null || owner == null)
                 {
                     if (owner != null)
-                        owner.Client.SendMessage(0x02, $"동료 {botName}님이 떠났습니다.");
+                        owner.Client.SendMessage(0x02, $"봇 {botName}님이 떠났습니다.");
 
                     Release(botName, bot, owner);
                     continue;
                 }
+
+                bot.Client.Send(ServerFormat5E.Status(owner.Serial, StatusesOf(owner)));
+                bot.Client.Send(ServerFormat5E.Status(bot.Serial, StatusesOf(bot)));
+                owner.Client.Send(ServerFormat5E.Life(bot.Serial, Percent(bot.CurrentHp, bot.MaximumHp),
+                    Percent(bot.CurrentMp, bot.MaximumMp)));
 
                 if (owner.Client.IsWarping || owner.Client.MapOpen || owner.Map == null)
                     continue;
@@ -219,6 +228,7 @@ namespace Darkages.Types
             foreach (var name in wanted)
                 Spell.GiveTo(bot, name, 1);
 
+            Dress(bot);
             bot.Client?.SendStats(StatusFlags.All);
         }
 
@@ -263,6 +273,250 @@ namespace Darkages.Types
             bot.Client.TransitionToMap(homeMap, new Position(home.X, home.Y));
             bot.Client.Send(new ServerFormat5E(ServerFormat5E.Master, 0, string.Empty));
         }
+
+        // ── 기본 장비 ────────────────────────────────────────────────────────
+
+        /// <summary>
+        /// 성직자 직업 의상(5.99 <c>성직자방어구</c>) — 레벨 요구 차례, 남·여. 그림 번호 5·10·15·20·25 는 원작 <c>skill.tbl</c> 성직자
+        /// 동작 줄의 ST(그 동작을 할 수 있는 옷)에 든다 — 직업 동작(128 주문 자세)은 직업 의상을 입어야 원작이 그린다.
+        /// </summary>
+        private static readonly (int Level, string Male, string Female)[] Robes =
+        {
+            (1, "셍즈", "로브"),
+            (11, "레더로브", "미스틱로브"),
+            (41, "맨틀", "엘레맨틀"),
+            (71, "위저드로브", "홀리로브"),
+            (99, "네크로브", "매직로브")
+        };
+
+        /// <summary>기본 무기 — 홀리파나(성직자무기, 레벨 11). 그 아래 레벨은 입을 수 없어 홀리마르시아(레벨 1).</summary>
+        private static string Staff(int level) => level >= 11 ? "홀리파나" : "홀리마르시아";
+
+        private const string GivenKey = "companion.given";
+
+        /// <summary>
+        /// 기본 장비를 입힌다: 무기·갑옷 자리가 비었거나 서버가 입힌 기본 것이면 지금 레벨의 것으로 바꾼다. 주인이 입혀 준 것
+        /// (<see cref="GivenKey" /> 에 적힌 serial)은 건드리지 않는다. 서버가 입힌 것은 바꿀 때 없앤다 — 되돌려 받을 수 없으므로 부를
+        /// 때마다 공짜 장비가 생기지 않는다.
+        /// </summary>
+        private static void Dress(Aisling bot)
+        {
+            if (bot.Client == null)
+                return;
+
+            var robe = Robes.Last(r => r.Level <= bot.ExpLevel);
+            Wear(bot, ItemSlots.Weapon, Staff(bot.ExpLevel));
+            Wear(bot, ItemSlots.Armor, bot.Gender == Gender.Female ? robe.Female : robe.Male);
+        }
+
+        private static void Wear(Aisling bot, byte place, string name)
+        {
+            var current = bot.EquipmentManager.Equipment[place]?.Item;
+
+            if (current != null && (Given(bot).Contains(current.Serial) || current.Template?.Name == name))
+                return;
+
+            var item = Item.Create(bot, name);
+            if (item == null)
+            {
+                ServerContext.Logger($"봇 기본 장비 {name} 템플릿이 없습니다.");
+                return;
+            }
+
+            if (current != null)
+                bot.EquipmentManager.TakeOff(place);
+
+            bot.EquipmentManager.AddEquipment(place, item, false);
+        }
+
+        // ── 주인이 봇에게 주기·벗기기 ────────────────────────────────────────
+
+        /// <summary>
+        /// 주인 가방 한 칸을 봇에게. 장비면 원작 착용 규칙(레벨·직업·성별·내구 — <c>GameClient.CheckReqs</c> 와 같은 조건, 봇 기준)을
+        /// 보고 입히고, 봇이 입던 것은 주인 가방(방금 빈 칸)으로 — 서버가 입힌 기본 것이면 없앤다. 겹치는 물건(포션)이면
+        /// <paramref name="count" /> 개(0 은 다)를 봇 가방으로.
+        /// </summary>
+        public static void Give(Aisling owner, byte slot, int count)
+        {
+            if (owner?.Client == null || CompanionOf(owner.Username) is not { } name || FindOnline(name) is not { } bot)
+            {
+                owner?.Client?.SendMessage(0x02, "함께 있는 봇이 없습니다.");
+                return;
+            }
+
+            var item = owner.Inventory.FindInSlot(slot);
+            if (item?.Template == null)
+                return;
+
+            if (item.Template.Flags.HasFlag(ItemFlags.Stackable))
+                GivePotions(owner, bot, item, count);
+            else if (item.Template.Flags.HasFlag(ItemFlags.Equipable) && item.Template.EquipmentSlot > 0)
+                GiveGear(owner, bot, item);
+            else
+                owner.Client.SendMessage(0x02, "봇에게 줄 수 없는 물건입니다.");
+
+            SendKit(bot, owner);
+        }
+
+        /// <summary>봇의 장비 한 자리를 주인 가방으로. 가방이 꽉 차면 거절. 서버가 입힌 기본 장비는 벗기지 않는다.</summary>
+        public static void TakeOff(Aisling owner, byte place)
+        {
+            if (owner?.Client == null || CompanionOf(owner.Username) is not { } name || FindOnline(name) is not { } bot)
+            {
+                owner?.Client?.SendMessage(0x02, "함께 있는 봇이 없습니다.");
+                return;
+            }
+
+            var item = bot.EquipmentManager[place]?.Item;
+            if (item == null)
+                return;
+
+            if (!Given(bot).Contains(item.Serial))
+            {
+                owner.Client.SendMessage(0x02, "봇의 기본 장비는 벗길 수 없습니다.");
+                return;
+            }
+
+            if (owner.Inventory.FindEmpty() == byte.MaxValue)
+            {
+                owner.Client.SendMessage(0x02, "가방이 가득 차 벗길 수 없습니다.");
+                return;
+            }
+
+            bot.EquipmentManager.TakeOff(place);
+            SetGiven(bot, Given(bot).Where(serial => serial != item.Serial));
+            item.GiveTo(owner, false);
+            Dress(bot);
+            bot.Client.Save();
+            owner.Client.Save();
+            SendKit(bot, owner);
+        }
+
+        private static void GiveGear(Aisling owner, Aisling bot, Item item)
+        {
+            var why = CannotWear(bot, item);
+            if (why != null)
+            {
+                owner.Client.SendMessage(0x02, why);
+                return;
+            }
+
+            var place = item.Template.EquipmentSlot;
+            owner.Inventory.Remove(owner.Client, item);
+            owner.CurrentWeight = Math.Max(0, owner.CurrentWeight - item.Template.CarryWeight);
+            owner.Client.SendStats(StatusFlags.StructA);
+
+            var old = bot.EquipmentManager.TakeOff(place);
+            var given = Given(bot).ToList();
+
+            if (old != null && given.Remove(old.Serial))
+                old.GiveTo(owner, false);
+
+            bot.EquipmentManager.AddEquipment(place, item, false);
+            given.Add(item.Serial);
+            SetGiven(bot, given);
+
+            owner.Client.SendMessage(0x02, $"봇에게 {item.Template.Name}을(를) 입혔습니다.");
+            bot.Client.Save();
+            owner.Client.Save();
+        }
+
+        private static void GivePotions(Aisling owner, Aisling bot, Item item, int count)
+        {
+            var have = Math.Max(1, (int) item.Stacks);
+            var n = count <= 0 ? have : Math.Min(count, have);
+            var roomy = bot.Inventory.Get(i => i != null && i.Template.Name == item.Template.Name &&
+                                                i.Stacks + n <= i.Template.MaxStack).Any() ||
+                        bot.Inventory.FindEmpty() != byte.MaxValue;
+
+            if (!roomy)
+            {
+                owner.Client.SendMessage(0x02, "봇의 가방이 가득 찼습니다.");
+                return;
+            }
+
+            if (n >= have)
+            {
+                owner.Inventory.Remove(owner.Client, item);
+                owner.CurrentWeight = Math.Max(0, owner.CurrentWeight - item.Template.CarryWeight);
+                owner.Client.SendStats(StatusFlags.StructA);
+                item.GiveTo(bot, false);
+            }
+            else
+            {
+                owner.Inventory.RemoveRange(owner.Client, item, n);
+                var part = Item.Create(bot, item.Template);
+                part.Stacks = (ushort) n;
+                part.GiveTo(bot, false);
+            }
+
+            owner.Client.SendMessage(0x02, $"봇에게 {item.Template.Name} {n}개를 주었습니다.");
+            bot.Client.Save();
+            owner.Client.Save();
+        }
+
+        /// <summary>원작 착용 규칙(<c>GameClient.CheckReqs</c>)을 봇 기준으로. 입을 수 있으면 null, 아니면 주인에게 보일 까닭.</summary>
+        public static string CannotWear(Aisling bot, Item item)
+        {
+            var template = item.Template;
+
+            if (bot.ExpLevel < template.LevelRequired)
+                return $"봇의 레벨({bot.ExpLevel})이 모자랍니다 — {template.Name}은(는) {template.LevelRequired}레벨부터.";
+
+            if (template.Class != Class.Peasant && template.Class != bot.Path)
+                return $"{template.Name}은(는) 성직자가 입을 수 없습니다.";
+
+            if (template.Gender != Gender.Both && template.Gender != bot.Gender)
+                return $"{template.Name}은(는) 봇의 성별에 맞지 않습니다.";
+
+            if (item.Durability <= 0)
+                return $"{template.Name}은(는) 고쳐야 입을 수 있습니다.";
+
+            return null;
+        }
+
+        private static List<int> Given(Aisling bot) =>
+            bot.PackVariables != null && bot.PackVariables.TryGetValue(GivenKey, out var text) && !string.IsNullOrEmpty(text)
+                ? text.Split(',').Select(part => int.TryParse(part, out var serial) ? serial : 0).Where(s => s != 0).ToList()
+                : new List<int>();
+
+        // 사전을 고친 사본으로 통째로 바꿔 끼운다 — 자동 저장이 이 사전을 훑는 중에 고치면 안 된다(Pack599 와 같은 방식).
+        private static void SetGiven(Aisling bot, IEnumerable<int> serials)
+        {
+            var copy = new Dictionary<string, string>(bot.PackVariables ?? new Dictionary<string, string>())
+            {
+                [GivenKey] = string.Join(",", serials)
+            };
+            bot.PackVariables = copy;
+        }
+
+        // ── 알림 ────────────────────────────────────────────────────────────
+
+        /// <summary>하데스 버프·디버프와 5.99 시간 상태 — 이름·남은 초·해로움.</summary>
+        private static List<(string Name, int Seconds, bool Harmful)> StatusesOf(Sprite who)
+        {
+            var listed = new List<(string, int, bool)>();
+            listed.AddRange(who.Buffs.Values.Where(b => b != null).Select(b => (b.Name, b.Length - b.Timer.Tick, false)));
+            listed.AddRange(who.Debuffs.Values.Where(d => d != null).Select(d => (d.Name, d.Length - d.Timer.Tick, true)));
+            listed.AddRange(TimedStates.Of(who).Select(s => (s.Name, s.Seconds, false)));
+            return listed.Take(byte.MaxValue).ToList();
+        }
+
+        private static void SendKit(Aisling bot, Aisling owner)
+        {
+            var worn = bot.EquipmentManager.Equipment
+                .Where(pair => pair.Value?.Item?.Template != null)
+                .Select(pair => ((byte) pair.Key, pair.Value.Item))
+                .ToList();
+            var carried = bot.Inventory.Items.Values
+                .Where(item => item?.Template != null && item.Template.Flags.HasFlag(ItemFlags.Stackable))
+                .ToList();
+
+            owner.Client?.Send(ServerFormat5E.Kit(bot.Serial, worn, carried));
+        }
+
+        private static byte Percent(int value, int maximum) =>
+            (byte) (maximum > 0 ? Math.Clamp(100L * value / maximum, 0, 100) : 0);
 
         private static Aisling FindOnline(string name) =>
             Finder.GetObjects<Aisling>(null, a => a != null && a.LoggedIn && a.Client != null &&

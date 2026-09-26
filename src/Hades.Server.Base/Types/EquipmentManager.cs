@@ -243,6 +243,19 @@ namespace Darkages.Types
             Client.UpdateDisplay();
         }
 
+        /// <summary>
+        /// 자리에서 벗겨 그 물건을 돌려준다 — 가방에 넣지도 지우지도 않는다(봇 장비를 주인 가방으로 옮길 때, Companions).
+        /// </summary>
+        public Item TakeOff(int displayslot)
+        {
+            if (displayslot <= 0 || displayslot > 17 || Equipment[displayslot]?.Item == null)
+                return null;
+
+            var item = Equipment[displayslot].Item;
+            RemoveFromSlot(displayslot);
+            return item;
+        }
+
         #region Core Methods
 
         private void RemoveFromSlot(int displayslot)

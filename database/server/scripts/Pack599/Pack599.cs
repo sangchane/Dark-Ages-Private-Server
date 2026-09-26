@@ -89,8 +89,8 @@ namespace Darkages.Storage.locales.Scripts.Pack599
         /// 5.99 가 캐릭터 한 칸에 적어 두는 상태(에나르마·집중·호르라마 …). 하데스에 같은 칸이 없어 여기 둔다.
         /// 값은 끝나는 때다.
         /// </summary>
-        private static readonly ConcurrentDictionary<(int, string), DateTime> States =
-            new ConcurrentDictionary<(int, string), DateTime>();
+        // 서버 쪽 사전을 함께 쓴다 — 봇이 주인에게 버프가 있는지 보려고(TimedStates, 0x5E 종류 3).
+        private static ConcurrentDictionary<(int, string), DateTime> States => TimedStates.All;
 
         private const ObjectManager.Get Living =
             ObjectManager.Get.Monsters | ObjectManager.Get.Aislings | ObjectManager.Get.Mundanes;

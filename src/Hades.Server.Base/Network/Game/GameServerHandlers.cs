@@ -1981,17 +1981,28 @@ namespace Darkages.Network.Game
         }
 
         /// <summary>
-        /// [동료 부르기]·[동료 보내기] — 우리 앱의 말(0xF1, 몸 한 바이트 1·0). 일은 <see cref="Companions" /> 가 한다.
+        /// [봇 부르기]·[봇 보내기]·봇에게 주기·벗기기 — 우리 앱의 말(0xF1). 일은 <see cref="Companions" /> 가 한다.
         /// </summary>
         protected override void FormatF1Handler(GameClient client, ClientFormatF1 format)
         {
             if (client?.Aisling == null || !client.Aisling.LoggedIn || client.Aisling.IsDead())
                 return;
 
-            if (format.Kind == ClientFormatF1.Call)
-                Companions.Call(client.Aisling);
-            else
-                Companions.Dismiss(client.Aisling);
+            switch (format.Kind)
+            {
+                case ClientFormatF1.Call:
+                    Companions.Call(client.Aisling);
+                    break;
+                case ClientFormatF1.Dismiss:
+                    Companions.Dismiss(client.Aisling);
+                    break;
+                case ClientFormatF1.Give:
+                    Companions.Give(client.Aisling, format.Slot, format.Count);
+                    break;
+                case ClientFormatF1.TakeOff:
+                    Companions.TakeOff(client.Aisling, format.Slot);
+                    break;
+            }
         }
 
         protected override void Format3FHandler(GameClient client, ClientFormat3F format)
