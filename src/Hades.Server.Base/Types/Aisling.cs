@@ -579,6 +579,9 @@ namespace Darkages
         {
             var destinationMap = ServerContext.Config.TransitionZone;
 
+            // 전 맵 목록에서 먼저 뺀다(PortalSession.TransitionToMap 과 같은 까닭).
+            Client.LeaveArea(true, true);
+
             if (ServerContext.GlobalMapCache.ContainsKey(destinationMap))
             {
                 Client.Aisling.XPos = ServerContext.Config.TransitionPointX;
@@ -586,7 +589,6 @@ namespace Darkages
                 Client.Aisling.CurrentMapId = destinationMap;
             }
 
-            Client.LeaveArea(true, true);
             Client.EnterArea();
         }
 

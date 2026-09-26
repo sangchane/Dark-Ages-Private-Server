@@ -77,11 +77,14 @@ namespace Darkages
                     x >= 0 ? x : ServerContext.Config.TransitionPointX,
                     y >= 0 ? y : ServerContext.Config.TransitionPointY));
 
+                // 전 맵 목록에서 먼저 뺀다 — 맵 번호를 먼저 바꾸면 LeaveArea 가 새 맵 목록에서 지우려다 못 지워, 전 맵에 남은
+                // 캐릭터가 끊긴 뒤에도 "같은 이름의 다른 접속"으로 남았다(2026-09-27 클라우드, 1초에 150번 저장 · 봇이 옛 캐릭터 곁으로).
+                client.LeaveArea(true, true);
+
                 client.Aisling.XPos = landing.X;
                 client.Aisling.YPos = landing.Y;
 
                 client.Aisling.CurrentMapId = destinationMap;
-                client.LeaveArea(true, true);
                 client.EnterArea();
             }
 

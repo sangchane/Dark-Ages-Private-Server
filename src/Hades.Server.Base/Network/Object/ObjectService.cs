@@ -137,6 +137,16 @@ namespace Darkages.Network.Object
 
         public void RemoveGameObject<T>(T obj) where T : Sprite
         {
+            // 사람은 모든 맵 목록에서 뺀다 — 맵을 옮기는 길 중 하나라도 전 맵 목록에서 빼기 전에 맵 번호를 바꾸면, 그 목록에 남은
+            // 캐릭터는 끊긴 뒤에도 접속해 있는 것처럼 보였다(2026-09-27 클라우드: 1초에 150번 저장, 봇이 옛 캐릭터 곁으로).
+            if (obj is Aisling)
+            {
+                foreach (var maps in _spriteCollections.Values)
+                    ((SpriteList<T>) maps[typeof(T)]).Delete(obj);
+
+                return;
+            }
+
             if (obj != null && !_spriteCollections.ContainsKey(obj.CurrentMapId))
                 return;
 

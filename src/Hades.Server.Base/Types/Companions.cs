@@ -67,6 +67,10 @@ namespace Darkages.Types
 
         private static readonly Companions Finder = new Companions();
 
+        // 봇 이름 → 봇에게 마지막으로 알린 주인 serial. 주인이 로그아웃 없이 끊겼다 다시 들어오면(소켓이 아직 열려 있어 짝이
+        // 풀리지 않은 채) serial 만 바뀐다 — 그때 다시 알린다(2026-09-27 클라우드: 봇이 옛 serial 을 쥔 채 서 있었다).
+        private static readonly Dictionary<string, int> ToldMaster = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
+
         // 쓰러졌다고 주인에게 이미 알린 봇.
         private static readonly HashSet<string> Fallen = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 
@@ -161,6 +165,8 @@ namespace Darkages.Types
 
             bot.Client.Send(new ServerFormat5E(ServerFormat5E.Master, caller.Serial, caller.Username));
             caller.Client.Send(new ServerFormat5E(ServerFormat5E.Companion, bot.Serial, bot.Username));
+            lock (Gate)
+                ToldMaster[bot.Username] = caller.Serial;
             SendKit(bot, caller);
             caller.Client.SendMessage(0x02, $"봇 {bot.Username}님이 왔습니다 (Lv{bot.ExpLevel})");
         }
@@ -179,7 +185,10 @@ namespace Darkages.Types
 
             bot.Client.Send(new ServerFormat5E(ServerFormat5E.Master, caller.Serial, caller.Username));
             caller.Client.Send(new ServerFormat5E(ServerFormat5E.Companion, bot.Serial, bot.Username));
+            lock (Gate)
+                ToldMaster[bot.Username] = caller.Serial;
             SendKit(bot, caller);
+            ServerContext.Logger($"봇 {bot.Username}: 주인 {caller.Username} 을(를) 다시 알림 (serial {caller.Serial})");
         }
 
         /// <summary>[봇 보내기]. 파티에서 빼고 마을로.</summary>
@@ -243,13 +252,20 @@ namespace Darkages.Types
                         owner.Client.SendMessage(0x02, $"봇 {bot.Username}님이 쓰러졌습니다 — [봇 부르기] 로 되살립니다.");
                 }
 
+                int toldSerial;
+                lock (Gate)
+                    toldSerial = ToldMaster.TryGetValue(botName, out var serial) ? serial : 0;
+
+                if (toldSerial != owner.Serial)
+                    Retell(bot, owner);
+
                 bot.Client.Send(ServerFormat5E.Status(owner.Serial, StatusesOf(owner)));
                 bot.Client.Send(ServerFormat5E.Status(bot.Serial, StatusesOf(bot)));
 
                 // 주인에게도 봇의 상태를 — 앱의 봇 칸 상태 아이콘 줄(2026-09-26).
                 owner.Client.Send(ServerFormat5E.Status(bot.Serial, StatusesOf(bot)));
                 owner.Client.Send(ServerFormat5E.Life(bot.Serial, Percent(bot.CurrentHp, bot.MaximumHp),
-                    Percent(bot.CurrentMp, bot.MaximumMp)));
+                    Percent(bot.CurrentMp, bot.MaximumMp), (bot.CurrentHp, bot.MaximumHp, bot.CurrentMp, bot.MaximumMp)));
 
                 TellCannotWake(bot, owner);
 
@@ -398,7 +414,10 @@ namespace Darkages.Types
             lock (Gate)
             {
                 OwnerOf.Remove(botName);
+                ToldMaster.Remove(botName);
             }
+
+            ServerContext.Logger($"봇 {botName}: 짝을 풂 (주인 {owner?.Username ?? "없음"}, 봇 {(bot == null ? "나감" : "접속")})");
 
             owner?.Client?.Send(new ServerFormat5E(ServerFormat5E.Companion, 0, string.Empty));
 
@@ -544,7 +563,7 @@ namespace Darkages.Types
                 return;
             }
 
-            var place = item.Template.EquipmentSlot;
+            var place = PlaceFor(bot, item.Template.EquipmentSlot);
             owner.Inventory.Remove(owner.Client, item);
             owner.CurrentWeight = Math.Max(0, owner.CurrentWeight - item.Template.CarryWeight);
             owner.Client.SendStats(StatusFlags.StructA);
@@ -562,6 +581,26 @@ namespace Darkages.Types
             owner.Client.SendMessage(0x02, $"봇에게 {item.Template.Name}을(를) 입혔습니다.");
             bot.Client.Save();
             owner.Client.Save();
+        }
+
+        /// <summary>
+        /// 두 짝을 끼는 것(반지 왼손·오른손, 장갑 왼팔·오른팔)은 템플릿이 정한 쪽이 차 있고 다른 쪽이 비었으면 다른 쪽에 끼운다 —
+        /// 템플릿은 한쪽만 적어 두어(반지 7·8, 장갑 9·10) 봇에게 한 짝만 입혀졌다(사용자, 2026-09-27). 둘 다 차 있으면 정한 쪽을 바꾼다.
+        /// </summary>
+        private static int PlaceFor(Aisling bot, int place)
+        {
+            var other = place switch
+            {
+                ItemSlots.LHand => ItemSlots.RHand,
+                ItemSlots.RHand => ItemSlots.LHand,
+                ItemSlots.LArm => ItemSlots.RArm,
+                ItemSlots.RArm => ItemSlots.LArm,
+                _ => 0
+            };
+
+            bool Worn(int at) => bot.EquipmentManager[(byte) at]?.Item != null;
+
+            return other != 0 && Worn(place) && !Worn(other) ? other : place;
         }
 
         private static void GivePotions(Aisling owner, Aisling bot, Item item, int count)

@@ -2080,6 +2080,11 @@ namespace Darkages.Network.Game
                 client.Send(new ServerFormat33(client.Aisling));
                 client.Send(new ServerFormat67());
 
+                // 전 맵 목록에서 빼고 옮긴다 — 빼지 않으면 캐릭터가 두 맵 목록에 들어 있다가, 끊긴 뒤에도 전 맵에 "같은 이름의
+                // 다른 접속"으로 남았다: 다시 들어오면 새 접속이 한 걸음마다 그것을 치우며 저장하고(1초에 150번), 봇 짝은 그 옛
+                // 캐릭터를 주인으로 집었다(2026-09-27 클라우드 Monk5, CompanionNewOwnerTests).
+                client.LeaveArea(true, true);
+
                 client.Aisling.CurrentMapId = selectedPortalNode.Destination.AreaId;
                 client.Aisling.X = selectedPortalNode.Destination.Location.X;
                 client.Aisling.Y = selectedPortalNode.Destination.Location.Y;
