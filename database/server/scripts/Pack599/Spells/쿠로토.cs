@@ -52,7 +52,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
             // (사용자 2026-09-25: "모션이 이펙트에 비해 느리다") — 117 / 1.3 ≈ 90 을 보내 링과 같은 빠르기로 맞춘다.
             var kurotoPath = (sprite as Aisling)?.Path;
             p.Call("motion", kurotoPath == Class.Priest ? (V)128L : kurotoPath == Class.Wizard ? (V)136L : (V)6L, (V)90L);
-            p.Call("effect", v_target, (V)4L, (V)0L, (V)117L);
+            p.Call("effect", v_target, (V)4L, (V)0L, (V)75L);  // 노바 이펙트(5.99: 4, 0, 속도 117)
             p.Call("game_sound", (V)8L, (V)0L);
             p.Call("set_vita", v_myid, ((V)(p.Call("get_vita", v_myid)) + (V)(v_hill)));
         }

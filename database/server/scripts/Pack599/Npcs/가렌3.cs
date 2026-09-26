@@ -33,7 +33,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
             }
             L_re: ;
             v_myid = p.Call("get_myid");
-            yield return Menu((V)"전사님, 어느 스킬을 원하십니까?", (V)"피닉스모드[55]", (V)"휘두르기[62]", (V)"투핸드어택[71]");
+            yield return Menu((V)"전사님, 어느 스킬을 원하십니까?", (V)"피닉스모드[55]", (V)"휘두르기[62]");
             v_select = reply.Choice;
             if (V.T(((V)(v_select) == (V)((V)0L))))
             {
@@ -73,24 +73,6 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                 }
                 p.Call("skill_add", (V)"휘두르기");
                 yield return Mes((V)1L, (V)"휘두르기를 익히셧습니다. 앞으로 전사로서 사명감을 가져주시길 바랍니다.");
-                goto L_re;
-            }
-            if (V.T(((V)(v_select) == (V)((V)3L))))
-            {
-                yield return Mes((V)1L, (V)"투핸드어택은 두손검을 들수있게 해주는 패시브기술 입니다.");
-                yield return Mes((V)1L, (V)"배우실려면 레벨이 71이상이셔야 합니다.");
-                if (V.T(((V)(p.Call("get_level", v_myid)) < (V)((V)71L))))
-                {
-                    yield return Mes((V)1L, (V)"이스킬을 습득하시기엔 아직 어립니다. 데마시아!");
-                    goto L_re;
-                }
-                if (V.T(p.Call("skill_exist", (V)"투핸드어택")))
-                {
-                    yield return Mes((V)1L, (V)"이미 이 스킬을 습득 하셧습니다.");
-                    goto L_re;
-                }
-                p.Call("skill_add", (V)"투핸드어택");
-                yield return Mes((V)1L, (V)"투핸드어택를 익히셧습니다. 앞으로 전사로서 사명감을 가져주시길 바랍니다.");
                 goto L_re;
             }
             // 말도 메뉴도 없는 스크립트(적룡의결계 …)도 이터레이터여야 한다.

@@ -26,6 +26,7 @@ namespace Darkages.Types
         public string ScriptName { get; set; }
         public byte Sound { get; set; }
         public ushort TargetAnimation { get; set; }
+        public ushort TargetAnimationSpeed { get; set; } = 100;
         public Tier TierLevel { get; set; }
         public SkillScope Type { get; set; }
 

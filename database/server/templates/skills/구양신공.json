@@ -13,6 +13,7 @@
   "Group": "원작표/2차0",
   "Sound": 17,
   "TargetAnimation": 65,
+  "TargetAnimationSpeed": 75,
   "Cooldown": 10,
   "Type": 1
 }

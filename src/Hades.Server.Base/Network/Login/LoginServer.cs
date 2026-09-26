@@ -211,7 +211,7 @@ namespace Darkages.Network.Login
             }
 
             // The mobile creator chooses the path before the first world entry, bypassing ClassChooser.
-            // A new Monk starts with exactly 이형환위 · 붕각 · 단각 and the spell 쿠로토 (user, 2026-09-24).
+            // A new Monk starts with exactly 이형환위 · 단각 and the spell 쿠로토 (user, 2026-09-27).
             // Aisling.Create has already supplied Assail when the server configuration requires a base attack —
             // it stays, because the attack button (0x13) only swings the Assail-type skills in the book — and
             // the configured starter spell, which the Monk gives up for 쿠로토.  Do not add Kick here as well:
@@ -262,7 +262,7 @@ namespace Darkages.Network.Login
 
         /// <summary>
         /// Gives only the deliberately selected Monk starters to a character created as a Monk: the techniques
-        /// 이형환위 · 붕각 · 단각 beside the base attack, and 쿠로토 in place of the configured starter spell.
+        /// 이형환위 · 단각 beside the base attack, and 쿠로토 in place of the configured starter spell.
         /// <see cref="Skill.GiveTo(Aisling, string, int)"/> also loads the template's script and assigns the
         /// appropriate skill-pane slots before the character is serialized, so the same entries return on
         /// every later login.
@@ -277,7 +277,6 @@ namespace Darkages.Network.Login
             aisling.SpellBook = new SpellBook();
 
             return Skill.GiveTo(aisling, "이형환위", 1)
-                   && Skill.GiveTo(aisling, "붕각", 1)
                    && Skill.GiveTo(aisling, "단각", 1)
                    && Spell.GiveTo(aisling, "쿠로토", 1);
         }

@@ -529,6 +529,17 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                 case "phoenix":
                 case "sosusin":
                     return State(Find(a, 0), name, Arg(a, 1));
+                // 벨라르모·수페라벨라르모 — 노바 주석 그대로 `초, 방어력량(자동-)`.
+                // 낮은 AC가 좋은 서버라서 120초 동안 각각 7·14를 뺀다. 두 마법은 같은 칸이라 겹치지 않는다.
+                case "belra":
+                {
+                    var who = Find(a, 0);
+                    if (who == null || who.HasBuff(Belra.Slot))
+                        return 0;
+                    var buff = new Belra(Arg(a, 1), Arg(a, 2));
+                    buff.OnApplied(who, buff);
+                    return 1;
+                }
                 // 체력 회복(콜라마·리젠) — `hprecovery 대상, 초, 1초마다 채울 양`. 5.99 서버(Novaonline.exe 0x44ed93)는 칸 0x122 에
                 // 초를, 0x124 에 양을 적고, 이미 걸려 있으면 "이미 걸려있습니다." 로 거절한다. 그 뒤 1초마다(0x46e0ed) 초를 하나
                 // 줄이며 대상에게 그림 22 를 속도 75 로 보내고(0x46e120 → 0x46b66a), 상태 아이콘 144 를 알리고, 체력을 채운다.
@@ -907,6 +918,39 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                     new ServerFormat29((uint) affected.Serial, (uint) affected.Serial, 22, 0, 75));
                 SetHealth(affected, affected.CurrentHp + _amount);
                 base.OnDurationUpdate(affected, buff);
+            }
+        }
+
+        /// <summary>노바 `belra 대상, 초, 방어력량` — 지속하는 동안 AC를 그만큼 낮춘다.</summary>
+        public sealed class Belra : Buff
+        {
+            public const string Slot = "노바 벨라르모";
+            private readonly int _amount;
+
+            public Belra() : this(0, 0)
+            {
+            }
+
+            public Belra(long seconds, long amount)
+            {
+                Name = Slot;
+                Length = (int) seconds;
+                Icon = 16;
+                _amount = (int) amount;
+            }
+
+            public override void OnApplied(Sprite affected, Buff buff)
+            {
+                affected.BonusAc -= _amount;
+                (affected as Aisling)?.Client.SendStats(StatusFlags.All);
+                base.OnApplied(affected, buff);
+            }
+
+            public override void OnEnded(Sprite affected, Buff buff)
+            {
+                affected.BonusAc += _amount;
+                (affected as Aisling)?.Client.SendStats(StatusFlags.All);
+                base.OnEnded(affected, buff);
             }
         }
 

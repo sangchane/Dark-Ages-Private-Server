@@ -10,6 +10,7 @@
   "Group": "5.99표/무도가",
   "Sound": 14,
   "TargetAnimation": 69,
+  "TargetAnimationSpeed": 69,
   "Cooldown": 2,
   "Icon": 2,
   "Pane": 2,

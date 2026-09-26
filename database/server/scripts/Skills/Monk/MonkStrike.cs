@@ -297,14 +297,14 @@ namespace Darkages.Storage.locales.Scripts.Skills
                 {
                     player.Client.Aisling.Show(Scope.NearbyAislings,
                         new ServerFormat29((uint) aisling.Serial, (uint) target.Serial, byte.MinValue,
-                            skill.Template.TargetAnimation, 100));
+                            skill.Template.TargetAnimation, skill.Template.TargetAnimationSpeed));
                     player.Client.Send(new ServerFormat08(player, StatusFlags.All));
                 }
 
                 if (target is Monster || target is Mundane || target is Aisling)
                     aisling.Show(Scope.NearbyAislings,
                         new ServerFormat29((uint) aisling.Serial, (uint) target.Serial,
-                            skill.Template.TargetAnimation, 0, 100));
+                            skill.Template.TargetAnimation, 0, skill.Template.TargetAnimationSpeed));
             }
 
             return hit;

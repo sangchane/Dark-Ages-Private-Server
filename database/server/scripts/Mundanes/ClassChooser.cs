@@ -160,24 +160,11 @@ namespace Darkages.Storage.locales.Scripts.Mundanes
 
                 if (client.Aisling.Path == Class.Monk)
                 {
-                    // 캐릭터 생성 때(Peasant) 이미 받은 영어 기본공격 "Assail" 을 지우고
-                    // 무도가 전용 기본공격 "양의신권" 으로 바꾼다 — 둘 다 두면 평타마다 두 번 나간다.
-                    var assail = client.Aisling.SkillBook
-                        .Get(i => i.Template != null && i.Template.Name == "Assail")
-                        .FirstOrDefault();
-                    if (assail != null)
-                    {
-                        client.Aisling.SkillBook.Remove(assail.Slot);
-                        client.Send(new ServerFormat2D(assail.Slot));
-                    }
-
+                    // 새 무도가는 이형환위·단각·쿠로토로 시작한다(사용자 2026-09-27).
+                    // 기본 공격 Assail은 공격 단추(0x13)에 필요하므로 그대로 둔다.
                     Skill.GiveTo(client.Aisling, "이형환위", 1);
                     Skill.GiveTo(client.Aisling, "단각", 1);
-                    Skill.GiveTo(client.Aisling, "양의신권", 1);
-
-                    Spell.GiveTo(client.Aisling, "beag ioc fein", 1);
-                    Spell.GiveTo(client.Aisling, "dion", 1);
-                    Spell.GiveTo(client.Aisling, "armachd", 1);
+                    Spell.GiveTo(client.Aisling, "쿠로토", 1);
                 }
 
                 if (client.Aisling.Path == Class.Rogue)

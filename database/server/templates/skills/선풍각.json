@@ -11,6 +11,7 @@
   "Group": "원작표/조건없음",
   "Sound": 14,
   "TargetAnimation": 69,
+  "TargetAnimationSpeed": 69,
   "Cooldown": 7,
   "Type": 1
 }

@@ -16,13 +16,15 @@ namespace Darkages.Types
             (Class.Warrior, 11, false, "쿠로토", System.Array.Empty<string>(), System.Array.Empty<string>()), // 노바 전사스킬상인
             (Class.Warrior, 41, true, "메가블레이드", new string[] { "스톰블레이드" }, System.Array.Empty<string>()), // 노바 전사스킬상인
             (Class.Warrior, 41, true, "바투", System.Array.Empty<string>(), System.Array.Empty<string>()), // 노바 전사스킬상인
-            (Class.Warrior, 71, true, "투핸드어택", System.Array.Empty<string>(), System.Array.Empty<string>()), // 노바 전사스킬상인
             (Class.Warrior, 99, true, "매드소울", System.Array.Empty<string>(), System.Array.Empty<string>()), // 노바 전사스킬상인
             (Class.Warrior, 99, true, "완전방어", new string[] { "완전방어(UP)" }, System.Array.Empty<string>()), // 노바 전사스킬상인
             (Class.Warrior, 99, true, "크래셔", System.Array.Empty<string>(), System.Array.Empty<string>()), // 노바 전사스킬상인
+            (Class.Warrior, 99, true, "피닉스모드", System.Array.Empty<string>(), System.Array.Empty<string>()), // 원작 2023 전사 17행
             (Class.Rogue, 1, true, "찌르기", System.Array.Empty<string>(), System.Array.Empty<string>()), // 노바 전직
             (Class.Rogue, 11, true, "센스몬스터", System.Array.Empty<string>(), System.Array.Empty<string>()), // 노바 도적스킬상인
+            (Class.Rogue, 11, true, "아무네지아", System.Array.Empty<string>(), System.Array.Empty<string>()), // 원작 2023 도적 10행
             (Class.Rogue, 11, true, "찔러휘비기", new string[] { "마구찌르기" }, System.Array.Empty<string>()), // 노바 도적스킬상인
+            (Class.Rogue, 11, false, "마구찌르기", System.Array.Empty<string>(), System.Array.Empty<string>()), // 원작 2023 도적 30행(승급) · 5.99 레벨
             (Class.Rogue, 11, false, "쿠로토", System.Array.Empty<string>(), System.Array.Empty<string>()), // 노바 도적스킬상인
             (Class.Rogue, 41, true, "두번찌르기", new string[] { "슬레쉬" }, System.Array.Empty<string>()), // 노바 도적스킬상인
             (Class.Rogue, 41, true, "센스", System.Array.Empty<string>(), System.Array.Empty<string>()), // 노바 도적스킬상인
@@ -33,12 +35,14 @@ namespace Darkages.Types
             (Class.Wizard, 1, false, "마레노", System.Array.Empty<string>(), System.Array.Empty<string>()), // 노바 전직
             (Class.Wizard, 11, false, "렌토", System.Array.Empty<string>(), System.Array.Empty<string>()), // 노바 마법사스킬상인
             (Class.Wizard, 11, false, "수페라마레나", System.Array.Empty<string>(), System.Array.Empty<string>()), // 노바 마법사스킬상인
+            (Class.Wizard, 11, false, "콘푸지오", System.Array.Empty<string>(), System.Array.Empty<string>()), // 원작 2023 법사 10행
             (Class.Wizard, 11, false, "쿠로토", System.Array.Empty<string>(), System.Array.Empty<string>()), // 노바 마법사스킬상인
             (Class.Wizard, 41, false, "나르콜리", System.Array.Empty<string>(), System.Array.Empty<string>()), // 노바 마법사스킬상인
             (Class.Wizard, 41, false, "마레누스", System.Array.Empty<string>(), System.Array.Empty<string>()), // 노바 마법사스킬상인
             (Class.Wizard, 41, false, "바르도", System.Array.Empty<string>(), System.Array.Empty<string>()), // 노바 마법사스킬상인
             (Class.Wizard, 41, false, "엑스마레나", System.Array.Empty<string>(), System.Array.Empty<string>()), // 노바 마법사스킬상인
             (Class.Wizard, 71, false, "데프레코", System.Array.Empty<string>(), System.Array.Empty<string>()), // 노바 마법사스킬상인
+            (Class.Wizard, 71, false, "딜루메니", System.Array.Empty<string>(), System.Array.Empty<string>()), // 원작 2023 법사 27행
             (Class.Wizard, 71, false, "마네나로", System.Array.Empty<string>(), System.Array.Empty<string>()), // 노바 마법사스킬상인
             (Class.Wizard, 71, false, "마레네라", System.Array.Empty<string>(), System.Array.Empty<string>()), // 노바 마법사스킬상인
             (Class.Wizard, 99, false, "라그나로크", System.Array.Empty<string>(), System.Array.Empty<string>()), // 노바 마법사스킬상인
@@ -55,6 +59,7 @@ namespace Darkages.Types
             (Class.Priest, 41, false, "디베노모", System.Array.Empty<string>(), System.Array.Empty<string>()), // 노바 성직자스킬상인
             (Class.Priest, 41, false, "디소루마", System.Array.Empty<string>(), System.Array.Empty<string>()), // 노바 성직자스킬상인
             (Class.Priest, 41, false, "수페라벨라르모", System.Array.Empty<string>(), System.Array.Empty<string>()), // 노바 성직자스킬상인
+            (Class.Priest, 41, false, "일루메나", System.Array.Empty<string>(), System.Array.Empty<string>()), // 원작 2023 직자 21행
             (Class.Priest, 41, false, "콜라마", System.Array.Empty<string>(), System.Array.Empty<string>()), // 노바 성직자스킬상인
             (Class.Priest, 41, false, "쿠라노소", System.Array.Empty<string>(), System.Array.Empty<string>()), // 노바 성직자스킬상인
             (Class.Priest, 41, false, "쿠라누스", System.Array.Empty<string>(), System.Array.Empty<string>()), // 노바 성직자스킬상인
@@ -66,14 +71,20 @@ namespace Darkages.Types
             (Class.Priest, 99, false, "엑스쿠라노", System.Array.Empty<string>(), System.Array.Empty<string>()), // 노바 성직자스킬상인
             (Class.Priest, 99, false, "코마디아", System.Array.Empty<string>(), System.Array.Empty<string>()), // 노바 성직자스킬상인
             (Class.Monk, 11, true, "단각", new string[] { "연천단각" }, System.Array.Empty<string>()), // 노바 무도가스킬상인
+            (Class.Monk, 11, true, "양의신권", System.Array.Empty<string>(), System.Array.Empty<string>()), // 원작 2023 도가 8행
             (Class.Monk, 11, true, "이형환위", System.Array.Empty<string>(), System.Array.Empty<string>()), // 노바 무도가스킬상인
+            (Class.Monk, 11, true, "통배권", System.Array.Empty<string>(), System.Array.Empty<string>()), // 노바 무도가스킬상인
+            (Class.Monk, 11, false, "일루메나", System.Array.Empty<string>(), System.Array.Empty<string>()), // 원작 2023 도가 11행
             (Class.Monk, 11, false, "쿠로토", System.Array.Empty<string>(), System.Array.Empty<string>()), // 노바 무도가스킬상인
+            (Class.Monk, 41, true, "백보신권", System.Array.Empty<string>(), System.Array.Empty<string>()), // 원작 2023 도가 14행
             (Class.Monk, 41, true, "붕각", new string[] { "붕신선각" }, System.Array.Empty<string>()), // 노바 무도가스킬상인
             (Class.Monk, 41, true, "일음지", System.Array.Empty<string>(), System.Array.Empty<string>()), // 노바 무도가스킬상인
             (Class.Monk, 71, true, "발경", System.Array.Empty<string>(), System.Array.Empty<string>()), // 노바 무도가스킬상인
             (Class.Monk, 71, true, "선풍각", new string[] { "파천각" }, System.Array.Empty<string>()), // 노바 무도가스킬상인
+            (Class.Monk, 71, true, "소수신공", System.Array.Empty<string>(), System.Array.Empty<string>()), // 원작 2023 도가 22행
             (Class.Monk, 71, false, "금강불괴", new string[] { "자기보호" }, System.Array.Empty<string>()), // 노바 무도가스킬상인
             (Class.Monk, 71, false, "장풍", System.Array.Empty<string>(), System.Array.Empty<string>()), // 노바 무도가스킬상인
+            (Class.Monk, 71, false, "쿠라노토", System.Array.Empty<string>(), System.Array.Empty<string>()), // 원작 2023 도가 25행
             (Class.Monk, 99, true, "구양신공", System.Array.Empty<string>(), System.Array.Empty<string>()), // 노바 무도가스킬상인
             (Class.Monk, 99, true, "달마신공", System.Array.Empty<string>(), System.Array.Empty<string>()), // 노바 무도가스킬상인
             (Class.Monk, 99, false, "다라밀공", System.Array.Empty<string>(), System.Array.Empty<string>()), // 노바 무도가스킬상인
@@ -87,35 +98,25 @@ namespace Darkages.Types
         {
             (Class.Warrior, true, "내려치기"), // 5.99 가렌 16레벨
             (Class.Warrior, true, "타겟어택"), // 5.99 가렌4 83레벨
-            (Class.Warrior, true, "피닉스모드"), // 5.99 가렌3 55레벨
+            (Class.Warrior, true, "투핸드어택"), // 기술이 아니라 전사 두손 무기 동작 (사용자)
             (Class.Warrior, true, "휘두르기"), // 5.99 가렌3 62레벨
             (Class.Warrior, false, "파워단련"), // 5.99 가렌 11레벨
             (Class.Rogue, true, "만개표창"), // 5.99 이블린3 71레벨
             (Class.Rogue, true, "소매치기"), // 5.99 이블린3 62레벨
             (Class.Rogue, true, "슬레쉬"), // 5.99 이블린4 87레벨
-            (Class.Rogue, true, "아무네지아"), // 5.99 이블린 15레벨
             (Class.Rogue, true, "원기지옥"), // 5.99 이블린3 74레벨
             (Class.Rogue, true, "차크라어택"), // 5.99 이블린4 83레벨
             (Class.Rogue, true, "표창던지기"), // 5.99 이블린2 35레벨
-            (Class.Rogue, false, "마구찌르기"), // 5.99 이블린 11레벨
             (Class.Rogue, false, "명중률향상(Lev1)"), // 5.99 이블린 11레벨
             (Class.Rogue, false, "명중률향상(Lev2)"), // 5.99 이블린2 31레벨
             (Class.Rogue, false, "암살"), // 5.99 이블린4 99레벨
-            (Class.Wizard, false, "딜루메니"), // 5.99 럭스4 87레벨
             (Class.Wizard, false, "원소이해력"), // 5.99 럭스 11레벨
             (Class.Wizard, false, "침묵"), // 5.99 럭스3 74레벨
-            (Class.Wizard, false, "콘푸지오"), // 5.99 럭스 15레벨
             (Class.Priest, false, "신성력강화"), // 5.99 소라카 11레벨
             (Class.Priest, false, "안티매직"), // 5.99 소라카2 50레벨
-            (Class.Priest, false, "일루메나"), // 5.99 소라카4 81레벨
             (Class.Priest, false, "홀리랜서"), // 5.99 소라카3 73레벨
-            (Class.Monk, true, "백보신권"), // 5.99 리신4 87레벨
-            (Class.Monk, true, "소수신공"), // 5.99 리신3 70레벨
-            (Class.Monk, true, "양의신권"), // 5.99 리신2 21레벨
             (Class.Monk, true, "연환포"), // 5.99 리신3 74레벨
-            (Class.Monk, false, "일루메나"), // 5.99 리신4 81레벨
             (Class.Monk, false, "주먹단련"), // 5.99 리신 11레벨
-            (Class.Monk, false, "쿠라노토"), // 5.99 리신3 55레벨
         };
     }
 }
