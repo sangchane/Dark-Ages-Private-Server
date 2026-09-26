@@ -15,6 +15,21 @@ namespace Darkages.Types
         public static readonly ConcurrentDictionary<(int, string), DateTime> All =
             new ConcurrentDictionary<(int, string), DateTime>();
 
+        // 상태 이름 → 그것을 거는 5.99 마법(그 템플릿의 Icon 이 상태 아이콘이다 — 앱의 상태 아이콘 줄, 0x5E 종류 3 뒤의 그림 번호).
+        private static readonly Dictionary<string, string> CastBy = new Dictionary<string, string>
+        {
+            ["horrama"] = "호르라마",
+            ["enare"] = "에나르마",
+            ["suenare"] = "수페라에나르마",
+        };
+
+        /// <summary>상태의 그림 번호(스펠 시트) — 거는 마법의 템플릿 Icon. 모르면 0(앱이 그리지 않는다).</summary>
+        public static ushort IconOf(string name) =>
+            name != null && CastBy.TryGetValue(name, out var spell)
+                         && ServerContext.GlobalSpellTemplateCache.TryGetValue(spell, out var template) && template != null
+                ? template.Icon
+                : (ushort) 0;
+
         /// <summary>이 사람에게 지금 걸린 것과 남은 초.</summary>
         public static IEnumerable<(string Name, int Seconds)> Of(Sprite who)
         {

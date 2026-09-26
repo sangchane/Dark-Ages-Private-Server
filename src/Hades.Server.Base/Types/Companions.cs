@@ -159,6 +159,8 @@ namespace Darkages.Types
         /// </summary>
         public static void Tick()
         {
+            TellEachTheirOwn();
+
             KeyValuePair<string, string>[] pairs;
 
             lock (Gate)
@@ -182,6 +184,9 @@ namespace Darkages.Types
 
                 bot.Client.Send(ServerFormat5E.Status(owner.Serial, StatusesOf(owner)));
                 bot.Client.Send(ServerFormat5E.Status(bot.Serial, StatusesOf(bot)));
+
+                // 주인에게도 봇의 상태를 — 앱의 봇 칸 상태 아이콘 줄(2026-09-26).
+                owner.Client.Send(ServerFormat5E.Status(bot.Serial, StatusesOf(bot)));
                 owner.Client.Send(ServerFormat5E.Life(bot.Serial, Percent(bot.CurrentHp, bot.MaximumHp),
                     Percent(bot.CurrentMp, bot.MaximumMp)));
 
@@ -540,15 +545,50 @@ namespace Darkages.Types
 
         // ── 알림 ────────────────────────────────────────────────────────────
 
-        /// <summary>하데스 버프·디버프와 5.99 시간 상태 — 이름·남은 초·해로움.</summary>
-        private static List<(string Name, int Seconds, bool Harmful)> StatusesOf(Sprite who)
+        /// <summary>하데스 버프·디버프와 5.99 시간 상태 — 이름·남은 초·해로움·그림 번호(스펠 시트).</summary>
+        private static List<(string Name, int Seconds, bool Harmful, ushort Icon)> StatusesOf(Sprite who)
         {
-            var listed = new List<(string, int, bool)>();
-            listed.AddRange(who.Buffs.Values.Where(b => b != null).Select(b => (b.Name, b.Length - b.Timer.Tick, false)));
-            listed.AddRange(who.Debuffs.Values.Where(d => d != null).Select(d => (d.Name, d.Length - d.Timer.Tick, true)));
-            listed.AddRange(TimedStates.Of(who).Select(s => (s.Name, s.Seconds, false)));
+            var listed = new List<(string, int, bool, ushort)>();
+            listed.AddRange(who.Buffs.Values.Where(b => b != null).Select(b => (b.Name, b.Length - b.Timer.Tick, false, (ushort) b.Icon)));
+            listed.AddRange(who.Debuffs.Values.Where(d => d != null).Select(d => (d.Name, d.Length - d.Timer.Tick, true, (ushort) d.Icon)));
+            listed.AddRange(TimedStates.Of(who).Select(s => (s.Name, s.Seconds, false, TimedStates.IconOf(s.Name))));
             return listed.Take(byte.MaxValue).ToList();
         }
+
+        // 사람마다 지난번에 알린 제 상태(이름·그림 목록) — 바뀔 때만 다시 보낸다.
+        private static readonly Dictionary<int, string> ToldOwn = new Dictionary<int, string>();
+
+        /// <summary>
+        /// 모든 사람에게 제 상태를(0x5E 종류 3, 제 serial) — 앱이 내 판에 상태 아이콘 줄을 그린다(2026-09-26). 5.99 상태(호르라마·
+        /// 에나르마)는 원작 상태 아이콘(0x3A)으로 오지 않아 이것 말고는 앱이 알 길이 없다. 무엇이 걸렸는지가 바뀔 때만 보낸다 —
+        /// 남은 초는 앱이 등급으로만 쓰니 매초 보낼 까닭이 없다.
+        /// </summary>
+        private static void TellEachTheirOwn()
+        {
+            var online = Finder.GetObjects<Aisling>(null, a => a != null && a.LoggedIn && a.Client != null).ToList();
+
+            lock (ToldOwn)
+            {
+                foreach (var who in online)
+                {
+                    var listed = StatusesOf(who);
+                    var said = string.Join(";", listed.Select(one => $"{one.Name}/{one.Icon}/{ServerStatusGrade(one.Seconds)}"));
+
+                    if (ToldOwn.TryGetValue(who.Serial, out var before) ? before == said : said.Length == 0)
+                        continue;
+
+                    ToldOwn[who.Serial] = said;
+                    who.Client.Send(ServerFormat5E.Status(who.Serial, listed));
+                }
+
+                foreach (var gone in ToldOwn.Keys.Where(serial => online.All(a => a.Serial != serial)).ToList())
+                    ToldOwn.Remove(gone);
+            }
+        }
+
+        /// <summary>앱이 쓰는 원작 시간 등급(90·60·30·20·10초) — 등급이 바뀔 때도 다시 알린다.</summary>
+        private static int ServerStatusGrade(int seconds) =>
+            seconds >= 90 ? 6 : seconds >= 60 ? 5 : seconds >= 30 ? 4 : seconds >= 20 ? 3 : seconds >= 10 ? 2 : 1;
 
         private static void SendKit(Aisling bot, Aisling owner)
         {

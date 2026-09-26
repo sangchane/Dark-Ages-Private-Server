@@ -12,8 +12,8 @@ namespace Darkages.Network.ServerFormats
     /// <list type="bullet">
     /// <item>1 <see cref="Master" /> — 봇에게만: serial(4) · 이름. "네 주인은 이 사람". serial 0 이면 풀려났다.</item>
     /// <item>2 <see cref="Companion" /> — 부른 사람에게: serial(4) · 이름. "네 봇은 이것". serial 0 이면 없다.</item>
-    /// <item>3 <see cref="Statuses" /> — 봇에게만, 1초마다: serial(4, 주인 또는 봇 자신) · 개수(1) ·
-    /// [이름(StringA) · 남은 초(2) · 해로움(1)]×개수. 하데스 버프·디버프(<c>Sprite.Buffs</c>·<c>Debuffs</c>, 이름·Length−Tick)와
+    /// <item>3 <see cref="Statuses" /> — 봇에게 1초마다(주인·봇 자신 것), 주인에게 1초마다(봇 것), 모든 사람에게 바뀔 때(제 것):
+    /// serial(4) · 개수(1) · [이름(StringA) · 남은 초(2) · 해로움(1)]×개수 · 그림 번호(2)×개수(2026-09-26 덧붙임). 하데스 버프·디버프(<c>Sprite.Buffs</c>·<c>Debuffs</c>, 이름·Length−Tick)와
     /// 5.99 스크립트가 거는 상태(<see cref="TimedStates" /> — horrama·enare 등)를 함께 싣는다. 봇 자신 것도 보내는 까닭: 5.99
     /// 상태(호르라마·에나르마)는 원작 상태 아이콘(0x3A)으로 오지 않아, 봇이 제 버프를 알 길이 이것뿐이다.</item>
     /// <item>4 <see cref="Vitals" /> — 부른 사람에게, 1초마다: serial(4, 봇) · 체력 %(1) · 마력 %(1). 파티원 체력을 알리는 원작 패킷이 없다.</item>
@@ -47,13 +47,13 @@ namespace Darkages.Network.ServerFormats
         public int Serial { get; set; }
         public string Name { get; set; }
 
-        public IReadOnlyList<(string Name, int Seconds, bool Harmful)> Listed { get; set; }
+        public IReadOnlyList<(string Name, int Seconds, bool Harmful, ushort Icon)> Listed { get; set; }
         public byte HealthPercent { get; set; }
         public byte ManaPercent { get; set; }
         public IReadOnlyList<(byte Place, Item Item)> Worn { get; set; }
         public IReadOnlyList<Item> Carried { get; set; }
 
-        public static ServerFormat5E Status(int serial, IReadOnlyList<(string Name, int Seconds, bool Harmful)> listed) =>
+        public static ServerFormat5E Status(int serial, IReadOnlyList<(string Name, int Seconds, bool Harmful, ushort Icon)> listed) =>
             new ServerFormat5E { Kind = Statuses, Serial = serial, Listed = listed };
 
         public static ServerFormat5E Life(int serial, byte health, byte mana) =>
@@ -75,12 +75,16 @@ namespace Darkages.Network.ServerFormats
             {
                 case Statuses:
                     writer.Write((byte) Listed.Count);
-                    foreach (var (name, seconds, harmful) in Listed)
+                    foreach (var (name, seconds, harmful, _) in Listed)
                     {
                         writer.WriteStringA(name ?? string.Empty);
                         writer.Write((ushort) System.Math.Clamp(seconds, 0, ushort.MaxValue));
                         writer.Write((byte) (harmful ? 1 : 0));
                     }
+
+                    // 목록 뒤에 그림 번호(2)를 차례로 — 옛 봇은 여기를 읽지 않아 그대로 돈다(2026-09-26, 앱의 상태 아이콘 줄).
+                    foreach (var (_, _, _, icon) in Listed)
+                        writer.Write(icon);
 
                     break;
 
