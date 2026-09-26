@@ -17,6 +17,7 @@
   "MaxDurability": 9000,
   "CarryWeight": 8,
   "AttackMotion": 132,
+  "HasPants": true,
   "AcModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
     "Option": 1,
