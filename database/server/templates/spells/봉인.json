@@ -1,5 +1,6 @@
 ﻿{
   "Name": "봉인",
+  "Icon": 90,
   "Prerequisites": {},
   "MaxLevel": 100,
   "ID": 0,

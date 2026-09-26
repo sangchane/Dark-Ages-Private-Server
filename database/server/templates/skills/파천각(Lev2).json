@@ -1,5 +1,6 @@
 ﻿{
   "Name": "파천각(Lev2)",
+  "Icon": 69,
   "Prerequisites": {
     "Class_Required": 5
   },

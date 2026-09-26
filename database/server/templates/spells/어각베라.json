@@ -1,5 +1,6 @@
 ﻿{
   "Name": "어각베라",
+  "Icon": 83,
   "Prerequisites": {
     "Class_Required": 3
   },

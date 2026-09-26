@@ -1,5 +1,6 @@
 ﻿{
   "Name": "플레어",
+  "Icon": 137,
   "Prerequisites": {
     "Class_Required": 3
   },

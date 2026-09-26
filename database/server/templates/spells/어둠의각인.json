@@ -1,5 +1,6 @@
 ﻿{
   "Name": "어둠의각인",
+  "Icon": 133,
   "Prerequisites": {
     "Class_Required": 3
   },

@@ -1,5 +1,6 @@
 ﻿{
   "Name": "금강불괴",
+  "Icon": 53,
   "Prerequisites": {
     "Class_Required": 5
   },

@@ -1,5 +1,6 @@
 ﻿{
   "Name": "마구때리기",
+  "Icon": 97,
   "ScriptName": "마구때리기",
   "Prerequisites": {
     "Class_Required": 5

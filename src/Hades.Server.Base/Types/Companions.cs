@@ -112,6 +112,11 @@ namespace Darkages.Types
                     }
                     else
                     {
+                        // 다시 들어온 주인은 serial 이 새로 나온다 — 짝은 이름으로 남아도 봇은 전 serial 을 찾고 있어 따라오지
+                        // 못했다(2026-09-26 클라우드). 누를 때마다 지금 serial 로 다시 알린다.
+                        if (FindOnline(mine) is { } tied)
+                            Retell(tied, caller);
+
                         caller.Client.SendMessage(0x02, "이미 봇이 함께 있습니다.");
                         return;
                     }
@@ -158,6 +163,23 @@ namespace Darkages.Types
             caller.Client.Send(new ServerFormat5E(ServerFormat5E.Companion, bot.Serial, bot.Username));
             SendKit(bot, caller);
             caller.Client.SendMessage(0x02, $"봇 {bot.Username}님이 왔습니다 (Lv{bot.ExpLevel})");
+        }
+
+        /// <summary>이미 맺은 짝을 둘에게 지금 serial 로 다시 알린다 — 그룹이 갈렸으면 다시 넣고 곁으로 옮긴다.</summary>
+        private static void Retell(Aisling bot, Aisling caller)
+        {
+            if (bot.GroupParty == null || bot.GroupParty != caller.GroupParty)
+            {
+                if (bot.GroupParty != null)
+                    Party.RemovePartyMember(bot);
+
+                MoveBeside(bot, caller);
+                Party.AddPartyMember(caller, bot);
+            }
+
+            bot.Client.Send(new ServerFormat5E(ServerFormat5E.Master, caller.Serial, caller.Username));
+            caller.Client.Send(new ServerFormat5E(ServerFormat5E.Companion, bot.Serial, bot.Username));
+            SendKit(bot, caller);
         }
 
         /// <summary>[봇 보내기]. 파티에서 빼고 마을로.</summary>

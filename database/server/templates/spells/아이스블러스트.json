@@ -1,5 +1,6 @@
 ﻿{
   "Name": "아이스블러스트",
+  "Icon": 136,
   "Prerequisites": {
     "Class_Required": 3
   },

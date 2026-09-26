@@ -1,6 +1,6 @@
 ﻿{
   "Name": "디소루마",
-  "Icon": 51,
+  "Icon": 50,
   "ScriptKey": "디소루마",
   "Prerequisites": {
     "Class_Required": 4,

@@ -7,7 +7,7 @@
   "ID": 0,
   "Description": "전방 1칸 공격(AD:200 + (주먹단련레벨 * 50)%)",
   "Group": "5.99표/무도가(비전직)",
-  "Icon": 4,
+  "Icon": 2,
   "ScriptName": "정권",
   "Cooldown": 2,
   "Pane": 2,

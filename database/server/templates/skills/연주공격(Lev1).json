@@ -1,5 +1,6 @@
 ﻿{
   "Name": "연주공격(Lev1)",
+  "Icon": 98,
   "Prerequisites": {
     "Class_Required": 4
   },

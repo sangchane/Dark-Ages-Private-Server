@@ -1,5 +1,6 @@
 ﻿{
   "Name": "바투",
+  "Icon": 38,
   "Prerequisites": {
     "ExpLevel_Required": 21,
     "Class_Required": 1

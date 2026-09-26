@@ -1,5 +1,6 @@
 ﻿{
   "Name": "전체크래셔",
+  "Icon": 177,
   "Prerequisites": {
     "Class_Required": 1
   },

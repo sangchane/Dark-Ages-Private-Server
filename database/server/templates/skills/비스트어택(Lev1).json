@@ -1,5 +1,6 @@
 ﻿{
   "Name": "비스트어택(Lev1)",
+  "Icon": 84,
   "Prerequisites": {
     "Class_Required": 5
   },
