@@ -14,7 +14,7 @@
   "DmgMin": 0,
   "DmgMax": 0,
   "MaxDurability": 0,
-  "DropRate": 0.8,
+  "DropRate": 0.5333,
   "Group": "하데스표",
   "ID": 0
 }

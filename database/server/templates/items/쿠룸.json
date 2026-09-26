@@ -7,7 +7,7 @@
   "MaxStack": 1000,
   "Value": 150,
   "ScriptName": "Consumable",
-  "DropRate": 0.8,
+  "DropRate": 0.3999,
   "Group": "원작표/시약",
   "HealthRestore": 250
 }

@@ -19,6 +19,19 @@ namespace Darkages.Network.Game.Components
         /// <summary>넓이에 맞춰 늘린 마릿수 중 실제로 세우는 몫. 2026-09-24 사용자 결정으로 30% 줄였다.</summary>
         private const double Thinned = 0.7;
 
+        /// <summary>
+        /// 사냥감 정의(경험치가 있고 마릿수가 2 이상)의 동시 마릿수를 한 번 더 2/3 로, 다시 서는 간격을 1/3 로 —
+        /// 사용자 결정(2026-09-26) "젠 되는 숫자는 좀 줄이고, 리젠을 몬스터가 끊기지 않게". 정의 하나는 간격마다 **한 마리**만
+        /// 세우므로(아래 ReadyToSpawn) 한 사냥터가 채워지는 속도는 정의 수 × 넓이 배수 ÷ SpawnRate 다. 포테의숲6존(48x31,
+        /// 사냥감 정의 둘)은 1분에 12마리, 노비스평원A 는 60마리가 한계였고 — 그것도 맵 전체에 흩어 세우므로 곁에 서는 것은
+        /// 그 몇 분의 일이다 — 둘이 함께(주인 + 동료 봇) 잡으면 비어 갔다. 세 배 빨리 세우면 6존 36마리 · 평원 180마리다.
+        /// 한 순회(<c>GlobalSpawnTimer</c> 1초)에 정의마다 한 마리까지라 간격은 1초 아래로는 짧아지지 않는다.
+        /// 희귀 단독개체(SpawnMax 1 — 사슴·보스)와 꾸밈(경험치 0)은 그대로다.
+        /// </summary>
+        private const double Fewer = 2.0 / 3.0;
+
+        private const double Quicker = 3.0;
+
         private readonly GameServerTimer _timer;
 
         public MonolithComponent(GameServer server)
@@ -69,7 +82,9 @@ namespace Darkages.Network.Game.Components
                         i.Template != null && i.Template.Name == template.Name
                                            && i.Template.AreaID == map.Id).Count();
 
-                    if (!template.ReadyToSpawn(template.SpawnRate / (double) spread))
+                    var hunted = template.Exp > 0 && template.SpawnMax > 1;
+
+                    if (!template.ReadyToSpawn(template.SpawnRate / (double) spread / (hunted ? Quicker : 1)))
                         continue;
 
                     // 마릿수도 넓이에 맞춘다. 정의가 적은 SpawnMax 는 20x20 방 기준이라, 3,600칸짜리
@@ -82,9 +97,10 @@ namespace Darkages.Network.Game.Components
                     // 늘리지 않는다 — 넓은 맵(1~3존)에서는 √spread × 0.7 이 반올림으로 2 가 되어, 존마다 하나뿐이어야
                     // 할 사슴이 몰래 두 마리 섰다("사슴이 너무 강하다" 사용자 보고, 2026-09-26 — 값이 아니라 마릿수가
                     // 문제였다. 사용자 결정: 정의 마릿수 1 은 늘 1).
-                    var most = template.Exp == 0 || template.SpawnMax == 1
+                    // 사냥감은 2026-09-26 에 한 번 더 2/3 로(Fewer). 반올림이 0 이 되지 않게 적어도 한 마리.
+                    var most = !hunted
                         ? template.SpawnMax
-                        : (int) Math.Round(template.SpawnMax * Math.Sqrt(spread) * Thinned);
+                        : Math.Max(1, (int) Math.Round(template.SpawnMax * Math.Sqrt(spread) * Thinned * Fewer));
 
                     if (count < most)
                         if (count < map.Rows * map.Cols / 40)

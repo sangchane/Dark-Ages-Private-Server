@@ -7,7 +7,7 @@
   "MaxStack": 1000,
   "Value": 250,
   "ScriptName": "Consumable",
-  "DropRate": 1.0,
+  "DropRate": 0.6667,
   "Group": "원작표/시약",
   "ManaRestore": 100
 }
