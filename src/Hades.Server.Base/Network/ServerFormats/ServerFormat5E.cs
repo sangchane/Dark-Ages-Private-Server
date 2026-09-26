@@ -29,6 +29,7 @@ namespace Darkages.Network.ServerFormats
         public const byte Statuses = 3;
         public const byte Vitals = 4;
         public const byte Gear = 5;
+        public const byte Member = 6;
 
         public ServerFormat5E()
         {
@@ -52,9 +53,14 @@ namespace Darkages.Network.ServerFormats
         public byte ManaPercent { get; set; }
         public IReadOnlyList<(byte Place, Item Item)> Worn { get; set; }
         public IReadOnlyList<Item> Carried { get; set; }
+        public IReadOnlyList<ushort> Icons { get; set; }
 
         public static ServerFormat5E Status(int serial, IReadOnlyList<(string Name, int Seconds, bool Harmful, ushort Icon)> listed) =>
             new ServerFormat5E { Kind = Statuses, Serial = serial, Listed = listed };
+
+        /// <summary>6 — 그룹원 한 사람(PartyStatusComponent, 1초마다): serial(4) · 체력 %(1) · 마력 %(1) · 개수(1) · 그림(2)×개수 · 이름(StringA). serial 0 은 그룹 끝.</summary>
+        public static ServerFormat5E MemberStatus(int serial, string name, byte health, byte mana, IReadOnlyList<ushort> icons) =>
+            new ServerFormat5E { Kind = Member, Serial = serial, Name = name, HealthPercent = health, ManaPercent = mana, Icons = icons };
 
         public static ServerFormat5E Life(int serial, byte health, byte mana) =>
             new ServerFormat5E { Kind = Vitals, Serial = serial, HealthPercent = health, ManaPercent = mana };
@@ -91,6 +97,17 @@ namespace Darkages.Network.ServerFormats
                 case Vitals:
                     writer.Write(HealthPercent);
                     writer.Write(ManaPercent);
+                    break;
+
+                case Member:
+                    writer.Write(HealthPercent);
+                    writer.Write(ManaPercent);
+                    writer.Write((byte) Icons.Count);
+                    foreach (var icon in Icons)
+                        writer.Write(icon);
+
+                    // 이름 — 멀리 있어 보이지 않는 그룹원도 앱이 목록(0x39 의 이름)과 짝지을 수 있게.
+                    writer.WriteStringA(Name ?? string.Empty);
                     break;
 
                 case Gear:

@@ -168,7 +168,8 @@ namespace Darkages.Network.Game
                     [typeof(MundaneComponent)] = new MundaneComponent(this),
                     [typeof(MessageComponent)] = new MessageComponent(this),
                     [typeof(PingComponent)] = new PingComponent(this),
-                    [typeof(CompanionComponent)] = new CompanionComponent(this)
+                    [typeof(CompanionComponent)] = new CompanionComponent(this),
+                    [typeof(PartyStatusComponent)] = new PartyStatusComponent(this)
                 };
             }
 
