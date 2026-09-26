@@ -86,22 +86,45 @@ namespace Darkages.Storage.locales.Scripts.Formulas
             return (ItemUpgrade)_monster.LootManager.Drop(_monster.UpgradeTable, 1).FirstOrDefault();
         }
 
+        /// <summary>
+        /// 한 마리가 떨굴 물건 하나. 목록의 <c>DropRate</c> 를 한 줄로 이어 붙이고(전체 길이 = 목록 칸수) 그 위의
+        /// 한 점을 뽑는다 — 한 물건이 나올 확률은 그대로 <c>DropRate ÷ 칸수</c> 다. 옛 셈(한 칸을 고르고 그 칸을
+        /// 굴린다)과 1 이하에서는 같은 확률이지만, 옛 셈에서는 1 을 넘는 값이 1 처럼 굴었다. 마력 포션을 두 배로
+        /// 올리며(2026-09-26, 0.6 → 1.2) 바꿨다.
+        /// </summary>
         private void DetermineRandomDrop()
         {
-            var idx = 0;
-            if (_monster.Template.Drops.Count > 0)
-                idx = Generator.Random.Next(_monster.Template.Drops.Count);
-
-            var rndSelector = _monster.Template.Drops[idx];
-            if (!ServerContext.GlobalItemTemplateCache.ContainsKey(rndSelector))
+            var drops = _monster.Template.Drops;
+            if (drops == null || drops.Count == 0)
                 return;
 
-            var item = Item.Create(_monster, ServerContext.GlobalItemTemplateCache[rndSelector], true);
-            var chance = Math.Round(Generator.Random.NextDouble(), 2);
+            var point = Generator.Random.NextDouble() * drops.Count;
 
-            if (chance <= item.Template.DropRate)
-                item.Release(_monster, _monster.Position);
+            foreach (var name in drops)
+            {
+                if (name == null || !ServerContext.GlobalItemTemplateCache.TryGetValue(name, out var template))
+                    continue;
+
+                if (point < template.DropRate)
+                {
+                    var item = Item.Create(_monster, template, true);
+                    item.Stacks = BundleSize(item);
+                    item.Release(_monster, _monster.Position);
+                    return;
+                }
+
+                point -= Math.Max(0, template.DropRate);
+            }
         }
+
+        /// <summary>
+        /// 겹쳐지는 소모품(포션·시약)은 1~3개가 한 묶음으로 떨어진다(2026-09-26, 사용자 "번들이니까 여러 개도").
+        /// 나머지는 하나 — 0 은 줍기(<c>Item.GiveTo</c>)가 1 로 센다.
+        /// </summary>
+        private static ushort BundleSize(Item item) =>
+            item.Template.Flags.HasFlag(ItemFlags.Consumable) && item.Template.Flags.HasFlag(ItemFlags.Stackable)
+                ? (ushort)Generator.Random.Next(1, 4)
+                : (ushort)1;
 
         private Item.Variance DetermineVariance()
         {
@@ -173,6 +196,7 @@ namespace Darkages.Storage.locales.Scripts.Formulas
                             }
                     }
 
+                    rolledItem.Stacks = BundleSize(rolledItem);
                     rolledItem.Cursed = true;
                     rolledItem.AuthenticatedAislings = _monster.GetTaggedAislings().Cast<Sprite>().ToArray();
                     rolledItem.Release(_monster, _monster.Position);

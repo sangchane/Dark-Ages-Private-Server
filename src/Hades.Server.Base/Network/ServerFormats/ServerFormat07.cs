@@ -44,7 +44,8 @@ namespace Darkages.Network.ServerFormats
                         writer.Write((ushort) sprite.YPos);
                         writer.Write((uint) sprite.Serial);
                         writer.Write(sprite is Money money ? money.Image : ((Item) sprite).DisplayImage);
-                        writer.Write((uint) 0x0);
+                        // 비어 있던 자리에 묶음 개수를 적는다 — 앱이 바닥 포션 묶음을 "x3" 으로 보인다(2026-09-26).
+                        writer.Write(sprite is Item bundle ? (uint) bundle.Stacks : 0u);
                         writer.Write(sprite.Direction);
                         writer.Write(sprite is Item dropped ? dropped.Color : byte.MinValue);
                         writer.Write((byte) 0x01);
