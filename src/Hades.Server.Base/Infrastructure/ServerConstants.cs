@@ -41,6 +41,9 @@ namespace Darkages
         int DeathMapX { get; set; }
         int DeathMapY { get; set; }
         bool DeathDropsItems { get; set; }
+        List<string> CompanionBots { get; set; }
+        int CompanionHomeMap { get; set; }
+        Position CompanionHomePosition { get; set; }
         string DeathReepingMessage { get; set; }
         bool DebugMode { get; set; }
         ItemColor DefaultItemColor { get; set; }
@@ -221,6 +224,18 @@ namespace Darkages
 
         /// <summary>죽으면 소지품·장비·골드를 시체 주머니로 떨어뜨리나. 없으면 false — 지금은 죽음 벌칙을 켜지 않는다.</summary>
         public bool DeathDropsItems { get; set; }
+
+        /// <summary>
+        /// 동료 봇으로 쓰는 계정 이름들(성직자 봇 프로그램이 이 이름으로 접속해 있다). 비밀번호는 여기 두지 않는다 —
+        /// 봇 프로그램의 설정 파일에만 있다. 비어 있으면 동료 부르기(0xF1)가 "지금 부를 수 있는 동료가 없습니다" 로 답한다.
+        /// </summary>
+        public List<string> CompanionBots { get; set; }
+
+        /// <summary>보낸 동료가 기다리는 맵. 0 이면 StartingMap(노비스마을).</summary>
+        public int CompanionHomeMap { get; set; }
+
+        /// <summary>보낸 동료가 기다리는 칸. 없으면 StartingPosition.</summary>
+        public Position CompanionHomePosition { get; set; }
 
         public string DeathReepingMessage { get; set; }
 

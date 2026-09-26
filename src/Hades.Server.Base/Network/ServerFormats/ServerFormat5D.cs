@@ -1,3 +1,4 @@
+﻿using System;
 using Darkages.Types;
 
 namespace Darkages.Network.ServerFormats
@@ -68,6 +69,12 @@ namespace Darkages.Network.ServerFormats
 
             target.Show(Scope.NearbyAislings,
                 new ServerFormat5D(target.Serial, source?.Serial ?? 0, target.CurrentHp - before, Heal));
+
+            // 체력바(0x13)도 새 백분율로 — 원작 0x13 은 맞을 때만 오므로 회복 뒤에도 곁의 사람에게는 맞은 때의 막대가 남았다.
+            // 동료 봇은 주인 체력을 이 백분율로만 안다(파티원 체력을 따로 알리는 패킷이 없다). 소리 255 = 없음.
+            if (target.MaximumHp > 0)
+                target.Show(Scope.NearbyAislings, new ServerFormat13(target.Serial,
+                    (byte) Math.Min(100, 100L * target.CurrentHp / target.MaximumHp), byte.MaxValue));
         }
     }
 }
