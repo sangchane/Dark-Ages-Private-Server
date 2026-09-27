@@ -151,8 +151,9 @@ namespace Darkages.Network.Game
             lpSkill.InUse = true;
 
             if (optExecuteScript)
-                foreach (var script in lpSkill.Scripts.Values)
-                    script?.OnUse(lpClient.Aisling);
+                using (AbilityPresentationOverrides.Begin("skill", lpSkill.Template.Name))
+                    foreach (var script in lpSkill.Scripts.Values)
+                        script?.OnUse(lpClient.Aisling);
 
             lpSkill.NextAvailableUse =
                 lpSkill.Template.Cooldown > 0
@@ -1930,8 +1931,9 @@ namespace Darkages.Network.Game
                     ExecuteAbility(client, assail, false);
                 }
 
-            foreach (var script in skill.Scripts.Values)
-                script.OnUse(client.Aisling);
+            using (AbilityPresentationOverrides.Begin("skill", skill.Template.Name))
+                foreach (var script in skill.Scripts.Values)
+                    script.OnUse(client.Aisling);
 
             // 스크립트가 쓰지 않고 돌려보냈으면(마력 모자람) 기다림을 걸지 않는다. 걸면 앱은 남은 초를 모른 채(0x3F 는
             // 실제로 쓸 때만 간다) 단추를 눌러도 6초 동안 아무 일이 없다 — 「붕각이 가끔 안 나간다」(2026-09-25).
