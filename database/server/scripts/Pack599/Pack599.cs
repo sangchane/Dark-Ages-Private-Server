@@ -126,6 +126,24 @@ namespace Darkages.Storage.locales.Scripts.Pack599
         /// </summary>
         public static Pack599 ForMonster(Sprite monster, Sprite target) => new Pack599(target as Aisling, monster);
 
+        /// <summary>
+        /// 괴물이 죽을 때 잡은 사람 쪽에서 — 5.99 `script.txt` `__MOB_KILL__` 가운데 옮긴 줄만. 지금은 자이언트맨티스(포테의숲오솔길 보스방)
+        /// 하나: 같은 맵의 그룹원 모두에게 세계수의나뭇가지 1개와 안내(사용자 2026-09-27). 5.99 는 뒤이어 `message` 로 같은 안내를 한 번 더
+        /// 보내지만 하데스 그룹에는 나도 들어 있어 두 번 뜨므로 뺐다. `group_val "#ftsm"` 은 읽는 곳이 팩에 없어 옮기지 않았다.
+        /// </summary>
+        public static void MobKill(Aisling killer, Monster monster)
+        {
+            if (killer?.Client == null || monster?.Template == null)
+                return;
+
+            var p = new Pack599(killer, null);
+            if (monster.Template.Name == "자이언트맨티스")
+            {
+                p.Call("group_item_add", "세계수의나뭇가지", 1);
+                p.Call("group_message", 3, "{=c안내 : 자이언트맨티스에게서 세계수의나뭇가지를 획득 하셧습니다.");
+            }
+        }
+
         public bool Ready => _me != null && !_me.Dead;
 
         /// <summary>하데스의 기술 수련. 5.99 에는 없지만 기술 레벨이 오르는 길이 이것뿐이다.</summary>
@@ -277,6 +295,11 @@ namespace Darkages.Storage.locales.Scripts.Pack599
 
                     return 1;
                 }
+                // `group_item_add 이름, 개수` — 같은 맵의 그룹원마다 `item_add`.
+                case "group_item_add":
+                    foreach (var member in Party().ToList())
+                        new Pack599(member, null).Call("item_add", a);
+                    return 1;
                 case "get_sex": return (Who(a, 0) as Aisling) is { } person ? (long) person.Gender : 0;
 
                 // ── 겉모습 (아이템 스크립트 — 염색약) ─────────────────────

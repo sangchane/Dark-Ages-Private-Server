@@ -106,7 +106,11 @@ namespace Darkages.Storage.locales.Scripts.Monsters
         public override void OnDeath(GameClient client)
         {
             if (Monster.Target is Aisling)
+            {
                 Monster.GenerateRewards(Monster.Target as Aisling);
+                // 5.99 `__MOB_KILL__` 에서 옮긴 줄(자이언트맨티스 → 세계수의나뭇가지).
+                Pack599.Pack599.MobKill(Monster.Target as Aisling, Monster);
+            }
 
             Monster.Remove();
             Monster.Target = null;
