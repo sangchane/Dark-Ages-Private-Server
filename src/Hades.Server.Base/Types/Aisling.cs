@@ -442,30 +442,33 @@ namespace Darkages
                     // 마법이 도는 동안만 표시를 올린다 — 방향 배수는 때리는 것에만 건다(Sprite.BlowFacing).
                     CastingSpell(() =>
                     {
-                        if (target != null)
+                        using (AbilityPresentationOverrides.Begin("spell", spell.Template.Name))
                         {
+                            if (target != null)
                             {
-                                if (target is Aisling obj && obj.Serial == info.Target)
-                                    foreach (var script in spell.Scripts.Values)
-                                        script.OnUse(this, obj);
-                            }
+                                {
+                                    if (target is Aisling obj && obj.Serial == info.Target)
+                                        foreach (var script in spell.Scripts.Values)
+                                            script.OnUse(this, obj);
+                                }
 
-                            {
-                                if (target is Monster obj && obj.Serial == info.Target)
-                                    foreach (var script in spell.Scripts.Values)
-                                        script.OnUse(this, obj);
-                            }
+                                {
+                                    if (target is Monster obj && obj.Serial == info.Target)
+                                        foreach (var script in spell.Scripts.Values)
+                                            script.OnUse(this, obj);
+                                }
 
-                            {
-                                if (target is Mundane obj && obj.Serial == info.Target)
-                                    foreach (var script in spell.Scripts.Values)
-                                        script.OnUse(this, obj);
+                                {
+                                    if (target is Mundane obj && obj.Serial == info.Target)
+                                        foreach (var script in spell.Scripts.Values)
+                                            script.OnUse(this, obj);
+                                }
                             }
-                        }
-                        else
-                        {
-                            foreach (var script in spell.Scripts.Values)
-                                script.OnUse(this, this);
+                            else
+                            {
+                                foreach (var script in spell.Scripts.Values)
+                                    script.OnUse(this, this);
+                            }
                         }
                     });
             }

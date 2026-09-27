@@ -5,6 +5,7 @@ using Darkages.Network.Game;
 using Darkages.Network.Object;
 using Darkages.Network.ServerFormats;
 using Darkages.Security;
+using Darkages.Types;
 using System;
 using System.Globalization;
 using System.Net.Sockets;
@@ -44,6 +45,8 @@ namespace Darkages.Network
         {
             if (!Socket.Connected)
                 return;
+
+            AbilityPresentationOverrides.Apply(format);
 
             byte[] buffer;
 
