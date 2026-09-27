@@ -313,8 +313,9 @@ namespace Darkages.Network.Game
             if (skill != null)
             {
                 if (skill.Scripts?.Values != null)
-                    foreach (var script in skill.Scripts?.Values)
-                        script.OnUse(Aisling);
+                    using (AbilityPresentationOverrides.Begin("skill", skill.Template.Name))
+                        foreach (var script in skill.Scripts?.Values)
+                            script.OnUse(Aisling);
                 return true;
             }
 
@@ -331,8 +332,9 @@ namespace Darkages.Network.Game
             {
                 Aisling.CastingSpell(() =>
                 {
-                    foreach (var script in spell.Scripts.Values)
-                        script?.OnUse(Aisling, target);
+                    using (AbilityPresentationOverrides.Begin("spell", spell.Template.Name))
+                        foreach (var script in spell.Scripts.Values)
+                            script?.OnUse(Aisling, target);
                 });
 
                 return true;
