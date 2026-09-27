@@ -346,14 +346,14 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                     _me.Show(Scope.NearbyAislings, new ServerFormat19 { Number = (short) Arg(a, 0) });
                     return 0;
                 case "message":
-                    _me.Client.SendMessage((byte) Arg(a, 0), Text(a, 1));
+                    _me.Client.SendMessage((byte) Arg(a, 0), Said(a, 1));
                     return 0;
                 case "message1":
-                    (Find(a, 0) as Aisling)?.Client.SendMessage((byte) Arg(a, 1), Text(a, 2));
+                    (Find(a, 0) as Aisling)?.Client.SendMessage((byte) Arg(a, 1), Said(a, 2));
                     return 0;
                 case "group_message":
                     foreach (var member in Party())
-                        member.Client.SendMessage((byte) Arg(a, 0), Text(a, 1));
+                        member.Client.SendMessage((byte) Arg(a, 0), Said(a, 1));
                     return 0;
 
                 // ── 개인 던전(map_create 사본 — Systems/Instances) ────────────────────
@@ -795,6 +795,9 @@ namespace Darkages.Storage.locales.Scripts.Pack599
 
         private static long Arg(V[] a, int i) => i < a.Length ? a[i].Num : 0;
         private static string Text(V[] a, int i) => i < a.Length ? a[i].ToString() : "";
+
+        /// <summary>사람에게 보일 글 — 팩 글은 줄바꿈을 `\n` 두 글자로 적는다(대화창은 PackNpc.Prompt 가 같은 일을 한다).</summary>
+        private static string Said(V[] a, int i) => Text(a, i).Replace("\\n", "\n");
 
         private Sprite Find(V[] a, int i)
         {

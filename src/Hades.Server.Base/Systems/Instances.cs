@@ -104,6 +104,60 @@ namespace Darkages.Systems
             return found.Length;
         }
 
+        /// <summary>
+        /// 사본에서 나가는 마지막 사람이 바닥에 남은 물건·금화를 가방에 챙긴다. 원작처럼 자동 줍기가 없어, 보스를 잡자마자 던전 스크립트가
+        /// 5초 뒤 내보내면 떨어진 반지가 사본과 함께 사라졌다(2026-09-27 사용자 신고). 남은 사람이 있으면 그 사람 몫으로 둔다 — 누가 잡은
+        /// 괴물의 것인지 적는 <see cref="Item.AuthenticatedAislings" /> 는 맵이 곧 지워 버려 믿을 수 없다.
+        /// </summary>
+        /// <returns>가방·지갑이 차서 못 넣은 것 — 부르는 쪽이 나간 자리 발밑에 내려놓는다.</returns>
+        public static List<Sprite> HandOver(Aisling person, Area area)
+        {
+            var left = new List<Sprite>();
+            var service = ServerContext.Game?.ObjectFactory;
+            if (service == null || person == null || area == null || area.Id < FirstId)
+                return left;
+
+            if (service.QueryAll<Aisling>(area, other => other.CurrentMapId == area.Id && other.Serial != person.Serial).Any())
+                return left;
+
+            foreach (var item in service.QueryAll<Item>(area, i => i.CurrentMapId == area.Id).ToArray())
+            {
+                if (item.Template == null || item.Template.Flags.HasFlag(ItemFlags.Trap))
+                    continue;
+                if (!item.GiveTo(person))
+                    left.Add(item);
+                item.Remove();
+            }
+
+            foreach (var money in service.QueryAll<Money>(area, m => m.CurrentMapId == area.Id).ToArray())
+            {
+                if (person.GoldPoints + money.Amount < ServerContext.Config.MaxCarryGold)
+                    money.GiveTo(money.Amount, person);
+                else
+                {
+                    left.Add(money);
+                    money.Remove();
+                }
+            }
+
+            return left;
+        }
+
+        /// <summary><see cref="HandOver" /> 가 못 넣은 것을 그 사람 발밑에 내려놓는다.</summary>
+        public static void DropAtFeet(Aisling person, List<Sprite> left)
+        {
+            foreach (var sprite in left)
+            {
+                if (sprite is Item item)
+                    item.Release(person, person.Position);
+                else if (sprite is Money money)
+                    Money.Create(person, money.Amount, person.Position);
+            }
+
+            if (left.Count > 0)
+                person.Client?.SendMessage(0x02, "가방이 가득 차 던전에 남은 물건을 발밑에 내려놓았습니다.");
+        }
+
         /// <summary>빈 사본을 없앤다 — 그 맵에서 나가는 워프 · 괴물 · 물건 · NPC 까지.</summary>
         public static void Remove(Area area)
         {

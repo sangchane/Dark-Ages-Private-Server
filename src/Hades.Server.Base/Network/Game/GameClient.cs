@@ -5,6 +5,7 @@ using Darkages.Network.ServerFormats;
 using Darkages.Scripting;
 using Darkages.Storage;
 using Darkages.Storage.locales.debuffs;
+using Darkages.Systems;
 using Darkages.Types;
 using MenuInterpreter;
 using System;
@@ -1277,6 +1278,9 @@ namespace Darkages.Network.Game
 
             if (area.Id != Aisling.CurrentMapId)
             {
+                // 개인 던전(사본)을 나가는 마지막 사람은 바닥에 남은 것을 챙긴다 — Systems/Instances.HandOver.
+                var left = Instances.HandOver(Aisling, Aisling.Map);
+
                 LeaveArea(true, true);
 
                 Aisling.LastPosition = new Position(Aisling.X, Aisling.Y);
@@ -1285,6 +1289,7 @@ namespace Darkages.Network.Game
                 Aisling.CurrentMapId = area.Id;
 
                 EnterArea();
+                Instances.DropAtFeet(Aisling, left);
             }
             else
             {
