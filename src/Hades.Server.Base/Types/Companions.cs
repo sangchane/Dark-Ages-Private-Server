@@ -868,9 +868,15 @@ namespace Darkages.Types
         private static byte Percent(int value, int maximum) =>
             (byte) (maximum > 0 ? Math.Clamp(100L * value / maximum, 0, 100) : 0);
 
+        /// <summary>
+        /// 접속해 있는 그 이름의 캐릭터 — 세상(맵) 목록이 아니라 **접속 목록**에서 찾는다. 맵 목록은 사람이 맵을 옮기는 동안(월드맵 이동은
+        /// 옛 맵에서 빼고 0.5초 뒤에 새 맵에 넣는다) 비고, 월드맵을 가장자리로 열면 심연(Abyss)에 들어 조회에서 빠져서, 봇 짝이 주인이
+        /// 나간 줄 알고 풀렸다(2026-09-27 클라우드 11:02 "짝을 풂 (주인 없음)" — "월드맵 이동하면 봇을 부르지도 보내지도 못한다").
+        /// </summary>
         private static Aisling FindOnline(string name) =>
-            Finder.GetObjects<Aisling>(null, a => a != null && a.LoggedIn && a.Client != null &&
-                                                  string.Equals(a.Username, name, StringComparison.OrdinalIgnoreCase))
-                .FirstOrDefault();
+            ServerContext.Game?.Clients
+                .Select(client => client?.Aisling)
+                .FirstOrDefault(a => a != null && a.LoggedIn && a.Client != null &&
+                                     string.Equals(a.Username, name, StringComparison.OrdinalIgnoreCase));
     }
 }
