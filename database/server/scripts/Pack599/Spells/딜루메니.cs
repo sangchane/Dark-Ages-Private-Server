@@ -63,12 +63,12 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                     p.Call("game_sound", (V)8L, (V)0L);
                     if (V.T(((V)(v_target) != (V)(v_myid))))
                     {
-                        p.Call("effect", v_target, (V)0L, (V)276L, (V)80L);
+                        p.Call("effect", v_target, (V)0L, (V)42L, (V)80L);  // 옛 이펙트 목록(0, 276 → 0, 42)
                         p.Call("message1", v_target, (V)3L, ((V)(p.Call("get_name")) + (V)((V)"님께서 딜루메니를 가합니다.")));
                     }
                     else
                     {
-                        p.Call("effect", v_target, (V)276L, (V)0L, (V)80L);
+                        p.Call("effect", v_target, (V)42L, (V)0L, (V)80L);  // 옛 이펙트 목록(276, 0 → 42, 0)
                     }
                     p.Call("message", (V)3L, (V)"딜루메니를 시전하셧습니다.");
                 }
@@ -83,7 +83,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                     else
                     {
                         p.Call("game_sound", (V)8L, (V)0L);
-                        p.Call("effect", v_target, (V)0L, (V)276L, (V)80L);
+                        p.Call("effect", v_target, (V)0L, (V)42L, (V)80L);  // 옛 이펙트 목록(0, 276 → 0, 42)
                     }
                 }
         }

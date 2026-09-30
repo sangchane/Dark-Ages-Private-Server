@@ -40,7 +40,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
             {
                 p.Call("game_sound", (V)8L, (V)0L);
                 p.Call("message", (V)3L, ((V)(p.Call("object_name")) + (V)((V)"가(이) 연막을 가합니다.")));
-                p.Call("effect", v_myid, (V)276L, (V)0L, (V)80L);
+                p.Call("effect", v_myid, (V)57L, (V)0L, (V)80L);  // 옛 이펙트 목록(276, 0 → 57, 0)
             }
         }
     }
