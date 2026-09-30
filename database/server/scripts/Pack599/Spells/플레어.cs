@@ -72,7 +72,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
             p.Call("effect", v_target, (V)0L, (V)102L, (V)75L);
             p.Call("message", (V)3L, (V)"플레어를 외웠습니다.");
             p.Call("motion", (V)136L, (V)75L);
-            p.Call("game_sound", (V)75L, (V)0L);
+            p.Call("game_sound", (V)47L, (V)0L);  // 노바 소리(5.99: 75)
         }
     }
 }

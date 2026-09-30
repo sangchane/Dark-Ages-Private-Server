@@ -81,7 +81,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                 }
             }
             p.Call("message", (V)3L, (V)"프라베라를 외웠습니다.");
-            p.Call("game_sound", (V)27L, (V)0L);
+            p.Call("game_sound", (V)8L, (V)0L);  // 노바 소리(5.99: 27)
         }
     }
 }

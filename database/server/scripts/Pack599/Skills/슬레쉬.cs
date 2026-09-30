@@ -61,7 +61,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                     p.Call("char_damaged", v_target, v_damage, v_damage);
                     p.Call("motion", (V)134L, (V)30L);
                     p.Call("effect", v_target, (V)0L, (V)88L, (V)100L);  // 노바 이펙트(5.99: 0, 201, 속도 100)
-                    p.Call("game_sound", (V)7L, (V)0L);
+                    p.Call("game_sound", (V)69L, (V)0L);  // 노바 소리(5.99: 7)
                 }
             }
             else
@@ -69,7 +69,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                 p.Call("effect", v_target, (V)0L, (V)88L, (V)100L);  // 노바 이펙트(5.99: 0, 201, 속도 100)
                 p.Call("damaged", v_target, v_damage);
                 p.Call("motion", (V)134L, (V)30L);
-                p.Call("game_sound", (V)7L, (V)0L);
+                p.Call("game_sound", (V)69L, (V)0L);  // 노바 소리(5.99: 7)
             }
         }
     }

@@ -58,7 +58,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                 {
                     p.Call("effect", v_target, (V)71L, (V)71L, (V)120L);  // 노바 이펙트(5.99: 71, 0, 속도 120)
                 }
-                p.Call("game_sound", (V)38L, (V)0L);
+                p.Call("game_sound", (V)35L, (V)0L);  // 노바 소리(5.99: 38)
             }
         }
     }

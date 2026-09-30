@@ -44,7 +44,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
             p.Call("message", (V)3L, (V)"홀리쿠라네라를 외웠습니다.");
             p.Call("group_message", (V)3L, ((V)(p.Call("get_name")) + (V)((V)"님께서 홀리쿠라네라를 외워주셧습니다.")));
             p.Call("motion", (V)128L, (V)55L);
-            p.Call("game_sound", (V)38L, (V)0L);
+            p.Call("game_sound", (V)35L, (V)0L);  // 노바 소리(5.99: 38)
         }
     }
 }

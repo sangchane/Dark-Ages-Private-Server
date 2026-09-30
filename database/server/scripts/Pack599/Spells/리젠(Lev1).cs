@@ -52,6 +52,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                 return;
             }
             p.Call("hprecovery", v_target, (V)15L, ((V)(((V)(p.Call("get_basevita2", v_target)) / (V)((V)100L))) * (V)((V)10L)));
+            p.Call("effect", v_target, (V)0L, (V)187L, (V)100L);  // 옛 이펙트 목록(5.99 에 없던 줄)
             p.Call("message", (V)3L, (V)"리젠(Lev1)을 외웠습니다.");
             if (V.T(((V)(v_target) != (V)(v_myid))))
             {
