@@ -2023,6 +2023,111 @@ namespace Darkages.Network.Game
             }
         }
 
+        /// <summary>모바일 상점 일괄 거래(0xF2). NPC·거리·재고·금화·가방을 서버에서 다시 검증한다.</summary>
+        protected override void FormatF2Handler(GameClient client, ClientFormatF2 format)
+        {
+            if (client?.Aisling == null || !client.Aisling.LoggedIn || client.Aisling.IsDead())
+                return;
+
+            var merchant = GetObject<Mundane>(client.Aisling.Map, one => one.Serial == format.Merchant);
+            if (merchant == null || !client.Aisling.WithinRangeOf(merchant)
+                || !(merchant.Scripts?.Values.Any(script => script.GetType().Name is "shop1" or "shop2") ?? false))
+                return;
+
+            if (format.Kind == ClientFormatF2.BackToMenu)
+            {
+                merchant.Scripts?.Values.OfType<MundaneScript>().FirstOrDefault()?.OnClick(this, client);
+                return;
+            }
+
+            var lines = format.Lines.Where(line => line.Quantity > 0).Take(128).ToArray();
+            if (lines.Length == 0)
+                return;
+
+            if (format.Kind == ClientFormatF2.Buy)
+            {
+                var shopItems = ServerContext.GlobalItemTemplateCache.Values
+                    .Where(item => item.NpcKey == merchant.Template.Name)
+                    .OrderBy(item => item.LevelRequired)
+                    .Concat(merchant.Template.DefaultMerchantStock
+                        .Select(name => ServerContext.GlobalItemTemplateCache.GetValueOrDefault(name))
+                        .Where(item => item != null))
+                    .ToArray();
+                var stock = new HashSet<string>(shopItems.Select(item => item.Name), StringComparer.Ordinal);
+                var purchases = lines
+                    .Where(line => stock.Contains(line.Name))
+                    .Select(line => (Line: line, Template: ServerContext.GlobalItemTemplateCache.GetValueOrDefault(line.Name)))
+                    .Where(item => item.Template != null).ToArray();
+                long total = purchases.Sum(item => (long)item.Template.Value * item.Line.Quantity);
+
+                if (purchases.Length == 0 || total > client.Aisling.GoldPoints)
+                {
+                    client.SendItemShopDialog(merchant, "금화가 부족하거나 살 수 없는 물건입니다.", 0x0004, shopItems);
+                    return;
+                }
+
+                foreach (var purchase in purchases)
+                {
+                    int given = 0;
+                    for (int count = 0; count < purchase.Line.Quantity; count++)
+                    {
+                        var item = Item.Create(client.Aisling, purchase.Template);
+                        if (item == null || !item.GiveTo(client.Aisling))
+                            break;
+                        given++;
+                    }
+                    client.Aisling.GoldPoints -= (int)((long)purchase.Template.Value * given);
+                }
+
+                client.SendStats(StatusFlags.All);
+                client.SendItemShopDialog(merchant, "선택한 물건을 샀습니다. 계속 고르십시오.", 0x0004, shopItems);
+                return;
+            }
+
+            if (format.Kind != ClientFormatF2.Sell)
+                return;
+
+            var sales = new List<(Item Item, int Quantity, int Offer)>();
+            foreach (var group in lines.GroupBy(line => line.Slot))
+            {
+                var item = client.Aisling.Inventory.FindInSlot(group.Key);
+                if (item?.Template == null)
+                    continue;
+
+                int requested = (int)Math.Min(int.MaxValue, group.Sum(line => (long)line.Quantity));
+                int quantity = item.Template.CanStack ? Math.Min(requested, item.Stacks) : 1;
+                int offer = (int)(item.Template.Value / 1.6);
+                if (quantity <= 0 || offer <= 0)
+                    continue;
+
+                sales.Add((item, quantity, offer));
+            }
+
+            long earned = sales.Sum(sale => (long)sale.Offer * sale.Quantity);
+            long room = (long)ServerContext.Config.MaxCarryGold - client.Aisling.GoldPoints;
+            if (earned > room)
+            {
+                client.SendItemSellDialog(merchant, "금화가 가득 차서 팔 수 없습니다.", 0x0005,
+                    client.Aisling.Inventory.Items.Values.Where(i => i != null && i.Template != null).Select(i => i.Slot));
+                return;
+            }
+
+            foreach (var sale in sales)
+            {
+                client.Aisling.Inventory.RemoveRange(client, sale.Item, sale.Quantity);
+            }
+
+            if (earned > 0)
+            {
+                client.Aisling.GoldPoints += (int)earned;
+                client.SendStats(StatusFlags.StructC);
+            }
+
+            // 판매가 끝나면 확인 질문으로 돌아가지 않고 새 가방 목록을 바로 보여 준다.
+            client.SendItemSellDialog(merchant, earned > 0 ? $"{earned:N0}전을 받았습니다. 계속 판매할 물건을 고르십시오." : "팔 수 있는 물건을 고르십시오.",
+                0x0005, client.Aisling.Inventory.Items.Values.Where(i => i != null && i.Template != null).Select(i => i.Slot));
+        }
+
         protected override void Format3FHandler(GameClient client, ClientFormat3F format)
         {
             if (client.Aisling == null || !client.Aisling.LoggedIn)

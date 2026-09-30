@@ -98,6 +98,8 @@ namespace Darkages.Network.ServerFormats
                 writer.Write(item.Value);
                 writer.WriteStringA(item.Name);
                 writer.WriteStringA(item.Class.ToString());
+                writer.Write((byte)item.Gender);
+                writer.Write((byte)item.StageRequired);
             }
         }
     }
