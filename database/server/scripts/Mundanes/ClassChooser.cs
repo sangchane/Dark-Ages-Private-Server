@@ -1,4 +1,4 @@
-﻿#region
+#region
 
 using System;
 using System.Collections.Generic;
@@ -109,20 +109,20 @@ namespace Darkages.Storage.locales.Scripts.Mundanes
                     Spell.GiveTo(client.Aisling, "fas nadur", 1);
                     
                  
-                    var item = Item.Create(client.Aisling, ServerContext.GlobalItemTemplateCache["Magus Kronos"]);
+                    var item = Item.Create(client.Aisling, "매직마르시아");
                     
 
                     {
-                        item.GiveTo(client.Aisling);
+                        item?.GiveTo(client.Aisling);
                        
                     }
-                    var itemMJR = Item.Create(client.Aisling, ServerContext.GlobalItemTemplateCache["Magic Jade Ring"]);
+                    var itemMJR = Item.Create(client.Aisling, "로오의녹옥반지");
                     {
-                        itemMJR.GiveTo(client.Aisling);
+                        itemMJR?.GiveTo(client.Aisling);
                     }
-                    var item3 = Item.Create(client.Aisling, ServerContext.GlobalItemTemplateCache["Used Boots"]);
+                    var item3 = Item.Create(client.Aisling, "로오의신발");
                     {
-                        item3.GiveTo(client.Aisling);
+                        item3?.GiveTo(client.Aisling);
                     }
                 }
 
@@ -140,21 +140,21 @@ namespace Darkages.Storage.locales.Scripts.Mundanes
                     Skill.GiveTo(client.Aisling, "beag suain ia gar", 1);
                     Skill.GiveTo(client.Aisling, "beag suain", 1);
                   
-                    var item = Item.Create(client.Aisling, ServerContext.GlobalItemTemplateCache["Wooden Shield 2"]);
+                    var item = Item.Create(client.Aisling, "가죽방패");
                     {
-                        item.GiveTo(client.Aisling);
+                        item?.GiveTo(client.Aisling);
                     }
-                    var item3 = Item.Create(client.Aisling, ServerContext.GlobalItemTemplateCache["Used Boots"]);
+                    var item3 = Item.Create(client.Aisling, "로오의신발");
                     {
-                        item3.GiveTo(client.Aisling);
+                        item3?.GiveTo(client.Aisling);
                     }
-                    var MaleChest = Item.Create(client.Aisling, ServerContext.GlobalItemTemplateCache["Torn Leather Tunic"]);
+                    var MaleChest = Item.Create(client.Aisling, "레더튜닉");
                     {
-                        MaleChest.GiveTo(client.Aisling);
+                        MaleChest?.GiveTo(client.Aisling);
                     }
-                    var Sword = Item.Create(client.Aisling, ServerContext.GlobalItemTemplateCache["Eppe"]);
+                    var Sword = Item.Create(client.Aisling, "에페");
                     {
-                        Sword.GiveTo(client.Aisling);
+                        Sword?.GiveTo(client.Aisling);
                     }
                 }
 
@@ -182,9 +182,9 @@ namespace Darkages.Storage.locales.Scripts.Mundanes
                     Spell.GiveTo(client.Aisling, "Needle Trap", 1);
                     Spell.GiveTo(client.Aisling, "Stiletto Trap", 1);
 
-                    var item = Item.Create(client.Aisling, ServerContext.GlobalItemTemplateCache["Snow Secret"]);
+                    var item = Item.Create(client.Aisling, "설단검");
                     {
-                        item.GiveTo(client.Aisling);
+                        item?.GiveTo(client.Aisling);
                     }
                 }
 
