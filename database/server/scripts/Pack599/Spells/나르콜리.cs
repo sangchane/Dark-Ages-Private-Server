@@ -48,7 +48,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
             }
             if (V.T(((V)(p.Call("rand", (V)1L, (V)10L)) > (V)((V)8L))))
             {
-                p.Call("effect", v_target, (V)0L, (V)33L, (V)130L);
+                p.Call("effect", v_target, (V)0L, (V)28L, (V)130L);  // 노바 이펙트(5.99: 0, 33, 속도 130)
                 p.Call("message", (V)3L, (V)"대상이 마법을 피했다!");
                 return;
             }
