@@ -30,7 +30,9 @@ namespace Darkages.Network.Game.Components
         /// </summary>
         private const double Fewer = 2.0 / 3.0;
 
-        private const double Quicker = 3.0;
+        // 2026-09-28 사용자: 이미 1/3 로 줄인 뒤에도 사냥 중 기다림이 길다. 사냥감만 다시 절반으로 줄여
+        // 원래 SpawnRate 의 1/6 로 세운다. GlobalSpawnTimer 가 1초라 정의마다 초당 한 마리 상한은 그대로다.
+        private const double Quicker = 6.0;
 
         private readonly GameServerTimer _timer;
 
