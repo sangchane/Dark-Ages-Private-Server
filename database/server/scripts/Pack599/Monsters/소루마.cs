@@ -35,6 +35,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
             p.Call("game_sound", (V)10L, (V)0L);
             p.Call("message", (V)3L, ((V)(p.Call("object_name")) + (V)((V)"가(이) 소루마를 가합니다.")));
             p.Call("mobsor_delay", v_myid, (V)8L);
+            p.Call("effect", v_myid, (V)0L, (V)40L, (V)100L);  // 옛 이펙트 목록(5.99 에 없던 줄)
         }
     }
 }

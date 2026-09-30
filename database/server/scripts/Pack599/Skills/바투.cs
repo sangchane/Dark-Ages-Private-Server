@@ -51,6 +51,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                 return;
             }
             p.Call("magic", (V)6L, v_target, (V)0L, (V)15L, (V)0L, v_myid);
+            p.Call("effect", v_target, (V)0L, (V)41L, (V)100L);  // 옛 이펙트 목록(5.99 에 없던 줄)
             p.Call("message", (V)3L, (V)"바투를 외웠습니다.");
             p.Call("motion", (V)129L, (V)20L);
             p.Call("game_sound", (V)8L, (V)0L);

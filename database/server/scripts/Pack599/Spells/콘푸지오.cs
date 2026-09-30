@@ -48,7 +48,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
             }
             if (V.T(((V)(v_type) == (V)((V)1L))))
             {
-                p.Call("effect", v_target, (V)0L, (V)208L, (V)80L);  // 옛 이펙트 목록(0, 118 → 0, 208)
+                p.Call("effect", v_target, (V)0L, (V)25L, (V)80L);  // 옛 이펙트 목록(0, 118 → 0, 25)
                 p.Call("motion", (V)136L, (V)75L);
                 p.Call("message", (V)3L, (V)"콘푸지오를 외웠습니다.");
                 p.Call("magic", (V)9L, v_target, (V)0L, (V)2L, (V)0L, v_myid);
