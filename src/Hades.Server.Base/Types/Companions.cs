@@ -672,19 +672,42 @@ namespace Darkages.Types
                 return;
             }
 
+            // 봇에게 들어가지 못하면 주인 것도 줄이지 않는다 — 전에는 주인 가방에서 먼저 빼고 넣기 결과를 버려,
+            // 넣기가 실패하면 포션이 사라졌다(코드 리뷰 2026-10-02).
             if (n >= have)
             {
+                // 통째로 줄 때는 같은 물건을 넘긴다. Remove 가 지금 칸 번호를 쓰므로 먼저 빼고, 실패하면 주인에게 되돌린다.
                 owner.Inventory.Remove(owner.Client, item);
+
+                if (!item.GiveTo(bot, false))
+                {
+                    item.GiveTo(owner, false);
+                    owner.Client.SendMessage(0x02, "봇에게 주지 못했습니다.");
+                    return;
+                }
+
                 owner.CurrentWeight = Math.Max(0, owner.CurrentWeight - item.Template.CarryWeight);
                 owner.Client.SendStats(StatusFlags.StructA);
-                item.GiveTo(bot, false);
             }
             else
             {
-                owner.Inventory.RemoveRange(owner.Client, item, n);
                 var part = Item.Create(bot, item.Template);
+
+                if (part == null)
+                {
+                    owner.Client.SendMessage(0x02, "봇에게 주지 못했습니다.");
+                    return;
+                }
+
                 part.Stacks = (ushort) n;
-                part.GiveTo(bot, false);
+
+                if (!part.GiveTo(bot, false))
+                {
+                    owner.Client.SendMessage(0x02, "봇에게 주지 못했습니다.");
+                    return;
+                }
+
+                owner.Inventory.RemoveRange(owner.Client, item, n);
             }
 
             owner.Client.SendMessage(0x02, $"봇에게 {item.Template.Name} {n}개를 주었습니다.");
