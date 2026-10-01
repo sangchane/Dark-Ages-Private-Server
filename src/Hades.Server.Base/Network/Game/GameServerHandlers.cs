@@ -2153,6 +2153,11 @@ namespace Darkages.Network.Game
                 var worldMap = ServerContext.GlobalWorldMapTemplateCache[client.Aisling.World]; 
             
                 client.PendingNode = worldMap?.Portals.Find(i => i.Destination.AreaId == format.Index);
+
+                // 카드가 아니면 어느 사냥터의 구역 — 목록에 있는 것만 보낸다.
+                if (client.PendingNode == null && worldMap?.Portals.SelectMany(i => i.Zones ?? new List<Warp>())
+                        .FirstOrDefault(i => i.AreaId == format.Index) is { } zone)
+                    client.PendingNode = new WorldPortal { Destination = zone };
             }
 
             TraverseWorldMap(client, format);
@@ -2164,6 +2169,19 @@ namespace Darkages.Network.Game
         }
 
 
+        /// <summary>그 맵으로 드는 워프의 레벨 제한으로 막히면 그 말(GameClient 워프와 같은 문구), 아니면 null.</summary>
+        public static string WorldMapRefusal(int level, int areaId)
+        {
+            var into = ServerContext.GlobalWarpTemplateCache.Where(w => w.To?.AreaId == areaId).ToList();
+
+            if (into.Count == 0 || into.Any(w => level >= w.LevelRequired && (w.LevelMaximum == 0 || level <= w.LevelMaximum)))
+                return null;
+
+            var lowest = into.Min(w => w.LevelRequired);
+
+            return level < lowest ? $"아직 들어가기엔 레벨이 낮습니다. (입장 레벨 {lowest})" : "이곳에 들어가기엔 늙었습니다.";
+        }
+
         public static async void TraverseWorldMap(GameClient client, ClientFormat3F format)
         {
             if (!client.MapOpen)
@@ -2174,6 +2192,16 @@ namespace Darkages.Network.Game
             if (selectedPortalNode == null)
             {
                 // 목록에 없는 번호가 왔다. 여기서 MapOpen 을 안 내리면 이 접속은 영영 걸음도 말도 못 한다.
+                client.MapOpen = false;
+                client.Refresh();
+                return;
+            }
+
+            // 월드맵으로 바로 가도 걸어 들어갈 때의 레벨 제한은 같다 — 그 맵으로 드는 워프 중 하나라도 들여보내야 간다.
+            if (!client.Aisling.GameMaster && WorldMapRefusal(client.Aisling.ExpLevel, selectedPortalNode.Destination.AreaId) is { } refusal)
+            {
+                client.SendMessage(0x02, refusal);
+                client.PendingNode = null;
                 client.MapOpen = false;
                 client.Refresh();
                 return;

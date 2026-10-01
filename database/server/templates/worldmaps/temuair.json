@@ -24,7 +24,81 @@
       },
       "DisplayName": "우드랜드",
       "PointX": 516,
-      "PointY": 176
+      "PointY": 176,
+      "Zones": [
+        {
+          "AreaID": 20015,
+          "Location": {
+            "X": 2,
+            "Y": 35
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20016,
+          "Location": {
+            "X": 2,
+            "Y": 10
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20017,
+          "Location": {
+            "X": 2,
+            "Y": 10
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20022,
+          "Location": {
+            "X": 97,
+            "Y": 46
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20023,
+          "Location": {
+            "X": 38,
+            "Y": 97
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20024,
+          "Location": {
+            "X": 38,
+            "Y": 97
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20025,
+          "Location": {
+            "X": 38,
+            "Y": 97
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20026,
+          "Location": {
+            "X": 38,
+            "Y": 97
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20020,
+          "Location": {
+            "X": 38,
+            "Y": 97
+          },
+          "PortalKey": 0
+        }
+      ]
     },
     {
       "Destination": {
@@ -77,6 +151,69 @@
       "DisplayName": "마인",
       "PointX": 137,
       "PointY": 113
+    },
+    {
+      "Destination": {
+        "AreaID": 20263,
+        "Location": {
+          "X": 33,
+          "Y": 47
+        },
+        "PortalKey": 0
+      },
+      "DisplayName": "포테의숲",
+      "PointX": 380,
+      "PointY": 96,
+      "Zones": [
+        {
+          "AreaID": 20263,
+          "Location": {
+            "X": 33,
+            "Y": 47
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20264,
+          "Location": {
+            "X": 22,
+            "Y": 47
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20265,
+          "Location": {
+            "X": 37,
+            "Y": 67
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20266,
+          "Location": {
+            "X": 1,
+            "Y": 13
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20267,
+          "Location": {
+            "X": 1,
+            "Y": 15
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20268,
+          "Location": {
+            "X": 24,
+            "Y": 28
+          },
+          "PortalKey": 0
+        }
+      ]
     }
   ],
   "FieldNumber": 1,
