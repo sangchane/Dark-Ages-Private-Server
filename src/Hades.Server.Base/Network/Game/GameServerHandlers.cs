@@ -2002,22 +2002,22 @@ namespace Darkages.Network.Game
             switch (format.Kind)
             {
                 case ClientFormatF1.Call:
-                    Companions.Call(client.Aisling);
+                    CompanionPairing.Call(client.Aisling);
                     break;
                 case ClientFormatF1.Dismiss:
-                    Companions.Dismiss(client.Aisling);
+                    CompanionPairing.Dismiss(client.Aisling);
                     break;
                 case ClientFormatF1.Give:
-                    Companions.Give(client.Aisling, format.Slot, format.Count);
+                    CompanionKit.Give(client.Aisling, format.Slot, format.Count);
                     break;
                 case ClientFormatF1.TakeOff:
-                    Companions.TakeOff(client.Aisling, format.Slot);
+                    CompanionKit.TakeOff(client.Aisling, format.Slot);
                     break;
                 case ClientFormatF1.Wake:
-                    Companions.Wake(client.Aisling);
+                    CompanionPairing.Wake(client.Aisling);
                     break;
                 case ClientFormatF1.WakeMaster:
-                    Companions.WakeMaster(client.Aisling);
+                    CompanionPairing.WakeMaster(client.Aisling);
                     break;
             }
         }
