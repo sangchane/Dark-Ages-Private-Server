@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using Darkages.Network;
 using Darkages.Network.ServerFormats;
@@ -136,8 +137,14 @@ namespace Darkages.Types
                 catch (Exception ex)
                 {
                     // 운영 파일은 원자적으로 쓰지만 사람이 깨뜨릴 수도 있다. 잘못된 값을 게임에 남기지 않는다.
-                    ServerContext.Logger($"기술·마법 연출 덮어쓰기 파일을 읽지 못해 기본값을 씁니다 ({path}): {ex.GetType().Name}: {ex.Message}",
-                        LogLevel.Warning);
+                    try
+                    {
+                        Warn($"기술·마법 연출 덮어쓰기 파일을 읽지 못해 기본값을 씁니다 ({path}): {ex.GetType().Name}: {ex.Message}");
+                    }
+                    catch (FileNotFoundException)
+                    {
+                        // 서버 밖(시험 프로세스)에는 로거 어셈블리가 없다 — 남길 곳이 없으니 넘어간다.
+                    }
                     loaded.Clear();
                 }
             }
@@ -148,6 +155,11 @@ namespace Darkages.Types
                 ? File.GetLastWriteTimeUtc(path)
                 : DateTime.MinValue;
         }
+
+        // 로거(ServerContext·Microsoft.Extensions.Logging)는 서버 프로세스에만 있다. 서버 없이 이 클래스를 부르는 시험에서
+        // Load 가 그 어셈블리를 찾지 않도록 로그 부르기를 따로 둔다(인라인되면 Load 와 함께 컴파일된다).
+        [MethodImpl(MethodImplOptions.NoInlining)]
+        private static void Warn(string message) => ServerContext.Logger(message, LogLevel.Warning);
 
         private static bool ValidKey(string key) =>
             !string.IsNullOrWhiteSpace(key) && (key.StartsWith("skill:", StringComparison.Ordinal)
