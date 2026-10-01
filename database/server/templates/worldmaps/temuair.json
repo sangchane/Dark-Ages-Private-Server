@@ -214,6 +214,109 @@
           "PortalKey": 0
         }
       ]
+    },
+    {
+      "Destination": {
+        "AreaID": 20595,
+        "Location": {
+          "X": 38,
+          "Y": 41
+        },
+        "PortalKey": 0
+      },
+      "DisplayName": "아벨해안",
+      "PointX": 330,
+      "PointY": 300,
+      "Zones": [
+        {
+          "AreaID": 20584,
+          "Location": {
+            "X": 47,
+            "Y": 13
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20585,
+          "Location": {
+            "X": 47,
+            "Y": 18
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20586,
+          "Location": {
+            "X": 27,
+            "Y": 47
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20587,
+          "Location": {
+            "X": 37,
+            "Y": 47
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20588,
+          "Location": {
+            "X": 10,
+            "Y": 47
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20589,
+          "Location": {
+            "X": 30,
+            "Y": 47
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20590,
+          "Location": {
+            "X": 27,
+            "Y": 47
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20591,
+          "Location": {
+            "X": 22,
+            "Y": 47
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20592,
+          "Location": {
+            "X": 38,
+            "Y": 47
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20593,
+          "Location": {
+            "X": 37,
+            "Y": 47
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20594,
+          "Location": {
+            "X": 10,
+            "Y": 47
+          },
+          "PortalKey": 0
+        }
+      ]
     }
   ],
   "FieldNumber": 1,
