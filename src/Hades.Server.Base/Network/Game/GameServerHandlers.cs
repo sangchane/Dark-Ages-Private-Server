@@ -720,8 +720,9 @@ namespace Darkages.Network.Game
                 return;
 
             //abort cast?
+            // 잠들거나 얼어도 풀기 마법만은 된다 — 우리 것은 한글 이름이다. 빠져 있어 잠든 봇이 제 잠을 못 풀었다(2026-10-02).
             if (client.Aisling.IsSleeping || client.Aisling.IsFrozen)
-                if (spellReq.Template.Name != "ao suain" && spellReq.Template.Name != "ao pramh")
+                if (spellReq.Template.Name is not ("ao suain" or "ao pramh" or "디나르콜리" or "디소루마"))
                 {
                     CancelIfCasting(client);
                     return;

@@ -67,9 +67,10 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                 p.Call("group_warp", v_name4_s, (V)9L, (V)39L);
                 p.Call("group_message", (V)3L, (V)"{=c※던전※ 포테의숲오솔길에 입장하셧습니다.");
                 p.Call("message", (V)3L, (V)"{=c※던전※ 포테의숲오솔길에 입장하셧습니다.");
-                p.Call("mob_spawn3", (V)"사나운은빛늑대", v_name5_s, (V)150L, (V)160L, (V)4500L, (V)6L);
-                p.Call("mob_spawn3", (V)"사나운은빛늑대", v_name6_s, (V)150L, (V)160L, (V)4500L, (V)8L);
-                p.Call("mob_spawn3", (V)"자이언트맨티스", v_name6_s, (V)220L, (V)240L, (V)15000L, (V)1L);
+                // 체력은 5.99 몹 정의(Fota_Monster.txt) 값으로 — 소환 줄의 4500·15000 은 약하다(사용자 2026-10-02). 경험치는 그대로.
+                p.Call("mob_spawn3", (V)"사나운은빛늑대", v_name5_s, (V)150L, (V)160L, (V)5850L, (V)6L);
+                p.Call("mob_spawn3", (V)"사나운은빛늑대", v_name6_s, (V)150L, (V)160L, (V)5850L, (V)8L);
+                p.Call("mob_spawn3", (V)"자이언트맨티스", v_name6_s, (V)220L, (V)240L, (V)19500L, (V)1L);
             }
             else
                 if (V.T(((V)(v_select) == (V)((V)2L))))
