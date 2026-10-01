@@ -48,8 +48,7 @@ namespace Darkages.Server.Network.WS
                 }
                 catch (Exception ex)
                 {
-                    ServerContext.Logger(ex.Message, Microsoft.Extensions.Logging.LogLevel.Error);
-                    ServerContext.Logger(ex.StackTrace, Microsoft.Extensions.Logging.LogLevel.Error);
+                    ServerContext.Error(ex);
                 }
             }
         }
@@ -151,8 +150,7 @@ namespace Darkages.Server.Network.WS
             }
             catch (HttpListenerException ex) when (_serverIsRunning)
             {
-                ServerContext.Logger(ex.Message, LogLevel.Error);
-                ServerContext.Logger(ex.StackTrace, LogLevel.Error);
+                ServerContext.Error(ex);
             }
         }
 
@@ -198,8 +196,7 @@ namespace Darkages.Server.Network.WS
             }
             catch (Exception ex)
             {
-                ServerContext.Logger(ex.Message, Microsoft.Extensions.Logging.LogLevel.Error);
-                ServerContext.Logger(ex.StackTrace, LogLevel.Error);
+                ServerContext.Error(ex);
             }
             finally
             {

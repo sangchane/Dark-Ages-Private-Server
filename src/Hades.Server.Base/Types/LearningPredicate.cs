@@ -107,8 +107,7 @@ namespace Darkages.Types
                 player.Client.SendMessage(0x02, "You cannot learn that yet. Not even close!");
                 player.SendAnimation(94, player, player);
 
-                ServerContext.Logger(ex.Message, Microsoft.Extensions.Logging.LogLevel.Error);
-                ServerContext.Logger(ex.StackTrace, Microsoft.Extensions.Logging.LogLevel.Error);
+                ServerContext.Error(ex);
 
                 return false;
             }

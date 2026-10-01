@@ -211,8 +211,7 @@ namespace Darkages
             }
             catch (SocketException ex)
             {
-                ServerContext.Logger(ex.Message, Microsoft.Extensions.Logging.LogLevel.Error);
-                ServerContext.Logger(ex.StackTrace, Microsoft.Extensions.Logging.LogLevel.Error);
+                ServerContext.Error(ex);
             }
         }
 
@@ -235,8 +234,7 @@ namespace Darkages
             }
             catch (Exception ex)
             {
-                ServerContext.Logger(ex.Message, Microsoft.Extensions.Logging.LogLevel.Error);
-                ServerContext.Logger(ex.StackTrace, Microsoft.Extensions.Logging.LogLevel.Error);
+                ServerContext.Error(ex);
             }
         }
 
@@ -268,8 +266,7 @@ namespace Darkages
             }
             catch (Exception ex)
             {
-                ServerContext.Logger(ex.Message, Microsoft.Extensions.Logging.LogLevel.Error);
-                ServerContext.Logger(ex.StackTrace, Microsoft.Extensions.Logging.LogLevel.Error);
+                ServerContext.Error(ex);
             }
         }
 
@@ -446,7 +443,9 @@ namespace Darkages
                     wrappers++;
                 }
 
-                Logger(wrappers > 0 ? $"{cause.Message} (in a handler)" : cause.Message, LogLevel.Error);
+                // 종류를 같이 적는다 — "Object reference not set…" 한 줄만으로는 무엇이 터졌는지 모른다(2026-10-02).
+                var what = $"{cause.GetType().Name}: {cause.Message}";
+                Logger(wrappers > 0 ? $"{what} (in a handler)" : what, LogLevel.Error);
 
                 if (cause.StackTrace != null)
                     Logger(cause.StackTrace, LogLevel.Error);

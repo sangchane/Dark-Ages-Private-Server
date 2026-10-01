@@ -156,6 +156,12 @@ namespace Darkages.Network
             catch (Exception e)
             {
                 ServerContext.Error(e);
+
+                // 오류만으로는 누가 무엇을 하다 났는지 모른다 — 패킷 번호·이름·자리를 붙인다(2026-10-02).
+                var who = (client as Darkages.Network.Game.GameClient)?.Aisling;
+                ServerContext.Logger(
+                    $"  ↳ 패킷 0x{packet.Command:X2} · {who?.Username ?? "(로그인 전)"} · 맵 {who?.CurrentMapId} ({who?.XPos},{who?.YPos})",
+                    Microsoft.Extensions.Logging.LogLevel.Error);
             }
         }
 

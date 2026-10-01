@@ -21,8 +21,7 @@ namespace Darkages.Network.Game
             {
                 if (!ex.Message.Contains("Collection"))
                 {
-                    ServerContext.Logger(ex.Message, Microsoft.Extensions.Logging.LogLevel.Error);
-                    ServerContext.Logger(ex.StackTrace, Microsoft.Extensions.Logging.LogLevel.Error);
+                    ServerContext.Error(ex);
                 }
 
                 return false;

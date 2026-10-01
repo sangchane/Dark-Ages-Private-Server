@@ -394,8 +394,7 @@ namespace Darkages.Network.Game
                 }
                 catch (NullReferenceException ex)
                 {
-                    ServerContext.Logger(ex.Message, Microsoft.Extensions.Logging.LogLevel.Error);
-                    ServerContext.Logger(ex.StackTrace, Microsoft.Extensions.Logging.LogLevel.Error);
+                    ServerContext.Error(ex);
                 }
             }
 
@@ -877,7 +876,10 @@ namespace Darkages.Network.Game
             {
                 StorageManager.AislingBucket.Save(Aisling);
                 LastSave = DateTime.UtcNow;
-                ServerContext.Logger($"Aisling {Aisling.Username} data has been saved.");
+                // 봇은 몇 초마다 저장해 하루 3만 줄이 이것뿐이었다 — 오류가 묻혀 봇 것만 Debug 로 내린다(파일·콘솔에 안 남음, 2026-10-02).
+                // 사람 저장은 남긴다: 저장 폭주 시험(CompanionNewOwnerTests)이 이 줄을 센다.
+                ServerContext.Logger($"Aisling {Aisling.Username} data has been saved.",
+                    Companions.IsBot(Aisling.Username) ? Microsoft.Extensions.Logging.LogLevel.Debug : Microsoft.Extensions.Logging.LogLevel.Information);
             }
 
             return this;

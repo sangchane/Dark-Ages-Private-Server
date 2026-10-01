@@ -66,7 +66,7 @@ namespace Darkages.Storage
             }
             catch (Exception ex)
             {
-                ServerContext.Logger(ex.Message, Microsoft.Extensions.Logging.LogLevel.Error);
+                ServerContext.Error(ex);
                 return null;
             }
         }

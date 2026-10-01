@@ -52,8 +52,7 @@ namespace Darkages.Network.Game
             }
             catch (Exception ex)
             {
-                ServerContext.Logger(ex.Message, Microsoft.Extensions.Logging.LogLevel.Error);
-                ServerContext.Logger(ex.StackTrace, Microsoft.Extensions.Logging.LogLevel.Error);
+                ServerContext.Error(ex);
             }
             finally
             {
@@ -81,8 +80,7 @@ namespace Darkages.Network.Game
             }
             catch (ThreadAbortException ex)
             {
-                ServerContext.Logger(ex.Message, Microsoft.Extensions.Logging.LogLevel.Error);
-                ServerContext.Logger(ex.StackTrace, Microsoft.Extensions.Logging.LogLevel.Error);
+                ServerContext.Error(ex);
                 ServerContext.Running = false;
             }
         }
@@ -134,8 +132,7 @@ namespace Darkages.Network.Game
                     }
                     catch (Exception ex)
                     {
-                        ServerContext.Logger(ex.Message, Microsoft.Extensions.Logging.LogLevel.Error);
-                        ServerContext.Logger(ex.StackTrace, Microsoft.Extensions.Logging.LogLevel.Error);
+                        ServerContext.Error(ex);
                         // ignored
                     }
                 }
@@ -212,8 +209,7 @@ namespace Darkages.Network.Game
                     }
                     catch (Exception ex)
                     {
-                        ServerContext.Logger(ex.Message, Microsoft.Extensions.Logging.LogLevel.Error);
-                        ServerContext.Logger(ex.StackTrace, Microsoft.Extensions.Logging.LogLevel.Error);
+                        ServerContext.Error(ex);
                     }
             }
             catch (Exception e)

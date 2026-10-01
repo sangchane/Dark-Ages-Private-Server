@@ -153,8 +153,7 @@ namespace Darkages.Network.Login
             }
             catch (Exception ex)
             {
-                ServerContext.Logger(ex.Message, Microsoft.Extensions.Logging.LogLevel.Error);
-                ServerContext.Logger(ex.StackTrace, Microsoft.Extensions.Logging.LogLevel.Error);
+                ServerContext.Error(ex);
 
                 client.SendMessageBox(0x02,
                     $"{format.Username}: 이 서버에서 읽을 수 없는 캐릭터입니다. 새로 만들어 주십시오.");
