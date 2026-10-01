@@ -1,4 +1,4 @@
-{
+﻿{
   "Name": "단각",
   "ScriptName": "단각",
   "Prerequisites": {
@@ -11,8 +11,10 @@
   "Sound": 14,
   "TargetAnimation": 27,
   "TargetAnimationSpeed": 69,
-  "Cooldown": 2,
+  "Cooldown": 4,
   "Icon": 2,
   "Pane": 2,
-  "Type": 1
+  "Type": 1,
+  "AttackPercent": 280,
+  "EndurancePercent": 0
 }

@@ -208,13 +208,13 @@ namespace Darkages.Storage.locales.Scripts.Skills
         ///
         ///   피해 = 공격력 × 공격력배율 + 지구력 × 지구력배율
         ///
+        /// 두 배율은 기술 템플릿의 `AttackPercent` · `EndurancePercent` 다.
+        ///
         /// 공격력은 5.99 서버가 계산하는 값 그대로다 — `Pack599.AttackPower` 에 식과 근거가 있다.
         /// </summary>
         public static void Use(
             Sprite sprite,
             Skill skill,
-            int attackPercent,
-            int endurancePercent,
             byte motion,
             Action<Sprite> onHit = null,
             int reach = 1,
@@ -229,7 +229,7 @@ namespace Darkages.Storage.locales.Scripts.Skills
 
             if (targets != null)
             {
-                var damage = Blow(aisling, skill, attackPercent, endurancePercent);
+                var damage = Blow(aisling, skill, skill.Template.AttackPercent, skill.Template.EndurancePercent);
                 hit = Hit(aisling, skill, targets, _ => damage, onHit);
             }
 

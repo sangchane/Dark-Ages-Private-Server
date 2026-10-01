@@ -19,7 +19,7 @@ namespace Darkages.Storage.locales.Scripts.Skills
         public override void OnSuccess(Sprite sprite)
         {
             // Poison Punch — 공격력 ×2.5. 독은 아래 onHit 가 건다
-            MonkStrike.Use(sprite, Skill, 250, 0, 0x84, target =>
+            MonkStrike.Use(sprite, Skill, 0x84, target =>
             {
                 if (target.Debuffs.Values.OfType<Debuff_poison>().Any())
                     return;

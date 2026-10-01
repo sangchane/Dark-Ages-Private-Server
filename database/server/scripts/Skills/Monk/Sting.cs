@@ -17,7 +17,7 @@ namespace Darkages.Storage.locales.Scripts.Skills
         public override void OnSuccess(Sprite sprite)
         {
             // Sting — 5.99 정권의 공격력 ×2.5
-            MonkStrike.Use(sprite, Skill, 250, 0, 0x84);
+            MonkStrike.Use(sprite, Skill, 0x84);
         }
 
         public override void OnUse(Sprite sprite)

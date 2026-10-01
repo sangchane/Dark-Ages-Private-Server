@@ -17,7 +17,7 @@ namespace Darkages.Storage.locales.Scripts.Skills
         public override void OnSuccess(Sprite sprite)
         {
             // 단각 — 5.99: 공격력 ÷10 ×28 = 공격력 ×2.8
-            MonkStrike.Use(sprite, Skill, 280, 0, 0x83);
+            MonkStrike.Use(sprite, Skill, 0x83);
         }
 
         public override void OnUse(Sprite sprite)

@@ -15,5 +15,7 @@
   "Sound": 14,
   "TargetAnimation": 8,
   "Cooldown": 8,
-  "Type": 1
+  "Type": 1,
+  "AttackPercent": 600,
+  "EndurancePercent": 0
 }

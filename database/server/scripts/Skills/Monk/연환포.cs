@@ -25,7 +25,7 @@ namespace Darkages.Storage.locales.Scripts.Skills
             if (!MonkStrike.Spend(sprite, Skill, 230))
                 return;
 
-            MonkStrike.Use(sprite, Skill, 600, 0, 0x84);
+            MonkStrike.Use(sprite, Skill, 0x84);
         }
 
         public override void OnUse(Sprite sprite)

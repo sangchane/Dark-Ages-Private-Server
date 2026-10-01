@@ -13,5 +13,7 @@
   "TargetAnimation": 186,
   "TargetAnimationSpeed": 75,
   "Cooldown": 7,
-  "Type": 1
+  "Type": 1,
+  "AttackPercent": 400,
+  "EndurancePercent": 10000
 }

@@ -9,9 +9,15 @@ namespace Darkages.Types
 {
     public class SkillTemplate : Template
     {
+        /// <summary>무도가 한 방의 공격력 배율, 백분율(100 이 1배). `MonkStrike.Use` 가 읽는다.</summary>
+        public int AttackPercent { get; set; }
+
         public Buff Buff { get; set; }
         public double Cooldown { get; set; }
         public Debuff Debuff { get; set; }
+        /// <summary>무도가 한 방의 지구력 배율, 백분율. 0 이면 지구력은 더하지 않는다.</summary>
+        public int EndurancePercent { get; set; }
+
         public string FailMessage { get; set; }
         public byte Icon { get; set; }
 
