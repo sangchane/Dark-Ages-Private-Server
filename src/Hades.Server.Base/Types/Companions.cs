@@ -211,7 +211,7 @@ namespace Darkages.Types
         }
 
         /// <summary>
-        /// 1초마다(<c>CompanionComponent</c>): 부른 사람이 나갔으면 봇을 보내고, 봇이 나갔으면 알리고, 맵이 갈렸거나 멀리
+        /// 0.5초마다(<c>CompanionComponent</c>): 부른 사람이 나갔으면 봇을 보내고, 봇이 나갔으면 알리고, 맵이 갈렸거나 멀리
         /// 떨어졌으면 봇을 옆으로 옮긴다 — 봇은 워프 칸을 모르므로 주인이 워프로 사라지면 서버가 데려간다.
         /// </summary>
         public static void Tick()
@@ -337,9 +337,6 @@ namespace Darkages.Types
             bot.Client.TransitionToMap(HomeMap(), new Position(home.X, home.Y));
         }
 
-        /// <summary>
-        /// 옮겨 줄 때인가 — 12칸 넘게 떨어졌거나, <see cref="StuckFor" /> 동안 더 가까워지지 못했다(1초마다 부른다, Tick).
-        /// </summary>
         // 이번 수면에서 "못 푼다" 를 이미 알린 주인.
         private static readonly HashSet<string> ToldAsleep = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 
@@ -367,6 +364,10 @@ namespace Darkages.Types
                 owner.Client.SendMessage(0x02, "봇이 아직 수면을 풀지 못합니다 (21레벨부터)");
         }
 
+        /// <summary>
+        /// 옮겨 줄 때인가 — <see cref="CatchUpDistance" /> 칸 넘게 떨어졌거나, <see cref="StuckFor" /> 동안 더 가까워지지 못했다
+        /// (0.5초마다 부른다, Tick).
+        /// </summary>
         private static bool Stuck(Aisling bot, Aisling owner)
         {
             var distance = bot.Position.DistanceFrom(owner.Position);
