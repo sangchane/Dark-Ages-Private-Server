@@ -36,6 +36,7 @@ namespace Darkages.Network.ServerFormats
             writer.WriteStringA(Item.DisplayName);
             writer.Write(Item.Durability);
             writer.Write(Item.Template.MaxDurability);
+            ServerFormat0F.WriteNumbers(writer, Item);
         }
     }
 }
