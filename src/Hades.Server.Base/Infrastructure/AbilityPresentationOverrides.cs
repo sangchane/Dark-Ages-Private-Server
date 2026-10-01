@@ -4,6 +4,7 @@ using System.IO;
 using System.Threading;
 using Darkages.Network;
 using Darkages.Network.ServerFormats;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Linq;
 
 namespace Darkages.Types
@@ -132,9 +133,11 @@ namespace Darkages.Types
                         }
                     }
                 }
-                catch
+                catch (Exception ex)
                 {
                     // 운영 파일은 원자적으로 쓰지만 사람이 깨뜨릴 수도 있다. 잘못된 값을 게임에 남기지 않는다.
+                    ServerContext.Logger($"기술·마법 연출 덮어쓰기 파일을 읽지 못해 기본값을 씁니다 ({path}): {ex.GetType().Name}: {ex.Message}",
+                        LogLevel.Warning);
                     loaded.Clear();
                 }
             }
