@@ -19,6 +19,20 @@ namespace Darkages.Storage.locales.Scripts.Skills
     internal static class MonkStrike
     {
         /// <summary>
+        /// 구양신공을 무도가가 아닌 이가 쓰면 사람이 아닌 대상에게 가는 피해를 4 로 나눈 뒤 3 을 곱한다(3/4 로 줄인다, 5.99 팩 식 —
+        /// 정수 나눗셈이 먼저라 순서를 바꾸면 값이 달라진다).
+        /// </summary>
+        private const int OtherClassCrossDivisor = 4;
+
+        private const int OtherClassCrossShare = 3;
+
+        /// <summary>
+        /// 한 방 피해에 덧붙는 기술 레벨 보정의 바탕 — 피해에 (이 값 + 기술 레벨)% 를 더 붙인다(레벨 0 이어도 10%,
+        /// 레벨마다 1%씩). 하데스가 쓰던 보정 그대로.
+        /// </summary>
+        private const int SkillLevelBonusBasePercent = 10;
+
+        /// <summary>
         /// 마력. 5.99: 모자라면 「사용하기에 마력량이적습니다」 하고 쓰지 않고, 넉넉하면 **표적을 찾기 전에** 먼저 뺀다.
         /// </summary>
         public static bool Spend(Sprite sprite, Skill skill, int mana)
@@ -69,7 +83,7 @@ namespace Darkages.Storage.locales.Scripts.Skills
             var health = aisling.CurrentHp;
             var damage = health * multiplier;
             if (aisling.Path != Class.Monk)
-                damage = damage / 4 * 3;
+                damage = damage / OtherClassCrossDivisor * OtherClassCrossShare;
 
             var hit = Hit(aisling, skill, Around(aisling), target => target is Aisling ? health : damage);
 
@@ -253,7 +267,7 @@ namespace Darkages.Storage.locales.Scripts.Skills
                          + aisling.Con * endurancePercent / 100;
 
             // 기술 레벨이 오르면 1%씩 붙는다. 하데스가 쓰던 보정을 그대로 둔다.
-            return damage + damage * (10 + skill.Level) / 100;
+            return damage + damage * (SkillLevelBonusBasePercent + skill.Level) / 100;
         }
 
         private static bool Begin(Sprite sprite, Skill skill, out Aisling aisling)
