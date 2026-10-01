@@ -94,7 +94,7 @@ namespace Darkages.Storage.locales.Scripts.Mundanes
 
                         if (item != null)
                         {
-                            var offer = Convert.ToString((int) (item.Template.Value / 1.6));
+                            var offer = Convert.ToString(ShopPricing.Offer(item));
 
                             if (item.Stacks >= amount)
                             {
@@ -138,7 +138,7 @@ namespace Darkages.Storage.locales.Scripts.Mundanes
                 {
                     var item = client.Aisling.Inventory.Get(i => i != null && i.Slot == Convert.ToInt32(args))
                         .FirstOrDefault();
-                    var offer = Convert.ToString((int) (item.Template.Value / 1.6));
+                    var offer = Convert.ToString(ShopPricing.Offer(item));
 
                     if (offer == "0")
                     {
@@ -182,7 +182,7 @@ namespace Darkages.Storage.locales.Scripts.Mundanes
                     if (item == null)
                         return;
 
-                    var offer = Convert.ToString((int) (item.Template.Value / 1.6));
+                    var offer = Convert.ToString(ShopPricing.Offer(item));
 
                     if (Convert.ToInt32(offer) <= 0)
                         return;

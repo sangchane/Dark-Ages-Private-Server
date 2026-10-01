@@ -2044,48 +2044,54 @@ namespace Darkages.Network.Game
                 return;
 
             if (format.Kind == ClientFormatF2.Buy)
+                HandleBuy(client, merchant, lines);
+            else if (format.Kind == ClientFormatF2.Sell)
+                HandleSell(client, merchant, lines);
+        }
+
+        /// <summary>일괄 사기 — 이 상인이 파는 물건만, 모두 살 금화가 있을 때만. 가방이 차면 들어간 만큼만 값을 낸다.</summary>
+        private void HandleBuy(GameClient client, Mundane merchant, BulkTradeLine[] lines)
+        {
+            var shopItems = ServerContext.GlobalItemTemplateCache.Values
+                .Where(item => item.NpcKey == merchant.Template.Name)
+                .OrderBy(item => item.LevelRequired)
+                .Concat(merchant.Template.DefaultMerchantStock
+                    .Select(name => ServerContext.GlobalItemTemplateCache.GetValueOrDefault(name))
+                    .Where(item => item != null))
+                .ToArray();
+            var stock = new HashSet<string>(shopItems.Select(item => item.Name), StringComparer.Ordinal);
+            var purchases = lines
+                .Where(line => stock.Contains(line.Name))
+                .Select(line => (Line: line, Template: ServerContext.GlobalItemTemplateCache.GetValueOrDefault(line.Name)))
+                .Where(item => item.Template != null).ToArray();
+            long total = purchases.Sum(item => (long)item.Template.Value * item.Line.Quantity);
+
+            if (purchases.Length == 0 || total > client.Aisling.GoldPoints)
             {
-                var shopItems = ServerContext.GlobalItemTemplateCache.Values
-                    .Where(item => item.NpcKey == merchant.Template.Name)
-                    .OrderBy(item => item.LevelRequired)
-                    .Concat(merchant.Template.DefaultMerchantStock
-                        .Select(name => ServerContext.GlobalItemTemplateCache.GetValueOrDefault(name))
-                        .Where(item => item != null))
-                    .ToArray();
-                var stock = new HashSet<string>(shopItems.Select(item => item.Name), StringComparer.Ordinal);
-                var purchases = lines
-                    .Where(line => stock.Contains(line.Name))
-                    .Select(line => (Line: line, Template: ServerContext.GlobalItemTemplateCache.GetValueOrDefault(line.Name)))
-                    .Where(item => item.Template != null).ToArray();
-                long total = purchases.Sum(item => (long)item.Template.Value * item.Line.Quantity);
-
-                if (purchases.Length == 0 || total > client.Aisling.GoldPoints)
-                {
-                    client.SendItemShopDialog(merchant, "금화가 부족하거나 살 수 없는 물건입니다.", 0x0004, shopItems);
-                    return;
-                }
-
-                foreach (var purchase in purchases)
-                {
-                    int given = 0;
-                    for (int count = 0; count < purchase.Line.Quantity; count++)
-                    {
-                        var item = Item.Create(client.Aisling, purchase.Template);
-                        if (item == null || !item.GiveTo(client.Aisling))
-                            break;
-                        given++;
-                    }
-                    client.Aisling.GoldPoints -= (int)((long)purchase.Template.Value * given);
-                }
-
-                client.SendStats(StatusFlags.All);
-                client.SendItemShopDialog(merchant, "선택한 물건을 샀습니다. 계속 고르십시오.", 0x0004, shopItems);
+                client.SendItemShopDialog(merchant, "금화가 부족하거나 살 수 없는 물건입니다.", 0x0004, shopItems);
                 return;
             }
 
-            if (format.Kind != ClientFormatF2.Sell)
-                return;
+            foreach (var purchase in purchases)
+            {
+                int given = 0;
+                for (int count = 0; count < purchase.Line.Quantity; count++)
+                {
+                    var item = Item.Create(client.Aisling, purchase.Template);
+                    if (item == null || !item.GiveTo(client.Aisling))
+                        break;
+                    given++;
+                }
+                client.Aisling.GoldPoints -= (int)((long)purchase.Template.Value * given);
+            }
 
+            client.SendStats(StatusFlags.All);
+            client.SendItemShopDialog(merchant, "선택한 물건을 샀습니다. 계속 고르십시오.", 0x0004, shopItems);
+        }
+
+        /// <summary>일괄 팔기 — 칸마다 가진 만큼까지, <see cref="ShopPricing.Offer" /> 값으로. 금화 상한을 넘으면 하나도 팔지 않는다.</summary>
+        private void HandleSell(GameClient client, Mundane merchant, BulkTradeLine[] lines)
+        {
             var sales = new List<(Item Item, int Quantity, int Offer)>();
             foreach (var group in lines.GroupBy(line => line.Slot))
             {
@@ -2095,7 +2101,7 @@ namespace Darkages.Network.Game
 
                 int requested = (int)Math.Min(int.MaxValue, group.Sum(line => (long)line.Quantity));
                 int quantity = item.Template.CanStack ? Math.Min(requested, item.Stacks) : 1;
-                int offer = (int)(item.Template.Value / 1.6);
+                int offer = ShopPricing.Offer(item);
                 if (quantity <= 0 || offer <= 0)
                     continue;
 
