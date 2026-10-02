@@ -111,7 +111,7 @@ namespace Darkages.Storage.locales.Scripts.Formulas
                 if (name == null || !ServerContext.GlobalItemTemplateCache.TryGetValue(name, out var template))
                     continue;
 
-                var rate = template.DropRate * DropBoost;
+                var rate = (_monster.Template.DropRate ?? template.DropRate) * DropBoost;
 
                 if (point < rate)
                 {

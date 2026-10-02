@@ -72,6 +72,13 @@ namespace Darkages.Types
         [Description("Least gold one kill pays. Leave unset for no floor.")]
         public int? GoldMinimum { get; set; }
 
+        /// <summary>
+        /// 이 괴물이 떨구는 확률 — 있으면 아이템의 DropRate 대신 쓴다. 같은 아이템이라도 센 괴물일수록 조금 더 잘 떨구게
+        /// (사용자 2026-10-02 「괴물마다 달라야지」). Null 이면 아이템 것.
+        /// </summary>
+        [Description("Drop rate for this monster's drops, in place of each item's. Leave unset for the item's.")]
+        public double? DropRate { get; set; }
+
         public string FamilyKey { get; set; }
 
         [Description("Does this monster grow stonger over time? default = false")]

@@ -22,13 +22,16 @@
   "CastSpeed": 8000,
   "MoodType": 4,
   "PathQualifer": 1,
-  "LootType": 256,
+  "LootType": 2,
   "Drops": {
-    "$values": []
+    "$values": [
+      "골드아쿠아링"
+    ]
   },
   "ScriptName": "Common Monster",
   "UpdateMapWide": true,
   "UpdateRate": 1000.0,
   "Grow": false,
-  "IgnoreCollision": false
+  "IgnoreCollision": false,
+  "DropRate": 0.01426
 }

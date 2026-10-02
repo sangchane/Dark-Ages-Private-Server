@@ -36,5 +36,6 @@
   "UpdateRate": 1000.0,
   "Grow": false,
   "IgnoreCollision": false,
-  "GoldMinimum": 10000
+  "GoldMinimum": 10000,
+  "DropRate": 0.0032
 }

@@ -420,6 +420,301 @@
           "PortalKey": 0
         }
       ]
+    },
+    {
+      "Destination": {
+        "AreaID": 20832,
+        "Location": {
+          "X": 18,
+          "Y": 47
+        },
+        "PortalKey": 0
+      },
+      "DisplayName": "구광산",
+      "PointX": 120,
+      "PointY": 130,
+      "Zones": [
+        {
+          "AreaID": 20797,
+          "Location": {
+            "X": 88,
+            "Y": 3
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20808,
+          "Location": {
+            "X": 3,
+            "Y": 55
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20809,
+          "Location": {
+            "X": 16,
+            "Y": 6
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20822,
+          "Location": {
+            "X": 58,
+            "Y": 4
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20823,
+          "Location": {
+            "X": 14,
+            "Y": 35
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20824,
+          "Location": {
+            "X": 14,
+            "Y": 53
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20825,
+          "Location": {
+            "X": 3,
+            "Y": 52
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20826,
+          "Location": {
+            "X": 52,
+            "Y": 56
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20827,
+          "Location": {
+            "X": 4,
+            "Y": 80
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20828,
+          "Location": {
+            "X": 26,
+            "Y": 90
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20829,
+          "Location": {
+            "X": 26,
+            "Y": 92
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20830,
+          "Location": {
+            "X": 12,
+            "Y": 9
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20831,
+          "Location": {
+            "X": 26,
+            "Y": 92
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20798,
+          "Location": {
+            "X": 92,
+            "Y": 46
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20799,
+          "Location": {
+            "X": 47,
+            "Y": 98
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20800,
+          "Location": {
+            "X": 47,
+            "Y": 98
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20801,
+          "Location": {
+            "X": 3,
+            "Y": 52
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20802,
+          "Location": {
+            "X": 52,
+            "Y": 56
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20803,
+          "Location": {
+            "X": 91,
+            "Y": 3
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20804,
+          "Location": {
+            "X": 93,
+            "Y": 59
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20805,
+          "Location": {
+            "X": 69,
+            "Y": 87
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20806,
+          "Location": {
+            "X": 3,
+            "Y": 52
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20807,
+          "Location": {
+            "X": 4,
+            "Y": 80
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20810,
+          "Location": {
+            "X": 11,
+            "Y": 41
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20811,
+          "Location": {
+            "X": 58,
+            "Y": 4
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20812,
+          "Location": {
+            "X": 15,
+            "Y": 34
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20813,
+          "Location": {
+            "X": 46,
+            "Y": 98
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20814,
+          "Location": {
+            "X": 69,
+            "Y": 87
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20815,
+          "Location": {
+            "X": 26,
+            "Y": 92
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20816,
+          "Location": {
+            "X": 3,
+            "Y": 52
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20817,
+          "Location": {
+            "X": 4,
+            "Y": 80
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20818,
+          "Location": {
+            "X": 27,
+            "Y": 4
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20819,
+          "Location": {
+            "X": 91,
+            "Y": 3
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20820,
+          "Location": {
+            "X": 27,
+            "Y": 4
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20821,
+          "Location": {
+            "X": 3,
+            "Y": 52
+          },
+          "PortalKey": 0
+        }
+      ]
     }
   ],
   "FieldNumber": 1,
