@@ -7,7 +7,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
     /// 찌르기 — 5.99 `도적(비전직).txt` 의 SKILL_찌르기 을 그대로 옮긴 것.
     /// </summary>
     /// <remarks>
-    /// 손으로 고치지 말 것. `scripts/build-pack-abilities.py` 가 다시 만든다.
+    /// 손으로 고치지 말 것. `scripts/gen/ability/build-pack-abilities.py` 가 다시 만든다.
     /// </remarks>
     [Script("찌르기", "5.99표")]
     public class SkillCC0CB974AE30 : SkillScript

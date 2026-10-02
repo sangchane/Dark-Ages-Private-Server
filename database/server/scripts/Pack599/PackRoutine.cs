@@ -9,7 +9,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
 {
     /// <summary>
     /// 5.99 가 1초마다 도는 스크립트(`script/Dungeon.txt` 의 `Dungeon__Script`)를 개인 사본 맵에서 돌린다. 사본 안에 선 사람마다 한 번씩,
-    /// 그 사람을 `get_myid` 로 — 보스방 괴물이 다 죽었는지 세고, 5초를 센 뒤 경험치를 주고 내보낸다. `scripts/build-pack-npcs.py` 가
+    /// 그 사람을 `get_myid` 로 — 보스방 괴물이 다 죽었는지 세고, 5초를 센 뒤 경험치를 주고 내보낸다. `scripts/gen/world/build-pack-npcs.py` 가
     /// 스크립트 본문을 이것을 상속한 클래스로 옮긴다(`map_create` 가 사본에 붙인다).
     /// </summary>
     /// <remarks>

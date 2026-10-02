@@ -7,7 +7,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
     /// 연하늘색염색약 — 5.99 `E.T.C.txt` 의 아이템 사용 스크립트를 그대로 옮긴 것. 아이템이 스스로 지운다(`item_del`).
     /// </summary>
     /// <remarks>
-    /// 손으로 고치지 말 것. `scripts/build-pack-npcs.py` 가 다시 만든다.
+    /// 손으로 고치지 말 것. `scripts/gen/world/build-pack-npcs.py` 가 다시 만든다.
     /// </remarks>
     [Script("ITEM_연하늘색염색약", "5.99표")]
     public class ItemC5F0D558B298C0C9C5FCC0C9C57D : ItemScript

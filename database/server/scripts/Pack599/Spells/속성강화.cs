@@ -7,7 +7,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
     /// 속성강화 — 5.99 `Wizard.txt` 의 SPELL_속성강화 을 그대로 옮긴 것.
     /// </summary>
     /// <remarks>
-    /// 손으로 고치지 말 것. `scripts/build-pack-abilities.py` 가 다시 만든다.
+    /// 손으로 고치지 말 것. `scripts/gen/ability/build-pack-abilities.py` 가 다시 만든다.
     /// </remarks>
     [Script("속성강화", "5.99표")]
     public class SpellC18DC131AC15D654 : SpellScript

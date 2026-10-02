@@ -7,7 +7,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
     /// 홀리드래곤 — 5.99 `Mob_Spell.txt` 의 Monster_홀리드래곤 을 그대로 옮긴 것.
     /// </summary>
     /// <remarks>
-    /// 손으로 고치지 말 것. `scripts/build-pack-abilities.py` 가 다시 만든다.
+    /// 손으로 고치지 말 것. `scripts/gen/ability/build-pack-abilities.py` 가 다시 만든다.
     /// </remarks>
     [Script("Monster_홀리드래곤", "5.99표")]
     public class MonsterD640B9ACB4DCB798ACE4 : SpellScript

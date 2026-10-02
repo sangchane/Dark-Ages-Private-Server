@@ -8,7 +8,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
     /// Dungeon__Script — 5.99 `script/Dungeon.txt` 를 그대로 옮긴 것. 개인 던전 사본 안의 사람마다 1초에 한 번 돈다(PackRoutine).
     /// </summary>
     /// <remarks>
-    /// 손으로 고치지 말 것. `scripts/build-pack-npcs.py` 가 다시 만든다.
+    /// 손으로 고치지 말 것. `scripts/gen/world/build-pack-npcs.py` 가 다시 만든다.
     /// </remarks>
     [Script("PACK_Dungeon__Script", "5.99표")]
     public class Routine00440075006E00670065006F006E005F005F005300630072006900700074 : PackRoutine

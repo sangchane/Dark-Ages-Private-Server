@@ -12,8 +12,8 @@ namespace Darkages.Storage.locales.Scripts.Items
     /// <summary>
     /// 이름 없는 리콜 — 아무 마을로 돌아간다. 원작은 "마을 이름이 붙은 리콜은 그 마을의 정해진 자리로, 그냥 리콜은
     /// 정해지지 않은 마을의 정해진 자리로" 보낸다(사용자 설명). 어느 자리인지는 여기 적지 않는다 — 마을 이름 리콜
-    /// 템플릿(<c>RecallArea</c>·<c>RecallX</c>·<c>RecallY</c>, scripts/build-pack-consumables.py)을 그대로 빌린다.
-    /// 쓰고 나면 하나가 줄어드는 것은 <c>Format1CHandler</c> 가 한다(Stackable·Consumable 깃발). 템플릿은 scripts/build-recall.py 가 쓴다.
+    /// 템플릿(<c>RecallArea</c>·<c>RecallX</c>·<c>RecallY</c>, scripts/gen/items/build-pack-consumables.py)을 그대로 빌린다.
+    /// 쓰고 나면 하나가 줄어드는 것은 <c>Format1CHandler</c> 가 한다(Stackable·Consumable 깃발). 템플릿은 scripts/gen/world/build-recall.py 가 쓴다.
     /// </summary>
     [Script("Recall")]
     public class Recall : ItemScript

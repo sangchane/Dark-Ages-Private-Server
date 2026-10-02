@@ -10,7 +10,7 @@ using Darkages.Types;
 namespace Darkages.Storage.locales.Scripts.Pack599
 {
     /// <summary>
-    /// 5.99 NPC 스크립트(`db/script/Npc/Npc_*.txt`)를 적힌 그대로 돌린다. `scripts/build-pack-npcs.py` 가 스크립트마다
+    /// 5.99 NPC 스크립트(`db/script/Npc/Npc_*.txt`)를 적힌 그대로 돌린다. `scripts/gen/world/build-pack-npcs.py` 가 스크립트마다
     /// 이것을 상속한 클래스를 만들고, 문장은 기술·마법과 같은 변환기로 C# 이 된다 — 명령은 <see cref="Pack599.Call" /> 로 간다.
     /// </summary>
     /// <remarks>

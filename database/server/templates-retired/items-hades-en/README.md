@@ -6,4 +6,4 @@
 items 에 남긴 영문 아홉: 코드·자료가 이름으로 부르는 Apple · Gramail Prayer Necklace · Shirt · Blouse · Spider's Eye(거미 드랍),
 Hades 기본 판 셋(Luathas Bronze Shield · Shagreen Boots · Luathas Coral Earrings — 시험이 쓴다), 5.99 무기 K4.
 되돌리기: 파일을 `templates/items/` 로 다시 옮기면 된다.
-접미사 장비 생성기(`scripts/build-suffix-gear-from-sheet.py`)는 그림 원본으로 이 폴더도 읽는다.
+접미사 장비 생성기(`scripts/gen/items/build-suffix-gear-from-sheet.py`)는 그림 원본으로 이 폴더도 읽는다.

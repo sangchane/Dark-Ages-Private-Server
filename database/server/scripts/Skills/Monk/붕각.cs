@@ -7,7 +7,7 @@ namespace Darkages.Storage.locales.Scripts.Skills
     /// 붕각 — 공격력 ×3.5 + 지구력 ×59 · 마나 70
     /// </summary>
     /// <remarks>
-    /// 손으로 고치지 말 것. `scripts/build-monk-skills.py` 가 5.99 서버팩 스크립트에서 다시 만든다.
+    /// 손으로 고치지 말 것. `scripts/gen/ability/build-monk-skills.py` 가 5.99 서버팩 스크립트에서 다시 만든다.
     /// </remarks>
     [Script("붕각", "5.99표/무도가")]
     public class MonkBD95AC01 : SkillScript

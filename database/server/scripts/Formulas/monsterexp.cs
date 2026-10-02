@@ -246,7 +246,7 @@ namespace Darkages.Storage.locales.Scripts.Formulas
         /// 입장 레벨이 워프 레벨문으로 적힌 사냥터 셋(노비스 1~22 · 포테의숲 21~51 · 아벨해안 51~80)에서 존(맵)마다 대표
         /// 경험치(SpawnMax 무게 기하평균)를 구해, 사냥터 안에서 경험치 순으로 범위에 펼친 것이 기준점이다(사용자: "존마다
         /// 몬스터 레벨 차이가 좀 날 거야, 경험치량이랑"). 기준점 사이는 ln(경험치) 위의 꺾은선, 양 끝 밖은 첫 점과 끝 점을
-        /// 잇는 기울기로 뻗고 1~99 로 자른다. 우드랜드는 입장 레벨 구간(<c>CutWoodland</c>)마다 따로. 방법·대조표는 <c>scripts/build-monster-cut-level.py</c> — 값은 그 생성기가 아래 칸에 쓴다.
+        /// 잇는 기울기로 뻗고 1~99 로 자른다. 우드랜드는 입장 레벨 구간(<c>CutWoodland</c>)마다 따로. 방법·대조표는 <c>scripts/gen/world/build-monster-cut-level.py</c> — 값은 그 생성기가 아래 칸에 쓴다.
         /// </remarks>
         private static int CutLevel(double exp, int mapId)
         {
@@ -284,7 +284,7 @@ namespace Darkages.Storage.locales.Scripts.Formulas
             return Math.Clamp((int)Math.Round(value, MidpointRounding.ToEven), 1, 99);
         }
 
-        // <cut-level> scripts/build-monster-cut-level.py 가 쓴다 — 손으로 고치지 말고 생성기를 다시 돌린다.
+        // <cut-level> scripts/gen/world/build-monster-cut-level.py 가 쓴다 — 손으로 고치지 말고 생성기를 다시 돌린다.
         // 노비스(1~22)·포테의숲(21~51)·아벨해안(51~80) 존마다의 대표 경험치 → 레벨, 경험치 순.
         private static readonly double[] CutExp = { 1133, 1133, 1191, 1191, 1638, 1638, 1638, 1638, 1706, 7552, 7821, 8437, 10710, 12323, 12798, 38664, 38664, 43645, 43645, 43645, 50132, 50132, 50132, 51011, 54594, 54594 };
         private static readonly double[] CutLevels = { 1.0, 1.0, 3.55, 3.55, 19.93, 19.93, 19.93, 19.93, 22.0, 22.0, 22.99, 27.3, 40.87, 48.85, 51.0, 51.0, 51.0, 61.18, 61.18, 61.18, 72.83, 72.83, 72.83, 74.29, 80.0, 80.0 };

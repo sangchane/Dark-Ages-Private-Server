@@ -7,7 +7,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
     /// 영자텔깃 — 5.99 `CashI.txt` 의 아이템 사용 스크립트를 그대로 옮긴 것. 아이템이 스스로 지운다(`item_del`).
     /// </summary>
     /// <remarks>
-    /// 손으로 고치지 말 것. `scripts/build-pack-npcs.py` 가 다시 만든다.
+    /// 손으로 고치지 말 것. `scripts/gen/world/build-pack-npcs.py` 가 다시 만든다.
     /// </remarks>
     [Script("ITEM_영자텔깃", "5.99표")]
     public class ItemC601C790D154AE43 : ItemScript

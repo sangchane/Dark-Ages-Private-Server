@@ -72,7 +72,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
     }
 
     /// <summary>
-    /// 5.99 스크립트 명령을 하데스 동작으로 옮기는 통역. `scripts/build-pack-abilities.py` 가 5.99 의
+    /// 5.99 스크립트 명령을 하데스 동작으로 옮기는 통역. `scripts/gen/ability/build-pack-abilities.py` 가 5.99 의
     /// <c>SKILL_이름</c>·<c>SPELL_이름</c> 블록을 C# 으로 옮기고, 그 안의 명령은 전부 <see cref="Call" /> 로 온다.
     ///
     /// **아직 옮기지 않은 명령은 서버를 멈추지 않는다** — 한 번 로그를 남기고 0 을 돌려준다. 그래서 명령을

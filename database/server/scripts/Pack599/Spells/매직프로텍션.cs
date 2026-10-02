@@ -7,7 +7,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
     /// 매직프로텍션 — 5.99 `Wizard.txt` 의 SPELL_매직프로텍션 을 그대로 옮긴 것.
     /// </summary>
     /// <remarks>
-    /// 손으로 고치지 말 것. `scripts/build-pack-abilities.py` 가 다시 만든다.
+    /// 손으로 고치지 말 것. `scripts/gen/ability/build-pack-abilities.py` 가 다시 만든다.
     /// </remarks>
     [Script("매직프로텍션", "5.99표")]
     public class SpellB9E4C9C1D504B85CD14DC158 : SpellScript

@@ -7,7 +7,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
     /// 연주공격(Lev4) — 5.99 `Jigja.txt` 의 SKILL_연주공격(Lev4) 을 그대로 옮긴 것.
     /// </summary>
     /// <remarks>
-    /// 손으로 고치지 말 것. `scripts/build-pack-abilities.py` 가 다시 만든다.
+    /// 손으로 고치지 말 것. `scripts/gen/ability/build-pack-abilities.py` 가 다시 만든다.
     /// </remarks>
     [Script("연주공격(Lev4)", "5.99표")]
     public class SkillC5F0C8FCACF5ACA90028004C0065007600340029 : SkillScript

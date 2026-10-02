@@ -7,7 +7,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
     /// 퓨리소월루(Lev1) — 5.99 `Warrior.txt` 의 SKILL_퓨리소월루(Lev1) 을 그대로 옮긴 것.
     /// </summary>
     /// <remarks>
-    /// 손으로 고치지 말 것. `scripts/build-pack-abilities.py` 가 다시 만든다.
+    /// 손으로 고치지 말 것. `scripts/gen/ability/build-pack-abilities.py` 가 다시 만든다.
     /// </remarks>
     [Script("퓨리소월루(Lev1)", "5.99표")]
     public class SkillD4E8B9ACC18CC6D4B8E80028004C0065007600310029 : SkillScript

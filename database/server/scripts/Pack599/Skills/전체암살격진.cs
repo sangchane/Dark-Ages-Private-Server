@@ -7,7 +7,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
     /// 전체암살격진 — 5.99 `Rogue.txt` 의 SKILL_전체암살격진 을 그대로 옮긴 것.
     /// </summary>
     /// <remarks>
-    /// 손으로 고치지 말 것. `scripts/build-pack-abilities.py` 가 다시 만든다.
+    /// 손으로 고치지 말 것. `scripts/gen/ability/build-pack-abilities.py` 가 다시 만든다.
     /// </remarks>
     [Script("전체암살격진", "5.99표")]
     public class SkillC804CCB4C554C0B4ACA9C9C4 : SkillScript

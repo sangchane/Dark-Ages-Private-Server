@@ -7,7 +7,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
     /// 아이스블러스트 — 5.99 `Wizard.txt` 의 SPELL_아이스블러스트 을 그대로 옮긴 것.
     /// </summary>
     /// <remarks>
-    /// 손으로 고치지 말 것. `scripts/build-pack-abilities.py` 가 다시 만든다.
+    /// 손으로 고치지 말 것. `scripts/gen/ability/build-pack-abilities.py` 가 다시 만든다.
     /// </remarks>
     [Script("아이스블러스트", "5.99표")]
     public class SpellC544C774C2A4BE14B7ECC2A4D2B8 : SpellScript

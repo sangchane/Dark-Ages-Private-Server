@@ -1,4 +1,4 @@
-// 손으로 고치지 말 것. `python3 scripts/build-auto-learn.py --쓰기` 가 다시 만든다.
+// 손으로 고치지 말 것. `python3 scripts/gen/ability/build-auto-learn.py --쓰기` 가 다시 만든다.
 // 근거: 노바 팩 1차 스킬상인(`db/script/스킬배우기.txt` 메뉴 글의 레벨)과 전직 첫 기술(`npc_script.txt`).
 // 치울 것(Withdrawn): 5.99 밀레스마을 직업 사범 20명(`database/server/scripts/Pack599/Npcs`)이 가르치는데 노바 1차 목록에 없는 것.
 namespace Darkages.Types

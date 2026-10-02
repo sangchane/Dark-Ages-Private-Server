@@ -7,7 +7,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
     /// 명중률향상(Lev1) — 5.99 `도적(비전직).txt` 의 SPELL_명중률향상(Lev1) 을 그대로 옮긴 것.
     /// </summary>
     /// <remarks>
-    /// 손으로 고치지 말 것. `scripts/build-pack-abilities.py` 가 다시 만든다.
+    /// 손으로 고치지 말 것. `scripts/gen/ability/build-pack-abilities.py` 가 다시 만든다.
     /// </remarks>
     [Script("명중률향상(Lev1)", "5.99표")]
     public class SpellBA85C911B960D5A5C0C10028004C0065007600310029 : SpellScript

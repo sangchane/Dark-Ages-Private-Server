@@ -10,7 +10,7 @@ namespace Darkages.Types
     /// <summary>
     /// 레벨이 되면 그 직업의 기술·마법을 저절로 익힌다 — 사범에게 가지 않아도(사용자 결정 2026-09-26). 기준은 레벨·직업만
     /// (골드·재료·앞 단계 기술은 보지 않는다). 표 <see cref="Table" /> 는 노바 팩 1차 스킬상인이 가르치는 레벨과 전직 첫 기술이다
-    /// (사용자 결정 2026-09-27, <c>scripts/build-auto-learn.py</c>). 레벨업(<see cref="Monster.Levelup" />)과 로그인 때 부른다 — 로그인
+    /// (사용자 결정 2026-09-27, <c>scripts/gen/ability/build-auto-learn.py</c>). 레벨업(<see cref="Monster.Levelup" />)과 로그인 때 부른다 — 로그인
     /// 때는 이미 넘은 레벨의 빠진 것을 한꺼번에 준다. 5.99 사범만 가르치던 것(<see cref="Withdrawn" />)은 먼저 창에서 치운다 —
     /// 그 목록에 있는 이름만. 사범은 그대로 둔다(이미 있으면 "이미 이 스킬을 습득 하셧습니다.").
     /// 동료 봇은 부를 때 제 목록(<see cref="Companions.PriestSpells" />)을 받으므로 건드리지 않는다.

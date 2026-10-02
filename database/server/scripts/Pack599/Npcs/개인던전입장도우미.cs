@@ -9,7 +9,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
     /// 개인던전입장도우미 — 5.99 `Npc_Warp.txt` 의 NPC 스크립트를 그대로 옮긴 것.
     /// </summary>
     /// <remarks>
-    /// 손으로 고치지 말 것. `scripts/build-pack-npcs.py` 가 다시 만든다.
+    /// 손으로 고치지 말 것. `scripts/gen/world/build-pack-npcs.py` 가 다시 만든다.
     /// </remarks>
     [Script("NPC_개인던전입장도우미", "5.99표")]
     public class NpcAC1CC778B358C804C785C7A5B3C4C6B0BBF8 : PackNpc

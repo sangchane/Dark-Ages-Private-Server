@@ -9,7 +9,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
     /// 배틀장퇴장 — 5.99 `Npc_Warp.txt` 의 NPC 스크립트를 그대로 옮긴 것.
     /// </summary>
     /// <remarks>
-    /// 손으로 고치지 말 것. `scripts/build-pack-npcs.py` 가 다시 만든다.
+    /// 손으로 고치지 말 것. `scripts/gen/world/build-pack-npcs.py` 가 다시 만든다.
     /// </remarks>
     [Script("NPC_배틀장퇴장", "5.99표")]
     public class NpcBC30D2C0C7A5D1F4C7A5 : PackNpc

@@ -9,7 +9,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
     /// 리프트도우미 — 5.99 `Npc_Script.txt` 의 NPC 스크립트를 그대로 옮긴 것.
     /// </summary>
     /// <remarks>
-    /// 손으로 고치지 말 것. `scripts/build-pack-npcs.py` 가 다시 만든다.
+    /// 손으로 고치지 말 것. `scripts/gen/world/build-pack-npcs.py` 가 다시 만든다.
     /// </remarks>
     [Script("NPC_리프트도우미", "5.99표")]
     public class NpcB9ACD504D2B8B3C4C6B0BBF8 : PackNpc

@@ -7,7 +7,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
     /// 이상한빛 — 5.99 `Mob_Spell.txt` 의 Monster_이상한빛 을 그대로 옮긴 것.
     /// </summary>
     /// <remarks>
-    /// 손으로 고치지 말 것. `scripts/build-pack-abilities.py` 가 다시 만든다.
+    /// 손으로 고치지 말 것. `scripts/gen/ability/build-pack-abilities.py` 가 다시 만든다.
     /// </remarks>
     [Script("Monster_이상한빛", "5.99표")]
     public class MonsterC774C0C1D55CBE5B : SpellScript

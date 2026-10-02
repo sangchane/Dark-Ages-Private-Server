@@ -7,7 +7,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
     /// 깃털날리기(Lev1) — 5.99 `Monk.txt` 의 SPELL_깃털날리기(Lev1) 을 그대로 옮긴 것.
     /// </summary>
     /// <remarks>
-    /// 손으로 고치지 말 것. `scripts/build-pack-abilities.py` 가 다시 만든다.
+    /// 손으로 고치지 말 것. `scripts/gen/ability/build-pack-abilities.py` 가 다시 만든다.
     /// </remarks>
     [Script("깃털날리기(Lev1)", "5.99표")]
     public class SpellAE43D138B0A0B9ACAE300028004C0065007600310029 : SpellScript

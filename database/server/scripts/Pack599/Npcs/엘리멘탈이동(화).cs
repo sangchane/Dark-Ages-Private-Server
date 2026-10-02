@@ -9,7 +9,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
     /// 엘리멘탈이동(화) — 5.99 `Npc_Warp.txt` 의 NPC 스크립트를 그대로 옮긴 것.
     /// </summary>
     /// <remarks>
-    /// 손으로 고치지 말 것. `scripts/build-pack-npcs.py` 가 다시 만든다.
+    /// 손으로 고치지 말 것. `scripts/gen/world/build-pack-npcs.py` 가 다시 만든다.
     /// </remarks>
     [Script("NPC_엘리멘탈이동(화)", "5.99표")]
     public class NpcC5D8B9ACBA58D0C8C774B3D90028D6540029 : PackNpc
