@@ -52,7 +52,9 @@ namespace Darkages.Network.Login
             if (aisling != null)
             {
 
-                if (!ServerContext.GlobalMapCache.ContainsKey(aisling.AreaId))
+                // 없어진 맵(사라진 개인 사본 따위)은 게임 서버가 시작 자리로 보낸다(GameClient.Load) — 시작 맵까지 없을 때만 막는다.
+                if (!ServerContext.GlobalMapCache.ContainsKey(aisling.AreaId)
+                    && !ServerContext.GlobalMapCache.ContainsKey(ServerContext.Config.StartingMap))
                 {
                     client.SendMessageBox(0x03, $"{aisling.AreaId}번 맵이 준비되어 있지 않습니다.\0");
                     return;
