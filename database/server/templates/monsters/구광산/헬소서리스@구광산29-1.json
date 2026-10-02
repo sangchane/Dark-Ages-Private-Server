@@ -22,15 +22,19 @@
   "CastSpeed": 8000,
   "MoodType": 4,
   "PathQualifer": 1,
-  "LootType": 32,
+  "LootType": 2,
   "Drops": {
-    "$values": []
+    "$values": [
+      "헬클레릭로브",
+      "헬클레릭후드",
+      "홀리베일",
+      "헬프리스트로브"
+    ]
   },
   "ScriptName": "Common Monster",
   "UpdateMapWide": true,
   "UpdateRate": 1000.0,
   "Grow": false,
   "IgnoreCollision": false,
-  "Gold": 500,
-  "GoldChance": 100
+  "GoldMinimum": 10000
 }

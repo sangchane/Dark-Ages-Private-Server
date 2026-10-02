@@ -68,6 +68,10 @@ namespace Darkages.Types
         [Description("Chance in a hundred the gold drops at all. Leave unset for always.")]
         public int? GoldChance { get; set; }
 
+        /// <summary>한 마리가 떨구는 금화의 바닥. 경험치 비례식이 이보다 적으면 이 값을 준다 — 구광산 10,000전(사용자 2026-10-02).</summary>
+        [Description("Least gold one kill pays. Leave unset for no floor.")]
+        public int? GoldMinimum { get; set; }
+
         public string FamilyKey { get; set; }
 
         [Description("Does this monster grow stonger over time? default = false")]

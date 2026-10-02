@@ -22,15 +22,19 @@
   "CastSpeed": 8000,
   "MoodType": 4,
   "PathQualifer": 1,
-  "LootType": 32,
+  "LootType": 2,
   "Drops": {
-    "$values": []
+    "$values": [
+      "헬소서러로브",
+      "헬소서러후드",
+      "헬소서리스로브",
+      "매직베일"
+    ]
   },
   "ScriptName": "Common Monster",
   "UpdateMapWide": true,
   "UpdateRate": 1000.0,
   "Grow": false,
   "IgnoreCollision": false,
-  "Gold": 500,
-  "GoldChance": 100
+  "GoldMinimum": 10000
 }

@@ -407,13 +407,14 @@ namespace Darkages.Storage.locales.Scripts.Formulas
         /// <b>레벨 기반 최저금액 분기를 걷어내고 경험치 비례식으로 바꿨다(사용자 결정, 2026-09-24).</b>
         /// 금화 = 경험치 × <see cref="GoldPerExp"/> × (0.8~1.2 무작위). 템플릿의 <c>Gold</c>·
         /// <c>GoldChance</c> 칸은 더 이상 읽지 않지만 자료에서 지우지는 않았다(생성기는 더하고 고치기만).
+        /// <c>GoldMinimum</c> 이 있으면 그보다 적게 주지 않는다(구광산 10,000전, 2026-10-02).
         /// </remarks>
         private void GenerateGold()
         {
             var perExp = IsNovice(_monster.CurrentMapId) ? NoviceGoldPerExp : GoldPerExp;
             var baseline = MonsterExp() * perExp;
             var factor = 1 + (Generator.Random.NextDouble() * 2 - 1) * GoldVariance;
-            var sum = (int)Math.Round(baseline * factor);
+            var sum = Math.Max((int)Math.Round(baseline * factor), _monster.Template.GoldMinimum ?? 0);
 
             if (sum > 0)
                 Money.Create(_monster, sum, new Position(_monster.XPos, _monster.YPos));

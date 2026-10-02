@@ -22,7 +22,7 @@
   "CastSpeed": 8000,
   "MoodType": 4,
   "PathQualifer": 1,
-  "LootType": 32,
+  "LootType": 256,
   "Drops": {
     "$values": []
   },
@@ -31,6 +31,5 @@
   "UpdateRate": 1000.0,
   "Grow": false,
   "IgnoreCollision": false,
-  "Gold": 500,
-  "GoldChance": 100
+  "GoldMinimum": 10000
 }

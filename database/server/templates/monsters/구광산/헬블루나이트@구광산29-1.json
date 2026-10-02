@@ -22,15 +22,17 @@
   "CastSpeed": 8000,
   "MoodType": 4,
   "PathQualifer": 1,
-  "LootType": 32,
+  "LootType": 2,
   "Drops": {
-    "$values": []
+    "$values": [
+      "헬나이트아머",
+      "헬나이트투구"
+    ]
   },
   "ScriptName": "Common Monster",
   "UpdateMapWide": true,
   "UpdateRate": 1000.0,
   "Grow": false,
   "IgnoreCollision": false,
-  "Gold": 500,
-  "GoldChance": 100
+  "GoldMinimum": 10000
 }
