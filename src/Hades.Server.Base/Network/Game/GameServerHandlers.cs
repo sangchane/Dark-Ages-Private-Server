@@ -2443,34 +2443,45 @@ namespace Darkages.Network.Game
                 return;
             }
 
-            if ((attribute & Stat.Str) == Stat.Str)
+            // 점수 1에 능력치 하나만. 여러 칸을 한 바이트에 켜거나 상한에 닿은 능력치면 점수를 쓰지 않는다.
+            var current = attribute switch
             {
-                client.Aisling._Str++;
-                client.SendMessage(0x02, ServerContext.Config.StrAddedMessage);
+                Stat.Str => client.Aisling._Str,
+                Stat.Int => client.Aisling._Int,
+                Stat.Wis => client.Aisling._Wis,
+                Stat.Con => client.Aisling._Con,
+                Stat.Dex => client.Aisling._Dex,
+                _ => (byte?) null
+            };
+
+            if (current == null || current >= ServerContext.Config.StatCap)
+            {
+                client.SendMessage(0x02, ServerContext.Config.CantDoThat);
+                return;
             }
 
-            if ((attribute & Stat.Int) == Stat.Int)
+            switch (attribute)
             {
-                client.Aisling._Int++;
-                client.SendMessage(0x02, ServerContext.Config.IntAddedMessage);
-            }
-
-            if ((attribute & Stat.Wis) == Stat.Wis)
-            {
-                client.Aisling._Wis++;
-                client.SendMessage(0x02, ServerContext.Config.WisAddedMessage);
-            }
-
-            if ((attribute & Stat.Con) == Stat.Con)
-            {
-                client.Aisling._Con++;
-                client.SendMessage(0x02, ServerContext.Config.ConAddedMessage);
-            }
-
-            if ((attribute & Stat.Dex) == Stat.Dex)
-            {
-                client.Aisling._Dex++;
-                client.SendMessage(0x02, ServerContext.Config.DexAddedMessage);
+                case Stat.Str:
+                    client.Aisling._Str++;
+                    client.SendMessage(0x02, ServerContext.Config.StrAddedMessage);
+                    break;
+                case Stat.Int:
+                    client.Aisling._Int++;
+                    client.SendMessage(0x02, ServerContext.Config.IntAddedMessage);
+                    break;
+                case Stat.Wis:
+                    client.Aisling._Wis++;
+                    client.SendMessage(0x02, ServerContext.Config.WisAddedMessage);
+                    break;
+                case Stat.Con:
+                    client.Aisling._Con++;
+                    client.SendMessage(0x02, ServerContext.Config.ConAddedMessage);
+                    break;
+                case Stat.Dex:
+                    client.Aisling._Dex++;
+                    client.SendMessage(0x02, ServerContext.Config.DexAddedMessage);
+                    break;
             }
 
             if (client.Aisling._Wis > ServerContext.Config.StatCap)
