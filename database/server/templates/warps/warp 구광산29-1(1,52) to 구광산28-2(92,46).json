@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 20821,
+  "Activations": [
+    {
+      "AreaID": 20821,
+      "Location": {
+        "X": 1,
+        "Y": 52
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 20820,
+    "Location": {
+      "X": 92,
+      "Y": 46
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 구광산29-1(1,52) to 구광산28-2(92,46)"
+}

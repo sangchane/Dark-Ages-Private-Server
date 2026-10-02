@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 20797,
+  "Activations": [
+    {
+      "AreaID": 20797,
+      "Location": {
+        "X": 2,
+        "Y": 80
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 20832,
+    "Location": {
+      "X": 47,
+      "Y": 10
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 구광산1-1(2,80) to 구광산대기실(47,10)"
+}

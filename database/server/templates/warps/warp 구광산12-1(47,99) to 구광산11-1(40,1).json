@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 20800,
+  "Activations": [
+    {
+      "AreaID": 20800,
+      "Location": {
+        "X": 47,
+        "Y": 99
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 20799,
+    "Location": {
+      "X": 40,
+      "Y": 1
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 구광산12-1(47,99) to 구광산11-1(40,1)"
+}

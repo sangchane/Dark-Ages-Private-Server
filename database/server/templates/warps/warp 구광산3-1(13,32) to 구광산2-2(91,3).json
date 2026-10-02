@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 20822,
+  "Activations": [
+    {
+      "AreaID": 20822,
+      "Location": {
+        "X": 13,
+        "Y": 32
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 20809,
+    "Location": {
+      "X": 91,
+      "Y": 3
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 구광산3-1(13,32) to 구광산2-2(91,3)"
+}
