@@ -1,0 +1,36 @@
+{
+  "Name": "에리얼",
+  "BaseName": "에리얼",
+  "AreaID": 20465,
+  "SpawnMax": 1,
+  "SpawnType": 2,
+  "SpawnRate": 30,
+  "SpawnSize": 0,
+  "SpawnOnlyOnActiveMaps": false,
+  "Image": 16651,
+  "ImageVarience": 0,
+  "MaximumHP": 145250,
+  "MaximumMP": 0,
+  "Exp": 57890,
+  "DmgMin": 2710,
+  "DmgMax": 3035,
+  "Ac": -45,
+  "Level": 1,
+  "MovementSpeed": 3500,
+  "EngagedWalkingSpeed": 3500,
+  "AttackSpeed": 1000,
+  "CastSpeed": 8000,
+  "MoodType": 4,
+  "PathQualifer": 1,
+  "LootType": 2,
+  "Drops": {
+    "$values": [
+      "골드아쿠아링"
+    ]
+  },
+  "ScriptName": "Common Monster",
+  "UpdateMapWide": true,
+  "UpdateRate": 1000.0,
+  "Grow": false,
+  "IgnoreCollision": false
+}

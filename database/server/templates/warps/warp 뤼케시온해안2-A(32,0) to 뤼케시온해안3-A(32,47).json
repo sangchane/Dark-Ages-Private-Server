@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 20457,
+  "Activations": [
+    {
+      "AreaID": 20457,
+      "Location": {
+        "X": 32,
+        "Y": 0
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 20460,
+    "Location": {
+      "X": 32,
+      "Y": 47
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 뤼케시온해안2-A(32,0) to 뤼케시온해안3-A(32,47)"
+}

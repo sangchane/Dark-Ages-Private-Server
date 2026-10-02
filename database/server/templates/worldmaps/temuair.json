@@ -317,6 +317,109 @@
           "PortalKey": 0
         }
       ]
+    },
+    {
+      "Destination": {
+        "AreaID": 20466,
+        "Location": {
+          "X": 28,
+          "Y": 25
+        },
+        "PortalKey": 0
+      },
+      "DisplayName": "뤼케시온해안",
+      "PointX": 305,
+      "PointY": 410,
+      "Zones": [
+        {
+          "AreaID": 20455,
+          "Location": {
+            "X": 47,
+            "Y": 13
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20456,
+          "Location": {
+            "X": 2,
+            "Y": 9
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20457,
+          "Location": {
+            "X": 26,
+            "Y": 47
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20458,
+          "Location": {
+            "X": 36,
+            "Y": 47
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20459,
+          "Location": {
+            "X": 2,
+            "Y": 7
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20460,
+          "Location": {
+            "X": 29,
+            "Y": 47
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20461,
+          "Location": {
+            "X": 26,
+            "Y": 47
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20462,
+          "Location": {
+            "X": 21,
+            "Y": 47
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20463,
+          "Location": {
+            "X": 37,
+            "Y": 47
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20464,
+          "Location": {
+            "X": 36,
+            "Y": 47
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20465,
+          "Location": {
+            "X": 9,
+            "Y": 47
+          },
+          "PortalKey": 0
+        }
+      ]
     }
   ],
   "FieldNumber": 1,

@@ -1,0 +1,34 @@
+{
+  "ActivationMapId": 20466,
+  "Activations": [
+    {
+      "AreaID": 20466,
+      "Location": {
+        "X": 41,
+        "Y": 42
+      },
+      "PortalKey": 0
+    },
+    {
+      "AreaID": 20466,
+      "Location": {
+        "X": 41,
+        "Y": 43
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 0,
+    "Location": null,
+    "PortalKey": 1
+  },
+  "WarpRadius": 0,
+  "WarpType": "World",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 뤼케시온해안대기실 to world map"
+}

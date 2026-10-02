@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 20466,
+  "Activations": [
+    {
+      "AreaID": 20466,
+      "Location": {
+        "X": 0,
+        "Y": 31
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 20456,
+    "Location": {
+      "X": 47,
+      "Y": 17
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 뤼케시온해안대기실(0,31) to 뤼케시온해안1-B(47,17)"
+}
