@@ -13,5 +13,6 @@
   "TargetAnimation": 48,
   "TargetAnimationSpeed": 75,
   "Cooldown": 7,
-  "Type": 1
+  "Type": 1,
+  "CurrentHealthPercent": 30
 }

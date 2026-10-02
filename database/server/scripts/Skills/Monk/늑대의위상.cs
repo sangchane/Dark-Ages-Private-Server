@@ -22,7 +22,7 @@ namespace Darkages.Storage.locales.Scripts.Skills
 
         public override void OnSuccess(Sprite sprite)
         {
-            MonkStrike.UseWolf(sprite, Skill, 3, 5, 0x87);
+            MonkStrike.UseWolf(sprite, Skill, 0x87);
         }
 
         public override void OnUse(Sprite sprite)

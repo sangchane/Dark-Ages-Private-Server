@@ -12,5 +12,7 @@
   "Sound": 7,
   "TargetAnimation": 186,
   "Cooldown": 6,
-  "Type": 1
+  "Type": 1,
+  "HealthMultiplier": 3,
+  "HighHealthMultiplier": 5
 }

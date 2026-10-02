@@ -13,5 +13,6 @@
   "Sound": 8,
   "TargetAnimation": 0,
   "Cooldown": 18,
-  "Type": 1
+  "Type": 1,
+  "Seconds": 15
 }

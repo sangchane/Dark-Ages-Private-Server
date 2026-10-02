@@ -22,7 +22,7 @@ namespace Darkages.Storage.locales.Scripts.Skills
 
         public override void OnSuccess(Sprite sprite)
         {
-            MonkStrike.UseVitality(sprite, Skill, 30, 0x84);
+            MonkStrike.UseVitality(sprite, Skill, 0x84);
         }
 
         public override void OnUse(Sprite sprite)

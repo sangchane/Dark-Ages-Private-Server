@@ -12,5 +12,7 @@
   "Sound": 8,
   "TargetAnimation": 42,
   "Cooldown": 15,
-  "Type": 1
+  "Type": 1,
+  "Seconds": 10,
+  "ManaCost": 80
 }

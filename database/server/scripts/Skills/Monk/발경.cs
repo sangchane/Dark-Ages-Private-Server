@@ -23,7 +23,7 @@ namespace Darkages.Storage.locales.Scripts.Skills
 
         public override void OnSuccess(Sprite sprite)
         {
-            MonkStrike.Afflict(sprite, Skill, new debuff_frozen(), 15, true, 0x84);
+            MonkStrike.Afflict(sprite, Skill, new debuff_frozen(), true, 0x84);
         }
 
         public override void OnUse(Sprite sprite)

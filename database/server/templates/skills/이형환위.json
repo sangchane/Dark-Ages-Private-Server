@@ -17,5 +17,6 @@
   "Cooldown": 0.25,
   "Icon": 42,
   "Pane": 2,
-  "Type": 1
+  "Type": 1,
+  "Distance": 2
 }

@@ -22,7 +22,7 @@ namespace Darkages.Storage.locales.Scripts.Skills
 
         public override void OnSuccess(Sprite sprite)
         {
-            MonkStrike.Step(sprite, Skill, 2, 5000, 10000, 100);
+            MonkStrike.Step(sprite, Skill);
         }
 
         public override void OnUse(Sprite sprite)

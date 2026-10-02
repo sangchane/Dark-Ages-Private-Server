@@ -22,7 +22,7 @@ namespace Darkages.Storage.locales.Scripts.Skills
 
         public override void OnSuccess(Sprite sprite)
         {
-            MonkStrike.UseCross(sprite, Skill, 10, 2, 0x84);
+            MonkStrike.UseCross(sprite, Skill, 0x84);
         }
 
         public override void OnUse(Sprite sprite)

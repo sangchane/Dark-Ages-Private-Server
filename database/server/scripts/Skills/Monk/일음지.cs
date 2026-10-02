@@ -23,10 +23,10 @@ namespace Darkages.Storage.locales.Scripts.Skills
 
         public override void OnSuccess(Sprite sprite)
         {
-            if (!MonkStrike.Spend(sprite, Skill, 80))
+            if (!MonkStrike.Spend(sprite, Skill))
                 return;
 
-            MonkStrike.Afflict(sprite, Skill, new debuff_blind(), 10, false, 0x84);
+            MonkStrike.Afflict(sprite, Skill, new debuff_blind(), false, 0x84);
         }
 
         public override void OnUse(Sprite sprite)

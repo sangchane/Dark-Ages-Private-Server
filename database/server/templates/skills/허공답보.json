@@ -12,5 +12,9 @@
   "Sound": 0,
   "TargetAnimation": 68,
   "Cooldown": 8,
-  "Type": 1
+  "Type": 1,
+  "Distance": 2,
+  "AttackPercent": 5000,
+  "EndurancePercent": 10000,
+  "MaximumHealthPercent": 100
 }

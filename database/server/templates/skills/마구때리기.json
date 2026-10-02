@@ -13,5 +13,8 @@
   "TargetAnimation": 188,
   "TargetAnimationSpeed": 75,
   "Cooldown": 3,
-  "Type": 1
+  "Type": 1,
+  "StrengthBonus": 10,
+  "EnduranceBonus": 10,
+  "StatMultiplier": 5000
 }

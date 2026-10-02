@@ -33,10 +33,11 @@ namespace Darkages.Storage.locales.Scripts.Skills
         private const int SkillLevelBonusBasePercent = 10;
 
         /// <summary>
-        /// 마력. 5.99: 모자라면 「사용하기에 마력량이적습니다」 하고 쓰지 않고, 넉넉하면 **표적을 찾기 전에** 먼저 뺀다.
+        /// 마력(템플릿 `ManaCost`). 5.99: 모자라면 「사용하기에 마력량이적습니다」 하고 쓰지 않고, 넉넉하면 **표적을 찾기 전에** 먼저 뺀다.
         /// </summary>
-        public static bool Spend(Sprite sprite, Skill skill, int mana)
+        public static bool Spend(Sprite sprite, Skill skill)
         {
+            var mana = skill.Template.ManaCost;
             if (!(sprite is Aisling aisling) || !skill.Ready)
                 return false;
 
@@ -54,14 +55,14 @@ namespace Darkages.Storage.locales.Scripts.Skills
         }
 
         /// <summary>
-        /// 달마신공. 5.99: 현재 체력의 <paramref name="percent" />% 로 때리고, 맞혔으면 **내 체력을 그 값으로 맞춘다**.
+        /// 달마신공. 5.99: 현재 체력의 `CurrentHealthPercent`% 로 때리고, 맞혔으면 **내 체력을 그 값으로 맞춘다**.
         /// </summary>
-        public static void UseVitality(Sprite sprite, Skill skill, int percent, byte motion)
+        public static void UseVitality(Sprite sprite, Skill skill, byte motion)
         {
             if (!Begin(sprite, skill, out var aisling))
                 return;
 
-            var health = aisling.CurrentHp / 100 * percent;
+            var health = aisling.CurrentHp / 100 * skill.Template.CurrentHealthPercent;
             var hit = Hit(aisling, skill, aisling.GetInfront(), _ => health);
 
             if (hit)
@@ -71,57 +72,60 @@ namespace Darkages.Storage.locales.Scripts.Skills
         }
 
         /// <summary>
-        /// 구양신공. 5.99: 위·아래·왼쪽·오른쪽 네 칸을 현재 체력 × <paramref name="multiplier" /> 로 때리고
+        /// 구양신공. 5.99: 위·아래·왼쪽·오른쪽 네 칸을 현재 체력 × `HealthMultiplier` 로 때리고
         /// (무도가가 아니면 3/4, 사람은 현재 체력 그대로), **맞히든 말든** 내 체력을 최대의
-        /// <paramref name="remainPercent" />% 로 맞춘다.
+        /// `MaximumHealthPercent`% 로 맞춘다.
         /// </summary>
-        public static void UseCross(Sprite sprite, Skill skill, int multiplier, int remainPercent, byte motion)
+        public static void UseCross(Sprite sprite, Skill skill, byte motion)
         {
             if (!Begin(sprite, skill, out var aisling))
                 return;
 
             var health = aisling.CurrentHp;
-            var damage = health * multiplier;
+            var damage = health * skill.Template.HealthMultiplier;
             if (aisling.Path != Class.Monk)
                 damage = damage / OtherClassCrossDivisor * OtherClassCrossShare;
 
             var hit = Hit(aisling, skill, Around(aisling), target => target is Aisling ? health : damage);
 
-            SetHealth(aisling, aisling.MaximumHp / 100 * remainPercent);
+            SetHealth(aisling, aisling.MaximumHp / 100 * skill.Template.MaximumHealthPercent);
             Swing(aisling, skill, motion, hit);
         }
 
         /// <summary>
-        /// 늑대의위상. 5.99: 반반의 확률로 (최대 체력 + 1) × <paramref name="low" /> 또는 × <paramref name="high" />.
+        /// 늑대의위상. 5.99: 반반의 확률로 (최대 체력 + 1) × `HealthMultiplier` 또는 × `HighHealthMultiplier`.
         /// 팩은 큰 쪽의 딜레이를 3초로 줄이지만, 하데스는 스크립트가 끝난 뒤 템플릿의 쿨다운을 덮어써서 담지 못한다.
         /// </summary>
-        public static void UseWolf(Sprite sprite, Skill skill, int low, int high, byte motion)
+        public static void UseWolf(Sprite sprite, Skill skill, byte motion)
         {
             if (!Begin(sprite, skill, out var aisling))
                 return;
 
-            var damage = (aisling.MaximumHp + 1) * (Random.Shared.Next(2) == 0 ? low : high);
+            var damage = (aisling.MaximumHp + 1) * (Random.Shared.Next(2) == 0
+                ? skill.Template.HealthMultiplier
+                : skill.Template.HighHealthMultiplier);
             Swing(aisling, skill, motion, Hit(aisling, skill, aisling.GetInfront(), _ => damage));
         }
 
         /// <summary>
-        /// 마구때리기. 5.99: ((힘 + <paramref name="strength" />) + (지구력 + <paramref name="endurance" />)) × <paramref name="multiplier" />.
+        /// 마구때리기. 5.99: ((힘 + `StrengthBonus`) + (지구력 + `EnduranceBonus`)) × `StatMultiplier`.
         /// </summary>
-        public static void UseStrengthAndEndurance(
-            Sprite sprite, Skill skill, int strength, int endurance, int multiplier, byte motion)
+        public static void UseStrengthAndEndurance(Sprite sprite, Skill skill, byte motion)
         {
             if (!Begin(sprite, skill, out var aisling))
                 return;
 
-            var damage = (aisling.Str + strength + aisling.Con + endurance) * multiplier;
+            var template = skill.Template;
+            var damage = (aisling.Str + template.StrengthBonus + aisling.Con + template.EnduranceBonus)
+                         * template.StatMultiplier;
             Swing(aisling, skill, motion, Hit(aisling, skill, aisling.GetInfront(), _ => damage));
         }
 
         /// <summary>
-        /// 일음지(실명)·발경(빙결). 앞의 괴물에게 <paramref name="seconds" />초 동안 건다. 사람에게는
+        /// 일음지(실명)·발경(빙결). 앞의 괴물에게 `Seconds`초 동안 건다. 사람에게는
         /// <paramref name="players" /> 이고 결투 맵일 때만 — 팩이 <c>get_map_pk()</c> 를 볼 때만 사람을 친다.
         /// </summary>
-        public static void Afflict(Sprite sprite, Skill skill, Debuff debuff, int seconds, bool players, byte motion)
+        public static void Afflict(Sprite sprite, Skill skill, Debuff debuff, bool players, byte motion)
         {
             if (!Begin(sprite, skill, out var aisling))
                 return;
@@ -135,7 +139,7 @@ namespace Darkages.Storage.locales.Scripts.Skills
             if (target != null)
             {
                 // 하데스 디버프는 길이가 클래스에 박혀 있다(실명 7초·빙결 4초). 남은 시간은 `Length - Tick` 이다.
-                debuff.Timer.Tick = debuff.Length - seconds;
+                debuff.Timer.Tick = debuff.Length - skill.Template.Seconds;
                 debuff.OnApplied(target, debuff);
                 if (skill.Template.TargetAnimation > 0)
                     aisling.SendAnimation(skill.Template.TargetAnimation, target, aisling);
@@ -146,15 +150,15 @@ namespace Darkages.Storage.locales.Scripts.Skills
 
         /// <summary>
         /// 소수신공. 5.99 의 `sosusin` 은 캐릭터 칸 0x7C 를 켜고, 서버가 공격력을 계산할 때 그 칸이 켜져 있으면
-        /// **공격력 +40%** 를 준다(Novaonline.exe — `Pack599.AttackPower`). <paramref name="seconds" />초 동안.
+        /// **공격력 +40%** 를 준다(Novaonline.exe — `Pack599.AttackPower`). `Seconds`초 동안.
         /// </summary>
-        public static void Empower(Sprite sprite, Skill skill, int seconds, byte motion, string said)
+        public static void Empower(Sprite sprite, Skill skill, byte motion, string said)
         {
             if (!Begin(sprite, skill, out var aisling))
                 return;
 
             // 5.99 는 마력을 먼저 빼고 `sosusin` 이 이미 걸린 것을 거절한다. 거절 문구는 엔진 안에 있다.
-            if (!Pack599.Pack599.Grant(aisling, "sosusin", seconds))
+            if (!Pack599.Pack599.Grant(aisling, "sosusin", skill.Template.Seconds))
             {
                 aisling.Client.SendMessage(0x02, "이미 걸려있습니다.");
                 return;
@@ -169,17 +173,11 @@ namespace Darkages.Storage.locales.Scripts.Skills
         }
 
         /// <summary>
-        /// 이형환위·허공답보. 5.99: 앞에 누가 있으면 보던 쪽으로 <paramref name="distance" />칸 건너뛰고 돌아선다.
+        /// 이형환위·허공답보. 5.99: 앞에 누가 있으면 보던 쪽으로 `Distance`칸 건너뛰고 돌아선다.
         /// 내려설 칸이 막혔으면 쓰지 않는다. 허공답보는 돌아서서 넘어온 적을
-        /// 공격력 × 공격력배율 + 최대 체력 × 최대체력배율 + 지구력 × 지구력배율 로 친다.
+        /// 공격력 × `AttackPercent` + 최대 체력 × `MaximumHealthPercent` + 지구력 × `EndurancePercent` 로 친다(모두 %).
         /// </summary>
-        public static void Step(
-            Sprite sprite,
-            Skill skill,
-            int distance,
-            int attackPercent = 0,
-            int endurancePercent = 0,
-            int maximumHealthPercent = 0)
+        public static void Step(Sprite sprite, Skill skill)
         {
             if (!Begin(sprite, skill, out var aisling))
                 return;
@@ -194,8 +192,9 @@ namespace Darkages.Storage.locales.Scripts.Skills
                 2 => (0, 1),
                 _ => (-1, 0)
             };
-            var x = aisling.XPos + dx * distance;
-            var y = aisling.YPos + dy * distance;
+            var template = skill.Template;
+            var x = aisling.XPos + dx * template.Distance;
+            var y = aisling.YPos + dy * template.Distance;
 
             // A leap must obey the same landing rule as a normal step: it cannot leave the map, land in a
             // wall, or overlap an occupied tile.  `IsWall` treats out-of-map coordinates as walls; the
@@ -209,11 +208,11 @@ namespace Darkages.Storage.locales.Scripts.Skills
             aisling.Direction = (byte) ((aisling.Direction + 2) % 4);
             aisling.Client.Refresh();
 
-            if (attackPercent == 0)
+            if (template.AttackPercent == 0)
                 return;
 
-            var damage = Blow(aisling, skill, attackPercent, endurancePercent)
-                         + aisling.MaximumHp * maximumHealthPercent / 100;
+            var damage = Blow(aisling, skill, template.AttackPercent, template.EndurancePercent)
+                         + aisling.MaximumHp * template.MaximumHealthPercent / 100;
             Hit(aisling, skill, aisling.GetInfront(), _ => damage);
         }
 

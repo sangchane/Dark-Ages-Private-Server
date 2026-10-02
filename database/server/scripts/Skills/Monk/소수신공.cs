@@ -22,10 +22,10 @@ namespace Darkages.Storage.locales.Scripts.Skills
 
         public override void OnSuccess(Sprite sprite)
         {
-            if (!MonkStrike.Spend(sprite, Skill, 120))
+            if (!MonkStrike.Spend(sprite, Skill))
                 return;
 
-            MonkStrike.Empower(sprite, Skill, 120, 0x84, "소수신공을 외웠습니다.");
+            MonkStrike.Empower(sprite, Skill, 0x84, "소수신공을 외웠습니다.");
         }
 
         public override void OnUse(Sprite sprite)

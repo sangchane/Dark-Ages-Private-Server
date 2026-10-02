@@ -15,5 +15,6 @@
   "Cooldown": 4,
   "Type": 1,
   "AttackPercent": 350,
-  "EndurancePercent": 0
+  "EndurancePercent": 0,
+  "ManaCost": 120
 }

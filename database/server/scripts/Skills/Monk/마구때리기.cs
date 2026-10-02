@@ -22,7 +22,7 @@ namespace Darkages.Storage.locales.Scripts.Skills
 
         public override void OnSuccess(Sprite sprite)
         {
-            MonkStrike.UseStrengthAndEndurance(sprite, Skill, 10, 10, 5000, 0x84);
+            MonkStrike.UseStrengthAndEndurance(sprite, Skill, 0x84);
         }
 
         public override void OnUse(Sprite sprite)
