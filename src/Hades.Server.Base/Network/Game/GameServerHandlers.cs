@@ -2019,6 +2019,9 @@ namespace Darkages.Network.Game
                 case ClientFormatF1.WakeMaster:
                     CompanionPairing.WakeMaster(client.Aisling);
                     break;
+                case ClientFormatF1.Magic:
+                    CompanionPairing.SetMagic(client.Aisling, format.Slot);
+                    break;
             }
         }
 

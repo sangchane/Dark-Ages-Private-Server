@@ -10,7 +10,7 @@ namespace Darkages.Network.ServerFormats
     /// </summary>
     /// <remarks>
     /// <list type="bullet">
-    /// <item>1 <see cref="Master" /> — 봇에게만: serial(4) · 이름. "네 주인은 이 사람". serial 0 이면 풀려났다.</item>
+    /// <item>1 <see cref="Master" /> — 봇에게만: serial(4) · 이름 · [마법사 비트(1) — 1 저주 · 2 나르콜리, 2026-10-03]. "네 주인은 이 사람". serial 0 이면 풀려났다.</item>
     /// <item>2 <see cref="Companion" /> — 부른 사람에게: serial(4) · 이름. "네 봇은 이것". serial 0 이면 없다.</item>
     /// <item>3 <see cref="Statuses" /> — 봇에게 1초마다(주인·봇 자신 것), 주인에게 1초마다(봇 것), 모든 사람에게 바뀔 때(제 것):
     /// serial(4) · 개수(1) · [이름(StringA) · 남은 초(2) · 해로움(1)]×개수 · 그림 번호(2)×개수(2026-09-26 덧붙임). 하데스 버프·디버프(<c>Sprite.Buffs</c>·<c>Debuffs</c>, 이름·Length−Tick)와
@@ -55,6 +55,9 @@ namespace Darkages.Network.ServerFormats
         public IReadOnlyList<(byte Place, Item Item)> Worn { get; set; }
         public IReadOnlyList<Item> Carried { get; set; }
         public IReadOnlyList<ushort> Icons { get; set; }
+
+        /// <summary>종류 1 이름 뒤 한 바이트(2026-10-03) — 주인이 켠 봇 「마법사」 비트(1 저주 · 2 나르콜리). null 이면 싣지 않는다(옛 모양).</summary>
+        public byte? Magic { get; set; }
 
         /// <summary>
         /// 종류 4·6 끝에 덧붙이는 체력·마력 숫자(현재·최대, 2026-09-27 — 앱의 파티원·봇 칸 게이지 안 숫자). 앞부분은 그대로라
@@ -146,6 +149,8 @@ namespace Darkages.Network.ServerFormats
 
                 default:
                     writer.WriteStringA(Name ?? string.Empty);
+                    if (Kind == Master && Magic is { } magic)
+                        writer.Write(magic);
                     break;
             }
         }

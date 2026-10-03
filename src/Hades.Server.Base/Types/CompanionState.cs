@@ -36,6 +36,9 @@ namespace Darkages.Types
         // 이번 수면에서 "못 푼다" 를 이미 알린 주인.
         public static readonly HashSet<string> ToldAsleep = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 
+        // 주인 이름 → 봇 탭 「마법사」 켬 비트(1 저주 · 2 나르콜리, 0xF1 6). 없으면 둘 다 켬. 주인 알림(0x5E 1) 꼬리로 봇에게 간다.
+        public static readonly Dictionary<string, byte> Magic = new Dictionary<string, byte>(StringComparer.OrdinalIgnoreCase);
+
         // 사람마다 지난번에 알린 제 상태(이름·그림 목록) — 바뀔 때만 다시 보낸다.
         public static readonly Dictionary<int, string> ToldOwn = new Dictionary<int, string>();
     }

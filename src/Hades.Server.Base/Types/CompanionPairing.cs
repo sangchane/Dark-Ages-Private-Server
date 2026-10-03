@@ -101,7 +101,7 @@ namespace Darkages.Types
             MoveBeside(bot, caller);
             Party.AddPartyMember(caller, bot);
 
-            bot.Client.Send(new ServerFormat5E(ServerFormat5E.Master, caller.Serial, caller.Username));
+            bot.Client.Send(MasterOf(caller));
             caller.Client.Send(new ServerFormat5E(ServerFormat5E.Companion, bot.Serial, bot.Username));
             lock (Gate)
                 ToldMaster[bot.Username] = caller.Serial;
@@ -121,12 +121,38 @@ namespace Darkages.Types
                 Party.AddPartyMember(caller, bot);
             }
 
-            bot.Client.Send(new ServerFormat5E(ServerFormat5E.Master, caller.Serial, caller.Username));
+            bot.Client.Send(MasterOf(caller));
             caller.Client.Send(new ServerFormat5E(ServerFormat5E.Companion, bot.Serial, bot.Username));
             lock (Gate)
                 ToldMaster[bot.Username] = caller.Serial;
             CompanionKit.SendKit(bot, caller);
             ServerContext.Logger($"봇 {bot.Username}: 주인 {caller.Username} 을(를) 다시 알림 (serial {caller.Serial})");
+        }
+
+        /// <summary>봇에게 가는 주인 알림 — 이름 뒤에 주인이 켜 둔 「마법사」 비트(저주·나르콜리)를 싣는다.</summary>
+        private static ServerFormat5E MasterOf(Aisling caller)
+        {
+            lock (Gate)
+                return new ServerFormat5E(ServerFormat5E.Master, caller.Serial, caller.Username)
+                {
+                    Magic = CompanionState.Magic.TryGetValue(caller.Username, out var bits) ? bits : (byte) 3
+                };
+        }
+
+        /// <summary>
+        /// 봇 탭 「마법사」(0xF1 6) — 저주(1)·나르콜리(2)를 켠 비트. 주인 이름으로 기억하고, 봇이 함께 있으면 주인 알림으로 곧 옮긴다.
+        /// 서버 메모리에만 있다 — 앱이 기기에 남겨 두고 바꿀 때와 부를 때 보낸다.
+        /// </summary>
+        public static void SetMagic(Aisling caller, byte bits)
+        {
+            if (caller?.Client == null || IsBot(caller.Username))
+                return;
+
+            lock (Gate)
+                CompanionState.Magic[caller.Username] = (byte) (bits & 3);
+
+            if (CompanionOf(caller.Username) is { } name && FindOnline(name) is { Client: { } } bot)
+                bot.Client.Send(MasterOf(caller));
         }
 
         /// <summary>[봇 보내기]. 파티에서 빼고 마을로.</summary>
