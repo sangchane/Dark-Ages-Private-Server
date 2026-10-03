@@ -129,18 +129,18 @@ namespace Darkages.Types
             ServerContext.Logger($"봇 {bot.Username}: 주인 {caller.Username} 을(를) 다시 알림 (serial {caller.Serial})");
         }
 
-        /// <summary>봇에게 가는 주인 알림 — 이름 뒤에 주인이 켜 둔 「마법사」 비트(저주·나르콜리)를 싣는다.</summary>
+        /// <summary>봇에게 가는 주인 알림 — 이름 뒤에 주인이 체크한 「마법사」 비트(저주 셋·나르콜리)를 싣는다.</summary>
         private static ServerFormat5E MasterOf(Aisling caller)
         {
             lock (Gate)
                 return new ServerFormat5E(ServerFormat5E.Master, caller.Serial, caller.Username)
                 {
-                    Magic = CompanionState.Magic.TryGetValue(caller.Username, out var bits) ? bits : (byte) 3
+                    Magic = CompanionState.Magic.TryGetValue(caller.Username, out var bits) ? bits : (byte) 0x0F
                 };
         }
 
         /// <summary>
-        /// 봇 탭 「마법사」(0xF1 6) — 저주(1)·나르콜리(2)를 켠 비트. 주인 이름으로 기억하고, 봇이 함께 있으면 주인 알림으로 곧 옮긴다.
+        /// 봇 탭 「마법사」(0xF1 6) — 체크 비트(1 렌토 · 2 나르콜리 · 4 바르도 · 8 데프레코). 주인 이름으로 기억하고, 봇이 함께 있으면 주인 알림으로 곧 옮긴다.
         /// 서버 메모리에만 있다 — 앱이 기기에 남겨 두고 바꿀 때와 부를 때 보낸다.
         /// </summary>
         public static void SetMagic(Aisling caller, byte bits)
@@ -149,7 +149,7 @@ namespace Darkages.Types
                 return;
 
             lock (Gate)
-                CompanionState.Magic[caller.Username] = (byte) (bits & 3);
+                CompanionState.Magic[caller.Username] = (byte) (bits & 0x0F);
 
             if (CompanionOf(caller.Username) is { } name && FindOnline(name) is { Client: { } } bot)
                 bot.Client.Send(MasterOf(caller));
