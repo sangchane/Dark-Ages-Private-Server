@@ -6,7 +6,8 @@ namespace Darkages.Network.ClientFormats
     /// <remarks>
     /// 첫 바이트가 종류: 1 부르기 · 0 보내기 · 2 주기(내 가방 칸(1) · 개수(2) — 장비면 봇에게 입히고, 겹치는 물건(포션)이면
     /// 그만큼 봇 가방으로, 개수 0 은 다) · 3 벗기기(봇 장비 자리(1) — 내 가방으로) · 4 혼수인 봇 깨우기(몸 없음) · 5 봇이 혼수인 주인 깨우기(몸 없음 — 봇 계정만, 주인 바로 옆에서)
-    /// · 6 봇 「마법사」 체크(비트(1) — 1 렌토 · 2 나르콜리 · 4 바르도 · 8 데프레코 · 16 프라보, 2026-10-03).
+    /// · 6 봇 탭에서 고른 것(2026-10-03) — 마법사 비트(1 렌토 · 2 나르콜리 · 4 바르도 · 8 데프레코 · 16 프라보) · 성직자 비트(1 디나르콜리 ·
+    /// 2 디소루마 · 4 호르라마 · 8 에나르마) · 회복 셀렉트 · 파티 회복 셀렉트(0 자동 · k 번째까지 · 255 끄기), 넷 다 한 바이트.
     /// 0xF1 인 까닭: 원작 클라이언트는 0x80 넘는 명령을 보내지 않고(0xF0 월드맵 열기와 같은 근거), 하데스는 0xF1 을
     /// <c>Undefined.cs</c> 의 빈 자리로만 두었다 — 0xF0 다음 빈 번호다.
     /// </remarks>
@@ -30,12 +31,18 @@ namespace Darkages.Network.ClientFormats
         public byte Slot { get; set; }
         public ushort Count { get; set; }
 
+        /// <summary>종류 6 — 마법사 비트 · 성직자 비트 · 회복 셀렉트 · 파티 회복 셀렉트.</summary>
+        public byte[] Orders { get; set; }
+
         public override void Serialize(NetworkPacketReader reader)
         {
             Kind = reader.ReadByte();
 
-            if (Kind == Give || Kind == TakeOff || Kind == Magic)
+            if (Kind == Give || Kind == TakeOff)
                 Slot = reader.ReadByte();
+
+            if (Kind == Magic)
+                Orders = new[] { reader.ReadByte(), reader.ReadByte(), reader.ReadByte(), reader.ReadByte() };
 
             if (Kind == Give)
                 Count = reader.ReadUInt16();
