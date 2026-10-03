@@ -129,13 +129,13 @@ namespace Darkages.Types
             ServerContext.Logger($"봇 {bot.Username}: 주인 {caller.Username} 을(를) 다시 알림 (serial {caller.Serial})");
         }
 
-        /// <summary>봇에게 가는 주인 알림 — 이름 뒤에 주인이 봇 탭에서 고른 것(네 바이트)을 싣는다.</summary>
+        /// <summary>봇에게 가는 주인 알림 — 이름 뒤에 주인이 봇 탭에서 고른 것(다섯 바이트)을 싣는다.</summary>
         private static ServerFormat5E MasterOf(Aisling caller)
         {
             lock (Gate)
                 return new ServerFormat5E(ServerFormat5E.Master, caller.Serial, caller.Username)
                 {
-                    Orders = CompanionState.Orders.TryGetValue(caller.Username, out var orders) ? orders : new byte[] { 0x1F, 0x0F, 0, 0 }
+                    Orders = CompanionState.Orders.TryGetValue(caller.Username, out var orders) ? orders : new byte[] { 0x1F, 0x0F, 0, 0, 0 }
                 };
         }
 
@@ -145,11 +145,11 @@ namespace Darkages.Types
         /// </summary>
         public static void SetOrders(Aisling caller, byte[] orders)
         {
-            if (caller?.Client == null || IsBot(caller.Username) || orders is not { Length: 4 })
+            if (caller?.Client == null || IsBot(caller.Username) || orders is not { Length: 5 })
                 return;
 
             lock (Gate)
-                CompanionState.Orders[caller.Username] = new[] { (byte) (orders[0] & 0x1F), (byte) (orders[1] & 0x0F), orders[2], orders[3] };
+                CompanionState.Orders[caller.Username] = new[] { (byte) (orders[0] & 0x1F), (byte) (orders[1] & 0x0F), orders[2], orders[3], (byte) (orders[4] <= 10 ? orders[4] : 0) };
 
             if (CompanionOf(caller.Username) is { } name && FindOnline(name) is { Client: { } } bot)
                 bot.Client.Send(MasterOf(caller));

@@ -56,7 +56,7 @@ namespace Darkages.Network.ServerFormats
         public IReadOnlyList<Item> Carried { get; set; }
         public IReadOnlyList<ushort> Icons { get; set; }
 
-        /// <summary>종류 1 이름 뒤 네 바이트(2026-10-03) — 주인이 봇 탭에서 고른 것(<c>ClientFormatF1.Orders</c> 그대로). null 이면 싣지 않는다(옛 모양).</summary>
+        /// <summary>종류 1 이름 뒤 다섯 바이트(2026-10-03, 다섯째 따라가기 거리) — 주인이 봇 탭에서 고른 것(<c>ClientFormatF1.Orders</c> 그대로). null 이면 싣지 않는다(옛 모양).</summary>
         public byte[] Orders { get; set; }
 
         /// <summary>

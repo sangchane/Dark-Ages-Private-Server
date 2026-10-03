@@ -31,7 +31,7 @@ namespace Darkages.Network.ClientFormats
         public byte Slot { get; set; }
         public ushort Count { get; set; }
 
-        /// <summary>종류 6 — 마법사 비트 · 성직자 비트 · 회복 셀렉트 · 파티 회복 셀렉트.</summary>
+        /// <summary>종류 6 — 마법사 비트 · 성직자 비트 · 회복 셀렉트 · 파티 회복 셀렉트 · 따라가기 거리(0 기본, 옛 앱은 안 보내 0).</summary>
         public byte[] Orders { get; set; }
 
         public override void Serialize(NetworkPacketReader reader)
@@ -42,7 +42,7 @@ namespace Darkages.Network.ClientFormats
                 Slot = reader.ReadByte();
 
             if (Kind == Magic)
-                Orders = new[] { reader.ReadByte(), reader.ReadByte(), reader.ReadByte(), reader.ReadByte() };
+                Orders = new[] { reader.ReadByte(), reader.ReadByte(), reader.ReadByte(), reader.ReadByte(), reader.ReadByte() };
 
             if (Kind == Give)
                 Count = reader.ReadUInt16();
