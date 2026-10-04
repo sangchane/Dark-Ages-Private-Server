@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 20867,
+  "Activations": [
+    {
+      "AreaID": 20867,
+      "Location": {
+        "X": 25,
+        "Y": 49
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 20865,
+    "Location": {
+      "X": 25,
+      "Y": 1
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 서의우드랜드20-1(25,49) to 서의우드랜드19-1(25,1)"
+}

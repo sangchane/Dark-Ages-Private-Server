@@ -26,11 +26,11 @@
   "Drops": {
     "$type": "System.Collections.Generic.List`1[[System.String, System.Private.CoreLib]], System.Private.CoreLib",
     "$values": [
-      "로오의동각반",
-      "세오의사파이어반지",
-      "세오의철방패",
-      "세오의회색신발",
-      "세토아의동장갑"
+      "이아의동각반",
+      "세토아의고루반지",
+      "세토아의순옥귀걸이",
+      "셔스의고루반지",
+      "셔스의쌍은귀걸이"
     ]
   },
   "ScriptName": "Common Monster",

@@ -843,7 +843,7 @@
         {
           "AreaID": 20842,
           "Location": {
-            "X": 23,
+            "X": 28,
             "Y": 1
           },
           "PortalKey": 0
@@ -857,7 +857,103 @@
           "PortalKey": 0
         },
         {
+          "AreaID": 20856,
+          "Location": {
+            "X": 25,
+            "Y": 1
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20857,
+          "Location": {
+            "X": 25,
+            "Y": 48
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20858,
+          "Location": {
+            "X": 25,
+            "Y": 48
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20859,
+          "Location": {
+            "X": 25,
+            "Y": 48
+          },
+          "PortalKey": 0
+        },
+        {
           "AreaID": 20844,
+          "Location": {
+            "X": 25,
+            "Y": 1
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20860,
+          "Location": {
+            "X": 25,
+            "Y": 48
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20861,
+          "Location": {
+            "X": 25,
+            "Y": 48
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20862,
+          "Location": {
+            "X": 25,
+            "Y": 48
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20863,
+          "Location": {
+            "X": 25,
+            "Y": 48
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20864,
+          "Location": {
+            "X": 25,
+            "Y": 48
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20865,
+          "Location": {
+            "X": 25,
+            "Y": 48
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20866,
+          "Location": {
+            "X": 25,
+            "Y": 48
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20867,
           "Location": {
             "X": 25,
             "Y": 48
@@ -946,13 +1042,117 @@
         {
           "AreaID": 20854,
           "Location": {
-            "X": 23,
+            "X": 28,
             "Y": 1
           },
           "PortalKey": 0
         },
         {
           "AreaID": 20855,
+          "Location": {
+            "X": 25,
+            "Y": 48
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20868,
+          "Location": {
+            "X": 25,
+            "Y": 1
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20869,
+          "Location": {
+            "X": 25,
+            "Y": 48
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20870,
+          "Location": {
+            "X": 25,
+            "Y": 48
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20871,
+          "Location": {
+            "X": 25,
+            "Y": 48
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20872,
+          "Location": {
+            "X": 25,
+            "Y": 1
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20873,
+          "Location": {
+            "X": 25,
+            "Y": 48
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20874,
+          "Location": {
+            "X": 25,
+            "Y": 48
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20875,
+          "Location": {
+            "X": 25,
+            "Y": 48
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20876,
+          "Location": {
+            "X": 25,
+            "Y": 48
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20877,
+          "Location": {
+            "X": 25,
+            "Y": 48
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20878,
+          "Location": {
+            "X": 25,
+            "Y": 48
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20879,
+          "Location": {
+            "X": 25,
+            "Y": 48
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20880,
           "Location": {
             "X": 25,
             "Y": 48

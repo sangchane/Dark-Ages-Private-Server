@@ -27,10 +27,10 @@
     "$type": "System.Collections.Generic.List`1[[System.String, System.Private.CoreLib]], System.Private.CoreLib",
     "$values": [
       "메투스의동각반",
-      "로오의철방패",
-      "루돌프빨간코",
-      "메투스의동장갑",
-      "메투스의루비귀걸이"
+      "축복의은제방패",
+      "칸의레더부츠",
+      "풍요의레더부츠",
+      "풍요의은제방패"
     ]
   },
   "ScriptName": "Common Monster",

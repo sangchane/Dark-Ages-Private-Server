@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 20870,
+  "Activations": [
+    {
+      "AreaID": 20870,
+      "Location": {
+        "X": 26,
+        "Y": 0
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 20871,
+    "Location": {
+      "X": 26,
+      "Y": 48
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 북의우드랜드12-1(26,0) to 북의우드랜드13-1(26,48)"
+}

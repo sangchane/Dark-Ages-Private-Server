@@ -27,10 +27,10 @@
     "$type": "System.Collections.Generic.List`1[[System.String, System.Private.CoreLib]], System.Private.CoreLib",
     "$values": [
       "칸의목걸이",
-      "이아의가죽장갑",
-      "이아의금반지",
-      "이아의신발",
-      "체력의가죽각반"
+      "축복의산호반지",
+      "칸의가죽각반",
+      "칸의가죽방패",
+      "칸의가죽장갑"
     ]
   },
   "ScriptName": "Common Monster",

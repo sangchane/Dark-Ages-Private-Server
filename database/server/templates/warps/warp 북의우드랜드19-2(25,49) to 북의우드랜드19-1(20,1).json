@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 20879,
+  "Activations": [
+    {
+      "AreaID": 20879,
+      "Location": {
+        "X": 25,
+        "Y": 49
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 20878,
+    "Location": {
+      "X": 20,
+      "Y": 1
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 북의우드랜드19-2(25,49) to 북의우드랜드19-1(20,1)"
+}

@@ -1,0 +1,41 @@
+{
+  "Name": "위스프",
+  "BaseName": "위스프",
+  "AreaID": 20856,
+  "SpawnMax": 20,
+  "SpawnType": 2,
+  "SpawnRate": 5,
+  "SpawnSize": 0,
+  "SpawnOnlyOnActiveMaps": false,
+  "Image": 16387,
+  "ImageVarience": 0,
+  "MaximumHP": 57960,
+  "MaximumMP": 0,
+  "Exp": 9017,
+  "DmgMin": 95,
+  "DmgMax": 100,
+  "Ac": 70,
+  "Level": 1,
+  "MovementSpeed": 1500,
+  "EngagedWalkingSpeed": 1500,
+  "AttackSpeed": 1000,
+  "CastSpeed": 8000,
+  "MoodType": 4,
+  "PathQualifer": 1,
+  "LootType": 2,
+  "Drops": {
+    "$type": "System.Collections.Generic.List`1[[System.String, System.Private.CoreLib]], System.Private.CoreLib",
+    "$values": [
+      "세토아의동각반",
+      "체력의고루반지",
+      "체력의순옥귀걸이",
+      "축복의고루반지",
+      "칸의루비귀걸이"
+    ]
+  },
+  "ScriptName": "Common Monster",
+  "UpdateMapWide": true,
+  "UpdateRate": 1000.0,
+  "Grow": false,
+  "IgnoreCollision": false
+}

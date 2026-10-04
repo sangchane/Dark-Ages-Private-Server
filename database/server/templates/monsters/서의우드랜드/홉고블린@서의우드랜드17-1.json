@@ -1,0 +1,41 @@
+{
+  "Name": "홉고블린",
+  "BaseName": "홉고블린",
+  "AreaID": 20862,
+  "SpawnMax": 10,
+  "SpawnType": 2,
+  "SpawnRate": 5,
+  "SpawnSize": 0,
+  "SpawnOnlyOnActiveMaps": false,
+  "Image": 16398,
+  "ImageVarience": 0,
+  "MaximumHP": 37720,
+  "MaximumMP": 0,
+  "Exp": 5863,
+  "DmgMin": 200,
+  "DmgMax": 300,
+  "Ac": 70,
+  "Level": 1,
+  "MovementSpeed": 1500,
+  "EngagedWalkingSpeed": 1500,
+  "AttackSpeed": 1000,
+  "CastSpeed": 8000,
+  "MoodType": 4,
+  "PathQualifer": 1,
+  "LootType": 2,
+  "Drops": {
+    "$type": "System.Collections.Generic.List`1[[System.String, System.Private.CoreLib]], System.Private.CoreLib",
+    "$values": [
+      "세토아의은각반",
+      "축복의금제방패",
+      "축복의바이올렛티",
+      "축복의은각반",
+      "축복의은장갑"
+    ]
+  },
+  "ScriptName": "Common Monster",
+  "UpdateMapWide": true,
+  "UpdateRate": 1000.0,
+  "Grow": false,
+  "IgnoreCollision": false
+}
