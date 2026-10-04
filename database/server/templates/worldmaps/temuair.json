@@ -762,6 +762,204 @@
           "PortalKey": 0
         }
       ]
+    },
+    {
+      "Destination": {
+        "AreaID": 20833,
+        "Location": {
+          "X": 10,
+          "Y": 16
+        },
+        "PortalKey": 0
+      },
+      "DisplayName": "서의우드랜드",
+      "PointX": 155,
+      "PointY": 171,
+      "Zones": [
+        {
+          "AreaID": 20834,
+          "Location": {
+            "X": 2,
+            "Y": 48
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20835,
+          "Location": {
+            "X": 98,
+            "Y": 49
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20836,
+          "Location": {
+            "X": 25,
+            "Y": 98
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20837,
+          "Location": {
+            "X": 25,
+            "Y": 98
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20838,
+          "Location": {
+            "X": 25,
+            "Y": 98
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20839,
+          "Location": {
+            "X": 23,
+            "Y": 1
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20840,
+          "Location": {
+            "X": 25,
+            "Y": 48
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20841,
+          "Location": {
+            "X": 48,
+            "Y": 25
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20842,
+          "Location": {
+            "X": 23,
+            "Y": 1
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20843,
+          "Location": {
+            "X": 25,
+            "Y": 48
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20844,
+          "Location": {
+            "X": 25,
+            "Y": 48
+          },
+          "PortalKey": 0
+        }
+      ]
+    },
+    {
+      "Destination": {
+        "AreaID": 20845,
+        "Location": {
+          "X": 10,
+          "Y": 16
+        },
+        "PortalKey": 0
+      },
+      "DisplayName": "북의우드랜드",
+      "PointX": 255,
+      "PointY": 96,
+      "Zones": [
+        {
+          "AreaID": 20846,
+          "Location": {
+            "X": 2,
+            "Y": 48
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20847,
+          "Location": {
+            "X": 98,
+            "Y": 49
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20848,
+          "Location": {
+            "X": 25,
+            "Y": 98
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20849,
+          "Location": {
+            "X": 25,
+            "Y": 98
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20850,
+          "Location": {
+            "X": 25,
+            "Y": 98
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20851,
+          "Location": {
+            "X": 23,
+            "Y": 1
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20852,
+          "Location": {
+            "X": 25,
+            "Y": 48
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20853,
+          "Location": {
+            "X": 48,
+            "Y": 25
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20854,
+          "Location": {
+            "X": 23,
+            "Y": 1
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20855,
+          "Location": {
+            "X": 25,
+            "Y": 48
+          },
+          "PortalKey": 0
+        }
+      ]
     }
   ],
   "FieldNumber": 1,

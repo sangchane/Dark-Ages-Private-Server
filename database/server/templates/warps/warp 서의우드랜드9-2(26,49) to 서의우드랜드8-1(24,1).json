@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 20843,
+  "Activations": [
+    {
+      "AreaID": 20843,
+      "Location": {
+        "X": 26,
+        "Y": 49
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 20841,
+    "Location": {
+      "X": 24,
+      "Y": 1
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 서의우드랜드9-2(26,49) to 서의우드랜드8-1(24,1)"
+}

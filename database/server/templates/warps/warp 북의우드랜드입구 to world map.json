@@ -1,0 +1,34 @@
+{
+  "ActivationMapId": 20845,
+  "Activations": [
+    {
+      "AreaID": 20845,
+      "Location": {
+        "X": 11,
+        "Y": 24
+      },
+      "PortalKey": 0
+    },
+    {
+      "AreaID": 20845,
+      "Location": {
+        "X": 12,
+        "Y": 24
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 0,
+    "Location": null,
+    "PortalKey": 1
+  },
+  "WarpRadius": 0,
+  "WarpType": "World",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 북의우드랜드입구 to world map"
+}

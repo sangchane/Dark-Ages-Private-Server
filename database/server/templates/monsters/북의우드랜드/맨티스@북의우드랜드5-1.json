@@ -1,0 +1,41 @@
+{
+  "Name": "맨티스",
+  "BaseName": "맨티스",
+  "AreaID": 20850,
+  "SpawnMax": 30,
+  "SpawnType": 2,
+  "SpawnRate": 5,
+  "SpawnSize": 0,
+  "SpawnOnlyOnActiveMaps": false,
+  "Image": 16471,
+  "ImageVarience": 0,
+  "MaximumHP": 6040,
+  "MaximumMP": 0,
+  "Exp": 377,
+  "DmgMin": 65,
+  "DmgMax": 70,
+  "Ac": -75,
+  "Level": 1,
+  "MovementSpeed": 1500,
+  "EngagedWalkingSpeed": 1500,
+  "AttackSpeed": 1000,
+  "CastSpeed": 8000,
+  "MoodType": 4,
+  "PathQualifer": 1,
+  "LootType": 2,
+  "Drops": {
+    "$type": "System.Collections.Generic.List`1[[System.String, System.Private.CoreLib]], System.Private.CoreLib",
+    "$values": [
+      "로오의동각반",
+      "세토아의회색신발",
+      "셔스의동장갑",
+      "셔스의자수정반지",
+      "셔스의철방패"
+    ]
+  },
+  "ScriptName": "Common Monster",
+  "UpdateMapWide": true,
+  "UpdateRate": 1000.0,
+  "Grow": false,
+  "IgnoreCollision": false
+}

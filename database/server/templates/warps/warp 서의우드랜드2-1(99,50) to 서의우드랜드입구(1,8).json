@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 20835,
+  "Activations": [
+    {
+      "AreaID": 20835,
+      "Location": {
+        "X": 99,
+        "Y": 50
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 20833,
+    "Location": {
+      "X": 1,
+      "Y": 8
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 서의우드랜드2-1(99,50) to 서의우드랜드입구(1,8)"
+}

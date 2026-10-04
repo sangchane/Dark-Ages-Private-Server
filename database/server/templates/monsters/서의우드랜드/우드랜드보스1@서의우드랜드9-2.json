@@ -1,0 +1,41 @@
+{
+  "Name": "우드랜드보스1",
+  "BaseName": "우드랜드보스1",
+  "AreaID": 20843,
+  "SpawnMax": 1,
+  "SpawnType": 2,
+  "SpawnRate": 20,
+  "SpawnSize": 0,
+  "SpawnOnlyOnActiveMaps": false,
+  "Image": 16657,
+  "ImageVarience": 0,
+  "MaximumHP": 1500,
+  "MaximumMP": 0,
+  "Exp": 17808,
+  "DmgMin": 250,
+  "DmgMax": 300,
+  "Ac": 1,
+  "Level": 1,
+  "MovementSpeed": 1000,
+  "EngagedWalkingSpeed": 1000,
+  "AttackSpeed": 1000,
+  "CastSpeed": 8000,
+  "MoodType": 4,
+  "PathQualifer": 1,
+  "LootType": 2,
+  "Drops": {
+    "$type": "System.Collections.Generic.List`1[[System.String, System.Private.CoreLib]], System.Private.CoreLib",
+    "$values": [
+      "셔스의동각반",
+      "축복의회색신발",
+      "칸의동장갑",
+      "칸의사파이어반지",
+      "칸의산호귀걸이"
+    ]
+  },
+  "ScriptName": "Common Monster",
+  "UpdateMapWide": true,
+  "UpdateRate": 1000.0,
+  "Grow": false,
+  "IgnoreCollision": false
+}

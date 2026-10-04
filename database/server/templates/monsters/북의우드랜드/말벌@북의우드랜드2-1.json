@@ -1,0 +1,41 @@
+{
+  "Name": "말벌",
+  "BaseName": "말벌",
+  "AreaID": 20847,
+  "SpawnMax": 50,
+  "SpawnType": 2,
+  "SpawnRate": 5,
+  "SpawnSize": 0,
+  "SpawnOnlyOnActiveMaps": false,
+  "Image": 16385,
+  "ImageVarience": 0,
+  "MaximumHP": 1012,
+  "MaximumMP": 0,
+  "Exp": 282,
+  "DmgMin": 55,
+  "DmgMax": 60,
+  "Ac": 80,
+  "Level": 1,
+  "MovementSpeed": 1500,
+  "EngagedWalkingSpeed": 1500,
+  "AttackSpeed": 1000,
+  "CastSpeed": 8000,
+  "MoodType": 4,
+  "PathQualifer": 1,
+  "LootType": 2,
+  "Drops": {
+    "$type": "System.Collections.Generic.List`1[[System.String, System.Private.CoreLib]], System.Private.CoreLib",
+    "$values": [
+      "메투스의호안석반지",
+      "로오의신발",
+      "로톤캐프린",
+      "루딘의귀걸이",
+      "매직루나"
+    ]
+  },
+  "ScriptName": "Common Monster",
+  "UpdateMapWide": true,
+  "UpdateRate": 1000.0,
+  "Grow": false,
+  "IgnoreCollision": false
+}

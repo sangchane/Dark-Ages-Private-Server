@@ -1,0 +1,41 @@
+{
+  "Name": "고블린병사",
+  "BaseName": "고블린병사",
+  "AreaID": 20855,
+  "SpawnMax": 20,
+  "SpawnType": 2,
+  "SpawnRate": 5,
+  "SpawnSize": 0,
+  "SpawnOnlyOnActiveMaps": false,
+  "Image": 16399,
+  "ImageVarience": 0,
+  "MaximumHP": 15640,
+  "MaximumMP": 0,
+  "Exp": 2534,
+  "DmgMin": 100,
+  "DmgMax": 250,
+  "Ac": 70,
+  "Level": 1,
+  "MovementSpeed": 1500,
+  "EngagedWalkingSpeed": 1500,
+  "AttackSpeed": 1000,
+  "CastSpeed": 8000,
+  "MoodType": 4,
+  "PathQualifer": 1,
+  "LootType": 2,
+  "Drops": {
+    "$type": "System.Collections.Generic.List`1[[System.String, System.Private.CoreLib]], System.Private.CoreLib",
+    "$values": [
+      "이아의동각반",
+      "동장갑",
+      "로오의동장갑",
+      "로오의루비귀걸이",
+      "로오의사파이어반지"
+    ]
+  },
+  "ScriptName": "Common Monster",
+  "UpdateMapWide": true,
+  "UpdateRate": 1000.0,
+  "Grow": false,
+  "IgnoreCollision": false
+}

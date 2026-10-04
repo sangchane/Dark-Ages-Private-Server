@@ -1,0 +1,41 @@
+{
+  "Name": "녹색말벌",
+  "BaseName": "녹색말벌",
+  "AreaID": 20836,
+  "SpawnMax": 20,
+  "SpawnType": 2,
+  "SpawnRate": 5,
+  "SpawnSize": 0,
+  "SpawnOnlyOnActiveMaps": false,
+  "Image": 16655,
+  "ImageVarience": 0,
+  "MaximumHP": 1200,
+  "MaximumMP": 0,
+  "Exp": 616,
+  "DmgMin": 55,
+  "DmgMax": 60,
+  "Ac": 75,
+  "Level": 1,
+  "MovementSpeed": 1500,
+  "EngagedWalkingSpeed": 1500,
+  "AttackSpeed": 1000,
+  "CastSpeed": 8000,
+  "MoodType": 4,
+  "PathQualifer": 1,
+  "LootType": 2,
+  "Drops": {
+    "$type": "System.Collections.Generic.List`1[[System.String, System.Private.CoreLib]], System.Private.CoreLib",
+    "$values": [
+      "로오의반지",
+      "검정두건",
+      "대지의가죽벨트",
+      "대지의목걸이",
+      "로오의가죽각반"
+    ]
+  },
+  "ScriptName": "Common Monster",
+  "UpdateMapWide": true,
+  "UpdateRate": 1000.0,
+  "Grow": false,
+  "IgnoreCollision": false
+}

@@ -1,0 +1,41 @@
+{
+  "Name": "우드랜드보스11",
+  "BaseName": "우드랜드보스11",
+  "AreaID": 20843,
+  "SpawnMax": 1,
+  "SpawnType": 2,
+  "SpawnRate": 20,
+  "SpawnSize": 0,
+  "SpawnOnlyOnActiveMaps": false,
+  "Image": 16657,
+  "ImageVarience": 0,
+  "MaximumHP": 11000,
+  "MaximumMP": 0,
+  "Exp": 17808,
+  "DmgMin": 150,
+  "DmgMax": 200,
+  "Ac": 1,
+  "Level": 1,
+  "MovementSpeed": 1000,
+  "EngagedWalkingSpeed": 1000,
+  "AttackSpeed": 1000,
+  "CastSpeed": 8000,
+  "MoodType": 4,
+  "PathQualifer": 1,
+  "LootType": 2,
+  "Drops": {
+    "$type": "System.Collections.Generic.List`1[[System.String, System.Private.CoreLib]], System.Private.CoreLib",
+    "$values": [
+      "로오의동각반",
+      "풍요의동각반",
+      "풍요의동장갑",
+      "풍요의순옥귀걸이",
+      "풍요의철방패"
+    ]
+  },
+  "ScriptName": "Common Monster",
+  "UpdateMapWide": true,
+  "UpdateRate": 1000.0,
+  "Grow": false,
+  "IgnoreCollision": false
+}
