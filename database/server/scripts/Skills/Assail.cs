@@ -121,13 +121,9 @@ namespace Darkages.Scripting.Scripts.Skills
                         i.ApplyDamage(sprite, dmg, Skill.Template.Sound);
                         success = true;
 
+                        // 맞은 사람에게 거꾸로 된 칸으로 그림을 한 번 더 보내 쓴 사람 위에 그려졌다(MonkStrike 와 같은 까닭, 2026-10-04).
                         if (i is Aisling)
-                        {
-                            (i as Aisling).Client.Aisling.Show(Scope.NearbyAislings,
-                                new ServerFormat29((uint) client.Aisling.Serial, (uint) i.Serial, byte.MinValue,
-                                    Skill.Template.TargetAnimation, 100));
                             (i as Aisling).Client.Send(new ServerFormat08(i as Aisling, StatusFlags.All));
-                        }
 
                         if (i is Monster || i is Mundane || i is Aisling)
                             client.Aisling.Show(Scope.NearbyAislings,

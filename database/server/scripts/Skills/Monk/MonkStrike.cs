@@ -293,19 +293,19 @@ namespace Darkages.Storage.locales.Scripts.Skills
                 .Where(target => target != null)
                 .Where(target => target.Serial != aisling.Serial)
                 .Where(target => !(target is Money))
-                .Where(target => target.Attackable))
+                .Where(target => target.Attackable)
+                // 사람은 결투 맵에서만 — 원작 5.99 무도가 기술은 결투 맵이 아니면 괴물만 친다(get_map_pk). 동료 봇이 범위에 서면
+                // 「맞았다」고 쳐서 헛침 그림이 안 나오고 달마신공 체력도 맞췄다(2026-10-04).
+                .Where(target => !(target is Aisling) || target.Map.Flags.HasFlag(MapFlags.PlayerKill)))
             {
                 target.ApplyDamage(aisling, damage(target), skill.Template.Sound);
                 onHit?.Invoke(target);
                 hit = true;
 
+                // 맞은 사람에게 그림을 한 번 더 보내던 줄은 뺐다 — 칸 순서가 거꾸로라(0x29 둘째 그림 = 쓴 쪽) 쓴 사람 위에
+                // 그려졌다(사용자 2026-10-04 「기술 이펙트가 왜 시전자한테도」). 아래 줄이 사람에게도 바른 순서로 보낸다.
                 if (target is Aisling player)
-                {
-                    player.Client.Aisling.Show(Scope.NearbyAislings,
-                        new ServerFormat29((uint) aisling.Serial, (uint) target.Serial, byte.MinValue,
-                            skill.Template.TargetAnimation, skill.Template.TargetAnimationSpeed));
                     player.Client.Send(new ServerFormat08(player, StatusFlags.All));
-                }
 
                 if (target is Monster || target is Mundane || target is Aisling)
                     aisling.Show(Scope.NearbyAislings,
