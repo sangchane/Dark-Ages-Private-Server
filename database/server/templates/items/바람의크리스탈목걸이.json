@@ -6,7 +6,7 @@
   "EquipmentSlot": 6,
   "Class": 0,
   "Gender": 255,
-  "LevelRequired": 51,
+  "LevelRequired": 11,
   "ScriptName": "Necklace",
   "Flags": 125,
   "CanStack": false,
