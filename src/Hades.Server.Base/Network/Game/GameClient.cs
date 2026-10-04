@@ -1553,8 +1553,11 @@ namespace Darkages.Network.Game
 
                 if (!string.IsNullOrEmpty(warps.ScriptNpc))
                 {
+                    // 사본 맵(호러캐슬 방)에는 NPC 가 없다 — 그때는 서버 어디든 같은 스크립트의 NPC 가 돌린다.
                     var host = ServerContext.Game.ObjectFactory
-                        .QueryAll<Mundane>(Aisling.Map, npc => npc.Template?.ScriptKey == warps.ScriptNpc).FirstOrDefault();
+                                   .QueryAll<Mundane>(Aisling.Map, npc => npc.Template?.ScriptKey == warps.ScriptNpc).FirstOrDefault()
+                               ?? ServerContext.Game.ObjectFactory
+                                   .QueryAll<Mundane>(null, npc => npc.Template?.ScriptKey == warps.ScriptNpc).FirstOrDefault();
 
                     if (host?.Scripts != null)
                         foreach (var script in host.Scripts.Values)

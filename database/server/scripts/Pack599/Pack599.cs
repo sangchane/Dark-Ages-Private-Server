@@ -370,6 +370,26 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                     return area?.Id ?? 0;
                 }
                 // `warp_create 종류, 출발맵, x, y, 도착맵, x, y, 최소레벨, 최대레벨, 막힘` — 막힘 1 은 괴물을 다 잡아야 지나간다.
+                // 종류 3 은 도착맵 칸이 스크립트 이름이다 — 밟으면 옮기지 않고 그 NPC 스크립트를 돈다(호러캐슬 → 호러캐슬다음방).
+                case "warp_create" when Arg(a, 0) == 3:
+                {
+                    var from = MapNamed(Text(a, 1));
+                    if (from == null)
+                        return Unknown($"warp_create 3 {Text(a, 1)} → {Text(a, 4)}");
+                    var at = new Warp { AreaId = from.Id, Location = new Position((int) Arg(a, 2), (int) Arg(a, 3)) };
+                    Instances.AddWarp(new WarpTemplate
+                    {
+                        Name = $"warp {from.Name}({Arg(a, 2)},{Arg(a, 3)}) runs {Text(a, 4)}",
+                        ActivationMapId = from.Id,
+                        Activations = new List<Warp> { at },
+                        To = at,
+                        ScriptNpc = "NPC_" + Text(a, 4),
+                        WarpType = WarpType.Map,
+                        LevelRequired = (byte) Math.Clamp(Arg(a, 7), 1, 99),
+                        LevelMaximum = (byte) (Arg(a, 8) >= 99 ? 0 : Math.Clamp(Arg(a, 8), 1, 98))
+                    });
+                    return 1;
+                }
                 case "warp_create":
                 {
                     var from = MapNamed(Text(a, 1));
@@ -423,6 +443,34 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                         _me.AddObject(monster);
                     }
                     return 1;
+                }
+                // `mob_spawn 괴물, x, y, 방향` — 부른 사람의 맵 (x,y) 에 하나. 막힌 칸이면 맵 안 빈 칸 아무 데나(Novaonline.exe 0x44a78a).
+                case "mob_spawn":
+                {
+                    var template = ServerContext.GlobalMonsterTemplateCache.FirstOrDefault(t => t.Name == Text(a, 0));
+                    if (template == null)
+                        return Unknown($"mob_spawn {Text(a, 0)}");
+                    Monster monster = null;
+                    for (var attempt = 0; attempt < 20 && monster == null; attempt++)
+                        monster = Monster.Create(template, _me.Map);
+                    if (monster == null)
+                        return 0;
+                    int x = (int) Arg(a, 1), y = (int) Arg(a, 2);
+                    if (x >= 0 && y >= 0 && x < _me.Map.Cols && y < _me.Map.Rows && !_me.Map.IsWall(x, y) &&
+                        _me.Map.ObjectGrid[x, y].Sprites.Count == 0)
+                    {
+                        monster.XPos = x;
+                        monster.YPos = y;
+                    }
+                    monster.Direction = (byte) (Arg(a, 3) % 4);
+                    _me.AddObject(monster);
+                    return 1;
+                }
+                // `map_user_exist 맵` — 그 맵에 있는 사람 수(0x43f26f). 호러캐슬다음방은 `== 1` 을 「그룹원이 같은 맵에 없다」로 쓴다.
+                case "map_user_exist":
+                {
+                    var map = MapNamed(Text(a, 0));
+                    return map == null ? 0 : _me.GetObjects<Aisling>(map, p => p.LoggedIn && p.CurrentMapId == map.Id).Count();
                 }
                 case "mob_clear": return Instances.Clear<Monster>(MapNamed(Text(a, 0)));
                 case "item_clear": return Instances.Clear<Item>(MapNamed(Text(a, 0))) + Instances.Clear<Money>(MapNamed(Text(a, 0)));
@@ -669,6 +717,13 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                     return 0;
                 // 자르반·엘리멘탈의 메테오 — 맞는 사람 파티에서 가장 큰 최대 체력을 나눈 만큼 파티 전체를 친다.
                 case "group_bighp": return Party().Select(m => (long) m.MaximumHp).DefaultIfEmpty(0).Max();
+                // 호러캐슬 — 그룹원 마력이 3만을 넘으면 센 괴물(…2)을 세운다. bighp 의 짝(Novaonline.exe 0x45429b, 칸 +0xB4).
+                case "group_bigmp": return Party().Select(m => (long) m.MaximumMp).DefaultIfEmpty(0).Max();
+                // 같은 맵 그룹원 중 나와 전직 단계가 다른 사람이 있으면 1. 그룹이 없으면 내 단계(0x4543aa).
+                case "group_class_sub":
+                    return (_me.PartyMembers?.Count ?? 0) > 1
+                        ? Party().Any(m => m.Stage != _me.Stage) ? 1 : 0
+                        : (long) _me.Stage;
                 case "group_damaged2":
                     foreach (var member in (Find(a, 0) as Aisling)?.PartyMembers?.Where(m => m?.Map == _me.Map) ??
                                            new[] { Find(a, 0) as Aisling })

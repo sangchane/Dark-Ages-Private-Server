@@ -1,0 +1,40 @@
+{
+  "Name": "타클라시우스1",
+  "BaseName": "타클라시우스1",
+  "AreaID": 20714,
+  "SpawnMax": 0,
+  "SpawnType": 2,
+  "SpawnRate": 20,
+  "SpawnSize": 0,
+  "SpawnOnlyOnActiveMaps": false,
+  "Image": 16750,
+  "ImageVarience": 0,
+  "MaximumHP": 23333,
+  "DmgMin": 610,
+  "DmgMax": 660,
+  "Ac": -45,
+  "MaximumMP": 0,
+  "Exp": 205822,
+  "Level": 1,
+  "MovementSpeed": 1400,
+  "EngagedWalkingSpeed": 1400,
+  "AttackSpeed": 1000,
+  "CastSpeed": 8000,
+  "MoodType": 4,
+  "PathQualifer": 1,
+  "LootType": 2,
+  "Drops": {
+    "$values": [
+      "대지의목걸이",
+      "화염의목걸이",
+      "헬소서러로브"
+    ]
+  },
+  "DropRate": 0.003,
+  "ScriptName": "Common Monster",
+  "UpdateMapWide": true,
+  "UpdateRate": 1000.0,
+  "Grow": false,
+  "IgnoreCollision": false,
+  "GoldMinimum": 10000
+}

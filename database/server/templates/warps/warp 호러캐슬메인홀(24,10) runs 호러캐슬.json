@@ -1,0 +1,31 @@
+{
+  "ActivationMapId": 20719,
+  "Activations": [
+    {
+      "AreaID": 20719,
+      "Location": {
+        "X": 24,
+        "Y": 10
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 99,
+  "LevelMaximum": 0,
+  "ScriptNpc": "NPC_호러캐슬",
+  "To": {
+    "AreaID": 20719,
+    "Location": {
+      "X": 24,
+      "Y": 10
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 호러캐슬메인홀(24,10) runs 호러캐슬"
+}

@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 20719,
+  "Activations": [
+    {
+      "AreaID": 20719,
+      "Location": {
+        "X": 25,
+        "Y": 19
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 20683,
+    "Location": {
+      "X": 9,
+      "Y": 4
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 호러캐슬메인홀(25,19) to 죽음의마을입구5(9,4)"
+}

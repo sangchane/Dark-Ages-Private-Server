@@ -1,0 +1,41 @@
+{
+  "Name": "바탈리우스2",
+  "BaseName": "바탈리우스2",
+  "AreaID": 20714,
+  "SpawnMax": 0,
+  "SpawnType": 2,
+  "SpawnRate": 20,
+  "SpawnSize": 0,
+  "SpawnOnlyOnActiveMaps": false,
+  "Image": 16752,
+  "ImageVarience": 0,
+  "MaximumHP": 22920,
+  "DmgMin": 804,
+  "DmgMax": 920,
+  "Ac": -45,
+  "MaximumMP": 0,
+  "Exp": 137260,
+  "Level": 1,
+  "MovementSpeed": 1400,
+  "EngagedWalkingSpeed": 1400,
+  "AttackSpeed": 1000,
+  "CastSpeed": 8000,
+  "MoodType": 4,
+  "PathQualifer": 1,
+  "LootType": 2,
+  "Drops": {
+    "$values": [
+      "헬나이트아머",
+      "헬씨프아머",
+      "피4",
+      "신월도"
+    ]
+  },
+  "DropRate": 0.0032,
+  "ScriptName": "Common Monster",
+  "UpdateMapWide": true,
+  "UpdateRate": 1000.0,
+  "Grow": false,
+  "IgnoreCollision": false,
+  "GoldMinimum": 10000
+}
