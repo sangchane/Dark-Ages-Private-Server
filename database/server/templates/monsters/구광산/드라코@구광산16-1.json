@@ -31,5 +31,8 @@
   "UpdateRate": 1000.0,
   "Grow": false,
   "IgnoreCollision": false,
-  "GoldMinimum": 10000
+  "GoldMinimum": 10000,
+  "ElementType": 2,
+  "OffenseElement": 6,
+  "DefenseElement": 6
 }

@@ -34,5 +34,8 @@
   "Grow": false,
   "IgnoreCollision": false,
   "Gold": 500,
-  "GoldChance": 30
+  "GoldChance": 30,
+  "ElementType": 2,
+  "OffenseElement": 6,
+  "DefenseElement": 6
 }
