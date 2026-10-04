@@ -699,6 +699,9 @@ namespace Darkages.Network.Game
             client.Aisling.Show(Scope.DefinedAislings, response, audience.ToArray());
         }
 
+        /// <summary>마법 딜레이 — 5틱(원작 틱 100ms).</summary>
+        private static readonly TimeSpan SpellDelay = TimeSpan.FromMilliseconds(5 * 100);
+
         protected override void Format0FHandler(GameClient client, ClientFormat0F format)
         {
             #region Sanity Checks
@@ -725,6 +728,12 @@ namespace Darkages.Network.Game
 
             if (spellReq == null)
                 return;
+
+            // 마법 딜레이 5틱 — 원작 틱 100ms × 5 = 0.5초(사용자 2026-10-04). 누르는 대로 다 받으면 몸 동작·이펙트가 끝나기 전에
+            // 다음 마법이 덮었다. 그 안에 온 요청은 버린다.
+            if (DateTime.UtcNow - client.LastSpellRequest < SpellDelay)
+                return;
+            client.LastSpellRequest = DateTime.UtcNow;
 
             //abort cast?
             // 잠들거나 얼어도 풀기 마법만은 된다 — 우리 것은 한글 이름이다. 빠져 있어 잠든 봇이 제 잠을 못 풀었다(2026-10-02).
