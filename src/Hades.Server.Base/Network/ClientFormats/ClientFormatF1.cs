@@ -42,7 +42,12 @@ namespace Darkages.Network.ClientFormats
                 Slot = reader.ReadByte();
 
             if (Kind == Magic)
-                Orders = new[] { reader.ReadByte(), reader.ReadByte(), reader.ReadByte(), reader.ReadByte(), reader.ReadByte() };
+            {
+                Orders = new[] { reader.ReadByte(), reader.ReadByte(), reader.ReadByte(), reader.ReadByte(), reader.ReadByte(), (byte) 0 };
+                // 여섯째(2026-10-05) — 주인 체력이 몇 % 이하면 회복. 옛 앱은 보내지 않는다(0 = 봇 기본).
+                if (reader.GetCanRead())
+                    Orders[5] = reader.ReadByte();
+            }
 
             if (Kind == Give)
                 Count = reader.ReadUInt16();

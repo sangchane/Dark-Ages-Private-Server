@@ -135,7 +135,7 @@ namespace Darkages.Types
             lock (Gate)
                 return new ServerFormat5E(ServerFormat5E.Master, caller.Serial, caller.Username)
                 {
-                    Orders = CompanionState.Orders.TryGetValue(caller.Username, out var orders) ? orders : new byte[] { 0x1F, 0x0F, 0, 0, 0 }
+                    Orders = CompanionState.Orders.TryGetValue(caller.Username, out var orders) ? orders : new byte[] { 0x1F, 0x3F, 0, 0, 0, 0 }
                 };
         }
 
@@ -145,11 +145,13 @@ namespace Darkages.Types
         /// </summary>
         public static void SetOrders(Aisling caller, byte[] orders)
         {
-            if (caller?.Client == null || IsBot(caller.Username) || orders is not { Length: 5 })
+            if (caller?.Client == null || IsBot(caller.Username) || orders is not { Length: 6 })
                 return;
 
             lock (Gate)
-                CompanionState.Orders[caller.Username] = new[] { (byte) (orders[0] & 0x1F), (byte) (orders[1] & 0x0F), orders[2], orders[3], (byte) (orders[4] <= 10 ? orders[4] : 0) };
+                // 성직자 칸은 여섯 비트(콜라마·벨라르모 2026-10-04 — 네 비트로 잘라 둘이 봇에게 닿지 않았다), 여섯째는 회복 % (1~99, 0 = 봇 기본).
+                CompanionState.Orders[caller.Username] = new[] { (byte) (orders[0] & 0x1F), (byte) (orders[1] & 0x3F), orders[2], orders[3],
+                    (byte) (orders[4] <= 10 ? orders[4] : 0), (byte) (orders[5] < 100 ? orders[5] : 0) };
 
             if (CompanionOf(caller.Username) is { } name && FindOnline(name) is { Client: { } } bot)
                 bot.Client.Send(MasterOf(caller));
