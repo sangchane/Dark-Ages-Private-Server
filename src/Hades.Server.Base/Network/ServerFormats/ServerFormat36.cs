@@ -82,7 +82,9 @@ namespace Darkages.Network.ServerFormats
             var users = _client.Server.Clients.Where(i => i?.Aisling != null && i.Aisling.LoggedIn)
                 .Select(i => i.Aisling).ToArray();
 
-            users = users.OrderByDescending(i => i.MaximumHp + i.MaximumMp * 2).ToArray();
+            // 레벨 높은 순, 같으면 체력 + 마력×2 큰 순(사용자 2026-10-04).
+            users = users.OrderByDescending(i => i.ExpLevel)
+                .ThenByDescending(i => i.MaximumHp + i.MaximumMp * 2).ToArray();
 
             var count = (ushort) users.Length;
             var total = (short) (users.Length - users.Length / 11);
@@ -102,6 +104,10 @@ namespace Darkages.Network.ServerFormats
                 writer.Write((byte) user.Stage > 0);
                 writer.WriteStringA(user.Username);
             }
+
+            // 우리 확장(2026-10-04): 목록 끝에 사람 차례대로 길드명 — 앱 접속자 창 오른쪽 칸. 앞부분은 원작 그대로라 옛 앱은 꼬리를 읽지 않는다.
+            foreach (var user in users)
+                writer.WriteStringA(user.Clan ?? string.Empty);
         }
     }
 }
