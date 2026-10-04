@@ -1,0 +1,23 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "매스케이드화",
+  "Image": 11,
+  "DisplayImage": 32938,
+  "EquipmentSlot": 1,
+  "Class": 0,
+  "Gender": 255,
+  "LevelRequired": 26,
+  "ScriptName": "Weapon",
+  "Flags": 125,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 27500,
+  "DmgMin": 39,
+  "DmgMax": 49,
+  "MaxDurability": 12000,
+  "CarryWeight": 7,
+  "AttackMotion": 1,
+  "AttackSpeed": 37,
+  "Group": "5.99표/무기/전사무기",
+  "OffenseElement": 1
+}

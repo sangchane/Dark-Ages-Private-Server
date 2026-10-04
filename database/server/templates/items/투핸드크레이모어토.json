@@ -1,0 +1,23 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "투핸드크레이모어토",
+  "Image": 16,
+  "DisplayImage": 32943,
+  "EquipmentSlot": 1,
+  "Class": 1,
+  "Gender": 255,
+  "LevelRequired": 71,
+  "ScriptName": "Weapon",
+  "Flags": 8317,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 139500,
+  "DmgMin": 148,
+  "DmgMax": 188,
+  "MaxDurability": 60000,
+  "CarryWeight": 26,
+  "AttackMotion": 129,
+  "AttackSpeed": 37,
+  "Group": "5.99표/무기/전사무기",
+  "OffenseElement": 4
+}

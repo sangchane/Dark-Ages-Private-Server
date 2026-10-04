@@ -1,0 +1,23 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "광단검화",
+  "Image": 30,
+  "DisplayImage": 33022,
+  "EquipmentSlot": 1,
+  "Class": 2,
+  "Gender": 255,
+  "LevelRequired": 56,
+  "ScriptName": "Weapon",
+  "Flags": 125,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 85000,
+  "DmgMin": 68,
+  "DmgMax": 88,
+  "MaxDurability": 10000,
+  "CarryWeight": 11,
+  "AttackMotion": 134,
+  "AttackSpeed": 18,
+  "Group": "5.99표/무기/도적무기",
+  "OffenseElement": 1
+}

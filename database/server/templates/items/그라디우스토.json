@@ -1,0 +1,23 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "그라디우스토",
+  "Image": 5,
+  "DisplayImage": 32858,
+  "EquipmentSlot": 1,
+  "Class": 0,
+  "Gender": 255,
+  "LevelRequired": 11,
+  "ScriptName": "Weapon",
+  "Flags": 125,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 5100,
+  "DmgMin": 20,
+  "DmgMax": 30,
+  "MaxDurability": 8000,
+  "CarryWeight": 5,
+  "AttackMotion": 1,
+  "AttackSpeed": 37,
+  "Group": "5.99표/무기/전사무기",
+  "OffenseElement": 4
+}

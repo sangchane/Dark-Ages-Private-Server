@@ -1,0 +1,23 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "커틀라스토",
+  "Image": 3,
+  "DisplayImage": 32856,
+  "EquipmentSlot": 1,
+  "Class": 0,
+  "Gender": 255,
+  "LevelRequired": 11,
+  "ScriptName": "Weapon",
+  "Flags": 125,
+  "CanStack": false,
+  "MaxStack": 0,
+  "Value": 4500,
+  "DmgMin": 22,
+  "DmgMax": 32,
+  "MaxDurability": 6000,
+  "CarryWeight": 5,
+  "AttackMotion": 1,
+  "AttackSpeed": 25,
+  "Group": "5.99표/무기/전사무기",
+  "OffenseElement": 4
+}
