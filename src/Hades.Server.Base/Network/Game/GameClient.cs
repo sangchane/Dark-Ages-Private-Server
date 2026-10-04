@@ -78,7 +78,7 @@ namespace Darkages.Network.Game
         public DateTime LastWhisperMessageSent { get; set; }
         public Interpreter MenuInterpter { get; set; }
 
-        /// <summary>마지막으로 받아들인 마법 요청(0x0F) — 마법 딜레이 5틱(<c>Format0FHandler</c>).</summary>
+        /// <summary>마지막으로 받아들인 마법 요청(0x0F) — 마법 딜레이 0.25초(<c>Format0FHandler</c>).</summary>
         public DateTime LastSpellRequest { get; set; }
         public GameServerTimer MpRegenTimer { get; set; }
         [JsonIgnore] public PendingSell PendingItemSessions { get; set; }

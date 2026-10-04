@@ -699,8 +699,8 @@ namespace Darkages.Network.Game
             client.Aisling.Show(Scope.DefinedAislings, response, audience.ToArray());
         }
 
-        /// <summary>마법 딜레이 — 5틱(원작 틱 100ms).</summary>
-        private static readonly TimeSpan SpellDelay = TimeSpan.FromMilliseconds(5 * 100);
+        /// <summary>마법 딜레이 — 0.25초(사용자 2026-10-04).</summary>
+        private static readonly TimeSpan SpellDelay = TimeSpan.FromSeconds(0.25);
 
         protected override void Format0FHandler(GameClient client, ClientFormat0F format)
         {
@@ -729,7 +729,7 @@ namespace Darkages.Network.Game
             if (spellReq == null)
                 return;
 
-            // 마법 딜레이 5틱 — 원작 틱 100ms × 5 = 0.5초(사용자 2026-10-04). 누르는 대로 다 받으면 몸 동작·이펙트가 끝나기 전에
+            // 마법 딜레이 0.25초(사용자 2026-10-04). 누르는 대로 다 받으면 몸 동작·이펙트가 끝나기 전에
             // 다음 마법이 덮었다. 그 안에 온 요청은 버린다.
             if (DateTime.UtcNow - client.LastSpellRequest < SpellDelay)
                 return;
