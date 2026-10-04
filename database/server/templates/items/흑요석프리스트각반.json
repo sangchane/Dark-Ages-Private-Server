@@ -6,7 +6,7 @@
   "EquipmentSlot": 12,
   "Class": 4,
   "Gender": 255,
-  "LevelRequired": 81,
+  "LevelRequired": 99,
   "ScriptName": "Generic",
   "Flags": 117,
   "CanStack": false,

@@ -6,7 +6,7 @@
   "EquipmentSlot": 5,
   "Class": 1,
   "Gender": 255,
-  "LevelRequired": 81,
+  "LevelRequired": 99,
   "ScriptName": "Earring",
   "Flags": 117,
   "CanStack": false,

@@ -6,7 +6,7 @@
   "EquipmentSlot": 3,
   "Class": 1,
   "Gender": 255,
-  "LevelRequired": 81,
+  "LevelRequired": 99,
   "ScriptName": "Shield",
   "Flags": 61,
   "CanStack": false,
