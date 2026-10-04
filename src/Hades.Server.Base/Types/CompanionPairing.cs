@@ -417,9 +417,16 @@ namespace Darkages.Types
                     return;
             }
 
-            if (FindOnline(ownerName) is not { Skulled: true } owner || owner.Dead || owner.CurrentMapId != bot.CurrentMapId ||
-                Math.Abs(owner.XPos - bot.XPos) + Math.Abs(owner.YPos - bot.YPos) != 1)
+            // 2칸 안까지 — 딱 맞닿은 칸만 받으면 봇이 믿는 자리와 조금만 어긋나도 말없이 거절해 봇이 깨우기만 되풀이했다(2026-10-05).
+            // 거절하면 까닭을 남긴다.
+            var target = FindOnline(ownerName);
+            var reach = target == null ? -1 : Math.Abs(target.XPos - bot.XPos) + Math.Abs(target.YPos - bot.YPos);
+            if (target is not { Skulled: true } owner || owner.Dead || owner.CurrentMapId != bot.CurrentMapId || reach < 1 || reach > 2)
+            {
+                ServerContext.Logger($"봇 {bot.Username}: 주인 깨우기 안 됨 — 혼수 {target?.Skulled} · 죽음 {target?.Dead} · " +
+                                     $"맵 {target?.CurrentMapId}/{bot.CurrentMapId} · 거리 {reach}");
                 return;
+            }
 
             WakeUp(bot, owner);
             owner.Client.SendMessage(0x02, "봇이 당신을 깨웠습니다.");
