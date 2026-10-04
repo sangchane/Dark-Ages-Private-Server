@@ -1,10 +1,10 @@
 {
-  "ActivationMapId": 20304,
+  "ActivationMapId": 20683,
   "Activations": [
     {
-      "AreaID": 20304,
+      "AreaID": 20683,
       "Location": {
-        "X": 48,
+        "X": 10,
         "Y": 0
       },
       "PortalKey": 0
@@ -12,10 +12,10 @@
   ],
   "LevelRequired": 99,
   "To": {
-    "AreaID": 20683,
+    "AreaID": 20679,
     "Location": {
-      "X": 11,
-      "Y": 17
+      "X": 44,
+      "Y": 94
     },
     "PortalKey": 0
   },
@@ -25,5 +25,5 @@
   "WorldTransionWarpId": 0,
   "Description": null,
   "Group": null,
-  "Name": "warp 마인마을(48,0) to 죽음의마을입구5(11,17)"
+  "Name": "warp 죽음의마을입구5(10,0) to 죽음의마을1(44,94)"
 }

@@ -715,6 +715,53 @@
           "PortalKey": 0
         }
       ]
+    },
+    {
+      "Destination": {
+        "AreaID": 20683,
+        "Location": {
+          "X": 11,
+          "Y": 17
+        },
+        "PortalKey": 0
+      },
+      "DisplayName": "죽음의마을",
+      "PointX": 142,
+      "PointY": 320,
+      "Zones": [
+        {
+          "AreaID": 20679,
+          "Location": {
+            "X": 42,
+            "Y": 2
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20680,
+          "Location": {
+            "X": 23,
+            "Y": 95
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20681,
+          "Location": {
+            "X": 66,
+            "Y": 95
+          },
+          "PortalKey": 0
+        },
+        {
+          "AreaID": 20682,
+          "Location": {
+            "X": 53,
+            "Y": 95
+          },
+          "PortalKey": 0
+        }
+      ]
     }
   ],
   "FieldNumber": 1,
