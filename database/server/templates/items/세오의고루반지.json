@@ -21,5 +21,6 @@
     "Value": 150
   },
   "Group": "하데스표/반지/공통반지",
-  "CarryWeight": 1
+  "CarryWeight": 1,
+  "DropRate": 0.053333
 }
