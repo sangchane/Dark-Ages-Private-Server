@@ -1,6 +1,8 @@
 ﻿#region
 
+using System;
 using System.Linq;
+using Darkages.Common;
 using Darkages.Network.ServerFormats;
 using Darkages.Types;
 
@@ -15,8 +17,7 @@ namespace Darkages.Scripting.Scripts.Skills
 
         public Sprite Target;
 
-        // 등 뒤 ×2 · 옆 ×1.5 · 정면 ×1 은 여기가 아니라 피해가 들어가는 공통 길에 있다
-        // (Sprite.BlowFacing). 평타만이 아니라 때리는 기술이 모두 같은 판정을 받는다.
+        // 때린 자리 판정은 여기가 아니라 피해가 들어가는 공통 길에 있다(Sprite.BlowFacing) — 지금은 배수가 모두 1 이다.
 
         /// <summary>5.99 공격속성 배수(Novaonline.exe 0x415cff — 속성 1~5 면 ×13/10).</summary>
         private const double MonsterBlowElement = 1.3;
@@ -64,6 +65,20 @@ namespace Darkages.Scripting.Scripts.Skills
             return (aisling.Path == Class.Monk ? (byte) 132 : (byte) 1, 20);
         }
 
+        /// <summary>
+        /// 평타 한 방. 원작 5.99 `0x4166b1`: 공격력 + rand%10 − rand%10(−9~+9), 그다음 `0x4166eb`: rand%100 ≤ 치명타
+        /// 이면 ×2(실제 확률 치명타+1%). 기술 레벨은 피해에 들어가지 않는다(사용자 2026-10-04).
+        /// </summary>
+        public static int Roll(long attackPower, long critical, Random dice)
+        {
+            var dmg = attackPower + dice.Next(10) - dice.Next(10);
+
+            if (dice.Next(100) <= critical)
+                dmg *= 2;
+
+            return (int) Math.Min(dmg, int.MaxValue);
+        }
+
         public override void OnSuccess(Sprite sprite)
         {
             if (sprite is Aisling)
@@ -83,10 +98,12 @@ namespace Darkages.Scripting.Scripts.Skills
 
                 if (enemy != null)
                 {
-                    var imp = 10 + Skill.Level;
-                    var dmg = client.Aisling.Str * 4 + client.Aisling.Dex * 2;
-
-                    dmg += dmg * imp / 100;
+                    int dmg;
+                    lock (Generator.Random)
+                    {
+                        dmg = Roll(Darkages.Storage.locales.Scripts.Pack599.Pack599.AttackPower(client.Aisling),
+                            Darkages.Storage.locales.Scripts.Pack599.Pack599.Critical(client.Aisling), Generator.Random);
+                    }
 
                     if (sprite.EmpoweredAssail)
                         if (((Aisling) sprite).Weapon == 0)

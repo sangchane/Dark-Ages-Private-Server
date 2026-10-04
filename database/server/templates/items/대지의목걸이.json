@@ -33,5 +33,6 @@
     "Value": 10
   },
   "Group": "5.99표/목걸이/공통목걸이",
-  "DropRate": 0.0404
+  "DropRate": 0.0404,
+  "OffenseElement": 4
 }

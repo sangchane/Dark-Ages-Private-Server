@@ -165,8 +165,12 @@ namespace Darkages.Storage.locales.Scripts.Creations
 
             if (obj.BonusAc < -70) obj.BonusAc = -70;
 
-            obj.DefenseElement = ElementManager.Element.None;
-            obj.OffenseElement = ElementManager.Element.None;
+            // 정의에 속성이 없으면 생길 때 수·화·풍·토(1~4) 중 하나씩 붙인다 — 원작 5.99 `0x422bc5`(사용자 2026-10-04).
+            lock (Generator.Random)
+            {
+                obj.DefenseElement = (ElementManager.Element) Generator.Random.Next(1, 5);
+                obj.OffenseElement = (ElementManager.Element) Generator.Random.Next(1, 5);
+            }
 
             if (obj.Template.ElementType == ElementQualifer.Random)
             {

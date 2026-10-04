@@ -42,5 +42,6 @@
     "Value": 2
   },
   "Group": "5.99표/허리띠/공통벨트",
-  "DropRate": 0.05
+  "DropRate": 0.05,
+  "DefenseElement": 2
 }

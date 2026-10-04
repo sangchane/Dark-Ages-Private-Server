@@ -1082,7 +1082,8 @@ namespace Darkages.Network.Game
             LastClientRefresh = DateTime.UtcNow;
             LastMessageSent = DateTime.UtcNow;
             BoardOpened = DateTime.UtcNow;
-            Aisling.BonusAc = (100 - Aisling.Level / 3);
+            // 원작 5.99 세이브 `현재방어력 100` — 레벨로 깎지 않는다(사용자 2026-10-04).
+            Aisling.BonusAc = 100;
             Aisling.Exchange = null;
             Aisling.LastMapId = short.MaxValue;
 

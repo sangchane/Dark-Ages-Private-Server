@@ -27,12 +27,6 @@ namespace Darkages.Storage.locales.Scripts.Skills
         private const int OtherClassCrossShare = 3;
 
         /// <summary>
-        /// 한 방 피해에 덧붙는 기술 레벨 보정의 바탕 — 피해에 (이 값 + 기술 레벨)% 를 더 붙인다(레벨 0 이어도 10%,
-        /// 레벨마다 1%씩). 하데스가 쓰던 보정 그대로.
-        /// </summary>
-        private const int SkillLevelBonusBasePercent = 10;
-
-        /// <summary>
         /// 마력(템플릿 `ManaCost`). 5.99: 모자라면 「사용하기에 마력량이적습니다」 하고 쓰지 않고, 넉넉하면 **표적을 찾기 전에** 먼저 뺀다.
         /// </summary>
         public static bool Spend(Sprite sprite, Skill skill)
@@ -211,7 +205,7 @@ namespace Darkages.Storage.locales.Scripts.Skills
             if (template.AttackPercent == 0)
                 return;
 
-            var damage = Blow(aisling, skill, template.AttackPercent, template.EndurancePercent)
+            var damage = Blow(aisling, template.AttackPercent, template.EndurancePercent)
                          + aisling.MaximumHp * template.MaximumHealthPercent / 100;
             Hit(aisling, skill, aisling.GetInfront(), _ => damage);
         }
@@ -242,7 +236,7 @@ namespace Darkages.Storage.locales.Scripts.Skills
 
             if (targets != null)
             {
-                var damage = Blow(aisling, skill, skill.Template.AttackPercent, skill.Template.EndurancePercent);
+                var damage = Blow(aisling, skill.Template.AttackPercent, skill.Template.EndurancePercent);
                 hit = Hit(aisling, skill, targets, _ => damage, onHit);
             }
 
@@ -257,17 +251,16 @@ namespace Darkages.Storage.locales.Scripts.Skills
                 ObjectManager.Get.Monsters | ObjectManager.Get.Aislings | ObjectManager.Get.Mundanes);
         }
 
-        private static int Blow(Aisling aisling, Skill skill, int attackPercent, int endurancePercent)
-        {
-            // 5.99 의 `get_att_damage` — 장비·힘·무도가 레벨·버프로 서버가 계산하는 공격력이다.
-            var blow = (int) Pack599.Pack599.AttackPower(aisling);
+        // 5.99 의 `get_att_damage` — 장비·힘·무도가 레벨·버프로 서버가 계산하는 공격력이다.
+        private static int Blow(Aisling aisling, int attackPercent, int endurancePercent) =>
+            Strike(Pack599.Pack599.AttackPower(aisling), aisling.Con, attackPercent, endurancePercent);
 
-            var damage = blow * attackPercent / 100
-                         + aisling.Con * endurancePercent / 100;
-
-            // 기술 레벨이 오르면 1%씩 붙는다. 하데스가 쓰던 보정을 그대로 둔다.
-            return damage + damage * (SkillLevelBonusBasePercent + skill.Level) / 100;
-        }
+        /// <summary>
+        /// 공격력 × 공격력배율 + 지구력 × 지구력배율. 기술 레벨 보정((10 + 기술레벨)%)은 뺐다 — 원작 5.99 팩 식에는
+        /// 없다(사용자 2026-10-04).
+        /// </summary>
+        public static int Strike(long attackPower, int con, int attackPercent, int endurancePercent) =>
+            (int) attackPower * attackPercent / 100 + con * endurancePercent / 100;
 
         private static bool Begin(Sprite sprite, Skill skill, out Aisling aisling)
         {

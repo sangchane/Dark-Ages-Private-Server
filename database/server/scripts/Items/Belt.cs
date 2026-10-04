@@ -16,9 +16,8 @@ namespace Darkages.Storage.locales.Scripts.Items
 
         public override void Equipped(Sprite sprite, byte displayslot)
         {
-            if (Item.Template.Flags.HasFlag(ItemFlags.Elemental))
-                if (Item.DefenseElement != ElementManager.Element.None)
-                    sprite.DefenseElement = Item.Template.DefenseElement;
+            // 옷 속성이 먼저고, 없을 때 허리띠다(사용자 2026-10-04).
+            GearElements.Refresh((Aisling) sprite);
 
             Item.ApplyModifers((sprite as Aisling).Client);
             (sprite as Aisling).Client.SendStats(StatusFlags.StructD);
@@ -45,8 +44,7 @@ namespace Darkages.Storage.locales.Scripts.Items
 
         public override void UnEquipped(Sprite sprite, byte displayslot)
         {
-            if (Item.Template.Flags.HasFlag(ItemFlags.Elemental))
-                sprite.DefenseElement = ElementManager.Element.None;
+            GearElements.Refresh((Aisling) sprite, displayslot);
 
             (sprite as Aisling).Client.SendStats(StatusFlags.StructD);
             Item.RemoveModifiers((sprite as Aisling).Client);

@@ -15,8 +15,6 @@ namespace Darkages.Types
 
         void ApplyEquipmentDurability(int dmg);
 
-        int ApplyWeaponBonuses(Sprite source, int dmg);
-
         double CalculateElementalDamageMod(ElementManager.Element element);
 
         int CompleteDamageApplication(int dmg, byte sound, Action<int> dmgcb, double amplifier);

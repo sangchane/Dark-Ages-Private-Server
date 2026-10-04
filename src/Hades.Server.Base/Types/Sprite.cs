@@ -883,16 +883,17 @@ namespace Darkages.Types
         /// 등 뒤에서 친 한 방. 5.99 서버(Novaonline.exe)도 등 뒤 배수를 2 로 쓴다 — 세 군데에 같은 모양으로
         /// 있다(평타→괴물 0x416331 · 평타→사람 0x4168d8 · 여러 대상 무기 공격 0x415f5d, 셋 다 `shl` 한 번).
         /// 다만 <b>그 빌드에서는 한 번도 걸리지 않는다</b>: 앞의 둘은 만든 배수를 읽지 않고 버리고(`[ebp-40]`
-        /// 읽는 곳 없음), 셋째는 호출자가 없다. 원작 의도대로 살려 쓰기로 했다(사용자, 2026-09-18).
+        /// 읽는 곳 없음), 셋째는 호출자가 없다. 2026-09-18 에 살려 썼다가 원작대로 다시 껐다(사용자 2026-10-04) —
+        /// 판정은 남기고 배수만 1 이다. 맞은 괴물이 돌아서는 것(<see cref="FaceWhoeverHit" />)은 그대로다.
         /// </summary>
-        private const double FromBehind = 2.0;
+        private const double FromBehind = 1.0;
 
         /// <summary>
         /// 옆에서 친 한 방. <b>근거 없음</b> — 사용자가 정한 값(2026-09-23)이다. 5.99 실행 파일에는 옆 배수가
         /// 없다: 1.5 짜리 부동소수 상수가 아예 없고, 정수로 만든 ×3/2(0x42442e `imul 3` + `shr`)는 방향이
-        /// 아니라 걸린 버프(캐릭터 +0x15E == 1, `sokup_delay` 가 켠다)를 본다.
+        /// 아니라 걸린 버프(캐릭터 +0x15E == 1, `sokup_delay` 가 켠다)를 본다. 원작대로 껐다(사용자 2026-10-04).
         /// </summary>
-        private const double FromTheSide = 1.5;
+        private const double FromTheSide = 1.0;
 
         /// <summary>정면에서 친 한 방. 배수 없음.</summary>
         private const double FromInFront = 1.0;
@@ -931,7 +932,7 @@ namespace Darkages.Types
         }
 
         /// <summary>
-        /// 때린 자리에 따른 배수 — 등 뒤 ×2 · 옆 ×1.5 · 정면 ×1.
+        /// 때린 자리에 따른 배수 — 지금은 셋 다 ×1 이다(원작대로 끔, 사용자 2026-10-04).
         /// </summary>
         /// <remarks>
         /// <para>
@@ -1040,7 +1041,10 @@ namespace Darkages.Types
                 return;
 
             dmg = ApplyPVPMod();
-            dmg = ApplyWeaponBonuses(damageDealingSprite, dmg);
+            // 무기 굴림을 여기서 한 번 더 더하지 않는다 — 원작 5.99 는 무기를 공격력(`0x45d4be`, Pack599.AttackPower)
+            // 안에만 넣고, 이 자리(방어 전)에는 장비 공격수정 합(`P+0xA0`, 0x415173)만 더한다(사용자 2026-10-04).
+            if (damageDealingSprite is Aisling striker)
+                dmg += striker.BonusDmg;
 
             if (dmg > 0)
                 ApplyEquipmentDurability(dmg);
@@ -1128,7 +1132,7 @@ namespace Darkages.Types
                 dmg /= ServerContext.Config.AiteDamageReductionMod;
 
             // 방어를 거친 뒤에 곱하는 것들은 여기 한 줄에 모인다 — 속성 · 괴물 평타 ×1.3 · 때린 자리.
-            // 방어 앞에서 곱하면 작은 한 방이 버림에 깎여 1 : 1.5 : 2 가 어긋난다(ApplyDamageAfterArmour 와 같은 이유).
+            // 방어 앞에서 곱하면 작은 한 방이 버림에 깎인다(ApplyDamageAfterArmour 와 같은 이유). 때린 자리는 지금 늘 ×1(사용자 2026-10-04).
             // 곱셈이므로 이 셋 사이의 순서는 값에 영향이 없다.
             var amplifier = GetElementalModifier(damageDealingSprite) * _afterArmour * BlowFacing(damageDealingSprite);
             {
@@ -1156,27 +1160,6 @@ namespace Darkages.Types
         {
             if (this is Aisling aisling && aisling.DamageCounter++ % 2 == 0 && dmg > 0)
                 aisling.EquipmentManager.DecreaseDurability();
-        }
-
-        public int ApplyWeaponBonuses(Sprite source, int dmg)
-        {
-            if (!(source is Aisling aisling))
-                return dmg;
-
-            if (aisling.EquipmentManager != null && (aisling.EquipmentManager.Weapon?.Item == null || aisling.Weapon <= 0))
-                return dmg;
-
-            if (aisling.EquipmentManager == null) return dmg;
-            var weapon = aisling.EquipmentManager.Weapon.Item;
-
-            lock (Generator.Random)
-            {
-                dmg += Generator.Random.Next(
-                    weapon.Template.DmgMin + aisling.BonusDmg * 1,
-                    weapon.Template.DmgMax + aisling.BonusDmg * 5);
-            }
-
-            return dmg;
         }
 
         public double CalculateElementalDamageMod(Element element)

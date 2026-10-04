@@ -27,6 +27,7 @@ namespace Darkages.Storage.locales.Scripts.Items
 
                 client.Aisling.Pants = (byte) (Item.Template.HasPants ? 1 : 0);
                 client.Aisling.Armor = Item.Image;
+                GearElements.Refresh(client.Aisling);
             }
         }
 
@@ -67,6 +68,7 @@ namespace Darkages.Storage.locales.Scripts.Items
 
                 client.Aisling.Pants = byte.MinValue;
                 client.Aisling.Armor = ushort.MinValue;
+                GearElements.Refresh(client.Aisling, displayslot);
 
                 Item.RemoveModifiers(client);
             }

@@ -16,10 +16,8 @@ namespace Darkages.Storage.locales.Scripts.Items
 
         public override void Equipped(Sprite sprite, byte displayslot)
         {
-            if (Item.Template.Flags.HasFlag(ItemFlags.Elemental))
-                if (Item.OffenseElement != ElementManager.Element.None)
-                    while (sprite.OffenseElement == ElementManager.Element.Random)
-                        sprite.OffenseElement = Sprite.CheckRandomElement(Item.Template.OffenseElement);
+            // 예전엔 `while (속성 == Random)` 일 때만 넣어 한 번도 들어가지 않았다. 무기가 먼저다(사용자 2026-10-04).
+            GearElements.Refresh((Aisling) sprite);
 
             Item.ApplyModifers((sprite as Aisling).Client);
             (sprite as Aisling).Client.SendStats(StatusFlags.StructD);
@@ -46,8 +44,7 @@ namespace Darkages.Storage.locales.Scripts.Items
 
         public override void UnEquipped(Sprite sprite, byte displayslot)
         {
-            if (Item.Template.Flags.HasFlag(ItemFlags.Elemental))
-                sprite.OffenseElement = ElementManager.Element.None;
+            GearElements.Refresh((Aisling) sprite, displayslot);
 
             Item.RemoveModifiers((sprite as Aisling).Client);
             (sprite as Aisling).Client.SendStats(StatusFlags.StructD);

@@ -27,5 +27,6 @@
     "Value": 1
   },
   "Group": "하데스표/벨트/원작표",
-  "DropRate": 0.05
+  "DropRate": 0.05,
+  "DefenseElement": 1
 }
