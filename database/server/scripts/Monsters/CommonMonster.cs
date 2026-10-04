@@ -207,7 +207,9 @@ namespace Darkages.Storage.locales.Scripts.Monsters
                 return;
 
             if (Monster != null && Monster.Target != null && _spellScripts.Count > 0)
-                if (_random.Next(1, 101) < ServerContext.Config.MonsterSpellSuccessRate)
+                if (Monster.Template.SpellChance > 0
+                        ? _random.Next(1, 101) <= Monster.Template.SpellChance
+                        : _random.Next(1, 101) < ServerContext.Config.MonsterSpellSuccessRate)
                 {
                     var spellidx = _random.Next(_spellScripts.Count);
 

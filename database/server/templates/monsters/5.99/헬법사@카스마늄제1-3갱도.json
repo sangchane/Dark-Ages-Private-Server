@@ -1,4 +1,4 @@
-{
+﻿{
   "Name": "헬법사",
   "BaseName": "헬법사",
   "AreaID": 20693,
@@ -38,5 +38,6 @@
   "GoldChance": 30,
   "ElementType": 2,
   "OffenseElement": 6,
-  "DefenseElement": 6
+  "DefenseElement": 6,
+  "SpellChance": 2
 }

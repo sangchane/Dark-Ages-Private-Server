@@ -1,4 +1,4 @@
-{
+﻿{
   "Name": "자이언트맨티스",
   "BaseName": "자이언트맨티스",
   "AreaID": 0,
@@ -38,5 +38,6 @@
     "Monster_리베라토"
   ],
   "Gold": 1000,
-  "GoldChance": 100
+  "GoldChance": 100,
+  "SpellChance": 11
 }

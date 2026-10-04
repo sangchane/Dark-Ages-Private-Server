@@ -1,4 +1,4 @@
-{
+﻿{
   "Name": "놀",
   "BaseName": "놀",
   "AreaID": 20266,
@@ -57,5 +57,6 @@
     "Monster_마레노"
   ],
   "Gold": 60,
-  "GoldChance": 30
+  "GoldChance": 30,
+  "SpellChance": 2
 }

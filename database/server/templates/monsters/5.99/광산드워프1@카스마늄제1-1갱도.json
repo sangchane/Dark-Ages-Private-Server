@@ -1,4 +1,4 @@
-{
+﻿{
   "Name": "광산드워프1",
   "BaseName": "광산드워프1",
   "AreaID": 20691,
@@ -40,5 +40,6 @@
   "GoldChance": 30,
   "ElementType": 2,
   "OffenseElement": 6,
-  "DefenseElement": 6
+  "DefenseElement": 6,
+  "SpellChance": 2
 }

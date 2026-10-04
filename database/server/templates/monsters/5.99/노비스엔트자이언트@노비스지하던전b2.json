@@ -1,4 +1,4 @@
-{
+﻿{
   "Name": "노비스엔트자이언트",
   "BaseName": "노비스엔트자이언트",
   "AreaID": 20384,
@@ -40,5 +40,6 @@
     "Monster_플라모"
   ],
   "Gold": 30,
-  "GoldChance": 30
+  "GoldChance": 30,
+  "SpellChance": 2
 }

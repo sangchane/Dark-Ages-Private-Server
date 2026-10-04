@@ -1,4 +1,4 @@
-{
+﻿{
   "Name": "실버팜팻",
   "BaseName": "실버팜팻",
   "AreaID": 20264,
@@ -57,5 +57,6 @@
     "Monster_마레노"
   ],
   "Gold": 60,
-  "GoldChance": 30
+  "GoldChance": 30,
+  "SpellChance": 2
 }

@@ -1,4 +1,4 @@
-{
+﻿{
   "Name": "지네",
   "BaseName": "지네",
   "AreaID": 20384,
@@ -39,5 +39,6 @@
     "Monster_플라모"
   ],
   "Gold": 30,
-  "GoldChance": 30
+  "GoldChance": 30,
+  "SpellChance": 2
 }

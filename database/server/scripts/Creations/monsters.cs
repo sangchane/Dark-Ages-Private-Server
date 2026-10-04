@@ -100,7 +100,7 @@ namespace Darkages.Storage.locales.Scripts.Creations
             var obj = new Monster
             {
                 Template = template,
-                CastTimer = new GameServerTimer(TimeSpan.FromMilliseconds(1 + template.CastSpeed)),
+                CastTimer = new GameServerTimer(TimeSpan.FromMilliseconds(1 + (template.SpellChance > 0 ? template.EngagedWalkingSpeed : template.CastSpeed))),
                 BashTimer = new GameServerTimer(TimeSpan.FromMilliseconds(1 + template.AttackSpeed)),
                 WalkTimer = new GameServerTimer(TimeSpan.FromMilliseconds(1 + template.MovementSpeed)),
                 TaggedAislings = new HashSet<int>()

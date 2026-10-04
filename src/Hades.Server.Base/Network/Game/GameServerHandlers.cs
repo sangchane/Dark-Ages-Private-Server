@@ -377,6 +377,10 @@ namespace Darkages.Network.Game
 
             #endregion
 
+            // 소루마(빙결) 중에는 아무것도 못 한다 — 물약·줍기·버리기도(사용자 2026-10-04). 앱 자동 물약도 여기서 막힌다.
+            if (client.Aisling.IsFrozen)
+                return;
+
             var objs = GetObjects(client.Aisling.Map,
                 i => i.XPos == format.Position.X && i.YPos == format.Position.Y,
                 Get.Items | Get.Money);
@@ -498,6 +502,10 @@ namespace Darkages.Network.Game
                 return;
 
             #endregion
+
+            // 소루마(빙결) 중에는 아무것도 못 한다 — 물약·줍기·버리기도(사용자 2026-10-04). 앱 자동 물약도 여기서 막힌다.
+            if (client.Aisling.IsFrozen)
+                return;
 
             var item = client.Aisling.Inventory.Get(i => i != null && i.Slot == format.ItemSlot).FirstOrDefault();
 
@@ -936,6 +944,10 @@ namespace Darkages.Network.Game
                 return;
 
             #endregion
+
+            // 소루마(빙결) 중에는 아무것도 못 한다 — 물약·줍기·버리기도(사용자 2026-10-04). 앱 자동 물약도 여기서 막힌다.
+            if (client.Aisling.IsFrozen)
+                return;
 
             var slot = format.Index;
             var item = client.Aisling.Inventory.Get(i => i != null && i.Slot == slot).FirstOrDefault();

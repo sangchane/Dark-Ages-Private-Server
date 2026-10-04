@@ -1,4 +1,4 @@
-{
+﻿{
   "Name": "드라코2",
   "BaseName": "드라코2",
   "AreaID": 20692,
@@ -40,5 +40,6 @@
   "GoldChance": 30,
   "ElementType": 2,
   "OffenseElement": 6,
-  "DefenseElement": 6
+  "DefenseElement": 6,
+  "SpellChance": 2
 }

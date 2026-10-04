@@ -31,6 +31,12 @@ namespace Darkages.Types
 
         public int CastSpeed { get; set; }
 
+        /// <summary>
+        /// 5.99 괴물 정의 `스킬 이름 N` 의 (N+1)% — 쫓거나 때린 차례(`EngagedWalkingSpeed`)마다 이 확률로 마법을 쓴다
+        /// (Novaonline.exe 0x40a576). 0 이면 하데스 식(`CastSpeed` 마다 `MonsterSpellSuccessRate`).
+        /// </summary>
+        public int SpellChance { get; set; }
+
         public ElementManager.Element DefenseElement { get; set; }
 
         [Description("Leave empty unless SpawnQualifer = Defined.")]
