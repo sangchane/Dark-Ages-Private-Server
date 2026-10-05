@@ -451,6 +451,9 @@ namespace Darkages
                                         foreach (var script in spell.Scripts.Values)
                                             script.OnUse(this, obj);
                                 }
+                // 스크립트가 도중에 실패해도 「쓰는 중」을 내린다 — 안 내리면 다시 접속할 때까지 그 마법이 말없이 안 먹는다(2026-10-05).
+                try
+                {
 
                                 {
                                     if (target is Monster obj && obj.Serial == info.Target)
@@ -484,6 +487,11 @@ namespace Darkages
                 Client.Send(new ServerFormat3F(0,
                     spell.Slot,
                     spell.Template.Cooldown));
+                }
+                finally
+                {
+                    spell.InUse = false;
+                }
 
 
             Client.Aisling.IsCastingSpell = false;

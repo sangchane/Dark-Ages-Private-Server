@@ -89,7 +89,10 @@ namespace Darkages.Network.Game
 
             lpClient.MenuInterpter = null;
 
-            if (ServerContext.Config.AssailsCancelSpells)
+            // 실제로 주문을 외우는 중(외우기 줄이 있는 마법, IsCastingSpell)일 때만 끊는다. 바로 나가는 마법은 다음 갱신 때 꺼내 쓰는
+            // 대기 줄에 있는데, 그 사이 평타가 오면 줄을 통째로 비워 자동 사냥·공격 중 누른 쿠로토가 말없이 사라졌다(사용자 2026-10-05
+            // 「입력이 안 먹는 느낌」).
+            if (ServerContext.Config.AssailsCancelSpells && lpClient.Aisling.IsCastingSpell)
                 CancelIfCasting(lpClient);
 
             var ready = DateTime.UtcNow > lpClient.LastScriptExecuted;

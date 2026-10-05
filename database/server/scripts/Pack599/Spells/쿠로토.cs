@@ -35,12 +35,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
             V v_type = 0;
 
             v_myid = p.Call("get_myid");
-            if (V.T(((V)(p.Call("get_mana", v_myid)) < (V)(((V)(((V)(p.Call("get_basemana", v_myid)) / (V)((V)100L))) * (V)((V)3L))))))
-            {
-                p.Call("message", (V)3L, (V)"사용하기에 마력량이적습니다. [필요마나 : 3%]");
-                return;
-            }
-            p.Call("manal_del", ((V)(((V)(p.Call("get_basemana", v_myid)) / (V)((V)100L))) * (V)((V)3L)));
+            // 손본 곳(2026-10-05) — 팩의 「최대 마력 3% 필요·소모」는 원작에 없다(사용자: 메시지도 뜬 적 없다). 마력을 보지도 쓰지도 않는다.
             // 5.99 는 위즈×5(최대 300) — 무도가는 위즈가 낮아 25 남짓이었다. 사용자 기억(2026-09-25): "쿠로토 체력 100 정도 회복".
             v_hill = (V)100L;
             v_type = p.Call("istype", v_myid);
