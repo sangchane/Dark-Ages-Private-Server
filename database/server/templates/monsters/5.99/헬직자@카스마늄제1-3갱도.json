@@ -1,4 +1,4 @@
-﻿{
+{
   "Name": "헬직자",
   "BaseName": "헬직자",
   "AreaID": 20693,
@@ -22,9 +22,18 @@
   "CastSpeed": 8000,
   "MoodType": 2,
   "PathQualifer": 1,
-  "LootType": 32,
+  "LootType": 34,
   "Drops": {
-    "$values": []
+    "$type": "System.Collections.Generic.List`1[[System.String, System.Private.CoreLib]], System.Private.CoreLib",
+    "$values": [
+      "레인헌트각반",
+      "레인헌트투구",
+      "로오의금각반",
+      "상급체력포션",
+      "상급마력포션",
+      "상급마력포션",
+      "블루피치"
+    ]
   },
   "ScriptName": "Common Monster",
   "UpdateMapWide": true,

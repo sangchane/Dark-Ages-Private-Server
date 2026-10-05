@@ -1,4 +1,4 @@
-﻿{
+{
   "Name": "니크르",
   "BaseName": "니크르",
   "AreaID": 20676,
@@ -22,9 +22,25 @@
   "CastSpeed": 8000,
   "MoodType": 2,
   "PathQualifer": 1,
-  "LootType": 32,
+  "LootType": 34,
   "Drops": {
-    "$values": []
+    "$type": "System.Collections.Generic.List`1[[System.String, System.Private.CoreLib]], System.Private.CoreLib",
+    "$values": [
+      "세오의금장갑",
+      "세오의기사단방패",
+      "세오의녹옥반지",
+      "세오의매직부츠",
+      "세일라링",
+      "세토아의금각반",
+      "세토아의금장갑",
+      "상급체력포션",
+      "상급마력포션",
+      "상급마력포션",
+      "상급마력포션",
+      "상급마력포션",
+      "블루피치",
+      "블루피치"
+    ]
   },
   "ScriptName": "Common Monster",
   "UpdateMapWide": true,

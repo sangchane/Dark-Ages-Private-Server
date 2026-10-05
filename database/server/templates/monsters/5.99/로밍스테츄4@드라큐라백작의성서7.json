@@ -1,4 +1,4 @@
-﻿{
+{
   "Name": "로밍스테츄4",
   "BaseName": "로밍스테츄4",
   "AreaID": 20429,
@@ -22,9 +22,18 @@
   "CastSpeed": 8000,
   "MoodType": 4,
   "PathQualifer": 1,
-  "LootType": 32,
+  "LootType": 34,
   "Drops": {
-    "$values": []
+    "$type": "System.Collections.Generic.List`1[[System.String, System.Private.CoreLib]], System.Private.CoreLib",
+    "$values": [
+      "칸의녹옥반지",
+      "칸의매직부츠",
+      "파파야방패",
+      "상급체력포션",
+      "상급마력포션",
+      "상급마력포션",
+      "블루피치"
+    ]
   },
   "ScriptName": "Common Monster",
   "UpdateMapWide": true,
