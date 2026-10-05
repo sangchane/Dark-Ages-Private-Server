@@ -449,6 +449,13 @@ namespace Darkages.Types
             sleeper.CurrentHp = Math.Min(1000, sleeper.MaximumHp);
             sleeper.CurrentMp = Math.Min(1000, sleeper.MaximumMp);
             sleeper.Client.SendStats(StatusFlags.StructB);
+            // 깨운 체력을 주변(봇)에게도 — 체력바는 맞을 때만 가서, 봇이 주인을 계속 0%(쓰러짐)로 보고 회복하지 않았다(2026-10-05).
+            sleeper.Show(Scope.VeryNearbyAislings, new ServerFormat13
+            {
+                Serial = sleeper.Serial,
+                Health = (ushort) (100.0 * sleeper.CurrentHp / Math.Max(1, sleeper.MaximumHp)),
+                Sound = byte.MaxValue
+            });
             waker.Show(Scope.NearbyAislings, new ServerFormat29((uint) waker.Serial, (uint) sleeper.Serial, 5, 0, 75));
         }
     }

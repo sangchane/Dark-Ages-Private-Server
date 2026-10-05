@@ -941,6 +941,13 @@ namespace Darkages.Storage.locales.Scripts.Pack599
             // 채운 만큼(0x5D, 우리 확장) — 쿠로토·쿠라노·그룹 회복·리젠이 모두 여기를 지난다. 깎을 때는 알리지 않는다.
             ServerFormat5D.Healed(who, null, before);
             (who as Aisling)?.Client.SendStats(StatusFlags.StructB);
+            // 주변에 체력바(0x13)도 — 맞을 때만 보내서 봇이 채운 뒤의 체력을 몰라 「다 찼나」를 못 봤다(2026-10-05).
+            who.Show(Scope.VeryNearbyAislings, new ServerFormat13
+            {
+                Serial = who.Serial,
+                Health = (ushort) (100.0 * who.CurrentHp / Math.Max(1, who.MaximumHp)),
+                Sound = byte.MaxValue
+            });
             return 1;
         }
 
