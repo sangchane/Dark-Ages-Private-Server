@@ -23,6 +23,7 @@ namespace Darkages.Network.Game
 {
     public partial class GameClient : NetworkClient
     {
+        public ActivitySession Activity { get; set; }
         public bool MapUpdating;
         private readonly object _syncObj = new object();
 
@@ -76,10 +77,10 @@ namespace Darkages.Network.Game
         public DateTime LastScriptExecuted { get; set; }
         public DateTime LastWarp { get; set; }
         public DateTime LastWhisperMessageSent { get; set; }
-        public Interpreter MenuInterpter { get; set; }
 
         /// <summary>마지막으로 받아들인 마법 요청(0x0F) — 마법 딜레이 0.25초(<c>Format0FHandler</c>).</summary>
         public DateTime LastSpellRequest { get; set; }
+        public Interpreter MenuInterpter { get; set; }
         public GameServerTimer MpRegenTimer { get; set; }
         [JsonIgnore] public PendingSell PendingItemSessions { get; set; }
         public GameServer Server { get; set; }
@@ -1626,6 +1627,7 @@ namespace Darkages.Network.Game
                 FreeIfStuck();
             }
 
+            Activity?.Map();
             SendSerial();
             Insert();
             RefreshMap();

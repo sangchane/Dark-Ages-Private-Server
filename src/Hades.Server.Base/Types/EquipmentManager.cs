@@ -67,6 +67,7 @@ namespace Darkages.Types
 
         public void AddEquipment(int displayslot, Item item, bool remove = true)
         {
+            using var mutation = ActivitySession.BeginMutation(Client?.Activity, "EquipmentManager.AddEquipment");
             Equipment[displayslot] = new EquipmentSlot(displayslot, item);
 
             if (remove)
@@ -75,6 +76,7 @@ namespace Darkages.Types
             DisplayToEquipment((byte) displayslot, item);
 
             OnEquipmentAdded((byte) displayslot);
+            Client.Activity?.ItemsChanged();
         }
 
         public void DecreaseDurability()
@@ -117,6 +119,7 @@ namespace Darkages.Types
 
         public bool RemoveFromExisting(int displayslot, bool returnit = true)
         {
+            using var mutation = ActivitySession.BeginMutation(Client?.Activity, "EquipmentManager.RemoveFromExisting");
             if (Equipment[displayslot] == null)
                 return true;
 
@@ -248,6 +251,7 @@ namespace Darkages.Types
         /// </summary>
         public Item TakeOff(int displayslot)
         {
+            using var mutation = ActivitySession.BeginMutation(Client?.Activity, "EquipmentManager.TakeOff");
             if (displayslot <= 0 || displayslot > 17 || Equipment[displayslot]?.Item == null)
                 return null;
 
@@ -265,6 +269,7 @@ namespace Darkages.Types
             OnEquipmentRemoved((byte) displayslot);
 
             Equipment[displayslot] = null;
+            Client.Activity?.ItemsChanged();
         }
 
         #endregion

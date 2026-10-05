@@ -61,6 +61,7 @@ namespace Darkages.Types
 
         public void RecoverItems(Aisling Owner)
         {
+            using var mutation = Darkages.Network.Game.ActivitySession.BeginMutation(Owner?.Client?.Activity, "CursedSachel.RecoverItems");
             FindOwner();
 
             if (Owner == null)
@@ -86,6 +87,7 @@ namespace Darkages.Types
 
         public void ReepItems(List<Item> items = null)
         {
+            using var mutation = Darkages.Network.Game.ActivitySession.BeginMutation(Owner?.Client?.Activity, "CursedSachel.ReepItems");
             FindOwner();
 
             if (Owner == null)

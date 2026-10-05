@@ -140,9 +140,11 @@ namespace Darkages.Network
                 // 버리기 전에 적지 않으면 지도를 편 채 가만히 있는 사람이 조용한 접속으로 빠진다(GameServer.UpdateClients).
                 client.LastMessageFromClient = DateTime.UtcNow;
 
-                if (client.MapOpen && !(format is ClientFormat3F))
+                if (client.MapOpen && !(format is ClientFormat3F) && !(format is ClientFormatF3))
                     return;
 
+                using var activityMutation = Darkages.Network.Game.ActivitySession.BeginMutation(
+                    (client as Darkages.Network.Game.GameClient)?.Activity, $"packet_{packet.Command:X2}");
                 client.Read(packet, format);
 
                 if (_handlers[format.Command] != null)
@@ -152,6 +154,14 @@ namespace Darkages.Network
                             client,
                             format
                         });
+                if (client is Darkages.Network.Game.GameClient gameClient)
+                    gameClient.Activity?.Request(packet.Command, format switch
+                    {
+                        ClientFormat3E skill => skill.Index,
+                        ClientFormat0F spell => spell.Index,
+                        ClientFormat1C item => item.Index,
+                        _ => 0
+                    });
             }
             catch (Exception e)
             {
@@ -174,6 +184,8 @@ namespace Darkages.Network
             // socket did — it ends when the queue is told nothing more is coming. Leaving it out leaks one
             // thread per connection, which a server that is reconnected to does not survive: 4,070 threads
             // after ~3,200 connections, then nothing left to answer with and every login timing out.
+            if (client is Darkages.Network.Game.GameClient gameClient)
+                gameClient.Activity?.Logout();
             client.CloseOutbound();
 
             // Disconnect only tears the connection down; it never releases the handle. Worse, it was

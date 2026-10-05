@@ -1,4 +1,4 @@
-#region
+﻿#region
 
 using System;
 using System.Collections.Generic;
@@ -136,12 +136,15 @@ namespace Darkages.Types
         /// </summary>
         public static void Give(Aisling owner, byte slot, int count)
         {
+            using var mutation = Darkages.Network.Game.ActivitySession.BeginMutation(owner?.Client?.Activity, "Companions.Give");
             if (owner?.Client == null || CompanionOf(owner.Username) is not { } name || FindOnline(name) is not { } bot)
             {
                 owner?.Client?.SendMessage(0x02, "함께 있는 봇이 없습니다.");
                 return;
             }
 
+            owner.Client.Activity?.Counterparty(bot.Username);
+            bot.Client?.Activity?.Counterparty(owner.Username);
             var item = owner.Inventory.FindInSlot(slot);
             if (item?.Template == null)
                 return;
@@ -159,12 +162,15 @@ namespace Darkages.Types
         /// <summary>봇의 장비 한 자리를 주인 가방으로. 가방이 꽉 차면 거절. 서버가 입힌 기본 장비는 벗기지 않는다.</summary>
         public static void TakeOff(Aisling owner, byte place)
         {
+            using var mutation = Darkages.Network.Game.ActivitySession.BeginMutation(owner?.Client?.Activity, "Companions.TakeOff");
             if (owner?.Client == null || CompanionOf(owner.Username) is not { } name || FindOnline(name) is not { } bot)
             {
                 owner?.Client?.SendMessage(0x02, "함께 있는 봇이 없습니다.");
                 return;
             }
 
+            owner.Client.Activity?.Counterparty(bot.Username);
+            bot.Client?.Activity?.Counterparty(owner.Username);
             var item = bot.EquipmentManager[place]?.Item;
             if (item == null)
                 return;

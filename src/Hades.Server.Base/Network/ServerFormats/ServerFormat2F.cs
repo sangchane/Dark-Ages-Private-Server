@@ -408,20 +408,22 @@ namespace Darkages.Network.ServerFormats
 
         public void Serialize(NetworkPacketWriter writer)
         {
+            // 줄마다 맡긴 개수(겹친 수까지), 그리고 상점 줄(ItemShopData)과 같은 꼴로 성별·서클 두 바이트 —
+            // 앱은 그 둘이 있다고 읽어서, 빠지면 다음 줄의 그림 번호를 먹었다.
+            var entries = Data.Items.Where(i => i.Value?.Count > 0).ToArray();
             writer.Write(Step);
-            writer.Write((ushort) Data.Items.Count);
+            writer.Write((ushort) entries.Length);
 
-            foreach (var obj in Data.Items.Select(i => i.Value.Peek())
-                .GroupBy(i => i.Image, i => i, (i, items) => new {items, i}))
+            foreach (var (name, stack) in entries)
             {
-                foreach (var item in obj.items)
-                {
-                    writer.Write(item.DisplayImage);
-                    writer.Write((byte) item.Color);
-                    writer.Write((uint) obj.items.Count());
-                    writer.WriteStringA(item.DisplayName);
-                    writer.WriteStringA(item.Template.Class.ToString());
-                }
+                var item = stack.Peek();
+                writer.Write(item.DisplayImage);
+                writer.Write((byte) item.Color);
+                writer.Write((uint) Data.Count(name));
+                writer.WriteStringA(name);
+                writer.WriteStringA(item.Template?.Class.ToString() ?? string.Empty);
+                writer.Write((byte) 0);
+                writer.Write((byte) 0);
             }
         }
     }

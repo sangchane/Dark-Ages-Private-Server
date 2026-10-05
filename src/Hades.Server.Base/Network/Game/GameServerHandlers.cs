@@ -2049,6 +2049,13 @@ namespace Darkages.Network.Game
             }
         }
 
+        /// <summary>인증된 앱의 허용된 운영 신호만 수락한다.</summary>
+        protected override void FormatF3Handler(GameClient client, ClientFormatF3 format)
+        {
+            if (client.Aisling?.LoggedIn != true || client.Activity == null) return;
+            client.Activity.Telemetry(format.Payload);
+        }
+
         /// <summary>모바일 상점 일괄 거래(0xF2). NPC·거리·재고·금화·가방을 서버에서 다시 검증한다.</summary>
         protected override void FormatF2Handler(GameClient client, ClientFormatF2 format)
         {
@@ -2056,8 +2063,10 @@ namespace Darkages.Network.Game
                 return;
 
             var merchant = GetObject<Mundane>(client.Aisling.Map, one => one.Serial == format.Merchant);
+            // 은행(Banker)도 같은 일괄 창을 쓴다 — 사기 줄(이름·수) = 찾기, 팔기 줄(칸·수) = 맡기기.
+            var bank = merchant?.Template?.ScriptKey == "Banker";
             if (merchant == null || !client.Aisling.WithinRangeOf(merchant)
-                || !(merchant.Scripts?.Values.Any(script => script.GetType().Name is "shop1" or "shop2") ?? false))
+                || !(bank || (merchant.Scripts?.Values.Any(script => script.GetType().Name is "shop1" or "shop2") ?? false)))
                 return;
 
             if (format.Kind == ClientFormatF2.BackToMenu)
@@ -2069,6 +2078,16 @@ namespace Darkages.Network.Game
             var lines = format.Lines.Where(line => line.Quantity > 0).Take(128).ToArray();
             if (lines.Length == 0)
                 return;
+
+            if (bank)
+            {
+                // 검사·잠금은 Banker.cs 가 한다. 줄은 "이름 또는 칸\t수" 를 줄바꿈으로 잇는다.
+                var buy = format.Kind == ClientFormatF2.Buy;
+                var args = string.Join("\n", lines.Select(line => $"{(buy ? line.Name : line.Slot.ToString())}\t{line.Quantity}"));
+                foreach (var script in merchant.Scripts?.Values.ToArray() ?? Array.Empty<MundaneScript>())
+                    script.OnResponse(this, client, (ushort) (buy ? 0x0F01 : 0x0F02), args);
+                return;
+            }
 
             if (format.Kind == ClientFormatF2.Buy)
                 HandleBuy(client, merchant, lines);
@@ -3012,6 +3031,7 @@ namespace Darkages.Network.Game
         {
             client.CloseDialog();
             client.Aisling.CancelExchange();
+            client.Activity?.Logout();
 
             client.DlgSession = null;
             client.MenuInterpter = null;
@@ -3092,6 +3112,8 @@ namespace Darkages.Network.Game
             if (objAisling != null)
             {
                 var playerObjAisling = objAisling;
+                client.Activity = new ActivitySession(client);
+                client.Activity.Login();
 
                 // 이미 넘은 레벨의 기술·마법 중 빠진 것을 한꺼번에(사용자 결정 2026-09-26 — 레벨이 되면 저절로).
                 AutoLearn.Catchup(playerObjAisling);

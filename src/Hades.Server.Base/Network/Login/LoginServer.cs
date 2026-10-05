@@ -56,6 +56,7 @@ namespace Darkages.Network.Login
                 if (!ServerContext.GlobalMapCache.ContainsKey(aisling.AreaId)
                     && !ServerContext.GlobalMapCache.ContainsKey(ServerContext.Config.StartingMap))
                 {
+                    RecordLoginFailure(client, aisling.Username, "map_unavailable");
                     client.SendMessageBox(0x03, $"{aisling.AreaId}번 맵이 준비되어 있지 않습니다.\0");
                     return;
                 }
@@ -122,6 +123,18 @@ namespace Darkages.Network.Login
             }
         }
 
+        private static void RecordLoginFailure(LoginClient client, string player, string reason)
+        {
+            string ip = "";
+            try
+            {
+                if (client.Socket?.RemoteEndPoint is System.Net.IPEndPoint peer)
+                    ip = peer.Address.IsIPv4MappedToIPv6 ? peer.Address.MapToIPv4().ToString() : peer.Address.ToString();
+            }
+            catch (ObjectDisposedException) { }
+            Darkages.Network.Game.ActivitySession.LoginFailure(player, ip, reason);
+        }
+
         protected override void Format03Handler(LoginClient client, ClientFormat03 format)
         {
             Aisling aisling = null;
@@ -134,6 +147,7 @@ namespace Darkages.Network.Login
                 {
                     if (!Passwords.Verify(aisling.Password, format.Password, out bool needsRehash))
                     {
+                        RecordLoginFailure(client, format.Username, "password");
                         client.SendMessageBox(0x02, "비밀번호가 틀렸습니다.");
                         return;
                     }
@@ -148,6 +162,7 @@ namespace Darkages.Network.Login
                 }
                 else
                 {
+                    RecordLoginFailure(client, format.Username, "account");
                     client.SendMessageBox(0x02,
                         $"{format.Username}: 없는 계정 입니다.");
                     return;
@@ -156,6 +171,7 @@ namespace Darkages.Network.Login
             catch (Exception ex)
             {
                 ServerContext.Error(ex);
+                RecordLoginFailure(client, format.Username, "read_failure");
 
                 client.SendMessageBox(0x02,
                     $"{format.Username}: 이 서버에서 읽을 수 없는 캐릭터입니다. 새로 만들어 주십시오.");

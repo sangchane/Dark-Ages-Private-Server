@@ -46,7 +46,18 @@ namespace Darkages.Types
         public uint Owner { get; set; }
         [JsonIgnore] public Dictionary<string, ItemScript> Scripts { get; set; }
         public byte Slot { get; set; }
-        public ushort Stacks { get; set; }
+        private ushort _stacks;
+        public ushort Stacks
+        {
+            get => _stacks;
+            set
+            {
+                if (_stacks == value) return;
+                using var mutation = Darkages.Network.Game.ActivitySession.BeginItemMutation(Owner);
+                _stacks = value;
+                Darkages.Network.Game.ActivitySession.ItemChanged(Owner);
+            }
+        }
         public ItemTemplate Template { get; set; }
         public Type Type { get; set; }
         public int Upgrades { get; set; }
@@ -487,6 +498,7 @@ namespace Darkages.Types
 
         public bool GiveTo(Sprite sprite, bool checkWeight = true)
         {
+            using var mutation = Darkages.Network.Game.ActivitySession.BeginMutation((sprite as Aisling)?.Client?.Activity, "Item.GiveTo");
             if (sprite is Aisling)
             {
                 Owner = (uint) sprite.Serial;

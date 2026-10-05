@@ -15,7 +15,9 @@ namespace Darkages.Types
 {
     public class Inventory : ObjectManager
     {
-        public static readonly int LENGTH = 59;
+        [JsonIgnore] public ActivitySession Activity { get; set; }
+        // 원작은 59칸. 모바일은 5탭 × 30칸 = 150칸(사용자 2026-10-05). 저장된 59칸 캐릭터는 생성자가 1~150 을 깔고 JSON 이 앞쪽만 채운다.
+        public static readonly int LENGTH = 150;
 
         public Dictionary<int, Item> Items = new Dictionary<int, Item>();
 
@@ -113,10 +115,12 @@ namespace Darkages.Types
 
         public Item Remove(byte movingFrom)
         {
+            using var mutation = ActivitySession.BeginMutation(Activity, "Inventory.Remove");
             if (Items.ContainsKey(movingFrom))
             {
                 var copy = Items[movingFrom];
                 Items[movingFrom] = null;
+                Activity?.ItemsChanged();
                 return copy;
             }
 
@@ -125,6 +129,7 @@ namespace Darkages.Types
 
         public void RemoveRange(GameClient client, Item item, int range)
         {
+            using var mutation = ActivitySession.BeginMutation(Activity, "Inventory.RemoveRange");
             var remaining = item.Stacks - range;
 
             if (remaining <= 0)
@@ -141,7 +146,7 @@ namespace Darkages.Types
             }
             else
             {
-                item.Stacks = (byte) remaining;
+                item.Stacks = (ushort) remaining; // byte 로 자르면 256 개 이상 묶음이 줄어든다(은행에 일부 맡기기)
                 client.Aisling.Inventory.Set(item, false);
 
                 client.Send(new ServerFormat0F(item));
@@ -150,18 +155,20 @@ namespace Darkages.Types
 
         public void Set(Item s)
         {
+            using var mutation = ActivitySession.BeginMutation(Activity, "Inventory.Set");
             if (s == null)
                 return;
 
-            if (Items.ContainsKey(s.Slot)) Items[s.Slot] = Clone<Item>(s);
+            if (Items.ContainsKey(s.Slot)) { Items[s.Slot] = Clone<Item>(s); Activity?.ItemsChanged(); }
         }
 
         public void Set(Item s, bool clone = false)
         {
+            using var mutation = ActivitySession.BeginMutation(Activity, "Inventory.Set");
             if (s == null)
                 return;
 
-            if (Items.ContainsKey(s.Slot)) Items[s.Slot] = clone ? Clone<Item>(s) : s;
+            if (Items.ContainsKey(s.Slot)) { Items[s.Slot] = clone ? Clone<Item>(s) : s; Activity?.ItemsChanged(); }
         }
 
         public void UpdateSlot(GameClient client, Item item)

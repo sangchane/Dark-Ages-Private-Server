@@ -274,6 +274,7 @@ namespace Darkages
                 if (monster.Target == null || !(monster.Target is Aisling aisling))
                     return;
 
+                aisling.Client?.Activity?.Result("kill", monster.Template.BaseName);
                 if (!aisling.MonsterKillCounters.ContainsKey(monster.Template.BaseName))
                 {
                     aisling.MonsterKillCounters[monster.Template.BaseName] =

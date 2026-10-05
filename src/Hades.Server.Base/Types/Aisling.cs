@@ -122,7 +122,12 @@ namespace Darkages
         [JsonConverter(typeof(StringEnumConverter))]
         public Gender Gender { get; set; }
 
-        public int GoldPoints { get; set; }
+        private int _goldPoints;
+        public int GoldPoints
+        {
+            get => _goldPoints;
+            set { long delta = (long)value - _goldPoints; _goldPoints = value; Client?.Activity?.Currency("gold", delta, value); }
+        }
 
         /// <summary>
         /// 5.99 스크립트가 캐릭터에 남기는 값(`#gragas`·`#EG`·`$map_num` …) — 퀘스트 진행, 한 번만 받는 보상 따위.
@@ -163,7 +168,10 @@ namespace Darkages
         public bool LoggedIn { get; set; }
 
         [JsonIgnore]
-        public int MaximumWeight => (int) (ExpLevel / 4 + _Str + ServerContext.Config.WeightIncreaseModifer);
+        // 무게 제한 끔(사용자 2026-10-05 "일단"): 줍기·사기·교환·봇 받기·장비 모두 이 값과 견주므로 여기 한 곳만 늘 넉넉하게 한다.
+        // 되돌리려면 원래 식으로: (int) (ExpLevel / 4 + _Str + ServerContext.Config.WeightIncreaseModifer)
+        // 0x08 에 ushort 로 실리므로 그 끝값을 쓴다(150칸 × 무게 255 = 38,250 이라 넘지 않는다).
+        public int MaximumWeight => ushort.MaxValue;
 
         public ushort MonsterForm { get; set; } 
         public byte NameColor { get; set; }
@@ -317,10 +325,13 @@ namespace Darkages
 
         public void CancelExchange()
         {
+            using var mutation = ActivitySession.BeginMutation(Client?.Activity, "Aisling.CancelExchange");
             if (Exchange == null || Exchange.Trader == null)
                 return;
 
             var trader = Exchange.Trader;
+            Client?.Activity?.Counterparty(trader.Username);
+            trader.Client?.Activity?.Counterparty(Username);
 
             var exchangeA = Exchange;
             var exchangeB = trader.Exchange;
@@ -458,6 +469,9 @@ namespace Darkages
                 var target = GetObject(Map, i => i.Serial == info.Target, Get.Monsters | Get.Aislings | Get.Mundanes);
                 spell.InUse = true;
 
+                // 스크립트가 도중에 실패해도 「쓰는 중」을 내린다 — 안 내리면 다시 접속할 때까지 그 마법이 말없이 안 먹는다(2026-10-05).
+                try
+                {
                 if (spell.Scripts != null)
                     // 마법이 도는 동안만 표시를 올린다 — 방향 배수는 때리는 것에만 건다(Sprite.BlowFacing).
                     CastingSpell(() =>
@@ -471,9 +485,6 @@ namespace Darkages
                                         foreach (var script in spell.Scripts.Values)
                                             script.OnUse(this, obj);
                                 }
-                // 스크립트가 도중에 실패해도 「쓰는 중」을 내린다 — 안 내리면 다시 접속할 때까지 그 마법이 말없이 안 먹는다(2026-10-05).
-                try
-                {
 
                                 {
                                     if (target is Monster obj && obj.Serial == info.Target)
@@ -494,6 +505,11 @@ namespace Darkages
                             }
                         }
                     });
+                }
+                finally
+                {
+                    spell.InUse = false;
+                }
             }
 
             if (spell.Template.Cooldown > 0)
@@ -507,11 +523,6 @@ namespace Darkages
                 Client.Send(new ServerFormat3F(0,
                     spell.Slot,
                     spell.Template.Cooldown));
-                }
-                finally
-                {
-                    spell.InUse = false;
-                }
 
 
             Client.Aisling.IsCastingSpell = false;
@@ -534,7 +545,10 @@ namespace Darkages
 
         public void FinishExchange()
         {
+            using var mutation = ActivitySession.BeginMutation(Client?.Activity, "Aisling.FinishExchange");
             var trader = Exchange.Trader;
+            Client?.Activity?.Counterparty(trader.Username);
+            trader.Client?.Activity?.Counterparty(Username);
             var exchangeA = Exchange;
             var exchangeB = trader.Exchange;
             var itemsA = exchangeA.Items.ToArray();
@@ -562,6 +576,9 @@ namespace Darkages
                 trader.GoldPoints = ServerContext.Config.MaxCarryGold;
             if (GoldPoints > ServerContext.Config.MaxCarryGold)
                 GoldPoints = ServerContext.Config.MaxCarryGold;
+
+            Client?.Activity?.Result("exchange", $"상대 {trader.Username} · 준 품목 {itemsA.Length}개/금화 {goldA} · 받은 품목 {itemsB.Length}개/금화 {goldB}");
+            trader.Client?.Activity?.Result("exchange", $"상대 {Username} · 준 품목 {itemsB.Length}개/금화 {goldB} · 받은 품목 {itemsA.Length}개/금화 {goldA}");
 
             exchangeA.Items.Clear();
             exchangeB.Items.Clear();

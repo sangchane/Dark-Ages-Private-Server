@@ -86,7 +86,11 @@ namespace Darkages.Network.Game.Components
 
                     var hunted = template.Exp > 0 && template.SpawnMax > 1;
 
-                    if (!template.ReadyToSpawn(template.SpawnRate / (double) spread / (hunted ? Quicker : 1)))
+                    // 사냥감은 설정의 배율(HuntedRespawnSpeedup)만큼 더 빨리 세운다. 간격이 순회(1초)보다 짧아지면
+                    // 한 순회에 간격 몇 개 분을 한꺼번에 세운다(아래 batch) — 아니면 1초가 하한이라 배율이 먹지 않는다.
+                    var interval = template.SpawnRate / (double) spread / (hunted ? Quicker * Math.Max(1, ServerContext.Config.HuntedRespawnSpeedup) : 1);
+
+                    if (!template.ReadyToSpawn(interval))
                         continue;
 
                     // 마릿수도 넓이에 맞춘다. 정의가 적은 SpawnMax 는 20x20 방 기준이라, 3,600칸짜리
@@ -102,11 +106,15 @@ namespace Darkages.Network.Game.Components
                     // 사냥감은 2026-09-26 에 한 번 더 2/3 로(Fewer). 반올림이 0 이 되지 않게 적어도 한 마리.
                     var most = !hunted
                         ? template.SpawnMax
-                        : Math.Max(1, (int) Math.Round(template.SpawnMax * Math.Sqrt(spread) * Thinned * Fewer));
+                        : Math.Max(1, (int) Math.Round(template.SpawnMax * Math.Sqrt(spread) * Thinned * Fewer
+                                                       * Math.Max(1, ServerContext.Config.HuntedCountMultiplier)));
 
-                    if (count < most)
-                        if (count < map.Rows * map.Cols / 40)
-                            CreateFromTemplate(template, map);
+                    // 이번 순회에 세울 수: 간격이 1초 미만이면 1초 안에 들어갈 개수, 아니면 한 마리. 빈자리·맵 상한을 넘지 않는다.
+                    var batch = Math.Max(1, (int) (ServerContext.Config.GlobalSpawnTimer / 1000.0 / Math.Max(interval, 0.001)));
+                    var room = Math.Min(most, map.Rows * map.Cols / 40) - count;
+
+                    for (var n = 0; n < Math.Min(batch, room); n++)
+                        CreateFromTemplate(template, map);
                 }
             }
         }
