@@ -488,10 +488,10 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                 // get_baseexp 는 총 경험치 ÷ 500 을 돌려준다(원작은 두 칸을 따로 썼다 — docs/exe-manual 3절, 돌려 보지 못함). 총 경험치는
                 // 레벨 1부터 쌓인 것 — 99까지 모은 것으로 첫 체력·마력을 산다(사용자 2026-10-05).
                 case "get_baseexp":
-                    return Who(a, 0) is Aisling banked ? banked.ExpTotal / 500 : 0;
+                    return Who(a, 0) is Aisling banked ? banked.ExpBank / 500 : 0;
                 case "exp_del":
                 {
-                    _me.ExpTotal = (uint) Math.Max(0, _me.ExpTotal - Arg(a, 0));
+                    _me.ExpBank -= Arg(a, 0);
                     _me.Client.SendStats(StatusFlags.All);
                     return 1;
                 }

@@ -55,6 +55,7 @@ namespace Darkages.Storage.locales.Scripts.Formulas
             var left = given;
 
             player.ExpTotal = player.ExpTotal + given < player.ExpTotal ? uint.MaxValue : player.ExpTotal + given;
+            player.ExpBank += given; // 99억까지(세오·칸에게 판다)
 
             while (left >= player.ExpNext
                    && player.ExpLevel < 99

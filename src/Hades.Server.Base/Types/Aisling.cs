@@ -95,6 +95,21 @@ namespace Darkages
             get => _expTotal;
             set { long delta = (long)value - _expTotal; _expTotal = value; Client?.Activity?.Currency("xp", delta, value); }
         }
+        /// <summary>
+        /// 쌓인 경험치(레벨 1부터, 99억까지) — 세오·칸에게 팔아 최대 체력·마력을 산다(사용자 2026-10-05). 32비트 ExpTotal 은 42억에서
+        /// 멈춰 따로 둔다. 저장된 적 없는 캐릭터(-1)는 ExpTotal 에서 이어받는다.
+        /// </summary>
+        public long ExpBank
+        {
+            get => _expBank < 0 ? ExpTotal : _expBank;
+            set => _expBank = Math.Clamp(value, 0, ExpBankCap);
+        }
+
+        private long _expBank = -1;
+
+        /// <summary>쌓인 경험치 한도 — 99억(사용자 2026-10-05).</summary>
+        public const long ExpBankCap = 9_900_000_000;
+
         public int FaceColor { get; set; }
         public int FaceStyle { get; set; }
         public AislingFlags Flags { get; set; }

@@ -84,10 +84,11 @@ namespace Darkages.Network.ServerFormats
 
             if ((Flags & 0x08) != 0)
             {
-                writer.Write(Aisling.ExpTotal);
-                writer.Write((uint) Aisling.ExpLevel >= ServerContext.Config.PlayerLevelCap
-                    ? 0
-                    : Aisling.ExpNext);
+                // 레벨 끝(99)에서는 쌓인 경험치(99억까지, 32비트를 넘는다)를 아래·윗자리로 — 「다음 레벨까지」 칸은 99 에서 비어 있다
+                // (2026-10-05). 앱이 합쳐 EXP 막대에 「보유」로 보인다.
+                var banked = (uint) Aisling.ExpLevel >= ServerContext.Config.PlayerLevelCap;
+                writer.Write(banked ? (uint) (Aisling.ExpBank & 0xFFFFFFFF) : Aisling.ExpTotal);
+                writer.Write(banked ? (uint) (Aisling.ExpBank >> 32) : Aisling.ExpNext);
                 writer.Write((uint) Aisling.AbpTotal);
                 writer.Write((uint) Aisling.AbpNext);
                 writer.Write((uint) Aisling.GamePoints);

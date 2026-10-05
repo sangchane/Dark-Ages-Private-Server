@@ -157,6 +157,7 @@ namespace Darkages.Types
             // 총 경험치는 레벨 1부터 99 이후까지 쭉 쌓인다 — 세오·칸이 이것을 받고 최대 체력·마력을 올려 준다(99까지 모은 것으로 첫
             // 체력·마력을 사야 99 사냥터에 간다, 사용자 2026-10-05). 32비트 끝에서 멈춘다(5.99 「더 이상 경험치가 오르지 않습니다」).
             player.ExpTotal = (uint) System.Math.Min(uint.MaxValue, (double) player.ExpTotal + exp);
+            player.ExpBank += (long) exp; // 99억까지(세오·칸에게 판다)
             player.ExpNext -= (uint) exp;
 
             if (player.ExpNext >= int.MaxValue) player.ExpNext = 0;
