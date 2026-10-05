@@ -730,6 +730,10 @@ namespace Darkages.Types
                     return false;
             }
 
+            // 괴물은 워프 칸을 밟지 않는다 — 통과걷기 괴물도. 괴물을 쫓던 사람이 그 칸을 밟고 딴 맵으로 넘어간다(2026-10-05).
+            if (this is Monster && Map != null && Map.IsWarp(PendingX, PendingY))
+                return false;
+
             // **남이 선 칸에는 들어가지 않는다 — 벽을 지나가는 것과는 다른 이야기다.** 운영자의 통과걷기도
             // 여기는 못 지난다: 괴물 위에 겹쳐 서면 그 괴물을 평생 못 때린다(평타는 앞 칸만 훑는다).
             // 겹치는 것이 허락되는 때는 젠 뿐이다(사용자, 2026-09-19).
@@ -771,6 +775,9 @@ namespace Darkages.Types
                     return false;
 
                 if (Map.IsWall(newX, newY))
+                    continue;
+
+                if (this is Monster && Map.IsWarp(newX, newY))
                     continue;
 
                 if (GetObjects(Map, n => n.Serial == Serial && n.X == newX && n.Y == newY,

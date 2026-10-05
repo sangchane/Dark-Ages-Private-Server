@@ -64,7 +64,7 @@ namespace Darkages.Storage.locales.Scripts.Creations
                                     y = Generator.Random.Next(1, map.Rows);
                                 }
 
-                                if (map.IsWall(x, y))
+                                if (map.IsWall(x, y) || map.IsWarp(x, y))
                                     continue;
 
                                 // 이미 누가 서 있는 칸에 세우면 둘이 겹친다. ObjectGrid 가 그 칸에 선

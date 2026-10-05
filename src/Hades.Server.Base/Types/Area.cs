@@ -84,6 +84,45 @@ namespace Darkages
             return isWall;
         }
 
+        [JsonIgnore] private static List<WarpTemplate> _warpSource;
+        [JsonIgnore] private static int _warpCount = -1;
+        [JsonIgnore] private static Dictionary<int, HashSet<(int, int)>> _warpTiles = new Dictionary<int, HashSet<(int, int)>>();
+
+        /// <summary>
+        /// 밟으면 다른 곳으로 보내는 칸(워프 템플릿의 Activations). 괴물은 여기로 걷지도, 여기에 서지도 않는다 —
+        /// 사람이 자동 사냥으로 괴물을 쫓다 워프를 밟고 다른 맵으로 넘어가던 일(사용자, 2026-10-05).
+        /// 칸 모음은 워프 목록이 바뀌면(사본 맵이 더하고 빼면) 다시 만든다.
+        /// </summary>
+        public bool IsWarp(int x, int y)
+        {
+            var all = ServerContext.GlobalWarpTemplateCache;
+
+            // ponytail: 목록 참조·개수로만 바뀜을 안다 — 제자리에서 칸만 고치는 일은 없다(사본 맵은 목록을 통째로 바꾼다).
+            if (!ReferenceEquals(all, _warpSource) || all.Count != _warpCount)
+            {
+                var tiles = new Dictionary<int, HashSet<(int, int)>>();
+
+                foreach (var warp in all.ToList())
+                {
+                    if (warp?.Activations == null)
+                        continue;
+
+                    if (!tiles.TryGetValue(warp.ActivationMapId, out var set))
+                        tiles[warp.ActivationMapId] = set = new HashSet<(int, int)>();
+
+                    foreach (var spot in warp.Activations)
+                        if (spot?.Location != null)
+                            set.Add((spot.Location.X, spot.Location.Y));
+                }
+
+                _warpTiles = tiles;
+                _warpSource = all;
+                _warpCount = all.Count;
+            }
+
+            return _warpTiles.TryGetValue(Id, out var here) && here.Contains((x, y));
+        }
+
         /// <summary>
         /// 워프·순간이동이 사람을 내려놓을 자리. 목적지는 고정된 한 칸이라 괴물이 이미 서 있을 수 있는데,
         /// 겹쳐 서면 그 괴물과는 싸울 수가 없다 — 평타는 앞 칸만 훑어(<c>Sprite.GetInfront</c>) 발밑에는 닿지
