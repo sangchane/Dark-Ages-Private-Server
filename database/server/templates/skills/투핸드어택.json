@@ -1,7 +1,7 @@
 ﻿{
   "Name": "투핸드어택",
   "Icon": 17,
-  "ScriptName": null,
+  "ScriptName": "Assail",
   "Prerequisites": {
     "Class_Required": 1,
     "ExpLevel_Required": 17,
@@ -17,5 +17,5 @@
   "ID": 0,
   "Description": null,
   "Group": "원작표",
-  "Type": 1
+  "Type": 0
 }

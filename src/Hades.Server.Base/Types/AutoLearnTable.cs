@@ -11,14 +11,15 @@ namespace Darkages.Types
         /// </summary>
         public static readonly (Class Path, int Level, bool Skill, string Name, string[] Instead, string[] Replaces)[] Table =
         {
+            (Class.Warrior, 1, true, "메가블레이드", new string[] { "스톰블레이드" }, System.Array.Empty<string>()), // 사용자 2026-10-05
+            (Class.Warrior, 1, true, "바투", System.Array.Empty<string>(), System.Array.Empty<string>()), // 사용자 2026-10-05
             (Class.Warrior, 1, true, "숏블레이드", System.Array.Empty<string>(), System.Array.Empty<string>()), // 노바 전직
-            (Class.Warrior, 11, true, "윈드블레이드", new string[] { "룬블레이드" }, System.Array.Empty<string>()), // 노바 전사스킬상인
-            (Class.Warrior, 11, false, "쿠로토", System.Array.Empty<string>(), System.Array.Empty<string>()), // 노바 전사스킬상인
-            (Class.Warrior, 41, true, "메가블레이드", new string[] { "스톰블레이드" }, System.Array.Empty<string>()), // 노바 전사스킬상인
-            (Class.Warrior, 41, true, "바투", System.Array.Empty<string>(), System.Array.Empty<string>()), // 노바 전사스킬상인
-            (Class.Warrior, 99, true, "매드소울", System.Array.Empty<string>(), System.Array.Empty<string>()), // 노바 전사스킬상인
+            (Class.Warrior, 1, true, "윈드블레이드", new string[] { "룬블레이드" }, System.Array.Empty<string>()), // 사용자 2026-10-05
+            (Class.Warrior, 1, true, "투핸드어택", System.Array.Empty<string>(), System.Array.Empty<string>()), // 사용자 2026-10-05
+            (Class.Warrior, 1, false, "쿠로토", System.Array.Empty<string>(), System.Array.Empty<string>()), // 사용자 2026-10-05
+            (Class.Warrior, 71, true, "매드소울", System.Array.Empty<string>(), System.Array.Empty<string>()), // 사용자 2026-10-05
             (Class.Warrior, 99, true, "완전방어", new string[] { "완전방어(UP)" }, System.Array.Empty<string>()), // 노바 전사스킬상인
-            (Class.Warrior, 99, true, "크래셔", System.Array.Empty<string>(), System.Array.Empty<string>()), // 노바 전사스킬상인
+            (Class.Warrior, 99, true, "크래셔", System.Array.Empty<string>(), System.Array.Empty<string>()), // 사용자 2026-10-05
             (Class.Warrior, 99, true, "피닉스모드", System.Array.Empty<string>(), System.Array.Empty<string>()), // 원작 2023 전사 17행
             (Class.Rogue, 1, true, "찌르기", System.Array.Empty<string>(), System.Array.Empty<string>()), // 노바 전직
             (Class.Rogue, 11, true, "센스몬스터", System.Array.Empty<string>(), System.Array.Empty<string>()), // 노바 도적스킬상인
@@ -96,9 +97,9 @@ namespace Darkages.Types
         /// </summary>
         public static readonly (Class Path, bool Skill, string Name)[] Withdrawn =
         {
+            (Class.Warrior, true, "Assail"), // 사용자 2026-10-05
             (Class.Warrior, true, "내려치기"), // 5.99 가렌 16레벨
             (Class.Warrior, true, "타겟어택"), // 5.99 가렌4 83레벨
-            (Class.Warrior, true, "투핸드어택"), // 기술이 아니라 전사 두손 무기 동작 (사용자)
             (Class.Warrior, true, "휘두르기"), // 5.99 가렌3 62레벨
             (Class.Warrior, false, "파워단련"), // 5.99 가렌 11레벨
             (Class.Rogue, true, "만개표창"), // 5.99 이블린3 71레벨
