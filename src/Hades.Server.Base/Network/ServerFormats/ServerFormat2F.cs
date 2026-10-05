@@ -101,6 +101,11 @@ namespace Darkages.Network.ServerFormats
                 writer.Write((byte)item.Gender);
                 writer.Write((byte)item.StageRequired);
             }
+
+            // 우리 확장(2026-10-05): 목록 뒤에 물건마다 수치(ServerFormat0F.WriteNumbers) — 앱 상점의 정보·착용 비교.
+            // 목록 다음에 붙여 옛 앱은 앞만 읽는다.
+            foreach (var item in Items)
+                ServerFormat0F.WriteNumbers(writer, item);
         }
     }
 

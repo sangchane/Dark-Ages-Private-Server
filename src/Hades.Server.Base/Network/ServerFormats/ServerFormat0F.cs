@@ -46,9 +46,11 @@ namespace Darkages.Network.ServerFormats
         /// 체력·마력 회복(int, 물약 — 2026-10-05 덧붙임, 옛 앱은 앞만 읽는다).
         /// 앱 WorldClient.ReadItemStats 가 읽는다.
         /// </summary>
-        public static void WriteNumbers(NetworkPacketWriter writer, Item item)
+        public static void WriteNumbers(NetworkPacketWriter writer, Item item) => WriteNumbers(writer, item.Template);
+
+        /// <summary>상점 목록(0x2F ItemShopData)도 템플릿만으로 같은 수치를 쓴다.</summary>
+        public static void WriteNumbers(NetworkPacketWriter writer, ItemTemplate t)
         {
-            var t = item.Template;
             writer.Write((byte) 1);
             foreach (var modifier in new[] { t.AcModifer, t.HitModifer, t.DmgModifer, t.StrModifer, t.IntModifer,
                          t.WisModifer, t.ConModifer, t.DexModifer, t.MrModifer })
