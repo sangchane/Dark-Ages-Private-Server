@@ -611,7 +611,18 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                     buff.OnApplied(who, buff);
                     return 1;
                 }
-                // 체력 회복(콜라마·리젠) — `hprecovery 대상, 초, 1초마다 채울 양`. 5.99 서버(Novaonline.exe 0x44ed93)는 칸 0x122 에
+                // 콜라마 — 5.99 실행 파일의 `colama 대상, 초, 방어력량`(칸 +0x13A 초 · +0x13E 양, 아이콘 94 — docs/exe-manual 3절).
+                // 벨라르모(belra)와 같은 모양이고 칸이 따로라 둘이 겹친다.
+                case "colama":
+                {
+                    var who = Find(a, 0);
+                    if (who == null || who.HasBuff(Colama.Slot))
+                        return 0;
+                    var buff = new Colama(Arg(a, 1), Arg(a, 2));
+                    buff.OnApplied(who, buff);
+                    return 1;
+                }
+                // 체력 회복(리젠) — `hprecovery 대상, 초, 1초마다 채울 양`. 5.99 서버(Novaonline.exe 0x44ed93)는 칸 0x122 에
                 // 초를, 0x124 에 양을 적고, 이미 걸려 있으면 "이미 걸려있습니다." 로 거절한다. 그 뒤 1초마다(0x46e0ed) 초를 하나
                 // 줄이며 대상에게 그림 22 를 속도 75 로 보내고(0x46e120 → 0x46b66a), 상태 아이콘 144 를 알리고, 체력을 채운다.
                 case "hprecovery":
@@ -1017,6 +1028,39 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                 Name = Slot;
                 Length = (int) seconds;
                 Icon = 16;
+                _amount = (int) amount;
+            }
+
+            public override void OnApplied(Sprite affected, Buff buff)
+            {
+                affected.BonusAc -= _amount;
+                (affected as Aisling)?.Client.SendStats(StatusFlags.All);
+                base.OnApplied(affected, buff);
+            }
+
+            public override void OnEnded(Sprite affected, Buff buff)
+            {
+                affected.BonusAc += _amount;
+                (affected as Aisling)?.Client.SendStats(StatusFlags.All);
+                base.OnEnded(affected, buff);
+            }
+        }
+
+        /// <summary>5.99 `colama 대상, 초, 방어력량` — 지속하는 동안 AC를 그만큼 낮춘다(벨라르모와 같은 모양, 아이콘 94).</summary>
+        public sealed class Colama : Buff
+        {
+            public const string Slot = "5.99 콜라마";
+            private readonly int _amount;
+
+            public Colama() : this(0, 0)
+            {
+            }
+
+            public Colama(long seconds, long amount)
+            {
+                Name = Slot;
+                Length = (int) seconds;
+                Icon = 94;
                 _amount = (int) amount;
             }
 
