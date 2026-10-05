@@ -402,7 +402,7 @@ namespace Darkages.Network.Game
             Append(_folder, new
             {
                 id = Guid.NewGuid().ToString("N"), at = DateTime.UtcNow.ToString("O"), kind, player = who.Username,
-                bot = Companions.IsBot(who.Username), ip, session = _id, count, xp, gold, seconds, meta = meta ?? new { },
+                bot = Companions.IsBot(who.Username) || _client.ProxyUntil != null, ip, session = _id, count, xp, gold, seconds, meta = meta ?? new { },
                 detail = $"맵 {who.CurrentMapId} ({who.X},{who.Y}) · 레벨 {who.ExpLevel} · 경험치 {who.ExpTotal} · 금화 {who.GoldPoints}" + (detail == "" ? "" : " · " + detail)
             });
         }

@@ -21,6 +21,9 @@ namespace Darkages.Network.ClientFormats
         public const byte WakeMaster = 5;
         public const byte Magic = 6;
 
+        /// <summary>대신 사냥 맡김 설정(2026-10-05) — u16 길이 + UTF-8 JSON. 길이 0 이면 지움(<see cref="Darkages.Types.ProxyHunt" />).</summary>
+        public const byte Proxy = 7;
+
         public ClientFormatF1()
         {
             Secured = true;
@@ -33,6 +36,9 @@ namespace Darkages.Network.ClientFormats
 
         /// <summary>종류 6 — 마법사 비트 · 성직자 비트 · 회복 셀렉트 · 파티 회복 셀렉트 · 따라가기 거리(0 기본, 옛 앱은 안 보내 0).</summary>
         public byte[] Orders { get; set; }
+
+        /// <summary>종류 7 — 맡김 설정 JSON 바이트.</summary>
+        public byte[] Payload { get; set; }
 
         public override void Serialize(NetworkPacketReader reader)
         {
@@ -51,6 +57,12 @@ namespace Darkages.Network.ClientFormats
 
             if (Kind == Give)
                 Count = reader.ReadUInt16();
+
+            if (Kind == Proxy)
+            {
+                // GetCanRead 는 두 바이트 이상 남아야 참이라 마지막 바이트를 놓친다 — 길이만큼 그대로 읽는다(모자라면 0, JSON 이 깨져 버려진다).
+                Payload = reader.ReadBytes(reader.ReadUInt16());
+            }
         }
 
         public override void Serialize(NetworkPacketWriter writer)

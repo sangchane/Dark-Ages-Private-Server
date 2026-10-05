@@ -24,6 +24,15 @@ namespace Darkages.Network.Game
     public partial class GameClient : NetworkClient
     {
         public ActivitySession Activity { get; set; }
+
+        /// <summary>앱이 보낸 대신 사냥 맡김 설정(0xF1 7, JSON). 끊기면 대리에게 넘긴다 — <see cref="Darkages.Types.ProxyHunt" />.</summary>
+        public string ProxyArm { get; set; }
+
+        /// <summary>대리 프로그램이 열쇠로 들어온 접속이면 끝 시각(UTC), 아니면 null.</summary>
+        public DateTime? ProxyUntil { get; set; }
+        public DateTime ProxySince { get; set; }
+        public long ProxyExp { get; set; }
+        public int ProxyGold { get; set; }
         public bool MapUpdating;
         private readonly object _syncObj = new object();
 

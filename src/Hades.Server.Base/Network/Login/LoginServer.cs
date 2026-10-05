@@ -123,6 +123,22 @@ namespace Darkages.Network.Login
             }
         }
 
+        private static IPAddress RemoteAddress(LoginClient client)
+        {
+            try
+            {
+                return (client.Socket?.RemoteEndPoint as IPEndPoint)?.Address;
+            }
+            catch (ObjectDisposedException)
+            {
+                return null;
+            }
+        }
+
+        private static bool Online(string name) =>
+            ServerContext.Game.Clients.Any(i => i?.Aisling != null && i.Aisling.LoggedIn &&
+                                                 string.Equals(i.Aisling.Username, name, StringComparison.OrdinalIgnoreCase));
+
         private static void RecordLoginFailure(LoginClient client, string player, string reason)
         {
             string ip = "";
@@ -142,6 +158,14 @@ namespace Darkages.Network.Login
             try
             {
                 aisling = StorageManager.AislingBucket.Load(format.Username);
+
+                if (aisling != null && ProxyHunt.Take(format.Username, format.Password, RemoteAddress(client),
+                        Online(format.Username), DateTime.UtcNow, client.Serial) != null)
+                {
+                    // 대신 사냥 — 같은 기계의 대리 프로그램이 일회용 열쇠로 들어온다. 접속해 있지 않을 때만 열리므로 밀어낼 이도 없다.
+                    LoginAsAisling(client, aisling);
+                    return;
+                }
 
                 if (aisling != null)
                 {
@@ -187,10 +211,15 @@ namespace Darkages.Network.Login
 
                 foreach (var obj in aislings)
                 {
+                    // 다시 들어오는 앱이 밀어내는 접속은 대리에게 넘기지 않는다.
+                    obj.ProxyArm = null;
                     obj.Aisling?.Remove(true);
                     obj.Server.ClientDisconnected(obj);
                 }
             }
+
+            // 앱이 돌아왔다 — 기다리던 대신 사냥은 없던 일로.
+            ProxyHunt.Cancel(format.Username);
 
             LoginAsAisling(client, aisling);
         }

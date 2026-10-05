@@ -42,6 +42,7 @@ namespace Darkages
         int DeathMapY { get; set; }
         bool DeathDropsItems { get; set; }
         List<string> CompanionBots { get; set; }
+        string ProxyJobFolder { get; set; }
         int CompanionHomeMap { get; set; }
         Position CompanionHomePosition { get; set; }
         string DeathReepingMessage { get; set; }
@@ -232,6 +233,12 @@ namespace Darkages
         /// 봇 프로그램의 설정 파일에만 있다. 비어 있으면 동료 부르기(0xF1)가 "지금 부를 수 있는 동료가 없습니다" 로 답한다.
         /// </summary>
         public List<string> CompanionBots { get; set; }
+
+        /// <summary>
+        /// 대신 사냥(<see cref="Darkages.Types.ProxyHunt" />)의 작업 파일 폴더 — 같은 기계의 대리 프로그램(lod-proxy)이 읽는다.
+        /// 비어 있으면 대신 사냥을 하지 않는다(앱이 끊기면 예전처럼 내보낸다).
+        /// </summary>
+        public string ProxyJobFolder { get; set; } = "";
 
         /// <summary>보낸 동료가 기다리는 맵. 0 이면 StartingMap(노비스마을).</summary>
         public int CompanionHomeMap { get; set; }

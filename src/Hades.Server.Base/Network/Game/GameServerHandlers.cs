@@ -788,6 +788,18 @@ namespace Darkages.Network.Game
                     return;
                 }
 
+                // 대신 사냥 — 열쇠로 로그인한 그 접속이면 대리 표시. 그 사이 앱이 먼저 들어왔으면 대리를 돌려보낸다.
+                client.ProxyUntil = ProxyHunt.Arrive(ticket, format.Id,
+                    Clients.Any(i => i?.Aisling != null && i.Aisling.LoggedIn && string.Equals(i.Aisling.Username, ticket, StringComparison.OrdinalIgnoreCase)),
+                    out bool refuse);
+
+                if (refuse)
+                {
+                    ServerContext.Logger($"대신 사냥: {ticket} 앱이 먼저 돌아와 대리를 돌려보냄");
+                    ClientDisconnected(client);
+                    return;
+                }
+
                 EnterGame(client, format);
             }
         }
@@ -2015,6 +2027,13 @@ namespace Darkages.Network.Game
             if (client?.Aisling == null || !client.Aisling.LoggedIn)
                 return;
 
+            // 대신 사냥 맡김(종류 7) — 산 몸이든 아니든 받는다(지우기도 이 길로 온다).
+            if (format.Kind == ClientFormatF1.Proxy)
+            {
+                ProxyHunt.Arm(client, format.Payload);
+                return;
+            }
+
             // 죽은(유령) 사람도 봇을 보낼 수는 있다 — 전에는 모두 버려 [봇 보내기] 가 아무 반응이 없었다(사용자, 2026-09-26).
             // 그 밖의 일(부르기·주기·깨우기)은 산 몸으로만.
             if (client.Aisling.IsDead() && format.Kind != ClientFormatF1.Dismiss)
@@ -3014,6 +3033,9 @@ namespace Darkages.Network.Game
 
             Party.RemovePartyMember(client.Aisling);
 
+            // 스스로 나가는 것은 맡기지 않는다 — 대신 사냥은 끊겼을 때만.
+            client.ProxyArm = null;
+
             RemoveFromServer(client, format.Type);
 
             if (format.Type == 1)
@@ -3112,6 +3134,7 @@ namespace Darkages.Network.Game
             if (objAisling != null)
             {
                 var playerObjAisling = objAisling;
+                ProxyHunt.Enter(client, DateTime.UtcNow);
                 client.Activity = new ActivitySession(client);
                 client.Activity.Login();
 

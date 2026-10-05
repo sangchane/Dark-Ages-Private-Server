@@ -45,6 +45,7 @@ namespace Darkages.Network.Game
                 client.DlgSession = null;
                 client.MenuInterpter = null;
                 client.Aisling.CancelExchange();
+                ProxyHunt.LeftWorld(client, DateTime.UtcNow);
                 client.Aisling.Remove(true);
 
                 // 나가는 자리는 늘 저장한다 — 2초 안에 저장했으면 건너뛰던 탓에 막 걸은 자리를 잃고 예전 자리에 섰다(2026-09-24).
@@ -95,10 +96,20 @@ namespace Darkages.Network.Game
         {
             lock (Clients)
             {
+                ProxyHunt.Expire(DateTime.UtcNow);
+
                 foreach (var client in Clients.Where(client => client?.Aisling != null))
                 {
                     try
                     {
+                        // 대신 사냥 끝 시각 — 대리 프로그램이 멈춰도 지킨다.
+                        if (ProxyHunt.Overdue(client, DateTime.UtcNow))
+                        {
+                            ServerContext.Logger($"대신 사냥: {client.Aisling.Username} 끝 시각이 지나 끊음");
+                            ClientDisconnected(client);
+                            continue;
+                        }
+
                         // 조용해진 접속은 곧 세계에서 뺀다 — 소켓을 쥔 채 멈춘 앱(iOS 가 뒤로 보낸 것)·끊긴 망은 0 바이트 읽기가
                         // 오지 않아 서버가 모른다. 심장박동(0x3B, PingInterval 10초)에 답이 없으면 그런 것이다. 전에는 120초였고
                         // 월드맵·워프 중인 접속은 이 검사(GameClient.Update)를 아예 건너뛰어 괴물의 과녁으로 남았다.

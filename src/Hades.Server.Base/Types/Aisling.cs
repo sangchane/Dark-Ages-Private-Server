@@ -184,6 +184,9 @@ namespace Darkages
 
         public string Password { get; set; }
 
+        /// <summary>지난 대신 사냥의 결과 한 줄(<see cref="ProxyHunt" />) — 다음 앱 로그인 때 알리고 비운다.</summary>
+        public string ProxyReport { get; set; }
+
         [JsonConverter(typeof(StringEnumConverter))]
         public Class Path { get; set; }
 
