@@ -42,13 +42,17 @@ namespace Darkages.Scripting.Scripts.Skills
         /// 평타의 몸 동작과 속도. 5.99 서버(Novaonline.exe 0x4160f7)대로 무기를 꼈으면 무기의 공격모션·공격속도, 무기가
         /// 없으면 갑옷의 것 — 칸이 0 이면 동작은 1, 속도는 20(갑옷만 입고 둘 다 0 이면 22). 방패·직업·배운 기술은 보지
         /// 않는다. 공격모션이 없는 하데스 무기는 하데스가 하던 대로 전사 양손이면 0x81 이다.
-        /// 단 방패를 들었으면 공통 기본공격 동작(1)이다 — 빠르기는 무기 것(사용자 2026-10-05, 원작 식과 다름).
+        /// 단 방패를 들었거나, 두손 무기인데 투핸드어택을 배우지 않았으면(전사 71레벨) 공통 기본공격 동작(1)이다 — 빠르기는 무기
+        /// 것(사용자 2026-10-05, 원작 식과 다름).
         /// </summary>
         private static (byte Number, short Speed) BlowMotion(Aisling aisling)
         {
             var weapon = aisling.EquipmentManager?.Weapon?.Item?.Template;
 
-            if (aisling.EquipmentManager?.Shield?.Item != null)
+            bool twoHandedUnlearned = weapon != null && weapon.Flags.HasFlag(ItemFlags.TwoHanded)
+                && !aisling.SkillBook.Skills.Values.Any(s => s?.Template?.Name == "투핸드어택");
+
+            if (aisling.EquipmentManager?.Shield?.Item != null || twoHandedUnlearned)
                 return (1, (short) (weapon == null || weapon.AttackSpeed == 0 ? 20 : weapon.AttackSpeed));
 
             if (weapon != null)

@@ -27,8 +27,7 @@ namespace Darkages.Types
             // 치우는 것이 먼저다 — 5.99 의 마구찌르기가 남아 있으면 노바 찔러휘비기의 「있으면 안 줌」에 걸린다.
             foreach (var row in Withdrawn.Where(r => r.Path == aisling.Path))
             {
-                // 영어 Assail(전사는 투핸드어택이 기본공격)은 말없이 바꾼다 — 잊었다는 알림이 이상하다.
-                if (Forget(aisling, row.Name, row.Skill) && row.Name != "Assail")
+                if (Forget(aisling, row.Name, row.Skill))
                     client.SendMessage(0x02, $"{row.Name}{Object(row.Name)} 잊었습니다.");
             }
 

@@ -1,0 +1,15 @@
+{
+  "Name": "드래곤모드",
+  "Prerequisites": {
+    "ExpLevel_Required": 41,
+    "Class_Required": 1
+  },
+  "MaxLevel": 100,
+  "ID": 0,
+  "Description": "공격력강화",
+  "Group": "커뮤니티팩/전사기술",
+  "Icon": 40,
+  "ScriptName": "드래곤모드",
+  "Cooldown": 20,
+  "Type": 1
+}
