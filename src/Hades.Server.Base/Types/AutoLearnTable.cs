@@ -12,12 +12,12 @@ namespace Darkages.Types
         public static readonly (Class Path, int Level, bool Skill, string Name, string[] Instead, string[] Replaces)[] Table =
         {
             (Class.Warrior, 1, true, "Assail", System.Array.Empty<string>(), System.Array.Empty<string>()), // 사용자 2026-10-05
-            (Class.Warrior, 1, true, "메가블레이드", new string[] { "스톰블레이드" }, System.Array.Empty<string>()), // 사용자 2026-10-05
             (Class.Warrior, 1, true, "바투", System.Array.Empty<string>(), System.Array.Empty<string>()), // 사용자 2026-10-05
             (Class.Warrior, 1, true, "숏블레이드", System.Array.Empty<string>(), System.Array.Empty<string>()), // 노바 전직
             (Class.Warrior, 1, true, "윈드블레이드", new string[] { "룬블레이드" }, System.Array.Empty<string>()), // 사용자 2026-10-05
             (Class.Warrior, 1, false, "쿠로토", System.Array.Empty<string>(), System.Array.Empty<string>()), // 사용자 2026-10-05
             (Class.Warrior, 11, true, "더블어택", new string[] { "트리플어택" }, System.Array.Empty<string>()), // 사용자 2026-10-05
+            (Class.Warrior, 11, true, "메가블레이드", new string[] { "스톰블레이드" }, System.Array.Empty<string>()), // 사용자 2026-10-05
             (Class.Warrior, 41, true, "드래곤모드", new string[] { "피닉스모드" }, System.Array.Empty<string>()), // 사용자 2026-10-05
             (Class.Warrior, 41, true, "트리플어택", System.Array.Empty<string>(), new string[] { "더블어택" }), // 사용자 2026-10-05
             (Class.Warrior, 71, true, "매드소울", System.Array.Empty<string>(), System.Array.Empty<string>()), // 사용자 2026-10-05
