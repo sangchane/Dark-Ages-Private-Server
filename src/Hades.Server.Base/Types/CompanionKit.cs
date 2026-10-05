@@ -18,8 +18,10 @@ namespace Darkages.Types
         /// 덱스5)에서 레벨마다 원작 식(최대 체력 += 콘+30, 최대 마력 += 위즈+25 — <c>Monster.Levelup</c>)을 밟고, 레벨마다 받는
         /// 능력치 2점(<c>StatsPerLevel</c>)은 모두 위즈에 넣는다(회복량이 위즈에서 나온다 — 쿠로 = 위즈×8). 체력·마력은 가득.
         /// 마법은 <see cref="Companions.PriestSpells" /> 중 그 레벨까지 배울 수 있는 것만 남긴다. 옷은 성직자로 만들 때 입은 기본 옷 그대로다.
+        /// 최대 체력·마력은 <paramref name="owner" /> 의 것보다 작지 않게 — 레벨 식으로는 99 봇이 체력 3,580·마력 12,646 이라 체력
+        /// 100,000 주인을 감당하지 못했다(다라밀공 한 번 채우는 데 마력 2,500, 사용자 2026-10-05).
         /// </summary>
-        public static void Prepare(Aisling bot, int level)
+        public static void Prepare(Aisling bot, int level, Aisling owner = null)
         {
             level = Math.Max(1, Math.Min(level, ServerContext.Config.PlayerLevelCap > 0 ? ServerContext.Config.PlayerLevelCap : 99));
 
@@ -40,6 +42,12 @@ namespace Darkages.Types
                 bot._MaximumMp += bot._Wis + Monster.MpPerLevel;
                 bot._Wis = (byte) Math.Min(bot._Wis + ServerContext.Config.StatsPerLevel, ServerContext.Config.StatCap);
                 total += ExperienceCurve.ToReach(at + 1);
+            }
+
+            if (owner != null)
+            {
+                bot._MaximumHp = Math.Max(bot._MaximumHp, owner._MaximumHp);
+                bot._MaximumMp = Math.Max(bot._MaximumMp, owner._MaximumMp);
             }
 
             bot.ExpLevel = level;

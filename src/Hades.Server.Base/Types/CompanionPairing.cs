@@ -97,7 +97,7 @@ namespace Darkages.Types
             if (bot.GroupParty != null)
                 Party.RemovePartyMember(bot);
 
-            CompanionKit.Prepare(bot, LevelFor(caller.ExpLevel));
+            CompanionKit.Prepare(bot, LevelFor(caller.ExpLevel), caller);
             MoveBeside(bot, caller);
             Party.AddPartyMember(caller, bot);
 
