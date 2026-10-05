@@ -272,10 +272,10 @@ namespace Darkages
         public double GlobalSpawnTimer { get; set; }
 
         /// <summary>사냥감 정의(경험치 있고 SpawnMax 2 이상)의 동시 마릿수 배율. 보스·단독개체(SpawnMax 1)·꾸밈(경험치 0)은 곱하지 않는다.</summary>
-        public double HuntedCountMultiplier { get; set; } = 3;
+        public double HuntedCountMultiplier { get; set; } = 2; // 3 은 많았다(사용자 2026-10-05)
 
         /// <summary>사냥감 정의가 다시 서는 간격을 이 수로 나눈다(3 이면 3배 빨리). 순회가 1초라 한 번에 여러 마리를 세워 맞춘다.</summary>
-        public double HuntedRespawnSpeedup { get; set; } = 3;
+        public double HuntedRespawnSpeedup { get; set; } = 2;
 
         public double GroupExpBonus { get; set; }
 
