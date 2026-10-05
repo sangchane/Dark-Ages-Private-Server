@@ -55,8 +55,8 @@ namespace Darkages.Types
 
         internal static readonly Companions Finder = new Companions();
 
-        /// <summary>봇 레벨 = 부른 사람 − 2, 적어도 1 (사용자 결정).</summary>
-        public static int LevelFor(int ownerLevel) => Math.Max(1, ownerLevel - 2);
+        /// <summary>봇 레벨 = 부른 사람 − 2, 적어도 1 (사용자 결정). 주인이 99 면 봇도 99 — 99레벨 마법(엑스쿠라노 등)을 쓰게(사용자 2026-10-05).</summary>
+        public static int LevelFor(int ownerLevel) => ownerLevel >= 99 ? 99 : Math.Max(1, ownerLevel - 2);
 
         public static bool IsBot(string name) =>
             ServerContext.Config.CompanionBots?.Any(n => string.Equals(n, name, StringComparison.OrdinalIgnoreCase)) ?? false;
