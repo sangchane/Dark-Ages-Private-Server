@@ -85,9 +85,8 @@ namespace Darkages.Network.ServerFormats
             if ((Flags & 0x08) != 0)
             {
                 writer.Write(Aisling.ExpTotal);
-                // 레벨 끝(99)에서는 「다음 레벨까지」 대신 보유경험치를 싣는다 — 앱이 EXP 막대에 「보유」로 보인다(2026-10-05).
                 writer.Write((uint) Aisling.ExpLevel >= ServerContext.Config.PlayerLevelCap
-                    ? (uint) System.Math.Min(uint.MaxValue, System.Math.Max(0, Aisling.ExpPool))
+                    ? 0
                     : Aisling.ExpNext);
                 writer.Write((uint) Aisling.AbpTotal);
                 writer.Write((uint) Aisling.AbpNext);

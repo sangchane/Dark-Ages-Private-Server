@@ -485,12 +485,13 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                 case "get_kill_mob": return Who(a, 0).Map?.Kills ?? 0;
                 // ── 보유경험치로 체력·마력 사기(세오·칸, 2026-10-05) ─────────────
                 // 스크립트는 `get_baseexp >= 최대 체력` 이면 `exp_del 최대 체력×500` 하고 +50 을 준다. 판정과 빼는 양을 맞추려고
-                // get_baseexp 는 보유경험치 ÷ 500 을 돌려준다(원작은 두 칸을 따로 썼다 — docs/exe-manual 3절, 돌려 보지 못함).
+                // get_baseexp 는 총 경험치 ÷ 500 을 돌려준다(원작은 두 칸을 따로 썼다 — docs/exe-manual 3절, 돌려 보지 못함). 총 경험치는
+                // 레벨 1부터 쌓인 것 — 99까지 모은 것으로 첫 체력·마력을 산다(사용자 2026-10-05).
                 case "get_baseexp":
-                    return Who(a, 0) is Aisling banked ? banked.ExpPool / 500 : 0;
+                    return Who(a, 0) is Aisling banked ? banked.ExpTotal / 500 : 0;
                 case "exp_del":
                 {
-                    _me.ExpPool = Math.Max(0, _me.ExpPool - Arg(a, 0));
+                    _me.ExpTotal = (uint) Math.Max(0, _me.ExpTotal - Arg(a, 0));
                     _me.Client.SendStats(StatusFlags.All);
                     return 1;
                 }
