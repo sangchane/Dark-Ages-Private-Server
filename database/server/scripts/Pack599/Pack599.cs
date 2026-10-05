@@ -483,6 +483,27 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                 }
                 case "get_clear_time": return Who(a, 0).Map is { } cleared ? (long) (DateTime.UtcNow - cleared.CreatedAt).TotalSeconds : 0;
                 case "get_kill_mob": return Who(a, 0).Map?.Kills ?? 0;
+                // ── 보유경험치로 체력·마력 사기(세오·칸, 2026-10-05) ─────────────
+                // 스크립트는 `get_baseexp >= 최대 체력` 이면 `exp_del 최대 체력×500` 하고 +50 을 준다. 판정과 빼는 양을 맞추려고
+                // get_baseexp 는 보유경험치 ÷ 500 을 돌려준다(원작은 두 칸을 따로 썼다 — docs/exe-manual 3절, 돌려 보지 못함).
+                case "get_baseexp":
+                    return Who(a, 0) is Aisling banked ? banked.ExpPool / 500 : 0;
+                case "exp_del":
+                {
+                    _me.ExpPool = Math.Max(0, _me.ExpPool - Arg(a, 0));
+                    _me.Client.SendStats(StatusFlags.All);
+                    return 1;
+                }
+                case "set_basevita":
+                    _me._MaximumHp = (int) Math.Max(1, Arg(a, 0) - _me.BonusHp);
+                    _me.Client.SendStats(StatusFlags.All);
+                    return 1;
+                case "set_basemana":
+                    _me._MaximumMp = (int) Math.Max(0, Arg(a, 0) - _me.BonusMp);
+                    _me.Client.SendStats(StatusFlags.All);
+                    return 1;
+                case "get_basemana2": return Who(a, 0).MaximumMp;
+
                 case "exp_add":
                     Monster.DistributeExperience(_me, Arg(a, 0));
                     // 경험치만 올리고 알리지 않아 화면(과 시험)이 다음 능력치 알림까지 옛 값을 보였다 — 괴물 보상(GenerateRewards)처럼 알린다.

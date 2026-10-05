@@ -89,7 +89,18 @@ namespace Darkages
 
         public int ExpLevel { get; set; }
         public uint ExpNext { get; set; }
-        public uint ExpTotal { get; set; }
+
+        /// <summary>
+        /// 99레벨부터 쌓이는 보유경험치(5.99 C+0xBC — docs/exe-manual 3절 「99 이상이면 보유경험치만 쌓인다」). 세오·칸이 이것을 받고
+        /// 최대 체력·마력을 올려 준다(사용자 2026-10-05).
+        /// </summary>
+        public long ExpPool { get; set; }
+        private uint _expTotal;
+        public uint ExpTotal
+        {
+            get => _expTotal;
+            set { long delta = (long)value - _expTotal; _expTotal = value; Client?.Activity?.Currency("xp", delta, value); }
+        }
         public int FaceColor { get; set; }
         public int FaceStyle { get; set; }
         public AislingFlags Flags { get; set; }

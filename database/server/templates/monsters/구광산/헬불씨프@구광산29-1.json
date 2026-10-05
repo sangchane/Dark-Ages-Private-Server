@@ -20,7 +20,7 @@
   "EngagedWalkingSpeed": 1500,
   "AttackSpeed": 1000,
   "CastSpeed": 8000,
-  "MoodType": 4,
+  "MoodType": 2,
   "PathQualifer": 1,
   "LootType": 2,
   "Drops": {

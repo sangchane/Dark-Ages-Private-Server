@@ -160,8 +160,12 @@ namespace Darkages.Types
             if (player.ExpNext >= int.MaxValue) player.ExpNext = 0;
 
             {
+                // 99(레벨 끝)부터는 보유경험치로 쌓는다 — 세오·칸에게 팔아 체력·마력을 산다(사용자 2026-10-05).
                 if (player.ExpLevel >= ServerContext.Config.PlayerLevelCap)
+                {
+                    player.ExpPool = System.Math.Min(long.MaxValue / 2, player.ExpPool + (long) exp);
                     return;
+                }
             }
 
             while (player.ExpNext <= 0 && player.ExpLevel < 99)
