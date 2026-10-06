@@ -1,6 +1,7 @@
 ﻿#region
 
 using Darkages.Network.Game;
+using Darkages.Types;
 using ServiceStack;
 using System;
 using System.Linq;
@@ -106,8 +107,9 @@ namespace Darkages.Network.ServerFormats
             }
 
             // 우리 확장(2026-10-04): 목록 끝에 사람 차례대로 길드명 — 앱 접속자 창 오른쪽 칸. 앞부분은 원작 그대로라 옛 앱은 꼬리를 읽지 않는다.
+            // 생태계 봇은 길드명 자리에 AI — 사람인 척하지 않는다(설계 autopilot/eco-bots, 앱은 그대로 길드명을 보여 준다).
             foreach (var user in users)
-                writer.WriteStringA(user.Clan ?? string.Empty);
+                writer.WriteStringA(EcoBots.IsEcoBot(user.Username) ? "AI" : user.Clan ?? string.Empty);
         }
     }
 }

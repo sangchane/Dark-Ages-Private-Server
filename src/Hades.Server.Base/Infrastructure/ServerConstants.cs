@@ -42,6 +42,7 @@ namespace Darkages
         int DeathMapY { get; set; }
         bool DeathDropsItems { get; set; }
         List<string> CompanionBots { get; set; }
+        List<string> EcoBots { get; set; }
         string ProxyJobFolder { get; set; }
         int CompanionHomeMap { get; set; }
         Position CompanionHomePosition { get; set; }
@@ -233,6 +234,12 @@ namespace Darkages
         /// 봇 프로그램의 설정 파일에만 있다. 비어 있으면 동료 부르기(0xF1)가 "지금 부를 수 있는 동료가 없습니다" 로 답한다.
         /// </summary>
         public List<string> CompanionBots { get; set; }
+
+        /// <summary>
+        /// 생태계 봇 계정 이름들 — 같은 기계의 봇 프로그램(lod-eco)이 접속해 혼자 사냥·장사하며 자란다(<see cref="Darkages.Types.EcoBots" />).
+        /// 이 이름은 같은 기계에서만 로그인·만들기가 된다. 비어 있으면 생태계 봇이 없다.
+        /// </summary>
+        public List<string> EcoBots { get; set; }
 
         /// <summary>
         /// 대신 사냥(<see cref="Darkages.Types.ProxyHunt" />)의 작업 파일 폴더 — 같은 기계의 대리 프로그램(lod-proxy)이 읽는다.

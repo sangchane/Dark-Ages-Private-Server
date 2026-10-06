@@ -282,7 +282,7 @@ namespace Darkages.Network.Game
                 Failures[ip] = (value.At, value.Count + 1);
                 string safePlayer = new string((player ?? "").Take(64).Where(c => !char.IsControl(c)).ToArray());
                 Append(folder, new { id = Guid.NewGuid().ToString("N"), at = now.ToString("O"), kind = "login_failure", player = safePlayer,
-                    bot = Companions.IsBot(safePlayer), ip, session = "", count = 1, xp = 0, gold = 0, seconds = 0, detail = reason, meta = new { reason } });
+                    bot = Companions.IsBot(safePlayer) || EcoBots.IsEcoBot(safePlayer), ip, session = "", count = 1, xp = 0, gold = 0, seconds = 0, detail = reason, meta = new { reason } });
             }
         }
 
@@ -402,7 +402,9 @@ namespace Darkages.Network.Game
             Append(_folder, new
             {
                 id = Guid.NewGuid().ToString("N"), at = DateTime.UtcNow.ToString("O"), kind, player = who.Username,
-                bot = Companions.IsBot(who.Username) || _client.ProxyUntil != null, ip, session = _id, count, xp, gold, seconds, meta = meta ?? new { },
+                bot = Companions.IsBot(who.Username) || EcoBots.IsEcoBot(who.Username) || _client.ProxyUntil != null, ip, session = _id, count, xp, gold, seconds, meta = meta ?? new { },
+                // 머신러닝 재료(autopilot/eco-bots FR-013) — detail 문장과 같은 값을 숫자 칸으로도.
+                map = who.CurrentMapId, x = who.X, y = who.Y, level = who.ExpLevel, expTotal = who.ExpTotal, goldNow = who.GoldPoints,
                 detail = $"맵 {who.CurrentMapId} ({who.X},{who.Y}) · 레벨 {who.ExpLevel} · 경험치 {who.ExpTotal} · 금화 {who.GoldPoints}" + (detail == "" ? "" : " · " + detail)
             });
         }

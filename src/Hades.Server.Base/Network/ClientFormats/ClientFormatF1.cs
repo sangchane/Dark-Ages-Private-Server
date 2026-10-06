@@ -24,6 +24,9 @@ namespace Darkages.Network.ClientFormats
         /// <summary>대신 사냥 맡김 설정(2026-10-05) — u16 길이 + UTF-8 JSON. 길이 0 이면 지움(<see cref="Darkages.Types.ProxyHunt" />).</summary>
         public const byte Proxy = 7;
 
+        /// <summary>생태계 봇 순간이동(2026-10-06) — 맵 u16 · x · y. 생태계 봇이 같은 기계에서 보낸 것만 듣는다(<see cref="Darkages.Types.EcoBots" />).</summary>
+        public const byte EcoMove = 8;
+
         public ClientFormatF1()
         {
             Secured = true;
@@ -39,6 +42,11 @@ namespace Darkages.Network.ClientFormats
 
         /// <summary>종류 7 — 맡김 설정 JSON 바이트.</summary>
         public byte[] Payload { get; set; }
+
+        /// <summary>종류 8 — 갈 맵·칸.</summary>
+        public ushort Map { get; set; }
+        public byte X { get; set; }
+        public byte Y { get; set; }
 
         public override void Serialize(NetworkPacketReader reader)
         {
@@ -62,6 +70,13 @@ namespace Darkages.Network.ClientFormats
             {
                 // GetCanRead 는 두 바이트 이상 남아야 참이라 마지막 바이트를 놓친다 — 길이만큼 그대로 읽는다(모자라면 0, JSON 이 깨져 버려진다).
                 Payload = reader.ReadBytes(reader.ReadUInt16());
+            }
+
+            if (Kind == EcoMove)
+            {
+                Map = reader.ReadUInt16();
+                X = reader.ReadByte();
+                Y = reader.ReadByte();
             }
         }
 

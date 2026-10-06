@@ -2065,6 +2065,9 @@ namespace Darkages.Network.Game
                 case ClientFormatF1.Magic:
                     CompanionPairing.SetOrders(client.Aisling, format.Orders);
                     break;
+                case ClientFormatF1.EcoMove:
+                    EcoBots.Move(client, format.Map, format.X, format.Y);
+                    break;
             }
         }
 

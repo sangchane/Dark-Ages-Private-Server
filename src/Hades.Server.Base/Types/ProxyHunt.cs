@@ -308,7 +308,7 @@ namespace Darkages.Types
                 DeleteJob(key);
         }
 
-        private static bool IsLoopback(IPAddress remote) =>
+        internal static bool IsLoopback(IPAddress remote) =>
             IPAddress.IsLoopback(remote.IsIPv4MappedToIPv6 ? remote.MapToIPv4() : remote);
 
         private static string JobPath(string key) => Path.Combine(Folder, key + ".json");

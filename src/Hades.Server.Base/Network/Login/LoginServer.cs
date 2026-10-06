@@ -108,6 +108,13 @@ namespace Darkages.Network.Login
 
         protected override void Format02Handler(LoginClient client, ClientFormat02 format)
         {
+            // 생태계 봇 이름은 같은 기계(봇 프로그램)만 만든다 — 밖에서 먼저 만들어 이름을 가로채지 못하게.
+            if (!EcoBots.MayEnter(format.AislingUsername, RemoteAddress(client)))
+            {
+                client.SendMessageBox(0x03, "이미 등록된 계정입니다.\0");
+                return;
+            }
+
             client.CreateInfo = format;
 
             var aisling = StorageManager.AislingBucket.Load(format.AislingUsername);
@@ -154,6 +161,14 @@ namespace Darkages.Network.Login
         protected override void Format03Handler(LoginClient client, ClientFormat03 format)
         {
             Aisling aisling = null;
+
+            // 생태계 봇은 같은 기계(봇 프로그램)에서만 — 비밀번호가 새도 밖에서는 못 들어온다. 틀린 비밀번호와 같은 답.
+            if (!EcoBots.MayEnter(format.Username, RemoteAddress(client)))
+            {
+                RecordLoginFailure(client, format.Username, "eco_remote");
+                client.SendMessageBox(0x02, "비밀번호가 틀렸습니다.");
+                return;
+            }
 
             try
             {
@@ -344,6 +359,13 @@ namespace Darkages.Network.Login
 
         protected override void Format26Handler(LoginClient client, ClientFormat26 format)
         {
+            // 생태계 봇 비밀번호는 같은 기계에서만 바꾼다 — 밖에서 바꾸면 봇 프로그램 전체가 못 들어온다.
+            if (!EcoBots.MayEnter(format.Username, RemoteAddress(client)))
+            {
+                client.SendMessageBox(0x02, "계정을 바르게 적어주시길 바랍니다.");
+                return;
+            }
+
             var aisling = StorageManager.AislingBucket.Load(format.Username);
 
             if (aisling == null)
