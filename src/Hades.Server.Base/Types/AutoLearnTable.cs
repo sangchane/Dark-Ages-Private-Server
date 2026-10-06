@@ -37,6 +37,7 @@ namespace Darkages.Types
             (Class.Rogue, 41, true, "품뒤져보기", System.Array.Empty<string>(), System.Array.Empty<string>()), // 노바 도적스킬상인
             (Class.Rogue, 41, false, "하이드", System.Array.Empty<string>(), System.Array.Empty<string>()), // 사용자 결정
             (Class.Rogue, 71, true, "습격", new string[] { "습격진" }, System.Array.Empty<string>()), // 사용자 결정
+            (Class.Rogue, 71, true, "트리플어택", System.Array.Empty<string>(), new string[] { "더블어택" }), // 사용자 결정
             (Class.Rogue, 99, true, "암살격", System.Array.Empty<string>(), System.Array.Empty<string>()), // 사용자 결정
             (Class.Wizard, 1, false, "마레노", System.Array.Empty<string>(), System.Array.Empty<string>()), // 노바 전직
             (Class.Wizard, 11, false, "렌토", System.Array.Empty<string>(), System.Array.Empty<string>()), // 노바 마법사스킬상인
