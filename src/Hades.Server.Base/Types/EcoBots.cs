@@ -41,6 +41,27 @@ namespace Darkages.Types
             client.TransitionToMap(map, new Position(x, y));
         }
 
+        /// <summary>
+        /// 0xF1 9 — 생태계 봇(성직자)이 혼수인 같은 그룹 파티원을 깨운다. 동료 봇의 주인 깨우기(0xF1 5)와 같은 일·같은 거리(2칸 안),
+        /// 대상만 주인 대신 그룹원(그룹 사냥 결정 19 — 성직자가 혼수인 파티원을 깨워야 파티가 버틴다).
+        /// </summary>
+        public static void Wake(GameClient client, uint target)
+        {
+            var bot = client?.Aisling;
+            if (bot == null || !IsEcoBot(bot.Username) || !MayEnter(bot.Username, Remote(client)) || bot.Dead || bot.Skulled
+                || bot.GroupParty == null)
+                return;
+
+            var sleeper = bot.GroupParty.PartyMembers.FirstOrDefault(member => (uint) member.Serial == target);
+            var reach = sleeper == null ? -1 : Math.Abs(sleeper.XPos - bot.XPos) + Math.Abs(sleeper.YPos - bot.YPos);
+            if (sleeper is not { Skulled: true } || sleeper.Dead || sleeper.Client == null || sleeper.CurrentMapId != bot.CurrentMapId
+                || reach < 1 || reach > 2)
+                return;
+
+            CompanionPairing.WakeUp(bot, sleeper);
+            sleeper.Client.SendMessage(0x02, $"{bot.Username} 님이 당신을 깨웠습니다.");
+        }
+
         private static IPAddress Remote(GameClient client)
         {
             try

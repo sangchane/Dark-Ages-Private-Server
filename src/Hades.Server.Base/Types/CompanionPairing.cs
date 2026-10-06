@@ -462,7 +462,7 @@ namespace Darkages.Types
         /// 코마디움이 풀어 주는 것과 같은 일 — 깨우는 이가 대상 쪽으로 돌아서고, 혼수를 걷고, 체력·마력 1000(5.99 Item/Potion.txt 코마디움),
         /// 그림 5(속도 75). 아무것도 쓰지 않는다.
         /// </summary>
-        private static void WakeUp(Aisling waker, Aisling sleeper)
+        internal static void WakeUp(Aisling waker, Aisling sleeper)
         {
             var dx = sleeper.XPos - waker.XPos;
             var dy = sleeper.YPos - waker.YPos;

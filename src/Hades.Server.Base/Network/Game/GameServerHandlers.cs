@@ -2068,6 +2068,9 @@ namespace Darkages.Network.Game
                 case ClientFormatF1.EcoMove:
                     EcoBots.Move(client, format.Map, format.X, format.Y);
                     break;
+                case ClientFormatF1.EcoWake:
+                    EcoBots.Wake(client, format.Target);
+                    break;
             }
         }
 

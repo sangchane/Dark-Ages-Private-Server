@@ -27,6 +27,9 @@ namespace Darkages.Network.ClientFormats
         /// <summary>생태계 봇 순간이동(2026-10-06) — 맵 u16 · x · y. 생태계 봇이 같은 기계에서 보낸 것만 듣는다(<see cref="Darkages.Types.EcoBots" />).</summary>
         public const byte EcoMove = 8;
 
+        /// <summary>생태계 성직자가 혼수인 같은 그룹 파티원을 깨운다(2026-10-07) — 대상 serial u32(<see cref="Darkages.Types.EcoBots.Wake" />).</summary>
+        public const byte EcoWake = 9;
+
         public ClientFormatF1()
         {
             Secured = true;
@@ -44,6 +47,8 @@ namespace Darkages.Network.ClientFormats
         public byte[] Payload { get; set; }
 
         /// <summary>종류 8 — 갈 맵·칸.</summary>
+        public uint Target { get; set; }
+
         public ushort Map { get; set; }
         public byte X { get; set; }
         public byte Y { get; set; }
@@ -71,6 +76,9 @@ namespace Darkages.Network.ClientFormats
                 // GetCanRead 는 두 바이트 이상 남아야 참이라 마지막 바이트를 놓친다 — 길이만큼 그대로 읽는다(모자라면 0, JSON 이 깨져 버려진다).
                 Payload = reader.ReadBytes(reader.ReadUInt16());
             }
+
+            if (Kind == EcoWake)
+                Target = reader.ReadUInt32();
 
             if (Kind == EcoMove)
             {
