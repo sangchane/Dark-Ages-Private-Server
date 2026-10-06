@@ -301,7 +301,10 @@ namespace Darkages.Types
         private static void GoHome(Aisling bot)
         {
             var home = ServerContext.Config.CompanionHomePosition ?? ServerContext.Config.StartingPosition;
-            bot.Client.TransitionToMap(HomeMap(), new Position(home.X, home.Y));
+            // 다섯 봇의 대기 칸이 같다 — 사람·봇이 선 칸은 피해 곁에 세운다.
+            var area = ServerContext.GlobalMapCache.TryGetValue(HomeMap(), out var map) ? map : null;
+            var spot = area?.FreeSpotNear(new Position(home.X, home.Y), people: true) ?? new Position(home.X, home.Y);
+            bot.Client.TransitionToMap(HomeMap(), spot);
         }
 
         /// <summary>

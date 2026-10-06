@@ -128,10 +128,11 @@ namespace Darkages
         /// 겹쳐 서면 그 괴물과는 싸울 수가 없다 — 평타는 앞 칸만 훑어(<c>Sprite.GetInfront</c>) 발밑에는 닿지
         /// 않는다. 그래서 한 자리에서 20분을 허공만 친 일이 있었다(2026-09-18).
         /// 차 있으면 둘레로 세 칸까지 넓혀 가며 빈 칸을 찾고, 그래도 없으면 원래 자리에 내려놓는다.
+        /// <paramref name="people" /> 면 사람(봇 포함)이 선 칸도 피한다 — 대기 장소 한 칸에 동료 봇이 겹쳐 서지 않게(2026-10-06).
         /// </summary>
-        public Position FreeSpotNear(Position wanted)
+        public Position FreeSpotNear(Position wanted, bool people = false)
         {
-            if (wanted == null || IsFreeSpot(wanted.X, wanted.Y))
+            if (wanted == null || IsFreeSpot(wanted.X, wanted.Y, people))
                 return wanted;
 
             for (var ring = 1; ring <= 3; ring++)
@@ -141,7 +142,7 @@ namespace Darkages
                     if (Math.Max(Math.Abs(x - wanted.X), Math.Abs(y - wanted.Y)) != ring)
                         continue;
 
-                    if (IsFreeSpot(x, y))
+                    if (IsFreeSpot(x, y, people))
                         return new Position(x, y);
                 }
 
@@ -186,7 +187,7 @@ namespace Darkages
         private bool Standable(int x, int y) => x >= 0 && y >= 0 && x < Cols && y < Rows && !IsWall(x, y);
 
         /// <summary>Whether somebody can be put down here — inside the map, not a wall, and nobody standing on it.</summary>
-        private bool IsFreeSpot(int x, int y)
+        private bool IsFreeSpot(int x, int y, bool people)
         {
             if (x < 0 || y < 0 || x >= Cols || y >= Rows)
                 return false;
@@ -197,7 +198,7 @@ namespace Darkages
             if (ObjectGrid == null || ObjectGrid[x, y] == null)
                 return false;
 
-            return !ObjectGrid[x, y].Sprites.Any(one => one is Monster || one is Mundane);
+            return !ObjectGrid[x, y].Sprites.Any(one => one is Monster || one is Mundane || (people && one is Aisling));
         }
 
         public bool OnLoaded()
