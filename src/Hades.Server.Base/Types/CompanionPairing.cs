@@ -259,7 +259,7 @@ namespace Darkages.Types
 
                 var bot = paired ? null : FindOnline(name);
 
-                if (bot == null || (!bot.Dead && bot.CurrentMapId == homeMap) || bot.Client.IsWarping || bot.Client.MapOpen)
+                if (bot == null || (!bot.Dead && bot.CurrentMapId == homeMap && !SharesTile(bot)) || bot.Client.IsWarping || bot.Client.MapOpen)
                 {
                     lock (Gate)
                         IdleAway.Remove(name);
@@ -292,6 +292,16 @@ namespace Darkages.Types
 
                 GoHome(bot);
             }
+        }
+
+        /// <summary>다른 사람·봇과 한 칸에 서 있나 — 대기 칸에 겹쳐 저장된 봇을 곁 칸으로 떼어 놓는다.</summary>
+        private static bool SharesTile(Aisling bot)
+        {
+            var grid = bot.Map?.ObjectGrid;
+            if (grid == null || bot.XPos < 0 || bot.YPos < 0 || bot.XPos >= grid.GetLength(0) || bot.YPos >= grid.GetLength(1))
+                return false;
+
+            return grid[bot.XPos, bot.YPos]?.Sprites.Any(one => one is Aisling && !ReferenceEquals(one, bot)) == true;
         }
 
         private static int HomeMap() => ServerContext.Config.CompanionHomeMap > 0
