@@ -13,8 +13,6 @@ namespace Darkages.Types
         void ApplyDamage(Sprite damageDealingSprite, int dmg, byte sound = 1,
             Action<int> dmgcb = null, bool forceTarget = false);
 
-        void ApplyEquipmentDurability(int dmg);
-
         double CalculateElementalDamageMod(ElementManager.Element element);
 
         int CompleteDamageApplication(int dmg, byte sound, Action<int> dmgcb, double amplifier);

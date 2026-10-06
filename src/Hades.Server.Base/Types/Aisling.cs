@@ -26,7 +26,6 @@ namespace Darkages
     public class Aisling : Sprite
     {
         public Dictionary<string, EphemeralReactor> ActiveReactors = new Dictionary<string, EphemeralReactor>();
-        [JsonIgnore] public int DamageCounter = 0;
         public Dictionary<string, KillRecord> MonsterKillCounters = new Dictionary<string, KillRecord>();
         [JsonIgnore] public List<Popup> Popups;
         public Dictionary<string, DateTime> Reactions = new Dictionary<string, DateTime>();

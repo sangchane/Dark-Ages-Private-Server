@@ -79,38 +79,6 @@ namespace Darkages.Types
             Client.Activity?.ItemsChanged();
         }
 
-        public void DecreaseDurability()
-        {
-            var broken = new List<Item>();
-
-            foreach (var item in Equipment.Select(equipment => equipment.Value?.Item)
-                .Where(item => item?.Template != null))
-            {
-                if (item.Template.Flags.HasFlag(ItemFlags.Repairable))
-                {
-                    item.Durability--;
-
-                    if (item.Durability <= 0)
-                        item.Durability = 0;
-                }
-
-                ManageDurabilitySignals(item);
-
-                if (item.Durability == 0)
-                    broken.Add(item);
-            }
-
-            foreach (var item in broken.Where(item => item?.Template != null)
-                .Where(item => RemoveFromExisting(item.Template.EquipmentSlot, false)))
-            {
-                // RemoveFromExisting(.., false) 가 무게를 깎지만 그 앞에서 이미 한 번 보낸 상태값(OnEquipmentRemoved)
-                // 에는 깎이기 전 무게가 실려 있다 — 다시 보내야 클라이언트가 줄어든 무게를 본다.
-                Client.SendStats(StatusFlags.StructA);
-                Client.SendMessage(0x02,
-                    $"{item.Template.Name}이(가) 부서졌습니다.");
-            }
-        }
-
         public void DisplayToEquipment(byte displayslot, Item item)
         {
             if (item != null)
@@ -173,35 +141,6 @@ namespace Darkages.Types
             Client.DelObject(itemObj);
 
             return true;
-        }
-
-        private void ManageDurabilitySignals(Item item)
-        {
-            if (item.Durability > item.Template.MaxDurability)
-                item.Template.MaxDurability = item.Durability;
-
-            var p10 = Math.Abs(item.Durability * 100 / item.Template.MaxDurability);
-
-            if (item.Warnings == null || item.Warnings.Length <= 0)
-                return;
-
-            if (p10 <= 10 && !item.Warnings[0])
-            {
-                Client.SendMessage(0x02,
-                    $"{item.Template.Name}이(가) 곧 부서집니다. 어서 고치십시오. (10% 미만)");
-                item.Warnings[0] = true;
-            }
-            else if (p10 <= 30 && p10 > 10 && !item.Warnings[1])
-            {
-                Client.SendMessage(0x02,
-                    $"{item.Template.Name}이(가) 많이 닳았습니다. 되도록 빨리 고치십시오. (30% 미만)");
-                item.Warnings[1] = true;
-            }
-            else if (p10 <= 50 && p10 > 30 && !item.Warnings[2])
-            {
-                Client.SendMessage(0x02, $"{item.Template.Name}을(를) 곧 고쳐야 합니다. (50% 미만)");
-                item.Warnings[2] = true;
-            }
         }
 
         private void OnEquipmentAdded(byte displayslot)

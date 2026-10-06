@@ -1053,8 +1053,7 @@ namespace Darkages.Types
             if (damageDealingSprite is Aisling striker)
                 dmg += striker.BonusDmg;
 
-            if (dmg > 0)
-                ApplyEquipmentDurability(dmg);
+            // 장비 내구도는 깎지 않는다 — 사람·봇 모두(사용자 2026-10-06). 전에는 두 대에 한 번 EquipmentManager.DecreaseDurability.
 
             if (!DamageTarget(damageDealingSprite, ref dmg, sound, dmgcb, forceTarget))
                 return;
@@ -1161,12 +1160,6 @@ namespace Darkages.Types
                 debuff.OnApplied(this, debuff);
 
             return this;
-        }
-
-        public void ApplyEquipmentDurability(int dmg)
-        {
-            if (this is Aisling aisling && aisling.DamageCounter++ % 2 == 0 && dmg > 0)
-                aisling.EquipmentManager.DecreaseDurability();
         }
 
         public double CalculateElementalDamageMod(Element element)

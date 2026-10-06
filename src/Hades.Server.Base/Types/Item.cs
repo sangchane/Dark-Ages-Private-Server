@@ -61,7 +61,6 @@ namespace Darkages.Types
         public ItemTemplate Template { get; set; }
         public Type Type { get; set; }
         public int Upgrades { get; set; }
-        public bool[] Warnings { get; set; }
         [JsonIgnore] public Dictionary<string, WeaponScript> WeaponScripts { get; set; }
 
         public static void ApplyQuality(Item obj)
@@ -221,8 +220,6 @@ namespace Darkages.Types
 
             if (obj.Template == null)
                 obj.Template = template;
-
-            obj.Warnings = new[] {false, false, false};
 
             obj.AuthenticatedAislings = null;
 
