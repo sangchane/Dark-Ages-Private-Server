@@ -342,14 +342,18 @@ namespace Darkages.Storage.locales.Scripts.Formulas
             // "경험치가 표시되는 것만큼 줄지 않는 것 같은데?" — 20레벨이 우드랜드에서 알림 466, 실제 66).
             var mine = DistributeExperience(player, exp);
 
+            // 그룹원은 잡은 이와 같은 맵에 있으면 모두 나누지 않고 전부 받는다 — 원작 5.99(Novaonline.exe 0x41a229,
+            // docs/exe-manual/03-server-rules.md). 전에는 12칸 안만이라 흩어져 사냥하는 파티의 성직자가 자주 못 받았다(2026-10-07).
             if (player.PartyMembers != null)
                 foreach (var party in player.PartyMembers
                     .Where(party => party.Serial != player.Serial)
-                    .Where(party => party.WithinRangeOf(player)))
+                    .Where(party => party.CurrentMapId == player.CurrentMapId))
                 {
                     var shared = DistributeExperience(party, exp);
 
-                    party.Client.SendStats(StatusFlags.StructC);
+                    // 능력치 전부 — 경험치 칸(StructC)만 보내면 나눠 받아 레벨이 오른 그룹원의 레벨·최대 체력이 앱에서 그대로였다
+                    // (잡은 이는 Monster.GenerateRewards 의 UpdateStats 로 받는다, 2026-10-07 생태계 파티 시험).
+                    party.UpdateStats();
                     party.Client.SendMessage(0x02, $"경험치가 {shared} 올랐습니다");
                 }
 
