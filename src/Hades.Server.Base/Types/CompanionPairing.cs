@@ -243,7 +243,8 @@ namespace Darkages.Types
         /// <summary>
         /// 짝 없는 봇은 대기 장소로(사용자 신고 2026-09-27 "앱 종료하고 다시 접속해도 봇이 마지막 자리에 좀비처럼 있다"). 짝은 서버 기억에만
         /// 있어 짝을 맺은 채 서버가 다시 뜨면 풀어 줄 틈(<see cref="Release" />)이 없고, 봇은 저장된 마지막 자리 — 주인 곁 — 로 들어와
-        /// 주인 없이 서 있었다. 쓰러진(유령) 봇은 [봇 부르기] 로 되살릴 때까지 두므로 건드리지 않는다.
+        /// 주인 없이 서 있었다. 짝 없는 유령도 되살려 보낸다 — 죽은 채 주인이 나가면 부를 사람이 없어 뮤레칸의방 (10,9) 에
+        /// 유령 넷이 한 칸에 겹쳐 남았다(사용자 신고 2026-10-06).
         /// </summary>
         private static void SendIdleHome()
         {
@@ -258,7 +259,7 @@ namespace Darkages.Types
 
                 var bot = paired ? null : FindOnline(name);
 
-                if (bot == null || bot.Dead || bot.CurrentMapId == homeMap || bot.Client.IsWarping || bot.Client.MapOpen)
+                if (bot == null || (!bot.Dead && bot.CurrentMapId == homeMap) || bot.Client.IsWarping || bot.Client.MapOpen)
                 {
                     lock (Gate)
                         IdleAway.Remove(name);
@@ -278,7 +279,17 @@ namespace Darkages.Types
                 lock (Gate)
                     IdleAway.Remove(name);
 
-                ServerContext.Logger($"봇 {name}: 짝 없이 맵 {bot.CurrentMapId} ({bot.XPos},{bot.YPos}) 에 있어 대기 장소로 보냄");
+                ServerContext.Logger($"봇 {name}: 짝 없이 맵 {bot.CurrentMapId} ({bot.XPos},{bot.YPos}) 에 있어 대기 장소로 보냄{(bot.Dead ? " — 유령이라 되살림" : "")}");
+
+                if (bot.Dead)
+                {
+                    lock (Gate)
+                        Fallen.Remove(name);
+
+                    bot.RemoveDebuff("skulled", true);
+                    bot.Client.Revive();
+                }
+
                 GoHome(bot);
             }
         }
