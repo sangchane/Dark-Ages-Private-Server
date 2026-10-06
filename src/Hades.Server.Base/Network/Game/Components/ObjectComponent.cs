@@ -159,24 +159,30 @@ namespace Darkages.Network.Game.Components
 
         private static void CheckObjectClients(Aisling user, Sprite[] objects)
         {
-            foreach (var obj in objects)
-                if (obj is Aisling aisling)
-                    lock (ServerContext.SyncLock)
-                    {
-                        if (ServerContext.Game != null && ServerContext.Game.Clients != null)
-                        {
-                            var clients = ServerContext.Game.Clients.FindAll(i =>
-                                i?.Aisling != null && string.Equals(i.Aisling.Username, aisling.Username,
-                                    StringComparison.CurrentCultureIgnoreCase));
+            var nearby = objects.OfType<Aisling>().Where(aisling => aisling.Username != null).ToArray();
+            if (nearby.Length == 0)
+                return;
 
-                            if (clients.Count == 0)
-                            {
-                                user.HideFrom(aisling);
-                                aisling.HideFrom(user);
-                                user.DelObject(aisling);
-                            }
-                        }
-                    }
+            lock (ServerContext.SyncLock)
+            {
+                if (ServerContext.Game?.Clients == null)
+                    return;
+
+                // 접속 중인 이름을 한 번만 모은다 — 전에는 곁의 사람마다 전체 접속자를 다시 훑어(이름 비교) 같은 맵 사람 수의
+                // 제곱 × 접속자 수였다. 한 맵 봇 50 에 서버 2.9코어, 100 이면 루프가 멈췄다(autopilot/eco-bots/01-recon.md §3).
+                var online = new HashSet<string>(ServerContext.Game.Clients
+                    .Where(i => i?.Aisling?.Username != null).Select(i => i.Aisling.Username), StringComparer.CurrentCultureIgnoreCase);
+
+                foreach (var aisling in nearby)
+                {
+                    if (online.Contains(aisling.Username))
+                        continue;
+
+                    user.HideFrom(aisling);
+                    aisling.HideFrom(user);
+                    user.DelObject(aisling);
+                }
+            }
         }
 
         protected internal override void Update(TimeSpan elapsedTime)
