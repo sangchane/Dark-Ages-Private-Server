@@ -32,6 +32,7 @@ namespace Darkages.Types
             (Class.Rogue, 11, true, "두번찌르기", new string[] { "슬레쉬" }, System.Array.Empty<string>()), // 사용자 결정
             (Class.Rogue, 11, true, "아무네지아", System.Array.Empty<string>(), System.Array.Empty<string>()), // 원작 2023 도적 10행
             (Class.Rogue, 11, false, "마구찌르기", System.Array.Empty<string>(), System.Array.Empty<string>()), // 원작 2023 도적 30행(승급) · 5.99 레벨
+            (Class.Rogue, 41, true, "더블어택", new string[] { "트리플어택" }, System.Array.Empty<string>()), // 사용자 결정
             (Class.Rogue, 41, true, "센스", System.Array.Empty<string>(), System.Array.Empty<string>()), // 노바 도적스킬상인
             (Class.Rogue, 41, true, "품뒤져보기", System.Array.Empty<string>(), System.Array.Empty<string>()), // 노바 도적스킬상인
             (Class.Rogue, 41, false, "하이드", System.Array.Empty<string>(), System.Array.Empty<string>()), // 사용자 결정
@@ -105,7 +106,6 @@ namespace Darkages.Types
             (Class.Warrior, true, "타겟어택"), // 5.99 가렌4 83레벨
             (Class.Warrior, true, "휘두르기"), // 5.99 가렌3 62레벨
             (Class.Warrior, false, "파워단련"), // 5.99 가렌 11레벨
-            (Class.Rogue, true, "더블어택"), // 5.99 이블린2 21레벨
             (Class.Rogue, true, "만개표창"), // 5.99 이블린3 71레벨
             (Class.Rogue, true, "소매치기"), // 5.99 이블린3 62레벨
             (Class.Rogue, true, "슬레쉬"), // 5.99 이블린4 87레벨
