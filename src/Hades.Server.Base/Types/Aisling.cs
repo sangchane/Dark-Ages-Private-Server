@@ -357,13 +357,9 @@ namespace Darkages
                 {
                 }
 
-            GoldPoints += goldA;
-            trader.GoldPoints += goldB;
-
-            if (trader.GoldPoints > ServerContext.Config.MaxCarryGold)
-                trader.GoldPoints = ServerContext.Config.MaxCarryGold;
-            if (GoldPoints > ServerContext.Config.MaxCarryGold)
-                GoldPoints = ServerContext.Config.MaxCarryGold;
+            // long 으로 더하고 자른다 — 들 수 있는 금화가 10.7억을 넘으면 int 로 더할 때 음수로 뒤집힌다(2026-10-07, 상한 20억).
+            GoldPoints = (int) Math.Min((long) GoldPoints + goldA, ServerContext.Config.MaxCarryGold);
+            trader.GoldPoints = (int) Math.Min((long) trader.GoldPoints + goldB, ServerContext.Config.MaxCarryGold);
 
             trader.Client.SendStats(StatusFlags.StructC);
             Client.SendStats(StatusFlags.StructC);
@@ -571,13 +567,9 @@ namespace Darkages
                 {
                 }
 
-            GoldPoints += goldB;
-            trader.GoldPoints += goldA;
-
-            if (trader.GoldPoints > ServerContext.Config.MaxCarryGold)
-                trader.GoldPoints = ServerContext.Config.MaxCarryGold;
-            if (GoldPoints > ServerContext.Config.MaxCarryGold)
-                GoldPoints = ServerContext.Config.MaxCarryGold;
+            // long 으로 더하고 자른다 — 들 수 있는 금화가 10.7억을 넘으면 int 로 더할 때 음수로 뒤집힌다(2026-10-07, 상한 20억).
+            GoldPoints = (int) Math.Min((long) GoldPoints + goldB, ServerContext.Config.MaxCarryGold);
+            trader.GoldPoints = (int) Math.Min((long) trader.GoldPoints + goldA, ServerContext.Config.MaxCarryGold);
 
             Client?.Activity?.Result("exchange", $"상대 {trader.Username} · 준 품목 {itemsA.Length}개/금화 {goldA} · 받은 품목 {itemsB.Length}개/금화 {goldB}");
             trader.Client?.Activity?.Result("exchange", $"상대 {Username} · 준 품목 {itemsB.Length}개/금화 {goldB} · 받은 품목 {itemsA.Length}개/금화 {goldA}");
