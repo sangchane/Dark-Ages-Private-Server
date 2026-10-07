@@ -33,7 +33,8 @@ namespace Darkages.Types
 
             var given = 0;
 
-            foreach (var row in Table.Where(r => r.Path == aisling.Path && r.Level <= aisling.ExpLevel))
+            var rows = EcoBots.IsEcoBot(aisling.Username) ? Table.Concat(EcoBots.Learns) : Table;
+            foreach (var row in rows.Where(r => r.Path == aisling.Path && r.Level <= aisling.ExpLevel))
             {
                 if (Knows(aisling, row.Name) || row.Instead.Any(name => Knows(aisling, name)))
                     continue;

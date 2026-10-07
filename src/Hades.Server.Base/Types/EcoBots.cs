@@ -62,6 +62,16 @@ namespace Darkages.Types
             sleeper.Client.SendMessage(0x02, $"{bot.Username} 님이 당신을 깨웠습니다.");
         }
 
+        /// <summary>
+        /// 생태계 봇만 더 배우는 것(<see cref="AutoLearn.Table" /> 과 같은 꼴) — 성직자가 마법사 저주를 맡아 그룹 사냥에 마법사 봇을
+        /// 하나라도 덜 쓴다(사용자 2026-10-07, 서버 자원). 사람 성직자는 배우지 않는다.
+        /// </summary>
+        public static readonly (Class Path, int Level, bool Skill, string Name, string[] Instead, string[] Replaces)[] Learns =
+        {
+            (Class.Priest, 71, false, "데프레코", Array.Empty<string>(), Array.Empty<string>()),
+            (Class.Priest, 99, false, "프라보", Array.Empty<string>(), Array.Empty<string>()),
+        };
+
         /// <summary>성직자 생태계 봇이 처음 들어올 때 한 번 받는 금화(사용자 2026-10-07 — 넉넉히 주고 얼마나 쓰는지 보며 맞춘다).</summary>
         public const int PriestSeed = 100_000_000;
 

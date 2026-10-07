@@ -70,7 +70,6 @@ namespace Darkages.Types
             (Class.Priest, 41, false, "콜라마", System.Array.Empty<string>(), System.Array.Empty<string>()), // 노바 성직자스킬상인
             (Class.Priest, 41, false, "쿠라노소", System.Array.Empty<string>(), System.Array.Empty<string>()), // 노바 성직자스킬상인
             (Class.Priest, 41, false, "쿠라누스", System.Array.Empty<string>(), System.Array.Empty<string>()), // 노바 성직자스킬상인
-            (Class.Priest, 71, false, "데프레코", System.Array.Empty<string>(), System.Array.Empty<string>()), // 사용자 결정
             (Class.Priest, 71, false, "리베라토", System.Array.Empty<string>(), System.Array.Empty<string>()), // 노바 성직자스킬상인
             (Class.Priest, 71, false, "수페라쿠라노", System.Array.Empty<string>(), System.Array.Empty<string>()), // 노바 성직자스킬상인
             (Class.Priest, 71, false, "쿠라네라", System.Array.Empty<string>(), System.Array.Empty<string>()), // 노바 성직자스킬상인
@@ -78,7 +77,6 @@ namespace Darkages.Types
             (Class.Priest, 99, false, "엑스쿠라네라", System.Array.Empty<string>(), System.Array.Empty<string>()), // 노바 성직자스킬상인
             (Class.Priest, 99, false, "엑스쿠라노", System.Array.Empty<string>(), System.Array.Empty<string>()), // 노바 성직자스킬상인
             (Class.Priest, 99, false, "코마디아", System.Array.Empty<string>(), System.Array.Empty<string>()), // 노바 성직자스킬상인
-            (Class.Priest, 99, false, "프라보", System.Array.Empty<string>(), System.Array.Empty<string>()), // 사용자 결정
             (Class.Monk, 11, true, "단각", new string[] { "연천단각" }, System.Array.Empty<string>()), // 노바 무도가스킬상인
             (Class.Monk, 11, true, "양의신권", System.Array.Empty<string>(), System.Array.Empty<string>()), // 원작 2023 도가 8행
             (Class.Monk, 11, true, "이형환위", System.Array.Empty<string>(), System.Array.Empty<string>()), // 노바 무도가스킬상인
