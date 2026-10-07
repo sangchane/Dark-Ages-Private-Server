@@ -62,6 +62,24 @@ namespace Darkages.Types
             sleeper.Client.SendMessage(0x02, $"{bot.Username} 님이 당신을 깨웠습니다.");
         }
 
+        /// <summary>성직자 생태계 봇이 처음 들어올 때 한 번 받는 금화(사용자 2026-10-07 — 넉넉히 주고 얼마나 쓰는지 보며 맞춘다).</summary>
+        public const int PriestSeed = 100_000_000;
+
+        /// <summary>
+        /// 성직자 생태계 봇에게 <see cref="PriestSeed" /> 를 한 번 준다 — 사냥하지 않아 금화를 줍지 못한다. 받은 적은
+        /// <c>PackVariables["#eco_seed"]</c> 로 남겨 다시 들어와도 또 주지 않는다. 로그인 때 부른다.
+        /// </summary>
+        public static void Seed(Aisling aisling)
+        {
+            if (aisling?.Client == null || aisling.Path != Class.Priest || !IsEcoBot(aisling.Username)
+                || aisling.PackVariables.ContainsKey("#eco_seed"))
+                return;
+
+            aisling.PackVariables["#eco_seed"] = DateTime.UtcNow.ToString("O");
+            aisling.GoldPoints = (int) Math.Min((long) aisling.GoldPoints + PriestSeed, ServerContext.Config.MaxCarryGold);
+            aisling.Client.SendStats(StatusFlags.StructC);
+        }
+
         private static IPAddress Remote(GameClient client)
         {
             try

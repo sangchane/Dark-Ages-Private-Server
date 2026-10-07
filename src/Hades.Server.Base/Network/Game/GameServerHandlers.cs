@@ -3146,6 +3146,7 @@ namespace Darkages.Network.Game
 
                 // 이미 넘은 레벨의 기술·마법 중 빠진 것을 한꺼번에(사용자 결정 2026-09-26 — 레벨이 되면 저절로).
                 AutoLearn.Catchup(playerObjAisling);
+                EcoBots.Seed(playerObjAisling);
 
                 if (playerObjAisling.Dead || playerObjAisling.CurrentHp <= 0)
                 {
