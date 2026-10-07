@@ -56,6 +56,8 @@ namespace Darkages
         string DexAddedMessage { get; set; }
         string DoesNotFitMessage { get; set; }
         bool DontSavePlayers { get; set; }
+        bool GroupLootRoll { get; set; }
+        bool AuctionEnabled { get; set; }
         double FasNadurStrength { get; set; }
         List<string> GameMasters { get; set; }
         bool GiveAssailOnCreate { get; }
@@ -272,6 +274,12 @@ namespace Darkages
         public string DoesNotFitMessage { get; set; }
 
         public bool DontSavePlayers { get; set; }
+
+        /// <summary>그룹 처치 전리품을 룰렛·돌림으로, 금화를 같은 맵 그룹원에게 똑같이(<see cref="Darkages.Types.GroupLoot" />). 끄면 바닥.</summary>
+        public bool GroupLootRoll { get; set; } = true;
+
+        /// <summary>경매장(<see cref="Darkages.Types.AuctionHouse" />). 끄면 올림·입찰·구매·취소만 막고 받기와 기간 끝은 계속한다.</summary>
+        public bool AuctionEnabled { get; set; } = true;
 
         public double FasNadurStrength { get; set; }
 

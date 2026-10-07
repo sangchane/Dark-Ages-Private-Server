@@ -1,6 +1,7 @@
 ﻿#region
 
 using System;
+using System.Collections.Concurrent;
 using System.IO;
 using System.Text.Json;
 
@@ -139,25 +140,40 @@ namespace Darkages.Storage
             }
         }
 
-        public void Save(Aisling obj)
+        public void Save(Aisling obj) => TrySave(obj);
+
+        // 이름마다 직렬화와 쓰기를 한 자물쇠로 묶는다. 쓰기만 묶여 있을 때는 주기 저장이 옛 상태를 읽어 두었다가
+        // 경매 저장보다 늦게 쓸 수 있었다 — 경매에 올린 물건이 캐릭터 파일에 되살아난다(2026-10-07, 경매장 INV-3).
+        private static readonly ConcurrentDictionary<string, object> Saving =
+            new ConcurrentDictionary<string, object>(StringComparer.OrdinalIgnoreCase);
+
+        /// <summary>저장하고 파일에 닿았는지 돌려준다. 저장하지 않는 설정(<c>DontSavePlayers</c>)이면 false.</summary>
+        public bool TrySave(Aisling obj)
         {
             if (obj == null)
                 throw new ArgumentNullException(nameof(obj));
 
-            if (ServerContext.Config.DontSavePlayers) return;
+            if (ServerContext.Config.DontSavePlayers) return false;
 
             try
             {
                 var path = ResolveCharacterFile(obj.Username);
-                var objString = StorageManager.Serialize(obj);
 
-                // Written beside the file and then swapped in, so a save that is interrupted leaves either
-                // the previous character or the new one, never half of either.
-                SafeFile.Write(path, objString);
+                lock (Saving.GetOrAdd(path, _ => new object()))
+                {
+                    var objString = StorageManager.Serialize(obj);
+
+                    // Written beside the file and then swapped in, so a save that is interrupted leaves either
+                    // the previous character or the new one, never half of either.
+                    SafeFile.Write(path, objString);
+                }
+
+                return true;
             }
             catch (Exception ex)
             {
                 ServerContext.Error(ex);
+                return false;
             }
         }
     }

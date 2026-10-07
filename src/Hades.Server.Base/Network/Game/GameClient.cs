@@ -83,6 +83,8 @@ namespace Darkages.Network.Game
         public DateTime LastPing { get; set; }
         public DateTime LastPingResponse { get; set; }
         public DateTime LastSave { get; set; }
+        /// <summary>마지막 경매장 요청(0xF4) — 0.3초 안의 다음 요청은 「잠시 뒤에」로 돌려보낸다(SPEC S-8).</summary>
+        public DateTime LastAuctionRequest { get; set; }
         public DateTime LastScriptExecuted { get; set; }
         public DateTime LastWarp { get; set; }
         public DateTime LastWhisperMessageSent { get; set; }

@@ -97,6 +97,7 @@ namespace Darkages.Network.Game
             lock (Clients)
             {
                 ProxyHunt.Expire(DateTime.UtcNow);
+                AuctionHouse.Expire(DateTime.UtcNow);
 
                 foreach (var client in Clients.Where(client => client?.Aisling != null))
                 {

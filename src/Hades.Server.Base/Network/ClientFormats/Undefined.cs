@@ -760,10 +760,6 @@
     {
     }
 
-    public class ClientFormatF4
-    {
-    }
-
     public class ClientFormatF5
     {
     }

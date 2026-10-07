@@ -137,6 +137,8 @@
 			"wren", "lol"
 		],
 		"DontSavePlayers": false,
+		"GroupLootRoll": true,
+		"AuctionEnabled": true,
 		"Settings": [
 			{
 				"SettingOn": "Loot Mode  :Single",

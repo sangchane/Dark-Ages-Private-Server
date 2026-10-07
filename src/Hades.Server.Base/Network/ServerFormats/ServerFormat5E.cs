@@ -32,6 +32,11 @@ namespace Darkages.Network.ServerFormats
         public const byte Gear = 5;
         public const byte Member = 6;
 
+        /// <summary>7 룰렛 · 8 경매 쪽 · 9 경매 결과(2026-10-07, <c>autopilot/loot-auction/05-api-contract.md</c> E-01~03). serial 은 늘 0.</summary>
+        public const byte Roll = 7;
+        public const byte AuctionPage = 8;
+        public const byte AuctionDone = 9;
+
         public ServerFormat5E()
         {
             Secured = true;
@@ -64,6 +69,12 @@ namespace Darkages.Network.ServerFormats
         /// 옛 앱은 이 꼬리를 읽지 않는다. null 이면 싣지 않는다(옛 모양).
         /// </summary>
         public (int Hp, int MaxHp, int Mp, int MaxMp)? Numbers { get; set; }
+
+        /// <summary>종류 7·8·9 의 본문 — 그 소식을 만든 쪽(<see cref="GroupLoot" />·<see cref="AuctionHouse" />)이 serial 뒤에 쓴다.</summary>
+        public System.Action<NetworkPacketWriter> Body { get; set; }
+
+        public static ServerFormat5E Of(byte kind, System.Action<NetworkPacketWriter> body) =>
+            new ServerFormat5E { Kind = kind, Body = body };
 
         public static ServerFormat5E Status(int serial, IReadOnlyList<(string Name, int Seconds, bool Harmful, ushort Icon)> listed) =>
             new ServerFormat5E { Kind = Statuses, Serial = serial, Listed = listed };
@@ -145,6 +156,12 @@ namespace Darkages.Network.ServerFormats
                         writer.Write((ushort) System.Math.Max(1, (int) item.Stacks));
                     }
 
+                    break;
+
+                case Roll:
+                case AuctionPage:
+                case AuctionDone:
+                    Body?.Invoke(writer);
                     break;
 
                 default:

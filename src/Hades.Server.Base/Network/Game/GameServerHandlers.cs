@@ -2081,6 +2081,15 @@ namespace Darkages.Network.Game
             client.Activity.Telemetry(format.Payload);
         }
 
+        /// <summary>경매장(0xF4) — 모든 판단은 <see cref="AuctionHouse" /> 가 한다.</summary>
+        protected override void FormatF4Handler(GameClient client, ClientFormatF4 format)
+        {
+            if (client?.Aisling?.LoggedIn != true || format.Kind == ClientFormatF4.Unknown)
+                return;
+
+            AuctionHouse.Handle(client, format);
+        }
+
         /// <summary>모바일 상점 일괄 거래(0xF2). NPC·거리·재고·금화·가방을 서버에서 다시 검증한다.</summary>
         protected override void FormatF2Handler(GameClient client, ClientFormatF2 format)
         {

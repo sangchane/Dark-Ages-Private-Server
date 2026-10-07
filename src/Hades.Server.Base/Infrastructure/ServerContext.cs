@@ -230,6 +230,7 @@ namespace Darkages
             try
             {
                 LoadAndCacheStorage();
+                AuctionHouse.Load();
                 StartServers();
             }
             catch (Exception ex)
