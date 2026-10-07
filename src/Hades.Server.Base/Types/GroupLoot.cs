@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Darkages.Common;
 using Darkages.Network.ServerFormats;
+using Darkages.Storage;
 
 namespace Darkages.Types
 {
@@ -26,7 +27,7 @@ namespace Darkages.Types
                 return new List<Aisling>();
 
             var sharers = party.PartyMembers
-                .Where(member => member.LoggedIn && member.CurrentMapId == killer.CurrentMapId && !member.IsDead()
+                .Where(member => member.LoggedIn && member.Client != null && member.CurrentMapId == killer.CurrentMapId && !member.IsDead()
                                  && !Companions.IsBot(member.Username))
                 .OrderBy(member => member.Username.ToLowerInvariant(), StringComparer.Ordinal)
                 .ToList();
@@ -45,7 +46,12 @@ namespace Darkages.Types
                 return false;
 
             var winner = IsRolled(item) ? Roll(sharers, item) : Turn(killer.GroupParty, sharers);
-            if (!item.GiveTo(winner))
+            bool given;
+            // 받는 이의 캐릭터 자물쇠 안에서 — 그 사람이 제 접속에서 경매에 올리는 동안 같은 묶음을 고치지 않게(AuctionHouse.AsLive).
+            lock (AislingStorage.LockFor(winner.Username))
+                given = winner.LoggedIn && item.GiveTo(winner);
+
+            if (!given)
             {
                 item.Cursed = true;
                 item.AuthenticatedAislings = new Sprite[] { winner };
@@ -129,10 +135,17 @@ namespace Darkages.Types
             foreach (var member in sharers)
             {
                 long mine = share + (member == extra ? amount - share * sharers.Count : 0);
-                long given = Math.Min(mine, Math.Max(0, (long) ServerContext.Config.MaxCarryGold - member.GoldPoints));
+                long given;
+                // 캐릭터 자물쇠 안에서 더한다 — 경매 지불·받기와 섞여 한쪽이 지워지지 않게. 경매장(받을 것)은 자물쇠를 놓은 뒤에.
+                lock (AislingStorage.LockFor(member.Username))
+                {
+                    given = Math.Min(mine, Math.Max(0, (long) ServerContext.Config.MaxCarryGold - member.GoldPoints));
+                    if (given > 0)
+                        member.GoldPoints += (int) given;
+                }
+
                 if (given > 0)
                 {
-                    member.GoldPoints += (int) given;
                     member.Client?.SendStats(StatusFlags.StructC);
                     member.Client?.SendMessage(0x03, $"금전 {given}전을 나눠 받았습니다.");
                 }

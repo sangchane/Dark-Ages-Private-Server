@@ -147,6 +147,11 @@ namespace Darkages.Storage
         private static readonly ConcurrentDictionary<string, object> Saving =
             new ConcurrentDictionary<string, object>(StringComparer.OrdinalIgnoreCase);
 
+        /// <summary>
+        /// 캐릭터 하나의 자물쇠(이름, 대소문자 무시) — 저장·접속 끊기·경매 조작·그룹 전리품이 같은 것을 잡는다. 저장 안에서 다시 잡아도 된다(같은 스레드).
+        /// </summary>
+        public static object LockFor(string name) => Saving.GetOrAdd(name ?? string.Empty, _ => new object());
+
         /// <summary>저장하고 파일에 닿았는지 돌려준다. 저장하지 않는 설정(<c>DontSavePlayers</c>)이면 false.</summary>
         public bool TrySave(Aisling obj)
         {
@@ -159,7 +164,7 @@ namespace Darkages.Storage
             {
                 var path = ResolveCharacterFile(obj.Username);
 
-                lock (Saving.GetOrAdd(path, _ => new object()))
+                lock (LockFor(obj.Username))
                 {
                     var objString = StorageManager.Serialize(obj);
 

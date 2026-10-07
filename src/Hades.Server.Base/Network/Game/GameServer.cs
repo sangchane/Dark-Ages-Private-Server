@@ -9,6 +9,7 @@ using Darkages.Network.Game.Components;
 using Darkages.Network.Object;
 using Darkages.Server.Network.Game.Components;
 using Darkages.Server.Network.WS;
+using Darkages.Storage;
 using Darkages.Types;
 
 #endregion
@@ -34,6 +35,9 @@ namespace Darkages.Network.Game
             if (client.Aisling == null)
                 return;
 
+            // 경매 조작과 같은 캐릭터 자물쇠 — 조작이 끝난 뒤에 저장하고 접속을 뺀다. 빼고 나면 조작은 거절된다(밀어내기 로그인이 지불 전
+            // 파일을 읽어 금화가 되살아나지 않게, AuctionHouse.AsLive).
+            lock (AislingStorage.LockFor(client.Aisling.Username))
             try
             {
                 Party.RemovePartyMember(client.Aisling);

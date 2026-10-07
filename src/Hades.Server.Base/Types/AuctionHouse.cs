@@ -145,11 +145,18 @@ namespace Darkages.Types
             return seq;
         }
 
+        // 경매장 파일을 쓰지 못해 commit 을 못 적은 조작 — 다음에 파일을 쓰면 그 상태가 함께 저장되므로 그때 commit 을 적는다.
+        // 안 그러면 보고서가 「끊긴 조작」으로 보이고, 런북대로 되살리면 하나가 더 생긴다(리뷰 2026-10-07).
+        private static readonly List<long> Pending = new List<long>();
+
         private static bool SaveBook()
         {
             try
             {
                 SafeFile.Write(BookPath, JsonConvert.SerializeObject(_book, Formatting.None, StorageManager.Settings));
+                foreach (long seq in Pending)
+                    Write(new JObject { ["seq"] = seq, ["ev"] = "commit" });
+                Pending.Clear();
                 return true;
             }
             catch (Exception e)
@@ -214,6 +221,8 @@ namespace Darkages.Types
         {
             if (SaveBook())
                 Write(new JObject { ["seq"] = seq, ["ev"] = "commit" });
+            else
+                Pending.Add(seq);
         }
 
         private static void Abort(long seq) => Write(new JObject { ["seq"] = seq, ["ev"] = "abort" });
@@ -318,14 +327,18 @@ namespace Darkages.Types
         }
 
         private static void Reply(GameClient client, bool ok, string message) =>
-            client.Send(Done(ok, message, ClaimCount(client.Aisling.Username)));
+            client.Send(Done(ok, message, ClaimCount(client.Aisling.Username), notice: false));
 
-        private static ServerFormat5E Done(bool ok, string message, int claims) =>
+        /// <summary>E-03 — 끝의 알림 바이트(2026-10-07): 1 이면 내 요청의 답이 아니라 남의 조작이 알린 것(팔림·밀림). 옛 앱은 읽지 않는다.</summary>
+        private static ServerFormat5E Done(bool ok, string message, int claims, bool notice) =>
             ServerFormat5E.Of(ServerFormat5E.AuctionDone, writer =>
             {
                 writer.Write((byte) (ok ? 1 : 0));
-                writer.WriteStringA(message ?? string.Empty);
+                // 길이는 한 바이트다 — 긴 물건 이름이 255 바이트를 넘기지 않게 자른다.
+                string text = message ?? string.Empty;
+                writer.WriteStringA(text.Length > 80 ? text.Substring(0, 80) : text);
                 writer.Write((ushort) Math.Min(claims, ushort.MaxValue));
+                writer.Write((byte) (notice ? 1 : 0));
             });
 
         private static void Tell(Notices notices)
@@ -333,7 +346,7 @@ namespace Darkages.Types
             foreach (var (name, message) in notices)
             {
                 var online = ServerContext.Game?.Clients.FirstOrDefault(c => c?.Aisling != null && Same(c.Aisling.Username, name));
-                online?.Send(Done(true, message, ClaimCount(name)));
+                online?.Send(Done(true, message, ClaimCount(name), notice: true));
             }
         }
 
@@ -351,44 +364,63 @@ namespace Darkages.Types
 
         private static bool SaveCharacter(Aisling aisling) => StorageManager.AislingBucket.TrySave(aisling);
 
+        /// <summary>
+        /// 경매 문(<see cref="Gate" />)과 캐릭터 자물쇠(저장과 같은 것, <see cref="AislingStorage.LockFor" />)를 잡고, 이 접속이 아직 세상에 있을 때만
+        /// 일을 한다. 접속 끊기·밀어내기 로그인(<c>GameServer.ClientDisconnected</c>)이 같은 자물쇠 안에서 저장하고 접속을 빼므로, 조작이 다 끝난
+        /// 뒤에 끊기거나 끊긴 뒤의 조작은 거절된다 — 새 접속이 지불 전 파일을 읽어 금화가 되살아나지 않는다. 룰렛·금화 나눔(<see cref="GroupLoot" />)도
+        /// 같은 캐릭터 자물쇠 안에서 가방·금화를 고친다(리뷰 2026-10-07).
+        /// </summary>
+        private static (bool, string) AsLive(GameClient client, Func<(bool, string)> work)
+        {
+            lock (Gate)
+            lock (AislingStorage.LockFor(client.Aisling.Username))
+            {
+                if (client.Aisling?.LoggedIn != true || ServerContext.Game?.Clients.Contains(client) != true)
+                    return (false, "접속이 끊겼습니다");
+
+                return work();
+            }
+        }
+
         public static (bool, string) Post(GameClient client, byte slot, uint start, uint buyout, byte hours)
         {
-            Aisling me = client.Aisling;
-            string refused = Closed(false) ?? CannotAct(me);
+            string refused = Closed(false);
             if (refused != null)
                 return (false, refused);
-
-            Item item = me.Inventory.FindInSlot(slot);
-            if (item?.Template == null || !item.Template.Flags.HasFlag(ItemFlags.Tradeable))
-                return (false, "올릴 수 없는 물건입니다");
 
             int duration = Array.IndexOf(AUCTION_DURATIONS, (int) hours);
             if (duration < 0 || start < 1 || start > MaxGold || (buyout != 0 && (buyout < start || buyout > MaxGold)))
                 return (false, "값이 맞지 않습니다");
 
-            lock (Gate)
+            return AsLive(client, () =>
             {
+                Aisling me = client.Aisling;
+                if (CannotAct(me) is { } cannot)
+                    return (false, cannot);
+
+                Item item = me.Inventory.FindInSlot(slot);
+                if (item?.Template == null || !item.Template.Flags.HasFlag(ItemFlags.Tradeable))
+                    return (false, "올릴 수 없는 물건입니다");
                 if (_book.Listings.Count(listing => Same(listing.Seller, me.Username)) >= AUCTION_MAX_LISTINGS)
                     return (false, "올린 물건이 너무 많습니다");
 
                 long deposit = Math.Max(1, (long) ShopPricing.Offer(item) * Math.Max(1, (int) item.Stacks) * AUCTION_DEPOSIT_RATE[duration] / 100);
-                int goldBefore = me.GoldPoints;
-                if (deposit > goldBefore)
+                if (deposit > me.GoldPoints)
                     return (false, "보증금이 모자랍니다");
 
-                long seq = Begin("post", me.Username, _book.NextId, item.DisplayName, deposit, goldBefore, goldBefore - deposit,
+                long seq = Begin("post", me.Username, _book.NextId, item.DisplayName, deposit, me.GoldPoints, me.GoldPoints - deposit,
                     new { start, buyout, hours, stacks = (int) item.Stacks });
                 if (seq == 0)
                     return (false, "저장에 실패했습니다");
 
                 me.Inventory.RemoveRange(client, item, Math.Max(1, (int) item.Stacks));
-                me.GoldPoints = (int) (goldBefore - deposit);
+                me.GoldPoints -= (int) deposit;
                 if (!SaveCharacter(me))
                 {
                     me.Inventory.Set(item, false);
                     me.CurrentWeight += item.Template.CarryWeight;
                     client.Send(new ServerFormat0F(item));
-                    me.GoldPoints = goldBefore;
+                    me.GoldPoints += (int) deposit;
                     Abort(seq);
                     return (false, "저장에 실패했습니다");
                 }
@@ -401,20 +433,20 @@ namespace Darkages.Types
                 });
                 Commit(seq);
                 return (true, $"올렸습니다: {item.DisplayName} (보증금 {deposit:N0}전)");
-            }
+            });
         }
 
-        private static Listing Find(uint id) => _book.Listings.FirstOrDefault(listing => listing.Id == id);
+        // 끝 시각이 지난 경매는 기간 끝 처리(Expire, 1분마다)를 기다리는 동안에도 끝난 것이다 — 입찰·구매·취소를 받지 않는다.
+        private static Listing Find(uint id) => _book.Listings.FirstOrDefault(listing => listing.Id == id && listing.ExpiresAt > DateTime.UtcNow);
 
-        /// <summary>내주는 쪽(캐릭터) 금화를 빼고 저장한다. 저장하지 못하면 되돌리고 abort.</summary>
+        /// <summary>내주는 쪽(캐릭터) 금화를 빼고 저장한다. 저장하지 못하면 되돌리고 abort. 더하고 빼기만 한다 — 그사이 들어온 금화를 지우지 않게.</summary>
         private static bool Pay(Aisling me, long amount, long seq)
         {
-            int before = me.GoldPoints;
-            me.GoldPoints = (int) (before - amount);
+            me.GoldPoints -= (int) amount;
             if (SaveCharacter(me))
                 return true;
 
-            me.GoldPoints = before;
+            me.GoldPoints += (int) amount;
             Abort(seq);
             return false;
         }
@@ -440,22 +472,26 @@ namespace Darkages.Types
 
         public static (bool, string) Bid(GameClient client, uint id, uint amount, Notices notices)
         {
-            Aisling me = client.Aisling;
-            string refused = Closed(false) ?? CannotAct(me);
+            string refused = Closed(false);
             if (refused != null)
                 return (false, refused);
 
-            lock (Gate)
+            return AsLive(client, () =>
             {
+                Aisling me = client.Aisling;
+                if (CannotAct(me) is { } cannot)
+                    return (false, cannot);
+
                 Listing listing = Find(id);
                 if (listing == null)
                     return (false, "이미 끝난 경매입니다");
                 if (Same(listing.Seller, me.Username))
                     return (false, "제 물건에는 입찰할 수 없습니다");
-                if (Same(listing.Bidder, me.Username))
-                    return (false, "이미 최고 입찰자입니다");
+                // 즉시 구매가 이상이면 최고 입찰자라도 즉시 구매(S-9) — 맡긴 입찰금은 돌려받는다.
                 if (listing.Buyout > 0 && amount >= listing.Buyout)
                     return BuyoutLocked(me, listing, notices);
+                if (Same(listing.Bidder, me.Username))
+                    return (false, "이미 최고 입찰자입니다");
 
                 long least = NextBid(listing);
                 if (amount < least)
@@ -472,7 +508,7 @@ namespace Darkages.Types
                 listing.Bidder = me.Username;
                 Commit(seq);
                 return (true, $"입찰했습니다: {listing.Item.DisplayName} {amount:N0}전");
-            }
+            });
         }
 
         public static long NextBid(Listing listing) =>
@@ -480,13 +516,16 @@ namespace Darkages.Types
 
         public static (bool, string) Buyout(GameClient client, uint id, Notices notices)
         {
-            Aisling me = client.Aisling;
-            string refused = Closed(false) ?? CannotAct(me);
+            string refused = Closed(false);
             if (refused != null)
                 return (false, refused);
 
-            lock (Gate)
+            return AsLive(client, () =>
             {
+                Aisling me = client.Aisling;
+                if (CannotAct(me) is { } cannot)
+                    return (false, cannot);
+
                 Listing listing = Find(id);
                 if (listing == null)
                     return (false, "이미 끝난 경매입니다");
@@ -496,7 +535,7 @@ namespace Darkages.Types
                     return (false, "제 물건입니다");
 
                 return BuyoutLocked(me, listing, notices);
-            }
+            });
         }
 
         private static (bool, string) BuyoutLocked(Aisling me, Listing listing, Notices notices)
@@ -517,13 +556,16 @@ namespace Darkages.Types
 
         public static (bool, string) Cancel(GameClient client, uint id, Notices notices)
         {
-            Aisling me = client.Aisling;
             string refused = Closed(false);
             if (refused != null)
                 return (false, refused);
 
-            lock (Gate)
+            return AsLive(client, () =>
             {
+                Aisling me = client.Aisling;
+                if (CannotAct(me) is { } cannot)
+                    return (false, cannot);
+
                 Listing listing = Find(id);
                 if (listing == null)
                     return (false, "이미 끝난 경매입니다");
@@ -543,19 +585,23 @@ namespace Darkages.Types
                 AddClaim(me.Username, ForCancel, listing.Id, item: listing.Item);
                 Commit(seq);
                 return (true, $"취소했습니다: {listing.Item.DisplayName} — 받을 것에서 받으십시오");
-            }
+            });
         }
 
         /// <summary>받기 — 경매장(내주는 쪽)을 먼저 저장하고 가방·금화에 넣는다. 들어갈 것만 꺼낸다.</summary>
         public static (bool, string) Take(GameClient client, uint id)
         {
-            Aisling me = client.Aisling;
             string refused = Closed(true);
             if (refused != null)
                 return (false, refused);
 
-            lock (Gate)
+            return AsLive(client, () =>
             {
+                Aisling me = client.Aisling;
+                // 교환에 내놓은 금화는 들고 있는 금화에서 빠져 있다 — 그 사이 받으면 교환을 물릴 때 상한에 잘려 사라진다.
+                if (CannotAct(me) is { } cannot)
+                    return (false, cannot);
+
                 var mine = _book.Claims.Where(claim => Same(claim.Owner, me.Username) && (id == 0 || claim.Id == id))
                     .OrderBy(claim => claim.Id).ToList();
                 if (mine.Count == 0)
@@ -629,7 +675,7 @@ namespace Darkages.Types
                     return (false, "저장에 실패했습니다");
                 }
 
-                // 받는 쪽: 캐릭터
+                // 받는 쪽: 캐릭터(캐릭터 자물쇠 안이라 그사이 나눔 금화가 끼어 상한을 넘지 않는다)
                 bool returned = false;
                 foreach (Claim claim in items)
                 {
@@ -643,20 +689,27 @@ namespace Darkages.Types
                     }
                 }
 
-                me.GoldPoints = (int) (me.GoldPoints + goldTotal);
+                me.GoldPoints += (int) goldTotal;
                 if (returned)
                     SaveBook();
 
                 if (SaveCharacter(me))
+                {
                     Write(new JObject { ["seq"] = seq, ["ev"] = "commit" });
+                }
                 else
+                {
+                    // 경매장은 이미 내줬다 — 다음 주기 저장(45초)이 캐릭터에 넣을 수 있으니 「끊김」이 아니라 「저장 못 함」으로 적는다.
+                    // 런북은 캐릭터 파일을 보고 정말 빠졌을 때만 되살린다(auction-report.py).
+                    Write(new JObject { ["seq"] = seq, ["ev"] = "unsaved", ["who"] = me.Username });
                     ServerContext.Logger($"auction save failed — {me.Username} 받기 seq {seq} 캐릭터 저장 실패", Microsoft.Extensions.Logging.LogLevel.Error);
+                }
 
                 string left = full || returned ? " — 가방에 자리가 없어 남은 것이 있습니다"
                     : capped ? " — 들 수 있는 금화를 넘어 남은 금화가 있습니다"
                     : string.Empty;
                 return (true, $"받았습니다{left}");
-            }
+            });
         }
 
         // 겹치는 물건이 가방의 같은 묶음에 더해지는지 — Item.GiveTo 와 같은 조건.
@@ -665,7 +718,13 @@ namespace Darkages.Types
             && me.Inventory.Has(one => one.Template?.Name == item.Template.Name
                                        && one.Stacks + Math.Max(1, (int) item.Stacks) <= one.Template.MaxStack) != null;
 
-        /// <summary>기간 끝 — 서버 루프(<c>GameServer.UpdateClients</c>)가 부르고, AUCTION_TICK 마다 한 번만 본다.</summary>
+        /// <summary>한 번의 기간 끝 처리에서 다루는 경매 수 — 오래 꺼졌다 켜져 한꺼번에 끝나도 서버 루프를 오래 붙잡지 않게.</summary>
+        private const int ExpireBatch = 50;
+
+        /// <summary>
+        /// 기간 끝 — 서버 루프(<c>GameServer.UpdateClients</c>)가 부르고, AUCTION_TICK 마다 한 번만 본다. 사건 줄은 경매마다, 경매장 파일은 한 번만
+        /// 쓰고 commit 을 모아 적는다(남은 것은 다음 틱).
+        /// </summary>
         public static void Expire(DateTime now)
         {
             if (!_loaded || ServerContext.Config.DontSavePlayers || now - _lastExpire < AUCTION_TICK)
@@ -675,7 +734,8 @@ namespace Darkages.Types
             lock (Gate)
             {
                 _lastExpire = now;
-                foreach (Listing listing in _book.Listings.Where(one => one.ExpiresAt <= now).ToList())
+                var done = new List<long>();
+                foreach (Listing listing in _book.Listings.Where(one => one.ExpiresAt <= now).Take(ExpireBatch).ToList())
                 {
                     bool sold = listing.Bidder != null;
                     long seq = Begin(sold ? "sold" : "expired", listing.Seller, listing.Id, listing.Item.DisplayName,
@@ -695,7 +755,13 @@ namespace Darkages.Types
                         notices.Add((listing.Seller, $"경매가 유찰되었습니다: {listing.Item.DisplayName}"));
                     }
 
-                    Commit(seq);
+                    done.Add(seq);
+                }
+
+                if (done.Count > 0)
+                {
+                    Pending.AddRange(done);
+                    SaveBook();
                 }
             }
 
