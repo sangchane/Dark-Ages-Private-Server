@@ -704,7 +704,7 @@ namespace Darkages.Types
 
         // ---- 읽기(0x5E 8) ----
 
-        private readonly record struct Row(long Id, ushort Image, byte Color, string Name, ushort Stacks, byte Band, long Price, long Buyout, byte Flags);
+        private readonly record struct Row(long Id, ushort Image, byte Color, string Name, ushort Stacks, byte Band, long Price, long Buyout, byte Flags, Item Item);
 
         /// <summary>종류(SPEC S-11): 1 무기 · 2 방어구 · 3 장신구 · 4 기타.</summary>
         public static byte KindOf(Item item)
@@ -727,7 +727,8 @@ namespace Darkages.Types
         private static Row ToRow(Listing listing, string viewer, DateTime now) => new Row(
             listing.Id, listing.Item.DisplayImage, listing.Item.Color, listing.Item.DisplayName, (ushort) Math.Max(1, (int) listing.Item.Stacks),
             Band(listing.ExpiresAt - now), listing.Bidder != null ? listing.Bid : listing.StartBid, listing.Buyout,
-            (byte) ((Same(listing.Seller, viewer) ? 1 : 0) | (Same(listing.Bidder, viewer) ? 2 : 0) | (listing.Bidder != null ? 4 : 0)));
+            (byte) ((Same(listing.Seller, viewer) ? 1 : 0) | (Same(listing.Bidder, viewer) ? 2 : 0) | (listing.Bidder != null ? 4 : 0)),
+            listing.Item);
 
         private static IEnumerable<Listing> Browse(byte category, byte sort, string query)
         {
@@ -775,6 +776,10 @@ namespace Darkages.Types
                     writer.Write((uint) row.Buyout);
                     writer.Write(row.Flags);
                 }
+
+                // 꼬리(2026-10-07): 줄마다 장비 수치 — 소지품(0x0F)과 같은 모양. 봇·앱이 「맞고 더 좋은지」를 본다. 옛 앱은 줄까지만 읽는다.
+                foreach (Row row in rows)
+                    ServerFormat0F.WriteNumbers(writer, row.Item);
             });
         }
 
