@@ -81,8 +81,9 @@ namespace Darkages.Storage.locales.Scripts.Items
     }
 
     /// <summary>
-    /// 사람의 공격·방어 속성을 지금 걸친 장비로 다시 정한다(사용자 2026-10-04). 공격 = 무기 속성, 없으면 목걸이 ·
-    /// 방어 = 옷 속성, 없으면 허리띠. 원작 5.99 는 목걸이 공격속성만 본다(`0x415cff`).
+    /// 사람의 공격·방어 속성을 지금 걸친 장비로 다시 정한다 — 공격 = 목걸이, 방어 = 허리띠(사용자 2026-10-07 「공격 속성은 목걸이
+    /// 방어 속성은 벨트로 결정되는거야」). 무기·옷의 수·토·풍·화는 수치만 바꾸고 속성을 주지 않는다(10-04 에는 무기·옷을 먼저 봤다).
+    /// 원작 5.99 도 목걸이 공격속성만 본다(`0x415cff`).
     /// <paramref name="leaving" /> 는 지금 비우는 자리다 — 물건이 아직 남아 있다(EquipmentManager 가 UnEquipped 뒤에 비운다).
     /// </summary>
     internal static class GearElements
@@ -93,12 +94,9 @@ namespace Darkages.Storage.locales.Scripts.Items
             if (gear == null)
                 return;
 
-            aisling.OffenseElement = Pick(Offense(gear.Weapon, leaving), Offense(gear.Necklace, leaving));
-            aisling.DefenseElement = Pick(Defense(gear.Armor, leaving), Defense(gear.Belt, leaving));
+            aisling.OffenseElement = Offense(gear.Necklace, leaving);
+            aisling.DefenseElement = Defense(gear.Belt, leaving);
         }
-
-        public static ElementManager.Element Pick(ElementManager.Element first, ElementManager.Element second) =>
-            first != ElementManager.Element.None ? first : second;
 
         private static ElementManager.Element Offense(EquipmentSlot slot, int leaving) =>
             Worn(slot, leaving)?.OffenseElement ?? ElementManager.Element.None;
