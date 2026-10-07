@@ -1223,11 +1223,27 @@ namespace Darkages.Storage.locales.Scripts.Pack599
             }
             var named = target is Aisling person ? person.Username : (target as Monster)?.Template?.Name;
             var level = target is Aisling leveled ? $" Lv{leveled.ExpLevel}" : "";
-            _me.Client.SendMessage(0x02, $"{named}{level} 체력 {target.CurrentHp}/{target.MaximumHp} 마력 {target.CurrentMp}/{target.MaximumMp}");
+            _me.Client.SendMessage(0x02, $"{named}{level} 체력 {target.CurrentHp}/{target.MaximumHp} 마력 {target.CurrentMp}/{target.MaximumMp}" +
+                                         $" 공격속성 {Nature(target.OffenseElement)} 방어속성 {Nature(target.DefenseElement)}");
             return 1;
         }
 
-        /// <summary>하데스 디버프는 길이가 클래스에 박혀 있다. 남은 시간이 `Length - Tick` 이라 Tick 을 당긴다.</summary>
+        /// <summary>
+        /// 5.99 센스·센스몬스터가 쓰는 속성 이름(`0x48f848` 표 — 무·수·토·풍·화·암흑·빛, 「몹의 속성을 파악합니다」).
+        /// 하데스의 Random(때릴 때마다 굴림)은 5.99 에 없다.
+        /// </summary>
+        private static string Nature(ElementManager.Element element) => element switch
+        {
+            ElementManager.Element.Water => "수",
+            ElementManager.Element.Earth => "토",
+            ElementManager.Element.Wind => "풍",
+            ElementManager.Element.Fire => "화",
+            ElementManager.Element.Dark => "암흑",
+            ElementManager.Element.Light => "빛",
+            ElementManager.Element.Random => "무작위",
+            _ => "무"
+        };
+
         /// <summary>나쁜 상태를 건다 — 마법이면 대상의 마법방어로 빗나갈 수 있다(<see cref="Resisted" />).</summary>
         private V Hex(Sprite target, Debuff debuff, long seconds) => Resisted(target) ? 0 : Afflict(target, debuff, seconds);
 
@@ -1257,6 +1273,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
         /// <summary>원작 Miss 머리 그림(앱 <c>Overhead</c> 의 33).</summary>
         private const ushort MissPicture = 33;
 
+        /// <summary>하데스 디버프는 길이가 클래스에 박혀 있다. 남은 시간이 `Length - Tick` 이라 Tick 을 당긴다.</summary>
         private V Afflict(Sprite target, Debuff debuff, long seconds)
         {
             if (target == null || target.HasDebuff(debuff.Name))
