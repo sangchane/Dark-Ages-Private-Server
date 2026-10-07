@@ -383,7 +383,8 @@ namespace Darkages
                                 }
                             case Item item:
                                 {
-                                    var stale = !((DateTime.UtcNow - item.AbandonedDate).TotalMinutes > 3);
+                                    // 3분 지나야 보호를 푼다 — 전에는 식이 뒤집혀 다음 순회에 풀렸다(2026-10-07, 경매장 DL-10).
+                                    var stale = (DateTime.UtcNow - item.AbandonedDate).TotalMinutes > 3;
 
                                     if (item.Cursed && stale)
                                     {

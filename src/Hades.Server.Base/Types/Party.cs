@@ -15,6 +15,10 @@ namespace Darkages.Types
         public int Id { get; set; }
         public string LeaderName { get; set; }
 
+        /// <summary>돌림 물건(장비 아닌 전리품)을 받을 차례와 그때의 그룹원 이름(<see cref="GroupLoot" />). 그룹원이 바뀌면 처음부터.</summary>
+        public int LootTurn { get; set; }
+        public string LootTurnKey { get; set; }
+
         public List<Aisling> PartyMembers => GetObjects<Aisling>(null, sprite => sprite.GroupId == Id)
             .DistinctBy(i => i.Username.ToLower()).ToList();
 

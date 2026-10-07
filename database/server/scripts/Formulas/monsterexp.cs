@@ -118,7 +118,8 @@ namespace Darkages.Storage.locales.Scripts.Formulas
                 {
                     var item = Item.Create(_monster, template, true);
                     item.Stacks = BundleSize(item);
-                    item.Release(_monster, _monster.Position);
+                    if (!GroupLoot.Share(_player, item, _monster))
+                        item.Release(_monster, _monster.Position);
                     return;
                 }
 
@@ -206,6 +207,9 @@ namespace Darkages.Storage.locales.Scripts.Formulas
                     }
 
                     rolledItem.Stacks = BundleSize(rolledItem);
+                    if (GroupLoot.Share(_player, rolledItem, _monster))
+                        return;
+
                     rolledItem.Cursed = true;
                     rolledItem.AuthenticatedAislings = _monster.GetTaggedAislings().Cast<Sprite>().ToArray();
                     rolledItem.Release(_monster, _monster.Position);
@@ -421,7 +425,7 @@ namespace Darkages.Storage.locales.Scripts.Formulas
             var factor = 1 + (Generator.Random.NextDouble() * 2 - 1) * GoldVariance;
             var sum = Math.Max((int)Math.Round(baseline * factor), _monster.Template.GoldMinimum ?? 0);
 
-            if (sum > 0)
+            if (sum > 0 && !GroupLoot.ShareGold(_player, sum))
                 Money.Create(_monster, sum, new Position(_monster.XPos, _monster.YPos));
         }
 
