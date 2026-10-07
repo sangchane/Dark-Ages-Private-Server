@@ -22,5 +22,10 @@
     "Value": 13
   },
   "Group": "하데스표/방패/원작표",
-  "DropRate": 0.42
+  "DropRate": 0.42,
+  "MrModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 10
+  }
 }

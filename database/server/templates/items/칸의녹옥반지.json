@@ -27,5 +27,10 @@
     "Value": 150
   },
   "Group": "하데스표/반지/원작표",
-  "DropRate": 0.05
+  "DropRate": 0.05,
+  "MrModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 10
+  }
 }

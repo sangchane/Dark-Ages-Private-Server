@@ -108,6 +108,9 @@ namespace Darkages.Storage.locales.Scripts.Pack599
         private Sprite _painted;
         private ushort _paint;
 
+        // 한 번 외우는 동안 마법방어를 굴린 대상(serial → 빗나감) — 피해와 상태를 같이 거는 마법도 대상마다 한 번만 굴린다.
+        private Dictionary<int, bool> _resisted;
+
         public Pack599(Sprite sprite, Sprite chosen)
         {
             _me = sprite as Aisling;
@@ -522,6 +525,8 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                         return 0;
                     if (target is Aisling && name == "damaged")
                         return 0;
+                    if (Resisted(target))
+                        return 0;
                     target.ApplyDamage(_actor ?? _me, (int) Math.Min(int.MaxValue, Math.Max(0, Arg(a, 1))), (byte) 0);
                     return 0;
                 }
@@ -560,9 +565,9 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                 case "set_mana": return SetMana(Find(a, 0), Arg(a, 1));
 
                 // ── 상태 ─────────────────────────────────────────────────
-                case "mob_strabismus": return Afflict(Find(a, 0), new debuff_blind(), Arg(a, 1));
-                case "mobsor_delay": return Afflict(Find(a, 0), new debuff_frozen(), Arg(a, 1));
-                case "mobnar_delay": return Afflict(Find(a, 0), new debuff_sleep(), Arg(a, 1));
+                case "mob_strabismus": return Hex(Find(a, 0), new debuff_blind(), Arg(a, 1));
+                case "mobsor_delay": return Hex(Find(a, 0), new debuff_frozen(), Arg(a, 1));
+                case "mobnar_delay": return Hex(Find(a, 0), new debuff_sleep(), Arg(a, 1));
                 case "hide":
                 {
                     var buff = new buff_hide();
@@ -583,12 +588,12 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                 case "magic":
                     switch (Arg(a, 0))
                     {
-                        case 1: return Afflict(Find(a, 1), new Curse(Curse.Slot, Arg(a, 4)), Arg(a, 3));
-                        case 2: return Afflict(Find(a, 1), new debuff_sleep(), Arg(a, 3));
+                        case 1: return Hex(Find(a, 1), new Curse(Curse.Slot, Arg(a, 4)), Arg(a, 3));
+                        case 2: return Hex(Find(a, 1), new debuff_sleep(), Arg(a, 3));
                         case 5: return Afflict(Find(a, 1), new MagicGuard(), Arg(a, 3));
-                        case 6: return Afflict(Find(a, 1), new debuff_beagsuain(), Arg(a, 3));
-                        case 7: return Afflict(Find(a, 1), new debuff_frozen(), Arg(a, 3));
-                        case 8: return Afflict(Find(a, 1), new Curse(Curse.Mark, Arg(a, 4)), Arg(a, 3));
+                        case 6: return Hex(Find(a, 1), new debuff_beagsuain(), Arg(a, 3));
+                        case 7: return Hex(Find(a, 1), new debuff_frozen(), Arg(a, 3));
+                        case 8: return Hex(Find(a, 1), new Curse(Curse.Mark, Arg(a, 4)), Arg(a, 3));
                         case 10: return Shield(Find(a, 1), Arg(a, 3));
                         default: return Unknown(name + " " + Arg(a, 0));
                     }
@@ -789,7 +794,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                     }
                     return 1;
                 // 딜루메니 — 사람에게 거는 실명.
-                case "set_strabismus": return Afflict(Find(a, 0), new debuff_blind(), Arg(a, 1));
+                case "set_strabismus": return Hex(Find(a, 0), new debuff_blind(), Arg(a, 1));
 
                 // 효과 크기가 엔진 안에 있는 상태들 — 걸고 확인만 한다.
                 //   silence 침묵 · defens 완전방어 · dell 델리스펠라스 · sokup_delay 속성강화 · set_rest 휴식(회복 1.5배)
@@ -1223,6 +1228,35 @@ namespace Darkages.Storage.locales.Scripts.Pack599
         }
 
         /// <summary>하데스 디버프는 길이가 클래스에 박혀 있다. 남은 시간이 `Length - Tick` 이라 Tick 을 당긴다.</summary>
+        /// <summary>나쁜 상태를 건다 — 마법이면 대상의 마법방어로 빗나갈 수 있다(<see cref="Resisted" />).</summary>
+        private V Hex(Sprite target, Debuff debuff, long seconds) => Resisted(target) ? 0 : Afflict(target, debuff, seconds);
+
+        /// <summary>
+        /// 마법이 이 대상에게 빗나가는가 — 대상의 마법방어(<see cref="Sprite.Mr" />, 0~70 %) 확률(사용자 2026-10-07 「마방% 확률로
+        /// 빗나감」). 원작 5.99 는 아이템 마법방어를 읽기만 하고 쓰지 않는다(`docs/exe-manual/03-server-rules.md` 4.8).
+        /// 마법만 굴린다 — 사람 마법은 고른 대상을 들고(<c>new Pack599(sprite, target)</c>), 괴물 마법은 <see cref="ForMonster" />,
+        /// 기술은 대상 없이(<c>new Pack599(sprite, null)</c>) 만든다. 쓴 쪽 자신은 굴리지 않는다. 빗나가면 원작 Miss 그림(33 —
+        /// 5.99 안티매직이 괴물 기술을 막을 때 쓰는 그림)을 대상 위에 그린다.
+        /// </summary>
+        // ponytail: 대상 없이 외운 사람 마법(범위 마법)은 기술과 구별이 안 돼 굴리지 않는다 — 괴물 마법방어는 0 이라 사냥에는 차이가 없다.
+        private bool Resisted(Sprite target)
+        {
+            var caster = _actor ?? _me;
+            if (target == null || caster == null || (_actor == null && _chosen == null) || target.Serial == caster.Serial)
+                return false;
+            _resisted ??= new Dictionary<int, bool>();
+            if (_resisted.TryGetValue(target.Serial, out var missed))
+                return missed;
+            missed = Dice.Next(100) < target.Mr;
+            _resisted[target.Serial] = missed;
+            if (missed)
+                target.Show(Scope.NearbyAislings, new ServerFormat29((uint) caster.Serial, (uint) target.Serial, MissPicture, 0, 100));
+            return missed;
+        }
+
+        /// <summary>원작 Miss 머리 그림(앱 <c>Overhead</c> 의 33).</summary>
+        private const ushort MissPicture = 33;
+
         private V Afflict(Sprite target, Debuff debuff, long seconds)
         {
             if (target == null || target.HasDebuff(debuff.Name))
