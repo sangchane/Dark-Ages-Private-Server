@@ -28,7 +28,10 @@ namespace Darkages.Types
     {
         // 03 상수 표 — 근거는 03(와우 출처 URL 또는 설계 결정 DL-5).
         public static readonly int[] AUCTION_DURATIONS = { 12, 24, 48 };
-        public static readonly int[] AUCTION_DEPOSIT_RATE = { 15, 30, 60 };
+        // 보증금은 시작가의 % (사용자 2026-10-07 — 와우처럼 상인 값 15/30/60% 면 5억 물건이 하루 9천만이라 아무도 안 올린다, DL-14).
+        public static readonly int[] AUCTION_DEPOSIT_RATE = { 1, 2, 4 };
+        // 값(시작가·즉시 구매가·입찰가) 상한 — 들 수 있는 금화(MaxCarryGold)와 따로. 모자라면 은행 금화로 낸다(DL-14). int 안.
+        public const int AUCTION_MAX_PRICE = 2_000_000_000;
         public const int AUCTION_CUT = 5;
         public const int AUCTION_MIN_STEP = 5;
         public const int AUCTION_MAX_LISTINGS = 20;
@@ -362,6 +365,19 @@ namespace Darkages.Types
 
         private static long MaxGold => ServerContext.Config.MaxCarryGold;
 
+        /// <summary>경매에 낼 수 있는 금화 — 들고 있는 것 + 은행에 맡긴 것(DL-14). 사건 줄의 goldBefore·goldAfter 도 이 합이다.</summary>
+        private static long Funds(Aisling me) => me.GoldPoints + (me.BankManager?.Gold ?? 0);
+
+        private static void AddBankGold(Aisling me, long delta)
+        {
+            if (delta == 0)
+                return;
+
+            Bank bank = me.BankManager ??= new Bank();
+            bank.Gold += delta;
+            me.Client?.Activity?.Currency("bank_gold", delta, bank.Gold);
+        }
+
         private static bool SaveCharacter(Aisling aisling) => StorageManager.AislingBucket.TrySave(aisling);
 
         /// <summary>
@@ -389,7 +405,7 @@ namespace Darkages.Types
                 return (false, refused);
 
             int duration = Array.IndexOf(AUCTION_DURATIONS, (int) hours);
-            if (duration < 0 || start < 1 || start > MaxGold || (buyout != 0 && (buyout < start || buyout > MaxGold)))
+            if (duration < 0 || start < 1 || start > AUCTION_MAX_PRICE || (buyout != 0 && (buyout < start || buyout > AUCTION_MAX_PRICE)))
                 return (false, "값이 맞지 않습니다");
 
             return AsLive(client, () =>
@@ -404,24 +420,21 @@ namespace Darkages.Types
                 if (_book.Listings.Count(listing => Same(listing.Seller, me.Username)) >= AUCTION_MAX_LISTINGS)
                     return (false, "올린 물건이 너무 많습니다");
 
-                long deposit = Math.Max(1, (long) ShopPricing.Offer(item) * Math.Max(1, (int) item.Stacks) * AUCTION_DEPOSIT_RATE[duration] / 100);
-                if (deposit > me.GoldPoints)
+                long deposit = Math.Max(1, (long) start * AUCTION_DEPOSIT_RATE[duration] / 100);
+                if (deposit > Funds(me))
                     return (false, "보증금이 모자랍니다");
 
-                long seq = Begin("post", me.Username, _book.NextId, item.DisplayName, deposit, me.GoldPoints, me.GoldPoints - deposit,
+                long seq = Begin("post", me.Username, _book.NextId, item.DisplayName, deposit, Funds(me), Funds(me) - deposit,
                     new { start, buyout, hours, stacks = (int) item.Stacks });
                 if (seq == 0)
                     return (false, "저장에 실패했습니다");
 
                 me.Inventory.RemoveRange(client, item, Math.Max(1, (int) item.Stacks));
-                me.GoldPoints -= (int) deposit;
-                if (!SaveCharacter(me))
+                if (!Pay(me, deposit, seq))
                 {
                     me.Inventory.Set(item, false);
                     me.CurrentWeight += item.Template.CarryWeight;
                     client.Send(new ServerFormat0F(item));
-                    me.GoldPoints += (int) deposit;
-                    Abort(seq);
                     return (false, "저장에 실패했습니다");
                 }
 
@@ -439,14 +452,20 @@ namespace Darkages.Types
         // 끝 시각이 지난 경매는 기간 끝 처리(Expire, 1분마다)를 기다리는 동안에도 끝난 것이다 — 입찰·구매·취소를 받지 않는다.
         private static Listing Find(uint id) => _book.Listings.FirstOrDefault(listing => listing.Id == id && listing.ExpiresAt > DateTime.UtcNow);
 
-        /// <summary>내주는 쪽(캐릭터) 금화를 빼고 저장한다. 저장하지 못하면 되돌리고 abort. 더하고 빼기만 한다 — 그사이 들어온 금화를 지우지 않게.</summary>
+        /// <summary>
+        /// 내주는 쪽(캐릭터) 금화를 빼고 저장한다 — 들고 있는 것 먼저, 모자라면 은행에서(DL-14). 저장하지 못하면 되돌리고 abort.
+        /// 더하고 빼기만 한다 — 그사이 들어온 금화를 지우지 않게.
+        /// </summary>
         private static bool Pay(Aisling me, long amount, long seq)
         {
-            me.GoldPoints -= (int) amount;
+            long hand = Math.Clamp(me.GoldPoints, 0, amount);
+            me.GoldPoints -= (int) hand;
+            AddBankGold(me, hand - amount);
             if (SaveCharacter(me))
                 return true;
 
-            me.GoldPoints += (int) amount;
+            me.GoldPoints += (int) hand;
+            AddBankGold(me, amount - hand);
             Abort(seq);
             return false;
         }
@@ -487,6 +506,8 @@ namespace Darkages.Types
                     return (false, "이미 끝난 경매입니다");
                 if (Same(listing.Seller, me.Username))
                     return (false, "제 물건에는 입찰할 수 없습니다");
+                if (amount > AUCTION_MAX_PRICE)
+                    return (false, "값이 맞지 않습니다");
                 // 즉시 구매가 이상이면 최고 입찰자라도 즉시 구매(S-9) — 맡긴 입찰금은 돌려받는다.
                 if (listing.Buyout > 0 && amount >= listing.Buyout)
                     return BuyoutLocked(me, listing, notices);
@@ -496,10 +517,10 @@ namespace Darkages.Types
                 long least = NextBid(listing);
                 if (amount < least)
                     return (false, $"입찰가가 낮습니다 (최소 {least:N0}전)");
-                if (amount > me.GoldPoints)
+                if (amount > Funds(me))
                     return (false, "금화가 모자랍니다");
 
-                long seq = Begin("bid", me.Username, listing.Id, listing.Item.DisplayName, amount, me.GoldPoints, me.GoldPoints - amount);
+                long seq = Begin("bid", me.Username, listing.Id, listing.Item.DisplayName, amount, Funds(me), Funds(me) - amount);
                 if (seq == 0 || !Pay(me, amount, seq))
                     return (false, "저장에 실패했습니다");
 
@@ -541,10 +562,10 @@ namespace Darkages.Types
         private static (bool, string) BuyoutLocked(Aisling me, Listing listing, Notices notices)
         {
             long price = listing.Buyout;
-            if (price > me.GoldPoints)
+            if (price > Funds(me))
                 return (false, "금화가 모자랍니다");
 
-            long seq = Begin("buyout", me.Username, listing.Id, listing.Item.DisplayName, price, me.GoldPoints, me.GoldPoints - price);
+            long seq = Begin("buyout", me.Username, listing.Id, listing.Item.DisplayName, price, Funds(me), Funds(me) - price);
             if (seq == 0 || !Pay(me, price, seq))
                 return (false, "저장에 실패했습니다");
 
@@ -573,10 +594,10 @@ namespace Darkages.Types
                     return (false, "내 경매가 아닙니다");
 
                 long fee = listing.Bidder != null ? (long) listing.Bid * AUCTION_CUT / 100 : 0;
-                if (fee > me.GoldPoints)
+                if (fee > Funds(me))
                     return (false, "수수료가 모자랍니다");
 
-                long seq = Begin("cancel", me.Username, listing.Id, listing.Item.DisplayName, fee, me.GoldPoints, me.GoldPoints - fee);
+                long seq = Begin("cancel", me.Username, listing.Id, listing.Item.DisplayName, fee, Funds(me), Funds(me) - fee);
                 if (seq == 0 || (fee > 0 && !Pay(me, fee, seq)))
                     return (false, "저장에 실패했습니다");
 
@@ -588,7 +609,10 @@ namespace Darkages.Types
             });
         }
 
-        /// <summary>받기 — 경매장(내주는 쪽)을 먼저 저장하고 가방·금화에 넣는다. 들어갈 것만 꺼낸다.</summary>
+        /// <summary>
+        /// 받기 — 경매장(내주는 쪽)을 먼저 저장하고 가방·금화에 넣는다. 물건은 들어갈 것만 꺼내고, 금화는 모두 — 들 수 있는 만큼 손에,
+        /// 넘는 것은 은행에(DL-14, 값 상한이 들 수 있는 금화보다 커서).
+        /// </summary>
         public static (bool, string) Take(GameClient client, uint id)
         {
             string refused = Closed(true);
@@ -608,10 +632,9 @@ namespace Darkages.Types
                     return (false, id == 0 ? "받을 것이 없습니다" : "이미 받은 것입니다");
 
                 int free = me.Inventory.Items.Values.Count(item => item == null);
-                long room = MaxGold - me.GoldPoints;
                 var items = new List<Claim>();
-                var golds = new List<(Claim Claim, long Gold)>();
-                bool full = false, capped = false;
+                var golds = new List<Claim>();
+                bool full = false;
 
                 foreach (Claim claim in mine)
                 {
@@ -632,45 +655,26 @@ namespace Darkages.Types
                     }
                     else
                     {
-                        long gold = Math.Min(claim.Gold, room);
-                        capped |= gold < claim.Gold;
-                        if (gold <= 0)
-                            continue;
-
-                        room -= gold;
-                        golds.Add((claim, gold));
+                        golds.Add(claim);
                     }
                 }
 
                 if (items.Count == 0 && golds.Count == 0)
-                    return (false, full ? "가방에 자리가 없습니다" : "들 수 있는 금화를 넘습니다(남은 것은 그대로)");
+                    return (false, "가방에 자리가 없습니다");
 
-                long goldTotal = golds.Sum(one => one.Gold);
+                long goldTotal = golds.Sum(claim => claim.Gold);
                 long seq = Begin("take", me.Username, 0, string.Join(",", items.Select(claim => claim.Item.DisplayName)), goldTotal,
-                    me.GoldPoints, me.GoldPoints + goldTotal, new { claims = items.Select(claim => claim.Id).Concat(golds.Select(one => one.Claim.Id)) });
+                    Funds(me), Funds(me) + goldTotal, new { claims = items.Concat(golds).Select(claim => claim.Id) });
                 if (seq == 0)
                     return (false, "저장에 실패했습니다");
 
                 // 내주는 쪽: 경매장
-                foreach (Claim claim in items)
+                foreach (Claim claim in items.Concat(golds))
                     _book.Claims.Remove(claim);
-                foreach (var (claim, gold) in golds)
-                {
-                    claim.Gold -= gold;
-                    if (claim.Gold == 0)
-                        _book.Claims.Remove(claim);
-                }
 
                 if (!SaveBook())
                 {
-                    foreach (var (claim, gold) in golds)
-                    {
-                        if (claim.Gold == 0)
-                            _book.Claims.Add(claim);
-                        claim.Gold += gold;
-                    }
-
-                    _book.Claims.AddRange(items);
+                    _book.Claims.AddRange(items.Concat(golds));
                     Abort(seq);
                     return (false, "저장에 실패했습니다");
                 }
@@ -689,7 +693,9 @@ namespace Darkages.Types
                     }
                 }
 
-                me.GoldPoints += (int) goldTotal;
+                long hand = Math.Clamp(MaxGold - me.GoldPoints, 0, goldTotal);
+                me.GoldPoints += (int) hand;
+                AddBankGold(me, goldTotal - hand);
                 if (returned)
                     SaveBook();
 
@@ -706,7 +712,7 @@ namespace Darkages.Types
                 }
 
                 string left = full || returned ? " — 가방에 자리가 없어 남은 것이 있습니다"
-                    : capped ? " — 들 수 있는 금화를 넘어 남은 금화가 있습니다"
+                    : goldTotal > hand ? $" — 들 수 없는 {goldTotal - hand:N0}전은 은행에 넣었습니다"
                     : string.Empty;
                 return (true, $"받았습니다{left}");
             });
