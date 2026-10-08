@@ -1,0 +1,35 @@
+{
+  "Name": "피어스@아벨무기점#7,7",
+  "AreaID": 20031,
+  "X": 7,
+  "Y": 7,
+  "Direction": 2,
+  "Image": 16414,
+  "Level": 1,
+  "MaximumHp": 1000,
+  "MaximumMp": 1000,
+  "Speech": [
+    "피어스: 운영진을 사칭하는 사기는 조심해야지.",
+    "피어스: 어서오세요. 무엇을 도와드릴까요?",
+    "피어스: 언제나 공지사항을 꼭 확인하는 습관을 길러야해.."
+  ],
+  "ScriptKey": "shop1",
+  "DefaultMerchantStock": [
+    "액스",
+    "광단검",
+    "광단검수",
+    "광단검토",
+    "광단검풍",
+    "광단검화"
+  ],
+  "EnableWalking": false,
+  "EnableTurning": false,
+  "EnableAttacking": false,
+  "EnableCasting": false,
+  "WalkRate": 0,
+  "TurnRate": 0,
+  "CastRate": 0,
+  "ChatRate": 0,
+  "PathQualifer": 1,
+  "ViewingQualifer": 1
+}

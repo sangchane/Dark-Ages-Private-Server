@@ -1,0 +1,34 @@
+{
+  "Name": "마이어@구광산대기실#16,45",
+  "AreaID": 20832,
+  "X": 16,
+  "Y": 45,
+  "Direction": 2,
+  "Image": 16633,
+  "Level": 1,
+  "MaximumHp": 1000,
+  "MaximumMp": 1000,
+  "Speech": [
+    "마이어: 어서오세요 무엇을 도와드릴까요?",
+    "마이어: 언제나 공지사항을 꼭 확인하는 습관을 길러야해..",
+    "마이어: 운영진을 사칭하는 사기는 조심해야지."
+  ],
+  "ScriptKey": "shop1",
+  "DefaultMerchantStock": [
+    "투핸드엑시큐터",
+    "투핸드엑시큐터수",
+    "투핸드엑시큐터토",
+    "투핸드엑시큐터풍",
+    "투핸드엑시큐터화"
+  ],
+  "EnableWalking": false,
+  "EnableTurning": false,
+  "EnableAttacking": false,
+  "EnableCasting": false,
+  "WalkRate": 0,
+  "TurnRate": 0,
+  "CastRate": 0,
+  "ChatRate": 0,
+  "PathQualifer": 1,
+  "ViewingQualifer": 1
+}

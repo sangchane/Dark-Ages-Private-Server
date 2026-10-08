@@ -1,0 +1,39 @@
+{
+  "Name": "제이@뤼케시온해안대기실#26,23",
+  "AreaID": 20466,
+  "X": 26,
+  "Y": 23,
+  "Direction": 2,
+  "Image": 16414,
+  "Level": 1,
+  "MaximumHp": 1000,
+  "MaximumMp": 1000,
+  "Speech": [
+    "제이: 어서오세요 무엇을 도와드릴까요?",
+    "제이: 운영진을 사칭하는 사기는 조심해야지.",
+    "제이: 언제나 공지사항을 꼭 확인하는 습관을 길러야해.."
+  ],
+  "ScriptKey": "shop1",
+  "DefaultMerchantStock": [
+    "일단검",
+    "일단검수",
+    "투핸드크레이모어",
+    "일단검토",
+    "일단검풍",
+    "투핸드크레이모어수",
+    "일단검화",
+    "투핸드크레이모어토",
+    "투핸드크레이모어풍",
+    "투핸드크레이모어화"
+  ],
+  "EnableWalking": false,
+  "EnableTurning": false,
+  "EnableAttacking": false,
+  "EnableCasting": false,
+  "WalkRate": 0,
+  "TurnRate": 0,
+  "CastRate": 0,
+  "ChatRate": 0,
+  "PathQualifer": 1,
+  "ViewingQualifer": 1
+}
