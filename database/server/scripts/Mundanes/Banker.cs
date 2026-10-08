@@ -6,6 +6,7 @@ using System.Linq;
 using Darkages.Network.Game;
 using Darkages.Network.ServerFormats;
 using Darkages.Scripting;
+using Darkages.Storage;
 using Darkages.Types;
 
 #endregion
@@ -71,8 +72,9 @@ namespace Darkages.Storage.locales.Scripts.Mundanes.LORULE_CITY.Bankers
 
             var bank = aisling.BankManager ??= new Bank();
 
-            // 한 사람의 은행 일은 한 번에 하나 — 같은 요청이 두 번 와도 두 번째는 바뀐 상태를 보고 판단한다.
-            lock (bank)
+            // 한 사람의 은행 일은 한 번에 하나 — 같은 요청이 두 번 와도 두 번째는 바뀐 상태를 보고 판단한다. 자물쇠는 저장·경매와 같은
+            // 캐릭터 자물쇠다: 은행만의 것이면 손 금화를 뺀 뒤 은행에 더하기 전에 주기 저장이 끼어 그 사이를 파일에 남겼다(리뷰 2026-10-08 #3).
+            lock (AislingStorage.LockFor(aisling.Username))
             {
                 using var mutation = ActivitySession.BeginMutation(client.Activity, "Bank");
                 switch (responseID)
