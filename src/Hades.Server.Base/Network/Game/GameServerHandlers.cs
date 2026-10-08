@@ -237,8 +237,7 @@ namespace Darkages.Network.Game
             // 나가는 자리는 늘 저장한다(GameServer.ClientDisconnected 와 같은 까닭).
             client.Save();
 
-            if (ServerContext.Redirects.Contains(client.Aisling.Username.ToLower()))
-                ServerContext.Redirects.Remove(client.Aisling.Username.ToLower());
+            EntryTickets.Revoke(client.Aisling.Username);
 
             client.FlushAndSend(new ServerFormat03
             {
@@ -778,10 +777,11 @@ namespace Darkages.Network.Game
                 // Check and consume the entry ticket before anything loads the character. EnterGame used to
                 // run first and the check came afterwards, so an unverified connection reached the world and
                 // was only disconnected after the fact, and a second connection could reuse the same ticket.
-                // Remove reports whether this call was the one that took it, and the lock makes that atomic.
+                // The ticket is the name plus the Id and cipher parameters the login server handed to that one
+                // login (리뷰 2026-10-08 #1) — the name alone let any connection that knew it take the place.
                 var ticket = format?.Name?.ToLower();
 
-                if (string.IsNullOrEmpty(ticket) || !ServerContext.Redirects.Remove(ticket))
+                if (string.IsNullOrEmpty(ticket) || !EntryTickets.TryConsume(ticket, format.Id, format.Parameters, DateTime.UtcNow))
                 {
                     //disconnect, unverified login.
                     ClientDisconnected(client);

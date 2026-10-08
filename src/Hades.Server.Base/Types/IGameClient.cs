@@ -145,7 +145,7 @@ namespace Darkages.Network.Game
 
         void RevivePlayer(string u);
 
-        GameClient Save();
+        bool Save();
 
         void Say(string message, byte type = 0x00);
 

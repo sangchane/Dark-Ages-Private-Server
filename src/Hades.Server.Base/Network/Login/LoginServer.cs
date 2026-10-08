@@ -69,7 +69,7 @@ namespace Darkages.Network.Login
                     Name = aisling.Username,
                 };
 
-                ServerContext.Redirects.Add(redirect.Name.ToLower());
+                EntryTickets.Issue(aisling.Username, client.Serial, client.Encryption.Parameters, DateTime.UtcNow);
 
                 client.SendMessageBox(0x00, "\0");
                 client.Send(new ServerFormat03
@@ -146,6 +146,27 @@ namespace Darkages.Network.Login
             ServerContext.Game.Clients.Any(i => i?.Aisling != null && i.Aisling.LoggedIn &&
                                                  string.Equals(i.Aisling.Username, name, StringComparison.OrdinalIgnoreCase));
 
+        /// <summary>게임 서버가 들고 있는 그 사람 — 나가는 중이라도 아직 있으면 그것이 마지막에 저장된다.</summary>
+        private static Aisling Live(string name) =>
+            ServerContext.Game?.Clients.FirstOrDefault(i => i?.Aisling != null &&
+                                                            string.Equals(i.Aisling.Username, name, StringComparison.OrdinalIgnoreCase))?.Aisling;
+
+        private static bool Store(Aisling aisling) =>
+            ServerContext.Config.DontSavePlayers || StorageManager.AislingBucket.TrySave(aisling);
+
+        /// <summary>캐릭터 자물쇠 안에서 부른다. 저장하지 못하면 메모리도 되돌린다 — 다음 저장이 몰래 새 비밀번호를 쓰지 않게.</summary>
+        private static bool StorePassword(Aisling aisling, string hash)
+        {
+            var old = aisling.Password;
+            aisling.Password = hash;
+
+            if (Store(aisling))
+                return true;
+
+            aisling.Password = old;
+            return false;
+        }
+
         private static void RecordLoginFailure(LoginClient client, string player, string reason)
         {
             string ip = "";
@@ -195,8 +216,10 @@ namespace Darkages.Network.Login
                     // so this is the one moment the plain value is in hand — store the hash and never again.
                     if (needsRehash)
                     {
-                        aisling.Password = Passwords.Hash(format.Password);
-                        StorageManager.AislingBucket.Save(aisling);
+                        var hash = Passwords.Hash(format.Password); // 느린 해시는 캐릭터 자물쇠 밖에서
+
+                        lock (AislingStorage.LockFor(aisling.Username))
+                            StorePassword(Live(aisling.Username) ?? aisling, hash);
                     }
                 }
                 else
@@ -284,8 +307,14 @@ namespace Darkages.Network.Login
                 return;
             }
 
-            StorageManager.AislingBucket.Save(template);
             client.CreateInfo = null;
+
+            if (!Store(template))
+            {
+                client.SendMessageBox(0x02, "캐릭터를 저장하지 못했습니다. 잠시 뒤 다시 해 주십시오.");
+                return;
+            }
+
             client.SendMessageBox(0x00, "\0");
         }
 
@@ -366,30 +395,35 @@ namespace Darkages.Network.Login
                 return;
             }
 
-            var aisling = StorageManager.AislingBucket.Load(format.Username);
+            string refused;
+            var seen = (Live(format.Username) ?? StorageManager.AislingBucket.Load(format.Username))?.Password;
 
-            if (aisling == null)
+            // 옛 비밀번호 확인·새 해시(느리다)는 캐릭터 자물쇠 밖에서 — 안에서 하면 이름만 아는 남이 바꾸기를 연달아 보내 그 사람의
+            // 저장·은행·경매(같은 자물쇠)를 붙잡을 수 있었다(보안 리뷰 2026-10-08). 자물쇠는 확인을 통과한 뒤에만 잡는다.
+            if (seen == null || !Passwords.Verify(seen, format.Password, out _))
+                refused = "계정을 바르게 적어주시길 바랍니다.";
+            else if (string.IsNullOrEmpty(format.NewPassword) || format.NewPassword.Length < 3)
+                refused = "암호를 바르게 적어주시길 바랍니다.";
+            else
             {
-                client.SendMessageBox(0x02, "계정을 바르게 적어주시길 바랍니다.");
-                return;
+                var hash = Passwords.Hash(format.NewPassword);
+
+                // 접속 중이면 그 사람(메모리)의 비밀번호를 바꿔 저장한다. 디스크에서 따로 읽어 바꾸면 다음 저장이 옛 비밀번호로 덮고,
+                // 따로 읽은 것을 통째로 쓰면 마지막 저장 뒤의 진행이 옛 상태로 돌아간다(리뷰 2026-10-08 #2). 캐릭터 자물쇠라 저장과 엇갈리지 않는다.
+                lock (AislingStorage.LockFor(format.Username))
+                {
+                    var aisling = Live(format.Username) ?? StorageManager.AislingBucket.Load(format.Username);
+
+                    if (aisling == null || aisling.Password != seen)
+                        refused = "계정을 바르게 적어주시길 바랍니다."; // 확인하는 사이 바뀌었다
+                    else if (!StorePassword(aisling, hash))
+                        refused = "암호를 저장하지 못했습니다. 잠시 뒤 다시 해 주십시오.";
+                    else
+                        refused = null;
+                }
             }
 
-            if (!Passwords.Verify(aisling.Password, format.Password, out _))
-            {
-                client.SendMessageBox(0x02, "계정을 바르게 적어주시길 바랍니다.");
-                return;
-            }
-
-            if (string.IsNullOrEmpty(format.NewPassword) || format.NewPassword.Length < 3)
-            {
-                client.SendMessageBox(0x02, "암호를 바르게 적어주시길 바랍니다.");
-                return;
-            }
-
-            aisling.Password = Passwords.Hash(format.NewPassword);
-            StorageManager.AislingBucket.Save(aisling);
-
-            client.SendMessageBox(0x00, "\0");
+            client.SendMessageBox(refused == null ? (byte) 0x00 : (byte) 0x02, refused ?? "\0");
         }
 
         protected override void Format4BHandler(LoginClient client, ClientFormat4B format)

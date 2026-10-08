@@ -104,8 +104,6 @@ namespace Darkages
         public static Dictionary<string, ServerTemplate> GlobalServerVarCache
             = new Dictionary<string, ServerTemplate>();
 
-        public static IList<string> Redirects = new List<string>();
-
         public static Board[] Community = new Board[7];
 
         public static Dictionary<string, List<Board>> GlobalBoardCache = new Dictionary<string, List<Board>>();
@@ -487,8 +485,8 @@ namespace Darkages
             {
                 try
                 {
-                    client.Save();
-                    saved++;
+                    if (client.Save())
+                        saved++;
                 }
                 catch (Exception ex)
                 {

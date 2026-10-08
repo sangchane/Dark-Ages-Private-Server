@@ -887,19 +887,27 @@ namespace Darkages.Network.Game
             return Aisling.CurrentHp > 0;
         }
 
-        public GameClient Save()
+        /// <summary>
+        /// 저장했으면 true. 못 했으면 LastSave 를 그대로 두어 다음 핑(AutoSave)·주기 저장에서 다시 한다 — 실패에도 저장한 것처럼
+        /// 시각과 성공 줄을 남기던 탓에 디스크 오류가 보이지 않았다(리뷰 2026-10-08 #5). 저장하지 않는 설정이면 하던 대로 저장한 셈.
+        /// </summary>
+        public bool Save()
         {
-            if (Aisling != null)
+            if (Aisling == null)
+                return false;
+
+            if (!ServerContext.Config.DontSavePlayers && !StorageManager.AislingBucket.TrySave(Aisling))
             {
-                StorageManager.AislingBucket.Save(Aisling);
-                LastSave = DateTime.UtcNow;
-                // 봇은 몇 초마다 저장해 하루 3만 줄이 이것뿐이었다 — 오류가 묻혀 봇 것만 Debug 로 내린다(파일·콘솔에 안 남음, 2026-10-02).
-                // 사람 저장은 남긴다: 저장 폭주 시험(CompanionNewOwnerTests)이 이 줄을 센다.
-                ServerContext.Logger($"Aisling {Aisling.Username} data has been saved.",
-                    Companions.IsBot(Aisling.Username) ? Microsoft.Extensions.Logging.LogLevel.Debug : Microsoft.Extensions.Logging.LogLevel.Information);
+                ServerContext.Logger($"Aisling {Aisling.Username} could not be saved.", Microsoft.Extensions.Logging.LogLevel.Error);
+                return false;
             }
 
-            return this;
+            LastSave = DateTime.UtcNow;
+            // 봇은 몇 초마다 저장해 하루 3만 줄이 이것뿐이었다 — 오류가 묻혀 봇 것만 Debug 로 내린다(파일·콘솔에 안 남음, 2026-10-02).
+            // 사람 저장은 남긴다: 저장 폭주 시험(CompanionNewOwnerTests)이 이 줄을 센다.
+            ServerContext.Logger($"Aisling {Aisling.Username} data has been saved.",
+                Companions.IsBot(Aisling.Username) ? Microsoft.Extensions.Logging.LogLevel.Debug : Microsoft.Extensions.Logging.LogLevel.Information);
+            return true;
         }
 
         public void Say(string message, byte type = 0x00)
