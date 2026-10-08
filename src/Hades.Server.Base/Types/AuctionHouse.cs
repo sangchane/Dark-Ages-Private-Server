@@ -157,9 +157,8 @@ namespace Darkages.Types
             try
             {
                 SafeFile.Write(BookPath, JsonConvert.SerializeObject(_book, Formatting.None, StorageManager.Settings));
-                foreach (long seq in Pending)
-                    Write(new JObject { ["seq"] = seq, ["ev"] = "commit" });
-                Pending.Clear();
+                // 적지 못한 commit 만 남겨 다음 저장에서 다시 — 통째로 비우면 끝난 거래가 「끊긴 조작」으로 남았다(리뷰 2026-10-08 #6).
+                Pending.RemoveAll(seq => WriteCommit(seq));
                 return true;
             }
             catch (Exception e)
@@ -220,13 +219,20 @@ namespace Darkages.Types
         private static void Note(long seq, string ev, string who, long listing, string item, long gold) =>
             Write(Line(seq, ev, who, listing, item, gold));
 
+        private static bool WriteCommit(long seq) => Write(new JObject { ["seq"] = seq, ["ev"] = "commit" });
+
         private static void Commit(long seq)
         {
-            if (SaveBook())
-                Write(new JObject { ["seq"] = seq, ["ev"] = "commit" });
-            else
+            if (!SaveBook() || !WriteCommit(seq))
                 Pending.Add(seq);
         }
+
+        /// <summary>
+        /// 캐릭터 파일에 실제로 들어간 금화(손 + 은행). Begin 의 goldAfter 는 하기 전에 셈한 예상이라, 보고서가 그 산술만 맞춰 보던 것을
+        /// 저장된 값과 맞춰 보게 한다(리뷰 2026-10-08 #15). 캐릭터 자물쇠 안, 저장 바로 뒤라 그사이 금화가 바뀌지 않는다.
+        /// </summary>
+        private static void NoteSaved(long seq, Aisling me) =>
+            Write(new JObject { ["seq"] = seq, ["ev"] = "saved", ["who"] = me.Username, ["goldSaved"] = Funds(me) });
 
         private static void Abort(long seq) => Write(new JObject { ["seq"] = seq, ["ev"] = "abort" });
 
@@ -462,7 +468,10 @@ namespace Darkages.Types
             me.GoldPoints -= (int) hand;
             AddBankGold(me, hand - amount);
             if (SaveCharacter(me))
+            {
+                NoteSaved(seq, me);
                 return true;
+            }
 
             me.GoldPoints += (int) hand;
             AddBankGold(me, amount - hand);
@@ -701,7 +710,9 @@ namespace Darkages.Types
 
                 if (SaveCharacter(me))
                 {
-                    Write(new JObject { ["seq"] = seq, ["ev"] = "commit" });
+                    NoteSaved(seq, me);
+                    if (!WriteCommit(seq))
+                        Pending.Add(seq);
                 }
                 else
                 {
