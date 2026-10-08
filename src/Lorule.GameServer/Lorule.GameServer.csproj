@@ -81,8 +81,9 @@
     <DocumentationFile>..\\..\\Staging\Lorule.GameServer.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore" Version="2.2.0" />
+    <!-- Microsoft.AspNetCore 2.2 묶음은 쓰지 않는 Kestrel(알려진 취약 버전)까지 끌어와 뺐다 — 콘솔 로그만 그대로(리뷰 2026-10-08 #14). -->
     <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.2.7" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="5.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="5.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="5.0.0" />
