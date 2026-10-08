@@ -804,6 +804,20 @@ namespace Darkages.Types
             }
         }
 
+        /// <summary>장비 칸별 찾기(사용자 2026-10-08 「장비별로」) — 종류 값 0x40 + 칸 무리(<see cref="SlotGroupOf" />). 옛 1~4 는 그대로 받는다.</summary>
+        public const byte BySlot = 0x40;
+
+        /// <summary>장비 칸 무리 — 반지 두 손(7·8)·장갑 두 팔(9·10)·장식(14·17)은 하나로, 겉옷(15·16)은 갑옷과. 장비가 아니면 0.</summary>
+        public static byte SlotGroupOf(Item item) =>
+            !item.Template.Flags.HasFlag(ItemFlags.Equipable) ? (byte) 0 : (byte) (item.Template.EquipmentSlot switch
+            {
+                8 => 7,
+                10 => 9,
+                15 or 16 => 2,
+                17 => 14,
+                var slot => slot
+            });
+
         private static byte Band(TimeSpan left) =>
             left < TimeSpan.FromMinutes(30) ? (byte) 0 : left < TimeSpan.FromHours(2) ? (byte) 1 : left < TimeSpan.FromHours(12) ? (byte) 2 : (byte) 3;
 
@@ -816,7 +830,7 @@ namespace Darkages.Types
         private static IEnumerable<Listing> Browse(byte category, byte sort, string query)
         {
             IEnumerable<Listing> found = _book.Listings.Where(listing =>
-                (category == 0 || KindOf(listing.Item) == category)
+                (category == 0 || (category > BySlot ? SlotGroupOf(listing.Item) == category - BySlot : KindOf(listing.Item) == category))
                 && (string.IsNullOrEmpty(query) || listing.Item.DisplayName.Contains(query, StringComparison.OrdinalIgnoreCase)));
 
             return sort switch
