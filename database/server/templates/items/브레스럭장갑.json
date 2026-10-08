@@ -14,29 +14,24 @@
   "Value": 100000,
   "DmgMin": 0,
   "DmgMax": 0,
-  "MaxDurability": 5000,
-  "CarryWeight": 0,
+  "MaxDurability": 300000,
+  "CarryWeight": 9,
   "AcModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
     "Option": 1,
-    "Value": 15
+    "Value": 6
   },
   "HealthModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
-    "Option": 0,
-    "Value": 5000
+    "Option": 1,
+    "Value": 300
   },
   "ManaModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
     "Option": 0,
-    "Value": 5000
+    "Value": 800
   },
   "StrModifer": {
-    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
-    "Option": 0,
-    "Value": 1
-  },
-  "DexModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
     "Option": 0,
     "Value": 1
@@ -46,15 +41,15 @@
     "Option": 0,
     "Value": 1
   },
-  "WisModifer": {
+  "Group": "5.99표/장갑/블랙세트",
+  "HitModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
     "Option": 0,
     "Value": 1
   },
-  "ConModifer": {
+  "DmgModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
     "Option": 0,
     "Value": 1
-  },
-  "Group": "5.99표/장갑/블랙세트"
+  }
 }

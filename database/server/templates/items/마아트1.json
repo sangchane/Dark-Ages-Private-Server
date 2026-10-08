@@ -14,37 +14,27 @@
   "Value": 0,
   "DmgMin": 0,
   "DmgMax": 0,
-  "MaxDurability": 5000,
-  "CarryWeight": 0,
+  "MaxDurability": 131500,
+  "CarryWeight": 2,
   "AcModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
     "Option": 1,
-    "Value": 8
+    "Value": 7
   },
   "MrModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
     "Option": 0,
     "Value": 10
   },
-  "HitModifer": {
-    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
-    "Option": 0,
-    "Value": 44
-  },
-  "DmgModifer": {
-    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
-    "Option": 0,
-    "Value": 88
-  },
   "HealthModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
     "Option": 0,
-    "Value": 2000
+    "Value": 300
   },
   "ManaModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
     "Option": 0,
-    "Value": 8000
+    "Value": 600
   },
   "Group": "5.99표/투구/승급옷업"
 }

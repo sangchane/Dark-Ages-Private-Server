@@ -14,28 +14,33 @@
   "Value": 4000,
   "DmgMin": 0,
   "DmgMax": 0,
-  "MaxDurability": 5000,
-  "CarryWeight": 0,
+  "MaxDurability": 600000,
+  "CarryWeight": 8,
   "StageRequired": 1,
   "AcModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
     "Option": 1,
-    "Value": 4
+    "Value": 8
   },
   "HealthModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
     "Option": 0,
-    "Value": 500
+    "Value": 1500
   },
   "ManaModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
-    "Option": 0,
-    "Value": 1500
+    "Option": 1,
+    "Value": 100
   },
   "DexModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
-    "Option": 0,
-    "Value": 10
+    "Option": 1,
+    "Value": 3
   },
-  "Group": "5.99표/장갑/공통장갑"
+  "Group": "5.99표/장갑/공통장갑",
+  "StrModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 2
+  }
 }

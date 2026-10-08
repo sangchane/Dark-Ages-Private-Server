@@ -14,12 +14,12 @@
   "Value": 100000,
   "DmgMin": 0,
   "DmgMax": 0,
-  "MaxDurability": 5000,
-  "CarryWeight": 0,
+  "MaxDurability": 2000,
+  "CarryWeight": 1,
   "AcModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
     "Option": 1,
-    "Value": 5
+    "Value": 1
   },
   "MrModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
@@ -39,37 +39,12 @@
   "HealthModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
     "Option": 0,
-    "Value": 7000
+    "Value": 550
   },
   "ManaModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
     "Option": 0,
-    "Value": 7000
-  },
-  "StrModifer": {
-    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
-    "Option": 0,
-    "Value": 3
-  },
-  "DexModifer": {
-    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
-    "Option": 0,
-    "Value": 3
-  },
-  "IntModifer": {
-    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
-    "Option": 0,
-    "Value": 3
-  },
-  "WisModifer": {
-    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
-    "Option": 0,
-    "Value": 3
-  },
-  "ConModifer": {
-    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
-    "Option": 0,
-    "Value": 3
+    "Value": 550
   },
   "Group": "5.99표/반지/공통반지"
 }

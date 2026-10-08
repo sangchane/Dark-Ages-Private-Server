@@ -14,8 +14,8 @@
   "Value": 0,
   "DmgMin": 0,
   "DmgMax": 0,
-  "MaxDurability": 0,
-  "CarryWeight": 0,
+  "MaxDurability": 15000,
+  "CarryWeight": 1,
   "AcModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
     "Option": 1,

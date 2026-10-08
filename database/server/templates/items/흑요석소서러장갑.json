@@ -14,7 +14,7 @@
   "Value": 20000,
   "DmgMin": 0,
   "DmgMax": 0,
-  "MaxDurability": 5000,
+  "MaxDurability": 12000,
   "CarryWeight": 0,
   "AcModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
@@ -26,16 +26,16 @@
     "Option": 0,
     "Value": 10
   },
-  "HealthModifer": {
-    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
-    "Option": 0,
-    "Value": 150
-  },
   "ManaModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
     "Option": 0,
-    "Value": 150
+    "Value": 200
   },
   "Group": "5.99표/장갑/흑요석",
-  "DropRate": 0.05
+  "DropRate": 0.05,
+  "IntModifer": {
+    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
+    "Option": 0,
+    "Value": 1
+  }
 }

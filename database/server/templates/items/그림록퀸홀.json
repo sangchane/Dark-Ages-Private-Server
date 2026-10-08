@@ -14,23 +14,23 @@
   "Value": 9000,
   "DmgMin": 0,
   "DmgMax": 0,
-  "MaxDurability": 5000,
-  "CarryWeight": 0,
+  "MaxDurability": 12000,
+  "CarryWeight": 1,
   "AcModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
     "Option": 1,
-    "Value": 9
+    "Value": 3
   },
   "HealthModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
     "Option": 0,
     "Value": 1000
   },
-  "ManaModifer": {
+  "Group": "5.99표/투구/투구",
+  "DropRate": 0.003,
+  "HitModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
     "Option": 0,
-    "Value": 150
-  },
-  "Group": "5.99표/투구/투구",
-  "DropRate": 0.003
+    "Value": 5
+  }
 }

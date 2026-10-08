@@ -14,12 +14,12 @@
   "Value": 1000,
   "DmgMin": 0,
   "DmgMax": 0,
-  "MaxDurability": 5000,
-  "CarryWeight": 0,
+  "MaxDurability": 3000,
+  "CarryWeight": 2,
   "AcModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
     "Option": 1,
-    "Value": 2
+    "Value": 1
   },
   "Group": "5.99표/장갑/공통장갑"
 }

@@ -14,7 +14,7 @@
   "Value": 10000,
   "DmgMin": 0,
   "DmgMax": 0,
-  "MaxDurability": 3000,
+  "MaxDurability": 8000,
   "CarryWeight": 0,
   "AcModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
@@ -24,12 +24,7 @@
   "HealthModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
     "Option": 0,
-    "Value": 300
-  },
-  "ManaModifer": {
-    "$type": "Darkages.Types.StatusOperator, Darkages.Server",
-    "Option": 0,
-    "Value": 150
+    "Value": 100
   },
   "Group": "5.99표/귀걸이/흑요석"
 }
