@@ -33,7 +33,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                 yield return Mes((V)1L, (V)"능력치를 사기에는 어립니다.");
                 yield break;
             }
-            if (V.T(V.B(V.T(((V)(p.Call("get_class_sub")) == (V)((V)0L))) && V.T(((V)(p.Call("get_basemana", v_myid)) > (V)((V)100000L))))))
+            if (V.T(V.B(V.T(((V)(p.Call("get_class_sub")) == (V)((V)0L))) && V.T(((V)(p.Call("get_bodymana", v_myid)) > (V)((V)100000L))))))
             {
                 yield return Mes((V)1L, (V)"승급을 하셔야 마력을 사실수있습니다.");
                 yield break;
@@ -63,16 +63,10 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                     p["#auto_hp"] = (V)1L;
                     while (V.T(v_auto_cnt))
                     {
-                        if (V.T(((V)(p.Call("get_ac", v_myid)) != (V)((V)100L))))
+                        if (V.T(V.B(V.T(((V)(p.Call("get_baseexp", v_myid)) >= (V)(p.Call("get_bodymana", v_myid)))) || V.T(V.B(V.T(((V)(p.Call("get_baseexp", v_myid)) < (V)((V)0L))) && V.T(((V)(p.Call("get_baseexp", v_myid)) <= (V)((-(V)((V)2147483648L))))))))))
                         {
-                            p["#auto_hp"] = (V)0L;
-                            yield return Mes((V)1L, (V)" 무장해제하시고 다시시도 해주세요.");
-                            yield break;
-                        }
-                        if (V.T(V.B(V.T(((V)(p.Call("get_baseexp", v_myid)) >= (V)(p.Call("get_basemana2", v_myid)))) || V.T(V.B(V.T(((V)(p.Call("get_baseexp", v_myid)) < (V)((V)0L))) && V.T(((V)(p.Call("get_baseexp", v_myid)) <= (V)((-(V)((V)2147483648L))))))))))
-                        {
-                            p.Call("exp_del", ((V)(p.Call("get_basemana2", v_myid)) * (V)((V)500L)));
-                            p.Call("set_basemana", ((V)(p.Call("get_basemana2", v_myid)) + (V)((V)25L)));
+                            p.Call("exp_del", ((V)(p.Call("get_bodymana", v_myid)) * (V)((V)500L)));
+                            p.Call("set_bodymana", ((V)(p.Call("get_bodymana", v_myid)) + (V)((V)25L)));
                         }
                         else
                         {

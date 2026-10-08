@@ -507,6 +507,20 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                     _me.Client.SendStats(StatusFlags.All);
                     return 1;
                 case "get_basemana2": return Who(a, 0).MaximumMp;
+                // 세오·칸(`build-pack-npcs.py` _body_stats) — 장비·버프를 뺀 본체력·본마력. 입은 채로도 그것으로 값을 매기고 거기에
+                // 더한다(사용자 2026-10-08 「옷을 입건 버프 디버프가 걸려있건 본체력을 알 수 있으니까」). 5.99 는 다 벗게 했다(get_ac).
+                case "get_bodyvita": return Who(a, 0) is Aisling bodied ? bodied._MaximumHp : 0;
+                case "set_bodyvita":
+                    _me._MaximumHp = (int) Math.Max(1, Arg(a, 0));
+                    _me.Client.SendStats(StatusFlags.All);
+                    return 1;
+                case "get_bodymana": return Who(a, 0) is Aisling minded ? minded._MaximumMp : 0;
+                case "set_bodymana":
+                    _me._MaximumMp = (int) Math.Max(0, Arg(a, 0));
+                    _me.Client.SendStats(StatusFlags.All);
+                    return 1;
+                // 밀리초(호러캐슬 300 · 블러드백작 1000). 대답 하나 안에서 도는 스크립트라 기다리지 않는다 — 세오·칸의 1 은 그대로다.
+                case "sleep": return 0;
 
                 case "exp_add":
                     Monster.DistributeExperience(_me, Arg(a, 0));
