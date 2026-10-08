@@ -27,7 +27,6 @@
     "Value": 200
   },
   "Group": "5.99표/귀걸이/공통귀걸이",
-  "DropRate": 0.05,
   "HitModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
     "Option": 0,

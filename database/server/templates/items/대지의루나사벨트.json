@@ -32,7 +32,6 @@
     "Value": 1
   },
   "Group": "5.99표/허리띠/공통벨트",
-  "DropRate": 0.05,
   "DefenseElement": 4,
   "HitModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
@@ -43,5 +42,6 @@
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
     "Option": 0,
     "Value": 1
-  }
+  },
+  "DropRate": 0.075
 }

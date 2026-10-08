@@ -22,7 +22,7 @@
     "Value": 2
   },
   "Group": "하데스표/귀걸이/원작표",
-  "DropRate": 0.05,
+  "DropRate": 0.07,
   "MrModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
     "Option": 0,

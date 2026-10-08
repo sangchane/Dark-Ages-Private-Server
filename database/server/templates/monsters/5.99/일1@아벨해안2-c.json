@@ -26,13 +26,13 @@
   "Drops": {
     "$type": "System.Collections.Generic.List`1[[System.String, System.Private.CoreLib]], System.Private.CoreLib",
     "$values": [
-      "칸의은제방패",
       "상급체력포션",
       "상급마력포션",
-      "셔스의동장갑",
-      "셔스의동팔찌",
-      "셔스의자수정반지",
-      "셔스의철방패",
+      "체력의동팔찌",
+      "바람의루나사벨트",
+      "체력의동각반",
+      "축복의레더부츠",
+      "축복의은제방패",
       "파프리카",
       "파프리카",
       "상급마력포션"

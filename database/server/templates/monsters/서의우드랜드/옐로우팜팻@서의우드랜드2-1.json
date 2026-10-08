@@ -26,11 +26,11 @@
   "Drops": {
     "$type": "System.Collections.Generic.List`1[[System.String, System.Private.CoreLib]], System.Private.CoreLib",
     "$values": [
-      "세토아의호안석반지",
-      "셔스의가죽각반",
-      "셔스의가죽방패",
-      "셔스의가죽장갑",
-      "셔스의가죽팔찌",
+      "이아의가죽팔찌",
+      "바다의금벨트",
+      "이아의가죽각반",
+      "체력의회색신발",
+      "체력의가죽방패",
       "최하급체력포션",
       "최하급체력포션",
       "최하급마력포션",

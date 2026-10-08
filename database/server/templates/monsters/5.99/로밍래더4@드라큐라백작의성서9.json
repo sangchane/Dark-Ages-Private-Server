@@ -26,9 +26,9 @@
   "Drops": {
     "$type": "System.Collections.Generic.List`1[[System.String, System.Private.CoreLib]], System.Private.CoreLib",
     "$values": [
-      "이아의매직부츠",
-      "이아의사파이어반지",
-      "체력의고무장갑",
+      "칸의금장갑",
+      "칸의금팔찌",
+      "대지의별벨트",
       "상급체력포션",
       "상급마력포션",
       "상급마력포션",
