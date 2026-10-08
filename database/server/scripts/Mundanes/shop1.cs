@@ -145,6 +145,11 @@ namespace Darkages.Storage.locales.Scripts.Mundanes
                         return;
 
                     var template = ServerContext.GlobalItemTemplateCache[args];
+
+                    // 이 상인이 파는 것만(보여 준 목록과 같다) — 전에는 이름만 대면 어느 상점에서든 아무 물건이나 샀다(2026-10-09, 운영자 상인).
+                    if (template == null || (template.NpcKey != Mundane.Template.Name && !Mundane.Template.DefaultMerchantStock.Contains(args)))
+                        return;
+
                     if (template != null)
                         if (client.Aisling.GoldPoints >= template.Value)
                         {

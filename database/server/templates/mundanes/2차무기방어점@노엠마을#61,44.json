@@ -11,10 +11,7 @@
   "Speech": [],
   "ScriptKey": "shop1",
   "DefaultMerchantStock": [
-    "보우(Lev18)",
-    "샤인(Lev18)",
-    "블레이드(Lev18)",
-    "바드하프(Lev18)"
+    "샤인(Lev18)"
   ],
   "EnableWalking": false,
   "EnableTurning": false,

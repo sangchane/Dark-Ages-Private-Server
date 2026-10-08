@@ -2117,8 +2117,11 @@ namespace Darkages.Network.Game
             var merchant = GetObject<Mundane>(client.Aisling.Map, one => one.Serial == format.Merchant);
             // 은행(Banker)도 같은 일괄 창을 쓴다 — 사기 줄(이름·수) = 찾기, 팔기 줄(칸·수) = 맡기기.
             var bank = merchant?.Template?.ScriptKey == "Banker";
+            // 운영자 상인(operator_shop, build-operator-shop.py)은 운영자(GameMasters)만 — 사용자 2026-10-09 「운영자 권한으로만 … 구매할 수 있게」.
+            var operatorOnly = merchant?.Template?.ScriptKey == "operator_shop";
             if (merchant == null || !client.Aisling.WithinRangeOf(merchant)
-                || !(bank || (merchant.Scripts?.Values.Any(script => script.GetType().Name is "shop1" or "shop2") ?? false)))
+                || !(bank || (merchant.Scripts?.Values.Any(script => script.GetType().Name is "shop1" or "shop2" or "operator_shop") ?? false))
+                || (operatorOnly && !client.Aisling.GameMaster))
                 return;
 
             if (format.Kind == ClientFormatF2.BackToMenu)
