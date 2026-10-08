@@ -101,6 +101,14 @@ namespace Darkages.Storage.locales.Scripts.Formulas
 
         private void DetermineRandomDrop()
         {
+            // 99레벨 사냥터의 중급 보석(사용자 2026-10-08) — 목록과 따로 굴려 다른 물건을 옅게 하지 않는다. 나오면 그것 하나.
+            if (Gems.FromGround(_monster.CurrentMapId, Generator.Random.NextDouble(), Generator.Random.Next(Gems.Middle.Length)) is { } gem
+                && ServerContext.GlobalItemTemplateCache.TryGetValue(gem, out var found))
+            {
+                Release(found);
+                return;
+            }
+
             var drops = _monster.Template.Drops;
             if (drops == null || drops.Count == 0)
                 return;
@@ -116,15 +124,21 @@ namespace Darkages.Storage.locales.Scripts.Formulas
 
                 if (point < rate)
                 {
-                    var item = Item.Create(_monster, template, true);
-                    item.Stacks = BundleSize(item);
-                    if (!GroupLoot.Share(_player, item, _monster))
-                        item.Release(_monster, _monster.Position);
+                    Release(template);
                     return;
                 }
 
                 point -= Math.Max(0, rate);
             }
+        }
+
+        /// <summary>떨군 것 하나 — 그룹이면 룰렛, 아니면 땅에.</summary>
+        private void Release(ItemTemplate template)
+        {
+            var item = Item.Create(_monster, template, true);
+            item.Stacks = BundleSize(item);
+            if (!GroupLoot.Share(_player, item, _monster))
+                item.Release(_monster, _monster.Position);
         }
 
         /// <summary>

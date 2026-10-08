@@ -2086,6 +2086,9 @@ namespace Darkages.Network.Game
                 case ClientFormatF1.EcoWake:
                     EcoBots.Wake(client, format.Target);
                     break;
+                case ClientFormatF1.Disassemble:
+                    Gems.Disassemble(client.Aisling, format.Slot);
+                    break;
             }
         }
 

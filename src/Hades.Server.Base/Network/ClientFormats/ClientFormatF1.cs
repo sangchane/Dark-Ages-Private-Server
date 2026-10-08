@@ -30,6 +30,9 @@ namespace Darkages.Network.ClientFormats
         /// <summary>생태계 성직자가 혼수인 같은 그룹 파티원을 깨운다(2026-10-07) — 대상 serial u32(<see cref="Darkages.Types.EcoBots.Wake" />).</summary>
         public const byte EcoWake = 9;
 
+        /// <summary>가방 한 칸의 장비를 분해한다(2026-10-08) — 칸(1). 보석은 <see cref="Darkages.Types.Gems" /> 가 굴린다.</summary>
+        public const byte Disassemble = 10;
+
         public ClientFormatF1()
         {
             Secured = true;
@@ -57,7 +60,7 @@ namespace Darkages.Network.ClientFormats
         {
             Kind = reader.ReadByte();
 
-            if (Kind == Give || Kind == TakeOff)
+            if (Kind == Give || Kind == TakeOff || Kind == Disassemble)
                 Slot = reader.ReadByte();
 
             if (Kind == Magic)
