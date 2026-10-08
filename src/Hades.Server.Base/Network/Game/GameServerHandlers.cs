@@ -954,6 +954,9 @@ namespace Darkages.Network.Game
             }
         }
 
+        /// <summary>물약 쿨타임 — 2초(사용자 2026-10-08).</summary>
+        private static readonly TimeSpan PotionCooldown = TimeSpan.FromSeconds(2);
+
         protected override void Format1CHandler(GameClient client, ClientFormat1C format)
         {
             #region Sanity Checks (alot can go wrong if you remove this)
@@ -992,6 +995,15 @@ namespace Darkages.Network.Game
             if (item.Template == null)
                 return;
 
+            // 물약 쿨타임 2초(사용자 2026-10-08 「2초」·「서버 규칙 — 사람·봇 모두」) — 체력·마력을 채우는 것(음식도)은 함께
+            // 2초에 한 번. 모바일 MMORPG 처럼(오딘 1초 · 검은사막M 3초). 그 안에 온 것은 줄이지 않고 돌려보낸다.
+            bool potion = item.Template.HealthRestore != 0 || item.Template.ManaRestore != 0;
+            if (potion && DateTime.UtcNow - client.LastPotion < PotionCooldown)
+            {
+                client.SystemMessage("물약은 2초에 한 번 먹을 수 있습니다.");
+                return;
+            }
+
             client.LastActivatedSlot = slot;
 
             if (!string.IsNullOrEmpty(item.Template.ScriptName))
@@ -1011,6 +1023,9 @@ namespace Darkages.Network.Game
                 foreach (var script in item.Scripts.Values) script?.OnUse(client.Aisling, slot);
 
                 activated = true;
+
+                if (potion)
+                    client.LastPotion = DateTime.UtcNow;
             }
 
             if (!activated)

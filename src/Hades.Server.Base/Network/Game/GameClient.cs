@@ -91,6 +91,8 @@ namespace Darkages.Network.Game
 
         /// <summary>마지막으로 받아들인 마법 요청(0x0F) — 마법 딜레이 0.25초(<c>Format0FHandler</c>).</summary>
         public DateTime LastSpellRequest { get; set; }
+        /// <summary>마지막으로 먹은 물약(체력·마력을 채우는 것) — 물약 쿨타임 2초(<c>Format1CHandler</c>).</summary>
+        public DateTime LastPotion { get; set; }
         public Interpreter MenuInterpter { get; set; }
         public GameServerTimer MpRegenTimer { get; set; }
         [JsonIgnore] public PendingSell PendingItemSessions { get; set; }
