@@ -17,7 +17,7 @@
   "MaxDurability": 3000,
   "CarryWeight": 2,
   "Group": "하데스표/신발/원작표",
-  "DropRate": 0.05,
+  "DropRate": 0.0489,
   "MrModifer": {
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
     "Option": 0,

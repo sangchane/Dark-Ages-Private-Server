@@ -26,8 +26,8 @@
   "Drops": {
     "$type": "System.Collections.Generic.List`1[[System.String, System.Private.CoreLib]], System.Private.CoreLib",
     "$values": [
-      "축복의녹옥반지",
-      "축복의매직부츠",
+      "체력의기사단방패",
+      "체력의녹옥반지",
       "상급체력포션",
       "상급체력포션",
       "상급체력포션",

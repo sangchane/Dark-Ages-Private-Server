@@ -31,5 +31,6 @@
     "$type": "Darkages.Types.StatusOperator, Darkages.Server",
     "Option": 0,
     "Value": 10
-  }
+  },
+  "DropRate": 0.05
 }
