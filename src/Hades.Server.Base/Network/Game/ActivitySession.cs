@@ -269,7 +269,7 @@ namespace Darkages.Network.Game
 
         public static void LoginFailure(string player, string ip, string reason)
         {
-            if (reason != "password" && reason != "account" && reason != "read_failure" && reason != "map_unavailable") return;
+            if (reason != "password" && reason != "account" && reason != "read_failure" && reason != "map_unavailable" && reason != "kakao") return;
             string folder = Environment.GetEnvironmentVariable("LOD_ACTIVITY_DIR") ?? Path.Combine(AppContext.BaseDirectory, "activity");
             lock (FileGate)
             {

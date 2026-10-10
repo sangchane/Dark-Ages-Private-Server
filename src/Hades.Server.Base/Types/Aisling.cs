@@ -183,6 +183,9 @@ namespace Darkages
 
         public string Password { get; set; }
 
+        /// <summary>이 캐릭터의 주인 카카오 회원번호(<see cref="KakaoLogin" />, 사용자 2026-10-11) — 비면 아직 안 이어진 옛 캐릭터.</summary>
+        public string KakaoId { get; set; }
+
         /// <summary>지난 대신 사냥의 결과 한 줄(<see cref="ProxyHunt" />) — 다음 앱 로그인 때 알리고 비운다.</summary>
         public string ProxyReport { get; set; }
 

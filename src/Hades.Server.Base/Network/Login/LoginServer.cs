@@ -115,6 +115,19 @@ namespace Darkages.Network.Login
                 return;
             }
 
+            // 카카오가 켜져 있으면 밖에서는 게임 표로만 만든다 — 주인은 0x04 에서 묶는다(사용자 2026-10-11).
+            client.CreateKakaoId = null;
+            if (KakaoLogin.Enabled)
+            {
+                var (allowed, kakaoId, refusal) = KakaoLogin.ForCreate(format.AislingPassword, Loopback(client), KakaoLogin.Checker);
+                if (!allowed)
+                {
+                    client.SendMessageBox(0x03, refusal + "\0");
+                    return;
+                }
+                client.CreateKakaoId = kakaoId;
+            }
+
             client.CreateInfo = format;
 
             var aisling = StorageManager.AislingBucket.Load(format.AislingUsername);
@@ -142,6 +155,8 @@ namespace Darkages.Network.Login
             }
         }
 
+        private static bool Loopback(LoginClient client) => RemoteAddress(client) is { } remote && ProxyHunt.IsLoopback(remote);
+
         private static bool Online(string name) =>
             ServerContext.Game.Clients.Any(i => i?.Aisling != null && i.Aisling.LoggedIn &&
                                                  string.Equals(i.Aisling.Username, name, StringComparison.OrdinalIgnoreCase));
@@ -164,6 +179,19 @@ namespace Darkages.Network.Login
                 return true;
 
             aisling.Password = old;
+            return false;
+        }
+
+        /// <summary>캐릭터 자물쇠 안에서 부른다 — 옛 캐릭터에 카카오 주인을 묶는다. 저장하지 못하면 메모리도 되돌린다.</summary>
+        private static bool StoreKakaoId(Aisling aisling, string kakaoId)
+        {
+            var old = aisling.KakaoId;
+            aisling.KakaoId = kakaoId;
+
+            if (Store(aisling))
+                return true;
+
+            aisling.KakaoId = old;
             return false;
         }
 
@@ -205,11 +233,52 @@ namespace Darkages.Network.Login
 
                 if (aisling != null)
                 {
-                    if (!Passwords.Verify(aisling.Password, format.Password, out bool needsRehash))
+                    // 카카오(사용자 2026-10-11) — 밖에서는 게임 표로만, 옛 캐릭터는 옛 비밀번호 한 번으로 주인을 묶는다. 같은 기계는 평문 그대로.
+                    var kakao = KakaoLogin.Enabled
+                        ? KakaoLogin.Decide(aisling.KakaoId, format.Password, Loopback(client), KakaoLogin.Checker)
+                        : (KakaoLogin.Verdict.PasswordAsBefore, null, null);
+
+                    if (kakao.Verdict == KakaoLogin.Verdict.Refuse)
                     {
-                        RecordLoginFailure(client, format.Username, "password");
-                        client.SendMessageBox(0x02, "비밀번호가 틀렸습니다.");
+                        RecordLoginFailure(client, format.Username, "kakao");
+                        client.SendMessageBox(0x02, kakao.Message);
                         return;
+                    }
+
+                    bool needsRehash = false;
+                    if (kakao.Verdict != KakaoLogin.Verdict.Enter)
+                    {
+                        string password = kakao.Verdict == KakaoLogin.Verdict.Link ? KakaoLogin.Split(format.Password).OldPassword : format.Password;
+                        if (!Passwords.Verify(aisling.Password, password, out needsRehash))
+                        {
+                            RecordLoginFailure(client, format.Username, "password");
+                            client.SendMessageBox(0x02, "비밀번호가 틀렸습니다.");
+                            return;
+                        }
+                    }
+
+                    if (kakao.Verdict == KakaoLogin.Verdict.Link)
+                    {
+                        // 옛 비밀번호가 맞았다. 자물쇠 안에서 다시 읽어 그새 다른 카카오 계정이 묶지 않았는지 본 뒤 묶는다 —
+                        // 접속 중이면 그 사람(메모리)에(StorePassword 와 같은 까닭).
+                        string refused = null;
+                        lock (AislingStorage.LockFor(aisling.Username))
+                        {
+                            var owner = Live(aisling.Username) ?? StorageManager.AislingBucket.Load(aisling.Username);
+                            if (owner == null || !string.IsNullOrEmpty(owner.KakaoId) && owner.KakaoId != kakao.KakaoId)
+                                refused = KakaoLogin.OtherOwner;
+                            else if (!StoreKakaoId(owner, kakao.KakaoId))
+                                refused = "캐릭터를 저장하지 못했습니다. 잠시 뒤 다시 해 주십시오.";
+                        }
+
+                        if (refused != null)
+                        {
+                            client.SendMessageBox(0x02, refused);
+                            return;
+                        }
+
+                        aisling.KakaoId = kakao.KakaoId;
+                        needsRehash = false; // 비밀번호 칸이 「표|옛비밀번호」라 그대로 해시하면 안 된다 — 밖에서는 더 쓰지 않는다
                     }
 
                     // The account was made before passwords were hashed. It has just proved the password,
@@ -281,7 +350,9 @@ namespace Darkages.Network.Login
             var template = Aisling.Create();
             template.Display = (BodySprite) (format.Gender * 16);
             template.Username = client.CreateInfo.AislingUsername;
-            template.Password = Passwords.Hash(client.CreateInfo.AislingPassword);
+            // 게임 표로 만들었으면 주인을 묶고 비밀번호는 아무도 모르는 값 — 표를 비밀번호로 남기지 않는다.
+            template.Password = Passwords.Hash(client.CreateKakaoId == null ? client.CreateInfo.AislingPassword : Guid.NewGuid().ToString("N"));
+            template.KakaoId = client.CreateKakaoId;
             template.Gender = (Gender) format.Gender;
             template.HairColor = format.HairColor;
             template.HairStyle = format.HairStyle;
@@ -392,6 +463,13 @@ namespace Darkages.Network.Login
             if (!EcoBots.MayEnter(format.Username, RemoteAddress(client)))
             {
                 client.SendMessageBox(0x02, "계정을 바르게 적어주시길 바랍니다.");
+                return;
+            }
+
+            // 카카오가 켜져 있으면 밖에서는 바꿀 비밀번호가 없다(사용자 2026-10-11) — 같은 기계(봇)만.
+            if (KakaoLogin.Enabled && !Loopback(client))
+            {
+                client.SendMessageBox(0x02, KakaoLogin.NoPassword);
                 return;
             }
 

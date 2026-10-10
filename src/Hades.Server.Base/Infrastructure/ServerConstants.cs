@@ -44,6 +44,7 @@ namespace Darkages
         List<string> CompanionBots { get; set; }
         List<string> EcoBots { get; set; }
         string ProxyJobFolder { get; set; }
+        string KakaoCheckUrl { get; set; }
         int CompanionHomeMap { get; set; }
         Position CompanionHomePosition { get; set; }
         string DeathReepingMessage { get; set; }
@@ -248,6 +249,12 @@ namespace Darkages
         /// 비어 있으면 대신 사냥을 하지 않는다(앱이 끊기면 예전처럼 내보낸다).
         /// </summary>
         public string ProxyJobFolder { get; set; } = "";
+
+        /// <summary>
+        /// 게임 로그인을 카카오로(<see cref="Darkages.Types.KakaoLogin" />, 사용자 2026-10-11) — 홈페이지 서비스의 게임 표 확인 주소.
+        /// 비어 있으면 끔(옛 비밀번호 로그인 그대로).
+        /// </summary>
+        public string KakaoCheckUrl { get; set; } = "";
 
         /// <summary>보낸 동료가 기다리는 맵. 0 이면 StartingMap(노비스마을).</summary>
         public int CompanionHomeMap { get; set; }
