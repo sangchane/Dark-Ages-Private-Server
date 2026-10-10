@@ -116,6 +116,8 @@ namespace Darkages.Network.Login
             }
 
             // 카카오가 켜져 있으면 밖에서는 게임 표로만 만든다 — 주인은 0x04 에서 묶는다(사용자 2026-10-11).
+            // 앞서 통과한 만들기가 남아 거절된 뒤의 0x04 가 그것으로 만들지 않게 먼저 비운다(리뷰 2026-10-11).
+            client.CreateInfo = null;
             client.CreateKakaoId = null;
             if (KakaoLogin.Enabled)
             {
@@ -245,12 +247,21 @@ namespace Darkages.Network.Login
                         return;
                     }
 
+                    if (kakao.Verdict == KakaoLogin.Verdict.Link && KakaoLogin.LinkBlocked(aisling.Username, DateTime.UtcNow))
+                    {
+                        RecordLoginFailure(client, format.Username, "kakao");
+                        client.SendMessageBox(0x02, KakaoLogin.LinkLocked);
+                        return;
+                    }
+
                     bool needsRehash = false;
                     if (kakao.Verdict != KakaoLogin.Verdict.Enter)
                     {
                         string password = kakao.Verdict == KakaoLogin.Verdict.Link ? KakaoLogin.Split(format.Password).OldPassword : format.Password;
                         if (!Passwords.Verify(aisling.Password, password, out needsRehash))
                         {
+                            if (kakao.Verdict == KakaoLogin.Verdict.Link)
+                                KakaoLogin.LinkFailed(aisling.Username, DateTime.UtcNow);
                             RecordLoginFailure(client, format.Username, "password");
                             client.SendMessageBox(0x02, "비밀번호가 틀렸습니다.");
                             return;
@@ -380,9 +391,19 @@ namespace Darkages.Network.Login
 
             client.CreateInfo = null;
 
-            if (!Store(template))
+            // 0x02 뒤 그새 같은 이름이 생겼으면 덮지 않는다 — 남의 캐릭터를 1레벨로 덮고 주인까지 바꿀 수 있었다(리뷰 2026-10-11).
+            string refused = null;
+            lock (AislingStorage.LockFor(template.Username))
             {
-                client.SendMessageBox(0x02, "캐릭터를 저장하지 못했습니다. 잠시 뒤 다시 해 주십시오.");
+                if (StorageManager.AislingBucket.Load(template.Username) != null)
+                    refused = "이미 등록된 계정입니다.";
+                else if (!Store(template))
+                    refused = "캐릭터를 저장하지 못했습니다. 잠시 뒤 다시 해 주십시오.";
+            }
+
+            if (refused != null)
+            {
+                client.SendMessageBox(0x02, refused);
                 return;
             }
 

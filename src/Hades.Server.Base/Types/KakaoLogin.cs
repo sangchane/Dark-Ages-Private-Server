@@ -4,8 +4,9 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
+using System.Linq;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+using System.Threading;
 
 namespace Darkages.Types
 {
@@ -31,9 +32,33 @@ namespace Darkages.Types
         public const string Denied = "들어올 수 없는 카카오 계정입니다.";
         public const string Unreachable = "로그인 확인 서버에 닿지 못했습니다. 잠시 뒤 다시 해 주십시오.";
         public const string NoPassword = "카카오 계정은 비밀번호가 없습니다.";
+        public const string LinkLocked = "옛 비밀번호를 여러 번 틀렸습니다. 10분 뒤에 다시 해 주십시오.";
 
         private static readonly Regex Token = new(@"^g\d{1,19}\.\d{1,11}\.[0-9a-f]{64}$", RegexOptions.CultureInvariant);
         private static readonly HttpClient Http = new() { Timeout = TimeSpan.FromSeconds(3) };
+        // 꼴만 맞춘 가짜 표를 쏟아부어도 로그인 처리 줄이 다 묶이지 않게 한꺼번에 넷까지만 묻는다(리뷰 2026-10-11).
+        private static readonly SemaphoreSlim Asking = new(4);
+        // 잇기(옛 비밀번호)는 캐릭터마다 10분에 5번까지 틀릴 수 있다 — 허가된 사람이 남의 옛 캐릭터 비밀번호를 끝없이 맞춰 보지 못하게.
+        private static readonly Dictionary<string, (DateTime Since, int Count)> LinkFailures = new(StringComparer.OrdinalIgnoreCase);
+        private static readonly TimeSpan LinkWindow = TimeSpan.FromMinutes(10);
+
+        public static bool LinkBlocked(string name, DateTime now)
+        {
+            lock (LinkFailures)
+                return LinkFailures.TryGetValue(name, out var failed) && now - failed.Since < LinkWindow && failed.Count >= 5;
+        }
+
+        public static void LinkFailed(string name, DateTime now)
+        {
+            lock (LinkFailures)
+            {
+                if (LinkFailures.Count >= 4096)
+                    foreach (var stale in LinkFailures.Where(kv => now - kv.Value.Since >= LinkWindow).Select(kv => kv.Key).ToArray())
+                        LinkFailures.Remove(stale);
+                LinkFailures[name] = LinkFailures.TryGetValue(name, out var failed) && now - failed.Since < LinkWindow
+                    ? (failed.Since, failed.Count + 1) : (now, 1);
+            }
+        }
 
         public static bool Enabled => !string.IsNullOrEmpty(ServerContext.Config?.KakaoCheckUrl);
 
@@ -71,9 +96,11 @@ namespace Darkages.Types
             return result.KakaoId == null ? (false, null, result.Refusal) : (true, result.KakaoId, null);
         }
 
-        // ponytail: 로그인 처리 줄에서 기다린다(최대 3초) — 로그인이 몰려 막히면 비동기로 바꾼다.
-        private static Check Ask(string url, string token)
+        // ponytail: 로그인 처리 줄에서 기다린다(최대 3초, 한꺼번에 넷) — 로그인이 몰려 막히면 비동기로 바꾼다.
+        public static Check Ask(string url, string token)
         {
+            if (!Asking.Wait(TimeSpan.FromSeconds(3)))
+                return new Check(null, Unreachable);
             try
             {
                 using var content = new StringContent(JsonSerializer.Serialize(new { token }), Encoding.UTF8, "application/json");
@@ -92,10 +119,14 @@ namespace Darkages.Types
                 }
                 return new Check(null, response.StatusCode == HttpStatusCode.Unauthorized ? Expired : Unreachable);
             }
-            catch (Exception error) when (error is HttpRequestException || error is TaskCanceledException || error is JsonException
-                                          || error is KeyNotFoundException || error is InvalidOperationException)
+            catch (Exception)
             {
+                // 주소가 틀렸든 응답이 깨졌든 들이지 않는다 — 엉뚱한 「읽을 수 없는 캐릭터」 문구로 새지 않게 여기서 다 받는다.
                 return new Check(null, Unreachable);
+            }
+            finally
+            {
+                Asking.Release();
             }
         }
     }
