@@ -16,10 +16,15 @@ namespace Darkages.Types
         public ushort Image { get; set; }
         public MoneySprites Type { get; set; }
 
-        public static void Create(Sprite parent, int amount, Position location)
+        // 죽은 자리 금화 — 보호가 풀릴 때까지 AuthenticatedAislings 만 줍는다(Item 과 같은 꼴, 사용자 2026-10-11).
+        public bool Cursed { get; set; }
+        public Sprite[] AuthenticatedAislings { get; set; }
+        public DateTime CurseLiftsAt { get; set; }
+
+        public static Money Create(Sprite parent, int amount, Position location)
         {
             if (parent == null)
-                return;
+                return null;
 
             // The original stacks coins: money dropped where money already lies becomes one larger pile.
             // The sprite grade comes from the amount (CalcAmount), so adding to the old pile in place would
@@ -55,6 +60,7 @@ namespace Darkages.Types
             if (mt > 0) money.Image = (ushort) (mt + 0x8000);
 
             parent.AddObject(money);
+            return money;
         }
 
         public void GiveTo(int amount, Aisling aisling)

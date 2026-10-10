@@ -406,6 +406,14 @@ namespace Darkages.Network.Game
 
                 if (obj is Money money)
                 {
+                    // 죽은 자리 금화는 풀릴 때까지 죽은 본인만(사용자 2026-10-11).
+                    if (money.Cursed && DateTime.UtcNow < money.CurseLiftsAt && money.AuthenticatedAislings != null
+                        && !Allowed(money.AuthenticatedAislings, client.Aisling))
+                    {
+                        client.SendMessage(0x02, ServerContext.Config.CursedItemMessage);
+                        continue;
+                    }
+
                     money.GiveTo(money.Amount, client.Aisling);
                 }
                 else if (obj is Item item)
@@ -414,24 +422,10 @@ namespace Darkages.Network.Game
 
                     if (item.Cursed)
                     {
-                        Sprite first = null;
-
-                        if (item.AuthenticatedAislings != null)
+                        if (item.AuthenticatedAislings != null && !Allowed(item.AuthenticatedAislings, client.Aisling))
                         {
-                            foreach (var i in item.AuthenticatedAislings)
-                            {
-                                if (i.Serial != client.Aisling.Serial)
-                                    continue;
-
-                                first = i;
-                                break;
-                            }
-
-                            if (item.AuthenticatedAislings != null && first == null)
-                            {
-                                client.SendMessage(0x02, ServerContext.Config.CursedItemMessage);
-                                break;
-                            }
+                            client.SendMessage(0x02, ServerContext.Config.CursedItemMessage);
+                            break;
                         }
 
                         if (item.GiveTo(client.Aisling))
@@ -489,6 +483,11 @@ namespace Darkages.Network.Game
                 }
             }
         }
+
+        // 이름으로도 본다 — 다시 접속하면 Serial 이 새로 나와, 죽은 뒤 다시 들어온 주인이 제 물건을 못 줍는다.
+        private static bool Allowed(Sprite[] allowed, Aisling me) =>
+            allowed.Any(a => a.Serial == me.Serial
+                             || a is Aisling owner && string.Equals(owner.Username, me.Username, StringComparison.OrdinalIgnoreCase));
 
         protected override void Format08Handler(GameClient client, ClientFormat08 format)
         {

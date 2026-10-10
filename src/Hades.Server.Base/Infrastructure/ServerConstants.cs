@@ -41,6 +41,7 @@ namespace Darkages
         int DeathMapX { get; set; }
         int DeathMapY { get; set; }
         bool DeathDropsItems { get; set; }
+        double DeathLootMinutes { get; set; }
         List<string> CompanionBots { get; set; }
         List<string> EcoBots { get; set; }
         string ProxyJobFolder { get; set; }
@@ -229,8 +230,14 @@ namespace Darkages
 
         public int DeathMapY { get; set; }
 
-        /// <summary>죽으면 소지품·장비·골드를 시체 주머니로 떨어뜨리나. 없으면 false — 지금은 죽음 벌칙을 켜지 않는다.</summary>
+        /// <summary>
+        /// 죽음 벌칙(사용자 2026-10-11) — 켜면 죽을 때 장비·가방의 사라짐(Perishable) 물건은 없애고 나머지와 금화는 죽은 자리에 떨군다
+        /// (<see cref="Darkages.Types.Aisling.SendToHell" />). 없으면 false — 소지품 그대로.
+        /// </summary>
         public bool DeathDropsItems { get; set; }
+
+        /// <summary>죽은 자리에 떨군 물건·금화를 죽은 본인만 줍는 시간(분). 괴물 드랍 보호 3분과 따로다.</summary>
+        public double DeathLootMinutes { get; set; } = 10;
 
         /// <summary>
         /// 동료 봇으로 쓰는 계정 이름들(성직자 봇 프로그램이 이 이름으로 접속해 있다). 비밀번호는 여기 두지 않는다 —

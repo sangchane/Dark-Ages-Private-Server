@@ -793,28 +793,79 @@ namespace Darkages
             if (CurrentMapId == ServerContext.Config.DeathMap)
                 return;
 
-            // 죽음 벌칙(소지품·장비·골드를 시체 주머니로)은 꺼 둔다 — 사용자 결정 2026-09-23. 켜려면 LoruleConfig 의 DeathDropsItems.
-            if (ServerContext.Config.DeathDropsItems)
-            {
-                Remains.Owner = this;
-
-                var reepStack = Remains;
-                var items = reepStack.Items;
-
-                if (items.Count > 0)
-                {
-                    Remains.ReepItems(items.ToList());
-                }
-                else
-                {
-                    if (Inventory.Length > 0 || EquipmentManager.Length > 0) Remains.ReepItems();
-                }
-            }
+            // 죽음 벌칙(사용자 2026-10-11) — LoruleConfig 의 DeathDropsItems. 동료 봇은 뺀다: 봇 옷은 서버가 입혀(CompanionKit.Dress)
+            // 죽을 때마다 바닥에 쌓이고, 주인이 준 장비는 봇 프로그램이 주우러 가지 않아 잃는다.
+            if (ServerContext.Config.DeathDropsItems && !Companions.IsBot(Username))
+                DropBelongingsOnDeath();
 
             for (var i = 0; i < 2; i++)
                 RemoveBuffsAndDebuffs();
 
             WarpToHell();
+        }
+
+        /// <summary>
+        /// 장비·가방의 사라짐(Perishable — build-death-perish.py: 신 이름 접두사 + 속성 목걸이·벨트) 물건은 없애고, 나머지와 금화는
+        /// 죽은 자리에 떨군다 — DeathLootMinutes 동안 죽은 본인만 줍는다. 옛 시체 주머니(CursedSachel)는 쓰지 않는다.
+        /// </summary>
+        private void DropBelongingsOnDeath()
+        {
+            using var mutation = ActivitySession.BeginMutation(Client?.Activity, "Aisling.DropBelongingsOnDeath");
+            var where = new Position(XPos, YPos);
+            var lifts = DateTime.UtcNow.AddMinutes(ServerContext.Config.DeathLootMinutes);
+            var lost = new List<string>();
+            var dropped = new List<string>();
+
+            void Lay(Item item)
+            {
+                if (item?.Template == null)
+                    return;
+
+                if (item.Template.Flags.HasFlag(ItemFlags.Perishable))
+                {
+                    lost.Add(item.Template.Name);
+                    return;
+                }
+
+                item.Release(this, where);
+                item.Cursed = true;
+                item.AuthenticatedAislings = new Sprite[] { this };
+                item.CurseLiftsAt = lifts;
+                dropped.Add(item.Template.Name);
+            }
+
+            // 벗기기는 EquipmentManager 길로 — 능력치(UnEquipped)·외형(0x38·UpdateDisplay)·무게가 함께 내려간다.
+            foreach (var slot in EquipmentManager.Equipment.Where(e => e.Value?.Item != null).Select(e => e.Key).ToList())
+            {
+                var item = EquipmentManager.Equipment[slot].Item;
+                if (EquipmentManager.RemoveFromExisting(slot, false))
+                    Lay(item);
+            }
+
+            List<Item> bag;
+            lock (Inventory.Items)
+            {
+                bag = Inventory.Items.Values.Where(i => i != null).ToList();
+            }
+
+            foreach (var item in bag)
+            {
+                EquipmentManager.RemoveFromInventory(item, true);
+                Lay(item);
+            }
+
+            var gold = GoldPoints;
+            if (gold > 0 && Money.Create(this, gold, where) is { } money)
+            {
+                money.Cursed = true;
+                money.AuthenticatedAislings = new Sprite[] { this };
+                money.CurseLiftsAt = lifts;
+                GoldPoints = 0;
+            }
+
+            Client?.SendStats(StatusFlags.All);
+            Client?.Activity?.Result("death",
+                $"잃은 것 {string.Join(",", lost)} · 떨군 것 {string.Join(",", dropped)} · 금화 {gold}");
         }
 
         public override string ToString()

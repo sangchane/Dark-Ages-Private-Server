@@ -36,6 +36,8 @@ namespace Darkages.Types
         [JsonIgnore] public Sprite[] AuthenticatedAislings { get; set; }
         public byte Color { get; set; }
         public bool Cursed { get; set; }
+        /// <summary>보호가 풀리는 시각 — 비면 괴물 드랍처럼 떨어진 지 3분(Area). 죽은 자리 물건은 DeathLootMinutes.</summary>
+        [JsonIgnore] public DateTime CurseLiftsAt { get; set; }
         public ushort DisplayImage { get; set; }
         [JsonIgnore] public string DisplayName => GetDisplayName();
         public uint Durability { get; set; }
