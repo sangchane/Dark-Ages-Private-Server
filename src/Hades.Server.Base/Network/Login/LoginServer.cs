@@ -8,6 +8,7 @@ using Darkages.Types;
 using ServiceStack.Text;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -119,12 +120,21 @@ namespace Darkages.Network.Login
             // 앞서 통과한 만들기가 남아 거절된 뒤의 0x04 가 그것으로 만들지 않게 먼저 비운다(리뷰 2026-10-11).
             client.CreateInfo = null;
             client.CreateKakaoId = null;
+            client.Look = null;
             if (KakaoLogin.Enabled)
             {
                 var (allowed, kakaoId, refusal) = KakaoLogin.ForCreate(format.AislingPassword, Loopback(client), KakaoLogin.Checker);
                 if (!allowed)
                 {
                     client.SendMessageBox(0x03, refusal + "\0");
+                    return;
+                }
+
+                // 표 뒤 「|look」·「|delete」는 만들기 대신 내 캐릭터 관리(명세 autopilot/game-kakao-accounts/SPEC.md 3).
+                string verb = kakaoId == null ? null : KakaoLogin.Split(format.AislingPassword).OldPassword;
+                if (verb == KakaoLogin.LookVerb || verb == KakaoLogin.DeleteVerb)
+                {
+                    Manage(client, format.AislingUsername, kakaoId, verb);
                     return;
                 }
                 client.CreateKakaoId = kakaoId;
@@ -142,6 +152,52 @@ namespace Darkages.Network.Login
             {
                 client.SendMessageBox(0x03, "이미 등록된 계정입니다.\0");
                 client.CreateInfo = null;
+            }
+        }
+
+        /// <summary>0x02 「표|look」·「표|delete」 — 자물쇠 안에서 다시 읽고 판단한다. look 은 이어지는 0x04 가 머리만 바꾼다.</summary>
+        private static void Manage(LoginClient client, string name, string kakaoId, string verb)
+        {
+            string refused;
+            lock (AislingStorage.LockFor(name))
+            {
+                var found = StorageManager.AislingBucket.Load(name);
+                // 게임 서버가 들고 있으면(나가는 중이라도) 그 마지막 저장이 바꾼 것을 덮거나 지운 파일을 되살린다.
+                refused = KakaoLogin.MayChange(found != null, found?.KakaoId, kakaoId, Live(name) != null);
+                if (refused == null && verb == KakaoLogin.DeleteVerb && !MoveToDeleted(name))
+                    refused = "캐릭터를 지우지 못했습니다. 잠시 뒤 다시 해 주십시오.";
+            }
+
+            if (refused != null)
+            {
+                client.SendMessageBox(0x03, refused + "\0");
+                return;
+            }
+
+            if (verb == KakaoLogin.LookVerb)
+                client.Look = (name, kakaoId);
+            client.SendMessageBox(0x00, verb == KakaoLogin.DeleteVerb ? "지웠습니다.\0" : "\0");
+        }
+
+        /// <summary>캐릭터 자물쇠 안에서 부른다 — 지우지 않고 aislings 옆 aislings-deleted 로 옮긴다(되살리기 = 되돌려 놓기).</summary>
+        private static bool MoveToDeleted(string name)
+        {
+            try
+            {
+                string file = Path.Combine(AislingStorage.StoragePath, $"{name.ToLower()}.json");
+                string folder = Path.Combine(Path.GetDirectoryName(Path.GetFullPath(AislingStorage.StoragePath)), "aislings-deleted");
+                string moved = Path.Combine(folder, $"{name.ToLower()}-{DateTime.UtcNow:yyyyMMddHHmmss}.json");
+                Directory.CreateDirectory(folder);
+                File.Move(file, moved);
+                // 앞 저장이 남긴 것도 함께 — 남으면 Load 가 그것으로 캐릭터를 되살린다.
+                if (File.Exists(SafeFile.BackupPath(file)))
+                    File.Move(SafeFile.BackupPath(file), SafeFile.BackupPath(moved));
+                return true;
+            }
+            catch (Exception ex)
+            {
+                ServerContext.Error(ex);
+                return false;
             }
         }
 
@@ -344,6 +400,28 @@ namespace Darkages.Network.Login
 
         protected override void Format04Handler(LoginClient client, ClientFormat04 format)
         {
+            // 생김새 바꾸기(0x02 「표|look」 뒤) — 머리 모양·색만. 성별·직업은 무시한다(성별 전용 옷이 깨진다).
+            if (client.Look is { } look)
+            {
+                client.Look = null;
+                string notChanged;
+                lock (AislingStorage.LockFor(look.Name))
+                {
+                    var found = StorageManager.AislingBucket.Load(look.Name);
+                    notChanged = KakaoLogin.MayChange(found != null, found?.KakaoId, look.KakaoId, Live(look.Name) != null);
+                    if (notChanged == null)
+                    {
+                        found.HairStyle = format.HairStyle;
+                        found.HairColor = format.HairColor;
+                        if (!Store(found))
+                            notChanged = "캐릭터를 저장하지 못했습니다. 잠시 뒤 다시 해 주십시오.";
+                    }
+                }
+
+                client.SendMessageBox(notChanged == null ? (byte)0x00 : (byte)0x02, (notChanged ?? "") + "\0");
+                return;
+            }
+
             if (client.CreateInfo == null)
             {
                 ClientDisconnected(client);

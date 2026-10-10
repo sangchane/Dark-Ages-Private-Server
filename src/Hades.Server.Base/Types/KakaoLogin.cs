@@ -26,13 +26,19 @@ namespace Darkages.Types
         public const string Expired = "카카오 로그인이 끝났습니다. 앱에서 다시 로그인해 주십시오.";
         public const string OldApp = "새 앱으로 카카오 로그인을 해 주십시오.";
         // 문구는 CP949 로 간다(원작 꼴) — 「—」처럼 거기 없는 글자는 「?」가 된다.
-        public const string NotLinked = "아직 카카오에 이어지지 않은 캐릭터입니다. 「옛 캐릭터 잇기」로 옛 비밀번호를 한 번 넣어 주십시오.";
+        public const string NotLinked = "아직 카카오에 이어지지 않은 캐릭터입니다. 관리자에게 이어 달라고 해 주십시오.";
         public const string OtherOwner = "다른 카카오 계정의 캐릭터입니다.";
         public const string Pending = "관리자 승인을 기다리는 중입니다.";
         public const string Denied = "들어올 수 없는 카카오 계정입니다.";
         public const string Unreachable = "로그인 확인 서버에 닿지 못했습니다. 잠시 뒤 다시 해 주십시오.";
         public const string NoPassword = "카카오 계정은 비밀번호가 없습니다.";
         public const string LinkLocked = "옛 비밀번호를 여러 번 틀렸습니다. 10분 뒤에 다시 해 주십시오.";
+        public const string NoCharacter = "없는 캐릭터입니다.";
+        public const string InGame = "접속 중인 캐릭터는 바꿀 수 없습니다.";
+
+        // 내 캐릭터 관리(명세 autopilot/game-kakao-accounts/SPEC.md 3) — 0x02 비밀번호 칸 「표|look」(생김새)·「표|delete」(지우기).
+        public const string LookVerb = "look";
+        public const string DeleteVerb = "delete";
 
         private static readonly Regex Token = new(@"^g\d{1,19}\.\d{1,11}\.[0-9a-f]{64}$", RegexOptions.CultureInvariant);
         private static readonly HttpClient Http = new() { Timeout = TimeSpan.FromSeconds(3) };
@@ -95,6 +101,14 @@ namespace Darkages.Types
             var result = check(token);
             return result.KakaoId == null ? (false, null, result.Refusal) : (true, result.KakaoId, null);
         }
+
+        /// <summary>생김새 바꾸기·지우기를 해도 되나 — 되면 null, 아니면 거절 문구. 주인 없는 옛 캐릭터는 관리자가 이어 준 뒤에.</summary>
+        public static string MayChange(bool exists, string owner, string kakaoId, bool online) =>
+            !exists ? NoCharacter
+            : string.IsNullOrEmpty(owner) ? NotLinked
+            : owner != kakaoId ? OtherOwner
+            : online ? InGame
+            : null;
 
         // ponytail: 로그인 처리 줄에서 기다린다(최대 3초, 한꺼번에 넷) — 로그인이 몰려 막히면 비동기로 바꾼다.
         public static Check Ask(string url, string token)
