@@ -144,7 +144,7 @@ namespace Darkages.Network.Login
 
             var aisling = StorageManager.AislingBucket.Load(format.AislingUsername);
 
-            if (aisling == null)
+            if (aisling == null && !WasDeleted(format.AislingUsername))
             {
                 client.SendMessageBox(0x00, "\0");
             }
@@ -179,13 +179,20 @@ namespace Darkages.Network.Login
             client.SendMessageBox(0x00, verb == KakaoLogin.DeleteVerb ? "지웠습니다.\0" : "\0");
         }
 
+        private static string DeletedFolder => Path.Combine(Path.GetDirectoryName(Path.GetFullPath(AislingStorage.StoragePath)), "aislings-deleted");
+
+        /// <summary>지운 이름은 다시 만들지 못한다 — 경매의 받을 것·출품이 이름으로 묶여 있고, 되돌려 놓을 자리도 지켜야 한다(리뷰 2026-10-11).</summary>
+        private static bool WasDeleted(string name) =>
+            AislingStorage.IsValidCharacterName(name) && Directory.Exists(DeletedFolder) &&
+            Directory.EnumerateFiles(DeletedFolder, $"{name.ToLower()}-*.json").Any();
+
         /// <summary>캐릭터 자물쇠 안에서 부른다 — 지우지 않고 aislings 옆 aislings-deleted 로 옮긴다(되살리기 = 되돌려 놓기).</summary>
         private static bool MoveToDeleted(string name)
         {
             try
             {
                 string file = Path.Combine(AislingStorage.StoragePath, $"{name.ToLower()}.json");
-                string folder = Path.Combine(Path.GetDirectoryName(Path.GetFullPath(AislingStorage.StoragePath)), "aislings-deleted");
+                string folder = DeletedFolder;
                 string moved = Path.Combine(folder, $"{name.ToLower()}-{DateTime.UtcNow:yyyyMMddHHmmss}.json");
                 Directory.CreateDirectory(folder);
                 File.Move(file, moved);
@@ -473,7 +480,7 @@ namespace Darkages.Network.Login
             string refused = null;
             lock (AislingStorage.LockFor(template.Username))
             {
-                if (StorageManager.AislingBucket.Load(template.Username) != null)
+                if (StorageManager.AislingBucket.Load(template.Username) != null || WasDeleted(template.Username))
                     refused = "이미 등록된 계정입니다.";
                 else if (!Store(template))
                     refused = "캐릭터를 저장하지 못했습니다. 잠시 뒤 다시 해 주십시오.";
