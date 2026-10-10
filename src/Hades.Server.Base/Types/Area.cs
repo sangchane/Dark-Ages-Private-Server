@@ -349,13 +349,16 @@ namespace Darkages
                                 {
                                     if (obj.CurrentHp <= 0x0 && obj.Target != null && !monster.Skulled)
                                     {
+                                        // 처치 기록·카운터를 OnDeath 앞에서 — OnDeath(CommonMonster)가 Target 을 지워, 뒤에서 부르면
+                                        // 늘 빠져 kill 기록도 처치 수도 0 이었다(2026-10-11 기록 조사).
+                                        UpdateKillCounters(monster);
+
                                         foreach (var script in monster.Scripts.Values.Where(
                                             script => obj.Target?.Client != null))
                                         {
                                             script?.OnDeath(obj.Target.Client);
                                         }
 
-                                        UpdateKillCounters(monster);
                                         Kills++;
 
 

@@ -23,6 +23,10 @@ namespace Darkages.Network.Game
         private readonly string _id = Guid.NewGuid().ToString("N");
         private readonly DateTime _started = DateTime.UtcNow;
         private readonly Dictionary<(string Kind, string Detail), int> _requests = new Dictionary<(string Kind, string Detail), int>();
+        // 봇의 결과(처치 등)·장부를 flush 까지 모은다 — Bot 참고.
+        private readonly Dictionary<(string Kind, string Detail), int> _results = new();
+        private readonly Dictionary<(string Asset, string Reason, string Item, string From, string To, string Counterparty),
+            (int Count, long Delta, long Quantity, long Balance)> _ledger = new();
         private DateTime _flushed = DateTime.UtcNow;
         private bool _closed;
         private int _map = -1;
@@ -115,8 +119,8 @@ namespace Darkages.Network.Game
             {
                 if (_closed) return;
                 var operation = CurrentMutation.Value;
-                Write("ledger", meta: new { transaction = operation?.Id ?? Guid.NewGuid().ToString("N"), asset,
-                    delta, balance, reason = CallerReason(), counterparty = operation?.Peers.GetValueOrDefault(this) ?? _client.Aisling.Exchange?.Trader?.Username ?? "" });
+                Ledger(operation?.Id ?? Guid.NewGuid().ToString("N"), asset, delta, balance, CallerReason(),
+                    operation?.Peers.GetValueOrDefault(this) ?? _client.Aisling.Exchange?.Trader?.Username ?? "");
             }
         }
 
@@ -186,17 +190,15 @@ namespace Darkages.Network.Game
                         {
                             if (changes[source] >= 0 || changes[target] <= 0) continue;
                             long count = Math.Min(-changes[source], changes[target]);
-                            Write("ledger", meta: new { transaction = id, asset = "item", item, quantity = count, delta = 0,
-                                balance = next.Where(kv => kv.Key.Item == item).Sum(kv => kv.Value), reason,
-                                from = source, to = target, counterparty = counterparty ?? _client.Aisling.Exchange?.Trader?.Username ?? "" });
+                            Ledger(id, "item", 0, next.Where(kv => kv.Key.Item == item).Sum(kv => kv.Value), reason,
+                                counterparty ?? _client.Aisling.Exchange?.Trader?.Username ?? "", item, count, source, target);
                             changes[source] += count; changes[target] -= count;
                         }
                     foreach (var change in changes.Where(kv => kv.Value != 0))
-                        Write("ledger", meta: new { transaction = id, asset = "item", item, quantity = Math.Abs(change.Value), delta = change.Value,
-                            balance = next.Where(kv => kv.Key.Item == item).Sum(kv => kv.Value), reason,
-                            from = change.Value < 0 ? change.Key : (reason.EndsWith(".Format07Handler") ? "ground" : "external"),
-                            to = change.Value > 0 ? change.Key : (reason.EndsWith(".Format08Handler") ? "ground" : "external"),
-                            counterparty = counterparty ?? _client.Aisling.Exchange?.Trader?.Username ?? "" });
+                        Ledger(id, "item", change.Value, next.Where(kv => kv.Key.Item == item).Sum(kv => kv.Value), reason,
+                            counterparty ?? _client.Aisling.Exchange?.Trader?.Username ?? "", item, Math.Abs(change.Value),
+                            change.Value < 0 ? change.Key : (reason.EndsWith(".Format07Handler") ? "ground" : "external"),
+                            change.Value > 0 ? change.Key : (reason.EndsWith(".Format08Handler") ? "ground" : "external"));
                 }
                 _items = next;
             }
@@ -314,7 +316,7 @@ namespace Darkages.Network.Game
                             Flush();
                             Write("heartbeat", seconds: (int)(DateTime.UtcNow - _started).TotalSeconds);
                         }
-                    }, null, TimeSpan.FromSeconds(60), TimeSpan.FromSeconds(60));
+                    }, null, TimeSpan.FromSeconds(FlushSeconds), TimeSpan.FromSeconds(FlushSeconds));
             }
         }
 
@@ -353,14 +355,20 @@ namespace Darkages.Network.Game
                     var key = (kind, detail ?? "");
                     _requests[key] = _requests.TryGetValue(key, out int n) ? n + 1 : 1;
                 }
-                // ponytail: 최대 60초의 요청을 묶는다. 강제 종료 직전 구간까지 필요하면 주기를 줄인다.
-                if ((DateTime.UtcNow - _flushed).TotalSeconds >= 60) Flush();
+                // ponytail: 최대 60초(봇 300초)의 요청을 묶는다. 강제 종료 직전 구간까지 필요하면 주기를 줄인다.
+                if ((DateTime.UtcNow - _flushed).TotalSeconds >= FlushSeconds) Flush();
             }
         }
 
         public void Result(string kind, string detail)
         {
-            lock (_gate) { if (!_closed) Write(kind, detail); }
+            lock (_gate)
+            {
+                if (_closed) return;
+                if (!Bot) { Write(kind, detail); return; }
+                var key = (kind, detail ?? "");
+                _results[key] = _results.GetValueOrDefault(key) + 1;
+            }
         }
 
         public void Logout()
@@ -381,10 +389,45 @@ namespace Darkages.Network.Game
             }
         }
 
+        // 봇(동료·생태·대신 사냥)은 하루 100만 줄 넘게 남겼다(2026-10-07~, 절반 넘게 킬마다의 장부) — 5분에 한 번 쓰고
+        // 같은 장부·결과는 한 줄로 묶는다(사용자 2026-10-11 「반복 데이터를 최대한 압축시켜」). 사람은 지금처럼 한 건씩.
+        private bool Bot => Companions.IsBot(_client.Aisling.Username) || EcoBots.IsEcoBot(_client.Aisling.Username) || _client.ProxyUntil != null;
+
+        private int FlushSeconds => Bot ? 300 : 60;
+
+        // 봇은 (자산·이유·아이템·출처·행선·상대) 별로 모은다 — count=건수, delta·quantity=합, balance=마지막.
+        private void Ledger(string transaction, string asset, long delta, long balance, string reason, string counterparty,
+            string item = null, long quantity = 0, string from = null, string to = null)
+        {
+            if (!Bot)
+            {
+                WriteLedger(transaction, asset, delta, balance, reason, counterparty, item, quantity, from, to, 1);
+                return;
+            }
+            var key = (asset, reason, item, from, to, counterparty);
+            var sum = _ledger.GetValueOrDefault(key);
+            _ledger[key] = (sum.Count + 1, sum.Delta + delta, sum.Quantity + quantity, balance);
+        }
+
+        private void WriteLedger(string transaction, string asset, long delta, long balance, string reason, string counterparty,
+            string item, long quantity, string from, string to, int count)
+        {
+            if (item == null)
+                Write("ledger", count: count, meta: new { transaction, asset, delta, balance, reason, counterparty });
+            else
+                Write("ledger", count: count, meta: new { transaction, asset, item, quantity, delta, balance, reason, from, to, counterparty });
+        }
+
         private void Flush()
         {
             foreach (var entry in _requests) Write("request_" + entry.Key.Kind, entry.Key.Detail, count: entry.Value);
             _requests.Clear();
+            foreach (var entry in _results) Write(entry.Key.Kind, entry.Key.Detail, count: entry.Value);
+            _results.Clear();
+            foreach (var entry in _ledger)
+                WriteLedger(Guid.NewGuid().ToString("N"), entry.Key.Asset, entry.Value.Delta, entry.Value.Balance, entry.Key.Reason,
+                    entry.Key.Counterparty, entry.Key.Item, entry.Value.Quantity, entry.Key.From, entry.Key.To, entry.Value.Count);
+            _ledger.Clear();
             long xp = (long)_client.Aisling.ExpTotal - _xp;
             int gold = _client.Aisling.GoldPoints - _gold;
             Write("state", xp: xp, gold: gold);
@@ -402,7 +445,7 @@ namespace Darkages.Network.Game
             Append(_folder, new
             {
                 id = Guid.NewGuid().ToString("N"), at = DateTime.UtcNow.ToString("O"), kind, player = who.Username,
-                bot = Companions.IsBot(who.Username) || EcoBots.IsEcoBot(who.Username) || _client.ProxyUntil != null, ip, session = _id, count, xp, gold, seconds, meta = meta ?? new { },
+                bot = Bot, ip, session = _id, count, xp, gold, seconds, meta = meta ?? new { },
                 // 머신러닝 재료(autopilot/eco-bots FR-013) — detail 문장과 같은 값을 숫자 칸으로도.
                 map = who.CurrentMapId, x = who.X, y = who.Y, level = who.ExpLevel, expTotal = who.ExpTotal, goldNow = who.GoldPoints,
                 detail = $"맵 {who.CurrentMapId} ({who.X},{who.Y}) · 레벨 {who.ExpLevel} · 경험치 {who.ExpTotal} · 금화 {who.GoldPoints}" + (detail == "" ? "" : " · " + detail)
