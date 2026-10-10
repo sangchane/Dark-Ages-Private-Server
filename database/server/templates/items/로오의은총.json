@@ -8,7 +8,7 @@
   "Gender": 255,
   "LevelRequired": 99,
   "ScriptName": "Weapon",
-  "Flags": 117,
+  "Flags": 119,
   "CanStack": false,
   "MaxStack": 0,
   "Value": 1300000,

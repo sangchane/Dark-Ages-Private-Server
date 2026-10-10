@@ -8,7 +8,7 @@
   "Gender": 255,
   "LevelRequired": 99,
   "ScriptName": "Generic",
-  "Flags": 117,
+  "Flags": 119,
   "CanStack": false,
   "MaxStack": 0,
   "Value": 5000000,

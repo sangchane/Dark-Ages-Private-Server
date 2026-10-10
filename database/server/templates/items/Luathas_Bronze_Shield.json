@@ -35,7 +35,7 @@
   "OffenseElement": 0,
   "DefenseElement": 0,
   "CarryWeight": 10,
-  "Flags": "NormalEquipPerish",
+  "Flags": "NormalEquipment",
   "MaxDurability": 7000,
   "Value": 3750,
   "EquipmentSlot": 3,

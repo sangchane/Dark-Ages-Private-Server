@@ -8,7 +8,7 @@
   "Gender": 255,
   "LevelRequired": 81,
   "ScriptName": "Necklace",
-  "Flags": 117,
+  "Flags": 119,
   "CanStack": false,
   "MaxStack": 0,
   "Value": 50000,

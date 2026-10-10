@@ -8,7 +8,7 @@
   "Gender": 255,
   "LevelRequired": 41,
   "ScriptName": "Belt",
-  "Flags": 125,
+  "Flags": 127,
   "CanStack": false,
   "MaxStack": 0,
   "Value": 5000000,
