@@ -21,7 +21,7 @@ namespace Darkages.Types
         public Sprite[] AuthenticatedAislings { get; set; }
         public DateTime CurseLiftsAt { get; set; }
 
-        public static Money Create(Sprite parent, int amount, Position location)
+        public static Money Create(Sprite parent, int amount, Position location, bool join = true)
         {
             if (parent == null)
                 return null;
@@ -29,10 +29,14 @@ namespace Darkages.Types
             // The original stacks coins: money dropped where money already lies becomes one larger pile.
             // The sprite grade comes from the amount (CalcAmount), so adding to the old pile in place would
             // leave the wrong picture on the ground. Take what is there, add it in, and lay one pile down.
+            // join=false — 이 칸의 남의 금화를 끌어오지 않고 따로 놓는다(죽은 자리 금화가 남의 금화까지 잠그지 않게).
             var lying = parent.GetObjects<Money>(parent.Map, m =>
+                join &&
                 m.CurrentMapId == parent.CurrentMapId &&
                 m.XPos == location.X &&
-                m.YPos == location.Y).ToArray();
+                m.YPos == location.Y &&
+                // 잠긴 죽은 자리 금화는 합치지 않는다 — 합친 새 더미는 잠금이 없어 남이 주워 간다(리뷰 H1).
+                !(m.Cursed && DateTime.UtcNow < m.CurseLiftsAt)).ToArray();
 
             foreach (var pile in lying)
             {

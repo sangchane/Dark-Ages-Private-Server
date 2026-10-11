@@ -106,8 +106,9 @@ namespace Darkages.Types
 
         public bool RemoveFromInventory(Item item, bool handleWeight = false)
         {
+            // 그 칸이 비었으면 뺀 것이 없다 — true 를 주면 부르는 쪽이 없는 물건을 바닥·교환에 또 놓는다(리뷰 L1).
             if (item != null && Client.Aisling.Inventory.Remove(item.Slot) == null)
-                return true;
+                return false;
 
             if (item != null)
             {

@@ -811,6 +811,10 @@ namespace Darkages
         private void DropBelongingsOnDeath()
         {
             using var mutation = ActivitySession.BeginMutation(Client?.Activity, "Aisling.DropBelongingsOnDeath");
+            // 교환 중이면 먼저 물린다 — 올려 둔 물건·금화가 돌아온 뒤 벌칙을 매긴다(리뷰 M1).
+            CancelExchange();
+            // 개인 사본은 1분 뒤 바닥째 지워지고 HandOver 는 잠금을 안 본다 — 사라짐만 없애고 나머지는 지니게 둔다(리뷰 H2).
+            var keep = CurrentMapId >= Darkages.Systems.Instances.FirstId;
             var where = new Position(XPos, YPos);
             var lifts = DateTime.UtcNow.AddMinutes(ServerContext.Config.DeathLootMinutes);
             var lost = new List<string>();
@@ -838,6 +842,14 @@ namespace Darkages
             foreach (var slot in EquipmentManager.Equipment.Where(e => e.Value?.Item != null).Select(e => e.Key).ToList())
             {
                 var item = EquipmentManager.Equipment[slot].Item;
+                if (keep && item.Template?.Flags.HasFlag(ItemFlags.Perishable) != true)
+                {
+                    // 가방이 차면 벗기지 않고 입혀 둔다 — 벗겨 둘 곳이 없으면 잃는다.
+                    if (Inventory.FindEmpty() != byte.MaxValue)
+                        EquipmentManager.RemoveFromExisting(slot);
+                    continue;
+                }
+
                 if (EquipmentManager.RemoveFromExisting(slot, false))
                     Lay(item);
             }
@@ -850,12 +862,17 @@ namespace Darkages
 
             foreach (var item in bag)
             {
-                EquipmentManager.RemoveFromInventory(item, true);
-                Lay(item);
+                if (keep && item.Template?.Flags.HasFlag(ItemFlags.Perishable) != true)
+                    continue;
+
+                // 실제로 뺐을 때만 바닥에 — 이미 빠진 물건을 또 놓으면 복제된다(리뷰 L1).
+                if (EquipmentManager.RemoveFromInventory(item, true))
+                    Lay(item);
             }
 
-            var gold = GoldPoints;
-            if (gold > 0 && Money.Create(this, gold, where) is { } money)
+            // 금화는 따로 한 더미 — 그 칸의 남의 금화와 합치면 남의 것까지 잠근다(리뷰 H1).
+            var gold = keep ? 0 : GoldPoints;
+            if (gold > 0 && Money.Create(this, gold, where, false) is { } money)
             {
                 money.Cursed = true;
                 money.AuthenticatedAislings = new Sprite[] { this };
