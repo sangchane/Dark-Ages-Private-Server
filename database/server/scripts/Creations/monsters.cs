@@ -42,6 +42,7 @@ namespace Darkages.Storage.locales.Scripts.Creations
             // 한 번 젠할 때 자리를 찾아 보는 횟수. 우드랜드1-1 은 3,600칸 중 벽이 절반이 안 되므로
             // 열 번이면 사실상 늘 찾는다. 벽뿐인 실내에서 영영 돌지 않게 상한을 둔다.
             const int TilePicks = 10;
+            const int NearFrom = 13, NearFar = 20;     // 시야(12칸) 바로 밖
 
             bool FindBestMonsterMapSlot(Monster monster)
             {
@@ -54,14 +55,39 @@ namespace Darkages.Storage.locales.Scripts.Creations
                             // (우드랜드는 50초) 다시 잠든다. 벽은 실패가 아니라 다시 찍으면 되는 것이므로
                             // 설 만한 칸이 나올 때까지 몇 번 더 찍는다. 그래도 못 찾으면 그때는 정말
                             // 자리가 없는 것이다(사람이 꽉 찬 방, 벽뿐인 실내).
-                            for (var pick = 0; pick < TilePicks; pick++)
+                            // 맵에 사람이 있으면 절반은 그 사람 시야 바로 밖(13~20칸)에 세운다 — 아무 데나 서면 대부분 시야 밖에서
+                            // 멈춘 채 맵 상한을 채워, 한자리에서 사냥하는 곳이 비었다(2026-10-11, MonolithComponent.Reap 와 함께).
+                            var people = ServerContext.Game?.ObjectFactory?.QueryAll<Aisling>(map, a => a.CurrentMapId == map.Id).ToList();
+                            bool near;
+                            lock (Generator.Random)
+                                near = people is { Count: > 0 } && Generator.Random.NextDouble() < 0.5;
+
+                            for (var pick = 0; pick < TilePicks * (near ? 2 : 1); pick++)
                             {
                                 int x, y;
 
                                 lock (Generator.Random)
                                 {
-                                    x = Generator.Random.Next(1, map.Cols);
-                                    y = Generator.Random.Next(1, map.Rows);
+                                    if (near && pick < TilePicks)
+                                    {
+                                        var person = people[Generator.Random.Next(people.Count)];
+                                        int dx, dy;
+                                        do
+                                        {
+                                            dx = Generator.Random.Next(-NearFar, NearFar + 1);
+                                            dy = Generator.Random.Next(-NearFar, NearFar + 1);
+                                        } while (Math.Max(Math.Abs(dx), Math.Abs(dy)) < NearFrom);
+
+                                        x = person.X + dx;
+                                        y = person.Y + dy;
+                                        if (x < 1 || y < 1 || x >= map.Cols || y >= map.Rows)
+                                            continue;
+                                    }
+                                    else
+                                    {
+                                        x = Generator.Random.Next(1, map.Cols);
+                                        y = Generator.Random.Next(1, map.Rows);
+                                    }
                                 }
 
                                 if (map.IsWall(x, y) || map.IsWarp(x, y))

@@ -27,6 +27,9 @@ namespace Darkages.Types
         }
 
         public bool Aggressive { get; set; }
+
+        /// <summary>마지막으로 사람이 시야(12칸) 안에 있었던 때 — 오래 방치된 괴물을 거두는 데 쓴다(MonolithComponent.Reap).</summary>
+        [JsonIgnore] public System.DateTime LastNearPeople { get; set; } = System.DateTime.UtcNow;
         public bool BashEnabled { get; set; }
         public bool CastEnabled { get; set; }
         public ushort Image { get; set; }

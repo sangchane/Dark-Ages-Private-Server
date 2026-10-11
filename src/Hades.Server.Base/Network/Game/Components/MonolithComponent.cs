@@ -1,6 +1,7 @@
 ﻿#region
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Darkages.Types;
 
@@ -36,6 +37,15 @@ namespace Darkages.Network.Game.Components
 
         private readonly GameServerTimer _timer;
 
+        /// <summary>사람이 보는 거리(칸). 이 밖의 괴물은 갱신되지 않아 제자리에 멈춰 있다(Area.cs).</summary>
+        public const int ViewRange = 12;
+
+        /// <summary>
+        /// 사람이 있는 맵에서 이만큼 아무도 곁에 오지 않은 사냥감은 거둔다. 새 괴물이 시야 밖에 서서 멈춘 채 맵 상한을 채우면, 한자리에서
+        /// 사냥하는 곳에는 영영 새로 서지 않았다(클라우드 뤼케시온해안4-A 10-10 03시~10-11 03시 처치 0, 재시작해야 풀림 — 2026-10-11).
+        /// </summary>
+        private static readonly TimeSpan IdleReap = TimeSpan.FromMinutes(3);
+
         public MonolithComponent(GameServer server)
             : base(server)
         {
@@ -48,6 +58,37 @@ namespace Darkages.Network.Game.Components
 
             if (newObj != null)
                 AddObject(newObj);
+        }
+
+        /// <summary>
+        /// 이 정의의 괴물 중 사람이 시야 안에 없는 채로 <see cref="IdleReap" /> 가 지난 것을 없앤다(싸우는 중이면 두다). 없앤 수.
+        /// </summary>
+        private static int Reap(Area map, MonsterTemplate template, List<Aisling> people)
+        {
+            var now = DateTime.UtcNow;
+            var reaped = 0;
+            var factory = ServerContext.Game?.ObjectFactory;
+            if (factory == null)
+                return 0;
+
+            foreach (var monster in factory.QueryAll<Monster>(map, i => i.Template != null && i.Template.Name == template.Name
+                                                                   && i.Template.AreaID == map.Id && i.CurrentMapId == map.Id).ToList())
+            {
+                if (monster.Target != null || people.Any(p => Math.Max(Math.Abs(p.X - monster.X), Math.Abs(p.Y - monster.Y)) <= ViewRange))
+                {
+                    monster.LastNearPeople = now;
+                    continue;
+                }
+
+                if (now - monster.LastNearPeople < IdleReap)
+                    continue;
+
+                monster.Remove();
+                factory.RemoveGameObject(monster);
+                reaped++;
+            }
+
+            return reaped;
         }
 
         protected internal override void Update(TimeSpan elapsedTime)
@@ -77,6 +118,7 @@ namespace Darkages.Network.Game.Components
                 var spread = Math.Max(1, map.Rows * map.Cols / RoomTiles);
 
                 var temps = templates.Where(i => i.AreaID == map.Id);
+                List<Aisling> people = null;
 
                 foreach (var template in temps)
                 {
@@ -85,6 +127,13 @@ namespace Darkages.Network.Game.Components
                                            && i.Template.AreaID == map.Id).Count();
 
                     var hunted = template.Exp > 0 && template.SpawnMax > 1;
+
+                    if (hunted)
+                    {
+                        people ??= GetObjects<Aisling>(map, a => a.CurrentMapId == map.Id).ToList();
+                        if (people.Count > 0)
+                            count -= Reap(map, template, people);
+                    }
 
                     // 사냥감은 설정의 배율(HuntedRespawnSpeedup)만큼 더 빨리 세운다. 간격이 순회(1초)보다 짧아지면
                     // 한 순회에 간격 몇 개 분을 한꺼번에 세운다(아래 batch) — 아니면 1초가 하한이라 배율이 먹지 않는다.
