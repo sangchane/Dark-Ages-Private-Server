@@ -1,0 +1,26 @@
+{
+  "Name": "에리얼입구@뤼케시온해안3-D#57,25",
+  "AreaID": 20881,
+  "X": 57,
+  "Y": 25,
+  "Direction": 3,
+  "Image": 16633,
+  "Level": 1,
+  "MaximumHp": 1000,
+  "MaximumMp": 1000,
+  "Speech": [
+    "해안의 에리얼이 날뛰고 있소. 마레가 붙잡혀 있다오."
+  ],
+  "ScriptKey": "NPC_에리얼입구",
+  "DefaultMerchantStock": [],
+  "EnableWalking": false,
+  "EnableTurning": false,
+  "EnableAttacking": false,
+  "EnableCasting": false,
+  "WalkRate": 0,
+  "TurnRate": 0,
+  "CastRate": 0,
+  "ChatRate": 0,
+  "PathQualifer": 1,
+  "ViewingQualifer": 1
+}

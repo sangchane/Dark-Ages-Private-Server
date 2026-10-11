@@ -1,0 +1,10 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "레드하콘다리",
+  "DisplayImage": 33331,
+  "Flags": 188,
+  "CanStack": true,
+  "MaxStack": 100,
+  "Value": 100,
+  "Group": "에리얼퀘스트/기타"
+}

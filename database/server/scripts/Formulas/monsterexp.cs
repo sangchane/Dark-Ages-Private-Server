@@ -109,6 +109,11 @@ namespace Darkages.Storage.locales.Scripts.Formulas
                 return;
             }
 
+            // 퀘스트 재료(에리얼 — 하콘의 무기·다리, 2026-10-11) — 목록과 따로, 목록 드랍과 함께 나올 수 있다.
+            if (QuestDrops.Roll(_monster.Template.Name, Generator.Random.NextDouble()) is { } material
+                && ServerContext.GlobalItemTemplateCache.TryGetValue(material, out var questItem))
+                Release(questItem);
+
             var drops = _monster.Template.Drops;
             if (drops == null || drops.Count == 0)
                 return;

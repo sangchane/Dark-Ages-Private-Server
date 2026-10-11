@@ -274,6 +274,12 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                     _me.Client.TransitionToMap(area, new Position((int) Arg(a, 1), (int) Arg(a, 2)));
                     return 1;
                 }
+                // `item_room "이름"` — 우리 확장(마레, 2026-10-11). 그 물건 하나를 받을 빈 칸·무게가 있으면 1. item_add 는 자리가 없으면
+                // 말없이 버리므로 귀한 보상을 주기 전에 묻는다.
+                case "item_room":
+                    return ServerContext.GlobalItemTemplateCache.TryGetValue(Text(a, 0), out var roomFor)
+                           && _me.Inventory.FindEmpty() != byte.MaxValue && _me.CurrentWeight + roomFor.CarryWeight <= _me.MaximumWeight
+                        ? 1 : 0;
                 case "item_add":
                 {
                     if (!ServerContext.GlobalItemTemplateCache.TryGetValue(Text(a, 0), out var template))
@@ -422,8 +428,9 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                         member.Client.TransitionToMap(area, new Position((int) Arg(a, 1), (int) Arg(a, 2)));
                     return 1;
                 }
-                // `mob_spawn3 괴물, 맵, 최소공격력, 최대공격력, 체력, 마릿수` — 맵 안 빈 칸 아무 데나. 공격력 둘은 튜토리얼 팜팻(1, 2)이
-                // 정의의 공격력과 같아 그렇게 읽었다. 하데스 괴물 피해는 식이 정하므로 체력만 쓴다.
+                // `mob_spawn3 괴물, 맵, 최소공격력, 최대공격력, 체력, 마릿수[, x, y]` — 맵 안 빈 칸 아무 데나. 공격력 둘은 튜토리얼 팜팻(1, 2)이
+                // 정의의 공격력과 같아 그렇게 읽었다. 하데스 괴물 피해는 식이 정하므로 체력만 쓴다. x, y 는 우리 확장(에리얼 방, 2026-10-11) —
+                // 5.99 대본은 안 쓴다. 그 칸이 비어 있으면 거기 세운다.
                 case "mob_spawn3":
                 {
                     var area = MapNamed(Text(a, 1));
@@ -442,6 +449,12 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                         {
                             monster._MaximumHp = (int) Arg(a, 4);
                             monster.CurrentHp = (int) Arg(a, 4);
+                        }
+                        int x = (int) Arg(a, 6), y = (int) Arg(a, 7);
+                        if (a.Length > 7 && x >= 0 && y >= 0 && x < area.Cols && y < area.Rows && !area.IsWall(x, y) && area.ObjectGrid[x, y].Sprites.Count == 0)
+                        {
+                            monster.XPos = x;
+                            monster.YPos = y;
                         }
                         _me.AddObject(monster);
                     }
@@ -474,6 +487,23 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                 {
                     var map = MapNamed(Text(a, 0));
                     return map == null ? 0 : _me.GetObjects<Aisling>(map, p => p.LoggedIn && p.CurrentMapId == map.Id).Count();
+                }
+                // `npc_spawn 이름, 맵, x, y` — 우리 확장(에리얼 퀘스트 마레, 2026-10-11). 사본은 원본 맵의 NPC 를 복사하지 않아
+                // (Instances.Create) 대본이 세운다. 템플릿 「이름」(@ 앞)을 그 맵·칸으로 옮겨 세우고, 사본이 지워지면 Instances.Remove 가 치운다.
+                case "npc_spawn":
+                {
+                    var area = MapNamed(Text(a, 1));
+                    var source = ServerContext.GlobalMundaneTemplateCache.Values
+                        .FirstOrDefault(t => t.Name == Text(a, 0) || t.Name.StartsWith(Text(a, 0) + "@"));
+                    if (area == null || source == null)
+                        return Unknown($"npc_spawn {Text(a, 0)} @ {Text(a, 1)}");
+                    Mundane.Create(new MundaneTemplate
+                    {
+                        Name = source.Name, AreaID = area.Id, X = (ushort) Arg(a, 2), Y = (ushort) Arg(a, 3),
+                        Direction = source.Direction, Image = source.Image, Level = source.Level, ScriptKey = source.ScriptKey,
+                        Speech = source.Speech, PathQualifer = source.PathQualifer, ViewingQualifer = source.ViewingQualifer
+                    });
+                    return 1;
                 }
                 case "mob_clear": return Instances.Clear<Monster>(MapNamed(Text(a, 0)));
                 case "item_clear": return Instances.Clear<Item>(MapNamed(Text(a, 0))) + Instances.Clear<Money>(MapNamed(Text(a, 0)));
@@ -831,6 +861,14 @@ namespace Darkages.Storage.locales.Scripts.Pack599
                     return 1;
 
                 // 소지품 — 표창던지기가 투척용표창을 쓴다.
+                // `legend_add 아이콘, 색, "글"` — 전설 표식(초보자도우미 「0, 176」 · 그라가스 「2, 249」). 같은 글이 있으면 더하지 않는다.
+                case "legend_add":
+                    if (_me.LegendBook.Has(Text(a, 2)))
+                        return 0;
+                    _me.LegendBook.AddLegend(new Legend.LegendItem
+                        { Category = "Event", Icon = (byte) Arg(a, 0), Color = (byte) Arg(a, 1), Value = Text(a, 2) });
+                    return 1;
+
                 case "item_exist":
                     return (Who(a, 0) as Aisling)?.Inventory?.Items.Values
                         .Where(i => i?.Template?.Name == Text(a, 1)).Sum(i => Math.Max(1, (int) i.Stacks)) ?? 0;

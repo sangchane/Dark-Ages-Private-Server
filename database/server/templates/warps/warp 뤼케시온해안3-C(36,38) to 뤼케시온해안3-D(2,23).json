@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 20462,
+  "Activations": [
+    {
+      "AreaID": 20462,
+      "Location": {
+        "X": 36,
+        "Y": 38
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 20881,
+    "Location": {
+      "X": 2,
+      "Y": 23
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 뤼케시온해안3-C(36,38) to 뤼케시온해안3-D(2,23)"
+}
