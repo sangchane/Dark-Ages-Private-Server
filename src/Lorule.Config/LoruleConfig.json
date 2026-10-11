@@ -85,7 +85,7 @@
 		"DeathDropsItems": false,
 		// 동료 봇(성직자) 계정 이름 — 봇 프로그램(mobile/bots/Lod.CompanionBot)이 이 이름으로 접속한다. 비밀번호는 봇 쪽 설정 파일에만.
 		// 보낸 동료는 CompanionHomeMap(0 이면 StartingMap)의 CompanionHomePosition(없으면 StartingPosition)에서 기다린다.
-		"CompanionBots": [ "동료사제" ],
+		"CompanionBots": [ "동료성직자" ],
 		"CompanionHomeMap": 0,
 
 		// Monsters | NPCs
