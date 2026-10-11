@@ -46,6 +46,9 @@ namespace Darkages.Network.Game.Components
         /// </summary>
         private static readonly TimeSpan IdleReap = TimeSpan.FromMinutes(3);
 
+        /// <summary>한 순회(1초)에 맵·정의마다 거두는 상한 — 한꺼번에 몰리지 않게 나눈다.</summary>
+        private const int ReapPerPass = 10;
+
         public MonolithComponent(GameServer server)
             : base(server)
         {
@@ -83,9 +86,11 @@ namespace Darkages.Network.Game.Components
                 if (now - monster.LastNearPeople < IdleReap)
                     continue;
 
-                monster.Remove();
+                // 아무도 못 보는 괴물이다 — 그 맵 사람에게만 알린다(Remove 는 서버 전원에게 두 번씩 보낸다).
+                monster.RemoveTelling(people);
                 factory.RemoveGameObject(monster);
-                reaped++;
+                if (++reaped >= ReapPerPass)
+                    break;
             }
 
             return reaped;

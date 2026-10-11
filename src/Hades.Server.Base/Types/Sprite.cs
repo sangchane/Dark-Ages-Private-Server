@@ -1411,6 +1411,20 @@ namespace Darkages.Types
             DeleteObject();
         }
 
+        /// <summary>
+        /// 정한 사람에게만 한 번 알리고 없앤다. <see cref="Remove" /> 는 서버의 모든 사람에게 두 번씩 보내, 오래 방치된 괴물을 한꺼번에
+        /// 거두자 사람마다 보내기 줄(512)이 넘쳐 접속이 통째로 끊겼다(클라우드 2026-10-11 19:04·19:13, MonolithComponent.Reap).
+        /// </summary>
+        public void RemoveTelling(IEnumerable<Aisling> tell)
+        {
+            var response = new ServerFormat0E(Serial);
+
+            foreach (var o in tell)
+                o?.Client?.Send(response);
+
+            DeleteObject();
+        }
+
         public void HideFrom(Aisling nearbyAisling)
         {
             nearbyAisling?.Show(Scope.Self, new ServerFormat0E(Serial));
