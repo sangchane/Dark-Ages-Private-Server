@@ -3048,7 +3048,10 @@ namespace Darkages.Network.Game
 
             if (player != null)
             {
-                player.GameMaster = ServerContext.Config.GameMasters?.Any(n => n.ToLower() == player.Username.ToLower()) ?? false;
+                player.GameMaster = GmCommands.IsOperator(player.Username, player.KakaoId);
+                // 효과 목록(Buffs)은 저장되지 않는데 무적·숨음 값은 저장된다 — 값만 남아 영영 무적·투명이 되지 않게 들어올 때 푼다(리뷰 2026-10-11).
+                player.Immunity = false;
+                player.Invisible = false;
                 player.Developer  = ServerContext.Config.DevMode;
             }
 
@@ -3107,11 +3110,8 @@ namespace Darkages.Network.Game
         {
             var aisling = StorageManager.AislingBucket.Load(player);
 
-            if (aisling != null && ServerContext.Config.GameMasters.Any() &&
-                ServerContext.Config.GameMasters.Exists(i => string.Equals(i.ToLower(), player.ToLower(), StringComparison.Ordinal)))
-            {
+            if (aisling != null && GmCommands.IsOperator(player, aisling.KakaoId))
                 aisling.GameMaster = true;
-            }
 
             client.Aisling = aisling;
 

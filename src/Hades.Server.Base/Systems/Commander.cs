@@ -59,18 +59,21 @@ namespace Darkages.Systems.CLI
             ServerContext.Parser.AddCommand(Command
                 .Create("Summon Player")
                 .AddAlias("sp")
+                .AddAlias("소환")
                 .SetAction(OnSummonPlayer)
                 .AddArgument(Argument.Create("who")));
 
             ServerContext.Parser.AddCommand(Command
                 .Create("Port to Player")
                 .AddAlias("pt")
+                .AddAlias("가기")
                 .SetAction(OnPortToPlayer)
                 .AddArgument(Argument.Create("who")));
 
             ServerContext.Parser.AddCommand(Command
                 .Create("Learn Spell")
                 .AddAlias("spell")
+                .AddAlias("마법")
                 .SetAction(OnLearnSpell)
                 .AddArgument(Argument.Create("name"))
                 .AddArgument(Argument.Create("level").MakeOptional().SetDefault(100)));
@@ -78,6 +81,7 @@ namespace Darkages.Systems.CLI
             ServerContext.Parser.AddCommand(Command
                 .Create("Learn Skill")
                 .AddAlias("skill")
+                .AddAlias("기술")
                 .SetAction(OnLearnSkill)
                 .AddArgument(Argument.Create("name"))
                 .AddArgument(Argument.Create("level").MakeOptional().SetDefault(100)));
@@ -92,6 +96,8 @@ namespace Darkages.Systems.CLI
                 .Create("pet")
                 .AddAlias("pet")
                 .SetAction(OnPet));
+
+            GmCommands.Register(ServerContext.Parser);   // 한글 명령 — /운영자 ? (2026-10-11)
         }
 
         private static void OnPet(Argument[] args, object arg)
@@ -344,45 +350,50 @@ namespace Darkages.Systems.CLI
             if (client != null)
             {
                 var name = args.FromName("item").Replace("\"", "");
-                if (int.TryParse(args.FromName("amount"), out var quantity))
+                if (int.TryParse(args.FromName("amount"), out var quantity)
+                    && ServerContext.GlobalItemTemplateCache.TryGetValue(name, out var template))
+                    GiveItem(client.Aisling, template, quantity);
+            }
+        }
+
+        /// <summary>그 아이템을 개수만큼 가방에 — 쌓이는 것은 한 칸 최대만큼씩 묶는다(`/give` · `/item`). 가방이 차면 멈추고 넣은 개수를 돌려준다.</summary>
+        public static int GiveItem(Aisling who, ItemTemplate template, int quantity)
+        {
+            var given = 0;
+            if (template.CanStack)
+            {
+                var stacks = quantity / template.MaxStack;
+                var remaining = quantity % template.MaxStack;
+
+                for (var i = 0; i < stacks; i++)
                 {
-                    if (ServerContext.GlobalItemTemplateCache.ContainsKey(name))
-                    {
-                        var template = ServerContext.GlobalItemTemplateCache[name];
-                        if (template.CanStack)
-                        {
-                            var stacks = quantity / template.MaxStack;
-                            var remaining = quantity % template.MaxStack;
+                    var item = Item.Create(who, template);
+                    item.Stacks = (ushort) Math.Min(template.MaxStack, ushort.MaxValue);
+                    if (!item.GiveTo(who, false))
+                        return given;
+                    given += item.Stacks;
+                }
 
-                            for (var i = 0; i < stacks; i++)
-                            {
-                                {
-                                    var item = Item.Create(client.Aisling, template);
-                                    item.Stacks = (ushort) Math.Min(template.MaxStack, ushort.MaxValue);
-                                    item.GiveTo(client.Aisling, false);
-                                }
-                            }
-
-                            if (remaining > 0)
-                            {
-                                {
-                                    var item = Item.Create(client.Aisling, template);
-                                    item.Stacks = (ushort) remaining;
-                                    item.GiveTo(client.Aisling, false);
-                                }
-                            }
-                        }
-                        else
-                        {
-                            for (var i = 0; i < quantity; i++)
-                            {
-                                var item = Item.Create(client.Aisling, template);
-                                item.GiveTo(client.Aisling, false);
-                            }
-                        }
-                    }
+                if (remaining > 0)
+                {
+                    var item = Item.Create(who, template);
+                    item.Stacks = (ushort) remaining;
+                    if (item.GiveTo(who, false))
+                        given += remaining;
                 }
             }
+            else
+            {
+                for (var i = 0; i < quantity; i++)
+                {
+                    var item = Item.Create(who, template);
+                    if (!item.GiveTo(who, false))
+                        return given;
+                    given++;
+                }
+            }
+
+            return given;
         }
 
         public static void ParseChatMessage(IGameClient client, string message) => ServerContext.Parser?.Parse(message, client);

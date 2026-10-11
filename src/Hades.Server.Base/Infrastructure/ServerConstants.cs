@@ -62,6 +62,7 @@ namespace Darkages
         bool AuctionEnabled { get; set; }
         double FasNadurStrength { get; set; }
         List<string> GameMasters { get; set; }
+        List<string> GameMasterKakaoIds { get; set; }
         bool GiveAssailOnCreate { get; }
         string StarterSpellOnCreate { get; }
         double GlobalBaseSkillDelay { get; set; }
@@ -298,6 +299,9 @@ namespace Darkages
         public double FasNadurStrength { get; set; }
 
         public List<string> GameMasters { get; set; }
+
+        /// <summary>이 카카오 계정에 묶인 캐릭터는 모두 운영자(사용자 2026-10-11 「ㄱ상찬 계정에 모두 운영자」) — 봇은 카카오가 없어 빠진다.</summary>
+        public List<string> GameMasterKakaoIds { get; set; } = new List<string>();
 
         public bool GiveAssailOnCreate { get; set; }
 
