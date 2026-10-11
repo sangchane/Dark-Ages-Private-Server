@@ -33,7 +33,7 @@ namespace Darkages.Storage.locales.Scripts.Pack599
             }
             L_re: ;
             v_myid = p.Call("get_myid");
-            yield return Menu((V)"무도가님, 어느 스킬을 원하십니까?", (V)"일루메나[81]", (V)"달마신공[81]", (V)"일음지[83]", (V)"백보신권[87]", (V)"발경[93]", (V)"다라밀공[99]");
+            yield return Menu((V)"무도가님, 어느 스킬을 원하십니까?", (V)"일루메나[81]", (V)"달마신공[71]", (V)"일음지[83]", (V)"백보신권[87]", (V)"발경[93]", (V)"다라밀공[99]");
             v_select = reply.Choice;
             if (V.T(((V)(v_select) == (V)((V)0L))))
             {
@@ -60,8 +60,8 @@ namespace Darkages.Storage.locales.Scripts.Pack599
             if (V.T(((V)(v_select) == (V)((V)2L))))
             {
                 yield return Mes((V)1L, (V)"달마신공은 앞에있는 타겟의 방어력및 무적상태를 무시하고 대미지를 입히는 기술 입니다.");
-                yield return Mes((V)1L, (V)"배우실려면 레벨이 81이상이셔야 합니다.");
-                if (V.T(((V)(p.Call("get_level", v_myid)) < (V)((V)81L))))
+                yield return Mes((V)1L, (V)"배우실려면 레벨이 71이상이셔야 합니다.");
+                if (V.T(((V)(p.Call("get_level", v_myid)) < (V)((V)71L))))
                 {
                     yield return Mes((V)1L, (V)"이스킬을 습득하시기엔 아직 어립니다. 심안의 힘으로!");
                     goto L_re;
