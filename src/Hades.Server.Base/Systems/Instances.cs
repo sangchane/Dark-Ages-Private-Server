@@ -158,7 +158,11 @@ namespace Darkages.Systems
                 person.Client?.SendMessage(0x02, "가방이 가득 차 던전에 남은 물건을 발밑에 내려놓았습니다.");
         }
 
-        /// <summary>빈 사본을 없앤다 — 그 맵에서 나가는 워프 · 괴물 · 물건 · NPC 까지.</summary>
+        /// <summary>빈 사본을 없앤다 — 그 맵에서 나가는 워프와 그 맵으로 드는 워프 · 괴물 · 물건 · NPC 까지.</summary>
+        /// <remarks>
+        /// 드는 워프도 치운다: 지운 번호는 다음 사본이 다시 쓰므로, 남겨 두면 아직 안 간 방(킹아크퍼스 숨겨진길B → 본거지처럼 한꺼번에
+        /// 지은 방)이 먼저 지워진 뒤 그 문이 남의 사본으로 보낸다(리뷰 2026-10-11).
+        /// </remarks>
         public static void Remove(Area area)
         {
             lock (Gate)
@@ -167,7 +171,7 @@ namespace Darkages.Systems
                     return;
 
                 ServerContext.GlobalWarpTemplateCache = ServerContext.GlobalWarpTemplateCache
-                    .Where(w => w.ActivationMapId != area.Id).ToList();
+                    .Where(w => w.ActivationMapId != area.Id && w.To?.AreaId != area.Id).ToList();
 
                 Clear<Monster>(area);
                 Clear<Item>(area);

@@ -109,8 +109,9 @@ namespace Darkages.Storage.locales.Scripts.Formulas
                 return;
             }
 
-            // 퀘스트 재료(에리얼 — 하콘의 무기·다리, 2026-10-11) — 목록과 따로, 목록 드랍과 함께 나올 수 있다.
-            if (QuestDrops.Roll(_monster.Template.Name, Generator.Random.NextDouble()) is { } material
+            // 퀘스트 재료(에리얼 — 하콘의 무기·다리 · 킹아크퍼스 — 껍질·문어다리·문어의원한, 2026-10-11) — 목록과 따로, 목록 드랍과 함께 나올 수 있다.
+            if (QuestDrops.Roll(_monster.Template.Name, Generator.Random.NextDouble(),
+                    need => _player?.Inventory?.Items.Values.Any(i => i?.Template?.Name == need) == true) is { } material
                 && ServerContext.GlobalItemTemplateCache.TryGetValue(material, out var questItem))
                 Release(questItem);
 

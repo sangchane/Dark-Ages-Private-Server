@@ -1,0 +1,10 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "게껍질",
+  "DisplayImage": 33331,
+  "Flags": 188,
+  "CanStack": true,
+  "MaxStack": 100,
+  "Value": 100,
+  "Group": "킹아크퍼스퀘스트/기타"
+}

@@ -1,0 +1,31 @@
+{
+  "ActivationMapId": 20594,
+  "Activations": [
+    {
+      "AreaID": 20594,
+      "Location": {
+        "X": 10,
+        "Y": 39
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 41,
+  "LevelMaximum": 0,
+  "ScriptNpc": "NPC_킹아크퍼스암초",
+  "To": {
+    "AreaID": 20594,
+    "Location": {
+      "X": 10,
+      "Y": 39
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 아벨해안4-C(10,39) runs 킹아크퍼스암초"
+}

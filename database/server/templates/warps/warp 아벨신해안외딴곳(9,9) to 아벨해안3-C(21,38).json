@@ -1,0 +1,29 @@
+{
+  "ActivationMapId": 20883,
+  "Activations": [
+    {
+      "AreaID": 20883,
+      "Location": {
+        "X": 9,
+        "Y": 9
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 1,
+  "To": {
+    "AreaID": 20591,
+    "Location": {
+      "X": 21,
+      "Y": 38
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": null,
+  "Group": null,
+  "Name": "warp 아벨신해안외딴곳(9,9) to 아벨해안3-C(21,38)"
+}

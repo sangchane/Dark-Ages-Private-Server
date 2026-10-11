@@ -1,0 +1,26 @@
+{
+  "Name": "대장장이@아벨무기점#5,4",
+  "AreaID": 20031,
+  "X": 5,
+  "Y": 4,
+  "Direction": 2,
+  "Image": 16414,
+  "Level": 1,
+  "MaximumHp": 1000,
+  "MaximumMp": 1000,
+  "Speech": [
+    "망치 소리가 그칠 날이 없구먼."
+  ],
+  "ScriptKey": "NPC_대장장이",
+  "DefaultMerchantStock": [],
+  "EnableWalking": false,
+  "EnableTurning": false,
+  "EnableAttacking": false,
+  "EnableCasting": false,
+  "WalkRate": 0,
+  "TurnRate": 0,
+  "CastRate": 0,
+  "ChatRate": 0,
+  "PathQualifer": 1,
+  "ViewingQualifer": 1
+}

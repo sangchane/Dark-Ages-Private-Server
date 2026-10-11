@@ -1,0 +1,31 @@
+{
+  "ActivationMapId": 20591,
+  "Activations": [
+    {
+      "AreaID": 20591,
+      "Location": {
+        "X": 20,
+        "Y": 37
+      },
+      "PortalKey": 0
+    }
+  ],
+  "LevelRequired": 41,
+  "LevelMaximum": 0,
+  "ScriptNpc": "NPC_킹아크퍼스숨은칸",
+  "To": {
+    "AreaID": 20591,
+    "Location": {
+      "X": 20,
+      "Y": 37
+    },
+    "PortalKey": 0
+  },
+  "WarpRadius": 0,
+  "WarpType": "Map",
+  "WorldResetWarpId": 0,
+  "WorldTransionWarpId": 0,
+  "Description": "숨은 칸",
+  "Group": null,
+  "Name": "warp 아벨해안3-C(20,37) runs 킹아크퍼스숨은칸"
+}

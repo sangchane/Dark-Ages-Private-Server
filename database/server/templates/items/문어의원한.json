@@ -1,0 +1,10 @@
+{
+  "$type": "Darkages.Types.ItemTemplate, Darkages.Server",
+  "Name": "문어의원한",
+  "DisplayImage": 46242,
+  "Flags": 188,
+  "CanStack": true,
+  "MaxStack": 100,
+  "Value": 100,
+  "Group": "킹아크퍼스퀘스트/기타"
+}
