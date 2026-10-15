@@ -92,7 +92,7 @@ namespace Darkages.Storage.locales.Scripts.Mundanes
                     if (Convert.ToInt32(offer) > item.Template.Value)
                         return;
 
-                    if (client.Aisling.GoldPoints + Convert.ToInt32(offer) <=
+                    if ((long) client.Aisling.GoldPoints + Convert.ToInt32(offer) <=
                         ServerContext.Config.MaxCarryGold)
                     {
                         client.Aisling.GoldPoints += Convert.ToInt32(offer);

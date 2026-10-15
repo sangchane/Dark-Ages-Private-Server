@@ -597,7 +597,7 @@ namespace Darkages
 
         public bool GiveGold(int offer, bool sendClientUpdate = true)
         {
-            if (GoldPoints + offer < ServerContext.Config.MaxCarryGold)
+            if ((long) GoldPoints + offer < ServerContext.Config.MaxCarryGold)
             {
                 GoldPoints += offer;
                 return true;

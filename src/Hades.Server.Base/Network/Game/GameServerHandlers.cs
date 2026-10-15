@@ -1101,7 +1101,7 @@ namespace Darkages.Network.Game
                 return;
             }
 
-            if (client.Aisling.GoldPoints >= format.GoldAmount)
+            if (format.GoldAmount > 0 && client.Aisling.GoldPoints >= format.GoldAmount)
             {
                 client.Aisling.GoldPoints -= format.GoldAmount;
                 if (client.Aisling.GoldPoints <= 0)
@@ -2743,7 +2743,7 @@ namespace Darkages.Network.Game
 
                     var gold = format.Gold;
 
-                    if (gold > player.GoldPoints)
+                    if (gold <= 0 || gold > player.GoldPoints)
                         return;
                     if (player.Exchange.Gold != 0)
                         return;

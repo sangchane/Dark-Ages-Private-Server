@@ -131,7 +131,7 @@ namespace Darkages.Systems
 
             foreach (var money in service.QueryAll<Money>(area, m => m.CurrentMapId == area.Id).ToArray())
             {
-                if (person.GoldPoints + money.Amount < ServerContext.Config.MaxCarryGold)
+                if ((long) person.GoldPoints + money.Amount < ServerContext.Config.MaxCarryGold)
                     money.GiveTo(money.Amount, person);
                 else
                 {

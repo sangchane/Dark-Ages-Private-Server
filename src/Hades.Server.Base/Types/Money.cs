@@ -69,7 +69,7 @@ namespace Darkages.Types
 
         public void GiveTo(int amount, Aisling aisling)
         {
-            if (aisling.GoldPoints + amount < ServerContext.Config.MaxCarryGold)
+            if ((long) aisling.GoldPoints + amount < ServerContext.Config.MaxCarryGold)
             {
                 aisling.GoldPoints += amount;
 
