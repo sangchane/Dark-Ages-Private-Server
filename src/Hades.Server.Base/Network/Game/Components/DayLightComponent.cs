@@ -29,8 +29,10 @@ namespace Darkages.Server.Network.Game.Components
                     }
                 }
 
+                // 원작 2005 클라이언트는 이 값을 2시간 단위 시각으로 읽어 min(2v, 24) 로 Light 표를 찾는다(0x53ccdc) —
+                // 12 를 넘는 값은 모두 24시라 18 로 돌리면 하루 1/3 이 같은 밤에 멈췄다. 0~11 이 하루다.
                 _shade += 1;
-                _shade %= 18;
+                _shade %= 12;
             }
         }
     }
